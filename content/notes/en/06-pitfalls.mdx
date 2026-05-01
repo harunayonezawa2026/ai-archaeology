@@ -1,0 +1,244 @@
+---
+title: "The Three Big Traps of LLM-Mediated Archaeology — Fabrication, Cost Explosion, Misreading"
+subtitle: "Pitfalls — the failures I actually hit across posts 1–5, and the prompts that fix them"
+description: "When you use an LLM to mine forgotten long-form documents, you will almost certainly hit three traps: fabrication (fake citations), cost explosion (503s, model deprecations, token blowups), misreading (language barriers, term-of-art confusion). This post discloses every real incident from posts 1–5 of this series, with the prompts and operating rules that prevent each one."
+episode: 6
+publishedAt: "2026-05-01"
+tags: ["AI Archaeology", "Pitfalls", "Failure modes", "LLM operations", "Prompts"]
+series: "Pitfalls"
+seriesNumber: 0
+status: "published"
+---
+
+In [the first post](/en/notes/01-gipp-case), I declared one of the editorial principles to be "include the failures." Across posts 1 to 5, I learned that **the pitfalls of LLM-mediated archaeology collapse into three categories.** This is the record.
+
+## The Punchline
+
+| Pitfall | What goes wrong | Damage to trust |
+|---|---|---|
+| **1. Fabrication** | The LLM invents citations, numbers, or quotes that don't exist | Fatal (instant brand death) |
+| **2. Cost explosion** | API 503s / model deprecation / token blowup | Hits operational continuity |
+| **3. Misreading** | Language barrier, term of art, missed context | Quality drop on the individual post; trust erosion in aggregate |
+
+Each pitfall in detail, with examples and countermeasures.
+
+---
+
+## Pitfall 1: Fabrication
+
+### What happens
+
+LLMs generate text by following the statistical patterns of their training data. They will routinely produce **"plausible citations," "plausible quotes," and "plausible numbers"** with no underlying basis.
+
+### What I actually did wrong (2026-04-25)
+
+This wasn't in the series itself, but right after I declared a new X policy ("primary sources required, no position-talking"), I posted my first piece — and **fabricated Bloomberg as a source.**
+
+```
+[from the post]
+DeepSeek V4 released. Reportedly outperforms Claude on coding.
+Sources: Bloomberg, TechCrunch, SemiAnalysis
+```
+
+Reality: **Bloomberg never reported it.** The original was a single article in a Chinese industry publication, which TechCrunch quoted. Bloomberg wasn't even in the chain.
+
+I had decided, on my own, that "three sources looks more credible," and **invented Bloomberg.**
+
+This isn't "the LLM fabricated something." It's "**I, using the LLM, fabricated something.**" The mechanism is the same: plausibility carries persuasive force, and you reach to inflate.
+
+It happened immediately after announcing a new brand position, where **trust capital was on the verge of total destruction.** I noticed within five minutes and deleted, but if anyone had reacted in time, it would have been unrecoverable.
+
+### Three countermeasures
+
+**Countermeasure 1: Only write what you've verified at the primary source**
+If you're going to write "Source: X," you must have actually opened X's article URL and confirmed the fact in question. **"Probably," "I'd guess other outlets covered it too" — both are NG.**
+
+**Countermeasure 2: When unverified, say so explicitly**
+If the primary source is unclear, write "**via X's tweet**" or "**(primary source unconfirmed)**" honestly. **Honesty is trust capital. It's 100x better than fabrication.**
+
+**Countermeasure 3: Anti-fabrication prompt**
+
+```
+For the following article draft, list every cited outlet name, person
+name, organization name, number, and quote. For each one, classify as:
+
+(A) Primary source verifiable
+(B) Confirmed only through secondary citation
+(C) Cannot be confirmed (= suspected fabrication)
+
+Items in category C are deletion candidates from the article.
+```
+
+I run this as the final pre-publication check.
+
+### Related operating rules
+
+- "Primary source required, never inventing" — applied across all my publishing channels
+- "Replies must be source-verified too" — same rule for X replies, not just main posts
+
+---
+
+## Pitfall 2: Cost Explosion
+
+### What happens
+
+LLM APIs got cheap, but **for long-form archaeology there are three cost-explosion vectors**:
+
+1. **API 503 (server overload)**: retries spiral into infinite loops
+2. **Model deprecation**: the old model suddenly stops working
+3. **Token blowup**: feeding entire long-form documents blows the context window
+
+### Things I actually hit
+
+**Case A: Frequent Gemini API 503s (late April 2026)**
+
+In my pet-fortune-telling app uchinoko-kimochi, I was using Gemini 2.0 Flash. From mid-April, **503 Service Unavailable** started appearing constantly. I had no retry mechanism by default, so the user experience collapsed.
+
+The fix was **model fallback + exponential backoff**:
+
+```python
+# Simplified
+MODELS_FALLBACK = [
+    "gemini-2.5-pro",
+    "gemini-2.5-flash",
+    "gemini-1.5-pro-002",
+]
+
+def call_with_fallback(prompt, max_retries=3):
+    for model in MODELS_FALLBACK:
+        for retry in range(max_retries):
+            try:
+                return call_gemini(model, prompt)
+            except RateLimitError:
+                time.sleep(2 ** retry)  # exponential backoff
+            except ServiceUnavailable:
+                break  # next model
+    raise AllModelsFailedError()
+```
+
+**Case B: Gemini 2.0-series deprecation (April 2026)**
+
+Gemini 2.0 (Flash / Pro) was announced for end-of-April deprecation. **Two weeks** between the announcement and the actual shutdown — barely time to migrate. **Code design has to assume that an upstream provider will retire models on you.**
+
+**Case C: Token blowup (latent, watching for it in this series)**
+
+What happens if you feed the entire ALPAC report (estimated 100 pages) to an LLM? GPT-4 and Claude have 200K-1M token context windows, but **practical response quality starts degrading at 10K-50K tokens.**
+
+For long-form archaeology, the rule is:
+- Don't feed the entire document at once. Use **3 stages: chapter-level summary → key-passage extraction → detailed analysis**.
+- Aim for under 10K tokens per stage.
+
+### Three countermeasures
+
+**Countermeasure 1: Model fallback is mandatory**
+Production deployment should implement at minimum 3-model fallback. Continuously monitor each model's deprecation announcements.
+
+**Countermeasure 2: Exponential backoff**
+Standard defense against API 503 / rate limits. **Increase retry intervals: 1s, 2s, 4s, 8s...**
+
+**Countermeasure 3: Token-usage monitoring**
+Log token usage per API call. **Review monthly averages to catch cost explosion early.**
+
+---
+
+## Pitfall 3: Misreading
+
+### What happens
+
+LLMs can "read" long documents, but they routinely **mis-interpret terms of art, historical context, or implicit industry knowledge.**
+
+### Cases that almost happened in this series
+
+**Case A: In [post #2 ZISC](/en/notes/02-patent-archaeology-01), nearly misread "Manhattan distance" as a unit of distance**
+
+The ZISC patent uses "Manhattan distance." It's a math term meaning **L1 distance** (sum of absolute differences along each dimension). Without context, an LLM could read "Manhattan = a place in New York" and misinterpret.
+
+The ZISC document had clear context, so I was fine. But **terms of art whose meaning has split between contemporary and historical usage are a hazard zone.**
+
+**Case B: In [post #4 Token Ring](/en/notes/04-standard-archaeology-01), nearly misread "Active Monitor"**
+
+Token Ring's Active Monitor is a special station role responsible for liveness monitoring of the ring. An LLM could confuse "Active Monitor" with **a modern "active monitoring tool."**
+
+**Case C: Korean / Chinese IR direct-translation problems (an IR Archaeology hazard)**
+
+In [post #3 Samsung 1996](/en/notes/03-ir-archaeology-01), if I had reached the Korean-language IR original, **I would have risked confusing "1Gb DRAM" between "1 gigabit" and "1 gigabyte."** Korean's special number notations (만 / 억) are also a misreading minefield.
+
+### Three countermeasures
+
+**Countermeasure 1: Context-forcing prompt**
+
+```
+For the following terms, interpret each in the industry context of the
+document's publication year (YYYY). If the contemporary meaning differs
+from the historical meaning, give both.
+[term list]
+```
+
+**Countermeasure 2: Original / translation cross-check**
+
+When translating long-form material into an article, run a separate verification step against the original:
+
+```
+Below are the original X and translation Y. Check whether the major
+numbers, proper nouns, and numerical expressions in Y match X. Report
+every discrepancy.
+```
+
+**Countermeasure 3: Human checkpoint**
+
+Don't trust LLM output 100%. **Important numbers, names, and quotes get verified by a human against each primary source.** Don't fully automate.
+
+---
+
+## 4. Meta-Retrospective on Posts 1–5
+
+How these pitfalls actually showed up in posts 1 to 5, and how I handled them:
+
+| Post | Pitfall encountered | How I handled it |
+|---|---|---|
+| 1. Gipp case | Fabrication risk (re-using Gipp's inflated numbers as-is) | Wrote "read at a 30% discount" explicitly, and added my own skepticism inline |
+| 2. ZISC | Misreading risk (Manhattan distance and other terms of art) | Used the modern-translation prompt to build a correspondence table; preserved original-document context |
+| 3. Samsung 1996 | Cost explosion (the OCR cost on the 8.8 MB PDF was prohibitive) | Skipped OCR; routed through Wikipedia; disclosed it as a "failure log" |
+| 4. Token Ring | Misreading risk (Active Monitor and similar) | Handled with the context-forcing prompt |
+| 5. ALPAC | Selection bias (the trap of picking only the calls that turned out wrong) | Listed both "right" and "wrong" calls for fairness |
+
+**5 out of 5 posts hit some pitfall.** I avoided each one only because I had operating rules in place from the start. **A beginner who jumps into LLM-mediated archaeology will hit one of these for sure.**
+
+## 5. Operating Checklist (Run This and Your Incident Rate Drops Orders of Magnitude)
+
+A **minimum checklist** for anyone starting forgotten-long-form archaeology:
+
+```
+[Final pre-publication check]
+□ Has every cited outlet been verified at the primary source?
+□ Do every number, proper noun, and quote appear at the corresponding
+  location in the primary source?
+□ Could any "plausible-sounding" LLM output be lacking actual basis?
+□ Are terms of art interpreted in the industry context of the document's
+  publication year?
+□ Does the translation match the original on numbers and proper nouns?
+□ Is there a cost-explosion risk (what's the bill if you ran this 100×)?
+□ Is there any wording that pushes readers in a direction that benefits
+  you?
+```
+
+Pass this checklist and you can publish. **If it doesn't pass, it doesn't ship.** Trust capital across the series matters 100× more than getting one post out faster.
+
+## 6. What's Next
+
+In the final post (#7), I publish **all the prompts and the reproducible pipeline used in posts 1 to 5.** The goal is for whoever reads it to be able to **start their own forgotten-long-form archaeology in their own field.**
+
+---
+
+Related operational notes (from haruko's running log):
+- Anti-fabrication on sourcing: keep "primary verified only" as a hard rule
+- API model fallback: Gemini-style provider deprecations require it
+- Reply verification: same source-verification rule for replies as for posts
+
+---
+
+**Next up — Templates: every prompt and the full pipeline from posts 1-5, in one file. The complete kit for starting your own archaeology.**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app/notes/06-pitfalls)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.

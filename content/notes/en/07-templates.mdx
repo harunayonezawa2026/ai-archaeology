@@ -1,0 +1,371 @@
+---
+title: "All Prompts and the Full Pipeline — A Complete Kit for Starting in Your Own Field"
+subtitle: "Templates — the entire set of weapons used across posts 1–5, in one reproducible file"
+description: "The final post of the series. Every prompt I actually used in posts 1-5 (candidate selection, content extraction, modern translation, grading, pitfall checks), the complete pipeline diagram, the tool stack, and the reproduction steps — all collapsed into one article. The goal: by the end, you can start mining forgotten long-form documents in your own field today."
+episode: 7
+publishedAt: "2026-05-01"
+tags: ["AI Archaeology", "Templates", "Prompts", "Pipeline", "Full disclosure"]
+series: "Templates"
+seriesNumber: 0
+status: "published"
+---
+
+This is the final post of the series.
+
+I've collapsed everything from posts 1-5 into a **template kit you can reproduce directly**: prompts, tool stack, pipeline, checklists. All of it in this one article.
+
+If, by the end of reading, you feel "**let me have Claude read a forgotten long-form document from my own field today,**" the series has done its job.
+
+## Full Pipeline
+
+```
+┌──────────────────────────────────────────────┐
+│ STEP 1: Discovery                             │
+│  - Use WebSearch to narrow the field          │
+│  - Trusted indexes (Google Patents/Wikipedia) │
+│  - Build a candidate list of 5-10             │
+└────────────────┬───────────────────────────┘
+                 ↓
+┌──────────────────────────────────────────────┐
+│ STEP 2: Filtering                             │
+│  - Candidate-narrowing prompt                 │
+│  - Down to one                                │
+└────────────────┬───────────────────────────┘
+                 ↓
+┌──────────────────────────────────────────────┐
+│ STEP 3: Extraction                            │
+│  - WebFetch the full text                     │
+│  - Extraction prompt → structured info        │
+└────────────────┬───────────────────────────┘
+                 ↓
+┌──────────────────────────────────────────────┐
+│ STEP 4: Modern Translation                    │
+│  - Modern-translation prompt → table          │
+│  - Past ⇔ present correspondence              │
+│  - The most powerful prompt in the series     │
+└────────────────┬───────────────────────────┘
+                 ↓
+┌──────────────────────────────────────────────┐
+│ STEP 5: Grading                               │
+│  - Grading prompt → "right / wrong / neutral" │
+│  - Re-evaluate the past against present facts │
+└────────────────┬───────────────────────────┘
+                 ↓
+┌──────────────────────────────────────────────┐
+│ STEP 6: Pitfall Check                         │
+│  - Anti-fabrication prompt                    │
+│  - Context-forcing prompt                     │
+│  - Translation-consistency prompt             │
+└────────────────┬───────────────────────────┘
+                 ↓
+┌──────────────────────────────────────────────┐
+│ STEP 7: Publish                               │
+│  - Primary sources required                   │
+│  - No position-talking                        │
+│  - Full prompt disclosure                     │
+│  - Failures included                          │
+└──────────────────────────────────────────────┘
+```
+
+Below is every prompt for every step.
+
+---
+
+## STEP 2: Candidate-Narrowing Prompt
+
+**Purpose**: pick one out of 5-10 candidates.
+
+```
+For the following [N] [genre] candidates, pick one based on the criteria
+below and give three reasons.
+
+Selection criteria:
+1. High structural similarity to modern [modern technology]
+2. Confirmed expired/retired so it can be freely excavated
+3. Off the contemporary mainstream — dropped out of the industry's
+   collective memory
+
+Candidates:
+[candidate 1 summary]
+[candidate 2 summary]
+...
+```
+
+**In post #2 (Patent Archaeology #1), this picked ZISC.**
+
+---
+
+## STEP 3: Extraction Prompts
+
+**Purpose**: pull structured information out of the primary source.
+
+### For patents (post #2 ZISC)
+
+```
+Extract the following from this patent:
+1. Patent number, grant date, filing date, inventors, assignee
+2. Status (Expired or not) and expiration date
+3. Abstract
+4. Main Claim 1 (independent claim 1)
+5. The problem it solves
+6. The proposed solution mechanism
+7. Application domains and industries
+8. Cited prior art
+9. Forward citation count
+10. Description of key Figures, and which one best represents the
+    mechanism
+```
+
+### For standards (post #4 Token Ring)
+
+```
+For [standard name], extract:
+1. Year of standardization, year retired/inactive
+2. Key inventors and driving companies
+3. Core mechanism (the standard's unique key concept)
+4. Why it lost in the market
+5. Relationship to modern [related technology]
+6. Whether it is being re-evaluated for AI workloads / HPC
+7. Spec size and length
+```
+
+### For government documents (post #5 ALPAC)
+
+```
+For [government document name], extract:
+1. Full title, year, publisher
+2. Why the report was commissioned
+3. Committee members (key people)
+4. State of [field] research at the time
+5. Main conclusions (recommendations, listed)
+6. Policy impact of the report
+7. Relationship to the [field] winter
+8. Later evaluation
+9. Length and availability of the report
+10. Whether the report's calls have aged well, viewed against the modern
+    [equivalent technology]
+```
+
+### For corporate IR (post #3 Samsung)
+
+```
+From [company name]'s history, especially [decade] [business area]
+development, extract:
+1. Year of [business] entry, first major product
+2. Major milestones in [decade]
+3. Response to crisis (bubble crash, financial crisis)
+4. Key strategic decisions
+5. Year of entry into [later business]
+6. When the relationship with major customers (Apple, etc.) began
+7. Pivot timing toward [present main business]
+8. Response to AI / new technology
+9. Relationships with competitors
+10. Generational succession of CEOs and senior leadership
+```
+
+---
+
+## STEP 4: Modern-Translation Prompt (**the most powerful prompt in the series**)
+
+**Purpose**: render past long-form material into a present-day correspondence table.
+
+```
+Translate the technical mechanism (or key concept) of [past document]
+into the everyday vocabulary of a [field] researcher in 2026. Show, in
+a table, which element corresponds to which concept in modern papers.
+```
+
+This single prompt produced:
+
+- Post #2 ZISC: Manhattan distance ⇔ L1 distance, daisy chain ⇔ systolic array
+- Post #4 Token Ring: control token ⇔ credit-based flow control, ring topology ⇔ Fat Tree
+- Post #5 ALPAC: "didn't reach production quality" ⇔ pre-Transformer reality, "humans superior" ⇔ correct until the early 2000s
+
+**The past ⇔ present correspondence table** falls out in one shot. This is the strongest weapon in the series.
+
+---
+
+## STEP 5: Grading Prompt
+
+**Purpose**: evaluate past claims against present facts.
+
+```
+Take the N main recommendations (or claims) made in [past document] in
+[year], and grade each against the reality of modern [present
+technology] ([specific present-day technology and date]). Categorize
+each as "right," "wrong," or "neutral," and give the basis for the
+verdict in 1-2 sentences.
+```
+
+**In post #5 ALPAC, this graded the five recommendations as "3 right / 3 wrong."** This is the section readers find most valuable.
+
+---
+
+## STEP 6: Pitfall-Check Prompts
+
+### Anti-fabrication prompt (mandatory pre-publication)
+
+```
+For the following article draft, list every cited outlet name, person
+name, organization name, number, and quote. For each one, classify as:
+
+(A) Primary source verifiable
+(B) Confirmed only through secondary citation
+(C) Cannot be confirmed (= suspected fabrication)
+
+Items in category C are deletion candidates from the article.
+```
+
+### Context-forcing prompt (anti-misreading)
+
+```
+For the following terms, interpret each in the industry context of the
+document's publication year (YYYY). If the contemporary meaning differs
+from the historical meaning, give both.
+
+[term list]
+```
+
+### Translation-consistency prompt (anti-mistranslation)
+
+```
+Below are the original X and translation Y. Check whether the major
+numbers, proper nouns, and numerical expressions in Y match X. Report
+every discrepancy.
+```
+
+---
+
+## Tool Stack
+
+Every tool used in the series:
+
+| Tool | Purpose | Access | Cost |
+|---|---|---|---|
+| **Google Patents** | Patent full text | https://patents.google.com | Free |
+| **Wikipedia** | First-pass overview | https://en.wikipedia.org | Free |
+| **National Academies Press** | Government documents | https://www.nap.edu | Free (read) |
+| **IETF RFC Editor** | Network standards | https://www.rfc-editor.org | Free |
+| **Wayback Machine** | Web archive | https://web.archive.org | Free (but blocked from WebFetch) |
+| **SEC EDGAR** | US-listed company IR | https://www.sec.gov/edgar | Free (but 403 from WebFetch) |
+| **IEEE Xplore** | IEEE standards | https://ieeexplore.ieee.org | Paid ($200-500 per spec) |
+| **CiNii** | Japanese papers | https://cir.nii.ac.jp | Free |
+| **CNKI** | Chinese papers | https://www.cnki.net | Partial paid |
+| **DTIC (Defense Technical Information Center)** | US declassified | https://discover.dtic.mil | Free |
+| **Claude (Anthropic API)** | All prompt processing | https://api.anthropic.com | Pay-as-you-go |
+| **markitdown** | PDF/Office → Markdown | https://github.com/microsoft/markitdown | Free OSS |
+| **files-to-prompt** | Batch ingestion | https://github.com/simonw/files-to-prompt | Free OSS |
+
+**Sources WebFetch cannot reach** (Claude Code environment constraint):
+- SEC EDGAR (403)
+- TSMC IR (403)
+- Samsung 1990s IR (does not exist)
+- Wayback Machine (fetch refused)
+
+These need a different route (direct browser, Bash + curl, or API key). For real ongoing use, **a Python script running on your own machine (Mac mini, etc.)** is the most reliable.
+
+---
+
+## Checklist for Starting in Your Own Field
+
+```
+□ Pick one specialist field (or area of strong interest)
+  Example: FX / medicine / law / semiconductors / education / music /
+  cooking...
+
+□ Write down the "long-form material in that field that humans don't
+  read but is valuable"
+  Example, FX:       central bank statements, IMF reports, 20 years of
+                     FOMC minutes...
+  Example, medicine: discontinued treatment protocols, retracted papers,
+                     out-of-print textbooks...
+  Example, law:      old precedents, repealed ordinances, transcripts...
+
+□ Identify web-accessible primary sources
+  Example: FOMC minutes → federalreserve.gov (free, HTML)
+  Example: old medical papers → PubMed (free) / NLM historical archive
+
+□ Run STEPS 1-3 once for real (discovery → filtering → extraction)
+
+□ Use STEP 4 (modern-translation prompt) to draw out the past ⇔ present
+  correspondence table
+
+□ Use STEP 5 (grading prompt) to evaluate the past claims
+
+□ Run all of STEP 6 (pitfall checks)
+
+□ Write the post: primary sources required, no position-talking
+
+□ Publish (personal blog / Substack / X long-form post / dedicated LP)
+
+□ Watch the response, then think about sub-series naming (mine became
+  Patent / IR / Standard / Declassified Archaeology)
+```
+
+Run this for one month in one field, and **you become the AI archaeologist of that field.** Nobody in the world has claimed that title yet. The window for first-mover advantage is open right now.
+
+---
+
+## Series Wrap-Up
+
+Across posts 1-7, the things I wanted to convey:
+
+1. **LLM-mediated arbitrage is not just for Amazon** (post #1, Gipp case)
+2. **A 30-year-old patent holds the ancestor of the modern NPU** (post #2, ZISC)
+3. **Companies forget their own greatest achievements; IR is behind walls** (post #3, Samsung 1996)
+4. **Discarded standards weren't "wrong" — they were "30 years too early"** (post #4, Token Ring)
+5. **A single government document can stop a research field for 20 years** (post #5, ALPAC)
+6. **Avoid three pitfalls (fabrication, cost explosion, misreading) and your incident rate drops by orders of magnitude** (post #6, Pitfalls)
+7. **With this prompt set and pipeline, anyone can start today** (post #7, this post)
+
+The single theme underneath all of them:
+
+**"Humanity has produced enormous volumes of long-form material that humans never read. LLMs can now read it. The first mover takes the territory."**
+
+That's the entire bet.
+
+## Where This Goes From Here
+
+The series completed its "introduction set" at post #7, but **the act of mining forgotten long-form documents continues from here, indefinitely.**
+
+My (haruko's) plan:
+- **Patent Archaeology #2, #3, #4...**: dig one expired patent per month
+- **IR Archaeology #2, #3...**: try to break the SEC EDGAR wall via alternate routes
+- **Standard Archaeology #2**: re-evaluate CORBA, WAP, HTTP/1.0
+- **Declassified Archaeology #2**: 1973 UK Lighthill report — the British AI winter
+- **Possible new sub-series**: Bankruptcy Archaeology (final filings of failed companies) / Court Archaeology (old precedents) / Thesis Archaeology (buried doctoral dissertations)
+
+**Pace: at minimum four posts per month.** This is the real starting line of the series.
+
+---
+
+Every prompt, every pipeline, every checklist used in the series is collapsed into this post. **If you dig something up in your own field, please tell me about it.** I am genuinely looking forward to reading those archaeology logs.
+
+---
+
+References (every tool used in the series):
+- [Google Patents](https://patents.google.com)
+- [USPTO Open Data Portal](https://data.uspto.gov)
+- [USPTO Developer Hub](https://developer.uspto.gov)
+- [PatentsView](https://patentsview.org)
+- [IETF RFC Editor](https://www.rfc-editor.org)
+- [National Academies Press](https://www.nap.edu)
+- [DTIC (Defense Technical Information Center)](https://discover.dtic.mil)
+- [microsoft/markitdown](https://github.com/microsoft/markitdown)
+- [simonw/files-to-prompt](https://github.com/simonw/files-to-prompt)
+- [anthropics/claude-code-skills](https://github.com/anthropics/claude-code-skills)
+
+---
+
+Series links:
+- [Post 1 — Introduction](/en/notes/01-gipp-case)
+- [Post 2 — Patent Archaeology #1](/en/notes/02-patent-archaeology-01)
+- [Post 3 — IR Archaeology #1](/en/notes/03-ir-archaeology-01)
+- [Post 4 — Standard Archaeology #1](/en/notes/04-standard-archaeology-01)
+- [Post 5 — Declassified Archaeology #1](/en/notes/05-declassified-archaeology-01)
+- [Post 6 — Pitfalls](/en/notes/06-pitfalls)
+- **Post 7 — Templates (this post)**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app/notes/07-templates)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.

@@ -1,0 +1,213 @@
+---
+title: "AI-Era InfiniBand Is Proving That Token Ring Was Right 30 Years Ago"
+subtitle: "Standard Archaeology #1 — IEEE 802.5 (standardized 1989, Gigabit-ized 2001, crushed by Ethernet) and its deterministic access control are quietly back in modern AI/HPC fabrics"
+description: "Token Ring, standardized as IEEE 802.5 in 1989, was destroyed by Ethernet's probabilistic access and effectively retired. But its core idea — deterministic access control — has fully returned, under different names: InfiniBand, NVLink, RDMA, Ultra Ethernet. Token Ring didn't lose. It was just 30 years too early."
+episode: 4
+publishedAt: "2026-05-01"
+tags: ["AI Archaeology", "Standard Archaeology", "Token Ring", "IEEE 802.5", "InfiniBand", "AI networking"]
+series: "Standard Archaeology"
+seriesNumber: 1
+status: "published"
+---
+
+## The Punchline
+
+**Token Ring (IEEE 802.5), standardized in 1989 mostly under IBM's leadership, lost the market battle with Ethernet so badly that it was effectively retired in the early 2000s.** But Token Ring's core architecture — **deterministic access control** — is now back, under different names:
+
+- InfiniBand
+- NVIDIA NVLink / NVSwitch
+- RDMA over Converged Ethernet (RoCE)
+- Ultra Ethernet Consortium (2024 onwards)
+
+All of these are **the same movement**: the realization that probabilistic, collision-tolerant networking (Ethernet) hits a hard ceiling, and a return to deterministic networking. Token Ring didn't lose. **It was 30 years too early.**
+
+This is Standard Archaeology #1 — re-evaluating a forgotten standard.
+
+## 1. What Token Ring Actually Was
+
+| Item | Detail |
+|---|---|
+| Standardization | Officially standardized as IEEE 802.5 in 1989 |
+| Driving force | IBM Zurich Research Laboratory (Werner Bux and Hans Müller) |
+| First commercial product | IBM, October 15, 1985, 4 Mbit/s |
+| Mechanism | A control token circulates around a logical ring; only the station holding the token may transmit |
+| Result | Zero collisions, but ~3× the hardware cost of Ethernet |
+| End | The final standard (IEEE 802.5z, Gigabit Token Ring) was completed on May 4, 2001 — and **never shipped as a product before activity stopped** |
+
+That last line is the rare part. **The standard evolved all the way to Gigabit, and then died without anyone shipping it.** That's an unusual ending in standards history.
+
+## 2. Deterministic vs. Probabilistic
+
+There are two philosophies of network access control.
+
+### Token Ring (deterministic)
+```
+[Station A] → [Station B] → [Station C] → [Station D] → ...  (logical ring)
+              ↑
+          control token (only one in circulation)
+
+Rule: only the station holding the token may transmit.
+      When it finishes, it passes the token to the next station.
+      → Collisions structurally cannot happen.
+      → Maximum per-node latency is computable (deterministic).
+      → But the token keeps circulating even when nobody wants to send.
+```
+
+### Ethernet (probabilistic)
+```
+[Station A]   [Station B]   [Station C]   [Station D]
+       \         /              \         /
+        \       /                \       /
+         shared bus (CSMA/CD)
+
+Rule: anyone may transmit any time.
+      If you collide with someone, wait a random interval and retry.
+      → Fastest when uncongested.
+      → Collisions grow exponentially under load.
+      → Maximum latency is not computable (probabilistic).
+```
+
+The 1990s judgment was: **"Most offices aren't congested, so probabilistic is cheaper and faster."** That was correct. Ethernet won. Token Ring died.
+
+But "**most offices**" and "**AI training clusters**" have completely opposite congestion profiles.
+
+## 3. AI/HPC Workloads Need Deterministic
+
+In GPT-5-class large model training, there are **moments when every GPU has to communicate in lockstep** (Allreduce, Allgather, Reduce-scatter — collective communication).
+
+| Workload | Network behavior |
+|---|---|
+| Office document sharing | Mostly idle, occasional bursts |
+| Web servers | Many small independent flows |
+| **AI collective comm** | **All nodes generate huge traffic at the same instant** |
+
+In AI collective communication, **Ethernet's probabilistic access is fatal**. When every GPU tries to transmit at the same time, collisions explode, retransmits cascade, and **a single training step can stall by seconds**. This is essentially the source of every major bottleneck in large-scale training.
+
+So modern AI / HPC fabrics make **deterministic access control mandatory**:
+
+| Modern solution | Source of determinism |
+|---|---|
+| **InfiniBand** (Mellanox / NVIDIA) | Credit-based flow control, zero collisions |
+| **NVIDIA NVLink / NVSwitch** | Scheduled bandwidth allocation, zero collisions |
+| **RDMA over Converged Ethernet (RoCE)** | Pseudo-determinism via DCB (Data Center Bridging) |
+| **Ultra Ethernet (2024-)** | Open Compute Project effort to bolt determinism onto Ethernet |
+
+**Each of these is a re-invention of Token Ring's "no collisions" philosophy.**
+
+## 4. What Token Ring Was Trying to Do, Said Again
+
+I sent the Token Ring Wikipedia page to Claude (i.e., me) and asked it to translate into modern AI/HPC vocabulary.
+
+```
+Translate Token Ring (IEEE 802.5) deterministic access control into the
+everyday vocabulary of an AI / HPC networking researcher in 2026. Show,
+in a table, which Token Ring element corresponds to which concept in
+modern papers.
+```
+
+The correspondence table that came back:
+
+| Token Ring (1989) | Modern AI/HPC networking |
+|---|---|
+| Control token | Credit (InfiniBand flow control) |
+| Right to transmit while holding the token | Scheduled transmission window |
+| Idle wait without the token | Backpressure without head-of-line blocking |
+| Ring topology | Fat Tree / Dragonfly topology |
+| MAU (Multistation Access Unit) closing the ring | Switch implementing a virtual topology |
+| 4/16 Mbps initial implementation | 400-800 Gbps InfiniBand HDR/NDR |
+| Active Monitor maintaining the ring | Switch / fleet management service |
+
+Every Token Ring element has a counterpart in modern AI networking. **The problem Token Ring was trying to solve has just become the dominant problem again, in the AI era.**
+
+## 5. Why It Was Forgotten
+
+Token Ring was killed in the 1990s with the verdict "**slow and expensive**." That was true.
+
+- 4 Mbps Token Ring vs. 10 Mbps Ethernet → Ethernet was faster
+- Interface card cost ~3× more → for individuals and SMBs, Ethernet was the only choice
+- Ring wiring was hard to extend → Ethernet's star topology was easier
+
+But **every one of those losing arguments depended on the assumption "most offices are idle."** AI clusters break that assumption:
+
+- Bandwidth needs are orders of magnitude higher (hundreds of Gbps to Tbps) → cost barely matters
+- Simultaneous all-node communication is mandatory → zero collisions is a requirement
+- Special-purpose fabric, so flexibility of expansion is secondary
+
+In other words, **Token Ring lost in the "home and office network" category** — but it could have won in the "**data center / AI fabric**" category. And in fact its successor, InfiniBand (standardized in 1999, driven by Mellanox), is Token Ring's deterministic philosophy optimized for the data center, and it's a runaway success in the AI era.
+
+## 6. What This Means for AI Archaeology
+
+Here's the essence this series wants to expose:
+
+**"Discarded technology" is not the same as "wrong technology."**
+
+Token Ring's philosophy was correct. It lost on a mismatch of timing, application, and price. Thirty years later, an application appeared (AI fabrics), and the philosophy is being vindicated.
+
+**Standard Archaeology** is going to be a series about **defeated standards whose philosophy was right.** Future candidates:
+
+- **POSIX 1003.1 (1988)**: partially won via Linux, but few systems are fully compliant
+- **CORBA (1991)**: distributed objects, lost to REST/gRPC, but "strong-typed IDL" is back
+- **HTTP/1.0 (RFC 1945, 1996)**: evolved to HTTP/2/3, but the simplicity principle is foundational to API design
+- **WAP (Wireless Application Protocol, 1999)**: lost to the iPhone, but the "lightweight mobile web" idea is back as PWAs
+- **MIDI 1.0 (1983)**: an exception, still alive — and re-standardized as MIDI 2.0 (2020)
+
+Each entry will contrast "why it lost" with "what's coming back," and translate it into the AI-era context.
+
+## 7. Pitfalls Specific to Standard Archaeology
+
+**Pitfall 1: The spec itself is unreachable**
+IEEE standards can be downloaded from IEEE Xplore, but they cost **$200-$500 each**. Out of reach for ordinary individual archaeology. The substitute path is Wikipedia / IETF RFCs (free) / period industry magazines on the Wayback Machine — i.e., reconstruct it indirectly.
+
+**Pitfall 2: Spec vs. implementation drift**
+Token Ring's spec contains features that were skipped in implementations, and implementations added features the spec didn't include. **Without keeping spec/implementation distinct, the comparison with the present gets distorted.**
+
+**Pitfall 3: The ambiguity of "retired"**
+- Withdrawn: spec itself is gone
+- Inactive: still usable, but new development is discouraged
+- Superseded: replaced by a backwards-compatible successor
+
+Token Ring is a rare case where "the final spec (IEEE 802.5z) exists but was never productized." Lumping "expired" and "retired" together leads to misreadings.
+
+## 8. Prompts I Used
+
+### Standard-extraction prompt
+
+```
+For [standard name], extract:
+1. Year of standardization, year retired/inactive
+2. Key inventors and driving companies
+3. The core mechanism (the key concept unique to this standard)
+4. Why it lost in the market
+5. Relationship to modern high-speed networks (InfiniBand / NVLink / RDMA)
+6. Whether deterministic networking is being re-evaluated for AI workloads
+```
+
+### Modern-translation prompt (the strongest)
+
+```
+Translate Token Ring's deterministic access control into the everyday
+vocabulary of an AI / HPC networking researcher in 2026. Show, in a table,
+which element corresponds to which concept in modern papers.
+```
+
+The same "modern translation" prompt that worked for ZISC in post #2 also worked here. **When you make the LLM translate an old long-form document into modern vocabulary, an AI-Archaeology correspondence table falls out in one shot.** That is the reproducible weapon of this series.
+
+## 9. What's Next
+
+For **Standard Archaeology #2**, the planned target is **CORBA (standardized 1991, lost to REST/gRPC, but with "strong-typed IDL" returning)**. The 1990s dream of distributed objects, vs. the structural similarity of modern gRPC + Protocol Buffers.
+
+---
+
+References:
+- [Token Ring — Wikipedia](https://en.wikipedia.org/wiki/Token_Ring)
+- [IEEE 802.5 (IEEE Xplore, paid)](https://standards.ieee.org/ieee/802.5/)
+- [Ultra Ethernet Consortium](https://ultraethernet.org/)
+- [InfiniBand Trade Association](https://www.infinibandta.org/)
+
+---
+
+**Next up — Declassified Archaeology #1: The 1966 ALPAC report — the government document that triggered the machine-translation winter, re-read in the LLM era.**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app/notes/04-standard-archaeology-01)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.

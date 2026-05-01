@@ -40,7 +40,7 @@ export default function HomeEN() {
       <section className="max-w-4xl mx-auto px-5 sm:px-8 py-16">
         <h2 className="font-serif text-navy text-2xl sm:text-3xl font-bold mb-2">Episodes</h2>
         <div className="text-navy/60 text-sm mb-10">
-          7-part introductory series. Translation in progress. Read in Japanese for the full set.
+          7-part introductory series. All episodes available in English.
         </div>
         <ol className="space-y-6">
           {notes.length === 0 && (
@@ -72,10 +72,9 @@ export default function HomeEN() {
           ))}
         </ol>
         <div className="mt-12 p-5 bg-navy/5 border-l-4 border-gold rounded-r text-sm text-navy/80">
-          <strong className="text-navy">Episodes 2-7 are in Japanese only at the moment.</strong> The full series covers
-          one expired IBM neural-net chip patent (1995, expired 2015), one forgotten Samsung 1996 IR milestone,
-          one deprecated IEEE 802.5 Token Ring re-evaluation, one 1966 ALPAC report re-read, plus pitfalls and
-          full prompt templates.{" "}
+          <strong className="text-navy">Series complete — all 7 episodes are now in English.</strong> Each Patent /
+          IR / Standard / Declassified Archaeology sub-series will continue with #2, #3, #4... after this introductory
+          set. Atlas-Obscura style — the genre keeps growing.{" "}
           <Link href="/" className="text-gold-600 underline hover:text-gold-700">Read in Japanese →</Link>
         </div>
       </section>
@@ -101,7 +100,7 @@ export default function HomeEN() {
               <div key={s.name} className="border border-paper/20 rounded-lg p-5 hover:border-gold-500 transition">
                 <div className="font-serif text-gold-500 text-lg font-bold mb-2">{s.name}</div>
                 <div className="text-paper/80 text-sm leading-relaxed mb-3">{s.desc}</div>
-                <div className="text-paper/60 text-xs tracking-wide">UPCOMING: {s.upcoming}</div>
+                <div className="text-paper/60 text-xs tracking-wide">LATEST: {s.upcoming}</div>
               </div>
             ))}
           </div>

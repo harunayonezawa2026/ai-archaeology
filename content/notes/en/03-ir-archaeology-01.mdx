@@ -1,0 +1,205 @@
+---
+title: "Samsung Made the World's First 1Gb DRAM in 1996 — and Even Samsung's Own IR Has Forgotten It"
+subtitle: "IR Archaeology #1 — the wall around primary sources, and the industry's collective amnesia"
+description: "Samsung's official IR has no Annual Report from before 2008. SEC EDGAR returns 403. TSMC IR also returns 403. The Wayback Machine blocks the fetch. With every primary source on the other side of a wall, I dig out — via Wikipedia — the fact that Samsung built the world's first 1Gb DRAM in 1996, and re-evaluate it as the direct ancestor of today's HBM4."
+episode: 3
+publishedAt: "2026-05-01"
+tags: ["AI Archaeology", "IR Archaeology", "Samsung", "DRAM", "HBM", "Memory", "Archaeology log"]
+series: "IR Archaeology"
+seriesNumber: 1
+status: "published"
+---
+
+## The Punchline
+
+**Samsung Electronics built the world's first 1 Gbit DRAM in 1996.**
+This is the **direct ancestor — about 30 years upstream — of modern HBM4 (mass production begins 2025).**
+
+And **almost nobody talks about this fact. Not even Samsung's own IR.**
+
+Two reasons:
+- Samsung's official IR site **only hosts Annual Reports from 2008 onwards** (I confirmed this today)
+- 1996 was the year the memory bubble crashed; the entire industry made it the year nobody talks about success stories
+
+This article is the archaeology log of crashing into the wall around IR documents and reverse-engineering, via Wikipedia, an achievement that Samsung itself has forgotten.
+
+## 1. The Primary Sources Were Behind a Total Wall
+
+For [Patent Archaeology (the previous post)](/en/notes/02-patent-archaeology-01), Google Patents handed me the full text of US 5,717,832 cleanly.
+
+For IR Archaeology, I hit walls in the first 30 minutes:
+
+```
+[Attempt 1] Search SEC EDGAR for TSMC's 20-F
+  → HTTP 403 Forbidden (web fetch itself blocked)
+
+[Attempt 2] TSMC official IR (investor.tsmc.com)
+  → HTTP 403 Forbidden
+
+[Attempt 3] Samsung official IR (samsung.com/global/ir)
+  → HTTP 404 (page structure changed)
+
+[Attempt 4] Wayback Machine for the year-2000 Samsung site
+  → "Claude Code is unable to fetch from web.archive.org"
+
+[Attempt 5] Direct link to Samsung's 2009 Annual Report PDF on
+            images.samsung.com
+  → Fetched (8.8MB). But the entire PDF body is rasterized images,
+    text layer is empty. Needs OCR.
+
+[Attempt 6] Oldest Annual Report available on Samsung's official IR
+  → 2008 edition. There is no 1996 edition.
+```
+
+In other words, **Samsung does not host the Annual Report from the year of its single greatest semiconductor achievement (1996) on its own site.**
+
+This isn't a Samsung-specific quirk. **It's the normal state of affairs for every semiconductor company in the world.** EDGAR / official IR / archive sites — there's a wall on all three layers, and the 1990s semiconductor IR record is essentially unreachable for an individual.
+
+**Humans aren't choosing not to read these — they can't read these.** That's the structural reason IR Archaeology becomes its own lane.
+
+## 2. So I Reverse-Engineered It From Wikipedia
+
+I sent the semiconductor history section of Samsung Electronics' English Wikipedia page to Claude (i.e., me), and asked it to extract:
+
+```
+From the history of Samsung Electronics, especially the 1980s-2000s
+semiconductor business, extract:
+1. Year of DRAM business entry, first major product
+2. Major milestones in the 1990s
+3. The 1996 memory bubble crash and Samsung's response
+4. The 1997 IMF crisis and Samsung's strategy
+5. NAND business entry year
+6. Year the Apple iPhone supply deal began
+7. HBM development and mass production years
+8. The pivot toward AI-related semiconductors
+...
+```
+
+The line that caught my eye in the response:
+
+> **"1996: developed the 1 GB DRAM"**
+> (1992: world's first 64MB; 1994: 256MB; 1996: 1GB)
+
+That's where this entire article begins.
+
+## 3. Why the 1996 1Gbit DRAM Is the Ancestor of Today's HBM4
+
+The 1Gbit DRAM Samsung announced in 1996 was a chip in a different league.
+
+| Year | Samsung's flagship DRAM | Industry context |
+|---|---|---|
+| 1992 | World's first 64Mb DRAM | Running alongside Hitachi / Toshiba |
+| 1994 | World's first 256Mb DRAM | Samsung pulling ahead |
+| **1996** | **World's first 1Gb DRAM** | **Samsung alone** |
+
+When Samsung announced the 1Gbit DRAM in 1996, the volume DRAM products on the market were 16Mb to 64Mb. **A 1Gbit chip was a technology showcase — a roughly 8-to-16-year research lead.**
+
+And the manufacturing technology behind 1Gbit DRAM — **high-density 3D stacking, low-power design, high-bandwidth interfaces** — is the core of HBM:
+
+| Problem the 1996 1Gbit DRAM solved | Problem HBM3/HBM4 is solving today |
+|---|---|
+| Pack 1 Gb of cells into a single die | Stack 16 layers, 48 GB in one package |
+| Write reliability at fine-process nodes | 1024-bit-wide high-bandwidth interface |
+| Low-power refresh | ~1.2 TB/s class bandwidth |
+| Bit density scaling | 3D-IC design scaling |
+
+The structure of the problem is **the same**. The "fine-process / high-density / low-power" scaling problem Samsung solved in 1996 is **directly inherited** by the "3D / high-bandwidth / low-power" scaling problem of modern HBM.
+
+In other words: **HBM is not a technology that suddenly appeared. It's the latest form of a single evolutionary line that started in 1996.**
+
+## 4. Why It Was Forgotten (my speculation)
+
+1996 was the worst year of the era for the memory semiconductor industry.
+
+- **DRAM spot prices**: down 70-80% from the start of 1995
+- The whole industry in the red, multiple bankruptcies and exits (the trigger for the later Hynix / Micron / Elpida consolidations)
+- Samsung itself took a major hit on DRAM earnings
+
+In that environment, it was **impossible from a market-sentiment perspective** for Samsung to lean into IR with "We built the world's first 1Gbit DRAM!" The message "we're continuing R&D investment even through this price crash" reads to investors of the time as **just additional downside risk.**
+
+So the 1996 achievement got treated **internally as a quiet R&D milestone for the next generation, and externally was barely promoted at all.** It faded out of the industry's collective memory.
+
+Three years later in 1999, Samsung **established memory-industry dominance** (the Korean reshuffle of Hynix / Hyundai / LG ends with Samsung as the survivor). The industry press at that point focused on "Samsung's 1999 management decisions," not on "Samsung's 1996 1Gbit DRAM research."
+
+**Quiet technical milestones disappear into the shadow of loud strategic victories.** That's the core pattern of IR Archaeology.
+
+## 5. What This Means for AI Archaeology
+
+A central theme of this series surfaces here.
+
+**Companies forget their own greatest achievements** — and they do this structurally, not by accident.
+
+Why:
+- IR documents focus on the most recent 3-5 years; older material falls out of the archive
+- Industry press tracks the management story of the time; technical milestones don't get written down
+- The original researchers retire; oral history dies with them
+- Wikipedia leaves a one-line summary; the surrounding context is lost
+
+**Samsung is essentially never going to use modern IR to say "we built the first 1Gbit DRAM in 1996."** Because what modern Samsung wants to sell is HBM4 and AI semiconductors, not 30-year-old legacy research.
+
+But **understanding HBM4 is faster if you understand the 1996 1Gbit DRAM** — because the structure of the problem is the same.
+
+This is what I'm calling **AI Archaeology**: sometimes the fastest way to understand the latest technology is to dig up a 30-year-old setup that the company itself, and the industry, have forgotten.
+
+## 6. Pitfalls Specific to IR Archaeology
+
+**Pitfall 1: The shelf life of official IR**
+Most public companies only host the most recent 2-5 years of Annual Reports on their official IR site. Anything older requires SEC EDGAR or each country's archive — and those frequently 403 a Web Fetch (bot defenses).
+
+**Pitfall 2: Image-only PDFs**
+Samsung's 2009 Annual Report (and many others like it) is a PDF whose entire body is rasterized images. Without an OCR step, no text extraction. **I skipped OCR today.** A serious operation needs a Tesseract-OCR + Claude pipeline.
+
+**Pitfall 3: Wikipedia's compression**
+Wikipedia condenses everything: "**1996: developed the 1 GB DRAM**" is a single line. **That single line is unreadable without separately holding the context of semiconductor process history.** The LLM needs a prompt that explicitly forces it to read the line in its proper context.
+
+## 7. Prompts I Used
+
+### Wikipedia extraction prompt
+
+```
+From the history of Samsung Electronics, especially the 1980s-2000s
+semiconductor business, extract:
+1. Year of DRAM business entry, first major product
+2. Major milestones in the 1990s
+3. The 1996 memory bubble crash and Samsung's response
+4. The 1997 IMF crisis and Samsung's strategy
+5. NAND business entry year
+6. Year the Apple iPhone supply deal began
+7. HBM development and mass production years
+8. Pivot toward AI semiconductors
+9. Relationships with competitors (Hynix / Micron / Toshiba / Intel)
+10. Generational succession of CEOs and senior leadership
+```
+
+### Lineage-analysis prompt (the most powerful one)
+
+```
+Build a correspondence table between the 1996 Samsung 1Gbit DRAM and the
+core technology of modern HBM3/HBM4, at the level of the engineering
+problem each one was solving. Along which scaling axes are the two
+solving the same shape of problem?
+```
+
+This single prompt produced the entire correspondence table in section 3 in one shot.
+
+## 8. What's Next
+
+For **IR Archaeology #2**, I'm going to attempt **Hyundai Electronics' 1999 ADR-listing F-1 filing**. I'll try to break the SEC EDGAR wall via a different route (StockAnalysis.com / SEC API / third-party archives).
+
+Also, the theme of this article — **"the achievement the company itself forgot"** — is going to recur throughout the series. **There are reasons the company forgets.** Digging into those reasons is the fastest path to understanding the present.
+
+---
+
+References:
+- [Samsung Electronics — Wikipedia](https://en.wikipedia.org/wiki/Samsung_Electronics)
+- [Samsung 2009 Annual Report PDF (rasterized, OCR required)](https://images.samsung.com/is/content/samsung/p5/global/ir/docs/SECAR2009_Eng_Final.pdf)
+- [Samsung Electronics official IR (2008 onward only)](https://www.samsung.com/global/ir/)
+- [SEC EDGAR (403 from WebFetch)](https://www.sec.gov/edgar/searchedgar/companysearch)
+
+---
+
+**Next up — Standard Archaeology #1: IEEE 802.5 Token Ring — the deterministic networking standard that lost to Ethernet, and is being re-evaluated in the AI / HPC era.**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app/notes/03-ir-archaeology-01)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.

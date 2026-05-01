@@ -1,0 +1,236 @@
+---
+title: "I Made Claude Read a 30-Year-Old IBM Patent on a 'Computer With No Instruction Set'"
+subtitle: "ZISC US5717832 (granted 1998, expired 2015) — the direct ancestor of today's NPU/TPU was sleeping in the public domain, unread by anyone"
+description: "Patent Archaeology #1. I dug a 1990s neural network chip patent out of Google Patents. IBM and Guy Paillet's ZISC (Zero Instruction Set Computer): 36 independent neurons, Manhattan distance, daisy chain. The mechanism, the figures, even the naming — all eerily close to what modern NPU papers describe."
+episode: 2
+publishedAt: "2026-05-01"
+tags: ["AI Archaeology", "Patent Archaeology", "ZISC", "Neural network chip", "NPU", "Expired patents"]
+series: "Patent Archaeology"
+seriesNumber: 1
+status: "published"
+---
+
+In [the first post (Introduction)](/en/notes/01-gipp-case), I described the meta-method: have an LLM read the long-form documents that humans don't. Starting from this post, I actually do it.
+
+This is Patent Archaeology #1 — the live archaeology log of a single expired US patent that I made Claude read for real.
+
+## The Punchline
+
+**A 1995 IBM patent on a "Zero Instruction Set Computer" (a neural network chip with no instruction set) is now fully in the public domain.** And **its mechanism, naming, and figures match what is currently called "state-of-the-art" NPU/TPU work, eerily closely.**
+
+- Patent number: [US 5,717,832](https://patents.google.com/patent/US5717832A/en)
+- Inventors: Andre Steimle, Pascal Tannhof, Guy Paillet (IBM France Research Lab)
+- Filed: June 7, 1995 (priority date July 28, 1994)
+- Granted: February 10, 1998
+- **Expired: June 7, 2015 (Expired – Lifetime)**
+
+This article is what came out when I made Claude read the full text of that 30-year-old IBM patent and asked it: **where exactly does the modern NPU show up here?**
+
+## 1. How I Picked This One Patent (a reproducible pipeline)
+
+What I did today:
+
+```
+1. Search Google Patents:
+   "neural network chip" assignee:"International Business Machines"
+   filing:1990-2000 status:"Expired"
+2. Eyeball the results, pick 5 with attention-grabbing titles
+3. WebFetch each Google Patents page for:
+   - Title / Abstract / Claim 1 / Status / Forward citations
+4. Ask Claude: "Of these five, which one is closest in mechanism
+   to a modern NPU/TPU paper, and why?"
+5. Narrow to one
+```
+
+The clear winner of the five was ZISC, US 5,717,832. The reasons:
+
+- The provocative name — **"Zero Instruction Set Computer,"** explicitly claiming a third architecture next to CISC and RISC
+- One of the earliest patents that **burns a Radial Basis Function (RBF) neural network directly into silicon**
+- **36 neurons per chip, with multi-chip cascade reaching thousands of neurons**
+- **Fully expired** (Lifetime expiration on June 7, 2015)
+
+## 2. What the Patent Actually Is (Claude's structured summary)
+
+The first prompt I sent to Claude after WebFetching the patent:
+
+```
+Extract the following from this patent:
+1. Patent number, grant date, filing date, inventors, assignee
+2. Status (Expired or not) and expiration date
+3. Abstract
+4. Main Claim 1 (independent claim 1)
+5. The problem it solves
+6. The proposed solution mechanism
+   (neuron structure, distance calculation, classification categories, etc.)
+7. Application domains and industries
+8. Cited prior art
+9. Forward citation count (how many later patents cite this one)
+10. Description of key Figures, and which figure best represents the mechanism
+```
+
+The summary that came back (raw):
+
+> **Problems solved**
+> - Eliminate dependency on a microcontroller supervisor
+> - Overcome I/O pad constraints when scaling neuron count
+> - Limited inter-neuron communication flexibility
+> - Reduce the need for complex sort algorithms
+> - Lack of scalability
+>
+> **Solution: 3-layer RBF-based architecture**
+> - Input layer: receives input vector components
+> - Hidden layer: array of neuron circuits, each computing distance D
+> - Output layer: classification result
+>
+> **Key mechanism**
+> - Each neuron has its own R/W memory storing a prototype vector
+> - Similarity is judged via Manhattan distance or square distance
+> - Active Influence Field (AIF) is dynamically tunable
+> - Daisy-chain circuit manages neuron state
+> - Local responses aggregated by an OR circuit into a global response
+
+Reading that for the first time, I went cold on line three.
+
+## 3. Why It's "Eerily Close"
+
+Translate the above into modern NPU/TPU vocabulary, and you get this:
+
+| ZISC (1995 patent) | Modern NPU/TPU |
+|---|---|
+| Manhattan distance / square distance | L1 / L2 distance (the same things) |
+| Independent R/W memory per neuron storing the prototype vector | **In-memory computing** / Compute-in-Memory |
+| Daisy-chain neuron-state management | Systolic array (the core of Google's TPU) |
+| OR-tree aggregation of local responses | Reduction tree |
+| Standalone operation without a microcontroller supervisor | **Standalone NPU** (no CPU dependence) |
+| 36 neurons × cascade reaching thousands | **Many-core neural array** (the design philosophy of NVIDIA Tensor Cores) |
+
+Saying that "the basic principles of the modern NPU were almost entirely written by IBM France Research Lab in 1995" would make industry people angry. People who get angry are the people who haven't read this patent.
+
+In particular, the line **"eliminate dependency on a microcontroller supervisor"** is **the exact same selling point as Google's TPU**. When Jeff Dean's team published the TPU paper in 2017, they framed this as a fresh discovery: "data center inference is too slow when it depends on the CPU." The ZISC team had **solved that problem 22 years earlier**.
+
+## 4. Why It Was Forgotten (my speculation)
+
+This part is speculation — it's not in the patent text.
+
+Neural network chips in the 1990s could not build a market. Three reasons:
+
+1. **No training data.** Before ImageNet (2009), there was no real benchmark to train at scale.
+2. **Weak training algorithms.** Backpropagation existed, but no efficient way to put RBF networks on a large-scale training pipeline.
+3. **No application that needed the chip.** OCR and speech recognition of the era were already bottlenecked by software accuracy; there was almost no demand for hardware acceleration yet.
+
+As a result, IBM could not commercialize this technology, and in 2013 transferred it to a company called **IN2H2**. IN2H2 (later **General Vision / CogniMem**) kept selling small volumes of ZISC-derived chips, but never reached the mainstream.
+
+Then, in 2015, the patent expired — and **the design entered the public domain, free for anyone to use.**
+
+Three years later, the 2018-onwards NPU/TPU boom rediscovered essentially the same mechanism as a "new invention." Nobody cited the 1995 IBM patent.
+
+## 5. What This Means for AI Archaeology
+
+This is the core point of the series.
+
+**"Inside expired patents are ideas that were just 20-30 years too early — but were already the right answer."**
+
+This is structurally the same thing Gipp discovered through Amazon arbitrage. The difference is the application: instead of "Amazon products," the application here is **a translation note from the past into modern AI engineering vocabulary.**
+
+The ZISC patent, when read by a modern NPU engineer, looks like **the parent generation of the paper they're writing this year.** Translating it across that gap hits three reader layers at once:
+
+- Semiconductor cluster: surprise that "IBM was doing this 30 years ago"
+- AI researchers: a re-framing of the historical position of their own RBF implementations
+- General readers: a loosening of the "AI is something brand new" myth
+
+A textbook example of **zero freshness as a weapon.**
+
+## 6. Pitfalls (the ones I personally hit today)
+
+**Pitfall 1: Verifying expiration status**
+
+The "Status" field on Google Patents is reliable, but **lifetime expiration and abandonment are not the same thing**:
+- Lifetime expiration: 20 years passed, expired naturally (free to use)
+- Abandonment: holder didn't pay maintenance fees, expired (free to use)
+- Lapsed for fees: unpaid → may be revived
+
+ZISC was **Expired – Lifetime**, so no problem. But **skipping this check is how live patents get misread as expired.**
+
+**Pitfall 2: Assignment history**
+
+ZISC moved IBM → IN2H2 (2013) → expired (2015). After expiration the patent is public domain, but **whether the assignee company holds related/derivative patents that are still alive is a separate check.** General Vision / CogniMem's current portfolio needs its own pass.
+
+**Pitfall 3: I forgot to pull forward citations**
+
+I did not pull this patent's forward citation list today (i.e., later patents that cite it). That's normally the metric for "how much downstream impact did this patent have on the industry." Going forward, I'll add forward citations to the extraction prompt.
+
+## 7. Full Prompt Disclosure
+
+As per the series rule, every prompt I used is published verbatim.
+
+### Candidate-narrowing prompt
+
+```
+Read the abstracts of the following five patents and pick the one most
+similar in mechanism to a modern NPU/TPU paper. Give three reasons.
+
+[Abstract of patent 1]
+[Abstract of patent 2]
+...
+```
+
+### Extraction prompt
+
+```
+Extract the following from this patent:
+1. Patent number, grant date, filing date, inventors, assignee
+2. Status (Expired or not) and expiration date
+3. Abstract
+4. Main Claim 1 (independent claim 1)
+5. The problem it solves
+6. The proposed solution mechanism
+7. Application domains and industries
+8. Cited prior art
+9. Forward citation count
+10. Description of key Figures, and which one best represents the mechanism
+```
+
+### Modern-translation prompt (the most powerful one)
+
+```
+Translate the technical mechanism of this patent into the everyday
+vocabulary of an NPU/TPU researcher in 2026. Show, in a table, which
+element of the patent corresponds to which concept in modern papers.
+```
+
+This single prompt produced the entire "eerily close" table in section 3 in one shot. **When reading patents, the modern-translation prompt is the strongest weapon.**
+
+## 8. What's Next in This Sub-Series
+
+- **Patent Archaeology #2**: a late-1980s natural-language-processing patent (IBM Candide lineage?) — a direct ancestor of the LLM, dug up live
+- **Patent Archaeology #3**: a 1990s stacked memory / TSV patent — the prehistory of HBM
+
+Every entry will be one real archaeology log of one real patent, read by Claude.
+
+## Closing
+
+I found ZISC by typing "expired neural network chip 1990s" into Google Patents and just looking at the list. When the name **"Zero Instruction Set Computer"** appeared on screen, I laughed out loud. *I had never seen that architecture mentioned in any industry magazine.*
+
+Three engineers from IBM France Research Lab, plus an individual inventor named Guy Paillet. They filed this design in 1994 and never saw a major commercial success before the patent expired in 2015.
+
+But the design survived.
+
+And today, Claude read it, and I translated it into Japanese. **30 years late, their work might finally land somewhere useful.**
+
+That is **AI Archaeology.**
+
+---
+
+References:
+- Original patent: [US5717832A on Google Patents](https://patents.google.com/patent/US5717832A/en)
+- [ZISC overview — Wikipedia](https://en.wikipedia.org/wiki/ZISC)
+- [Experience With The IBM ZISC036 Neural Network Chip](https://ideas.repec.org/a/wsi/ijmpcx/v06y1995i04ns0129183195000460.html)
+- Successor: [General Vision / CogniMem](https://general-vision.com)
+
+---
+
+**Next up — Patent Archaeology #2: A late-1980s IBM Candide statistical machine translation patent — a direct ancestor of the LLM.**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app/notes/02-patent-archaeology-01)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.
