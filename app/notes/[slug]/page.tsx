@@ -37,7 +37,10 @@ export default function NotePage({ params }: { params: { slug: string } }) {
       <header className="bg-navy text-paper">
         <div className="max-w-3xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
           <div className="text-gold-500 text-xs tracking-[0.3em] mb-3">
-            EPISODE {String(note.episode).padStart(2, "0")} ・ {note.publishedAt}
+            {note.series && note.series !== "Introduction"
+              ? `${note.series.toUpperCase()}${note.seriesNumber ? " #" + note.seriesNumber : ""}`
+              : `EPISODE ${String(note.episode).padStart(2, "0")}`}
+            {" ・ "}{note.publishedAt}
           </div>
           <h1 className="font-serif text-2xl sm:text-4xl font-bold leading-tight mb-3">
             {note.title}

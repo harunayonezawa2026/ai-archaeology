@@ -12,6 +12,8 @@ export type NoteMeta = {
   episode: number;
   publishedAt: string;
   tags?: string[];
+  series?: string;
+  seriesNumber?: number;
   status?: "published" | "draft";
 };
 
@@ -30,6 +32,8 @@ function readNote(slug: string): Note | null {
     episode: data.episode,
     publishedAt: data.publishedAt,
     tags: data.tags ?? [],
+    series: data.series,
+    seriesNumber: data.seriesNumber,
     status: data.status ?? "published",
     content,
   };
