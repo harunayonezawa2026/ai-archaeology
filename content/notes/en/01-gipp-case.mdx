@@ -1,0 +1,217 @@
+---
+title: "AI Archaeology: Mining Forgotten Long-Form Documents with LLMs"
+subtitle: "What a 3M-view tweet about expired patents × Claude showed me — a whole new content genre nobody is doing yet"
+description: "A 3M-view tweet by @gippp69 revealed something bigger than Amazon arbitrage: a meta-method for using LLMs to mine documents nobody reads anymore. Patents, IR archives, decommissioned standards, declassified reports — Claude can read them in a single night. Humans cannot. This article opens a 7-part series on doing exactly that."
+episode: 1
+publishedAt: "2026-05-01"
+tags: ["AI Archaeology", "LLM", "Forgotten documents", "Introduction"]
+series: "Introduction"
+seriesNumber: 0
+status: "published"
+---
+
+## 1. The 3-Million-View Tweet
+
+On April 28, 2026, an account named [Gipp (@gippp69)](https://x.com/gippp69/status/2049131801780658541) posted a thread that hit 3 million views in three days.
+
+The opening line:
+
+> He feeds expired patents to Claude. $0 for the blueprint. $1.80 to manufacture. $11.99 on Amazon.
+
+The thread was a complete walk-through: scrape expired patents from the USPTO Bulk Data API in Python, convert with markitdown, score each one with Claude on commercial viability, send the patent drawings directly to Alibaba for quotes, list the resulting product on Amazon. Six product hits in three weeks. One already in production. Claimed margin: 44%.
+
+Reading it on the web, I had three thoughts simultaneously:
+
+1. **About 30% of the numbers are inflated.** (IP risk, real tooling NRE, Chinese-seller price wars — covered later.)
+2. **But the meta-method underneath is real.**
+3. **And it has the same skeleton as my Korean/Chinese semiconductor translation work.**
+
+This article is about #2 and #3.
+
+## 2. Gipp's Pipeline, Stripped to Its Skeleton
+
+Forget the Amazon side for a moment. Just the architecture:
+
+```
+USPTO Bulk Data API
+       ↓
+  Python Scraper (filter by category, assignee, expiry)
+       ↓
+  markitdown (any document → clean Markdown)
+       ↓
+  files-to-prompt (batch into Claude context)
+       ↓
+  Claude scoring pipeline (system prompt fixed, JSON out)
+       ↓
+  Filter: score >= 7
+       ↓
+  Google Patents (verify, pull drawings)
+       ↓
+  Alibaba (send drawings, get quotes)
+       ↓
+  Amazon listing
+```
+
+Now replace the first stage. Instead of `USPTO Bulk Data`, plug in:
+
+- Korean Samsung's 1990s investor reports
+- Chinese semiconductor patents written in Mandarin
+- IEEE standards that got deprecated in the 2000s
+- US military reports declassified after the Cold War
+- arXiv papers from 1995 that nobody cites
+- Bankruptcy filings of failed semiconductor startups
+
+**Same pipeline. Different gold.**
+
+## 3. The Sentence That Made Me Cold
+
+In the second half of his thread, Gipp wrote this:
+
+> A patent is also an engineering document. To get a patent granted, you have to disclose enough technical detail that someone skilled in the field could reproduce the invention.
+
+Patents are **dual documents**. One face is legal protection. The other face is **a reproduction manual**. When the legal face expires, the manual stays public domain forever.
+
+Humanity has produced **4.2 million expired US patents** in the last decade alone. Each one is a complete, free, technically rigorous engineering manual. **Nobody reads them.**
+
+Why? Because patent prose looks like this:
+
+> A fluid-wicking apparatus comprising a porous fibrous member disposed within a reservoir cavity, wherein said member maintains capillary continuity with a growth medium positioned superiorly...
+
+Translation: a felt wick inside a water tray that pulls moisture into soil. Three seconds for a normal human to close the tab.
+
+**Claude can read it. In a single night.**
+
+## 4. This Is Not An Amazon Story
+
+What Gipp actually discovered is **a meta-method**, not a product opportunity.
+
+I would phrase it like this:
+
+> **Have an LLM read the long-form documents that humans don't, and arbitrage the information gap.**
+
+Amazon arbitrage is one application of this method. There are many others. The world is full of long-form documents that meet two conditions:
+
+1. They are publicly accessible (or extractable)
+2. No human is willing to read them at scale
+
+Each of those buckets is a goldmine for an LLM.
+
+| Bucket | Estimated volume | Why humans don't read |
+|---|---|---|
+| Expired US patents | 4.2 million | 30 minutes per patent, no incentive |
+| Korean / Chinese / Taiwanese patents | Several million | Language barrier + volume |
+| Old arXiv papers | Several million | Outdated, outside the reader's domain |
+| US military declassified | Hundreds of thousands of pages | Public but unread |
+| Bankruptcy filings | Tens of thousands | Public but nobody looks |
+| Decommissioned industrial standards | Tens of thousands | Public but nobody reads |
+| University doctoral theses (CiNii / CNKI / etc.) | Tens of millions | Zero-citation papers buried |
+
+Every cell is a potential sub-niche. **Each can be mined for years.**
+
+## 5. Why This Was a Discovery for Me
+
+Until reading Gipp's thread, I thought of myself as a "Chinese AI × Korean/Taiwanese semiconductor translator" on X. My benchmark was [@jukan05](https://x.com/jukan05) (a 93k-follower semiconductor wire-service-style account). I was trying to compete in the **breaking news lane**.
+
+The moment I understood the meta-method, the structure of my own work flipped.
+
+The seven web apps I'd built — day1 (AI consultation), kanban-AI (free landing page generator), MediBridge (multilingual medical questionnaires), VetBridge (veterinary version), uchinoko-kimochi (pet fortune telling), 1000yen-lunch (Tokyo lunch guide), kotsukotsu-fx (FX trade journal) — **share one skeleton**: humans used to do something time-consuming, and I had an LLM compress it.
+
+Gipp's thread didn't teach me a new skill. **It gave a name to what I had already been doing without realizing it.**
+
+And the moment the name was visible, a third lane appeared in my field of view.
+
+## 6. The Third Lane: Mining Forgotten Long-Form Documents
+
+My existing lanes:
+
+- **Lane 1: Semiconductor translation** — fresh primary sources, breaking news (benchmark: jukan05)
+- **Lane 3: Web app demos** — humans-to-LLM compression, in production
+
+The new lane that just became visible:
+
+- **Lane 2: Mining forgotten long-form documents** — zero-freshness archaeology
+
+Lane 1 puts me on the same field as jukan05, where they already have a 93k-follower head start. **Lane 2 is a field with literally nobody on it.**
+
+This blog is the home of Lane 2.
+
+## 7. Why "Zero Freshness" Is a Feature, Not a Bug
+
+Breaking news content wins on **novelty × speed**.
+Archaeological content wins on **surprise × narrative × time gap**.
+
+The bigger the time gap, the bigger the surprise. **Zero freshness is not the weakness — it's the weapon.**
+
+Past examples of "forgotten document archaeology" that became viral or canonical:
+
+- The Voynich Manuscript
+- Ancient Roman graffiti reading like modern complaints
+- Atlas Obscura (genre-defining)
+- Damn Interesting
+- Patrick Collison's "Fast" (collection of historically fast accomplishments)
+- Yuasa Hiroshi's translations of forgotten economic classics in Japanese
+
+All of them won at zero freshness. None of them needed to be first; they just needed to be the right interpreter.
+
+**LLMs make this game playable for one person at scale, for the first time in history.** That is the bet of this blog.
+
+## 8. The Caveats (Read Gipp at 30% Discount)
+
+Gipp's thread is great but the numbers are inflated. My personal discount factors:
+
+1. **"Expired patent = freely usable" is half-true.** Even if the original patent expires, related patents (improvements, design patents, trademarks) often remain alive — patent thickets are everywhere.
+2. **"Just send drawings to Alibaba and get a quote" is too clean.** Patent drawings have reproducible detail but are not production tooling drawings. Injection molding tooling alone is $8K-30K.
+3. **"44% Amazon margin" ignores the Chinese-seller price war.** Pet bowls and cable clips are red oceans where sellers compete at $0.95 BOM.
+4. **"Six hits in three weeks, one in production already."** Sample-to-production for a physical product is normally 6-10 weeks.
+
+These are the **roughness of one application pattern** — not flaws in the **meta-method itself**.
+
+## 9. Where This Blog Goes
+
+The seven-part initial roadmap:
+
+| # | Series | Topic |
+|---|---|---|
+| 1 (this) | Introduction | The Gipp case + concept |
+| 2 | **Patent Archaeology #1** | Mining one expired patent live |
+| 3 | **IR Archaeology #1** | Mining a forgotten IR document |
+| 4 | **Standard Archaeology #1** | A deprecated IEEE standard, re-evaluated |
+| 5 | **Declassified Archaeology #1** | A government report that froze a research field |
+| 6 | Pitfalls | Failure modes (fabrication, cost explosion, misreading) |
+| 7 | Templates | Full prompt collection + reproducible pipeline |
+
+Each Patent / IR / Standard / Declassified Archaeology series will continue with #2, #3, #4... after the introductory set. **Atlas-Obscura-style: the genre keeps growing.**
+
+## 10. Editorial Principles
+
+- **Cite primary sources only** — never name-drop a publication you didn't verify
+- **No position-talking** — never push readers in a direction that benefits me
+- **Full prompt disclosure** — every Claude prompt I used is published at the end of each post
+- **Failure modes included** — every fabrication, miscalculation, and misreading is on record
+
+## Closing
+
+I found ZISC (the next post's topic) by typing "expired neural network chip 1990s" into Google Patents. When the name "**Zero Instruction Set Computer**" appeared on screen, I laughed out loud. *I had never seen that architecture mentioned anywhere in industry press.*
+
+Three engineers at IBM France, plus an individual inventor named Guy Paillet, filed it in 1994. The patent expired in 2015. They never saw commercial success.
+
+But the design survives.
+
+And today, Claude read it, and I translated it into Japanese. **30 years late, their work might finally land somewhere useful.**
+
+That's **AI Archaeology**.
+
+---
+
+References:
+- [Original tweet by @gippp69](https://x.com/gippp69/status/2049131801780658541)
+- [USPTO Open Data Portal](https://data.uspto.gov)
+- [Google Patents](https://patents.google.com)
+
+---
+
+**Next up — Patent Archaeology #1: Reading a 1995 IBM patent on a "Zero Instruction Set Computer" with Claude. The technical specs and figures are eerily close to what modern NPU/TPU papers describe.**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.

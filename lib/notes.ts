@@ -2,7 +2,14 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const NOTES_DIR = path.join(process.cwd(), "content/notes");
+const NOTES_DIR_JA = path.join(process.cwd(), "content/notes");
+const NOTES_DIR_EN = path.join(process.cwd(), "content/notes/en");
+
+export type Locale = "ja" | "en";
+
+function dirFor(locale: Locale) {
+  return locale === "en" ? NOTES_DIR_EN : NOTES_DIR_JA;
+}
 
 export type NoteMeta = {
   slug: string;
@@ -19,8 +26,8 @@ export type NoteMeta = {
 
 export type Note = NoteMeta & { content: string };
 
-function readNote(slug: string): Note | null {
-  const filePath = path.join(NOTES_DIR, `${slug}.mdx`);
+function readNote(slug: string, locale: Locale): Note | null {
+  const filePath = path.join(dirFor(locale), `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
@@ -39,21 +46,24 @@ function readNote(slug: string): Note | null {
   };
 }
 
-export function getAllNotes(): NoteMeta[] {
-  if (!fs.existsSync(NOTES_DIR)) return [];
-  const files = fs.readdirSync(NOTES_DIR).filter((f) => f.endsWith(".mdx"));
+export function getAllNotes(locale: Locale = "ja"): NoteMeta[] {
+  const dir = dirFor(locale);
+  if (!fs.existsSync(dir)) return [];
+  const files = fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".mdx") && !fs.statSync(path.join(dir, f)).isDirectory());
   const notes = files
-    .map((f) => readNote(f.replace(/\.mdx$/, "")))
+    .map((f) => readNote(f.replace(/\.mdx$/, ""), locale))
     .filter((n): n is Note => n !== null && n.status !== "draft");
   return notes
     .map(({ content, ...meta }) => meta)
     .sort((a, b) => a.episode - b.episode);
 }
 
-export function getNote(slug: string): Note | null {
-  return readNote(slug);
+export function getNote(slug: string, locale: Locale = "ja"): Note | null {
+  return readNote(slug, locale);
 }
 
-export function getAllSlugs(): string[] {
-  return getAllNotes().map((n) => n.slug);
+export function getAllSlugs(locale: Locale = "ja"): string[] {
+  return getAllNotes(locale).map((n) => n.slug);
 }
