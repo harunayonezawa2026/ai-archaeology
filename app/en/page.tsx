@@ -40,7 +40,7 @@ export default function HomeEN() {
       <section className="max-w-4xl mx-auto px-5 sm:px-8 py-16">
         <h2 className="font-serif text-navy text-2xl sm:text-3xl font-bold mb-2">Episodes</h2>
         <div className="text-navy/60 text-sm mb-10">
-          7-part introductory series. All episodes available in English.
+          The introductory 7-part series, plus continuing sub-series episodes. New entries land here regularly.
         </div>
         <ol className="space-y-6">
           {notes.length === 0 && (
@@ -72,9 +72,9 @@ export default function HomeEN() {
           ))}
         </ol>
         <div className="mt-12 p-5 bg-navy/5 border-l-4 border-gold rounded-r text-sm text-navy/80">
-          <strong className="text-navy">Series complete — all 7 episodes are now in English.</strong> Each Patent /
-          IR / Standard / Declassified Archaeology sub-series will continue with #2, #3, #4... after this introductory
-          set. Atlas-Obscura style — the genre keeps growing.{" "}
+          <strong className="text-navy">Introductory 7-part series complete; sub-series continue with #2, #3, #4...</strong> Each Patent /
+          IR / Standard / Declassified Archaeology sub-series stacks indefinitely after #1. Atlas-Obscura
+          style — the genre keeps growing.{" "}
           <Link href="/" className="text-gold-600 underline hover:text-gold-700">Read in Japanese →</Link>
         </div>
       </section>
@@ -92,7 +92,7 @@ export default function HomeEN() {
           </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { name: "Patent Archaeology", desc: "Mine expired patents. Translate the buried inventor's wisdom into modern context.", upcoming: "#1 — Reading IBM ZISC (US 5,717,832) with Claude" },
+              { name: "Patent Archaeology", desc: "Mine expired patents. Translate the buried inventor's wisdom into modern context.", upcoming: "#2 — Nikola Tesla's 1888 AC motor patent (US381968)" },
               { name: "IR Archaeology", desc: "Old Korean / Chinese / Taiwanese investor reports. Find the foreshadowing of today's industry.", upcoming: "#1 — Samsung's forgotten 1996 1Gb DRAM" },
               { name: "Standard Archaeology", desc: "Deprecated JIS / ISO / IEEE standards. Zero-citation arXiv papers.", upcoming: "#1 — IEEE 802.5 Token Ring revisited" },
               { name: "Declassified Archaeology", desc: "US military declassified, government reports nobody reads.", upcoming: "#1 — The 1966 ALPAC report" },
