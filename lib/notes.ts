@@ -57,7 +57,7 @@ export function getAllNotes(locale: Locale = "ja"): NoteMeta[] {
     .filter((n): n is Note => n !== null && n.status !== "draft");
   return notes
     .map(({ content, ...meta }) => meta)
-    .sort((a, b) => a.episode - b.episode);
+    .sort((a, b) => b.episode - a.episode);
 }
 
 export function getNote(slug: string, locale: Locale = "ja"): Note | null {
