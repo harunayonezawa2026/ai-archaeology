@@ -1,0 +1,266 @@
+---
+title: "I Made Claude Read Nikola Tesla's 1888 Patent"
+subtitle: "US381968 (filed 1887, granted 1888, in the public domain since the early 20th century) — the very design diagram that the first-generation Tesla Roadster's AC induction motor ran on. With the reason Tesla, Inc. moved away from it for Model 3 included: a 138-year reconciliation."
+description: "Patent Archaeology #2. I made Claude read the 4-page specification + 4 sheets of drawings of US381968, the AC motor patent Nikola Tesla filed in October 1887. The rotating magnetic field, the commutator-less design, the polyphase alternating current — every core idea of today's EV drivetrain is already there. Tesla's logo is the copper rotor, the company name is in tribute to Nikola Tesla, and yet from Model 3 onwards Tesla shifted its main rear motor to the permanent-magnet IPM-SynRM. I had the LLM translate that distance too."
+episode: 8
+publishedAt: "2026-05-02"
+tags: ["AI Archaeology", "Patent Archaeology", "Nikola Tesla", "AC induction motor", "Rotating magnetic field", "Tesla Inc", "Expired patents"]
+series: "Patent Archaeology"
+seriesNumber: 2
+status: "published"
+---
+
+In Patent Archaeology #1 ([IBM ZISC, 1995](/en/notes/02-patent-archaeology-01)), I wrote about how a 30-year-old patent turned out to be the design diagram of today's NPU. This time I'm going another 100 years back.
+
+**I made Claude read US381968 — the patent Nikola Tesla filed in the United States in October 1887 (granted May 1888) — alongside its 4-page specification and 4 sheets of drawings.**
+
+## The Punchline
+
+**Of every EV currently rolling on this planet, if you trace the drivetrain lineage straight back, the majority lands on Nikola Tesla's 1888 patent.**
+
+- Patent number: [US 381,968](https://patents.google.com/patent/US381968A/en)
+- Title: "Electro-Magnetic Motor"
+- Inventor: Nikola Tesla (born Smiljan, in what is now Croatia; residing in New York at the time of filing)
+- Filed: October 12, 1887
+- Granted: May 1, 1888
+- Assignment: One-half assigned to Charles F. Peck of Englewood, New Jersey
+- Status: **Public domain since the early 20th century**
+
+And the deepest irony of this patent:
+
+- **Tesla, Inc. (formerly Tesla Motors, founded 2003) is named in tribute to Nikola Tesla.**
+- **The Tesla logo is a stylization of the "copper rotor" depicted in this patent's drawings.**
+- **The first Roadster (2008) ran on a 3-phase AC induction motor — a direct descendant of this patent.**
+- **But starting with the Model 3 (2017–), Tesla moved its main rear motor to a permanent-magnet design (IPM-SynRM), drifting away from the origin of its own name and logo.**
+
+A company **with the name and the logo, but a drivetrain that's now half-detached from them** — that distance can only be derived by reading the original patent text from 138 years ago.
+
+## 1. How I Picked This One Patent
+
+This time I started from a request — "something Tesla-related" — so I began with sub-series triage:
+
+```
+1. List 5 candidates each from Patent / IR / Standard / Declassified
+   Archaeology, all anchored to "Tesla."
+2. For each candidate, score on (a) forgottenness and (b) modern-relevance,
+   each on a 5-point scale.
+3. Pick the one with the largest divergence (forgottenness × relevance).
+```
+
+The five finalists:
+
+- **A. Nikola Tesla's 1888 AC motor patent US381968** (Patent #2)
+- B. Tesla Autopilot HW1 (Mobileye-era 2014–2016) patents (Patent #2)
+- C. Tesla Dojo D1 chip patents (Patent #2)
+- D. Tesla Master Plan Part 1 (2006) — an 18-year reconciliation (IR #2)
+- E. Tesla S-1 (2010 IPO prospectus) — a present-day reconciliation (IR #2)
+
+Reasons I chose A:
+
+- **Forgottenness is off the charts.** Almost no working engineer can recall Nikola Tesla's actual patent number from memory.
+- **It widens the time-axis of the series.** Patent #1 was 1995 (IBM ZISC); Patent #2 is 1888. A 100-plus-year span gives the series depth.
+- **The bridge to the present is real.** The "forgotten long-form document" connects directly to the EVs people are driving right now — the maximum surface area for AI-archaeological translation.
+
+## 2. What the Patent Actually Is (Claude's structured summary)
+
+I WebFetched US381968 from Google Patents and sent Claude this prompt first:
+
+```
+Extract the following from this patent (US381968):
+1. Exact title
+2. Inventor's full name, origin, and residence
+3. Filing and grant dates
+4. Assignee
+5. Number of claims
+6. Technical abstract (the gist of the invention)
+7. The core technical principle, in 3-5 bullet points
+8. Any mention of polyphase / induction / alternating current /
+   rotating magnetic field, with quoted location
+9. The structure of the main figures
+10. Length of the specification (columns / pages)
+Return verbatim quotes for the 2-3 most striking sentences.
+```
+
+The verbatim quotes that came back, the ones I went cold reading:
+
+> "A motor is employed in which there are two or more independent circuits through which alternate currents are passed at proper intervals... for the purpose of effecting a progressive shifting of the magnetism..."
+
+> "The disk D, owing to its tendency to assume that position in which it embraces the greatest possible number of the magnetic lines, is set in rotation, following the motion of the lines..."
+
+In plain modern English: *"By passing alternating currents at appropriate intervals through two or more independent circuits, you create a continuous shifting of the magnetic poles," and "Disk D, since it tries to capture as many magnetic flux lines as possible, rotates following the motion of those flux lines."*
+
+This is the principle of the modern **rotating magnetic field** and **3-phase AC induction motor**, stated in 1887 English, almost word-for-word.
+
+The five core technical principles Claude pulled out:
+
+- Continuous shifting of magnetic poles via phase-shifted polyphase alternating currents
+- Synchronized operation of two or more independent excitation circuits
+- Direct generator-to-motor coupling without a commutator
+- Synchronism between motor speed and generator speed
+- Constant speed within the normal load range
+
+## 3. Why It's "Eerily Close" — A 138-Year Translation Table
+
+I sent Claude the modern-translation prompt:
+
+```
+Translate the technical mechanism of this patent into the everyday
+vocabulary of an EV motor engineer in 2026. Show, in a table, which
+element of the patent corresponds to which concept in modern motor
+designs.
+```
+
+What came back:
+
+| US381968 (1888) | Modern EV drive unit |
+|---|---|
+| Two or more independent circuits with alternate currents | **3-phase AC (U/V/W phases)** |
+| Progressive shifting of magnetism | **Rotating Magnetic Field** |
+| Without commutator / brushes | **Brushless drive** |
+| Disk armature following the magnetic lines | **Squirrel-cage rotor of an induction motor** |
+| Synchronism between motor and generator | **The principle behind PMSM (synchronous motor)** |
+| Constant speed under varying loads | **Constant speed / variable torque via inverter control** |
+
+Saying that "the basic principles of the modern 3-phase AC induction motor were almost entirely written by Nikola Tesla in 1888" would make automotive engineers angry. The ones who get angry are the ones who haven't read this patent.
+
+In particular, **"no commutator — magnetism rotated purely by the phase difference of polyphase currents"** is **the exact same design philosophy as the 3-phase AC induction motor in the 2008 Tesla Roadster.**
+
+## 4. Where Tesla Moved Away From
+
+I fed Wikipedia's Tesla, Inc. article to Claude and asked:
+
+```
+Map the timeline of how Tesla, Inc. has changed motor types from
+the original Roadster to the current Model lineup. Evaluate the
+distance from Nikola Tesla's 1888 patent at each step.
+```
+
+The result:
+
+| Period | Vehicle | Motor type | Distance from US381968 |
+|---|---|---|---|
+| 2008–2012 | Roadster | **3-phase AC induction motor** | Direct descendant |
+| 2012– | Model S | AC induction (front and rear) | Direct descendant |
+| 2015– | Model X | AC induction (front and rear) | Direct descendant |
+| 2017– | Model 3 | Front: AC induction / **Rear: IPM-SynRM (permanent magnet)** | **Rear is a different lineage** |
+| 2020– | Model Y | Front: AC induction / Rear: IPM-SynRM | Same as above |
+
+IPM-SynRM (Interior Permanent Magnet Synchronous Reluctance Motor) is a **synchronous motor that uses permanent magnets** — a different lineage from Nikola Tesla's induction motor. In Japan it's the territory that Toshiba and Mitsubishi industrialized during the 1990s.
+
+Which means: **with the Model 3 in 2017, Tesla, Inc. moved its main drivetrain halfway out of "the design Nikola Tesla wrote."** The dominant rear motor of Model 3 / Y is no longer a direct descendant of US381968.
+
+This isn't a choice to criticize. Permanent-magnet motors are more efficient and stronger at low-speed torque — they suit EVs. **But the fact that the company has drifted away from the source of its own name and logo is invisible unless someone reads the patent.**
+
+## 5. What This Means for AI Archaeology
+
+ZISC (1995) and US381968 (1888) line up to surface one law of this series:
+
+**"When a technology is being called 'state of the art,' the design is usually already written, decades or even a century earlier, in some public-domain document. The only difference is who reads it now."**
+
+US381968 is a patent that's almost never discussed in the context of machine learning or semiconductors. Even among EV engineers, very few have ever opened Nikola Tesla's actual patent. And yet, the basic principle of the motors they design every day is fully laid out in those four pages.
+
+Before LLMs, the time cost of decoding a 19th-century patent specification was simply too high for working engineers. **What changed is that with LLMs, four pages of archaic English specification can now be read in five minutes.** That's why a single individual can now do "forgotten long-form" archaeology at all.
+
+## 6. Pitfalls (the ones I hit today)
+
+**Pitfall 1: Nikola Tesla's patents come in a set of four.**
+
+US381968 / US381969 / US382279 / US382280 — four nearly simultaneous patents form the bundle that people call "Tesla's AC induction motor patent." If you ask an LLM about "Nikola Tesla's AC motor patent" without specifying a number, it tends to mash all four together. **Always pin a specific patent number before sending the prompt.**
+
+**Pitfall 2: The Galileo Ferraris priority question.**
+
+The Italian physicist Galileo Ferraris demonstrated a working polyphase induction motor model in 1885 — earlier than Tesla — and published in April 1888. **"Did Tesla invent the AC induction motor?" is a question that needs a careful answer.** Westinghouse licensed Tesla's patents in 1888 *and* bought a US patent option on Ferraris's induction-motor concept (Wikipedia, "Induction motor").
+
+If you let the LLM write "Tesla invented the AC induction motor," it tends to silently delete Ferraris from the record. **That's close to fabrication-by-omission, and AI Archaeology has to avoid it.**
+
+**Pitfall 3: The "Tesla" double meaning.**
+
+Writing just "Tesla" leaves it ambiguous whether you mean Nikola Tesla (the person) or Tesla, Inc. (the company). I deliberately used "Nikola Tesla" and "Tesla, Inc." throughout this article. LLM drafts mix them up constantly, so you have to give the model an explicit naming convention up front.
+
+## 7. Full Prompt Disclosure
+
+Every prompt I used today, verbatim.
+
+### Candidate-narrowing prompt
+
+```
+Starting from "Tesla," list 3-5 candidates each from the AI
+Archaeology sub-series (Patent / IR / Standard / Declassified).
+For each candidate evaluate:
+- Forgottenness (5-point scale)
+- Modern relevance (5-point scale)
+- Accessibility of primary sources
+Sort by total score.
+```
+
+### Extraction prompt
+
+```
+Extract the following from this patent (US381968):
+1. Exact title
+2. Inventor's full name, origin, and residence
+3. Filing and grant dates
+4. Assignee
+5. Number of claims
+6. Technical abstract
+7. Core technical principle, in 3-5 bullets
+8. Mentions of polyphase / induction / alternating current /
+   rotating magnetic field
+9. Structure of the main figures
+10. Length of the specification
+Return verbatim quotes for the 2-3 most striking sentences.
+```
+
+### Modern-translation prompt (the one that mattered most)
+
+```
+Translate the technical mechanism of this patent into the everyday
+vocabulary of an EV motor engineer in 2026. Show, in a table, which
+element of the patent corresponds to which concept in modern motor
+designs.
+```
+
+### Reconciliation prompt
+
+```
+Map the timeline of how Tesla, Inc. (founded 2003) has changed
+motor types from the original Roadster to the current Model
+lineup. Evaluate the distance from Nikola Tesla's 1888 patent
+US381968 at each step.
+```
+
+## 8. What's Next in This Sub-Series
+
+- **Patent Archaeology #3**: a late-1980s IBM Candide statistical machine translation patent — a direct ancestor of the LLM (carryover from the previous notice)
+- **Patent Archaeology #4**: a 1990s TSV / stacked memory patent — the prehistory of HBM
+- **Patent Archaeology #5**: a 1970s CCD patent — the prehistory of the smartphone camera sensor
+
+Every entry will be one real archaeology log of one real patent, read by Claude.
+
+## Closing
+
+Nikola Tesla filed this patent in October 1887, at age 31. Three years after arriving in America, in a language he had only recently learned, he wrote down — across four pages of specification and four sheets of drawings — the operating principle of today's EV drivetrain.
+
+138 years later, a company carrying his name runs on roads all over the world. The name and the logo come from his patent. And yet, the rear wheels of that company's newest car are no longer his design.
+
+If you ask **"who is reading Nikola Tesla's patent text most attentively right now,"** the answer might not be Tesla, Inc.'s engineers — it might be the research arms of BYD and Nissan. That isn't irony. **It's a live example of how a forgotten long-form document gets carried into the next era.**
+
+And whether the document gets read again no longer depends on the engineer's English ability. **It depends on how a human asks the LLM.**
+
+That is **AI Archaeology.**
+
+---
+
+References:
+- Original patent: [US381968 on Google Patents](https://patents.google.com/patent/US381968A/en)
+- [Tesla, Inc. — Wikipedia](https://en.wikipedia.org/wiki/Tesla,_Inc.)
+- [Induction motor — Wikipedia](https://en.wikipedia.org/wiki/Induction_motor)
+- Patent Archaeology #1: [IBM ZISC US5717832 (1995)](/en/notes/02-patent-archaeology-01)
+
+---
+
+**Next up — Patent Archaeology #3: A late-1980s IBM Candide statistical machine translation patent — a direct ancestor of the LLM.**
+
+→ Read the original Japanese version at [haruko's blog](https://ai-archaeology.vercel.app/notes/08-patent-archaeology-02)
+
+Author: [はる子 / @haruko_ai_jp](https://x.com/haruko_ai_jp) — a non-engineer running 7 web apps with Claude Code and 4 AI assistants in Tokyo.
