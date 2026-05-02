@@ -81,15 +81,15 @@ export default function Home() {
           </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
-              { name: "Patent Archaeology", desc: "失効した特許を発掘し、忘れられた発明者の知恵を翻訳する。", upcoming: "#1 — 失効米国特許1件をClaudeに読ませる" },
-              { name: "IR Archaeology", desc: "韓国・中国・台湾の旧IR資料・年次報告書から、半導体産業史の伏線を掘る。", upcoming: "#1 — Samsungの1990年代年次報告" },
-              { name: "Standard Archaeology", desc: "廃止されたJIS・ISO・IEEEの規格書、引用ゼロのarXiv早期論文。", upcoming: "#1 — IEEE廃止規格 or arXiv早期" },
-              { name: "Declassified Archaeology", desc: "米軍declassified、各国の機密解除文書。AI時代に意味を持つ古い計算手法。", upcoming: "#1 — 米軍機密解除文書" },
+              { name: "Patent Archaeology", desc: "失効した特許を発掘し、忘れられた発明者の知恵を翻訳する。", latest: "#2 — Nikola Tesla 1888年AC モーター特許 US381968" },
+              { name: "IR Archaeology", desc: "韓国・中国・台湾の旧IR資料・年次報告書から、半導体産業史の伏線を掘る。", latest: "#1 — Samsung 1996年世界初1Gb DRAM" },
+              { name: "Standard Archaeology", desc: "廃止されたJIS・ISO・IEEEの規格書、引用ゼロのarXiv早期論文。", latest: "#1 — IEEE 802.5 Token Ring の現代復活" },
+              { name: "Declassified Archaeology", desc: "米軍declassified、各国の機密解除文書。AI時代に意味を持つ古い計算手法。", latest: "#1 — 1966年 ALPAC 報告書" },
             ].map((s) => (
               <div key={s.name} className="border border-paper/20 rounded-lg p-5 hover:border-gold-500 transition">
                 <div className="font-serif text-gold-500 text-lg font-bold mb-2">{s.name}</div>
                 <div className="text-paper/80 text-sm leading-relaxed mb-3">{s.desc}</div>
-                <div className="text-paper/60 text-xs tracking-wide">UPCOMING: {s.upcoming}</div>
+                <div className="text-paper/60 text-xs tracking-wide">LATEST: {s.latest}</div>
               </div>
             ))}
           </div>
