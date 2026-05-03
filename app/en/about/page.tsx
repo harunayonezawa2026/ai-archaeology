@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About — はる子 (@haruko_ai_jp)",
-  description: "Non-engineer running 7 production web apps with Claude Code and 4 AI assistants. FX trader of 20 years. Multi-language semiconductor news translator.",
+  description: "Non-engineer running 8 production web apps with Claude Code and 4 AI assistants. Multi-language semiconductor news translator. Author of an e-book on AI archaeology.",
 };
 
 export default function AboutEN() {
@@ -32,9 +32,25 @@ export default function AboutEN() {
 
         <h3>3. Web App Demos</h3>
         <p>
-          Seven production web apps as proof-of-concept of "human-to-LLM compression":
-          day1, kanban-AI, MediBridge, VetBridge, uchinoko-kimochi, 1000yen-lunch, kotsukotsu-fx.
-          See <a href="/en/apps">all 7 apps</a>.
+          Eight production web apps as proof-of-concept of "human-to-LLM compression":
+          day1, kanban-AI, MediBridge, VetBridge, uchinoko-kimochi, 1000yen-lunch, kotsukotsu-fx, AI Archaeology (this site).
+          See <a href="/en/apps">all 8 apps</a>.
+        </p>
+
+        <h2>E-book Edition (Japanese only)</h2>
+        <p>
+          The first 9 episodes of this series have been re-edited into a PDF book in Japanese.
+        </p>
+        <p>
+          <strong>"Forgotten Long-Document Excavation Notes — Haruko's AI Archaeology with LLM (1st Edition, 7 Chapters)"</strong>
+        </p>
+        <ul>
+          <li>Format: PDF (~40,000 Japanese characters, ~200 pages, A5-equivalent)</li>
+          <li>Price: ¥980</li>
+          <li>Available on: <a href="https://haruko-ai.booth.pm/items/8302397" target="_blank" rel="noopener noreferrer">Booth (Japan)</a></li>
+        </ul>
+        <p>
+          All episodes remain freely available in full text on this website. The e-book is for readers who want offline access or PDF archival.
         </p>
 
         <h2>Editorial Principles</h2>

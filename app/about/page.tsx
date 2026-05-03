@@ -32,7 +32,23 @@ export default function AboutPage() {
 
         <h3>③ 自作AIアプリ事例</h3>
         <p>
-          人手作業をLLMで圧縮する実証として、Webアプリを <a href="/apps">7本本番運用</a> 中。day1 / 看板AI / MediBridge / VetBridge / うちのこのきもち / 1000yen-lunch / コツコツFX手帳。
+          人手作業をLLMで圧縮する実証として、Webアプリを <a href="/apps">8本本番運用</a> 中。day1 / 看板AI / MediBridge / VetBridge / うちのこのきもち / 1000yen-lunch / コツコツFX手帳 / AI Archaeology（このサイト）。
+        </p>
+
+        <h2>電子書籍版</h2>
+        <p>
+          本連載の最初の9本（Introduction / Pitfalls / Templates / Patent Archaeology #1・#2 / IR Archaeology #1 / Standard Archaeology #1 / Declassified Archaeology #1・#2）を、書籍として再構成したPDF版を販売しています。
+        </p>
+        <p>
+          <strong>『忘れられた長文発掘ノート — LLMでやる、はるこのAI考古学（第1版・全7章）』</strong>
+        </p>
+        <ul>
+          <li>形式：PDF（A5判相当、約4万字、約200ページ）</li>
+          <li>価格：980円</li>
+          <li>販売：<a href="https://haruko-ai.booth.pm/items/8302397" target="_blank" rel="noopener noreferrer">Booth で購入</a></li>
+        </ul>
+        <p>
+          本サイトでは引き続き全文を無料公開しています。書籍版は「オフラインで通読したい」「PDF として保存したい」読者向けの選択肢としてどうぞ。
         </p>
 
         <h2>このノートの方針</h2>
