@@ -27,8 +27,30 @@ export default function AboutEN() {
 
         <h3>2. Forgotten Document Mining (this blog)</h3>
         <p>
-          Mining expired patents, deprecated standards, old papers, declassified military reports, bankruptcy filings — long-form documents nobody reads at scale — with Claude. Re-translating them into modern context.
+          Mining expired patents, deprecated standards, old papers, declassified military reports, bankruptcy filings — and now <strong>documents tied to everyday household life</strong> (food-additive approval records, cosmetic-ingredient discovery papers, OTC drug transitions, the first editions of maternal-child handbooks) — with Claude. Re-translating them into modern context.
         </p>
+        <p>
+          From May 2026, the notebook entered <strong>Phase 1 (daily-life focus)</strong>: five sub-series that descend into the kitchen, medicine cabinet, fridge, and dressing table.
+        </p>
+
+        <h2>Sub-Series (from May 2026)</h2>
+
+        <h3>Phase 1: Five daily-life sub-series</h3>
+        <ul>
+          <li><strong>Kitchen Health Archaeology</strong> — food additives, seasonings, kitchenware, food hygiene</li>
+          <li><strong>Cosmetic Archaeology</strong> — cosmetic ingredients, founding documents of legacy brands, regulatory history</li>
+          <li><strong>Pharma Archaeology</strong> — OTC approval records, prescription-to-OTC transitions, the medicine cabinet's history</li>
+          <li><strong>Maternal Archaeology</strong> — maternal-and-child handbooks, school lunch standards, parenting books</li>
+          <li><strong>Diet Trend Archaeology</strong> — source papers behind fad diets, revisions to nutritional guidelines</li>
+        </ul>
+
+        <h3>Established industry-side sub-series</h3>
+        <ul>
+          <li><strong>Patent Archaeology</strong> — expired patents</li>
+          <li><strong>IR Archaeology</strong> — old Korean / Chinese / Taiwanese IR archives</li>
+          <li><strong>Standard Archaeology</strong> — deprecated standards, zero-citation arXiv papers</li>
+          <li><strong>Declassified Archaeology</strong> — US military declassified, government reports nobody reads</li>
+        </ul>
 
         <h3>3. Web App Demos</h3>
         <p>
@@ -55,10 +77,12 @@ export default function AboutEN() {
 
         <h2>Editorial Principles</h2>
         <ul>
+          <li><strong>Four-axis structure</strong> — every episode follows: Past Document → How It Changed → Modern Hint → Practical Application. Summary alone is not enough</li>
           <li><strong>Primary sources only</strong> — no name-dropping unverified publications</li>
           <li><strong>No position-talking</strong> — never push readers toward what benefits me</li>
-          <li><strong>Full prompt disclosure</strong> — every Claude prompt published</li>
           <li><strong>Failure modes recorded</strong> — fabrications, misreadings, cost explosions</li>
+          <li><strong>Prompt disclosure ended (from May 2026)</strong> — all initial prompts are consolidated in <a href="/en/notes/07-templates">Episode 7 Templates</a> and the <a href="https://haruko-ai.booth.pm/items/8302397" target="_blank" rel="noopener noreferrer">Japanese e-book first edition</a>. New episodes omit per-post prompt sections to better fit the daily-life reader audience</li>
+          <li><strong>Modern judgments are reader-owned</strong> — this notebook is an archival exercise. For modern judgments on health, nutrition, and cosmetics, please consult up-to-date sources and qualified professionals</li>
         </ul>
 
         <h2>Contact</h2>

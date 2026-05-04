@@ -36,6 +36,22 @@ export default function HomeEN() {
         </div>
       </section>
 
+      {/* Editorial Policy */}
+      <section className="bg-paper border-b border-navy/10">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 py-10">
+          <div className="text-gold-600 text-xs tracking-[0.3em] mb-3">EDITORIAL POLICY</div>
+          <h2 className="font-serif text-navy text-xl sm:text-2xl font-bold mb-4">
+            Four-Axis Structure (every episode)
+          </h2>
+          <p className="text-navy/80 text-sm sm:text-base leading-relaxed mb-4">
+            Each episode follows the same four-axis structure: <strong>Past Document → How It Changed → Modern Hint → Practical Application</strong>. Summary alone is not enough; every entry has to land in today's daily life.
+          </p>
+          <p className="text-navy/60 text-sm leading-relaxed">
+            This notebook is an archival exercise. For modern judgments on health, nutrition, and cosmetics, please consult up-to-date sources and qualified professionals.
+          </p>
+        </div>
+      </section>
+
       {/* Episodes */}
       <section className="max-w-4xl mx-auto px-5 sm:px-8 py-16">
         <h2 className="font-serif text-navy text-2xl sm:text-3xl font-bold mb-2">Episodes</h2>
@@ -79,23 +95,50 @@ export default function HomeEN() {
         </div>
       </section>
 
-      {/* Sub-Series */}
+      {/* Phase 1 — Daily-Life Sub-Series */}
       <section className="bg-navy text-paper">
         <div className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
-          <div className="text-gold-500 text-xs tracking-[0.3em] mb-3">SUB-SERIES</div>
+          <div className="text-gold-500 text-xs tracking-[0.3em] mb-3">PHASE 1 — DAILY-LIFE SUB-SERIES</div>
           <h2 className="font-serif text-2xl sm:text-3xl font-bold mb-3">
-            Four archaeologies, all stackable
+            Five archaeologies that live in your kitchen
           </h2>
           <p className="text-paper/80 text-sm sm:text-base mb-10 max-w-2xl leading-relaxed">
-            Each sub-series stacks indefinitely after #1. "Patent Archaeology #1, #2, #3..."
-            Atlas Obscura style — the genre grows forever.
+            From May 2026, this notebook descends from "documents only industry insiders read" to documents tied to the things in your kitchen, medicine cabinet, fridge, and dressing table.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {[
+              { name: "Kitchen Health Archaeology", desc: "Food additives, seasonings, kitchenware, food hygiene history.", latest: "#1 — Kikunae Ikeda's 1908 Japanese Patent #14805 and the 94-year umami reckoning (Japanese only)" },
+              { name: "Cosmetic Archaeology", desc: "Cosmetic ingredients, founding documents of legacy brands, regulatory history.", latest: "#1 — Shiseido's 1897 Eudermine (forthcoming)" },
+              { name: "Pharma Archaeology", desc: "OTC drug approval documents, prescription-to-OTC transitions, the medicine cabinet's long history.", latest: "Coming soon" },
+              { name: "Maternal Archaeology", desc: "Maternal-and-child handbooks, school lunch standards, parenting books.", latest: "Coming soon" },
+              { name: "Diet Trend Archaeology", desc: "Source papers behind fad diets, revisions to nutritional guidelines.", latest: "Coming soon" },
+            ].map((s) => (
+              <div key={s.name} className="border border-paper/20 rounded-lg p-5 hover:border-gold-500 transition">
+                <div className="font-serif text-gold-500 text-lg font-bold mb-2">{s.name}</div>
+                <div className="text-paper/80 text-sm leading-relaxed mb-3">{s.desc}</div>
+                <div className="text-paper/60 text-xs tracking-wide">LATEST: {s.latest}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Established Sub-Series */}
+      <section className="bg-navy/90 text-paper">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+          <div className="text-gold-500 text-xs tracking-[0.3em] mb-3">SUB-SERIES — ESTABLISHED</div>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold mb-3">
+            Four archaeologies already established
+          </h2>
+          <p className="text-paper/80 text-sm sm:text-base mb-10 max-w-2xl leading-relaxed">
+            The four industry-side sub-series established in episodes 2-9, continuing in parallel with Phase 1 at a slower cadence.
           </p>
           <div className="grid sm:grid-cols-2 gap-5">
             {[
               { name: "Patent Archaeology", desc: "Mine expired patents. Translate the buried inventor's wisdom into modern context.", upcoming: "#2 — Nikola Tesla's 1888 AC motor patent (US381968)" },
               { name: "IR Archaeology", desc: "Old Korean / Chinese / Taiwanese investor reports. Find the foreshadowing of today's industry.", upcoming: "#1 — Samsung's forgotten 1996 1Gb DRAM" },
               { name: "Standard Archaeology", desc: "Deprecated JIS / ISO / IEEE standards. Zero-citation arXiv papers.", upcoming: "#1 — IEEE 802.5 Token Ring revisited" },
-              { name: "Declassified Archaeology", desc: "US military declassified, government reports nobody reads.", upcoming: "#1 — The 1966 ALPAC report" },
+              { name: "Declassified Archaeology", desc: "US military declassified, government reports nobody reads.", upcoming: "#2 — NSA Project Lightning (1956-62)" },
             ].map((s) => (
               <div key={s.name} className="border border-paper/20 rounded-lg p-5 hover:border-gold-500 transition">
                 <div className="font-serif text-gold-500 text-lg font-bold mb-2">{s.name}</div>

@@ -159,46 +159,9 @@ ZISC moved IBM → IN2H2 (2013) → expired (2015). After expiration the patent 
 
 I did not pull this patent's forward citation list today (i.e., later patents that cite it). That's normally the metric for "how much downstream impact did this patent have on the industry." Going forward, I'll add forward citations to the extraction prompt.
 
-## 7. Full Prompt Disclosure
+## 7. About the Prompts
 
-As per the series rule, every prompt I used is published verbatim.
-
-### Candidate-narrowing prompt
-
-```
-Read the abstracts of the following five patents and pick the one most
-similar in mechanism to a modern NPU/TPU paper. Give three reasons.
-
-[Abstract of patent 1]
-[Abstract of patent 2]
-...
-```
-
-### Extraction prompt
-
-```
-Extract the following from this patent:
-1. Patent number, grant date, filing date, inventors, assignee
-2. Status (Expired or not) and expiration date
-3. Abstract
-4. Main Claim 1 (independent claim 1)
-5. The problem it solves
-6. The proposed solution mechanism
-7. Application domains and industries
-8. Cited prior art
-9. Forward citation count
-10. Description of key Figures, and which one best represents the mechanism
-```
-
-### Modern-translation prompt (the most powerful one)
-
-```
-Translate the technical mechanism of this patent into the everyday
-vocabulary of an NPU/TPU researcher in 2026. Show, in a table, which
-element of the patent corresponds to which concept in modern papers.
-```
-
-This single prompt produced the entire "eerily close" table in section 3 in one shot. **When reading patents, the modern-translation prompt is the strongest weapon.**
+The full text of every Claude prompt used across the initial 7-episode series is consolidated in [Episode 7 — Templates](/en/notes/07-templates) and the [first edition of the Japanese e-book (Booth)](https://haruko-ai.booth.pm/items/8302397). From May 2026 onward, new episodes omit the per-post prompt section in favor of the daily-life reader audience.
 
 ## 8. What's Next in This Sub-Series
 

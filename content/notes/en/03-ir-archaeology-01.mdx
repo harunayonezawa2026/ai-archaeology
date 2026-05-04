@@ -152,35 +152,9 @@ Samsung's 2009 Annual Report (and many others like it) is a PDF whose entire bod
 **Pitfall 3: Wikipedia's compression**
 Wikipedia condenses everything: "**1996: developed the 1 GB DRAM**" is a single line. **That single line is unreadable without separately holding the context of semiconductor process history.** The LLM needs a prompt that explicitly forces it to read the line in its proper context.
 
-## 7. Prompts I Used
+## 7. About the Prompts
 
-### Wikipedia extraction prompt
-
-```
-From the history of Samsung Electronics, especially the 1980s-2000s
-semiconductor business, extract:
-1. Year of DRAM business entry, first major product
-2. Major milestones in the 1990s
-3. The 1996 memory bubble crash and Samsung's response
-4. The 1997 IMF crisis and Samsung's strategy
-5. NAND business entry year
-6. Year the Apple iPhone supply deal began
-7. HBM development and mass production years
-8. Pivot toward AI semiconductors
-9. Relationships with competitors (Hynix / Micron / Toshiba / Intel)
-10. Generational succession of CEOs and senior leadership
-```
-
-### Lineage-analysis prompt (the most powerful one)
-
-```
-Build a correspondence table between the 1996 Samsung 1Gbit DRAM and the
-core technology of modern HBM3/HBM4, at the level of the engineering
-problem each one was solving. Along which scaling axes are the two
-solving the same shape of problem?
-```
-
-This single prompt produced the entire correspondence table in section 3 in one shot.
+The full text of every Claude prompt used across the initial 7-episode series is consolidated in [Episode 7 — Templates](/en/notes/07-templates) and the [first edition of the Japanese e-book (Booth)](https://haruko-ai.booth.pm/items/8302397). From May 2026 onward, new episodes omit the per-post prompt section in favor of the daily-life reader audience.
 
 ## 8. What's Next
 
