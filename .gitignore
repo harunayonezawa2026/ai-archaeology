@@ -34,3 +34,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated CSV (rclone upload artifact, regenerated each Day)
+/db/candidates.csv
+
+# video pipeline workdir
+/video-pipeline/
