@@ -1,0 +1,81 @@
+---
+title: "コンピュータを繋ぐという問いの最初の答え──Xerox PARCの1975年特許US4063220AがCSMA/CDで書いたEthernet"
+subtitle: "インターネット・暗号特許 発掘メモ #2 — US4063220A、Xerox Corporation、1975年出願"
+description: "1975年3月出願、Metcalfe・Boggs・Thacker・LampsonによるXerox特許US4063220A。同軸ケーブル上の3 Mbpsパケット通信を、CSMA/CDアルゴリズム（搬送波検知＋衝突検知＋ランダムバックオフ）で実現する。現代のEthernet・Wi-Fi・データセンターネットワーク・クラウドインフラの前史として読める。Google Patentsより基本情報・Claim 1・CSMA/CD詳細・3 Mbps速度を取得済み・本文未読。"
+episode: 28
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "Ethernet", "Xerox PARC", "Metcalfe", "発掘メモ", "ネットワーク"]
+series: "インターネット・暗号特許"
+seriesNumber: 3
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim 1の逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+オフィスのPCがLANで繋がる。データセンターの数千台のサーバーが10/40/100 Gbps Ethernetで通信する。AWS・Azureのクラウドが世界中のラックを束ねる。これら全部の物理層・データリンク層の祖先が、1975年にXerox PARCで特許化されたEthernetだ。50年経った現在、無線（Wi-Fi 802.11）も衛星（Starlink）も、根底に「複数の通信主体が一つの媒体を共有する」というEthernetが立てた問題設定を持っている。今回はその祖先特許を掘る。
+
+## 特許の基本情報
+
+- **特許番号**：US4063220A
+- **タイトル**：Multipoint data communication system with collision detection
+- **出願**：1975年3月31日
+- **成立**：1977年12月13日
+- **発明者**：Robert M. Metcalfe、David R. Boggs、Charles P. Thacker、Butler W. Lampson（4名）
+- **Original Assignee**：Xerox Corporation（Palo Alto Research Center, PARC）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US4063220A/en)（URL確認済み・Claim 1・CSMA/CD構成・3 Mbps速度取得済み）
+- **Legal status**：Expired（出願から20年・成立から17年で失効済み）
+
+発明者4名のうち、ButlerLampsonとCharles ThackerはXerox AltoのアーキテクトとしてACMチューリング賞を受賞している（Lampson 1992年、Thacker 2009年）。MetcalfeはEthernet発明と3Com社設立（1979年）で2022年にACMチューリング賞を受賞した。**4名のうち3名がチューリング賞受賞者**という、極めて稠密な発明者構成になっている。
+
+## 核心（Google Patents取得済み情報）
+
+CSMA/CD（Carrier Sense Multiple Access with Collision Detection）の中核設計は、特許に5要素として記述されている。
+
+1. **搬送波検知（Deference Mechanism）**：各局はケーブルの状態を信号"d"で監視し、既存の通信があれば「先行する通信を譲る（defer to existing communication）」。チャネルが静まってから送信を試みる。
+
+2. **衝突検知（Collision Detection）**：各トランシーバーは「信号線と排他的論理和ゲート（XOR）の入力端子を結ぶ遅延回路」を含み、送信中のデータとケーブル上の実信号をビットごとに比較して衝突を検知する。
+
+3. **ランダム再送（Randomized Retransmission）**：衝突が起きると両方の局が「送信を中止し、加重ランダム数生成器で選ばれた所定の時間間隔だけ待ってから再送信する」。
+
+4. **統計的調整**：衝突カウンターが「ケーブル使用率」に基づいて再送までの待機時間を加重する。連続衝突が起きるほど待機が長くなる適応的設計。
+
+5. **ネットワークトポロジー**：受動的なT字コネクター（タップ）で同軸ケーブルセグメントにトランシーバーを接続し、複数の局を**約3メガビット/秒**で動作させる。
+
+「複数の主体が同じ媒体を奪い合うが、衝突したらランダムに待ってから再挑戦する」という分散協調アルゴリズムだ。中央調停者を置かない設計が、後の無線LANや一部のIoTプロトコルにまで継承されている。
+
+XeroxはこのEthernet仕様を1980年にDEC・Intelとともに公開仕様（DIX Ethernet）として発表し、後にIEEE 802.3として標準化された。**特許権を独占せず標準化に貢献した**点が、Ethernetが業界標準になった一因として広く語られている（一次資料の標準化合意文書には今回到達していない）。
+
+## 現代との接続仮説
+
+| US4063220A（1975年） | 現代のネットワーク技術 | 評価（仮説段階） |
+|---|---|---|
+| 同軸ケーブル上の3 Mbps、半二重、CSMA/CD | 1Gbps/10Gbps Ethernet（全二重スイッチング） | 類似（フレーム形式の系統は継承、CSMA/CD自体は全二重スイッチド環境では使われない） |
+| 同軸＋T字タップによるバス型トポロジー | ツイストペア＋スイッチによるスター型トポロジー | 類似（物理層は別物、Ethernetという論理アイデンティティだけが継承） |
+| 衝突検知＋ランダムバックオフ | Wi-Fi 802.11のCSMA/CA（衝突回避型） | 類似（無線では衝突検知が困難なため「回避型」に変形、根底の分散協調アルゴリズムは継承） |
+| 中央調停者を置かない分散設計 | スイッチド・ファブリック、データセンタークロス、Clos topology | 比喩（中央装置を置く設計に大きく転換、「分散協調」の問題意識だけが部分的に共通） |
+| 受動的な共有媒体 | クラウド共有リソース（仮想ネットワーク・コンテナネットワーク） | 比喩（物理層から仮想層へ、「複数主体が共有する」という問題設定は重なる） |
+
+**最も重要な変化**：1975年に「物理的に同じケーブルを複数局が共有する」設計だったEthernetは、現在では「物理的にはスイッチで分離され、論理的にはVLAN/VXLANで仮想化される」設計に大きく転換した。**CSMA/CD自体は現代の有線Ethernetでは事実上使われていない**（全二重スイッチド環境では衝突が原理的に起きない）。しかし「Ethernet」という名前と、フレーム形式（MACアドレス・宛先/送信元・タイプ・ペイロード・FCS）は1975年から系統的に継承されている。**名前と概念が残り、実装は別物に進化した**。
+
+**これは一次資料の全文精読前の仮説。Claim 1の他のクレーム・図面詳細確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（マニフェスト符号化方式、Bit synchronization、フレーム長制限の根拠）
+- 1980年のDIX Ethernet公開仕様の合意文書一次資料
+- IEEE 802.3標準化時の Xerox の特許ライセンス条件（無償提供の条件）
+- ALOHAnet（1971年、ハワイ大学）との設計上の差分（CSMAという名前は ALOHAnet→Ethernet という系統で継承されている）
+- Forward citations件数（Google Patents未確認）
+- 4名の発明者の具体的な役割分担（Metcalfeはアーキテクト、Boggsは実装、ThackerとLampsonはAlto側からの関与、と公知資料で言われているが一次資料未確認）
+
+---
+
+参考リンク：
+- 元特許：[US4063220A on Google Patents](https://patents.google.com/patent/US4063220A/en)
+- 同シリーズ #1（発掘ノート）：[Woodlandバーコード US2612994A（1949年）](/notes/26-internet-crypto-patent-01)
+- 同シリーズ #2（発掘メモ）：[HTTPクッキー特許 US5774670A（1995年）](/notes/27-internet-crypto-patent-memo-01)

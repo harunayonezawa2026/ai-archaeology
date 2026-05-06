@@ -1,0 +1,156 @@
+---
+title: "The Concentric-Circle Barcode of 1949: Woodland's Patent US2612994A and the Question of Letting Machines Identify Things"
+subtitle: "Internet & Cryptography Patents #1 — US2612994A, Norman J. Woodland and Bernard Silver, filed 1949"
+description: "Filed October 1949, US2612994A by Woodland and Silver describes a 'classifying apparatus' that identifies articles using concentric circular light-reflective lines and photoelectric scanning. Not linear, not laser-based — the original barcode was circular and read by a photocell. A precursor to modern UPC, QR codes, RFID, and supply-chain identification. Expired 1969. Title, Claim 1, inventors, and filing data retrieved from Google Patents."
+episode: 26
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "Barcode", "UPC", "Woodland", "Expired Patent", "Identification Technology"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 1
+status: "published"
+---
+
+[Patent Archaeology #3 (Amazon 1-Click US5960411A)](/en/notes/23-patent-archaeology-03) traced the question of "frictionless checkout" filed by an e-commerce site in 1997.
+
+This time, we go back to 1949. The setting is a graduate program in Philadelphia. The question is: can we make a machine identify a product instantly?
+
+## The conclusion first
+
+Patent number: [US2612994A](https://patents.google.com/patent/US2612994A/en)
+Title: Classifying apparatus and method
+Filed: October 20, 1949
+Granted: October 7, 1952
+Expired: 1969 (17 years from grant)
+Inventors: Norman J. Woodland (Ventnor, NJ), Bernard Silver (Philadelphia, PA)
+Original Assignee: Individual (no corporate assignee at filing)
+Legal Status: **Expired** (Lifetime)
+
+The question this patent posed can be written in one sentence: can a machine identify a kind of object instantly using a printed pattern of light and reflective lines?
+
+Claim 1's core reads:
+
+> apparatus for classifying articles ... including concentric circular light-reflective outer classification lines and inner auxiliary lines, scanning means producing electrical pulses, oscillating scanning mechanisms, and electronic classifying devices responsive to the pattern pulses.
+
+"concentric circular light-reflective ... classification lines."
+
+There are two breaks with our intuition here. **First, the shape was circular, not linear.** **Second, the reading was done by a photocell, in an era before lasers existed.**
+
+This is not the vertical-stripe UPC barcode we know. It is not the red-laser scanner at the supermarket checkout. That is what "barcode prehistory" looked like in 1949.
+
+---
+
+The beep at the supermarket register. Products gliding past in an Amazon warehouse. The handheld scanner of a delivery driver. We read this 74-year-old patent as a precursor to the design question behind every "machine identifying a thing in an instant."
+
+---
+
+## 1. How this was chosen
+
+Selected from the candidate database (`~/ai-archaeology/db/candidates.tsv`) as IC-008 (priority 17, the strongest modern connection among the four IC candidates at priority 17, chosen as Week 2's opening note).
+
+```
+[STEP 1] Compared the four IC priority-17 candidates (IC-002/004/007/008)
+[STEP 2] Selected IC-008 barcode as the strongest in storytelling + general-reader connection
+[STEP 3] Confirmed US2612994A on Google Patents
+[STEP 4] Retrieved title, Claim 1, inventors, filing date, and figure layout via WebFetch
+[STEP 5] For unconfirmed facts (sale to Philco/RCA), noted as DB info + public knowledge
+```
+
+Primary source status: Title, Claim 1, basic information, and inventor details retrieved from Google Patents. The 1962 sale to Philco and later transfer to RCA are outside the patent document itself; they are widely reported in Wikipedia and other public sources but not verified against primary documents in this round. Full Description text not yet read line by line.
+
+## 2. The core of the patent
+
+Claim 1 breaks into three parts.
+
+**The reading target's design**: Articles carry "concentric circular light-reflective lines" — classification lines on the outer ring, auxiliary lines toward the center. **Why circular?** The claim itself does not say, but a circular pattern can be read regardless of how the article is oriented when scanned. In 1949, the design already aimed at orientation-independent reading.
+
+**The optical reading mechanism**: Light strikes white reflective lines, and the reflected light is **converted into electrical pulses by a photoelectric cell**. The laser was invented in 1960, so Woodland's reading source was ordinary light.
+
+**The classification processing**: Pulse patterns are interpreted by an electronic classifying device (electronic thyratrons and relay circuits) and the article's classification is output.
+
+In modern terms: print a machine-readable code on a product, read it with a scanner that converts light into a digital signal, and match it against a product database. Supermarket checkout, Amazon warehouse intake/outbound, UPS/Yamato delivery tracking — all of it lives in the extension of this problem setting.
+
+But "concentric circles" and "photocells" are radically different implementations from today's UPC/QR/laser-scanner systems. **The problem setting matches; the implementation is another thing.**
+
+## 3. Translation table to today
+
+| US2612994A (1949) | Modern identification technology | Assessment |
+|---|---|---|
+| Concentric circular reflective line pattern | UPC/EAN-13 vertical-stripe barcode | Similar (the problem of "a printed pattern a machine can read instantly" is shared; the shape differs) |
+| Circular design readable from any angle | QR code finder patterns (positioning markers) | Similar (a precursor to orientation-independent reading; encoding scheme differs) |
+| Photocell pulse conversion of reflected light | CCD/CMOS scanners doing image capture | Similar (the "optical reading" frame is shared; semiconductor sensors are an evolution) |
+| Reading with ordinary light | Laser scanners, image-recognition scanners | Similar (the light source quality is different; the framing of "identify by light" is shared) |
+| Classification by electronic thyratrons + relays | Microcontroller barcode decoding | Metaphor (the directional intent of "passing the read signal to a classifier" is similar; hardware and software are entirely different) |
+
+**Reading guidance for the table.**
+
+Row 1's "shape difference" is decisive. The UPC standardized in 1973 is vertical-stripe; the encoding scheme is fundamentally different from Woodland's 1949 circular pattern. Saying "Woodland's circles became UPC" is inaccurate — circular patterns did not commercialize, and linear patterns became the standard.
+
+Row 2 (QR finder patterns) is at the metaphor level. We have not, in this round, confirmed any record showing that Denso Wave's 1994 QR designers directly referenced Woodland's patent. The match is in the directional intent of "orientation-independent reading."
+
+Row 3 (photocell → CCD/CMOS) is the story of semiconductor evolution; technologically, there is a sharp discontinuity. Only the framing of "optical reading" is shared.
+
+Row 5 is at the metaphor level. Electronic thyratrons and microcontrollers are entirely different things.
+
+## 4. Why this is rarely cited in mainstream technology talk (speculation)
+
+**Reason 1: The "Woodland drew it on the beach" story arrived first**
+
+Woodland later recalled drawing lines in the sand on a Florida beach near a friend's house, recalling the Morse code he had learned as a child, and stretching the dots and dashes downward into a circular pattern. The story is widely repeated as legend, but the technical content of the patent itself rarely follows it. "Born on the beach" outshines what is in the document.
+
+**Reason 2: A 20-year gap to commercialization**
+
+Filed in 1949, granted in 1952, expired in 1969. UPC adoption in U.S. supermarkets actually began in 1973 — Wrigley's chewing gum is widely reported as the first UPC-scanned product, on June 26, 1974, at a supermarket in Troy, Ohio. **Adoption began after the patent expired.** Public sources say Woodland sold the patent to Philco in 1962 and Philco transferred it to RCA in 1971, but the patent's cover lists no Original Assignee, and the primary documents on the sale itself were not reached in this round.
+
+**Reason 3: George Laurer (IBM) is foregrounded in UPC history**
+
+Laurer at IBM, who designed the UPC specification in 1973, is more commonly remembered as "the father of the modern barcode," with Woodland positioned in the background as an idea pioneer. Laurer's UPC is vertical-stripe, technically separate from Woodland's circular design. The technical lineage is limited, but Woodland's patent is meaningful as an earlier instance of "letting machines identify things."
+
+## 5. What this means archaeologically
+
+The beep of a supermarket register. The conveyor in an Amazon warehouse. The handheld scanner pressed against a delivery package. These are the spine of 2020s logistics and retail.
+
+US2612994A gave patent form to that problem setting — "let a machine identify an article in an instant" — back in 1949. The implementation was concentric circles and photocells. The standardized UPC became vertical stripes and laser scanners. The implementation changed; the problem setting did not.
+
+The idea of "a machine-readable printed pattern combined with an optical reader" expanded over the next 70 years into logistics, retail, healthcare (drug management), libraries, and airline boarding passes. The question Woodland posed when he drew lines in the sand now runs as the foundation of the global logistics network.
+
+Before LLMs, the cost of reading "concentric circular light-reflective ... classification lines" in connection with modern UPC, QR, RFID, and image-recognition scanners was high. AI archaeology lowers that cost.
+
+## 6. Pitfalls
+
+**Pitfall 1: "Woodland invented the modern barcode" is inaccurate**
+
+What Woodland and Silver patented was a circular optical pattern. The modern UPC (vertical stripe) was designed by IBM's George Laurer in 1973 and is not a direct implementation of Woodland's patent. Calling Woodland "the father of the modern barcode" is too coarse. "Pioneer of the problem setting of machine-readable product identification" is more accurate.
+
+**Pitfall 2: "He made a fortune from the patent" is inaccurate**
+
+The patent expired in 1969; UPC commercialization began only after 1973. Woodland had already lost his patent rights before commercialization. He is said to have sold the patent to Philco in 1962 (primary source unverified), but at that time the barcode market did not exist, so the sale price was reportedly limited (primary source unverified).
+
+**Pitfall 3: "Lasers existed, so it spread" is reverse-causal**
+
+The laser was invented in 1960; UPC adoption began only after 1973. In 1949, when Woodland's patent was filed, lasers did not exist. **The "machine-readable code" idea was patented in 1949, and only 20 years later did the reading technology mature, enabling adoption.** Time gaps between invention and adoption are not unusual in technology history.
+
+---
+
+## To be precise
+
+**Confirmed facts**
+From Google Patents: US2612994A / Filed 1949-10-20 / Granted 1952-10-07 / Expired (Lifetime) / Two inventors (Norman J. Woodland, Bernard Silver) / Original Assignee individual at filing / Claim 1 opens with "apparatus for classifying articles ... concentric circular light-reflective outer classification lines and inner auxiliary lines, scanning means producing electrical pulses" / Implementation described uses photocells, electronic thyratrons, and relay circuits / Title "Classifying apparatus and method"
+
+**Author's interpretation**
+"Precursor to modern UPC, QR codes, RFID, and supply-chain management" is the author's reading. The technical architectures are different. The position taken here is that this is a precursor to the problem setting of "machine-readable code combined with optical reading."
+
+**Metaphors and analogies**
+Row 2 of the table (QR finder patterns) is at the metaphor level. We have not confirmed records of Denso Wave's QR designers directly referencing Woodland's patent. Row 5 (electronic thyratrons → microcontroller decoding) is also at the metaphor level.
+
+**Not confirmed**
+Details and price of the Philco sale (1962 sale and later RCA transfer come from Wikipedia and similar public sources; the patent document records nothing) / Full Description text line by line / Internal IBM discussions leading to the 1973 UPC specification / Primary source for the "drew it in the sand" story (Woodland's own interview transcript) / Forward citation count / Bernard Silver's later activity and the circumstances of his early death in 1962
+
+**Where this comparison breaks**
+Woodland's circular pattern and the modern UPC vertical stripe use entirely different encoding schemes. Calling Woodland the direct inventor of UPC will be the first thing technology historians push back on. It matters to keep "pioneer of the idea" and "inventor of the standard" separate. The UPC design by George Laurer (IBM) needs to be treated as a distinct argument.
+
+---
+
+Reference links:
+- Original patent: [US2612994A on Google Patents](https://patents.google.com/patent/US2612994A/en)
+- Patent Archaeology #3 (research note): [Amazon 1-Click US5960411A (1997)](/en/notes/23-patent-archaeology-03)
+- Research memo #1 (next in this series): [HTTP Cookie Patent US5774670A (1995)](/en/notes/27-internet-crypto-patent-memo-01)

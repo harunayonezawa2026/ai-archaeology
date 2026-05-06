@@ -1,0 +1,78 @@
+---
+title: "HTTP Is Stateless: Netscape's 1995 Patent US5774670A That Wrote the Cookie"
+subtitle: "Internet & Cryptography Patents Memo #1 — US5774670A, Netscape Communications, filed 1995"
+description: "Filed October 1995, US5774670A by Lou Montulli at Netscape describes 'persistent client state' — what we now call cookies — as the answer to HTTP statelessness. The patent specifies the Set-Cookie header syntax, domain/path matching, and the secure flag. Later assigned to Meta Platforms via Netscape's asset acquisition. A reading aid for understanding modern Cookie regulations, third-party Cookie deprecation, and the design difference vs. JWT/OAuth. Primary source URL confirmed; Claim 1 retrieved; full text not yet read."
+episode: 27
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "HTTP Cookie", "Netscape", "Lou Montulli", "Research Memo", "Privacy"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 2
+format: "memo"
+status: "published"
+---
+
+**About research memos:** This entry records a candidate at the stage of confirmed source URL. The full patent description and line-by-line Claim 1 have not been read. Only confirmed facts are stated; inferences are marked as such.
+
+---
+
+## Why dig here
+
+The shopping cart that still has items in it. Staying logged into Google after closing the tab. Amazon's "recommended for you." The "remember me" checkbox on social media. The technical premise behind all of this is the cookie mechanism Netscape proposed in 1995, in response to HTTP's stateless design — every request is independent, no memory of the previous one. **Today, cookies are the central target of privacy regulation (GDPR, ePrivacy Directive), and Chrome is in the middle of phasing out third-party Cookies.** We read the design Netscape patented 30 years ago.
+
+## Basic information
+
+- **Patent number**: US5774670A
+- **Title**: Persistent client state in a hypertext transfer protocol based client-server system
+- **Filed**: October 6, 1995
+- **Granted**: June 30, 1998
+- **Inventor**: Lou Montulli (**sole inventor**. The candidate database listed John Giannandrea as co-inventor, but the Google Patents face sheet does not list him as an inventor of this patent. Confirmed.)
+- **Original Assignee**: Netscape Communications Corp
+- **Later Assignee**: Meta Platforms Inc (via Netscape's asset acquisition lineage)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US5774670A/en) (URL confirmed; Abstract and Claim 1 retrieved)
+- **Legal status**: To be confirmed (will check with forward citation count during full-text reading)
+
+## What the patent describes (from Google Patents)
+
+The core of Claim 1: an HTTP server transmits to the client both the requested file and a **state object** at the same time. The client stores the state object locally and sends it back on subsequent requests to the same server.
+
+This is the answer to HTTP statelessness — **the design choice of making the client hold state, instead of the server.**
+
+The patent records concrete syntax:
+
+> Set-Cookie: NAME=VALUE; expires=DATE; path=PATH; domain=DOMAIN_NAME; secure
+
+This is, character for character, the Set-Cookie header syntax that browsers still parse today. A 30-year-old patent document and the latest spec on MDN Web Docs match.
+
+The matching logic is also described. A cookie is sent back to the server **only when the domain and path attributes match the requested URL**. This is the cookie-side counterpart of what we call the same-origin policy — the precursor to today's SameSite attribute and Cookie Partitioning (Storage Partitioning).
+
+The `secure` flag is included, with a design that sends cookies only over HTTPS. In an era when HTTPS was not yet widespread, an attribute requiring encrypted transmission was already part of the specification.
+
+## Connections to modern systems (hypotheses)
+
+| US5774670A (1995) | Modern web design | Assessment (pre-full-read hypothesis) |
+|---|---|---|
+| Set-Cookie header syntax | Current HTTP spec (RFC 6265), MDN Cookie reference | Same (the basic syntax has not changed much since 1995; SameSite and other attributes were added later) |
+| domain/path scope control | SameSite=Strict/Lax/None, Cookie Partitioning | Similar (the problem of scope control is shared; new attributes were added to address third-party tracking) |
+| secure flag (sends only over HTTPS) | Strict-Transport-Security, HTTPS-only mode | Similar (the framing of "treat cookies as encryption-bound" is shared) |
+| Server holds no state; client stores state | JWT (JSON Web Token), OAuth 2.0 access tokens | Similar (the framing of "client-side state storage" is shared, but JWT adds signature-based tamper detection — the trust chain is different) |
+| Cookies for personalization / tracking | Third-party Cookie deprecation (Chrome's gradual phase-out), GDPR cookie consent banners | Similar (the same cookie now carries both "convenient state-holding" and "privacy violation" — the duality has surfaced) |
+
+**The most important development since 1995**: At design time, cookies were written as "convenient state-holding." The Abstract and Claim 1 do not mention concerns about privacy violation. Thirty years later, third-party cookies for ad tracking have become the symbol of privacy violation — Safari's third-party Cookie blocking (2017 onward, progressively strengthened), Chrome Privacy Sandbox's gradual third-party Cookie phase-out, GDPR, ePrivacy, and the global spread of cookie consent banners. **The gap between "convenience" at design time and "regulated object" in the present is the lens through which to read this patent.**
+
+**These are pre-full-read hypotheses. They will be revised after the full Claim 1 (especially the question of single vs. multiple inventors, and the prosecution history) is verified.**
+
+## What's not confirmed
+
+- Full Description text (cookie lifecycle management details, deletion logic, maximum storage count)
+- Forward citation count (not yet confirmed on Google Patents)
+- Legal status (whether expired or active; details of the assignment to Meta Platforms)
+- The candidate database listed "Montulli + Giannandrea" as co-inventors, but the Google Patents face sheet shows Lou Montulli as sole inventor. **The DB entry is most likely incorrect.** Giannandrea may appear in a different patent or document; needs further investigation.
+- Netscape's internal discussions on the design choice (why client-side state instead of server-side)
+- The social discussion that followed the December 1995 Financial Times scoop (the first public reporting of cookies)
+
+---
+
+Reference links:
+- Original patent: [US5774670A on Google Patents](https://patents.google.com/patent/US5774670A/en)
+- Same series #1 (research note): [Woodland Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)
+- Same series #3 (research memo): [Ethernet LAN US4063220A (1975)](/en/notes/28-internet-crypto-patent-memo-02)

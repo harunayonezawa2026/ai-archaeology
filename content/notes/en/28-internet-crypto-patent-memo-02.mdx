@@ -1,0 +1,81 @@
+---
+title: "The First Answer to the Question of Connecting Computers: Xerox PARC's 1975 Patent US4063220A and CSMA/CD Ethernet"
+subtitle: "Internet & Cryptography Patents Memo #2 — US4063220A, Xerox Corporation, filed 1975"
+description: "Filed March 1975, US4063220A by Metcalfe, Boggs, Thacker, and Lampson at Xerox PARC describes 3 Mbps packet communication over coaxial cable using CSMA/CD (carrier sensing + collision detection + randomized backoff). A precursor to modern Ethernet, Wi-Fi, data center networks, and cloud infrastructure. Primary source URL confirmed; Claim 1, CSMA/CD details, and 3 Mbps speed retrieved; full text not yet read."
+episode: 28
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "Ethernet", "Xerox PARC", "Metcalfe", "Research Memo", "Networking"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 3
+format: "memo"
+status: "published"
+---
+
+**About research memos:** This entry records a candidate at the stage of confirmed source URL. The full patent description and line-by-line Claim 1 have not been read. Only confirmed facts are stated; inferences are marked as such.
+
+---
+
+## Why dig here
+
+Office PCs connected by LAN. Thousands of servers in a data center talking over 10/40/100 Gbps Ethernet. AWS and Azure binding racks worldwide into clouds. The physical-layer and data-link-layer ancestor of all of this is Ethernet, patented at Xerox PARC in 1975. Fifty years later, wireless (Wi-Fi 802.11) and satellite (Starlink) still rest on the problem setting Ethernet posed: multiple parties sharing a single medium. We dig the ancestral patent.
+
+## Basic information
+
+- **Patent number**: US4063220A
+- **Title**: Multipoint data communication system with collision detection
+- **Filed**: March 31, 1975
+- **Granted**: December 13, 1977
+- **Inventors**: Robert M. Metcalfe, David R. Boggs, Charles P. Thacker, Butler W. Lampson (4 inventors)
+- **Original Assignee**: Xerox Corporation (Palo Alto Research Center, PARC)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US4063220A/en) (URL confirmed; Claim 1, CSMA/CD architecture, and 3 Mbps speed retrieved)
+- **Legal status**: Expired (already expired — 20 years from filing, 17 years from grant)
+
+Among the four inventors, Butler Lampson and Charles Thacker received ACM Turing Awards as architects of the Xerox Alto (Lampson 1992, Thacker 2009). Metcalfe received the ACM Turing Award in 2022 for inventing Ethernet and founding 3Com (1979). **Three of the four inventors are Turing Award laureates** — an unusually concentrated lineup.
+
+## What the patent describes (from Google Patents)
+
+The CSMA/CD (Carrier Sense Multiple Access with Collision Detection) core is described in the patent as five elements.
+
+1. **Deference Mechanism (carrier sensing)**: Each station monitors cable status with signal "d" and "defers to existing communication" if a transmission is in progress. Transmission is attempted only after the channel becomes silent.
+
+2. **Collision Detection**: Each transceiver includes "a delay circuit connecting between the signal lead and one input terminal of an exclusive OR gate," comparing transmitted data against actual cable contents bit by bit.
+
+3. **Randomized Retransmission**: When a collision occurs, both stations "abort the transmission and will not retransmit until each one waits for a predetermined interval of time" selected by a weighted random number generator.
+
+4. **Statistical Coordination**: A collision counter weights the backoff interval based on cable usage rate. Repeated collisions extend the wait — an adaptive design.
+
+5. **Network Topology**: Coaxial cable segments with passive T-connectors (taps) connect transceivers to multiple stations operating at **approximately 3 megabits per second**.
+
+This is a distributed coordination algorithm: multiple parties contend for the same medium, and on collision they wait random intervals before retrying. The choice not to place a central arbiter has been carried into wireless LANs and parts of IoT protocols.
+
+Xerox published this Ethernet specification jointly with DEC and Intel in 1980 as the open DIX Ethernet specification, later standardized as IEEE 802.3. **Xerox's choice not to monopolize the patent and to contribute to standardization** is widely cited as a reason Ethernet became the industry standard (we have not in this round reached the primary documents recording the standardization agreement).
+
+## Connections to modern systems (hypotheses)
+
+| US4063220A (1975) | Modern networking technology | Assessment (pre-full-read hypothesis) |
+|---|---|---|
+| 3 Mbps half-duplex CSMA/CD on coaxial cable | 1Gbps/10Gbps Ethernet (full-duplex switched) | Similar (the frame format lineage is preserved; CSMA/CD itself is no longer used in full-duplex switched environments) |
+| Coaxial bus topology with T-taps | Twisted-pair star topology with switches | Similar (the physical layer is different; only the logical identity called "Ethernet" is preserved) |
+| Collision detection + randomized backoff | Wi-Fi 802.11 CSMA/CA (collision avoidance) | Similar (in wireless, collision detection is hard, so the design morphed to "avoidance"; the underlying distributed coordination algorithm is preserved) |
+| Distributed design with no central arbiter | Switched fabric, data center cross-bars, Clos topology | Metaphor (a major shift to designs that do place a central element; only the framing of "distributed coordination" is partially shared) |
+| Passively shared medium | Cloud shared resources (virtual networks, container networks) | Metaphor (from physical to virtual layer; the framing of "multiple parties sharing" is preserved) |
+
+**The most important development since 1975**: Ethernet, originally a design where "multiple stations physically share the same cable," has shifted dramatically to "physically separated by switches, logically virtualized by VLAN/VXLAN." **CSMA/CD itself is effectively unused in modern wired Ethernet** (collisions cannot occur in principle in a full-duplex switched environment). However, the name "Ethernet" and the frame format (MAC address — destination/source — type — payload — FCS) have been carried in lineage from 1975. **The name and concept persisted; the implementation evolved into something else.**
+
+**These are pre-full-read hypotheses. They will be revised after the full Claim 1 and figure details are confirmed.**
+
+## What's not confirmed
+
+- Full Description text (Manchester encoding scheme, bit synchronization, frame length limits and their rationale)
+- Primary documents on the 1980 DIX Ethernet open specification agreement
+- Xerox patent licensing terms at IEEE 802.3 standardization (the conditions of free contribution)
+- Design differences vs. ALOHAnet (1971, University of Hawaii) — the name CSMA descends from the ALOHAnet → Ethernet lineage
+- Forward citation count (not yet confirmed on Google Patents)
+- Specific role allocation among the four inventors (public sources say Metcalfe was architect, Boggs handled implementation, and Thacker/Lampson contributed from the Alto side, but primary documents not confirmed)
+
+---
+
+Reference links:
+- Original patent: [US4063220A on Google Patents](https://patents.google.com/patent/US4063220A/en)
+- Same series #1 (research note): [Woodland Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)
+- Same series #2 (research memo): [HTTP Cookie Patent US5774670A (1995)](/en/notes/27-internet-crypto-patent-memo-01)

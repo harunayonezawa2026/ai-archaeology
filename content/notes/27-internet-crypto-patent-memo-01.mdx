@@ -1,0 +1,78 @@
+---
+title: "HTTPはステートレスだ──Netscape特許US5774670Aが1995年に書いた『クッキー』の設計"
+subtitle: "インターネット・暗号特許 発掘メモ #1 — US5774670A、Netscape Communications、1995年出願"
+description: "1995年10月出願、Lou Montulli（Netscape）によるUS5774670A。HTTPのステートレス問題に対し、サーバーが状態オブジェクトをクライアントに保存させる『persistent client state』として『クッキー』を記述する。Set-Cookieヘッダの構文・domain/path属性の照合・secureフラグまで明記。後にMeta Platformsへ譲渡。現代のCookie規制・3rd-party Cookie廃止・JWT/OAuthとの設計差を読む補助線。Google Patentsより基本情報・Claim 1取得済み・本文未読。"
+episode: 27
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "HTTPクッキー", "Netscape", "Lou Montulli", "発掘メモ", "プライバシー"]
+series: "インターネット・暗号特許"
+seriesNumber: 2
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim 1の逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+ECサイトのカートに商品が残っている。Googleにログインしたままタブを閉じても次回再ログイン不要。Amazonが「あなたへのおすすめ」を表示する。SNSの「ログイン状態の保持」。これら全部の技術的な前提は、HTTPが「ステートレス（毎回の通信が独立、前の状態を覚えない）」という設計に対し、Netscapeが1995年に提案した「クッキー」の仕組みだ。**今ではプライバシー規制（GDPR、ePrivacy指令）の主要対象となり、Chromeは3rd-party Cookieの段階的廃止を進めている**。30年前にNetscapeが特許に書いた設計を読む。
+
+## 特許の基本情報
+
+- **特許番号**：US5774670A
+- **タイトル**：Persistent client state in a hypertext transfer protocol based client-server system
+- **出願**：1995年10月6日
+- **成立**：1998年6月30日
+- **発明者**：Lou Montulli（**単独**。候補DBに記載されていたJohn Giannandreaは本特許の発明者欄には記載されていない、Google Patents本人特許表紙で確認済み）
+- **Original Assignee**：Netscape Communications Corp
+- **後の譲受人**：Meta Platforms Inc（Netscape資産買収経由で承継）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US5774670A/en)（URL確認済み・Abstract・Claim 1取得済み）
+- **Legal status**：要確認（Forward citationsとともに本文精読時に確認予定）
+
+## 核心（Google Patents取得済み情報）
+
+Claim 1の核心はこうだ。HTTPサーバーがクライアントに対して、要求されたファイルだけでなく**state object（状態オブジェクト）**も同時に送信する。クライアントはその状態オブジェクトをローカルに保存し、次回以降のリクエストで該当サーバーに送り返す。
+
+これがHTTPステートレス問題への解決策──「サーバー側で状態を持つのではなく、クライアントに状態を持たせる」設計だ。
+
+特許には具体的な構文も記載されている。
+
+> Set-Cookie: NAME=VALUE; expires=DATE; path=PATH; domain=DOMAIN_NAME; secure
+
+これが現在もブラウザが解釈するSet-Cookieヘッダの構文そのものだ。30年前の特許文書とMDN Web Docsの最新仕様が一致する。
+
+照合ロジックも記述されている。クッキーは**domainとpath属性が要求URLと一致するときだけ**サーバーに送り返される。これがいわゆる「同一オリジンポリシー」のクッキー版で、現在のブラウザのSameSite属性・Cookie Partitioning（Storage Partitioning）の前史だ。
+
+`secure`フラグの記載もあり、HTTPS通信時のみクッキーを送信する設計が1995年時点で含まれていた。HTTPSがまだ普及していない時代に、暗号化通信時のみ送るという属性が設計に組み込まれていた。
+
+## 現代との接続仮説
+
+| US5774670A（1995年） | 現代のWeb設計 | 評価（仮説段階） |
+|---|---|---|
+| Set-Cookieヘッダ構文 | 現行HTTP仕様（RFC 6265）・MDN記載のCookie仕様 | 同一（基本構文は1995年から大きく変わっていない、SameSite等の追加属性が増えた） |
+| domain/path属性によるスコープ制御 | SameSite=Strict/Lax/None・Cookie Partitioning | 類似（スコープ制御の問題意識は共通、3rd-party追跡対策で属性が追加された） |
+| secureフラグ（HTTPS通信時のみ送信） | Strict-Transport-Security・HTTPSオンリーモード | 類似（暗号化通信前提のクッキー扱いという問題意識が共通） |
+| サーバーが状態を持たずクライアントに保存させる設計 | JWT（JSON Web Token）・OAuth 2.0 access token | 類似（クライアント側状態保管の問題意識は共通、ただしJWTは署名による改竄検知付きで信頼チェーンの設計が異なる） |
+| クッキーによるパーソナライゼーション・トラッキング | 3rd-party Cookie廃止（Chrome段階的廃止）・GDPRクッキー同意バナー | 類似（同じクッキーが「便利な状態保持」と「プライバシー侵害」の両面を持つことが顕在化した） |
+
+**最も重要な変化**：1995年の設計時、クッキーは「便利な状態保持」として書かれた。Abstract・Claim 1にプライバシー侵害への懸念は記載されていない。30年経過した現在、3rd-party Cookieによる広告トラッキングがプライバシー侵害の象徴となり、Apple Safariの3rd-party Cookieブロック（2017年〜段階的に強化）、Chrome Privacy Sandboxの3rd-party Cookie段階的廃止、GDPR・ePrivacy指令・日本のCookie同意バナー普及という規制の波が起きている。**設計時の「便利」と現代の「規制対象」のギャップが、この特許を読む補助線になる**。
+
+**これは一次資料の全文精読前の仮説。Claim 1の他のクレーム（特に複数発明者か単独発明者か、補正履歴）詳細確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（クッキーのライフサイクル管理の詳細、削除ロジック、最大保存数）
+- Forward citations件数（Google Patents未確認）
+- Legal status（失効済みか有効か、Meta Platformsへの譲渡経緯）
+- 候補DBに「Montulli + Giannandrea」と記載されていたが、Google Patents表紙では発明者はLou Montulli単独。**DB情報が誤りである可能性が高い**。Giannandreaの関与は別の特許または別の文書に記載されている可能性があり、要追加調査
+- Netscape内部の議論経緯（クッキーの設計判断、なぜサーバー側ではなくクライアント側に状態を持たせたか）
+- 1995年12月のFinancial Timesスクープ（クッキー存在の最初の一般報道）以降の社会的議論の経緯
+
+---
+
+参考リンク：
+- 元特許：[US5774670A on Google Patents](https://patents.google.com/patent/US5774670A/en)
+- 同シリーズ #1（発掘ノート）：[Woodlandバーコード US2612994A（1949年）](/notes/26-internet-crypto-patent-01)
+- 同シリーズ #3（発掘メモ）：[Ethernet LAN US4063220A（1975年）](/notes/28-internet-crypto-patent-memo-02)
