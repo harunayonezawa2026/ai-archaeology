@@ -1,5 +1,5 @@
 ---
-title: "Token Ring が30年前に正しかったことを、AI時代の InfiniBand が証明している"
+title: "Token Ring が30年前に設定した問題意識は、AI/HPC 時代のネットワーク設計で再び中心になっている"
 subtitle: "Standard Archaeology #1 — IEEE 802.5（1989標準化、2001でGigabit化、Ethernetに完敗）の決定論的アクセス制御は、現代の AI/HPC 高速ネットワークで復活している"
 description: "1989年に IEEE 802.5 として標準化された Token Ring は、Ethernet の確率的アクセスに完敗して廃止された。だが『決定論的（deterministic）アクセス制御』という核心思想は、いま InfiniBand / NVLink / RDMA / Ultra Ethernet で全面的に復活している。Token Ring は負けたのではなく、30年早すぎただけだった。"
 episode: 4
@@ -81,7 +81,7 @@ GPT-5 クラスの大規模モデル学習では、**全GPUが同期して通信
 | Web サーバー | 多数の独立した小トラフィック |
 | **AI 集合通信** | **全ノードが同時に大トラフィック発生** |
 
-AI 集合通信では、**Ethernet の確率的アクセスが致命傷**になります。全GPUが同時に送信しようとすると、衝突が爆発し、再送が雪崩を打ち、**学習1ステップが秒単位で遅延する**。これが大規模学習でほぼ全ての主要なボトルネックの正体です。
+AI 集合通信では、**汎用 Ethernet の限界**が顕在化します。現代のデータセンター Ethernet はスイッチ型全二重で、旧来のCSMA/CDによる物理的な「衝突」は発生しません。しかし全GPUが同時に大量送信すると**輻輳（congestion）・tail latency・パケットロス・再送**が問題になります。これを制御するための PFC / ECN / 輻輳制御の複雑さが、AI 集合通信の主要なボトルネックです。
 
 そこで、現代の AI / HPC ネットワークでは「**決定論的アクセス制御**」が必須になります：
 
@@ -92,7 +92,7 @@ AI 集合通信では、**Ethernet の確率的アクセスが致命傷**にな�
 | **RDMA over Converged Ethernet（RoCE）** | DCB（Data Center Bridging）で擬似決定論 |
 | **Ultra Ethernet（2024-）** | Open Compute Project が Ethernet に決定論性を追加する規格化運動 |
 
-**これらは全部、Token Ring の「衝突を起こさない」哲学の再発明です**。
+**これらはすべて、Token Ring が30年前に設定した「衝突を起こさない決定論的制御」という問題意識を、現代の要件に合わせて再実装したものです**。
 
 ## 4. Token Ring がやろうとしていたこと、もう一度
 
@@ -175,6 +175,32 @@ Token Ring は「製品化されない最終仕様（IEEE 802.5z）が存在す�
 ## 9. 次回予告
 
 「Standard Archaeology #2」では、**CORBA（1991年標準化、REST/gRPC に敗北したが「強型付けIDL」が復活）**を扱う予定です。1990年代の分散オブジェクトの夢と、現代の gRPC + Protocol Buffers の構造的類似を発掘します。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- Token Ring Wikipedia（英語版）に仕様・歴史・廃止経緯が記載されている
+- Ultra Ethernet Consortium 公式サイト（ultraethernet.org）の存在と活動を確認
+- InfiniBandのフロー制御（クレジットベース）の概要はWikipedia・公開ドキュメントで確認
+
+**著者の解釈：**
+- Token RingとInfiniBandを「決定論的制御という問題意識の共通点で結ぶ」のは著者の解釈。実装・設計は大きく異なる
+- 「負けたのではなく30年早すぎただけ」は魅力的なフレーミングだが、Token Ringが「負けた理由」（コスト・普及・エコシステム）を当時のAI/HPCニーズで評価するのは反事実的
+
+**比喩・アナロジー：**
+- 「制御トークン ≒ クレジットベースフロー制御」「リングトポロジ ≒ Fat Tree」は概念レベルの類比。設計として別物
+- 「Token Ringの再発明」という表現は比喩的。InfiniBandはToken Ringを参照せず独立に設計されている
+
+**未確認：**
+- IEEE 802.5 標準本文（有料・未入手。規格詳細はWikipedia・業界誌経由の間接情報）
+- InfiniBandの設計者がToken Ringを参照・意識したかどうか
+- Ultra Ethernet の技術詳細仕様
+
+**この比較が破綻する点：**
+- 現代データセンターEthernetはスイッチ型全二重でCSMA/CD衝突は存在しない。AI/HPCで問題になるのは物理衝突でなく輻輳・tail latency・PFC/ECN。この違いを「Ethernetの確率的アクセス」と一括りにすると正確でない
+- InfiniBandのクレジット制御とToken Ringのトークン循環は目的（フロー制御 vs アクセス順序制御）も仕組みも異なる。「同じ哲学」は成り立つが「再発明」は言い過ぎ
 
 ---
 

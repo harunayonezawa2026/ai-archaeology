@@ -1,7 +1,7 @@
 ---
-title: "Samsungが1996年に世界初1Gb DRAMを作った事実を、Samsung自身のIRですら忘れている"
+title: "Samsungが1996年に世界初1Gb DRAMを作った事実は、Annual Reportアーカイブからは辿れない"
 subtitle: "IR Archaeology #1 — 1次資料の壁と、業界の集合的記憶喪失"
-description: "Samsung 公式 IR には2008年以前のAnnual Report が存在しない。SEC EDGAR は 403。TSMC IR も 403。Wayback Machine もブロック。1次資料が完全に壁の向こうにある状態で、Wikipedia から Samsung が1996年に世界初1Gb DRAM を作った事実を発掘し、現代 HBM4 の直系の祖先として再評価する試み。"
+description: "Samsung 公式 IR には2008年以前のAnnual Report が存在しない。SEC EDGAR は 403。TSMC IR も 403。Wayback Machine もブロック。1次資料が完全に壁の向こうにある状態で、Wikipedia から Samsung が1996年に世界初1Gb DRAM を作った事実を発掘し、現代 HBM4 の高密度DRAMスケーリング技術の前史として再評価する試み。"
 episode: 3
 publishedAt: "2026-05-01"
 tags: ["AI考古学", "IR Archaeology", "Samsung", "DRAM", "HBM", "メモリ", "発掘ログ"]
@@ -13,15 +13,15 @@ status: "published"
 ## 結論を先に
 
 **Samsung Electronics は1996年に、世界初の1Gbit DRAM を開発しました**。
-これは現代の HBM4（2025年量産化）の **約30年前の直系の祖先**です。
+これは現代の HBM4（2025年量産化）につながる**高密度DRAMスケーリング技術の、約30年前の重要な前史**です。
 
-そして、この事実を**Samsung 自身のIRも、業界誌も、ほとんど語っていません**。
+そして、この事実は **Samsung の公式 History（semiconductor.samsung.com）には「世界初」として記録されているものの、Annual Report や IR アーカイブからは辿りにくく、業界誌もほとんど文脈ごと語りません**。
 
 理由は2つ：
 - Samsung 公式 IR サイトには **2008年以降のAnnual Report しか掲載されていない**（私が今日確認）
 - 1996年は同時期にメモリバブル崩壊があり、業界全体が「成功事例を語らない年」になった
 
-この記事は、IR資料の壁にぶつかりながら、Samsung 自身が忘れた1996年の偉業を Wikipedia から逆引きする発掘ログです。
+この記事は、IR資料の壁にぶつかりながら、Annual Report アーカイブからは辿りにくい1996年の偉業を Wikipedia から逆引きする発掘ログです。
 
 ## 1. 1次資料が完全に壁の向こうにあった
 
@@ -102,9 +102,9 @@ Samsung Electronics の歴史で、特に1980-2000年代の半導体事業発展
 | 低消費電力でのリフレッシュ | 1.2TB/s クラスの帯域 |
 | ビット密度のスケーリング | 3D-IC 設計のスケーリング |
 
-問題の構造が**完全に同型**です。1996年の Samsung が解いた「微細・高密度・低消費電力」のスケーリング技術は、現代 HBM の「3D・高帯域・低消費電力」のスケーリング技術に**直接伝承されています**。
+問題意識が**重なっています**。ただし、HBM の核心である TSV（Through-Silicon Via）積層・広帯域 I/O・パッケージ統合は1996年時点には存在しない別レイヤーの技術です。1996年の Samsung が解いた「微細・高密度・低消費電力」のスケーリング課題は、現代 HBM につながる高密度DRAM系譜の**前史として位置づけられます**。
 
-つまり、**HBM はある日突然生まれた技術ではなく、1996年に始まった単一系統の進化の最新形**です。
+つまり、**HBM はある日突然生まれた技術ではなく、高密度DRAMスケーリングという一貫した問題意識の上に積み上がった技術**です。
 
 ## 4. なぜこれが忘れられたか（推測）
 
@@ -134,7 +134,7 @@ Samsung Electronics の歴史で、特に1980-2000年代の半導体事業発展
 - 当時の研究者は退職・引退、口承伝承も途絶える
 - Wikipedia には1行で書かれるが、それ以上の文脈は失われる
 
-**Samsung 自身が「うちが1996年に1Gbit DRAM を作りました」と現代 IR で語ることはまずありません**。なぜなら、現代の Samsung が売り込みたいのは HBM4 と AI半導体であって、30年前のレガシー研究ではないから。
+**Samsung の公式 History（semiconductor.samsung.com）には「世界初1Gbit DRAM」として記録されています。しかし現代の Annual Report や IR では語られません**。現代の Samsung が売り込みたいのは HBM4 と AI半導体であって、30年前の研究マイルストーンではないから。
 
 しかし、**HBM4 を理解するには1996年の1Gb DRAM を理解する方が早い**のです。問題の構造が同じだからです。
 
@@ -160,6 +160,33 @@ Wikipedia は要約のため、「**1996年: 1 GB DRAM開発**」と1行で書�
 「IR Archaeology #2」では、**Hyundai Electronics の1999年 ADR 上場時のF-1 文書**にチャレンジします。SEC EDGAR の壁を別ルート（StockAnalysis.com / SEC API / 第三者アーカイブ）で突破できるか試します。
 
 また、本記事のテーマ「**企業自身が忘れた偉業**」は今後のシリーズで何度も出てきます。**忘れる側にも理由がある**。それを掘ることが、現代を理解する一番の近道です。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- Samsung Electronics Wikipedia（英語版）Historyセクションに1992/1994/1996年の各DRAMマイルストーンが記載されている
+- Samsung公式IRサイト（samsung.com/global/ir）は2008年以降のみ掲載（確認済み）
+- Samsung公式History（semiconductor.samsung.com）に「Develops the industry's first 1Gb DRAM」として記録あり（記事タイトルで「忘れている」と書いたのは不正確）
+- Samsung 2009 Annual Report PDF は取得済み（ただしテキストレイヤーなし・OCR未実施）
+
+**著者の解釈：**
+- 1996年のDRAMスケーリング課題とHBMの「前史」という接続は著者の解釈。技術的直接伝承の証拠を一次資料で確認していない
+- 「業界の集合的記憶から消えた」はAnnual Report・業界誌の不在という観測から導いた著者判断
+
+**比喩・アナロジー：**
+- 「高密度DRAM → HBM」の系譜説明は問題意識レベルの連続性の比喩。設計・アーキテクチャの直接継承を主張するものではない
+- 「地味な技術マイルストーンは派手な経営勝利の影に消える」は歴史パターンとして提示しているが、Samsungの社内意思決定の一次資料はない
+
+**未確認：**
+- Samsung 2009 Annual Report 本文の詳細内容（OCR未実施）
+- 1996年当時の業界誌（EE Times等）の報道内容
+- Samsung社内でのDRAM→HBM技術継承の経路
+
+**この比較が破綻する点：**
+- HBMの核心技術（TSV積層・広帯域I/O・パッケージ統合・3D-IC設計）は1996年には存在しない別レイヤーの技術。「同じ問題を解いた」ではなく「同じ方向の問題意識がある」
+- 「Samsung自身が忘れている」という表現は不正確。公式Historyには記録されており、忘れているのはIR/Annual Reportからの導線
 
 ---
 
