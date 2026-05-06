@@ -1,0 +1,146 @@
+---
+title: "Running Backpropagation on Dedicated Hardware: A 1993 Philips Patent and What It Tells Us"
+subtitle: "AI & ML Patents #3 — US5517598A, US Philips Corp, filed 1993"
+description: "Filed in 1993, US5517598A describes a hardware architecture where the same processor structure handles both forward inference and error backpropagation, using transpose matrices to route error signals. The problem it posed — running learning on dedicated hardware — overlaps in intent with modern GPU and TPU design, though the underlying architecture is fundamentally different. Full text retrieved from Google Patents."
+episode: 20
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "AI & ML Patents", "Backpropagation", "Philips", "Neural Network Hardware", "Expired Patent"]
+series: "AI & ML Patents"
+seriesNumber: 3
+status: "published"
+---
+
+[AI & ML Patents #2 (LeCun's weight-sharing patent US5067164A)](/en/notes/17-ai-ml-patent-02) covered how a 1989 Bell Labs patent anticipated the central problem of modern CNNs.
+
+This entry digs into a different question: what if the learning computation itself — backpropagation — could be baked into hardware?
+
+## The short answer
+
+Patent number: [US5517598A](https://patents.google.com/patent/US5517598A/en)
+Title: Error back-propagation method and neural network system
+Filed: January 28, 1993
+Granted: May 14, 1996
+Inventor: Jacques A. Sirat (sole inventor)
+Original Assignee: US Philips Corp
+Legal Status: **Expired** (fee-related lapse)
+
+Rumelhart et al. established backpropagation as the training method for neural networks in 1986. Seven years later, someone at Philips asked: can this computation run in hardware — not software?
+
+The answer in this patent is a hardware architecture where two groups of processors, built on the same structure, handle forward inference and backward error propagation in parallel. The transpose matrix that backpropagation requires mathematically is directly mapped onto the hardware.
+
+Modern GPUs and TPUs solve exactly this problem — accelerating training in dedicated hardware. This patent is a prior example of the same question. The architecture is fundamentally different. What overlaps is the intent, not the implementation.
+
+---
+
+**Separating technical inheritance from shared intent.**
+
+This patent is not the ancestor of modern GPU training. But the design question — "how do we run learning computation in hardware, using the same structure for both forward and backward passes?" — overlaps with what modern AI accelerators are built around. The accurate reading is "arrived at a strikingly similar problem" rather than "technically inherited."
+
+---
+
+## 1. How this was selected
+
+Week 1 theme: AI & Machine Learning Patents. After the LeCun series (weight sharing ep17, tangent vectors ep18, multi-resolution ep19), the next gap was "how to run the training computation in hardware." This patent from the candidate database (PA-008, priority score 15) was flagged as a good complement to the IBM ZISC patent ([Patent Archaeology #1, ep02](/en/notes/02-patent-archaeology-01)). ZISC was an inference-only chip. US5517598A addressed training — the missing half.
+
+```
+[STEP 1] Selected PA-008 from candidate DB (~/ai-archaeology/db/candidates.tsv, priority 15)
+[STEP 2] Located US5517598A on Google Patents
+[STEP 3] Retrieved Abstract, Claim 1, and technical description via WebFetch (full text confirmed)
+[STEP 4] Selection rationale: "hardware backpropagation" pairs naturally with ZISC (hardware inference)
+```
+
+Source status: Abstract, Claim 1, and core technical description retrieved from Google Patents via WebFetch. Full Description has not been read line by line.
+
+## 2. What the patent describes
+
+From the Google Patents abstract:
+
+> A method and apparatus for error back-propagation in a neural network system. A first group of processing devices performs a resolution step; a second group of similar processing devices performs a training step while back-propagating errors computed by a central processing unit. The synaptic coefficient matrix Cij of the first group and the transpose matrix Tji of the second group are updated simultaneously. The updating of synaptic coefficients is executable by multipliers and adders.
+
+Two groups, one structure:
+
+**First group** — forward pass (inference). Takes input, multiplies by synaptic coefficient matrix Cij, produces output.
+
+**Second group** — backward pass (training). Receives error signals from a central processing unit, uses transpose matrix Tji (= Cij transposed) to propagate errors layer by layer backward.
+
+The key design decision: both groups use the same hardware structure. You don't need separate circuits for inference and training. The mathematical fact that backpropagation requires the transpose of the weight matrix is directly implemented in hardware.
+
+Claim 1 specifies K successive layers, determination of output state Vjk for each neuron, read/write coefficient memory (weights stored in RAM), and output generation by weighted linear combination.
+
+## 3. Mapping to modern systems
+
+| US5517598A (1993) | Modern GPU/AI training | Assessment |
+|---|---|---|
+| Transpose matrix Tji = Cij^T for error propagation | W^T × δ gradient computation on GPU | Similar (mathematically identical; implementation substrate is fundamentally different) |
+| Same processor structure for inference and training | Same GPU runs forward and backward passes | Similar (shared intent; implementation is entirely different) |
+| Multipliers and adders update synaptic coefficients | MAC operations in CUDA/cuDNN weight updates | Similar (MAC is the same arithmetic; hardware scale is entirely different) |
+| Dedicated hardware circuit runs training | Google TPU / Habana Gaudi / Cerebras AI accelerators | Similar (shared intent: "learning on dedicated hardware") |
+| Central processing unit computes and distributes error | CPU-GPU gradient scheduling | Analogy (the idea of separating control from computation is directionally similar) |
+
+**Notes on the table:**
+
+Rows 1 and 3 share the same mathematics. The use of transpose matrices in backprop and weight updates by multiply-accumulate both come directly from Rumelhart et al. (1986). This patent and modern GPU implementations are implementing the same math. The hardware architectures are entirely different.
+
+Row 4 is the most interesting overlap. Philips posed the question "run learning on dedicated hardware" in 1993. Google made it famous with the TPU announcement in 2016 — 23 years later. No evidence found in today's sources that this patent influenced TPU design. This is a prior example of the same intent.
+
+Row 5 (central CPU distributes errors → CPU-GPU scheduling) is analogy-level. Modern distributed training — gradient averaging across many GPU nodes — is structurally different in scale and design.
+
+## 4. Why it's rarely cited (inference)
+
+Two probable reasons. Both are inferences; neither is confirmed by primary sources.
+
+**Reason 1: Filed at the tail end of the AI winter**
+
+The period 1987–1993 was marked by reduced funding and skepticism about neural networks after the second AI boom faded. A 1993 patent proposing dedicated neural network training hardware had no confirmed large-scale application to justify the investment. The case for specialized silicon depended on believing neural networks would scale — a belief that wasn't broadly held yet.
+
+**Reason 2: The GPU answer arrived via a different path**
+
+AlexNet (2012) demonstrated that GPU-based parallel computation — general-purpose, not specialized — could accelerate neural network training dramatically. Once that worked, the analog-circuit specialized architecture of 1993 had no moment of recognition.
+
+Whether this patent led to any Philips product is not confirmed by today's source retrieval.
+
+## 5. Why this belongs in AI Archaeology
+
+Every time a phone unlocks by facial recognition, every time a translation runs in a second — there's a trained model behind it. Training that model requires running backpropagation at scale. Modern hardware has an answer to that. Philips had a draft of the question in 1993.
+
+Before LLMs, reading 50 pages of English patent text to extract the design intent cost more than it was worth. Today the cost of doing this — WebFetch, structured extraction, comparison — has dropped. That's why AI Archaeology is possible now.
+
+## 6. Pitfalls
+
+**Pitfall 1: Don't call this a "predecessor" of the TPU**
+
+The Google TPU runs TensorFlow matrix operations on a large array of Matrix Multiplication Units. US5517598A describes two groups of processors using transpose matrices. The designs are structurally different. "Overlapping intent around hardware learning" is accurate; "predecessor" or "ancestor" is not.
+
+**Pitfall 2: Don't assert Jacques A. Sirat's exact role at Philips**
+
+US Philips Corp is confirmed as the original assignee. Whether Sirat was a Philips Research Labs employee or an external inventor is not confirmed from today's sources.
+
+**Pitfall 3: Don't call this the "first" hardware backpropagation patent**
+
+Other efforts in the same direction may have existed in 1993. Competing patents and parallel research were not retrieved today. This is one prior example, not a unique one.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts**
+From Google Patents: US5517598A / filed 1993-01-28 / granted 1996-05-14 / inventor Jacques A. Sirat (1 person) / original assignee US Philips Corp / legal status Expired (Fee Related) / Abstract confirmed / Claim 1 confirmed (K successive layers, synaptic coefficient matrix Cij, transpose matrix Tji, read/write coefficient memory, linear combination output) / two-group processor design, transpose-matrix error propagation, multiplier-adder coefficient updates
+
+**Author's interpretation**
+"Overlaps in intent with modern GPU/TPU learning" is the author's interpretation. No primary source confirming technical inheritance (e.g., TPU design documents referencing US5517598A) was found. The "AI winter" and "GPU arrived instead" explanations are inferences — not confirmed by Philips internal records.
+
+**Analogies**
+Row 5 of the table (central CPU and distributed gradient aggregation) is analogy-level. The "dedicated hardware for learning" to TPU mapping is assessed as similar in intent, not in design.
+
+**Not confirmed**
+Whether Philips produced any product from this patent / line-by-line reading of Description / forward citation count / comparison with competing 1993-era patents / Jacques A. Sirat's background / exact expiration date (estimated ~2016 based on 20-year term from 1996 grant; not confirmed)
+
+**Where the comparison breaks down**
+"Same math" is accurate. But modern GPU training involves thousands to tens of thousands of parallel cores running matrix operations. This patent's "two groups of processors" assumes a fundamentally different scale. The difference isn't quantitative — it reflects a different design philosophy. "Implementing the same mathematics" is true. "Same architectural approach" is an overstatement.
+
+---
+
+Reference links:
+- Original patent: [US5517598A on Google Patents](https://patents.google.com/patent/US5517598A/en)
+- AI & ML Patents #2 (research note): [LeCun weight sharing US5067164A (1989)](/en/notes/17-ai-ml-patent-02)
+- Patent Archaeology #1 (research note): [IBM ZISC US5717832 (1995)](/en/notes/02-patent-archaeology-01)

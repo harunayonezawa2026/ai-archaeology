@@ -1,0 +1,78 @@
+---
+title: "Replacing Synaptic Weights with Filters: A 1991 NASA Patent on Time-Series Neural Networks"
+subtitle: "AI & ML Patents Memo #5 — US5253329A, NASA, filed 1991"
+description: "Filed in 1991, US5253329A by NASA researchers Villarreal and Shelton replaces scalar synaptic weights with adaptive digital filters, encoding temporal dependencies directly into network connections. A prior example of the same problem intent that later led to LSTMs and Transformers. Primary source URL confirmed; full text not yet read."
+episode: 21
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "AI & ML Patents", "NASA", "Time Series", "Neural Network", "Research Memo"]
+series: "AI & ML Patents"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**About research memos:** This entry records a candidate at the stage of confirmed source URL. The full patent description and line-by-line Claim 1 have not been read. Only confirmed facts are stated; inferences are marked as such.
+
+---
+
+## Why dig here
+
+"AI struggles with video, audio, and time-series data" — this remained a live problem through the 2010s. LSTM and Transformers arrived as solutions. But in 1991, six years before Hochreiter & Schmidhuber's LSTM paper (1997), NASA researchers filed a patent on a neural network built to handle temporal data. They replaced synaptic weights — the scalar values that multiply signals — with adaptive digital filters. The question is how this problem statement maps to modern sequence models.
+
+## Basic information
+
+- **Patent number**: US5253329A
+- **Title**: Neural network for processing both spatial and temporal data with time based back-propagation
+- **Filed**: December 26, 1991
+- **Granted**: October 12, 1993
+- **Inventors**: James A. Villarreal, Robert O. Shelton (2 inventors)
+- **Original Assignee**: National Aeronautics and Space Administration (NASA)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US5253329A/en) (URL confirmed; Abstract and Claim 1 retrieved)
+- **Legal status**: Expired (Fee Related)
+
+## What the patent describes (from Google Patents)
+
+A standard neural network synapse holds a single scalar weight — one number that scales the input signal.
+
+This patent's central move: replace that scalar with an **adaptive digital filter**. A filter holds multiple coefficients and can reference not just the current input but past inputs. This means each connection can encode "how input at time t relates to input at t-3."
+
+From the abstract:
+
+> Neural network algorithms have demonstrated capability for modeling spatial information. The present invention introduces a technique for adding a time dimension to the conventional backpropagation algorithm. Synaptic weights between artificial neurons are replaced by adaptively adjustable filters, providing multiple weights representing relevance and time dependency instead of a single weight.
+
+The difference from Jordan-type (1986) and Elman-type (1990) recurrent networks: memory location. Jordan/Elman use special memory layers or context units to store past state. In this patent, memory is distributed across connections (the synapses themselves).
+
+Claim 1 specifies time-sequence inputs X(n), X(n-1), X(n-2)..., multiple adaptive filters F1i through Fki per input, and a nonlinear output junction.
+
+**Why NASA built this (inference)**: Aerospace applications involve substantial time-series data — flight telemetry, sensor streams, control systems. This is the likely motivation; not confirmed from the Description text, which hasn't been read.
+
+## Connections to modern systems (hypotheses)
+
+| US5253329A (1991) | Modern technology | Assessment (pre-full-read hypothesis) |
+|---|---|---|
+| Synaptic weight = adaptive digital filter | LSTM/GRU gate-controlled memory | Similar (intent to encode temporal dependency into connections is shared) |
+| Time-sequence input X(n), X(n-1)... | Transformer sequence input | Similar (modeling sequential dependencies) |
+| Memory distributed across connections | TCN (Temporal Convolutional Network) dilated causal convolutions | Similar (time handled in connection structure rather than dedicated memory layers) |
+| Backpropagation extended to time dimension | BPTT (Backpropagation Through Time) | Similar (propagating gradients through time is the same problem) |
+
+**The most important difference**: modern LSTMs learn which memories to pass, forget, and update via gate mechanisms. This patent's filter-based memory is structurally different. Same intent — "handle time" — different solution design.
+
+**These are pre-full-read hypotheses. Claim 1 details will update the table.**
+
+## What's not confirmed
+
+- Full Description text (experimental results, specific NASA application targets)
+- Forward citation count (influence on later time-series neural network research)
+- Specific design differences from Jordan/Elman architectures as described in the patent itself
+- Exact expiration date (estimated ~2013 based on 20-year term from 1993 grant)
+
+## Next action
+
+Read the Description to identify NASA's stated application targets. If forward citations are sparse, "why it didn't spread" becomes the article's framing hook.
+
+---
+
+Reference links:
+- Original patent: [US5253329A on Google Patents](https://patents.google.com/patent/US5253329A/en)
+- AI & ML Patents #3 (research note): [Philips hardware backpropagation US5517598A (1993)](/en/notes/20-ai-ml-patent-03)
+- AI & ML Patents #2 (research note): [LeCun weight sharing US5067164A (1989)](/en/notes/17-ai-ml-patent-02)

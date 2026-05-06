@@ -1,0 +1,88 @@
+---
+title: "Asking a Database in Plain English: A 1989 Patent That Posed the NL2SQL Question"
+subtitle: "AI & ML Patents Memo #6 — US5197005A, Intelligent Business Systems, filed 1989"
+description: "Filed in 1989, US5197005A describes a rule-based system for querying databases using natural language — a knowledge base plus expert system approach to the problem that LLMs now solve with probabilistic generation. The question is the same; the method is fundamentally different. Primary source URL confirmed; full text not yet read."
+episode: 22
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "AI & ML Patents", "Natural Language Processing", "NL2SQL", "Database", "Research Memo"]
+series: "AI & ML Patents"
+seriesNumber: 6
+format: "memo"
+status: "published"
+---
+
+**About research memos:** This entry records a candidate at the stage of confirmed source URL. The full patent description and line-by-line Claim 1 have not been read. Only confirmed facts are stated; inferences are marked as such.
+
+---
+
+## Why dig here
+
+"Ask ChatGPT about your data and it writes the SQL for you" became a real workflow in 2023. But the question — can a non-technical user search a database using plain language? — was posed as a patent in 1989. Then, the proposed answer was a knowledge base plus expert system. Now, the answer is a large language model. The same question, 34 years apart, with structurally different solutions. That gap is worth mapping.
+
+## Basic information
+
+- **Patent number**: US5197005A
+- **Title**: Database retrieval system having a natural language interface
+- **Filed**: May 1, 1989
+- **Granted**: March 23, 1993
+- **Inventors**: Steven Shwartz, Claudio Fratarcangeli, Richard E. Cullingford, Gregory S. Aimi, Donald P. Strasburger (5 inventors)
+- **Original Assignee**: Intelligent Business Systems
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US5197005A/en) (URL confirmed; Abstract and core description retrieved)
+- **Legal status**: Expired (Fee Related)
+
+## What the patent describes (from Google Patents)
+
+Two problems are stated:
+
+**The synonym problem**: A user says "customers" but the database column is called "clients." The vocabulary of natural language and the vocabulary of the database designer don't match.
+
+**The data location problem**: A user says "show me sales" but the system doesn't know which table, which column, which join that requires.
+
+The patent's solution centers on a **knowledge base** — a structured description of the database's schema and its semantic meaning, maintained by a developer.
+
+From the abstract:
+
+> A database developer creates a knowledge base containing structural and semantic descriptions of the application database to be queried. A database-independent standard internal semantic representation is generated, and an expert system identifies the required database elements based on this representation. A debug feature derives an external semantic representation from the internal one, presenting it in a format the developer can easily understand.
+
+The processing flow:
+
+1. Developer builds a **knowledge base** (DB schema + semantic descriptions)
+2. User enters a natural language query
+3. System generates an **internal semantic representation** (intermediate, DB-language independent)
+4. **Expert system** maps semantic representation to DB elements and executes query
+5. **Debug feature** lets developer verify how the query was interpreted
+
+That fifth point — a verification interface for query interpretation — overlaps in intent with modern UX patterns where users confirm LLM-generated SQL before execution.
+
+## Connections to modern systems (hypotheses)
+
+| US5197005A (1989) | Modern technology | Assessment (pre-full-read hypothesis) |
+|---|---|---|
+| Knowledge base (schema + semantic descriptions) | RAG context injection / schema-aware prompting | Similar (informing the system about DB structure in advance) |
+| Internal semantic representation (DB-independent intermediate) | LLM's internal intent representation | Analogy (directionally similar idea of an intermediate representation) |
+| Expert system identifies DB elements | LLM generates NL2SQL | Similar (same problem: natural language → DB operation; solution design is fundamentally different) |
+| Debug feature for query interpretation verification | User-facing SQL inspection UX | Similar (transparency of interpretation is the shared intent) |
+| Rule-based parsing | Probabilistic language generation | Cannot map (design philosophy is entirely different) |
+
+**The most important difference**: this patent's expert system applies predefined rules and a developer-built knowledge base. A modern LLM generates SQL probabilistically, without an explicit rule base. The question — natural language querying of databases — is identical. The solution architecture has no structural continuity.
+
+**These are pre-full-read hypotheses. Claim 1 details will update the table.**
+
+## What's not confirmed
+
+- Claim 1 verbatim text
+- Whether the patent resulted in a commercial product (Intelligent Business Systems business history)
+- Which database systems were targeted (Oracle? dBASE? Other 1989-era systems?)
+- Forward citation count (influence on later NL2SQL research)
+- Background of the 5 inventors
+
+## Next action
+
+Retrieve Claim 1 and look for evidence of commercial deployment. If a product shipped, knowing what users it reached gives the article its framing. If it didn't, "why the knowledge-base approach hit a wall" is the hook.
+
+---
+
+Reference links:
+- Original patent: [US5197005A on Google Patents](https://patents.google.com/patent/US5197005A/en)
+- AI & ML Patents #3 (research note): [Philips hardware backpropagation US5517598A (1993)](/en/notes/20-ai-ml-patent-03)
+- AI & ML Patents Memo #5: [NASA spatiotemporal neural network US5253329A (1991)](/en/notes/21-ai-ml-patent-memo-05)
