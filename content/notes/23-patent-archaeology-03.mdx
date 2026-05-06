@@ -1,0 +1,156 @@
+---
+title: "1997年のAmazonが特許に書いた問い──「単一の動作のみに応答して」注文を完了させるという設計思想"
+subtitle: "Patent Archaeology #3 — US5960411A、Amazon.com, Inc.、1997年出願"
+description: "1997年9月出願、ベゾスほか4名によるUS5960411A。事前保存の購買者情報と単一アクションを組み合わせた「1クリック注文」を記述する。Forward citations 1,630件。Apple Pay・Shop Pay・PayPayが共有する「摩擦ゼロ決済」問題意識の先行例として読める。2017年9月失効済み。Google Patentsよりフルテキスト取得済み。"
+episode: 23
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "Patent Archaeology", "Amazon", "1クリック", "決済UX", "失効特許", "UX設計"]
+series: "Patent Archaeology"
+seriesNumber: 3
+status: "published"
+---
+
+[Patent Archaeology #2（Tesla AC誘導モーター US381968）](/notes/08-patent-archaeology-02)では1888年、電気の時代を切り開いた特許を掘った。
+
+今回は1997年。場所はシリコンバレーの新興ECサイト、Amazon。問いは「ウェブで商品を買うとき、ステップを1回にできるか」だ。
+
+## 結論を先に
+
+特許番号：[US5960411A](https://patents.google.com/patent/US5960411A/en)
+タイトル：Method and system for placing a purchase order via a communications network
+出願：1997年9月12日
+成立：1999年9月28日
+失効：2017年9月（出願から20年）
+発明者：Jeffrey P. Bezos、Peri Hartman、Shel Kaphan、Joel Spiegel（4名）
+Original Assignee：Amazon.com, Inc.
+Legal Status：**Expired**（Lifetime）
+Forward citations：**1,630件**（Google Patents確認）
+
+この特許が立てた問いは一文で書ける。「事前に保存した配送先・支払い情報と、単一のボタンクリックだけで、注文を完了させることができるか」。
+
+Claim 1の冒頭はこう始まる。
+
+> A method of placing an order for an item comprising: under control of a client system, displaying information identifying the item; and in response to only a single action being performed, sending a request to order the item along with an identifier of a purchaser of the item to a server system...
+
+「in response to only a single action」──単一の動作のみに応答して。
+
+この一文に1997年のAmazonが解こうとしていた問題が圧縮されている。
+
+---
+
+「摩擦ゼロ決済」を設計の中心に置く発想は、現代のApple Pay、Google Pay、Shop Pay、PayPay 1タップ決済に共通する。その問いが1997年に特許として書かれていた。技術実装は根本的に異なる。「摩擦を設計で消す」という問題意識の先行例として読む。
+
+---
+
+## 1. どう選んだか
+
+候補DB（`~/ai-archaeology/db/candidates.tsv`）からPA-005を選定（総合優先度17、未実施候補の中で最高位）。
+
+```
+[STEP 1] 候補DB未実施候補のうち総合優先度最高のPA-005（優先度17）を選定
+[STEP 2] 特許番号US5960411AをGoogle Patentsで確認
+[STEP 3] WebFetchでAbstract・Claim 1・図面説明・Forward citationsを取得（確認済み）
+[STEP 4] 選定理由：「摩擦ゼロUX」問題意識の先行例として現代との接続が明確、一般読者に伝わりやすい
+```
+
+一次資料到達状況：Google PatentsからAbstract・Claim 1・基本情報・図面説明・Forward citations件数をWebFetch経由で取得・確認済み。Description本文の逐語確認は未実施。Barnes & Noble訴訟の一次資料（裁判記録）には今回到達していない。
+
+## 2. 特許の核心
+
+Claim 1を三つに分解する。
+
+**表示フェーズ**：クライアントシステムの制御下で、商品を識別する情報を表示する。
+
+**核心フェーズ**：「単一の動作のみに応答して」、購買者識別子とともに注文リクエストをサーバーへ送信する。
+
+**サーバー側の設計**：購買者識別子に紐付いた購買者情報（配送先・支払い方法）を事前に保管している。単一アクション時点でこれを取り出して注文処理を実行する。
+
+現代の言葉で再翻訳するとこうなる。「ログイン済みユーザーが商品ページで1回クリックすると、保存済みの住所と支払いカードを使って即座に注文が完了する」。Amazon.co.jpの「今すぐ買う」ボタンがこれだ。
+
+図面を見ると、設計がより具体的になる。図1A-1Cは商品情報表示画面と確認ページ、図2はサーバーコンポーネントとデータベース構成、図3-7は注文フローの処理アルゴリズム（expedited order selection含む）、図8A-8Cは注文情報の階層的入力機構だ。クライアント・サーバー分離のシステム設計を詳細に記述している。
+
+Abstractには重要な一文がある。"enabling the sensitive information to be only transmitted once"（機密情報を一度だけ送信することを可能にする）。これは純粋なUX改善の話ではない。1990年代後半、HTTPS普及前のウェブでクレジットカード番号を購入ごとに何度も送信することへのセキュリティ上の懸念への対応でもあった。
+
+「技術的な発明ではなくUXの工夫を特許にしただけ」という批判が当時多かった。しかしClaim 1が記述するのは、クライアント・サーバー間の通信プロトコル、識別子の管理方法、事前登録情報の参照方式という具体的なシステム構成だ。「アイデアを特許にした」という批判は粗い。「特定の技術システム構成として記述した特許」という読み方が正確だ。
+
+## 3. 現代との翻訳表
+
+| US5960411A（1997年） | 現代の決済UX | 評価 |
+|---|---|---|
+| 購買者識別子に紐付いた配送先・支払い情報の事前保存 | Apple Pay/Google Pay/Shop PayのTokenization | 類似（「事前に保存した支払い情報を取り出す」問題意識は重なる、実装は全く異なる） |
+| 単一アクション（ボタン1回）で注文完了 | PayPay/LINE Pay/楽天ペイの「1タップ決済」 | 類似（ワンアクション完結の設計思想が重なる） |
+| カート・入力フォーム・確認ページを介在させない | Shopifyの「Shop Pay」、Amazonの「今すぐ買う」 | 類似（中間ステップ排除という問題意識が共通） |
+| 機密情報（クレジットカード番号）を毎回送信しない設計 | PCI DSS Tokenization、3Dセキュア2.0 | 類似（支払い情報を繰り返し送らないことでセキュリティを確保する問題意識が重なる） |
+| 注文取り消し可能期間の設計（Claim記述） | Uber Eatsのキャンセル猶予、定期注文の一時停止 | 比喩（「確定後も変更できる余地を設ける」設計思想の方向性が近い） |
+
+**この対応表の読み方について補足する。**
+
+1行目のTokenizationは設計として別物だ。Apple PayはHardware Secure ElementにEMVトークンを保存し、NFC経由で決済端末に送信する。Amazon 1-Clickはウェブサーバーのデータベースに購買者情報を保存してHTTPリクエストで呼び出す。「保存した支払い情報を1アクションで使う」という問題意識は重なるが、信頼チェーン（鍵管理・認証）の設計は根本的に異なる。
+
+4行目のセキュリティ目的は、Abstractに明記された設計意図だ。1997年当時の文脈では「クレジットカード番号をHTTP上で何度も送る」ことへの危惧が実際にあった。「UX改善だけが目的だった」という見方は不正確で、セキュリティ上の問題意識が同居していた。
+
+5行目は比喩レベルの対応だ。「確定した注文に変更の余地を持たせる」設計思想の方向性が近いという意味であり、技術的な継承ではない。
+
+## 4. なぜ一般の技術語りでは参照されにくいか（推測）
+
+**理由1：訴訟の「当時の悪者」として記憶されている**
+
+1999年12月、AmazonはBarnes & Nobleを相手に1-Click特許侵害訴訟を起こし、仮差し止め命令を取得した。「大手が特許を武器に競合を潰した事例」として広く報道され、特許の技術的内容より訴訟面が語られた。翌2000年に控訴裁が仮差し止めを取り消し、2002年に和解（条件は未公開）したが、印象は残った。
+
+**理由2：BMP批判の象徴になった**
+
+1998年のState Street Bank判決がBusiness Method Patentを認めたことで、「ウェブのビジネスプロセスを特許化できる」という流れが生まれた。Amazon 1-Clickはその最も有名な事例となり、「発明性がない特許の代名詞」として引用されることが増えた。2011年にカナダ連邦控訴裁判所が審判差し戻し判断を出したことも「やはり特許性に疑問がある」という文脈で語られた。
+
+**理由3：Appleとのライセンス後に「実は有効」と再評価される前に失効した**
+
+AppleはiTunesの1-Click購入実装にAmazonからライセンスを取得した（時期・条件は未確認、訴訟はなく任意のライセンス交渉と報道されている）。この事実は「有効な権利と認めてライセンスを払っていた」という再評価につながるはずだったが、2017年の失効でその議論も終わった。
+
+## 5. AI考古学的な意味
+
+Amazonのカートに商品を入れ、住所を入力し、支払い方法を選び、確認する。このフローは1990年代後半のECが「仕方なくやっていたこと」だった。US5960411Aはそのフローを最短にするという問いに、1997年の時点で特許の形を与えた。
+
+「摩擦をゼロにする」という問いは、その後25年で決済UX設計の中心的な命題になった。スマホのFace IDでApple Payを使う。PayPayのQRをかざす。Shopifyの「Buy with Shop Pay」で住所入力なしに購入する。それらの設計者が意識的にUS5960411Aを参照したかどうかは確認できていない。ただし「事前保存した情報を単一の動作で呼び出す」という問題設定は、1997年の特許文書と2020年代のアプリ設計書で重なっている。
+
+Forward citations 1,630件という数字がその広がりを示している。
+
+LLM登場以前、Claim 1の「in response to only a single action」という一文を、購買者情報の保存方式・HTTP通信・セキュリティ設計と接続しながら読むコストは高かった。AI考古学はそのコストを下げる。
+
+## 6. 落とし穴
+
+**落とし穴1：「Bezosが1人で発明した」は誤り**
+
+発明者はJeffrey P. Bezos、Peri Hartman、Shel Kaphan、Joel Spiegelの4名だ。Kaphanは初代CTO格のエンジニア、Hartman・Spiegelもアーキテクト・エンジニアとして初期Amazonを担った人物とされるが、各人の具体的な貢献の一次資料には今回到達できていない。
+
+**落とし穴2：「今も使えない技術」は誤り**
+
+2017年9月に失効しており、誰でもこの設計を実装できる。「特許があるから1クリック購入は他社には実装できない」という前提で語る記述を今も見るが、失効から8年が経過している。
+
+**落とし穴3：「事業方法特許だから技術発明ではない」は不正確**
+
+Claim 1が記述するのはシステム構成（クライアント・サーバー・識別子・データベース）だ。「アイデアの特許」ではなく「特定の技術システム構成の特許」として、USPTOと連邦裁判所の両方で一定の有効性が認められた経緯がある。「BMP＝技術発明ではない」という言い方は粗い。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+Google Patentsより：US5960411A / 出願1997-09-12 / 成立1999-09-28 / Expired（Lifetime）/ 発明者4名（Jeffrey P. Bezos, Peri Hartman, Shel Kaphan, Joel Spiegel）/ Original Assignee Amazon.com, Inc. / Forward citations 1,630件 / Claim 1冒頭「in response to only a single action being performed, sending a request to order the item along with an identifier of a purchaser」/ Abstract「enabling the sensitive information to be only transmitted once」/ 図面：図1A-1C（表示画面）、図2（サーバー構成）、図3-7（フロー処理）、図8A-8C（データ入力機構）
+
+**著者の解釈**
+「現代のApple Pay等との問題意識の共通性」は著者の解釈。技術アーキテクチャは根本的に異なる。「摩擦を設計で消す問題意識の先行例」という読み方は著者の立場であり、設計上の継承関係を主張するものではない。
+
+**比喩・アナロジー**
+対応表5行目（注文取り消し猶予 vs Uberキャンセル猶予）は比喩レベル。「確定後も変更できる設計」という方向性の近さであり、技術的な接続ではない。
+
+**未確認**
+Barnes & Noble訴訟の和解条件・和解金額 / AppleとのライセンスのPrice・契約条件の詳細 / カナダ特許庁の最終的な判断経緯 / Description全文の逐語確認 / 発明者4名の具体的な役割 / EU欧州特許庁での扱いの詳細 / 同時期の競合特許との比較
+
+**この比較が破綻する点**
+Apple PayのTokenizationはHardware Secure Element + EMV標準による設計であり、Amazon 1-Clickのサーバーサイドデータベース方式とは信頼チェーンの構造が根本的に異なる。「1アクションで決済完了する」という外観は似ているが、認証・鍵管理の設計は別物だ。翻訳表の「類似」評価は問題意識レベルの話であり、設計レベルでは「別物」が正確。
+
+---
+
+参考リンク：
+- 元特許：[US5960411A on Google Patents](https://patents.google.com/patent/US5960411A/en)
+- Patent Archaeology #2（発掘ノート）：[Tesla AC誘導モーター US381968（1888年）](/notes/08-patent-archaeology-02)
+- Patent Archaeology #1（発掘ノート）：[IBM ZISC US5717832（1995年）](/notes/02-patent-archaeology-01)

@@ -1,0 +1,154 @@
+---
+title: "Amazon's 1997 Patent and Its Core Question: Completing an Order With Only a Single Action"
+subtitle: "Patent Archaeology #3 — US5960411A, Amazon.com Inc., filed 1997"
+description: "Filed September 1997, US5960411A by Bezos and three co-inventors describes a method for completing a purchase order with a single user action, drawing on pre-stored purchaser information. 1,630 forward citations. A prior example of the 'zero-friction payment' design intent shared by Apple Pay, Shop Pay, and PayPay. Expired September 2017. Full text retrieved from Google Patents."
+episode: 23
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Patent Archaeology", "Amazon", "1-Click", "Payment UX", "Expired Patent"]
+series: "Patent Archaeology"
+seriesNumber: 3
+status: "published"
+---
+
+[Patent Archaeology #2 (Tesla AC induction motor US381968)](/en/notes/08-patent-archaeology-02) dug into 1888 and the dawn of electrical power.
+
+This entry moves to 1997. The setting: a startup e-commerce site in Silicon Valley called Amazon. The question: can buying something on the web be reduced to a single step?
+
+## First, the conclusion
+
+Patent number: [US5960411A](https://patents.google.com/patent/US5960411A/en)
+Title: Method and system for placing a purchase order via a communications network
+Filed: September 12, 1997
+Granted: September 28, 1999
+Expired: September 2017 (20 years from filing)
+Inventors: Jeffrey P. Bezos, Peri Hartman, Shel Kaphan, Joel Spiegel (4 inventors)
+Original Assignee: Amazon.com, Inc.
+Legal Status: **Expired** (Lifetime)
+Forward citations: **1,630** (confirmed on Google Patents)
+
+The question this patent addresses fits in one sentence: "Can a purchase be completed using only pre-stored delivery and payment information, triggered by a single button click?"
+
+Claim 1 opens with:
+
+> A method of placing an order for an item comprising: under control of a client system, displaying information identifying the item; and in response to only a single action being performed, sending a request to order the item along with an identifier of a purchaser of the item to a server system...
+
+"In response to only a single action" — that phrase is where the patent's design intent lives.
+
+---
+
+Modern payment systems — Apple Pay, Google Pay, Shop Pay, PayPay one-tap checkout — are all built around the same intent: eliminate friction. That problem statement existed in patent form in 1997. The technical implementations are completely different. Read this as a prior example of the "zero-friction design" problem intent, not as a technical precursor.
+
+---
+
+## 1. How this was selected
+
+From the candidate database (`~/ai-archaeology/db/candidates.tsv`), PA-005 ranked as the highest-priority unprocessed candidate (composite priority 17).
+
+```
+[STEP 1] Selected PA-005 (priority 17) as top unprocessed candidate in the DB
+[STEP 2] Confirmed patent US5960411A on Google Patents
+[STEP 3] Retrieved Abstract, Claim 1, figures overview, and forward citation count via WebFetch
+[STEP 4] Selection rationale: clear connection to modern payment UX, accessible to general readers
+```
+
+Primary source status: Abstract, Claim 1, basic metadata, figure descriptions, and forward citation count confirmed via WebFetch from Google Patents. Line-by-line reading of the Description body not done. Primary-source court records for the Barnes & Noble litigation not accessed.
+
+## 2. What the patent describes
+
+Breaking down Claim 1 in three parts:
+
+**Display phase**: Under control of the client system, display information identifying the item.
+
+**Core action**: "In response to only a single action being performed," send an order request — along with a purchaser identifier — to the server.
+
+**Server side**: The server holds pre-stored purchaser information (shipping address, payment method) keyed to the purchaser identifier. On receiving a single-action request, it retrieves this information and processes the order.
+
+In current terms: a logged-in user clicks once on a product page, and the order completes immediately using their saved address and card. Amazon's "Buy now" button is this.
+
+The figures add specificity. Figures 1A–1C show product display screens and confirmation pages; Figure 2 shows the server component and database architecture; Figures 3–7 are flow diagrams for order processing (including an expedited order selection algorithm); Figures 8A–8C show the hierarchical data-entry mechanism for purchaser information.
+
+The Abstract contains a line worth noting: "enabling the sensitive information to be only transmitted once." This is not purely a UX story. In the late 1990s, before HTTPS became standard, sending a credit card number over the wire on every transaction was a genuine security concern. The security motivation is built into the design alongside the UX intent.
+
+A common critique was that this is a business-method patent protecting an idea, not a technical invention. But Claim 1 specifies concrete system components: client-server communication protocol, identifier management, pre-stored data retrieval method. "A technical system architecture patent" is more accurate than "a patent on an idea."
+
+## 3. Mapping to modern systems
+
+| US5960411A (1997) | Modern payment UX | Assessment |
+|---|---|---|
+| Pre-stored purchaser info (address + payment) keyed to identifier | Apple Pay / Google Pay / Shop Pay tokenization | Similar (problem intent of retrieving pre-stored payment info with one action is shared; implementation is completely different) |
+| Single action (one button press) completes order | PayPay / LINE Pay / Rakuten Pay one-tap checkout | Similar (one-action completion design philosophy is shared) |
+| No cart, no input forms, no confirmation screen between intent and order | Shopify "Shop Pay," Amazon "Buy Now" | Similar (removing intermediate steps is the shared design intent) |
+| Sensitive info (credit card) not re-transmitted per transaction | PCI DSS tokenization, 3D Secure 2.0 | Similar (security intent of not repeatedly transmitting payment credentials is shared) |
+| Cancellable order period (referenced in Claim) | Uber Eats cancellation window, subscription pause | Analogy (design intent of keeping post-commit mutability is directionally similar) |
+
+**A note on how to read this table.**
+
+Row 1: Apple Pay's tokenization is architecturally different. Apple Pay stores an EMV token in a Hardware Secure Element and transmits it via NFC. Amazon 1-Click stores purchaser data in a server-side database and retrieves it via HTTP request. The problem intent — use pre-stored payment info with one action — is shared. The trust chain design is not.
+
+Row 4: The security intent is stated in the Abstract. In 1997, this wasn't abstract caution; sending a credit card number over the early web on every transaction was a real exposure. The patent's security framing is not retrofitted — it was there from the start.
+
+Row 5 is an analogy, not a technical mapping. "Keeping a correction window after commitment" is directionally similar; there is no technical inheritance.
+
+## 4. Why this patent rarely surfaces in technical writing (inference)
+
+**Reason 1: Remembered as a villain in a patent war**
+
+In December 1999, Amazon sued Barnes & Noble for 1-Click infringement and obtained a preliminary injunction. The story "tech giant uses patents to block competitors" spread quickly and stuck. The injunction was reversed on appeal in 2000; the case settled in 2002 (terms undisclosed). The technical content of the patent has been overshadowed by the litigation framing ever since.
+
+**Reason 2: Became the symbol of Business Method Patent criticism**
+
+The 1998 State Street Bank ruling opened the door to patenting web business processes. Amazon's 1-Click patent became the most-cited example of "an invention without inventive step." Canada's Federal Court of Appeal sent the question of patentability back for re-examination in 2011, reinforcing the narrative. The technical specifics of the Claim rarely came up in these discussions.
+
+**Reason 3: Validated by Apple's license, then expired before the reappraisal took hold**
+
+Apple reportedly licensed the 1-Click mechanism from Amazon for use in iTunes (timing and terms unconfirmed; no litigation reported, suggesting a negotiated arrangement). This should have reframed the patent as "a right that a major player considered valid enough to pay for." But the patent expired in 2017, and that conversation ended with it.
+
+## 5. What this means for AI Archaeology
+
+The Amazon checkout flow of the 1990s: add to cart, enter shipping address, choose payment method, confirm. This was the standard because it was the default. US5960411A put the question of minimizing that flow into patent form in 1997.
+
+"Zero friction" became a central mandate in payment UX design over the following 25 years. Face ID + Apple Pay. PayPay QR scan. "Buy with Shop Pay" without typing an address. Whether the designers of those systems consciously referenced US5960411A is not confirmed. But the problem definition — "retrieve pre-stored information with a single user action" — appears in both the 1997 patent and the 2020s app design spec.
+
+1,630 forward citations shows how widely this problem definition propagated.
+
+Before LLMs, extracting the design intent from Claim 1's "in response to only a single action" and connecting it to HTTP communication, purchaser data storage, and security design was a high-friction task itself. AI Archaeology lowers that cost.
+
+## 6. Traps to avoid
+
+**Trap 1: "Bezos invented this alone" is wrong**
+
+There are four named inventors: Jeffrey P. Bezos, Peri Hartman, Shel Kaphan, Joel Spiegel. Kaphan is understood to have been a founding engineer, Hartman and Spiegel are believed to have been architects/engineers in the early Amazon technical team. The specific contributions of each inventor were not confirmed from primary sources in this session.
+
+**Trap 2: "This technology is still locked up" is wrong**
+
+The patent expired in September 2017. Anyone can implement this design. Articles still circulating that describe Amazon's 1-Click as a protected monopoly are describing a patent that has been expired for eight years.
+
+**Trap 3: "Business method patents aren't technical inventions" is imprecise**
+
+Claim 1 specifies a system architecture (client-server, identifier management, pre-stored data retrieval). USPTO and federal courts recognized it as a valid patent with defined scope. "BMP = not a technical invention" is too blunt; the legal and technical records are more complicated than that framing suggests.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts**
+From Google Patents: US5960411A / filed 1997-09-12 / granted 1999-09-28 / Expired (Lifetime) / four inventors (Jeffrey P. Bezos, Peri Hartman, Shel Kaphan, Joel Spiegel) / Original Assignee Amazon.com, Inc. / forward citations 1,630 / Claim 1 key phrase: "in response to only a single action being performed, sending a request to order the item along with an identifier of a purchaser" / Abstract key phrase: "enabling the sensitive information to be only transmitted once" / figures: display screens (1A–1C), server architecture (2), flow diagrams (3–7), data entry mechanism (8A–8C)
+
+**Author's interpretation**
+"Shared problem intent with Apple Pay" is the author's framing. The technical architectures are different. The claim that this represents the "prior example" of zero-friction payment design is the author's reading, not a statement of technical inheritance.
+
+**Analogy**
+Row 5 of the mapping table (order cancellation period vs. Uber Eats cancellation window) is analogy-level. The directionality of the design intent is similar; no technical connection exists.
+
+**Not confirmed**
+Barnes & Noble settlement terms and financial amounts / Apple license terms and pricing / Details of Canada Federal Court proceedings / Line-by-line Description body / Specific roles of the four inventors / Details of EP handling in Europe / Comparison with contemporaneous competing patents
+
+**Where the comparison breaks down**
+Apple Pay's tokenization architecture (Hardware Secure Element + EMV) is fundamentally different from Amazon 1-Click's server-side database model. The "one-action completion" surface similarity masks completely different trust chain designs. "Similar" in the mapping table means problem intent, not system design.
+
+---
+
+Reference links:
+- Original patent: [US5960411A on Google Patents](https://patents.google.com/patent/US5960411A/en)
+- Patent Archaeology #2 (research note): [Tesla AC induction motor US381968 (1888)](/en/notes/08-patent-archaeology-02)
+- Patent Archaeology #1 (research note): [IBM ZISC US5717832 (1995)](/en/notes/02-patent-archaeology-01)

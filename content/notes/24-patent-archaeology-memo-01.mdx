@@ -1,0 +1,80 @@
+---
+title: "n=p×qの因数分解が困難だから信頼できる──1977年MIT特許US4405829Aが立てたRSA暗号の問い"
+subtitle: "Patent Archaeology 発掘メモ #1 — US4405829A、MIT、1977年出願"
+description: "1977年12月出願、Rivest・Shamir・AdlemanによるMIT特許US4405829A。素数の積nの因数分解困難性を安全性の根拠とした公開鍵暗号を記述する。TLS・HTTPS・電子署名の数学的基盤。2000年9月失効。Google Patentsより基本情報・Claim 1・数式構造を取得済み・本文未読。"
+episode: 24
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "Patent Archaeology", "RSA暗号", "MIT", "公開鍵暗号", "発掘メモ", "インターネット暗号"]
+series: "Patent Archaeology"
+seriesNumber: 4
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim 1の逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+HTTPSでサイトにアクセスする。メールを暗号化する。電子署名で文書の真正性を確認する。これらの信頼の基盤にあるのがRSA暗号だ。1977年、MITの三人の研究者が「素数の積を因数分解することは困難だ」という数学的性質を、インターネットの信頼インフラに変えた。その特許が今回の発掘対象だ。
+
+## 特許の基本情報
+
+- **特許番号**：US4405829A
+- **タイトル**：Cryptographic communications system and method
+- **出願**：1977年12月14日
+- **成立**：1983年9月20日
+- **失効**：2000年9月20日（成立から17年）
+- **発明者**：Ronald L. Rivest、Adi Shamir、Leonard M. Adleman（3名）
+- **Original Assignee**：Massachusetts Institute of Technology（MIT）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US4405829A/en)（URL確認済み・Abstract・Claim 1・数式構造取得済み）
+- **Legal status**：Expired（Lifetime）
+
+## 核心（Google Patents取得済み情報）
+
+RSA暗号の数式はシンプルだ。
+
+**暗号化**：C ≡ M^e (mod n)
+
+**復号**：M ≡ C^d (mod n)
+
+ここでnはp×q（二つの大きな素数の積）、eとdは互いに逆数の関係にある。公開鍵は（e, n）、秘密鍵は（d, n）だ。
+
+なぜこれが安全なのか。nを知っていても、pとqを求める（因数分解する）のは計算量的に困難だからだ。現在の数学では、十分に大きなnの因数分解を現実的な時間で解く方法が知られていない。
+
+Claim 1の核心部分：
+
+> A cryptographic communications system comprising: A. a communications channel, B. an encoding means coupled to said channel and adapted for transforming a transmit message word signal M to a ciphertext word signal C, said encoding means including means for raising M to a first predetermined power associated with the intended receiver, and means for computing the remainder modulo n of the result of said raising means, where n is the product of two prime numbers p and q...
+
+数式的な実装として「繰り返し二乗法（exponentiation by repeated squaring and multiplication）」が明記されている。大きな指数の計算を効率的に処理するアルゴリズムだ。
+
+MITはRSA Security社にライセンスを供与し（1982年設立）、特許が失効する2000年まで商業利用にはライセンスが必要だった。失効後、OpenSSLをはじめとするオープンソースプロジェクトがRSAを自由に実装できるようになった。
+
+## 現代との接続仮説
+
+| US4405829A（1977年） | 現代のインターネット技術 | 評価（仮説段階） |
+|---|---|---|
+| 公開鍵(e,n)で暗号化、秘密鍵(d,n)で復号 | TLS 1.2/1.3でのRSA鍵交換 | 同一（数学的構造は同じ、鍵長は格段に大きい） |
+| n=p×q、因数分解困難性が安全性の根拠 | RSA-2048/4096（現行標準） | 類似（同じ数学的根拠、1977年想定より大きな素数が必要になった） |
+| 公開鍵の自由配布による通信者の身元確認 | X.509証明書・SSL/TLS認証局チェーン | 類似（公開鍵を第三者が証明書として配布するという設計思想が重なる） |
+| メッセージM=数値として扱う | 現代の電子署名（RSA-PSS） | 類似（任意のデータを数値として署名できる問題意識が共通） |
+
+**最も重要な変化**：1977年当時、想定していた「安全な鍵長」は現在の基準から見て短すぎる。計算能力の向上にともない、安全に必要な鍵長は1024bit→2048bit→4096bitと伸び続けている。さらに量子コンピュータの登場により、「因数分解困難性」という前提そのものが崩れる可能性があり、NIST（米国標準技術研究所）は量子耐性暗号（PQC）への移行を進めている。
+
+**これは一次資料の全文精読前の仮説。Claim 1詳細確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（暗号化に使用するメッセージMの具体的なエンコード方法、鍵生成の詳細手順）
+- RSA Security社との具体的なライセンス契約の経緯
+- Forward citations件数（Google Patents未記載）
+- MIT特許出願の経緯（なぜMITがAssigneeか、Rivest・Shamir・Adlemanの当時の所属と役割）
+- Diffie-Hellman（1976年）との関係と差分（DH鍵交換との設計上の違い）
+
+---
+
+参考リンク：
+- 元特許：[US4405829A on Google Patents](https://patents.google.com/patent/US4405829A/en)
+- Patent Archaeology #3（発掘ノート）：[Amazon 1-Click US5960411A（1997年）](/notes/23-patent-archaeology-03)
+- Patent Archaeology #1（発掘ノート）：[IBM ZISC US5717832（1995年）](/notes/02-patent-archaeology-01)

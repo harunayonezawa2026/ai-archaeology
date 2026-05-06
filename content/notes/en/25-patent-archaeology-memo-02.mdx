@@ -1,0 +1,92 @@
+---
+title: "The Patent That Shook GIF: Sperry/Unisys's LZW Compression US4558302A and the 'Used It Without Knowing' Problem"
+subtitle: "Patent Archaeology Memo #2 — US4558302A, Sperry Corp (later Unisys), filed 1983"
+description: "Filed June 1983, US4558302A by Terry A. Welch describes an adaptive dictionary compression algorithm (LZW) implemented with high-speed hashing. CompuServe adopted it in the GIF format in 1987. In 1994 Unisys began demanding license fees, triggering the GIF/PNG controversy. GIF was freed when the US patent expired in 2003. Primary source URL confirmed; full text not yet read."
+episode: 25
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Patent Archaeology", "LZW Compression", "GIF", "PNG", "Unisys", "Research Memo"]
+series: "Patent Archaeology"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**About research memos:** This entry records a candidate at the stage of confirmed source URL. The full patent description and line-by-line Claim 1 have not been read. Only confirmed facts are stated; inferences are marked as such.
+
+---
+
+## Why dig here
+
+GIF animations filled the early web. The GIF format used LZW compression internally. LZW had a patent. Seven years after CompuServe made GIF a web standard — without apparent awareness of the patent — Unisys announced it would collect license fees. The internet erupted. PNG was born as a patent-free alternative. The patent that triggered all of this is the subject of this entry.
+
+This is an AI Archaeology case study in "a technology built and standardized before anyone realized a patent existed."
+
+## Basic information
+
+- **Patent number**: US4558302A
+- **Title**: High speed data compression and decompression apparatus and method
+- **Filed**: June 20, 1983
+- **Granted**: December 10, 1985
+- **Expired**: June 20, 2003 (United States); 2004 (EU countries)
+- **Inventor**: Terry A. Welch (1 inventor)
+- **Original Assignee**: Sperry Corp (merged with Burroughs Corp in 1986 to become Unisys Corp)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US4558302A/en) (URL confirmed; Abstract and technical summary retrieved)
+- **Legal status**: Expired (Lifetime)
+
+## What the patent describes (from Google Patents)
+
+LZW is a refinement of the Lempel-Ziv family of compression algorithms.
+
+**The lineage**: Ziv and Lempel published LZ77 in 1977 and LZ78 in 1978, establishing the foundations of dictionary-based compression. The "W" in LZW is Welch — this patent's inventor.
+
+**The core design**: Parse the input data stream into string patterns. Store them in a growing dictionary table. Find the longest matching string and replace it with a code number. The dictionary expands adaptively as more data is read.
+
+From the abstract:
+
+> The present invention relates to a high speed data compression and decompression apparatus and method wherein an adaptively increasing string sequence is recognized and mapped to a code signal employing a limited-search hashing technique to improve implementation efficiency.
+
+"Limited-search hashing technique" is where the practical improvement lives. Searching a dictionary for the longest match is expensive. Welch's patent speeds it up with a hash-based lookup strategy, making the algorithm viable on the hardware of the early 1980s.
+
+## The GIF controversy (largely inference; primary sources not accessed)
+
+**1987**: CompuServe publishes the GIF format, using LZW internally. Whether CompuServe was aware of the Welch patent at this point is not confirmed from primary sources in this session.
+
+**1986**: Sperry Corp merges with Burroughs to form Unisys. LZW patent ownership transfers to Unisys.
+
+**1994**: Unisys announces it will enforce the LZW patent and collect license fees from software developers using GIF. The open-source and web developer communities react strongly.
+
+**Mid-1990s**: "Burn All GIFs" campaigns circulate online. Development of PNG (Portable Network Graphics) accelerates as a license-free alternative. PNG uses DEFLATE (LZ77 + Huffman coding), not LZW.
+
+**2003**: LZW patent expires in the United States. GIF becomes patent-free.
+**2004**: Expiration reaches EU countries.
+
+The structural pattern here is distinct: not "someone invented something and later learned a prior patent existed," but "a format built on a patented algorithm became the web standard before the patent holder actively enforced it." That seven-year gap between GIF's adoption (1987) and Unisys's enforcement (1994) is the crux of the story. The details of that gap — what CompuServe knew, when Unisys decided to act, what internal deliberations looked like — are not in the Google Patents record and were not accessed in this session.
+
+## Connections to modern systems (hypotheses)
+
+| US4558302A (1983) | Modern compression | Assessment (pre-full-read hypothesis) |
+|---|---|---|
+| Adaptively growing dictionary maps strings to codes | DEFLATE (used in ZIP, gzip, PNG) | Similar (adaptive dictionary compression design intent is shared; specific algorithm differs) |
+| High-speed hash for longest-match search | zstd / brotli high-speed dictionary compression | Similar (problem intent of fast dictionary lookup is shared) |
+| Symmetric compression/decompression using the same dictionary structure | All modern lossless formats | Similar (shared dictionary on both ends is the foundational design intent) |
+| GIF format adoption (CompuServe, 1987) | PNG → WebP → AVIF (successor formats) | Analogy (lineage of web image formats; not direct technical inheritance) |
+
+**The most important clarification**: LZW and DEFLATE are different algorithms. gzip uses DEFLATE (LZ77 + Huffman coding), and DEFLATE was developed in part as an alternative that avoided the LZW patent. PNG uses DEFLATE rather than LZW for exactly this reason. The relationship between LZW and the modern compression ecosystem runs through "patent pressure produced alternatives," not technical inheritance.
+
+**These are pre-full-read hypotheses. Claim 1 details will update the table.**
+
+## What's not confirmed
+
+- Line-by-line Claim 1 content (scope of patent protection)
+- Whether CompuServe was aware of the LZW patent when developing GIF
+- Primary source records of Unisys's license enforcement announcement (text, fees, scope)
+- Forward citation count (not listed on Google Patents)
+- Terry A. Welch's career and role at Sperry Corp
+- Exact expiration timeline in EU countries
+
+---
+
+Reference links:
+- Original patent: [US4558302A on Google Patents](https://patents.google.com/patent/US4558302A/en)
+- Patent Archaeology Memo #1: [RSA Cryptography US4405829A (1977)](/en/notes/24-patent-archaeology-memo-01)
+- Patent Archaeology #3 (research note): [Amazon 1-Click US5960411A (1997)](/en/notes/23-patent-archaeology-03)

@@ -1,0 +1,90 @@
+---
+title: "GIFを揺らした1983年の特許──Sperry/UnisysのLZW圧縮US4558302Aと「知らずに使っていた」問題"
+subtitle: "Patent Archaeology 発掘メモ #2 — US4558302A、Sperry Corp（後にUnisys）、1983年出願"
+description: "1983年6月出願、Terry A. WelchによるUS4558302A。LZ78型の適応辞書圧縮を高速ハッシュで実装したLZW圧縮アルゴリズムを記述する。CompuServeが1987年にGIFフォーマットに採用、1994年にUnisysがライセンス料徴収を開始してGIF/PNG騒動に発展。2003年米国失効でGIFが自由化。Google Patentsより基本情報取得済み・本文未読。"
+episode: 25
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "Patent Archaeology", "LZW圧縮", "GIF", "PNG", "Unisys", "発掘メモ"]
+series: "Patent Archaeology"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim 1の逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+1990年代のウェブを彩ったGIFアニメ。あの形式の内部にLZW圧縮アルゴリズムが使われていた。そのアルゴリズムには特許があった。特許の存在を知らずにCompuServeがGIFを業界標準にしてから7年後、特許権者Unisysがライセンス料徴収を宣言した。インターネットが騒乱し、PNGというGIF代替フォーマットが生まれた。その発端となった特許が今回の発掘対象だ。
+
+「技術を作ってから特許の存在を知った」というパターンのAI考古学的事例として面白い。
+
+## 特許の基本情報
+
+- **特許番号**：US4558302A
+- **タイトル**：High speed data compression and decompression apparatus and method
+- **出願**：1983年6月20日
+- **成立**：1985年12月10日
+- **失効**：2003年6月20日（米国）、2004年（EU諸国）
+- **発明者**：Terry A. Welch（1名）
+- **Original Assignee**：Sperry Corp（1986年にBurroughs Corpと合併してUnisys Corp）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US4558302A/en)（URL確認済み・Abstract・技術内容取得済み）
+- **Legal status**：Expired（Lifetime）
+
+## 核心（Google Patents取得済み情報）
+
+LZWはLempel-Zivアルゴリズムの改良版だ。
+
+**基礎となる研究**：1977年にZiv & Lempelが発表したLZ77、1978年に発表したLZ78が辞書型圧縮の基礎を作った。LZWの「W」はWelch（この特許の発明者）のイニシャルだ。
+
+**核心的な設計**：入力データストリームから文字列パターンを解析し、辞書テーブルに保存する。最長一致の文字列を見つけてコード番号に変換することで圧縮する。辞書はデータを読むにつれて適応的に増加（Adaptive）する。
+
+> 本発明は高速データ圧縮・展開装置および方法に関し、適応的に増加する文字列シーケンスを認識してコード信号にマッピングする方式を採用し、限定検索ハッシング技術を利用して実装効率を向上させている。
+
+「限定検索ハッシング技術」が実用上重要な改良点だ。辞書から最長一致を探す検索をハッシュ技術で高速化した。これにより当時のハードウェアで実用的な速度で圧縮・展開できるようになった。
+
+## GIF騒動の経緯（推測・未確認多数）
+
+1987年：CompuServeがGIFフォーマットを発表。内部でLZW圧縮を使用。当時、特許の存在をCompuServeが把握していたかどうかは今回の一次資料確認では不明。
+
+1986年：Sperry Corpがバローズと合併してUnisys Corpになる。LZW特許はUnisysが承継。
+
+1994年：Unisysが、LZW特許を侵害するGIFを使用するソフトウェア開発者に対してライセンス料徴収を宣言。
+
+1995年頃：「Burn All GIFs」運動が起きる。オープンソースコミュニティを中心にGIF廃止・代替フォーマット開発の機運が高まる。同時期にPNGフォーマットの開発が活発化（PNGはLZWでなくDEFLATEを使用）。
+
+2003年：米国でLZW特許失効。GIFが特許フリーになる。
+2004年：EU諸国でも失効。
+
+この事件は「特許を知らずに業界標準を作ってしまい、後から特許権者が現れた」という構造だ。現代のオープンソースライセンス問題（未知の特許への恐怖）の原型的な事例として語られることが多い。ただし、上記の経緯の詳細は二次資料からの情報であり、一次資料（CompuServeの当時の内部文書・Unisysのライセンス通知文書）には今回到達していない。
+
+## 現代との接続仮説
+
+| US4558302A（1983年） | 現代の圧縮技術 | 評価（仮説段階） |
+|---|---|---|
+| 適応的に増加する辞書で文字列をコードにマッピング | DEFLATE（ZIP/gzip）の内部アルゴリズム | 類似（辞書型適応圧縮の設計思想が重なる、具体的アルゴリズムは異なる） |
+| ハッシュで最長一致検索を高速化 | zstd/brotliの高速辞書圧縮実装 | 類似（「辞書検索の高速化」という問題意識が共通） |
+| 圧縮と展開を対称的に設計（同じ辞書で双方向） | 現代のロスレス圧縮フォーマット全般 | 類似（送信側・受信側が同じ辞書構造を持つという設計思想） |
+| GIF形式での実装（1987年CompuServe） | PNG・WebP・AVIF（後継フォーマット群） | 比喩（GIF→PNG→WebP→AVIFの系譜。直接の技術継承ではなく問題意識の引き継ぎ） |
+
+**最も重要な補足**：LZWとDEFLATEは別のアルゴリズムだ。gzip（DEFLATE＝LZ77＋ハフマン符号）はLZW特許問題を避けるために開発された代替技術として広まった面がある。PNGがGIFを代替できたのは、内部圧縮にDEFLATEを使ったからだ。LZWがPNGの技術的な先行例という関係ではなく、「LZWの特許問題がDEFLATEベースの代替技術の普及を後押しした」という関係として読む。
+
+**これは一次資料の全文精読前の仮説。Claim 1詳細確認後に修正する。**
+
+## 未確認ポイント
+
+- Claim 1の逐語内容（どこまでが特許の保護範囲か）
+- GIF開発時にCompuServeがLZW特許を認識していたかどうか
+- Unisysのライセンス交渉の一次資料（通知文書・料金体系）
+- Forward citations件数（Google Patents未記載）
+- Terry A. Welchの経歴・Sperry Corp内での位置づけ
+- EU各国での失効年月の詳細
+
+---
+
+参考リンク：
+- 元特許：[US4558302A on Google Patents](https://patents.google.com/patent/US4558302A/en)
+- Patent Archaeology 発掘メモ #1：[RSA暗号 US4405829A（1977年）](/notes/24-patent-archaeology-memo-01)
+- Patent Archaeology #3（発掘ノート）：[Amazon 1-Click US5960411A（1997年）](/notes/23-patent-archaeology-03)

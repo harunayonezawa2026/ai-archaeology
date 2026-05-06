@@ -1,0 +1,80 @@
+---
+title: "The Prime Factorization Problem That Built Internet Trust: MIT's RSA Patent US4405829A (1977)"
+subtitle: "Patent Archaeology Memo #1 — US4405829A, MIT, filed 1977"
+description: "Filed December 1977, US4405829A by Rivest, Shamir, and Adleman encodes public-key cryptography based on the computational difficulty of factoring the product of two primes. The mathematical foundation of TLS, HTTPS, and digital signatures. Expired September 2000. Primary source URL confirmed; full text not yet read."
+episode: 24
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Patent Archaeology", "RSA Cryptography", "MIT", "Public Key", "Research Memo", "Internet Infrastructure"]
+series: "Patent Archaeology"
+seriesNumber: 4
+format: "memo"
+status: "published"
+---
+
+**About research memos:** This entry records a candidate at the stage of confirmed source URL. The full patent description and line-by-line Claim 1 have not been read. Only confirmed facts are stated; inferences are marked as such.
+
+---
+
+## Why dig here
+
+Every HTTPS connection. Every encrypted email. Every digital signature. The mathematical foundation of all of it traces to three MIT researchers who in 1977 turned a property of prime numbers — factoring large products is hard — into the infrastructure of internet trust. That's the patent we're digging.
+
+## Basic information
+
+- **Patent number**: US4405829A
+- **Title**: Cryptographic communications system and method
+- **Filed**: December 14, 1977
+- **Granted**: September 20, 1983
+- **Expired**: September 20, 2000 (17 years from grant)
+- **Inventors**: Ronald L. Rivest, Adi Shamir, Leonard M. Adleman (3 inventors)
+- **Original Assignee**: Massachusetts Institute of Technology (MIT)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US4405829A/en) (URL confirmed; Abstract, Claim 1, and mathematical structure retrieved)
+- **Legal status**: Expired (Lifetime)
+
+## What the patent describes (from Google Patents)
+
+RSA encryption in three steps:
+
+**Encrypt**: C ≡ M^e (mod n)
+
+**Decrypt**: M ≡ C^d (mod n)
+
+Where n = p × q (the product of two large primes), and e and d are modular inverses of each other. The public key is (e, n); the private key is (d, n).
+
+Why is it secure? Because knowing n doesn't make it computationally feasible to find p and q. Current mathematics has no known efficient method for factoring large n.
+
+From Claim 1:
+
+> A cryptographic communications system comprising: A. a communications channel, B. an encoding means coupled to said channel and adapted for transforming a transmit message word signal M to a ciphertext word signal C, said encoding means including means for raising M to a first predetermined power associated with the intended receiver, and means for computing the remainder modulo n of the result of said raising means, where n is the product of two prime numbers p and q...
+
+The implementation method specified in the patent is "exponentiation by repeated squaring and multiplication" — an algorithm for efficiently computing large exponents. This is practical engineering, not just mathematics.
+
+MIT licensed the patent to RSA Security (founded 1982). Until expiration in 2000, commercial use required a license. After expiration, projects like OpenSSL could implement RSA freely.
+
+## Connections to modern systems (hypotheses)
+
+| US4405829A (1977) | Modern internet infrastructure | Assessment (pre-full-read hypothesis) |
+|---|---|---|
+| Public key (e,n) encrypts, private key (d,n) decrypts | RSA key exchange in TLS 1.2/1.3 | Same (mathematical structure is identical; key lengths are orders of magnitude larger) |
+| Security based on difficulty of factoring n = p×q | RSA-2048/4096 (current standard) | Similar (same mathematical foundation; safe key lengths have grown substantially) |
+| Free distribution of public keys for identity verification | X.509 certificates and SSL/TLS certificate authority chains | Similar (the design intent of distributing public keys wrapped in third-party attestation is shared) |
+| Message M treated as a number to operate on | Modern digital signatures (RSA-PSS) | Similar (the intent of signing arbitrary data as a numeric operation is shared) |
+
+**The most important development since 1977**: The key length considered secure in 1977 is dangerously short by current standards. As computing power grew, safe key lengths expanded from 512-bit → 1024-bit → 2048-bit → 4096-bit. More significantly, the arrival of quantum computers threatens the foundational assumption itself — factoring large n efficiently may become feasible with Shor's algorithm. NIST is actively managing a transition to Post-Quantum Cryptography (PQC) standards.
+
+**These are pre-full-read hypotheses. Claim 1 details will update the table.**
+
+## What's not confirmed
+
+- Full Description text (exact encoding method for message M, key generation procedure details)
+- Specific licensing arrangement between MIT and RSA Security (founded 1982)
+- Forward citation count (not listed on Google Patents)
+- Context of the MIT patent filing (why MIT as assignee; Rivest, Shamir, Adleman's institutional roles at the time)
+- Relationship and design differences vs. Diffie-Hellman key exchange (1976)
+
+---
+
+Reference links:
+- Original patent: [US4405829A on Google Patents](https://patents.google.com/patent/US4405829A/en)
+- Patent Archaeology #3 (research note): [Amazon 1-Click US5960411A (1997)](/en/notes/23-patent-archaeology-03)
+- Patent Archaeology #1 (research note): [IBM ZISC US5717832 (1995)](/en/notes/02-patent-archaeology-01)
