@@ -1,0 +1,76 @@
+---
+title: "Bell Labs Filed a Multi-Resolution Symbol Recognition Patent in 1992. The Design Logic Looks Familiar."
+subtitle: "AI & ML Patent Note #4 (memo) — US5337372A, AT&T Bell Labs, coarse-to-fine symbol recognition"
+description: "Filed 1992 by LeCun and Wu at AT&T Bell Labs, US5337372A describes a symbol recognition system that uses low-resolution feature arrays to narrow candidates, then confirms matches at higher resolution — reducing computation. Patent URL confirmed; full text unread."
+episode: 19
+publishedAt: "2026-05-06"
+tags: ["AI Archaeology", "AI & ML Patents", "LeCun", "Bell Labs", "object detection", "patent note"]
+series: "AI & ML Patents"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**Note on this format:** This memo records what I found at the patent URL. Full text and Claim 1 have not been read. Verified facts only; speculation is labeled as such.
+
+---
+
+## Why Dig This
+
+Modern object detection pipelines often work in two stages: propose regions coarsely, then confirm them at full resolution (Faster R-CNN, for instance). The design motivation — reduce the cost of checking everything at full resolution — appeared in a 1992 Bell Labs patent. The specific implementation is different, but the framing of the computational problem is worth examining.
+
+## Patent Basics
+
+- **Patent number:** US5337372A
+- **Title:** Method and apparatus for symbol recognition using multidimensional preprocessing at multiple resolutions
+- **Filed:** October 13, 1992
+- **Issued:** August 9, 1994
+- **Inventors:** Yann A. LeCun, Quen-Zong Wu
+- **Original Assignee:** AT&T Bell Laboratories Inc
+- **Current Assignee:** Nokia Bell Labs USA
+- **Primary source:** [Google Patents](https://patents.google.com/patent/US5337372/en) (URL confirmed; full text unread)
+- **Legal status:** Expired (approximately 2012; exact date unconfirmed)
+
+## Core Content (Google Patents and WebFetch Information)
+
+The system uses low-resolution feature arrays to screen and narrow a candidate set, then applies high-resolution comparison only to surviving candidates. This avoids running full-resolution computation on every possible symbol — the expensive path that does not scale.
+
+The features are built from "micro-segments" (small line segments) mapped into multidimensional cell arrays. Each cell encodes how closely a micro-segment matches a characteristic label for that position.
+
+Processing stages:
+1. Generate low-resolution feature map; narrow candidates
+2. Apply high-resolution comparison only to the candidate set
+3. Avoid full-resolution cost across all symbols
+
+**Claim 1 verbatim text and implementation specifics not confirmed.**
+
+## Connections to Today (Hypothesis)
+
+| US5337372A (1992) | Modern object detection | Assessment |
+|---|---|---|
+| Low-resolution candidate screening | Region Proposal Network (Faster R-CNN) | Similar (shared problem orientation; implementation differs fundamentally) |
+| High-resolution confirmation of candidates | RoI Pooling / RoI Align | Analogy (direction is similar; mechanics differ) |
+| Reducing computation cost as primary motivation | Inference speed optimization (YOLO-family) | Similar (same motivation) |
+| Micro-segment feature extraction | Edge and keypoint features | Analogy (designs are unrelated) |
+
+**Most important caveat:** This patent is designed for symbol recognition (characters, postal codes) — a specialized task with a fixed vocabulary. Modern object detection targets arbitrary visual categories with no fixed symbol set. The coarse-to-fine structure looks similar; the underlying assumptions are not.
+
+**Pre-full-text hypotheses only.**
+
+## What's Unconfirmed
+
+- Claim 1 verbatim text
+- Micro-segment implementation details
+- Forward citation count — if object detection research cites this, the connection is grounded; if not, the similarity may be coincidental
+- Relationship to contemporaneous multi-resolution methods (image pyramids, SIFT precursors)
+
+## Next Action
+
+Confirm Claim 1 and check forward citations. Whether the citing papers come from character recognition or general object detection will change the interpretation significantly.
+
+---
+
+Sources:
+- Primary patent: [US5337372A on Google Patents](https://patents.google.com/patent/US5337372/en)
+- AI & ML Patent #2 (full note): [LeCun CNN weight-sharing patent US5067164A (1989)](/en/notes/17-ai-ml-patent-02)
+- AI & ML Patent Note #3: [LeCun tangent vector training US5572628A (1994)](/en/notes/18-ai-ml-patent-memo-03)

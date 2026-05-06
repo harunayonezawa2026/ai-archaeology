@@ -1,0 +1,66 @@
+---
+title: "The Patent That Ranked Every Web Page: PageRank, Filed 1997"
+subtitle: "AI & ML Patent Note #1 (memo) — US6285999B1, Lawrence Page's linked database ranking method"
+description: "Filed 1997 by Lawrence Page, US6285999B1 describes a method for ranking nodes in a linked database by computing how often a random link-follower would land on each page. Patent URL confirmed; full text unread. Exploring connections to LLM search and graph-based RAG."
+episode: 15
+publishedAt: "2026-05-06"
+tags: ["AI Archaeology", "AI & ML Patents", "PageRank", "Google", "search ranking", "patent note"]
+series: "AI & ML Patents"
+seriesNumber: 2
+format: "memo"
+status: "published"
+---
+
+**Note on this format:** This memo records what I found at the patent URL. Full text, Claim 1, and forward citations have not yet been confirmed. Verified facts only; speculation is labeled as such.
+
+---
+
+## Why Dig This
+
+Google's search ranking is built on a simple, strange idea: the importance of a page is determined not by how many times it says the word you searched, but by how many other pages point to it — weighted by how important *those* pages are. That recursive logic is in a 1997 patent filed by Lawrence Page. As LLM-based search and graph-structured RAG systems grow, understanding how "importance in a linked structure" was first formalized provides a useful baseline for comparison.
+
+## Patent Basics
+
+- **Patent number:** US6285999B1
+- **Title:** Method for node ranking in a linked database
+- **Filed:** 1997 (exact date: not confirmed from full text)
+- **Inventor:** Lawrence Page
+- **Assignee:** The Board of Trustees of the Leland Stanford Junior University (later transferred to Google)
+- **Primary source:** [Google Patents](https://patents.google.com/patent/US6285999B1/en) (URL confirmed; full text unread)
+- **Legal status:** Expired; transfer details not confirmed
+
+## Core Content (Abstract and Wikipedia-Level Information)
+
+The patent describes a method for ranking nodes in a linked database such as the web. Each node receives a rank score based on the number of links pointing to it and the rank scores of the nodes those links come from. The model is formalized as a "random surfer": a user who clicks links at random — where does that user end up most often? Pages the random surfer visits most often rank highest.
+
+Key structural property: the importance score is recursive. A page's score depends on the scores of the pages linking to it, which depend on the scores of pages linking to *them*. This is solved iteratively.
+
+**Claim 1 wording and formula details not confirmed — abstract and Wikipedia-level information only.**
+
+## Connections to Today (Hypothesis)
+
+| US6285999B1 (1997) | Modern technology | Assessment |
+|---|---|---|
+| Node importance from incoming links, weighted by linker importance | Node weighting in graph-based RAG | Analogy (structure is similar; purpose differs significantly) |
+| Recursive importance computation | PageRank-referencing LLM evaluation research | Similar (same problem orientation) |
+| Random surfer probability model | Probabilistic graph traversal broadly | Similar |
+
+**These are pre-full-text hypotheses. Assessment will be revised after Claim 1 review.**
+
+## What's Unconfirmed
+
+- Claim 1 verbatim text
+- Exact filing date
+- Transfer timeline from Stanford to Google
+- Forward citation count (scale of influence on modern research)
+- Published academic papers connecting PageRank to LLM search design
+
+## Next Action
+
+Confirm Claim 1 and forward citations via Google Patents. If forward citations include LLM or RAG research, the connection to modern search design has firmer grounding.
+
+---
+
+Sources:
+- Primary patent: [US6285999B1 on Google Patents](https://patents.google.com/patent/US6285999B1/en)
+- AI & ML Patent #1 (full note): [Amazon item-to-item collaborative filtering US6266649B1 (1998)](/en/notes/14-ai-ml-patent-01)

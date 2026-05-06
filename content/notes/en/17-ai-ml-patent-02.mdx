@@ -1,0 +1,141 @@
+---
+title: "Bell Labs Filed a Patent in 1989 That Described Weight Sharing — The Same Assumption Modern CNNs Are Built On"
+subtitle: "AI & ML Patent #2 — US5067164A: LeCun et al.'s 1989 AT&T patent on hierarchical constrained neural networks"
+description: "Filed November 1989 by John S. Denker, Richard E. Howard, Lawrence D. Jackel, and Yann LeCun at AT&T Bell Laboratories, US5067164A describes a layered network for optical character recognition using weight sharing: 90,000 connections represented with approximately 2,600 free parameters (97% reduction). Google Patents full text retrieved. Comparing the design problem to modern CNNs 36 years later."
+episode: 17
+publishedAt: "2026-05-06"
+tags: ["AI Archaeology", "AI & ML Patents", "CNN", "LeCun", "Bell Labs", "weight sharing", "expired patent"]
+series: "AI & ML Patents"
+seriesNumber: 2
+status: "published"
+---
+
+In [AI & ML Patent #1 (Amazon US6266649B1, 1998)](/en/notes/14-ai-ml-patent-01), a 1998 Amazon patent turned out to describe the design logic behind modern recommendation infrastructure. This time I'm going further back.
+
+**In 1989, AT&T Bell Labs filed a patent that assumed weight sharing — the same assumption modern CNNs treat as obvious.**
+
+## Conclusion First
+
+Patent number: [US5067164A](https://patents.google.com/patent/US5067164/en)
+Title: "Hierarchical constrained automatic learning neural network for character recognition"
+Filed: November 30, 1989
+Issued: November 19, 1991
+Inventors: John S. Denker, Richard E. Howard, Lawrence D. Jackel, **Yann LeCun**
+Original Assignee: AT&T Bell Laboratories Inc
+Current Assignee: AT&T Corp, NCR Voyix Corp
+Status on Google Patents: **Expired** (approximately 2011, 20 years from issue)
+
+---
+
+**Separating technical identity from shared problem orientation.**
+
+This patent is not a modern Conv layer. But "use a shared kernel instead of independent weights at every connection" is an engineering decision this patent makes explicit — and that modern CNNs treat as foundational. The right framing is not "this is where CNNs came from" but "this patent was already working on the same problem."
+
+---
+
+The patent's core claim is one number: **90,000 connections, represented by approximately 2,600 free parameters.** That is a 97% reduction. Here is how.
+
+## 1. How I Found It
+
+Week 1 theme: AI & ML patents. Among patents from the period when neural network research was transitioning from "backpropagation exists" to "how do we make it computationally tractable," US5067164A is one of the earliest to address that problem systematically. The filing date of November 1989 is three years after Rumelhart et al. (1986) published the backpropagation paper — and the patent explicitly cites it.
+
+Primary source status: Google Patents full text retrieved (Abstract, Description, Claims).
+
+```
+[STEP 1] Query: "LeCun Bell Labs CNN patent 1989 USPTO"
+[STEP 2] Identified US5067164A via Google Patents
+[STEP 3] Retrieved full text via WebFetch — technical content confirmed
+[STEP 4] Selected: 1989 is the earliest confirmed filing; LeCun is named inventor;
+         weight sharing as a design decision is explicit in the document
+```
+
+## 2. What the Patent Describes
+
+From the patent description:
+
+> *"A massively parallel, constrained network for optical character recognition... each map scans a pixel array for the occurrence of the particular feature defined by one particular kernel... all units within the same map share the same weights."*
+
+The network has six layers:
+
+| Layer | Function | Size |
+|---|---|---|
+| Input | 28×28 pixel image (16×16 character, 12px border) | — |
+| Feature detection 1 | 4 constrained maps, 5×5 kernel | 24×24 each |
+| Reduction 1 | 4 maps, 2×2 subsampling | 12×12 each |
+| Feature detection 2 | 12 maps (some with combined inputs) | 8×8 each |
+| Reduction 2 | 12 maps | 4×4 each |
+| Classification | 26 units (letters A–Z) | Fully connected |
+
+Total connections: approximately 90,000.
+Free parameters (independently learned weights): approximately 2,600.
+
+This is achieved by weight sharing: within each feature map, every spatial position uses the same kernel. The same kernel detects the same feature — a vertical edge, a curve — wherever it appears in the image. The patent calls this a "constrained feature map."
+
+Weights are learned automatically via backpropagation, not designed by hand.
+
+## 3. Then vs. Now
+
+| US5067164A (1989) | Modern CNN / image recognition | Assessment |
+|---|---|---|
+| Weight sharing within constrained feature map | Weight sharing in Conv2d | Same (concept and implementation match) |
+| Feature detection layer | Convolutional layer | Same (name changed; function identical) |
+| Feature reduction layer (2×2 subsampling) | MaxPooling | Similar (shared problem; implementation differs) |
+| Backpropagation for automatic weight learning | SGD, Adam, and variants | Same (algorithm core unchanged) |
+| 6 layers, 2,600 parameters | ViT-Large: 307,000,000 parameters | Analogy (both use layers; scale is incomparable) |
+| Uppercase A–Z recognition (26 classes) | ImageNet 1,000 classes / GPT-4o Vision | Does not map well (task design is fundamentally different) |
+
+**On row 3 (reduction layer).** The patent specifies "2×2 subsampling" — not max-pooling. The design goal (reduce spatial resolution to gain robustness to small positional errors) is shared with modern pooling layers. The calculation is different. The patent's reduction layer averages or subsamples; modern MaxPooling takes the maximum. "Same problem orientation, different implementation" is the accurate assessment.
+
+**On row 5 (parameter count).** 2,600 vs. 307,000,000 is not a quantitative difference — it reflects fundamentally different task assumptions. The 1989 patent was designed around a constraint: make computation tractable. Modern scaling laws are built around the opposite discovery: more parameters generalize better. The motivations point in opposite directions.
+
+## 4. Why This Patent Is Not Often Referenced
+
+LeCun's LeNet-5 paper (*Proceedings of the IEEE*, 1998, ~600,000 parameters) is the standard citation for the origins of CNNs. It is more recent, more comprehensive, and describes a system closer to what modern practitioners use. The 1989 patent is an earlier, simpler version by the same author. When LeNet-5 is well-known, there is less reason for anyone other than historians to read the earlier patent document.
+
+**This is a hypothesis. Internal records of research decisions at Bell Labs in the 1989–1998 period have not been confirmed.**
+
+## 5. Why This Is Worth Reading
+
+A smartphone camera reading a label, a navigation system parsing a road sign, a postal sorting system reading a zip code — all of these depend on convolutional neural networks, and CNNs depend on weight sharing.
+
+The assumption that a kernel should be shared across all positions of a feature map — rather than learned independently at each position — is written out explicitly in this 1989 patent document. Before LLMs, extracting the engineering reasoning from a 50-page English patent was too costly for most readers. Now it is not. Reading the primary source tells you what problem the designer was actually solving and why they made the choices they made. That is different from reading a summary.
+
+## 6. Pitfalls
+
+**Pitfall 1: Do not call this the "predecessor" of LeNet-5**
+
+LeNet-5 (1998, ~600,000 parameters) is significantly different in scale, task, and architecture from this patent (1989, 2,600 parameters). Both were developed by overlapping authors. "Same authors developed the design over a decade" is accurate. "Predecessor" implies architectural inheritance in a way the primary source does not confirm.
+
+**Pitfall 2: LeCun did not "invent" weight sharing**
+
+Fukushima's Neocognitron (1980) used spatial weight sharing in a hierarchical visual system predating this patent by nine years. This patent's contribution is the specific combination of weight sharing with backpropagation-based automatic learning — not the weight-sharing concept itself.
+
+**Pitfall 3: Google Patents "Expired" is not a legal opinion**
+
+Related family patents (US5625708, US5572628, etc.) exist. For any commercial use decision, USPTO Patent Center verification is required.
+
+---
+
+## Strictly Speaking
+
+**Confirmed from primary source**
+Google Patents: US5067164A / Filed 1989-11-30 / Issued 1991-11-19 / Four inventors (Denker, Howard, Jackel, LeCun) / Original Assignee AT&T Bell Laboratories Inc / Current Assignee AT&T Corp, NCR Voyix Corp / ~90,000 connections / ~2,600 free parameters / 6-layer architecture / backpropagation explicitly stated / Rumelhart et al. (1986) cited / Abstract, Description, and Claims retrieved
+
+**Author's interpretation**
+"Shares problem orientation with modern CNNs" is an interpretive claim. Technical inheritance from this patent to current frameworks has not been confirmed at the primary source level.
+
+**Analogy and metaphor**
+Row 5 of the table (parameter count scale) is an analogy. Row 6 (OCR vs. general multimodal AI) was assessed as "does not map well." The feature reduction layer and MaxPooling are "similar" — same goal, different implementation.
+
+**Unconfirmed**
+Commercial deployment history (ATM check reading with NCR/AT&T) / LeNet-5 paper's explicit reference to US5067164A / Forward citation count / Related family patents US5625708 and others / Litigation history
+
+**Where the comparison breaks down**
+"Weight sharing is the same" is accurate at the concept and implementation level. But the 1989 patent assumes a fixed kernel size, fixed depth, and fixed class count. Modern CNN generality is achieved through structures this patent does not assume: variable depth, variable channel count, skip connections, and batch normalization. "They both use weight sharing" is true; "they were designed the same way" is not.
+
+---
+
+Sources:
+- Primary patent: [US5067164A on Google Patents](https://patents.google.com/patent/US5067164/en)
+- AI & ML Patent #1 (full note): [Amazon item-to-item collaborative filtering US6266649B1 (1998)](/en/notes/14-ai-ml-patent-01)
+- Patent Archaeology #2: [Nikola Tesla US381968 (1888)](/en/notes/08-patent-archaeology-02)

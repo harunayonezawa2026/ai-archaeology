@@ -1,0 +1,68 @@
+---
+title: "IBM Filed a Statistical Translation Patent in 1991. Here Is What Problem It Was Trying to Solve."
+subtitle: "AI & ML Patent Note #2 (memo) — US5477451A, IBM's statistical machine translation system"
+description: "Filed 1991 by Peter F. Brown, John Cocke, Frederick Jelinek, and colleagues at IBM Research, US5477451A describes learning translation probabilities from parallel corpora. Patent URL confirmed; full text unread. This is a record of what the design was trying to do — not a claim that it leads to LLM translation."
+episode: 16
+publishedAt: "2026-05-06"
+tags: ["AI Archaeology", "AI & ML Patents", "IBM", "machine translation", "statistical MT", "patent note"]
+series: "AI & ML Patents"
+seriesNumber: 3
+format: "memo"
+status: "published"
+---
+
+**Note on this format:** This memo records what I found at the patent URL and in publicly available sources. Full text and Claim 1 have not been read. Verified facts only; speculation is labeled as such.
+
+---
+
+## Why Dig This
+
+When people trace the history of translation AI today, they usually start with the Transformer (2017) or neural MT (around 2014). Thirty years earlier, IBM Research was already working on something that sounds surprisingly similar: learning to translate from data, not rules. But the design is fundamentally different from neural approaches. Reading this patent is useful precisely because it shows where the problem orientation was shared and where the actual engineering diverged.
+
+## Patent Basics
+
+- **Patent number:** US5477451A
+- **Title:** Method and system for natural language translation
+- **Filed:** 1991 (exact date: not confirmed from full text)
+- **Inventors:** Peter F. Brown, John Cocke, Stephen A. Della Pietra, Vincent J. Della Pietra, Frederick Jelinek, Robert L. Mercer, and others
+- **Assignee:** IBM Corporation
+- **Primary source:** [Google Patents](https://patents.google.com/patent/US5477451A/en) (URL confirmed; full text unread)
+- **Legal status:** Details not confirmed
+
+## Core Content (Wikipedia and Public Sources)
+
+IBM Research (T.J. Watson Research Center) developed what became known as IBM Models 1–5: probabilistic translation models. The core idea: given a large parallel corpus (the same text translated between two languages), compute the probability that word A in language X corresponds to word B in language Y. Translation is then a search for the most probable target sentence given a source sentence.
+
+This was commercialized as the Candide system, one of the first large-scale data-driven machine translation deployments. The system did not require linguists to write grammar rules — it learned from text.
+
+**Claim 1 wording and model structure details are unconfirmed — full text not read.**
+
+## Connections to Today (Hypothesis)
+
+| US5477451A (1991) | Modern translation technology | Assessment |
+|---|---|---|
+| Learn translation from parallel corpus | LLM pretraining from large text corpora | Analogy (both learn from data; mechanisms differ fundamentally) |
+| Word-level probability correspondence | Transformer attention over subword tokens | Does not map well (designs are incompatible) |
+| Rule-free, data-driven translation | Neural MT and LLM translation generally | Similar (shared problem orientation — no hand-written rules) |
+
+**Important clarification:** Statistical MT (SMT) and neural MT (NMT) are not a continuous evolution. NMT largely replaced SMT around 2014–2016. Calling this a "predecessor of LLM translation" would be misleading. A more accurate framing: this is a record of the shift from rule-based to data-driven translation design — and a different branch than the one that led to current LLMs.
+
+**These are pre-full-text hypotheses. Assessment will be revised after Claim 1 review.**
+
+## What's Unconfirmed
+
+- Claim 1 verbatim text
+- Exact relationship to the Candide system (same patent or separate?)
+- Connection to the [ALPAC Report (1966)](/en/notes/05-declassified-archaeology-01) — ALPAC ended an era of MT funding; Candide represented a partial revival
+- Forward citation count
+
+## Next Action
+
+Read Abstract and Claim 1 to confirm the model structure. Cross-reference with Brown et al. (1990, *Computational Linguistics*) to map the relationship between the academic paper and the patent. Potential companion article connecting to the ALPAC episode.
+
+---
+
+Sources:
+- Primary patent: [US5477451A on Google Patents](https://patents.google.com/patent/US5477451A/en)
+- Related episode: [Declassified Archaeology #1 — The ALPAC Report (1966)](/en/notes/05-declassified-archaeology-01)
+- AI & ML Patent #1 (full note): [Amazon item-to-item collaborative filtering US6266649B1 (1998)](/en/notes/14-ai-ml-patent-01)

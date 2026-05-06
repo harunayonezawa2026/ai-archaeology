@@ -1,0 +1,74 @@
+---
+title: "LeCun's 1994 Patent Trained Neural Nets to Ignore Rotation and Shift Using Tangent Vectors"
+subtitle: "AI & ML Patent Note #3 (memo) — US5572628A, Lucent Technologies, tangent-vector invariant training"
+description: "Filed 1994 by LeCun, Denker, Simard, and Victorri at Lucent Technologies, US5572628A describes a method for making neural networks invariant to transformations like rotation, scaling, and translation — using tangent vectors instead of data augmentation. Patent URL and abstract confirmed; full text unread."
+episode: 18
+publishedAt: "2026-05-06"
+tags: ["AI Archaeology", "AI & ML Patents", "LeCun", "Bell Labs", "data augmentation", "patent note"]
+series: "AI & ML Patents"
+seriesNumber: 4
+format: "memo"
+status: "published"
+---
+
+**Note on this format:** This memo records what I found at the patent URL. Full text and Claim 1 have not been read. Verified facts only; speculation is labeled as such.
+
+---
+
+## Why Dig This
+
+"AI can't reliably read slightly tilted text" is a complaint you still hear about OCR systems. The problem is old: how do you train a network that recognizes a character whether it appears straight, slightly rotated, or shifted? In 1994, LeCun and colleagues filed a patent describing a mathematical approach to exactly this — using tangent vectors rather than generating augmented training examples. The comparison to modern data augmentation is interesting precisely because the approaches differ.
+
+## Patent Basics
+
+- **Patent number:** US5572628A
+- **Title:** Training system for neural networks
+- **Filed:** September 16, 1994
+- **Issued:** November 5, 1996
+- **Inventors:** John S. Denker, Yann A. LeCun, Patrice Y. Simard, Bernard Victorri
+- **Original Assignee:** Lucent Technologies Inc
+- **Current Assignee:** AT&T Corp, Nokia of America Corp
+- **Primary source:** [Google Patents](https://patents.google.com/patent/US5572628/en) (URL confirmed; full text retrieved but not fully analyzed)
+- **Legal status:** Expired (approximately 2016; exact date unconfirmed)
+
+## Core Content (Google Patents Abstract)
+
+The patent describes a training system that makes a neural network invariant to specified transformations of the input — translation, rotation, scaling — using tangent vectors.
+
+The key concept: instead of generating many rotated copies of training images (data augmentation), you mathematically describe the *direction* in which an image changes as you rotate it. That direction is the tangent vector. Training then uses this geometric description to push the network toward representations that are stable under the transformation.
+
+From the abstract:
+> *"The tangent plane locally approximates a complex multidimensional surface with a small number of vectors, thereby completely describing it."*
+
+This reduces the training data required to achieve transformation-invariant recognition — the design motivation stated in the patent.
+
+**Claim 1 verbatim text and formula details not confirmed from full text.**
+
+## Connections to Today (Hypothesis)
+
+| US5572628A (1994) | Modern techniques | Assessment |
+|---|---|---|
+| Tangent vectors define transformation direction | Data augmentation generates transformed copies | Similar (shared problem; fundamentally different approach) |
+| Mathematical invariance built into training | Equivariant neural networks (E(n)-equivariant NNs) | Similar (same problem orientation) |
+| Less training data needed for generalization | Few-shot and meta-learning | Analogy (direction is shared; mechanisms differ) |
+
+**Most important difference:** Modern data augmentation simply adds rotated/shifted copies to the training set. This patent's tangent vector method encodes the geometry of the transformation mathematically into the training process. Same goal; different design.
+
+**Pre-full-text hypotheses only. Assessment may change after Claim 1 review.**
+
+## What's Unconfirmed
+
+- Claim 1 verbatim text
+- Exact formulas for tangent vector computation
+- Forward citation count and connection to modern recognition research
+- Relationship to Simard's later work on elastic distortions (which did use augmentation rather than tangent vectors)
+
+## Next Action
+
+Confirm Claim 1 and forward citations. Tracing Simard's subsequent work will clarify whether the tangent vector approach was continued or replaced.
+
+---
+
+Sources:
+- Primary patent: [US5572628A on Google Patents](https://patents.google.com/patent/US5572628/en)
+- AI & ML Patent #2 (full note): [LeCun CNN weight-sharing patent US5067164A (1989)](/en/notes/17-ai-ml-patent-02)

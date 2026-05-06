@@ -1,0 +1,133 @@
+---
+title: "Amazon Filed a Patent in 1998 That Described Exactly How 'Customers Who Bought This Also Bought' Works"
+subtitle: "AI & ML Patent #1 — US6266649B1: the design logic behind item-to-item collaborative filtering at scale"
+description: "Filed 1998 by Gregory Linden, Jennifer Jacobi, and Eric Benson, US6266649B1 describes a recommendation system that precomputes item-to-item similarity tables offline and serves personalized recommendations at low latency by looking up and combining those tables in real time. Expired 2018. Distinct from embedding-based recommendation but shares the same design problem."
+episode: 14
+publishedAt: "2026-05-06"
+tags: ["AI Archaeology", "AI & ML Patents", "Amazon", "recommendation", "collaborative filtering", "expired patent"]
+series: "AI & ML Patents"
+seriesNumber: 1
+status: "published"
+---
+
+In [Patent Archaeology #2 (Nikola Tesla, US381968)](/en/notes/08-patent-archaeology-02), a motor patent from 1888 turned out to contain the design logic of modern EV powertrains. This time I'm digging somewhere closer to daily life.
+
+**The recommendation box that appears on every e-commerce page — "Customers who bought this also bought" — has a design document. It's a 1998 Amazon patent.**
+
+## Conclusion First
+
+Patent number: [US6266649B1](https://patents.google.com/patent/US6266649B1/en)
+Title: "Collaborative recommendations using item-to-item similarity mappings"
+Filed: September 18, 1998
+Issued: July 24, 2001
+Inventors: Gregory D. Linden, Jennifer A. Jacobi, Eric A. Benson
+Original Assignee: Amazon.com Inc
+Current Assignee: Amazon Technologies Inc
+Status on Google Patents: **Expired - Lifetime** (Anticipated expiration: 2018-09-18)
+Claims: 49
+Litigation family: exists
+
+**Note: Legal status reflects Google Patents display only. For actual freedom-to-use analysis, verify at USPTO Patent Center.**
+
+---
+
+**Separating strong analogy from technical identity.**
+
+This patent is not modern AI recommendation or embedding-based search. Item-to-item collaborative filtering and dense vector nearest-neighbor search operate on fundamentally different computational principles. But "precompute similarity, serve by lookup" is a design orientation that recurs in modern large-scale recommendation infrastructure.
+
+---
+
+The core idea is simple: stop comparing every user to every other user every time a recommendation is needed. Instead, precompute which items are similar to which other items, store those tables, and at recommendation time, just look up and combine.
+
+## 1. How I Found It
+
+The patent appeared in the AI & ML Patent candidate database under "highest modern relevance score / confirmed primary source." Amazon's design for EC recommendation is documented at the primary source level on Google Patents. Abstract and mechanism description confirmed; Claim 1 verbatim text not retrieved (JavaScript rendering limitation on the Claims page).
+
+```
+[STEP 1] Query: "Amazon collaborative filtering patent 1998 item-to-item USPTO"
+[STEP 2] Identified US6266649B1 via Google Patents
+[STEP 3] Retrieved abstract and mechanism description; Claim 1 full text unconfirmed
+[STEP 4] Selected: design is documented at primary source level;
+         clear connection to modern recommendation system design problems
+```
+
+## 2. What the Patent Describes
+
+From the abstract on Google Patents:
+
+> A recommendation service generates individual recommendations using a customer's purchase and browsing history. It uses a pre-generated table to map items to lists of similar items, retrieves and combines those lists from a customer's known interests, and produces recommendations. The table is updated periodically by an offline process.
+
+Three technical decisions drive this design:
+
+**1. Precompute item-to-item similarity tables offline**
+Similarity is derived from co-occurrence in user behavior: which items appear together in purchases, views, or lists across the customer base.
+
+**2. Keep the online computation cheap**
+At recommendation time, the system looks up a table and combines lists. It does not recompute similarity on the fly. Latency stays low regardless of user base size.
+
+**3. Compare items to items, not users to users**
+Classic "user-user" collaborative filtering compares every pair of users — computation that scales with user count squared. Item counts tend to be more stable. Item-to-item comparison scales better.
+
+## 3. Then vs. Now
+
+| US6266649B1 (1998) | Modern recommendation systems | Assessment |
+|---|---|---|
+| Offline item-to-item similarity table | Batch-built item embedding index | Similar (shared problem orientation; implementation differs) |
+| Co-occurrence from purchase history | Collaborative filtering trained on behavior logs | Similar |
+| Lookup + list combination for real-time serving | Low-latency ANN (approximate nearest neighbor) serving | Analogy (speed motivation overlaps; mechanisms differ) |
+| Item-to-item mapping | Dense vector embedding space similarity | Does not map well (design is fundamentally different) |
+
+**On rows 3 and 4.** The aspiration to return recommendations cheaply is shared. But the 1998 patent builds sparse co-occurrence tables from behavioral counts. Modern embedding-based systems build dense vector representations through neural training. The computational substrate is different. "They solved the same speed problem" is accurate; "they're the same system" is not.
+
+## 4. Why This Patent Is Not Often Cited
+
+Linden, Mooney, and Good published an explanatory paper in *IEEE Internet Computing* in 2003 (often cited as "Linden et al. 2003"), making the item-to-item collaborative filtering concept widely known to engineers without reading the patent. Once the concept entered the literature, the patent itself became less referenced — even though the patent predates and grounds the paper.
+
+**This is a hypothesis. Internal records of how the paper was written relative to the patent have not been confirmed.**
+
+## 5. Why This Is Worth Reading
+
+Recommendation in 2026 involves multi-tower retrieval, real-time feature computation, and large language model re-ranking. The 1998 patent is none of that. What it documents is the shift from "recalculate everything online" to "precompute what you can, serve from a table." That shift is a design principle that recurs, not a technique that was inherited.
+
+Reading the patent gives you the design reasoning that the 2003 paper assumes you already know.
+
+## 6. Pitfalls
+
+**Pitfall 1: Amazon did not invent recommendation**
+
+GroupLens (1994) had already implemented user-user collaborative filtering. Amazon's contribution was industrializing item-to-item recommendation for large-scale e-commerce. Not the same as inventing recommendation.
+
+**Pitfall 2: Item-to-item tables are not embedding vectors**
+
+Dense embedding similarity (used in two-tower models, DPR, and similar systems) has a different computational basis from co-occurrence tables. The direction — "find items similar to the user's interest" — is shared. The mechanics are separate.
+
+**Pitfall 3: Google Patents "Expired" is not a legal opinion**
+
+A litigation family exists for this patent. For any commercial use decision, USPTO Patent Center verification is required.
+
+---
+
+## Strictly Speaking
+
+**Confirmed from primary source**
+Google Patents: US6266649B1 / Filed 1998-09-18 / Issued 2001-07-24 / Three inventors (Linden, Jacobi, Benson) / Assignee Amazon Technologies Inc / Expired-Lifetime (anticipated 2018-09-18) / 49 claims / litigation family exists / Abstract and mechanism description confirmed
+
+**Author's interpretation**
+"Important precursor to modern recommendation infrastructure design" is an interpretive claim. Technical inheritance from this patent to modern embedding-based systems has not been confirmed at the primary source level.
+
+**Analogy and metaphor**
+Row 3 of the table (real-time serving speed) is an analogy. Row 4 (item mapping vs. embedding space) was assessed as "does not map well" — the designs are architecturally incompatible.
+
+**Unconfirmed**
+Claim 1 verbatim text / Technical comparison with 2003 IEEE paper / Litigation family outcomes / Relationship to GroupLens and other 1994 prior art / Comparison with subsequent embedding-based approaches
+
+**Where the comparison breaks down**
+The item-to-item table is a sparse co-occurrence structure. Modern embedding search is dense vector retrieval. The connection between them is at the problem orientation level — "find similar items efficiently" — not at the implementation level. No primary source evidence of technical inheritance has been confirmed.
+
+---
+
+Sources:
+- Primary patent: [US6266649B1 on Google Patents](https://patents.google.com/patent/US6266649B1/en)
+- AI & ML Patent #2 (full note): [LeCun CNN weight-sharing US5067164A (1989)](/en/notes/17-ai-ml-patent-02)
+- Patent Archaeology #1: [IBM ZISC US5717832 (1995)](/en/notes/02-patent-archaeology-01)
+- Patent Archaeology #2: [Nikola Tesla US381968 (1888)](/en/notes/08-patent-archaeology-02)
