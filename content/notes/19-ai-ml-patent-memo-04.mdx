@@ -1,0 +1,75 @@
+---
+title: "低解像度で絞り込んで高解像度で確認する── 1992年Bell Labsの多解像度シンボル認識特許"
+subtitle: "AI・機械学習特許 発掘メモ #4 — US5337372A、AT&T Bell Labs、1992年出願"
+description: "1992年出願、LeCunとWuによるUS5337372A。低解像度で候補を絞り込み、段階的に高解像度で確認することで計算コストを削減する手法を記述。現代の物体検出（YOLO系の粗→細パイプライン）との問題意識が重なる。一次資料URL確認済み・本文未読。"
+episode: 19
+publishedAt: "2026-05-06"
+tags: ["AI考古学", "AI・機械学習特許", "LeCun", "Bell Labs", "物体検出", "発掘メモ"]
+series: "AI・機械学習特許"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim 1確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+スマホの顔認識やリアルタイム物体検出が「まず粗く見て、候補に絞ってから細かく見る」という2段構えの設計を取ることがある。その問題意識が1992年の特許に書かれている。計算コスト削減という動機で解像度を段階化したアプローチが、32年後の検出パイプラインとどこで重なりどこで乖離するかを確認したい。
+
+## 特許の基本情報
+
+- **特許番号**：US5337372A
+- **タイトル**：Method and apparatus for symbol recognition using multidimensional preprocessing at multiple resolutions
+- **出願**：1992年10月13日
+- **成立**：1994年8月9日
+- **発明者**：Yann A. LeCun、Quen-Zong Wu
+- **Original Assignee**：AT&T Bell Laboratories Inc
+- **Current Assignee**：Nokia Bell Labs USA
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US5337372/en)（URL確認済み・本文未読）
+- **Legal status**：失効（2012年頃、詳細未確認）
+
+## 核心（Google Patents・WebFetch取得情報）
+
+低解像度の特徴配列を使って候補シンボルを絞り込み、段階的に高解像度の配列と比較することで計算時間を削減する手法。「micro-segments」（小さな線分）を多次元セル配列にマッピングし、各セルの値は線分が細胞の特性ラベルにどの程度合致するかを示す。
+
+設計の流れは次のようになっている：
+
+1. 低解像度で特徴マップを生成し、候補を粗く絞り込む
+2. 候補に対してのみ高解像度の比較を行う
+3. 全シンボルに対して高解像度で比較するコストを回避する
+
+**一次資料URL確認済み・Claim 1の逐語テキストおよび実装詳細は未確認。**
+
+## 現代との接続仮説
+
+| US5337372A（1992年） | 現代の物体検出 | 評価（仮説段階） |
+|---|---|---|
+| 低解像度で候補絞り込み | Region Proposal Network（Faster R-CNN） | 類似（問題意識は共通、実装は根本的に異なる） |
+| 高解像度で最終確認 | RoI Pooling/RoI Align | 比喩（「細かく確認する」方向性が近い） |
+| 計算コスト削減を設計動機とする | 推論速度最適化（YOLO系） | 類似（動機が重なっている） |
+| micro-segmentsによる特徴抽出 | 端点検出・エッジ特徴 | 比喩（設計が全く異なる） |
+
+最も重要な違い：この特許は「文字・シンボルの認識」という特化タスクを前提にしており、マルチクラスの汎用物体検出とは設計の前提が根本から異なる。「低解像度→高解像度」という方向性が近いのは事実だが、計算の仕組みは別物だ。
+
+**これは本文未読段階の仮説。Claim 1確認後に修正する。**
+
+## 未確認ポイント
+
+- Claim 1の逐語テキスト
+- micro-segmentsの具体的な実装仕様
+- Forward citations件数（物体検出研究への影響）
+- 同時期の他のマルチ解像度手法との差分（SIFT・HOGとの関係）
+
+## 次アクション
+
+Claim 1確認とForward citations確認。Forward citationsが物体検出研究から来ているかどうかで、現代検出パイプラインとの接続仮説の強さが変わる。
+
+---
+
+参考リンク：
+- 元特許：[US5337372A on Google Patents](https://patents.google.com/patent/US5337372/en)
+- AI・機械学習特許 #2（発掘ノート）：[LeCun CNN重み共有 US5067164A（1989年）](/notes/17-ai-ml-patent-02)
+- AI・機械学習特許 発掘メモ #3：[LeCun 接線ベクトル訓練 US5572628A（1994年）](/notes/18-ai-ml-patent-memo-03)
