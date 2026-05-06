@@ -1,0 +1,66 @@
+---
+title: "LLM翻訳の問題意識は、1991年のIBM特許にどう書かれていたか"
+subtitle: "AI・機械学習特許 発掘メモ #2 — US5477451A、統計的機械翻訳の大規模実用化を目指した設計"
+description: "1991年出願、IBM Peter F. Brown・John Cocke・Frederick Jelinek らによるUS5477451A。統計モデルによる自然言語翻訳を記述した特許。LLM翻訳の前史ではなく、統計的機械翻訳（SMT）の実用化を目指した設計として読む。一次資料URL確認済み・本文未読。"
+episode: 16
+publishedAt: "2026-05-06"
+tags: ["AI考古学", "AI・機械学習特許", "IBM", "機械翻訳", "統計的機械翻訳", "発掘メモ"]
+series: "AI・機械学習特許"
+seriesNumber: 3
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim 1確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+ChatGPT・Gemini・DeepLが普及した今、「翻訳AIはどこから来たか」を問うとき、多くの人はTransformer（2017年）かニューラルMT（NMT、2014年頃）を起点にする。だがその30年前、IBMはすでに「統計モデルで翻訳する」という問題設定を特許文書に書いていた。今の翻訳AIとは設計が根本的に異なるが、「コーパスから翻訳パターンを学ぶ」という発想の前史として読める。
+
+## 特許の基本情報
+
+- **特許番号**：US5477451A
+- **タイトル**：Method and system for natural language translation
+- **出願**：1991年（詳細日付：本文未確認）
+- **発明者**：Peter F. Brown、John Cocke、Stephen A. Della Pietra、Vincent J. Della Pietra、Frederick Jelinek、Robert L. Mercer ほか
+- **Assignee**：IBM
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US5477451A/en)（URL確認済み・本文未読）
+- **Legal status**：詳細未確認
+
+## 核心（Wikipedia・公開情報経由の情報）
+
+IBM Research（T.J. Watson研究所）が開発した統計的機械翻訳（SMT）の実装を特許化したもの。IBMモデル1〜5として知られる確率的翻訳モデルの系譜と関連する。
+
+設計の核心は「対訳コーパスから翻訳確率を統計的に学習する」点。ルールを人手で書くのではなく、大量の翻訳済みテキストから「この単語はあの言語でどの単語に対応しやすいか」の確率分布を計算する。Candideシステムとして実用化された。
+
+**一次資料未読のため、Claim 1の記述・具体的なモデル構造・実装詳細は未確認。**
+
+## 現代との接続仮説
+
+| US5477451A（1991年） | 現代の翻訳技術 | 評価（仮説段階） |
+|---|---|---|
+| 対訳コーパスから確率を学習 | LLMの事前学習（コーパスから学ぶ点） | 比喩（学習の方向性は重なる、仕組みは別） |
+| 単語対応の確率的モデル | Transformerのアテンション機構 | 無理がある（設計が根本的に異なる） |
+| ルールなし・データ駆動の翻訳 | ニューラルMT・LLM翻訳全般の出発点 | 類似（問題意識の先行例として読める） |
+
+**重要：** SMTとNMT（ニューラルMT）の間には技術的な断絶がある。「統計的機械翻訳→ニューラルMT→LLM翻訳」は連続した進化ではなく、NMT登場（2014年頃）でSMTはほぼ置き換えられた。「LLM翻訳の前史」と書くと誤解を招く。「ルールベースから統計・データ駆動へという転換の前史」として位置づけるのが正確。
+
+## 未確認ポイント
+
+- Claim 1の逐語テキスト
+- IBM Candideとの対応関係（同一か、別特許か）
+- 第5回の[ALPAC報告書記事](/notes/05-declassified-archaeology-01)との接続（ALPAC後の「冬」→Candideによる復活の文脈）
+- Forward citations件数
+
+## 次アクション
+
+AbstractとClaim 1を確認し、Candide論文（Brown et al. 1990, Computational Linguistics）との対応を整理する。第5回ALPAC記事との連携記事として書くと文脈が強くなる。
+
+---
+
+参考リンク：
+- 元特許：[US5477451A on Google Patents](https://patents.google.com/patent/US5477451A/en)
+- 関連記事：[Declassified Archaeology #1 — ALPAC報告書](/notes/05-declassified-archaeology-01)
+- AI・機械学習特許 #1（発掘ノート）：[Amazon item-to-item推薦 US6266649B1](/notes/14-ai-ml-patent-01)
