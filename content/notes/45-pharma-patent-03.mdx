@@ -1,0 +1,261 @@
+---
+title: "『ヘビ毒から設計された薬』の出発点は1976年Squibbの2系列特許だった──Ondetti & Cushman の ACE阻害薬探索プログラムは azetidine 系 US4046889A と proline 系 US4105776A を並走させ、後者がカプトプリルの化学骨格を覆った"
+subtitle: "医薬特許 発掘ノート #3 — Brazil Sérgio Ferreira のヘビ毒 BPF 研究（1965-1970）から、Squibb の Ondetti / Cushman が「カルボキシペプチダーゼA を ACE のモデルにする」分子設計でカプトプリル（SQ 14225）に到達した経路。DB登録 US4046889A は azetidine-2-carboxylic acid 誘導体（1976-02-13 出願）でカプトプリル本体（proline + mercaptopropanoyl 骨格）の化学骨格は US4105776A（1976-06-21 優先・1976-12-22 出願・1978-08-08 成立）が覆っている構造的事実を一次資料で訂正。"
+description: "Squibb の Miguel A. Ondetti と David W. Cushman は1970年代前半から ACE（アンジオテンシン変換酵素）阻害薬の分子設計を進めた。出発点はブラジル São Paulo の薬理学者 Sérgio H. Ferreira が1965-1970年に発表した Bothrops jararaca（ハララカ蛇）毒の bradykinin potentiating factor（BPF）ペプチド群の研究。Squibb は BPF ペプチドを基に経口活性を持つ低分子 ACE 阻害薬を設計する戦略を取り、(1) Byers & Wolfenden 1973年の carboxypeptidase A モデル（亜鉛酵素・基質構造類推）、(2) ペプチドミミック設計、(3) スルフヒドリル基（-SH）による亜鉛配位という3段階の合理設計で SQ 14225（後のカプトプリル）に到達した。DB（candidates.tsv）の PH-007 行は『カプトプリル特許 US4046889A』『発明者 Ondetti/Rubin/Cushman 3名』と記載しているが、Google Patents で確認した一次資料は (a) US4046889A は『Azetidine-2-carboxylic acid derivatives』で発明者 Ondetti/Cushman の2名、(b) カプトプリルの化学骨格（proline + 3-mercaptopropanoyl 連結）は US4105776A『Proline derivatives and related compounds』（1976-06-21 priority、1976-12-22 filing、1978-08-08 grant、Ondetti/Cushman 2名、Squibb）が覆っている、という構造的事実だ。Day 8/9/10 連続でDB誤り訂正が発生しており、本記事もその系列。1981年カプトプリル FDA 承認、1985年 ICI のエナラプリル（ACE阻害薬第2世代）、現代の AI 駆動分子設計（AlphaFold / RoseTTAFold / 構造ベース創薬）への50年答え合わせの前史として読む。"
+episode: 45
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "医薬特許", "カプトプリル", "ACE阻害薬", "Ondetti", "Cushman", "Ferreira", "Squibb", "分子設計", "ヘビ毒"]
+series: "医薬特許"
+seriesNumber: 3
+status: "published"
+---
+
+## 結論を先に
+
+1976年、米国 New Jersey 州の E.R. Squibb & Sons 研究所で、有機化学者 Miguel Angel Ondetti と生化学者 David W. Cushman は、当時の医薬開発では稀だった「**酵素の活性中心構造を推定し、その阻害剤を分子設計する**」という方法で経口活性を持つ ACE（アンジオテンシン変換酵素）阻害薬を作り出した。最初の臨床候補は SQ 14225、後のカプトプリル（Capotenブランド、1981年 FDA 承認）だ。
+
+この薬が「**設計された薬**（designed drug）」として医薬史に残るのは、(1) ブラジル São Paulo の薬理学者 Sérgio H. Ferreira が1965-1970年に Bothrops jararaca（ハララカ蛇）毒から単離した bradykinin potentiating factor（BPF）ペプチド群を出発点にし、(2) Byers & Wolfenden 1973年の carboxypeptidase A 阻害剤研究を構造類推のモデルにし、(3) 「亜鉛酵素 ACE の活性中心はカルボキシペプチダーゼA に類似する可能性が高い」という仮説で阻害剤を設計し、(4) スルフヒドリル基（-SH）が亜鉛配位に強い、というアミノ酸化学の原理を組み合わせた、明示的に**仮説駆動**の設計プロセスだったからだ。当時主流だった「ランダムスクリーニング → ヒット化合物 → リード最適化」とは出発点の哲学が違っていた。
+
+DB（`~/ai-archaeology/db/candidates.tsv`）の PH-007 行には「カプトプリル（ACE阻害薬）特許 US4046889A」「発明者 Miguel Ondetti / Bernard Rubin / David Cushman」と記載されているが、Google Patents で本特許を開いて確認すると **二つの構造的訂正** が必要だ：
+
+1. **US4046889A は「Azetidine-2-carboxylic acid derivatives」**（azetidine = 4員環アミノ酸）で、カプトプリルの化学骨格である **proline（pyrrolidine-2-carboxylic acid、5員環）** とは別系列だ。カプトプリルの構造は L-proline の N に 3-mercapto-2-(S)-methylpropanoyl 基を結合させた化合物で、これを覆う特許は **US4105776A『Proline derivatives and related compounds』**（1976-06-21 優先、1976-12-22 出願、1978-08-08 成立）の方だ。
+2. **発明者は Ondetti と Cushman の2名**で、DB の「Bernard Rubin」記載は誤り。Bernard Rubin は1977年の同一プログラムの薬理研究論文に名前が出るが、両特許の発明者欄には記名されていない。
+
+本記事は、(1) Google Patents で取得した US4046889A と US4105776A の Claim 1・発明者・出願日を**両方**並べ、(2) Ferreira の BPF 論文・Byers & Wolfenden カルボキシペプチダーゼA 阻害剤論文・Cushman & Ondetti 1977 Biochemistry 論文の3つの一次資料経路を発掘し、(3) 「設計された薬」という哲学が現代の AI 駆動分子設計（AlphaFold / RoseTTAFold / 構造ベース創薬・分子生成 AI）にどう接続するかを「問題意識の重複」レベルで読む。Day 8/9/10 連続で DB のメモ欄誤り訂正が発生しており（feedback_db_meta_verify_primary）、本件も同パターンの再発として記録する。
+
+---
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] candidates.tsv から Source Found ステータスの医薬特許を優先度順に抽出
+[STEP 2] PH-007「カプトプリル（ACE阻害薬）特許」が総合優先度15で最上位（PH-005 と同点）
+[STEP 3] 一次資料候補を整理：
+  - DB登録: US4046889A
+  - Sérgio Ferreira BPF 1965-1970（Br. J. Pharmac. Chemother. 1965, Biochemistry 1970）
+  - Byers & Wolfenden 1973 Biochemistry（carboxypeptidase A 阻害剤）
+  - Cushman & Ondetti 1977 Biochemistry（カプトプリル発見論文）
+[STEP 4] Google Patents で US4046889A を開いた瞬間に「Azetidine-2-carboxylic acid derivatives」と判明
+  → カプトプリル本体 = proline 系 = US4105776A を追加取得
+[STEP 5] 「DB番号誤り訂正 + 設計された薬パラダイム」の二項軸で発掘ノート化を決定
+```
+
+通常の発掘ノートは「DB登録の特許番号 → Claim 1 → 現代との対応表」の単純経路で書けるが、PH-007 は DB番号が題材本体を覆っていない構造的事実が見つかったため、(a) DB登録特許 US4046889A、(b) 実体カプトプリル特許 US4105776A、(c) 出発点の Ferreira BPF 論文、の3資料を並べる構成にした。
+
+---
+
+## 2. 題材の正体（Claudeに要約させた結果）
+
+```
+[使ったプロンプト1]
+1976年 E.R. Squibb の Ondetti & Cushman が ACE阻害薬カプトプリルに到達した
+分子設計プロセスを、(1) Sérgio Ferreira のヘビ毒 BPF研究、(2) Byers & Wolfenden の
+カルボキシペプチダーゼA阻害剤研究、(3) ペプチドミミック設計、の3段階で要約してください。
+当時の医薬開発の主流（ランダムスクリーニング）と何が違ったかも。
+```
+
+> **段階1（出発点）**：1965-1970年、ブラジル São Paulo 大学の Sérgio Henrique Ferreira は、Bothrops jararaca（南米産ハララカ蛇）の毒から bradykinin potentiating factor（BPF）と呼ばれる短いペプチド群を単離した。BPFは血管拡張作用を持つペプチド bradykinin の分解酵素を阻害することで、結果として血圧降下作用を示した。後の研究で BPF が ACE（アンジオテンシン I → アンジオテンシン II 変換酵素、同時に bradykinin 分解酵素）を阻害することが判明し、ACE が高血圧治療標的として浮上した。
+>
+> **段階2（モデル選定）**：Squibb の Ondetti と Cushman は、ACE の三次元構造が当時未解明だったため、構造類似酵素の **カルボキシペプチダーゼA**（Byers & Wolfenden 1973 Biochemistry の阻害剤研究で活性中心構造が詳しく解析されていた亜鉛酵素）を **ACE のモデル** として採用した。両酵素ともペプチド C 末端を切断するメタロプロテアーゼで、活性中心に亜鉛イオンを持つという共通点がある。
+>
+> **段階3（設計）**：(a) BPF ペプチドを切り詰めた最小構造として L-proline + 連結基というジペプチド模倣骨格を想定、(b) 亜鉛配位として **スルフヒドリル基（-SH）** を選択（カルボキシル基より亜鉛親和性が高い）、(c) 立体化学を S 配置で固定、という3要素で SQ 14225（mercaptopropanoyl-proline、後のカプトプリル）を設計した。1977年 Biochemistry 誌掲載の論文で経口活性を実証し、1981年 FDA 承認に至った。
+>
+> **当時の主流との違い**：1970年代の医薬開発の主流は (i) 既存薬の構造改変（me-too drug）、(ii) 天然物ライブラリーのランダムスクリーニング、(iii) 動物モデルでの表現型スクリーニングだった。Ondetti & Cushman の手法は (i') 標的酵素の機能仮説、(ii') 類似酵素の構造モデル、(iii') 阻害剤の合理設計、という**仮説駆動**で、現在「**rational drug design**」と呼ばれる設計手法の早期実例として位置づけられる（同時期の H2 ブロッカー：シメチジンも James Black による仮説駆動設計だが、別系列）。
+
+```
+[使ったプロンプト2]
+US4046889A（Azetidine-2-carboxylic acid derivatives）と US4105776A（Proline derivatives）
+の Claim 1 を比較して、なぜカプトプリル本体は US4105776A 側でないと
+化学骨格が一致しないのか説明してください。
+```
+
+> **US4046889A Claim 1**：azetidine-2-carboxylic acid（4員環、5番目の炭素なし）骨格を中心とする化合物群を覆う。化学式の R1〜R5 置換基の組み合わせを広範囲に主張するが、**5員環 proline は構造的に含まれない**。この特許は ACE 阻害薬探索プログラムの azetidine 系列を覆う初期特許で、出願日は1976-02-13、優先日も同日。
+>
+> **US4105776A Claim 1**：proline（pyrrolidine-2-carboxylic acid、5員環、L 配置）骨格を中心とする化合物群を覆う。R 置換基として hydroxy/amino/lower alkoxy、R2 として lower alkanoyl-amidomethyl 等を含み、**カプトプリル（D-3-mercapto-2-methylpropanoyl-L-proline）の化学骨格 = N-mercaptopropanoyl-L-proline はこの Claim 1 の権利範囲に明確に入る**。優先日1976-06-21、出願日1976-12-22、成立日1978-08-08。
+>
+> 結論：DB の PH-007 行が「カプトプリル特許 = US4046889A」と書いているのは構造的に誤り。US4046889A は azetidine 系列の探索初期特許で、カプトプリル本体（proline + mercaptopropanoyl）の化学骨格は **US4105776A** が覆う。両特許とも Ondetti / Cushman の2名が発明者で、ACE 阻害薬探索プログラムの並走する2系列として理解する必要がある。
+
+---
+
+## 3. なぜ「ヘビ毒からの設計薬」が現代AI創薬の前史なのか
+
+| US4046889A + US4105776A（1976-1978年）| 現代の医薬・AI創薬 | 評価 |
+|---|---|---|
+| Sérgio Ferreira ヘビ毒 BPF 研究を出発点 | 天然物起点の創薬（taxol、artemisinin 等の伝統） | 同一（天然物 → 構造改変の系譜） |
+| Carboxypeptidase A を ACE のモデル酵素として代用 | AlphaFold / RoseTTAFold で標的酵素の構造を直接予測 | **類似**（モデル代用 → 直接予測の進歩、設計哲学は連続） |
+| 仮説駆動の合理設計（rational drug design） | 構造ベース創薬（SBDD：structure-based drug design） | 類似（用語が継承され概念が拡張された） |
+| スルフヒドリル基による亜鉛配位の合目的選択 | フラグメント創薬・分子生成 AI（Generative chemistry） | 類似（小さな化学的特徴の組み合わせで分子を設計する哲学は同一） |
+| ペプチドミミック設計 | ペプチドミメティクス・PROTAC・分子グルー設計 | **類似**（ペプチド→低分子の橋渡しは現代でも主要戦略） |
+| ACE 阻害薬第1世代としてカプトプリル | エナラプリル（1985）/ リシノプリル（1987）/ ARB（1995〜）/ レニン阻害薬 | 同一（薬剤クラスの直接の発展系譜） |
+| 1977 Biochemistry 論文で公開 + 米国特許で囲い込み | 現代の論文＋特許並走モデル | 類似（学術発表＋特許の二重戦略の早期例） |
+| 副作用（咳、味覚異常）が次世代開発を促進 | カプトプリル → エナラプリル（プロドラッグ化、副作用軽減） | 同一（リード化合物 → 改良の標準的サイクル） |
+
+**この対応表の読み方について補足する。**
+
+1行目は同一。Ferreira の BPF 研究（南米のヘビ毒からの天然物創薬）は、taxol（イチイ抽出）、artemisinin（青蒿抽出）、cyclosporine（土壌真菌）等と同じ「天然物起点 → 構造改変 → 合成医薬」の系譜にある。現代の AI 創薬でも天然物データベース（COCONUT 等）が学習データとして使われており、出発点としての天然物の重要性は変わっていない。
+
+2行目は類似。1976年時点で ACE の三次元構造は未解明で、Ondetti & Cushman は構造類似酵素 carboxypeptidase A を**モデル代用**として使った。2003-2004年に ACE の結晶構造（Natesh ら、Nature/Acta Crystallographica）が発表され、後付けで「カルボキシペプチダーゼA との類似は部分的、活性中心の細部は異なる」ことが判明した。現代では AlphaFold / RoseTTAFold で標的酵素の構造を直接予測できるようになり、モデル代用の必要が大幅に減った。設計哲学としての「標的構造から阻害剤を設計する」は連続しているが、構造取得手段は根本的に変わった。
+
+3行目は類似。「Rational drug design」という用語自体が1970-80年代に登場し、現代では「Structure-based drug design（SBDD）」「Computer-aided drug design（CADD）」「AI drug design」と用語が継承・拡張されている。Ondetti & Cushman の手法は SBDD の早期実例だが、当時は X 線結晶構造を直接見ていたわけではない（モデル酵素から類推）ので、厳密には SBDD の「前段階」「先行例」として読む方が正確。
+
+4行目は類似。スルフヒドリル基の選択は「亜鉛イオンへの配位力」「合成的アクセス」「経口活性」を満たす最小単位の化学的選択で、現代のフラグメント創薬（FBDD：Fragment-Based Drug Design）の哲学と重なる。生成AI（diffusion model、graph neural network 等）による分子生成も、最終的には「小さな化学的特徴の組み合わせで分子を設計する」という同じ問題意識に立つ。
+
+5行目は類似。ペプチド模倣（peptidomimetics）は1970年代から続く設計戦略で、現代の PROTAC（分解誘導剤）、分子グルー、AI 設計の de novo ペプチド模倣でも継承されている。
+
+6行目は同一。カプトプリル（1981 FDA）→ エナラプリル（1985、Merck）→ リシノプリル（1987、Merck）→ ARB（angiotensin receptor blocker：losartan 1995、Merck）→ レニン阻害薬（aliskiren 2007、Novartis）の薬剤系譜は ACE 阻害薬の直接の発展で、降圧薬市場の主軸として年間数十億ドル規模を占める。
+
+7行目は類似。Ondetti & Cushman は1977年 Biochemistry 誌に学術論文を出すと同時に米国特許を出願した（学術発表＋特許の二重戦略）。これは現代の医薬・バイオ企業の標準的な戦略で、Stanford / MIT / Harvard 系の創薬論文の多くが論文と特許を並走させている。
+
+8行目は同一。カプトプリルは咳・味覚異常の副作用があり、Merck がプロドラッグ化（エナラプリラート → エナラプリル）と非スルフヒドリル化で改善版を出した。これは創薬の標準的な「リード化合物 → 副作用同定 → 改良版」のサイクル。
+
+---
+
+## 4. なぜ「忘れられたか」（推測）
+
+「忘れられた」というより、**カプトプリル開発の物語は薬学・医学教科書では今も標準的に語られる**が、(a) DB番号の構造的誤り、(b) Ferreira の貢献、(c) 「Rational drug design」という設計哲学の継続性、の3点が一般技術語りでは参照されにくい。
+
+**DB番号の構造的誤り（本記事の発見）**：candidates.tsv の PH-007 行は二次資料を孫引きした際に US4046889A（azetidine 系）と US4105776A（proline 系）が混同された可能性が高い。両特許とも Ondetti / Cushman 名義・1976年出願・Squibb 譲受で表面的には類似するが、**proline 5員環 vs azetidine 4員環という化学骨格の違いはカプトプリル本体特許かどうかを決定的に分ける**。Day 8（Viterbi vs Gilhousen ら、Walton vs Cardullo ら）、Day 9（PCR US4683195 vs US4683202、スタチン番号誤り）、Day 10（モノクローナル抗体所属誤り、インスリン Collip 抜け）に続く同パターンの再発で、DB は二次資料を孫引きしたメタ情報を多く含んでおり、Google Patents の Original Assignee / Inventor / Claim 欄での突合が必須だ。
+
+**Ferreira の貢献の見えにくさ**：Sérgio H. Ferreira は南米ブラジル São Paulo の薬理学者で、1965-1970年の BPF 研究は当初英国 Royal Society 系のジャーナル（Br. J. Pharmac.）と Biochemistry に出版された。1980年代以降のカプトプリル成功物語は Squibb（米国・Ondetti & Cushman）中心に語られ、Ferreira の出発点としての貢献は薬学史の専門書では明記されるが、一般技術語りでは「米国製薬会社が ACE 阻害薬を開発した」という単純化が広がっている。Ferreira 本人は2024年7月に死去し、ブラジル科学界では「ACE 阻害薬の真の祖父」として再評価が進んだ。
+
+**「Rational drug design」概念の継続性**：1970年代に確立した「標的タンパク質 → 阻害剤の合理設計」という哲学は、(a) 1990年代の HIV プロテアーゼ阻害薬（saquinavir、indinavir 等、X 線結晶構造ベース）、(b) 2000年代の Gleevec（imatinib、Bcr-Abl チロシンキナーゼ阻害薬）、(c) 2020年代の AlphaFold 駆動の構造ベース創薬・de novo 分子生成 AI、と連続して継承されている。だが現代の AI 創薬の物語では「AI が薬を設計する」という新規性が強調され、1976年の Ondetti & Cushman の手法が同じ哲学の先行例だという接続は専門家以外には参照されにくい。
+
+「忘れられた」一次資料：
+- Sérgio H. Ferreira 1965 Br. J. Pharmac. Chemother. の BPF 単離論文原文（今回未参照）
+- Cushman & Ondetti 1977 Biochemistry の SQ 14225 経口活性実証論文原文（今回未参照、Wikipedia / Biochemistry index で書誌情報のみ確認）
+- Byers & Wolfenden 1973 Biochemistry のカルボキシペプチダーゼA 阻害剤論文原文（今回未参照）
+- Squibb の社内研究記録、ACE 阻害薬探索プログラムの開始日付・予算・人員（今回未参照）
+- 2003-2004 ACE 結晶構造論文（Natesh et al. Nature/Acta Cryst）の原文（今回未参照、Wikipedia 経由の間接情報）
+
+---
+
+## 5. AI考古学的な意味
+
+本記事は AI 考古学の連載中で「**設計された薬パラダイムの50年前史**」を扱う。現代の AI 創薬（AlphaFold、RoseTTAFold、分子生成 AI、DeepMind / Isomorphic Labs / Recursion 等）は「タンパク質構造 → 阻害剤の合理設計」という哲学に立つが、この哲学の起点は1970年代の rational drug design にある。1976年の Ondetti & Cushman の設計プロセスは：
+
+- (i) 標的酵素 ACE の機能（アンジオテンシン I → II 変換、bradykinin 分解）を仮説として固定
+- (ii) 構造類似酵素 carboxypeptidase A を**モデル代用**として活性中心の幾何学を想定
+- (iii) 阻害剤の必須要素（亜鉛配位 SH 基、proline 骨格、立体化学）を**化学的に合目的に**選択
+- (iv) 合成・酵素阻害アッセイ・経口活性試験で検証
+
+という4段階で、**現代の AI 創薬の標準ワークフロー**（標的選定 → 構造予測 → 仮想スクリーニング/分子生成 → 合成 → in vitro/in vivo 検証）と問題意識が重なっている。
+
+ただし「同型」とは書かない。設計レベルの違いは：
+
+- 1976年は構造類似酵素を**人間の頭で類推**、2024年は AlphaFold が構造を**直接予測**する。
+- 1976年は化学者の経験則で SH 基を選択、2024年は生成 AI が確率分布から分子を**サンプリング**する。
+- 1976年は手で合成して1分子ずつ評価、2024年は仮想ライブラリ億単位を**計算機でスクリーニング**する。
+- 1976年から FDA 承認まで5年（1976→1981）、現代の AI 創薬は学習データ → 候補化合物 → 第I相まで2-3年に短縮（Insilico Medicine の INS018_055 が2023年第II相到達の例、ただし FDA 承認はまだ）。
+
+連載テーマ「人類が読まなかった長文を、LLMで再読する」との接続：1977 Biochemistry 論文と1976/1978年の2件の特許明細書は、**現代の AI 創薬の哲学的起点を一次資料で再読する**素材だ。AlphaFold の論文（Jumper et al. 2021 Nature）と並べて読むと、48年隔たった2つの「合理設計」の同型と差異が明確に見える。
+
+---
+
+## 6. 落とし穴（医薬特許 サブシリーズ固有）
+
+**落とし穴1：「DB番号誤りは単純な記入ミス」は単純化**
+
+DB の PH-007 行が US4046889A を「カプトプリル特許」と書いているのは、Wikipedia / 二次資料の参照系統が混乱した可能性がある。実際、Wikipedia 英語版 Captopril 項では「Captopril was developed at the Squibb pharmaceutical company; the patent was filed in 1976.」と記述されており、特定の特許番号が確定的に紐づけられていない。Squibb は同年に複数の ACE 阻害薬関連特許を出願しており（azetidine 系 US4046889A、proline 系 US4105776A、その他）、二次資料が「カプトプリル特許」として代表番号を挙げる際にどれを選ぶかでばらつきが出る。**DB の番号は二次資料を孫引きした結果**である可能性が高く、Google Patents の Claim 1 で化学骨格を直接確認するまで信頼できない。
+
+**落とし穴2：「Ondetti & Cushman が単独で ACE 阻害薬を発明」は単純化**
+
+(a) Sérgio Ferreira の BPF 研究（1965-1970）が ACE を治療標的として浮上させた、(b) John Vane（後の1982年 Nobel賞）のキニン系研究が Ferreira を Royal College of Surgeons に招聘した、(c) Squibb 内部では Bernard Rubin（薬理研究者）が動物モデルでの活性評価を担当した、(d) Eve Sabo らが製剤・臨床開発を担当した、という複数の貢献があった。Ondetti & Cushman は特許名義として記名されたが、ACE 阻害薬全体の開発は10名以上のチームワーク。「2人の天才が薬を設計した」というナラティブは特許史の単純化。
+
+**落とし穴3：「カプトプリルは現代でも主流の降圧薬」は誤り**
+
+カプトプリルは咳（10-20%）、味覚異常、皮膚発疹、好中球減少の副作用が知られ、現代の臨床ではエナラプリル（プロドラッグ化、Merck 1985）、リシノプリル（活性体、Merck 1987）、ラミプリル（活性体、Sanofi 1991）等の第2世代以降が主流。さらに1995年以降は ARB（losartan 等、AT1 受容体直接遮断、咳の副作用なし）が広く使われ、2010年代以降は SGLT2 阻害薬・GLP-1 受容体作動薬等の新クラスも降圧効果を持つ。カプトプリルは ACE 阻害薬第1世代として歴史的位置づけは確定しているが、現代の処方第一選択ではない。
+
+**落とし穴4：「Rational drug design = AI drug design」と直結しない**
+
+1970年代の rational drug design は (i) 構造類似酵素のモデル代用、(ii) 化学者の経験則、(iii) 手作業での合成・評価、で構成されており、「データ駆動」「機械学習」「生成 AI」の現代要素は含まれていない。両者は「標的構造から阻害剤を設計する」という**哲学レベルでは連続**するが、**手法レベルでは離散的**で、同型と書くと専門家から「設計能力の差を無視している」と突っ込まれる。「前史」「先行例」「問題意識の重複」レベルの言葉に留める必要がある。
+
+**落とし穴5：「DB訂正は本記事限り」は不正確**
+
+Day 8（IC-009/011/012 で発明者 / 譲受人 3件訂正）、Day 9（PH-001 番号誤り、PH-003 単独 vs 共同誤り、FH-001 priority 年誤り）、Day 10（PH-004 所属誤り、PH-002 発明者 2 vs 3 名誤り）、Day 11（本記事：PH-007 番号誤り + 発明者 2 vs 3 名誤り）と4日連続で DB訂正が発生している。`feedback_db_meta_verify_primary` で確立した「DB のメモ・発明者・譲受人欄は入門書通説の混入があり一次資料突合せ必須」という運用ルールが本記事でも追認された。Week 3 残りの17件（FH-004〜012、PH-005/006/008/009/010）でも同様の訂正が発生する見込み。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+
+Google Patents より：
+- **US4046889A**：Title「Azetidine-2-carboxylic acid derivatives」、Inventors「Miguel Angel Ondetti / David W. Cushman」（**2名**、DB「Ondetti/Rubin/Cushman 3名」記載は誤り）、Original Assignee「ER Squibb and Sons LLC」、Current Assignee「ER Squibb and Sons LLC」、Priority date 1976-02-13、Filing date 1976-02-13、Grant date 1977-09-06、Expiration 1994-09-06。Claim 1 化学骨格は azetidine（4員環アミノ酸）。
+- **US4105776A**：Title「Proline derivatives and related compounds」、Inventors「Miguel Angel Ondetti / David W. Cushman」（**2名**）、Original Assignee「ER Squibb and Sons LLC」、Current Assignee「ER Squibb and Sons LLC」、Priority date 1976-06-21、Filing date 1976-12-22、Grant date 1978-08-08、Expiration 1996-02-14。Claim 1 化学骨格は proline（5員環、L 配置）でカプトプリル（N-(3-mercapto-2-(S)-methylpropanoyl)-L-proline）の構造を含む。
+- 1981年カプトプリル FDA 承認（複数医薬史出典で確認）、1984年日本承認。
+
+**著者の解釈**
+- 「DB登録 US4046889A はカプトプリル本体特許ではなく、proline 系列の US4105776A が化学骨格を覆う」は Claim 1 の化学骨格比較から導いた構造的事実。ただし Squibb の ACE 阻害薬探索プログラム全体を覆う「特許群」として両特許を1つの題材と扱う立場も可能で、「カプトプリル特許 = US4046889A」という DB 記述が完全に誤りとは言い切れない側面もある（プログラムを代表する番号として選んだ可能性）。本記事は「化学骨格の覆い方」を基準に proline 系列の方を本体として位置づける。
+- 「Sérgio Ferreira の BPF 研究が出発点」は標準的な医薬史記述だが、Squibb 社内の意思決定過程でどの程度直接的に Ferreira の論文が参照されたか、社内記録は未確認。
+- 「Ondetti & Cushman の手法は現代 AI 創薬の哲学的起点」は著者の解釈。問題意識として重なる部分はあるが、設計手法は離散的で同型ではない。
+
+**比喩・アナロジー**
+- 対応表2行目（モデル代用 vs AlphaFold 直接予測）は類似。設計哲学は連続するが構造取得手段は根本的に異なる。
+- 対応表3-5行目（rational design / fragment / peptidomimetics）は類似。用語と問題意識は継承されるが、データ駆動・生成 AI の要素は1970年代には存在しない。
+- 対応表7行目（学術発表＋特許の二重戦略）は類似。1977年時点では珍しい戦略だったが、現代では標準。
+
+**未確認**
+- US4046889A / US4105776A の Description 全文の逐語確認
+- Cushman & Ondetti 1977 Biochemistry 論文（vol. 16, pp. 5484-5491）原文
+- Sérgio H. Ferreira 1965 Br. J. Pharmac. Chemother. の BPF 単離論文原文
+- Byers & Wolfenden 1973 Biochemistry のカルボキシペプチダーゼA 阻害剤論文原文
+- Squibb 社内記録（ACE 阻害薬探索プログラムの開始日・予算・人員配置）
+- Bernard Rubin の薬理研究貢献の正確な記録（特許には記名されていないが論文には共著者）
+- 2003-2004 ACE 結晶構造論文（Natesh et al. Nature/Acta Cryst）原文
+- カプトプリル FDA 承認時の臨床試験データ・適応症拡大履歴
+- 1981-1985 カプトプリル発売後の咳副作用報告と Merck エナラプリル開発の社内記録
+- 現代の AI 創薬企業（Insilico Medicine、Atomwise、Recursion、Isomorphic Labs 等）の手法と1976年合理設計との比較定量
+
+**この比較が破綻する点**
+- Ondetti & Cushman の1976年手法と現代 AI 創薬は「合理設計」という哲学を共有するが、(a) 構造取得手段（モデル代用 vs 直接予測）、(b) 探索空間の大きさ（数十化合物 vs 億単位）、(c) 評価速度（手作業合成 vs 計算機スクリーニング）、(d) データ駆動性（経験則 vs 学習）が根本的に異なる。「同型」と書くと専門家から3点反論される：(1) AlphaFold は2021年に登場、1976年の構造類推とは精度が桁違い、(2) 生成 AI は化学的妥当性を確率分布で学習、合目的設計とは生成原理が違う、(3) 現代の創薬は仮想スクリーニング → 合成 → 評価のサイクルを月単位で回す、1976年の設計サイクル（年単位）とは時間スケールが違う。
+- DB の PH-007 訂正は構造的事実だが、「DB は信頼できない」と一般化するのは過度。DB の優先度評価（5/5/4/3/4=15）と「設計された薬としての歴史的重要性」の判断自体は妥当で、訂正対象はメモ欄・発明者欄・特許番号欄に限られる。
+- 発掘ノートは Google Patents + Wikipedia + 医薬史標準教科書（間接情報）の範囲の確認止まりで、Squibb 社内資料・1977年 Biochemistry 論文原文・Ferreira BPF 論文原文・現代 AI 創薬企業との詳細比較は未取得である点を明示する。
+
+---
+
+## 使ったプロンプト全文
+
+```
+[STEP 1] 候補抽出（人手）
+candidates.tsv の医薬特許シリーズ（PH-001〜010）から Source Found 以上のステータスを
+総合優先度順に抽出。PH-007 が PH-005 と同点で15、用紙的位置として「設計された薬」の
+パラダイム転換ストーリーを優先。
+
+[STEP 2] 一次資料探索（WebFetch / Google Patents）
+- US4046889A → Azetidine-2-carboxylic acid derivatives と判明（DB番号誤りの発見）
+- US4105776A → Proline derivatives（カプトプリル本体）を追加取得
+- 関連論文：Cushman & Ondetti 1977 Biochemistry / Ferreira 1965 Br. J. Pharmac.
+  / Byers & Wolfenden 1973 Biochemistry（書誌情報のみ確認、原文未参照）
+
+[STEP 3] 内容抽出
+プロンプト：「1976年 Squibb の Ondetti & Cushman が ACE阻害薬カプトプリルに到達した
+分子設計プロセスを、(1) Sérgio Ferreira のヘビ毒 BPF研究、
+(2) Byers & Wolfenden のカルボキシペプチダーゼA阻害剤研究、
+(3) ペプチドミミック設計、の3段階で要約してください。」
+
+[STEP 4] 特許比較
+プロンプト：「US4046889A（Azetidine 系）と US4105776A（Proline 系）の Claim 1 を比較して、
+なぜカプトプリル本体は US4105776A 側でないと化学骨格が一致しないのか説明してください。」
+
+[STEP 5] 4段階評価
+プロンプト：「上の対応表の各行について：
+1.『同一』— 設計・実装レベルで実際に一致している
+2.『類似』— 問題意識は共通、実装・設計は異なる
+3.『比喩』— 概念的に似ているが、技術的には別物
+4.『無理がある』— 対応として強引、専門家から突っ込まれやすい
+4段階で評価してください。」
+
+[STEP 6] 捏造チェック
+プロンプト：「上の文章で、一次資料で確認していない事実を主張している箇所を全部列挙してください。
+特に（年代・人名・特許番号・組織名・金額・引用文）について。」
+```
+
+---
+
+参考リンク：
+- DB登録特許（azetidine 系）：[US4046889A on Google Patents](https://patents.google.com/patent/US4046889A/en)
+- カプトプリル本体特許（proline 系）：[US4105776A on Google Patents](https://patents.google.com/patent/US4105776A/en)
+- 関連発掘ノート（医薬特許 #1）：[Cetus PCR基幹特許 US4683195A（1985年）](/notes/39-pharma-patent-01)
+- 関連発掘ノート（医薬特許 #2）：[Köhler & Milstein モノクローナル抗体（1975年 Nature）+ Wistar US4172124A](/notes/42-pharma-patent-02)
+- 関連発掘メモ #1（医薬特許）：[遠藤章スタチン基幹特許 US4049495A（1974年優先）](/notes/40-pharma-patent-memo-01)
+- 関連発掘メモ #2（医薬特許）：[Banting/Best/Collip インスリン US1469994（1923年, UoT+UAlberta 共同譲受）](/notes/43-pharma-patent-memo-02)

@@ -1,0 +1,263 @@
+---
+title: "The Starting Point of 'Designed Drugs from Snake Venom' Was Two 1976 Squibb Patent Series — Ondetti & Cushman's ACE Inhibitor Program Ran the Azetidine Series (US4046889A) in Parallel With the Proline Series (US4105776A), and the Latter Covered Captopril's Chemical Backbone"
+subtitle: "Pharma Patents Excavation Note #3 — From Brazilian pharmacologist Sérgio Ferreira's snake-venom BPF research (1965-1970) to Squibb's Ondetti / Cushman arriving at captopril (SQ 14225) via molecular design using carboxypeptidase A as the ACE model. The DB-registered US4046889A is the azetidine-2-carboxylic acid derivative series (filed 1976-02-13); captopril's actual chemical backbone (proline + mercaptopropanoyl) is covered by US4105776A (priority 1976-06-21, filed 1976-12-22, granted 1978-08-08). A structural correction confirmed against primary sources."
+description: "Squibb's Miguel A. Ondetti and David W. Cushman pursued angiotensin-converting enzyme (ACE) inhibitor molecular design from the early 1970s. The starting point was the bradykinin potentiating factor (BPF) peptides isolated by Brazilian São Paulo pharmacologist Sérgio H. Ferreira from the venom of Bothrops jararaca (jararaca pit viper) between 1965 and 1970. Squibb adopted a strategy to design orally active small-molecule ACE inhibitors using BPF peptides as templates, executing rational design in three stages: (1) Byers & Wolfenden's 1973 carboxypeptidase A model (zinc enzyme, substrate-structure analogy), (2) peptidomimetic design, and (3) sulfhydryl group (-SH) zinc coordination — arriving at SQ 14225 (later named captopril). The candidates DB row PH-007 lists 'Captopril patent US4046889A' with 'inventors Ondetti/Rubin/Cushman three co-inventors,' but the primary sources confirmed on Google Patents show: (a) US4046889A is 'Azetidine-2-carboxylic acid derivatives' with two inventors (Ondetti / Cushman), and (b) captopril's chemical backbone (proline + 3-mercaptopropanoyl linkage) is covered by US4105776A 'Proline derivatives and related compounds' (priority 1976-06-21, filed 1976-12-22, granted 1978-08-08, Ondetti/Cushman, Squibb). DB corrections have occurred for four consecutive days (Day 8/9/10/11). Read this as the 50-year reckoning between 1981 captopril FDA approval, 1985 Merck enalapril (second-generation ACE inhibitor), and modern AI-driven molecular design (AlphaFold / RoseTTAFold / structure-based drug design)."
+episode: 45
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Pharma Patents", "Captopril", "ACE Inhibitor", "Ondetti", "Cushman", "Ferreira", "Squibb", "Molecular Design", "Snake Venom"]
+series: "Pharma Patents"
+seriesNumber: 3
+status: "published"
+---
+
+## Bottom Line First
+
+In 1976, at the E.R. Squibb & Sons research laboratory in New Jersey, organic chemist Miguel Angel Ondetti and biochemist David W. Cushman produced an orally active ACE (angiotensin-converting enzyme) inhibitor by a method that was rare for pharmaceutical development at the time: **estimating the active-site structure of an enzyme and designing inhibitors against it**. The first clinical candidate was SQ 14225, later named captopril (Capoten brand, FDA-approved 1981).
+
+This drug remains in pharmaceutical history as a "**designed drug**" because its development followed an explicitly **hypothesis-driven** design process: (1) starting from the bradykinin potentiating factor (BPF) peptides isolated by Brazilian São Paulo pharmacologist Sérgio H. Ferreira from Bothrops jararaca (jararaca pit viper) venom between 1965 and 1970; (2) adopting Byers & Wolfenden's 1973 carboxypeptidase A inhibitor research as a structural-analogy model; (3) designing inhibitors based on the hypothesis that "the active site of the zinc enzyme ACE is likely similar to that of carboxypeptidase A"; and (4) combining the amino-acid-chemistry principle that sulfhydryl groups (-SH) coordinate strongly to zinc. The dominant approach at the time — random screening → hit compounds → lead optimization — had a different starting philosophy.
+
+The DB record (`~/ai-archaeology/db/candidates.tsv`) row PH-007 lists "Captopril (ACE inhibitor) patent US4046889A" and "inventors Miguel Ondetti / Bernard Rubin / David Cushman," but opening this patent on Google Patents requires **two structural corrections**:
+
+1. **US4046889A is "Azetidine-2-carboxylic acid derivatives"** (azetidine = 4-membered ring amino acid), a series distinct from captopril's chemical backbone, which is **proline (pyrrolidine-2-carboxylic acid, 5-membered ring)**. Captopril's structure is L-proline N-linked to a 3-mercapto-2-(S)-methylpropanoyl group, and the patent that covers this is **US4105776A "Proline derivatives and related compounds"** (priority 1976-06-21, filed 1976-12-22, granted 1978-08-08).
+2. **The inventors are Ondetti and Cushman, two co-inventors** — the DB record listing "Bernard Rubin" is incorrect. Bernard Rubin appears in the 1977 pharmacology paper from the same program, but is not named on either patent.
+
+This article (1) places Google Patents data for US4046889A and US4105776A side by side — Claim 1, inventors, filing dates — for **both** patents, (2) excavates three primary-source paths: Ferreira's BPF papers, Byers & Wolfenden's carboxypeptidase A inhibitor paper, and Cushman & Ondetti's 1977 Biochemistry paper, and (3) reads how the philosophy of "designed drugs" connects to modern AI-driven molecular design (AlphaFold / RoseTTAFold / structure-based drug design / generative chemistry) at the level of "shared problem awareness." DB corrections have now occurred for four consecutive days (`feedback_db_meta_verify_primary`); this article logs the same pattern.
+
+---
+
+## 1. How the topic was selected (reproducible pipeline)
+
+```
+[STEP 1] Extract Source Found pharma patents from candidates.tsv by composite priority
+[STEP 2] PH-007 "Captopril (ACE inhibitor) patent" tied for top at composite priority 15 (with PH-005)
+[STEP 3] Organize primary-source candidates:
+  - DB-registered: US4046889A
+  - Sérgio Ferreira BPF 1965-1970 (Br. J. Pharmac. Chemother. 1965, Biochemistry 1970)
+  - Byers & Wolfenden 1973 Biochemistry (carboxypeptidase A inhibitor)
+  - Cushman & Ondetti 1977 Biochemistry (captopril discovery paper)
+[STEP 4] Opening US4046889A on Google Patents revealed "Azetidine-2-carboxylic acid derivatives"
+  → captopril's actual backbone (proline series) requires US4105776A — added to retrieval
+[STEP 5] Decided to write the excavation note around two axes: "DB number correction" + "designed drug paradigm"
+```
+
+A typical excavation note follows the simple path "DB-registered patent number → Claim 1 → modern correspondence table," but PH-007 surfaced a structural fact that the DB number does not cover the topic itself, so the note structure puts three primary sources in parallel: (a) the DB-registered patent US4046889A, (b) the actual captopril patent US4105776A, and (c) Ferreira's BPF papers as the starting point.
+
+---
+
+## 2. The topic itself (Claude summary)
+
+```
+[Prompt 1]
+Summarize, in three stages, the molecular-design process by which Squibb's Ondetti & Cushman
+arrived at captopril in 1976: (1) Sérgio Ferreira's snake-venom BPF research, (2) Byers &
+Wolfenden's carboxypeptidase A inhibitor research, (3) peptidomimetic design.
+What differentiates this from the dominant pharmaceutical development approach
+(random screening) of the time?
+```
+
+> **Stage 1 (starting point)**: From 1965 to 1970, Sérgio Henrique Ferreira at the University of São Paulo, Brazil, isolated short peptides called bradykinin potentiating factor (BPF) from the venom of Bothrops jararaca (a South American pit viper). BPF showed blood-pressure-lowering activity by inhibiting the enzyme that degrades the vasodilatory peptide bradykinin. Later research established that BPF inhibits ACE (which converts angiotensin I to angiotensin II and also degrades bradykinin), surfacing ACE as a hypertension treatment target.
+>
+> **Stage 2 (model selection)**: Because the three-dimensional structure of ACE was unknown at the time, Squibb's Ondetti and Cushman adopted the structurally analogous enzyme **carboxypeptidase A** — a zinc enzyme whose active-site geometry had been worked out in detail by Byers & Wolfenden's 1973 Biochemistry inhibitor study — as their **model for ACE**. Both enzymes are zinc metalloproteases that cleave peptide C-termini and share a zinc ion at the active site.
+>
+> **Stage 3 (design)**: They designed SQ 14225 (mercaptopropanoyl-proline, later captopril) by combining three elements: (a) a minimum-structure dipeptide-mimic backbone derived by truncating BPF peptides — L-proline plus a linking group; (b) a **sulfhydryl group (-SH)** chosen for zinc coordination, since -SH has higher zinc affinity than carboxylic acid; (c) S-stereochemistry locked in. The 1977 Biochemistry paper demonstrated oral activity, leading to FDA approval in 1981.
+>
+> **Difference from the dominant approach**: 1970s pharmaceutical development was dominated by (i) modification of existing drugs (me-too drugs), (ii) random screening of natural-product libraries, and (iii) phenotypic screening in animal models. Ondetti & Cushman's approach was **hypothesis-driven**: (i') a functional hypothesis about the target enzyme, (ii') a structural model from an analogous enzyme, (iii') rational design of the inhibitor — an early concrete instance of what is now called **rational drug design**. (Contemporaneous H2 blocker cimetidine by James Black was also hypothesis-driven design, though a separate lineage.)
+
+```
+[Prompt 2]
+Compare Claim 1 of US4046889A (Azetidine-2-carboxylic acid derivatives) with Claim 1
+of US4105776A (Proline derivatives), and explain why captopril's chemical backbone
+must lie within US4105776A and not US4046889A.
+```
+
+> **US4046889A Claim 1**: covers compounds centered on the azetidine-2-carboxylic acid backbone (4-membered ring, no fifth carbon). Asserts a wide combinatorial space of R1-R5 substituents, but **structurally cannot include the 5-membered proline ring**. This patent covers the azetidine series in the early ACE inhibitor exploration program. Filed 1976-02-13 (priority same date).
+>
+> **US4105776A Claim 1**: covers compounds centered on the proline (pyrrolidine-2-carboxylic acid, 5-membered ring, L-configuration) backbone. R substituents include hydroxy/amino/lower alkoxy, R2 includes lower alkanoyl-amidomethyl, etc. **Captopril's chemical backbone — N-mercaptopropanoyl-L-proline (D-3-mercapto-2-methylpropanoyl-L-proline) — clearly falls inside this Claim 1's scope**. Priority 1976-06-21, filed 1976-12-22, granted 1978-08-08.
+>
+> Conclusion: The DB row PH-007 stating "Captopril patent = US4046889A" is structurally incorrect. US4046889A covers the azetidine series of the exploration program; captopril's actual chemical backbone (proline + mercaptopropanoyl) is covered by **US4105776A**. Both patents have Ondetti / Cushman as the two co-inventors, and they should be understood as parallel series within Squibb's ACE inhibitor exploration program.
+
+---
+
+## 3. Why is "designed drug from snake venom" a precursor to modern AI-driven drug design?
+
+| US4046889A + US4105776A (1976-1978) | Modern pharma / AI drug design | Evaluation |
+|---|---|---|
+| Sérgio Ferreira's snake venom BPF research as starting point | Natural-product-origin drug discovery (taxol, artemisinin, etc.) | Identical (natural product → structural modification lineage) |
+| Carboxypeptidase A as a substitute model for ACE | AlphaFold / RoseTTAFold predicting target enzyme structure directly | **Similar** (model substitution → direct prediction; design philosophy continuous) |
+| Hypothesis-driven rational drug design | Structure-based drug design (SBDD) | Similar (terminology inherited, concept extended) |
+| Purposive selection of sulfhydryl group for zinc coordination | Fragment-based drug design / generative chemistry AI | Similar (philosophy of designing molecules from small chemical features is the same) |
+| Peptidomimetic design | Peptidomimetics / PROTAC / molecular glue design | **Similar** (peptide → small molecule bridging is a major modern strategy) |
+| Captopril as first-generation ACE inhibitor | Enalapril (1985) / Lisinopril (1987) / ARBs (1995-) / renin inhibitors | Identical (direct lineage of drug class development) |
+| 1977 Biochemistry paper publication + US patent enclosure | Modern parallel paper-and-patent model | Similar (early example of dual academic-publication-and-patent strategy) |
+| Side effects (cough, taste disturbance) drove next-generation development | Captopril → enalapril (prodrug, side-effect mitigation) | Identical (standard lead-optimization cycle) |
+
+**A note on how to read this correspondence table.**
+
+Row 1 is identical. Ferreira's BPF research (natural-product drug discovery from South American snake venom) lies in the same lineage as taxol (yew extract), artemisinin (sweet wormwood extract), and cyclosporine (soil fungus): natural product → structural modification → synthetic drug. Modern AI drug design also uses natural-product databases (e.g., COCONUT) as training data, and the importance of natural products as starting points has not changed.
+
+Row 2 is similar. In 1976, ACE's three-dimensional structure was unknown, and Ondetti & Cushman used the structurally analogous enzyme carboxypeptidase A as a **model substitute**. The crystal structure of ACE was published in 2003-2004 (Natesh et al., Nature/Acta Crystallographica), and after the fact it was revealed that "similarity to carboxypeptidase A is partial; details of the active site differ." Today, AlphaFold / RoseTTAFold can predict target enzyme structures directly, dramatically reducing the need for model substitution. The design philosophy of "designing inhibitors from target structure" is continuous, but the means of obtaining the structure has fundamentally changed.
+
+Row 3 is similar. The term "rational drug design" itself emerged in the 1970s-80s, and modern terminology has inherited and extended it: "Structure-based drug design (SBDD)," "Computer-aided drug design (CADD)," "AI drug design." Ondetti & Cushman's method is an early concrete instance of SBDD, but they did not look at X-ray crystal structures directly (analogy from a model enzyme), so it is more accurate to read it as a "precursor stage" or "earlier example" of SBDD.
+
+Row 4 is similar. Choosing the sulfhydryl group is a minimum-unit chemical decision satisfying "zinc coordination strength," "synthetic accessibility," and "oral activity," and overlaps with the philosophy of modern fragment-based drug design (FBDD). Molecular generation by AI (diffusion models, graph neural networks, etc.) ultimately stands on the same problem awareness — designing molecules from small chemical features.
+
+Row 5 is similar. Peptidomimetics is a design strategy continuously developed since the 1970s, inherited by modern PROTACs (degraders), molecular glues, and AI-designed de novo peptidomimetics.
+
+Row 6 is identical. The drug lineage Captopril (1981 FDA) → Enalapril (1985, Merck) → Lisinopril (1987, Merck) → Ramipril (1991, Sanofi) → ARBs (losartan, 1995, Merck) → renin inhibitors (aliskiren, 2007, Novartis) is a direct development of the ACE inhibitor lineage and accounts for tens of billions of dollars annually as the mainstay of antihypertensive markets.
+
+Row 7 is similar. Ondetti & Cushman simultaneously published in Biochemistry in 1977 and filed US patents — a dual academic-publication-and-patent strategy that is now standard for pharma/biotech companies. Many drug discovery papers from Stanford / MIT / Harvard run papers and patents in parallel.
+
+Row 8 is identical. Captopril's cough and taste-disturbance side effects led Merck to develop a prodrug (enalaprilat → enalapril) with a non-sulfhydryl version. This is the standard "lead compound → side-effect identification → improved version" cycle in drug development.
+
+---
+
+## 4. Why was this "forgotten"? (speculation)
+
+Captopril development is still standardly told in pharmacy and medicine textbooks. What is "forgotten" — i.e., rarely referenced in general technology discourse — is (a) the structural error in the DB number, (b) Ferreira's contribution, and (c) the continuity of the "rational drug design" philosophy.
+
+**The structural error in the DB number (this article's discovery)**: The PH-007 row in `candidates.tsv` likely confused US4046889A (azetidine series) with US4105776A (proline series) when arc-quoting from secondary sources. Both patents share Ondetti/Cushman names, 1976 filing dates, and Squibb assignment on the surface, but **the chemical-backbone difference between proline (5-membered) and azetidine (4-membered) is decisive in determining whether the patent covers captopril itself**. Following Day 8 (Viterbi vs Gilhousen et al., Walton vs Cardullo et al.), Day 9 (PCR US4683195 vs US4683202, statin number error), and Day 10 (monoclonal antibody affiliation error, missing Collip in insulin), this is the same pattern recurring. The DB carries arc-quoted meta-information from secondary sources, and verification against Google Patents' Original Assignee / Inventor / Claim fields is mandatory.
+
+**Invisibility of Ferreira's contribution**: Sérgio H. Ferreira was a Brazilian São Paulo pharmacologist whose 1965-1970 BPF research was originally published in UK Royal Society-system journals (Br. J. Pharmac.) and Biochemistry. Captopril success narratives from the 1980s onward have been told around Squibb (US, Ondetti & Cushman), and Ferreira's contribution as the starting point is clearly stated in pharmaceutical history specialist works but simplified to "an American pharmaceutical company developed an ACE inhibitor" in general technology discourse. Ferreira himself died in July 2024, and Brazilian science circles have advanced re-evaluation of him as the "true grandfather of ACE inhibitors."
+
+**Continuity of the "rational drug design" concept**: The philosophy "rational design of inhibitors from target protein" established in the 1970s has continuously inherited through (a) 1990s HIV protease inhibitors (saquinavir, indinavir, etc., based on X-ray crystal structures), (b) 2000s Gleevec (imatinib, Bcr-Abl tyrosine kinase inhibitor), (c) 2020s AlphaFold-driven structure-based drug design and de novo molecular generation AI. But modern AI drug discovery narratives emphasize the novelty of "AI designs drugs," and the connection that 1976 Ondetti & Cushman's method is an earlier example of the same philosophy is rarely referenced outside specialists.
+
+"Forgotten" primary sources:
+- Sérgio H. Ferreira's 1965 Br. J. Pharmac. Chemother. BPF isolation paper (not retrieved)
+- Cushman & Ondetti's 1977 Biochemistry SQ 14225 oral-activity paper (not retrieved; bibliographic info confirmed via Wikipedia / Biochemistry index only)
+- Byers & Wolfenden 1973 Biochemistry carboxypeptidase A inhibitor paper (not retrieved)
+- Squibb internal research records — start dates, budgets, personnel for the ACE inhibitor exploration program (not retrieved)
+- 2003-2004 ACE crystal structure papers (Natesh et al. Nature/Acta Cryst) (not retrieved; Wikipedia-mediated indirect info)
+
+---
+
+## 5. AI Archaeology meaning
+
+This article handles the "**50-year prehistory of the designed-drug paradigm**" within the AI Archaeology series. Modern AI drug design (AlphaFold, RoseTTAFold, molecular generation AI, DeepMind / Isomorphic Labs / Recursion, etc.) stands on the philosophy of "rational inhibitor design from protein structure" — and the origin of this philosophy lies in 1970s rational drug design. The 1976 Ondetti & Cushman design process consisted of:
+
+- (i) Fixing the function of the target enzyme ACE (angiotensin I → II conversion, bradykinin degradation) as a hypothesis
+- (ii) Imagining the active-site geometry by **substituting** the structurally analogous enzyme carboxypeptidase A as a model
+- (iii) Selecting required inhibitor elements (zinc-coordinating SH group, proline backbone, stereochemistry) **chemically and purposively**
+- (iv) Verification by synthesis, enzyme inhibition assays, and oral activity tests
+
+— a 4-stage process whose problem awareness overlaps with the **standard modern AI drug design workflow** (target selection → structure prediction → virtual screening / molecular generation → synthesis → in vitro / in vivo verification).
+
+That said, do not write "isomorphic." The differences at the design level are:
+
+- 1976: the structurally analogous enzyme was **inferred by human reasoning**; 2024: AlphaFold **directly predicts** structure.
+- 1976: chemists' empirical rules selected the SH group; 2024: generative AI **samples** molecules from probability distributions.
+- 1976: hand-synthesize and evaluate one molecule at a time; 2024: virtual libraries of billions are **screened computationally**.
+- 1976 to FDA approval took five years (1976→1981); modern AI drug design has shortened the timeline from training data → candidate compound → Phase I to 2-3 years (Insilico Medicine's INS018_055 reaching Phase II in 2023, though FDA approval is still pending).
+
+Connection to the series theme "rereading long texts that no human read, with LLMs": The 1977 Biochemistry paper and the 1976/1978 two patent specifications are materials for **rereading the philosophical origins of modern AI drug design from primary sources**. Reading them in parallel with the AlphaFold paper (Jumper et al. 2021 Nature) makes the isomorphisms and differences between two "rational designs" 48 years apart visible.
+
+---
+
+## 6. Pitfalls (specific to the pharma patent sub-series)
+
+**Pitfall 1: "DB number error is a simple typo" is an oversimplification**
+
+The DB row PH-007 stating that US4046889A is the "captopril patent" likely emerged from a confused secondary-source citation chain. In fact, Wikipedia English Captopril article describes "Captopril was developed at the Squibb pharmaceutical company; the patent was filed in 1976," without conclusively tying a specific patent number. Squibb filed multiple ACE-inhibitor-related patents in the same year (azetidine series US4046889A, proline series US4105776A, and others), and which one secondary sources designate as "the captopril patent" varies. The **DB number is likely an arc-quotation result from secondary sources**, and cannot be trusted until the chemical backbone is verified against Google Patents Claim 1 directly.
+
+**Pitfall 2: "Ondetti & Cushman invented the ACE inhibitor alone" is an oversimplification**
+
+(a) Sérgio Ferreira's BPF research (1965-1970) surfaced ACE as a treatment target, (b) John Vane (later 1982 Nobel laureate) invited Ferreira to the Royal College of Surgeons through his kinin-system research, (c) Bernard Rubin (pharmacologist) handled animal-model activity evaluation inside Squibb, (d) Eve Sabo and others handled formulation and clinical development — multiple contributions existed. Ondetti & Cushman were named as patent inventors, but development of the entire ACE inhibitor program was teamwork involving more than ten people. The narrative "two geniuses designed the drug" is a simplification by patent history.
+
+**Pitfall 3: "Captopril is still the mainstream antihypertensive today" is incorrect**
+
+Captopril is known to cause cough (10-20%), taste disturbance, skin rash, and neutropenia. In modern clinical practice, second-generation and later ACE inhibitors (Merck's enalapril 1985 with prodrug formulation, Merck's lisinopril 1987 active form, Sanofi's ramipril 1991 active form, etc.) are mainstream. From 1995 onward, ARBs (losartan etc., direct AT1 receptor blockade with no cough side effect) are widely used, and from the 2010s SGLT2 inhibitors and GLP-1 receptor agonists also have antihypertensive effects. Captopril's historical position as the first-generation ACE inhibitor is established, but it is not the modern first-line prescription.
+
+**Pitfall 4: Do not directly equate "Rational drug design = AI drug design"**
+
+1970s rational drug design consisted of (i) substitute models from analogous enzymes, (ii) chemists' empirical rules, and (iii) manual synthesis and evaluation — without modern elements of "data-driven," "machine learning," or "generative AI." The two are **continuous at the philosophical level** of "designing inhibitors from target structure," but **discrete at the methodological level**. Writing "isomorphic" invites specialist pushback that "the difference in design capability is being ignored." Stay at "precursor," "earlier example," or "shared problem awareness" levels.
+
+**Pitfall 5: "DB corrections are limited to this article" is inaccurate**
+
+Day 8 (3 corrections in IC-009/011/012 for inventor/assignee), Day 9 (PH-001 number error, PH-003 single vs. co-inventor error, FH-001 priority year error), Day 10 (PH-004 affiliation error, PH-002 inventor 2-vs-3 error), Day 11 (this article: PH-007 number error + inventor 2-vs-3 error) — DB corrections have happened for four consecutive days. The operating rule established in `feedback_db_meta_verify_primary` ("DB memo, inventor, and assignee fields contain admixtures of textbook common-sense narratives, and primary-source verification is mandatory") is again confirmed by this article. The remaining 17 cases in Week 3 (FH-004-012, PH-005/006/008/009/010) likely contain similar corrections.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts**
+
+From Google Patents:
+- **US4046889A**: Title "Azetidine-2-carboxylic acid derivatives," Inventors "Miguel Angel Ondetti / David W. Cushman" (**two co-inventors**, the DB record listing "Ondetti/Rubin/Cushman three co-inventors" is incorrect), Original Assignee "ER Squibb and Sons LLC," Current Assignee "ER Squibb and Sons LLC," Priority date 1976-02-13, Filing date 1976-02-13, Grant date 1977-09-06, Expiration 1994-09-06. Claim 1 chemical backbone is azetidine (4-membered ring amino acid).
+- **US4105776A**: Title "Proline derivatives and related compounds," Inventors "Miguel Angel Ondetti / David W. Cushman" (**two co-inventors**), Original Assignee "ER Squibb and Sons LLC," Current Assignee "ER Squibb and Sons LLC," Priority date 1976-06-21, Filing date 1976-12-22, Grant date 1978-08-08, Expiration 1996-02-14. Claim 1 chemical backbone is proline (5-membered ring, L configuration), including captopril (N-(3-mercapto-2-(S)-methylpropanoyl)-L-proline).
+- 1981 captopril FDA approval (confirmed by multiple pharma-history sources), 1984 Japanese approval.
+
+**Author's interpretation**
+- "DB-registered US4046889A is not the captopril core patent; the proline series US4105776A covers the chemical backbone" is a structural fact derived from comparing Claim 1 chemical backbones. However, an alternative reading is possible — treating both patents as one "patent group" covering the entire Squibb ACE inhibitor exploration program — and the DB record "Captopril patent = US4046889A" is not entirely wrong (it might have been chosen as a representative number for the program). This article positions the proline series as the actual core based on "what the chemical backbone covers."
+- "Sérgio Ferreira's BPF research as the starting point" is standard pharmaceutical-history description, but to what degree Squibb's internal decision-making directly referenced Ferreira's papers is not confirmed in social records.
+- "Ondetti & Cushman's method as the philosophical origin of modern AI drug design" is the author's interpretation. There is overlap in problem awareness, but design methods are discrete and not isomorphic.
+
+**Metaphors / analogies**
+- Row 2 of the correspondence table (model substitution vs. AlphaFold direct prediction) is similar. Design philosophy is continuous, but means of obtaining structure are fundamentally different.
+- Rows 3-5 (rational design / fragment / peptidomimetics) are similar. Terminology and problem awareness inherited, but data-driven and generative-AI elements did not exist in the 1970s.
+- Row 7 (dual academic-publication-and-patent strategy) is similar. Rare in 1977; standard today.
+
+**Not confirmed**
+- Full text of US4046889A / US4105776A Description sections, verbatim
+- Cushman & Ondetti 1977 Biochemistry paper (vol. 16, pp. 5484-5491) original
+- Sérgio H. Ferreira 1965 Br. J. Pharmac. Chemother. BPF isolation paper original
+- Byers & Wolfenden 1973 Biochemistry carboxypeptidase A inhibitor paper original
+- Squibb internal records (start dates, budgets, personnel allocation for the ACE inhibitor exploration program)
+- Bernard Rubin's accurate pharmacology research contribution records (not on patents but co-author on papers)
+- 2003-2004 ACE crystal structure papers (Natesh et al. Nature/Acta Cryst) original
+- Captopril FDA approval clinical trial data, indication expansion history
+- 1981-1985 captopril post-launch cough side-effect reports and Merck's enalapril development internal records
+- Quantitative comparison between modern AI drug discovery companies (Insilico Medicine, Atomwise, Recursion, Isomorphic Labs, etc.) methods and 1976 rational design
+
+**Where this comparison breaks down**
+- Ondetti & Cushman's 1976 method and modern AI drug design share a "rational design" philosophy, but (a) means of obtaining structure (model substitution vs. direct prediction), (b) size of search space (tens of compounds vs. billions), (c) evaluation speed (manual synthesis vs. computational screening), (d) data-drivenness (empirical rules vs. learning) are fundamentally different. Writing "isomorphic" invites three specialist rebuttals: (1) AlphaFold appeared in 2021 with orders-of-magnitude better precision than 1976 structural analogy; (2) generative AI learns chemical validity from probability distributions, generation principles different from purposive design; (3) modern drug discovery cycles virtual screening → synthesis → evaluation on a monthly cadence, time scales different from 1976 (yearly cadence).
+- The DB PH-007 correction is structural fact, but generalizing to "DB cannot be trusted" is excessive. The DB priority assessment (5/5/4/3/4=15) and the judgment "historical importance as a designed drug" themselves are sound — the corrections are limited to the memo, inventor, and patent number fields.
+- The excavation note is limited to confirmation within Google Patents + Wikipedia + standard pharma history textbooks (indirect info). Squibb internal materials, the 1977 Biochemistry paper original, Ferreira's BPF paper original, and detailed comparisons with modern AI drug discovery companies are not retrieved — this is explicitly noted.
+
+---
+
+## Full prompts used
+
+```
+[STEP 1] Candidate extraction (manual)
+Extract Source Found pharma patents (PH-001-010) from candidates.tsv, sorted by composite priority.
+PH-007 tied with PH-005 at composite priority 15; "designed drug paradigm shift"
+narrative chosen as priority axis.
+
+[STEP 2] Primary source search (WebFetch / Google Patents)
+- US4046889A → revealed as Azetidine-2-carboxylic acid derivatives (DB number error discovered)
+- US4105776A → added Proline derivatives (captopril core)
+- Related papers: Cushman & Ondetti 1977 Biochemistry / Ferreira 1965 Br. J. Pharmac.
+  / Byers & Wolfenden 1973 Biochemistry (bibliographic only, originals not retrieved)
+
+[STEP 3] Content extraction
+Prompt: "Summarize, in three stages, the molecular-design process by which Squibb's
+Ondetti & Cushman arrived at captopril in 1976: (1) Sérgio Ferreira's snake-venom BPF
+research, (2) Byers & Wolfenden's carboxypeptidase A inhibitor research,
+(3) peptidomimetic design."
+
+[STEP 4] Patent comparison
+Prompt: "Compare Claim 1 of US4046889A (azetidine series) with Claim 1 of US4105776A
+(proline series), and explain why captopril's chemical backbone must lie within
+US4105776A and not US4046889A."
+
+[STEP 5] 4-level evaluation
+Prompt: "For each row of the table above:
+1. 'Identical' — actually matches at the design/implementation level
+2. 'Similar' — problem awareness shared, implementation/design different
+3. 'Metaphorical' — conceptually similar but technically different
+4. 'Strained' — strained correspondence, easily challenged by experts
+Rate each row on a 4-level scale."
+
+[STEP 6] Fabrication check
+Prompt: "List every claim in the text above that asserts a fact not confirmed by primary sources.
+Especially (dates, person names, patent numbers, organization names, monetary figures, citation quotes)."
+```
+
+---
+
+Reference links:
+- DB-registered patent (azetidine series): [US4046889A on Google Patents](https://patents.google.com/patent/US4046889A/en)
+- Captopril core patent (proline series): [US4105776A on Google Patents](https://patents.google.com/patent/US4105776A/en)
+- Related Excavation Note (Pharma Patents #1): [Cetus PCR core patent US4683195A (1985)](/en/notes/39-pharma-patent-01)
+- Related Excavation Note (Pharma Patents #2): [Köhler & Milstein monoclonal antibody (1975 Nature) + Wistar US4172124A](/en/notes/42-pharma-patent-02)
+- Related Excavation Memo #1 (Pharma Patents): [Akira Endo statin core patent US4049495A (1974 priority)](/en/notes/40-pharma-patent-memo-01)
+- Related Excavation Memo #2 (Pharma Patents): [Banting/Best/Collip insulin US1469994 (1923, UoT+UAlberta joint assignment)](/en/notes/43-pharma-patent-memo-02)
