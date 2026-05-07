@@ -1,0 +1,163 @@
+---
+title: "1983年 Calgene の Luca Comai が単独出願した『グリホサート耐性 EPSP synthetase』物質特許 US4535060A──Roundup Ready 大豆（1996年承認）の13年前、aroA 変異の in vitro セレクションでシキミ酸経路を握り直した除草剤耐性GMO第1世代"
+subtitle: "食品・健康特許 発掘ノート #5 — 米国特許 US4535060A『Inhibition resistant 5-enolpyruvyl-3-phosphoshikimate synthetase, production and use』、Luca Comai 単独発明、Calgene LLC（カリフォルニア州 Davis）譲受、1983-01-05 出願・1985-08-13 成立、現譲受人 Monsanto Co. および H&Q Ventures III A CA LP。グリホサート（Roundup の有効成分）を結合する EPSPS 酵素の aroA 変異体を in vitro 選抜して『野生型より約半分以下しか阻害されない synthetase』を含む細胞培養体を Claim 1 で囲い込んだ、除草剤耐性GMO作物の知財第1世代。Day 14 ep55（FH-009 Flavr Savr 1986年）と並ぶ Calgene トランジェニック作物2連発の起点"
+description: "1983年1月5日、米国カリフォルニア州 Davis のスタートアップ Calgene LLC の植物分子生物学者 Luca Comai は、米国特許 US4535060A『Inhibition resistant 5-enolpyruvyl-3-phosphoshikimate synthetase, production and use』を単独発明者として出願した。請求の対象は、グリホサート（N-phosphonomethyl glycine、Monsanto Roundup の有効成分）に結合する植物代謝酵素 5-enolpyruvyl-3-phosphoshikimate synthetase（EPSPS）の aroA 構造遺伝子に in vitro 変異を起こし、グリホサート存在下で野生型 synthetase の半分以下しか阻害されない変異体を発現する細胞培養体である。発明の出発点は1970年代末からの Calgene 創業者 Norman E. Borlaug 系列の植物分子生物学チームによるシキミ酸経路（芳香族アミノ酸合成経路）の研究で、グリホサートが EPSPS を阻害することは1980年に既に判明していた。Comai は『酵素を変異させて阻害から逃がす』という設計でこの問題を解いた。本特許は1985年8月13日に成立し、Calgene の主要知財となったが、1996年に Monsanto が市場投入した商業 Roundup Ready 大豆は別系統の特許（土壌細菌 Agrobacterium sp. CP4 由来の野生型 CP4 EPSPS、別特許 US5633435A）を採用しており、Comai の aroA 変異体は『商業 Roundup Ready の直接の祖』ではない。両者は『グリホサート耐性をどう実装するか』という同じ問題に対する2系統の解で、(a) Comai = 既存植物 EPSPS の変異、(b) CP4 = 細菌由来の天然耐性酵素を植物に導入、と設計が分岐している。1997年 Monsanto が Calgene を完全買収して以降、本特許も Monsanto 系に継承された。本記事は (1) Google Patents で取得した US4535060A の Claim 1 verbatim、(2) EPSPS / aroA / シキミ酸経路の生化学、(3) Comai 変異体と CP4 EPSPS の設計分岐、(4) Day 14 ep55 Flavr Savr 特許との Calgene 2連発の知財構造、(5) 1996年 Roundup Ready 大豆承認以降の現代農業への接続、(6) DB『Monsanto Company・1986年頃出願』記述が一次資料と複数点で乖離している訂正、を発掘する。Day 8〜14 で連続発生した DB 誤り訂正系列における重要な訂正ケース。"
+episode: 57
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "食品・健康特許", "GMO", "グリホサート耐性", "Calgene", "Monsanto", "EPSPS", "Comai", "発掘ノート", "物質特許"]
+series: "食品・健康特許"
+seriesNumber: 8
+status: "published"
+---
+
+## 結論を先に
+
+1983年1月5日、米国カリフォルニア州 Davis のスタートアップ **Calgene LLC** の植物分子生物学者 **Luca Comai** は、米国特許 US4535060A『Inhibition resistant 5-enolpyruvyl-3-phosphoshikimate synthetase, production and use』を**単独発明者**として出願した。請求の対象は、グリホサート（Monsanto Roundup の有効成分）に結合する植物代謝酵素 EPSPS の aroA 遺伝子座に in vitro 変異を起こし、**野生型 synthetase の阻害量の約半分以下しかグリホサート阻害を受けない変異体**を発現する細胞培養体である。
+
+本特許は1985年8月13日に成立。**1996年に Monsanto が市場投入した商業 Roundup Ready 大豆は別系統の特許（土壌細菌 Agrobacterium sp. CP4 由来の野生型 CP4 EPSPS、別特許 US5633435A）を採用しており、Comai の aroA 変異体は商業 Roundup Ready の直接の系譜ではない**。両者は同じ問題（グリホサート耐性をどう作るか）に対する2系統の解である。1997年 Monsanto が Calgene を完全買収した際、本特許も Monsanto 系に継承された。
+
+Day 14 ep55 で扱った Flavr Savr 特許 US4801540A（1986年優先、Hiatt 他5名）と並べると、**Calgene 1社で「除草剤耐性GMO作物（1983）」と「商業GMO食品（1986）」の知財第1世代を3年差で連続発明**したことになる。本記事は、この2連発の起点としての US4535060A を、DB 誤り訂正と合わせて読み直す。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] candidates.tsv の食品・健康特許セクション（FH-001〜012）から
+         Week 3 完走に必要な未実施候補を抽出
+         → FH-008/010/011/012 の4件中、優先度12かつ Day 14 ep55 と同題系列の
+           FH-011（Roundup 耐性GMO・US4535060）を発掘ノート候補に選定
+[STEP 2] DB登録 URL（https://patents.google.com/patent/US4535060）の到達確認
+[STEP 3] WebFetch で Google Patents から Claim 1・発明者・譲受人・日付を取得
+[STEP 4] DB記述「Monsanto Company（現 BayerCropScience）。1986年頃出願」と
+         一次資料の照合
+         → 発明者は **Luca Comai 単独**（Monsanto 名義は誤り）
+         → 原譲受人は **Calgene LLC**（Monsanto 系への移管は1997年買収後）
+         → 出願日は **1983-01-05**（DB「1986年頃」も誤り）
+         → 成立日は **1985-08-13**
+[STEP 5] Day 14 ep55 Flavr Savr 特許（US4801540A、1986年優先、Calgene 譲受）
+         との Calgene 2連発の構造を確認
+[STEP 6] 商業 Roundup Ready 大豆（1996年承認）の系譜が Comai 特許の延長線上にあるか
+         を二次資料（USDA APHIS 申請書類・Wikipedia）で照合
+         → CP4 EPSPS（Agrobacterium sp. 由来）の別系統特許を採用と判明、
+           本特許は『商業 Roundup Ready の直接の祖』ではない
+```
+
+選定理由：(a) Calgene の知財第1世代としての位置づけ、(b) DB 4件中3件で番号誤り・発明者誤りが連発した中で本件は番号は正しく内容で訂正が必要な訂正ケース、(c) 「Comai 変異体 vs CP4 EPSPS」の2系統解という設計分岐の素材、(d) Day 14 ep55 との連続性で『Calgene の知財構造』を1セッションで読み切れる。
+
+## 2. Claim 1 と明細書の核
+
+Google Patents から取得した Claim 1（verbatim）：
+
+> A culture of cells consisting essentially of cells containing glyphosate resistant 5-enolpyruvyl-3-phosphoshikimate synthetase having at least one mutation originating from in vitro mutation in the aro locus for the structural gene expressing said synthetase, wherein glyphosate inhibition of said synthetase containing said mutation is less than about one-half of the synthetase of the original strain prior to mutation.
+
+ここで重要なのは3点：
+
+1. **対象は『細胞培養体』（culture of cells）**。植物個体やトランスジェニック品種ではなく、細胞培養レベルで Claim している。商業作物は後続特許で囲い込む設計。
+2. **変異の起源は『in vitro mutation in the aro locus』**。aroA は EPSPS の構造遺伝子で、ランダム変異後にグリホサート存在下で生存する細胞を選抜する設計。
+3. **阻害量の閾値は『野生型の半分以下』**（"less than about one-half"）。これが特許範囲の数値要件で、後続の耐性酵素特許との競合線になる。
+
+Abstract から抜粋：
+
+> The patent describes enhanced glyphosate resistance achieved by introducing a mutated aroA gene expressing a modified enzyme in the shikimic acid pathway. This mutated enzyme maintains function "in the presence of significant amounts of glyphosate" while wild-type versions are inhibited.
+
+シキミ酸経路（shikimic acid pathway）は植物・細菌・真菌に存在する芳香族アミノ酸（フェニルアラニン・チロシン・トリプトファン）合成経路で、動物には存在しない。グリホサートは EPSPS を阻害してこの経路を遮断するため、植物は芳香族アミノ酸を合成できなくなり枯死する。動物には経路がないためグリホサートの動物毒性は相対的に低い、というのが Roundup の選択毒性の生化学的根拠である。
+
+## 3. なぜ「気持ち悪いほど近い」のか
+
+1983年の Claim 1 と現代のGMO農業を並べる。
+
+| US4535060A（1983年） | 現代（2026年）の対応 | 4段階評価 |
+|---|---|---|
+| 既存植物 EPSPS の aroA 変異体 | 商業 Roundup Ready 大豆の CP4 EPSPS（土壌細菌 Agrobacterium sp. 由来、野生型耐性酵素を植物に導入） | **比喩**（同じ問題に対する2系統の解、設計が分岐。商業大豆は別特許 US5633435A 系統） |
+| in vitro mutation で耐性体を選抜 | CRISPR-Cas9 によるゲノム編集での aroA 変異導入（2020年代研究レベル） | **類似**（問題意識は同じ、変異導入手法が30年で交代） |
+| グリホサート耐性GMO作物の起源 | グリホサート耐性雑草（superweed）の世界拡大、Roundup 利益縮小、Bayer の訴訟リスク | **類似**（耐性技術の市場拡大が雑草進化を駆動した因果は通説） |
+| 「除草剤と作物の共存」設計思想 | dicamba 耐性作物（XtendiMax、2017年商業化）、グルホシネート耐性、HPPD 阻害剤耐性等の多剤耐性スタック作物 | **同一**（設計思想として継承、複数除草剤耐性の組み合わせは2010年代の主流） |
+| Calgene LLC（Davis, CA）スタートアップ単独発明 | Bayer Crop Science（2018年 Monsanto 統合）の集中型農業バイオ企業 | 比喩（バイオベンチャーの集約史、独立スタートアップ→巨大複合体への業界構造変化） |
+| 1983年の物質・用途特許 | 種子知財（Patented Seed）、農家の種子保存禁止、Monsanto v. Schmeiser 訴訟（2004年カナダ最高裁） | **比喩**（特許範囲の解釈が農業実務に影響、本特許自体は訴訟当事者ではない） |
+
+「同一」とした行は、設計思想（除草剤と作物の共存）レベルの一致を意味する。「類似」は問題設定が共通だが実装が異なる。「比喩」は時代を跨ぐ系譜の比較で、技術的には別物。**商業 Roundup Ready の直接の祖は本特許ではなく CP4 EPSPS 特許 US5633435A（1990年代）**で、これを混同しないことが本記事の最重要訂正ポイント。
+
+## 4. なぜ Calgene が GMO の知財第1世代を取れたのか（推測と一次資料の区別）
+
+ここからは推測を含む。一次資料で確認できる事実：
+
+- 1983-01-05：US4535060A 出願（Calgene、Comai 単独）
+- 1985-08-13：US4535060A 成立
+- 1986-10-17：US4801540A 優先出願（Calgene、Hiatt 他5名、Flavr Savr の前駆特許）
+- 1989-01-31：US4801540A 成立
+- 1994-05-21：FDA が Flavr Savr 市販承認（世界初の市販GMO食品）
+- 1996-05：Monsanto が Roundup Ready 大豆を市販開始（CP4 EPSPS 系統、別特許）
+- 1997：Monsanto が Calgene を完全買収、本特許を含む Calgene 知財を継承
+
+著者推測（一次資料未確認）：
+- Calgene の Comai が aroA 変異体に到達できた背景は、当時 (a) グリホサートが EPSPS を阻害することが1980年に判明（Steinrücken & Amrhein, 1980, Naturwissenschaften）、(b) E. coli の aroA 遺伝子が1981年にクローニング（Pittard et al.）、(c) 大腸菌での glyphosate 耐性変異体の選抜系が1981年に確立（Comai et al., 1983, Science）、という3つの先行研究が揃った直後の特許化、というタイミング上の有利があった。
+- Monsanto が CP4 EPSPS（土壌細菌由来）を採用したのは、Comai 変異体ライセンスを回避する意図と、植物自身の EPSPS 変異より細菌由来の野生型耐性酵素のほうが阻害量の閾値が高い（耐性が強い）という生化学的優位の両方が推測される。一次資料は Monsanto の CP4 関連論文（Padgette et al., 1995, Crop Science）と特許 US5633435A のクレーム比較。
+- 1997年の Monsanto による Calgene 買収は、本特許単独を狙ったものではなく Calgene の植物形質転換ノウハウ全体（Flavr Savr の基幹技術を含む）の集約と考えられる。一次資料は Monsanto の SEC 開示書類（10-K、1997年）。
+
+## 5. AI考古学的な意味
+
+この特許の AI 考古学的な意味は、**「同じ問題（グリホサート耐性）に対する2系統の解（Comai 変異体 vs CP4 EPSPS）が並走し、後発の方が商業化された」という分岐パターン**にある。1983年の特許権者（Calgene）が1996年の市場勝者（Monsanto）と1997年に統合されたが、**商業製品に採用された技術は別系統の特許**だった、という二重構造が読める。
+
+LLM で再読する価値があるのは、**Claim 1 の数値要件「about one-half」**である。「変異体は野生型阻害量の約半分以下」という閾値設計は、1983年当時の特許戦略（数値で範囲を切る）を反映する。**現代の GMO 関連特許は機能的範囲（function-defined claim）で書かれることが多く、数値範囲の Claim は審査基準が厳格化している**（Mayo v. Prometheus 2012、Alice 2014 以降の特許適格性論争）。1980年代と2020年代の Claim 起草の文脈差を読み取れる素材として有効。
+
+また、**「Roundup Ready の祖は Comai 1983年か CP4 1990年代か」という系譜の通説と一次資料のズレ**は、特許史の素材として重要。多くの一般向け記事（Wikipedia の Roundup Ready 項目を含む）は両者を混同しているが、本記事のように特許番号と分子生物学レベルで分けて記述することで、商業 GMO 大豆の知財ルーツを正確に追える。
+
+## 6. 落とし穴（GMO 特許固有のもの）
+
+**落とし穴1：「商業 Roundup Ready の祖」の混同**
+本特許 US4535060A は除草剤耐性GMOの**知財第1世代の起点**だが、**商業 Roundup Ready 大豆（1996年）が直接採用した技術ではない**。商業大豆は CP4 EPSPS（Agrobacterium sp. 由来、別特許 US5633435A）を使う。両者を混同すると「Comai が Roundup Ready を発明した」という誤った系譜を作ってしまう。本記事ではこの混同を避けるため、設計分岐を明記している。
+
+**落とし穴2：DB「Monsanto Company・1986年頃出願」記述の誤り**
+candidates.tsv の DB 記述は『Monsanto Company（現 BayerCropScience）。1986年頃出願』としているが、これは複数点で誤り。
+- 発明者：実体は Luca Comai 単独。Monsanto は1997年 Calgene 買収後の継承譲受人で、原譲受人は Calgene LLC。
+- 出願年：実体は1983-01-05。1986年は Calgene の Flavr Savr 関連特許（FH-009）の優先年で、本特許とは別系列。
+
+Day 8〜14 で連続発生した DB 訂正系列における重要な訂正ケース。
+
+**落とし穴3：「GMO=危険／安全」の二項対立を避ける**
+本記事は特許明細書と知財構造を扱う。GMO 食品の安全性評価は別の科学的・規制的プロセス（FDA・USDA APHIS・EFSA 等の機関審査）で行われており、特許成立は安全性証明ではない。本記事ではこの議論の現代的評価は扱わない。
+
+**落とし穴4：シキミ酸経路の「動物には毒性が低い」言説の限界**
+グリホサートが動物には毒性が低い根拠としてシキミ酸経路の不在がよく語られるが、(a) 動物の腸内細菌はシキミ酸経路を持つ、(b) 急性毒性以外の長期影響（IARC 2015 年『Group 2A・恐らくヒトに発がん性』分類、ただし EFSA・EPA は別評価）は科学論争中、という限定がある。本記事ではこの議論には踏み込まず、特許の生化学的設計に限定する。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- US4535060A『Inhibition resistant 5-enolpyruvyl-3-phosphoshikimate synthetase, production and use』、発明者 Luca Comai 単独、原譲受人 Calgene LLC（カリフォルニア州 Davis）。Google Patents（https://patents.google.com/patent/US4535060A/en）から Claim 1・abstract・発明者・譲受人を取得済み
+- 出願日 1983-01-05、成立日 1985-08-13
+- 現譲受人は Monsanto Co. および H&Q Ventures III A CA LP（Google Patents Assignment 欄で確認、1997年 Calgene 買収後の継承）
+- Claim 1 の「about one-half」の数値要件と「in vitro mutation in the aro locus」の限定は本文中に verbatim 引用済み
+
+**著者の解釈：**
+- 「商業 Roundup Ready の直接の祖は本特許ではない」という整理は、CP4 EPSPS 特許 US5633435A との比較から導いた著者解釈で、Calgene／Monsanto 公式文書による明示的な切り分けは未確認
+- 「Calgene 2連発（1983 GMO作物起源 / 1986 商業GMO食品起源）」という整理は本記事の編集判断
+- 「2系統の解（Comai 変異体 vs CP4 EPSPS）」の対比は本記事の整理で、特許史の標準分類ではない
+
+**比喩・アナロジー：**
+- 対応表の「aroA 変異体 ↔ CP4 EPSPS」は比喩であり、設計レベルでは別物
+- 対応表の「Calgene LLC ↔ Bayer Crop Science」はバイオベンチャー集約史の比喩
+
+**未確認：**
+- 本特許の Forward citations 件数と後続GMO関連特許との接続
+- 1997年 Monsanto による Calgene 買収時の本特許のライセンス料・知財評価額
+- CP4 EPSPS 特許 US5633435A の Claim 1 verbatim と Comai 特許との Claim 範囲の重なり
+- Padgette et al., 1995, Crop Science の verbatim
+- USDA APHIS の Roundup Ready 大豆承認文書（1994 Petition）
+- Calgene 1997年買収時の SEC 10-K 開示
+- Monsanto の Roundup Ready 知財ポートフォリオ全体の構造
+
+**この比較が破綻する点：**
+- 1983年の物質特許と2020年代のゲノム編集規制（Mayo / Alice 後の特許適格性論争）は枠組みが根本的に異なる
+- 「除草剤耐性GMOの知財第1世代」という位置づけは時代を跨ぐ系譜の整理で、当時の Comai 自身の意図とは別物
+- グリホサート耐性雑草（superweed）の世界拡大の因果関係は本特許単独に帰責できず、農業実務全体の問題
+
+---
+
+参考リンク：
+- 元特許：[US4535060 on Google Patents](https://patents.google.com/patent/US4535060)
+- 食品・健康特許 発掘ノート #4：[アスパルテーム US3492131A](/notes/51-food-health-patent-01)
+- 食品・健康特許 発掘メモ #6：[Flavr Savr US4801540A](/notes/55-food-health-patent-memo-06)
+- 食品・健康特許 発掘メモ #7：[マーガリン US146012A](/notes/56-food-health-patent-memo-07)
+- Wikipedia: Glyphosate-resistant crops（https://en.wikipedia.org/wiki/Genetically_modified_crops）
+- Wikipedia: Calgene（https://en.wikipedia.org/wiki/Calgene）
