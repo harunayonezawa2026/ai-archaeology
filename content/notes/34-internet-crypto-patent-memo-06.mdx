@@ -1,0 +1,96 @@
+---
+title: "アプリと転送層の間に暗号を挟む──Netscape『Secure socket layer』特許US5657390Aが1995年に書いたHTTPSの土台"
+subtitle: "インターネット・暗号特許 発掘メモ #6 — US5657390A、Netscape Communications（Taher Elgamal / Kipp E. B. Hickman、現Meta Platforms保有）、1995年出願"
+description: "1995年8月出願、Netscape Communications社のTaher Elgamal・Kipp E. B. HickmanによるUS5657390A『Secure socket layer application program apparatus and method』。アプリケーション層とトランスポート層の間にセキュリティプロトコルを挟むソケットAPIの設計。本文には『Secure Sockets Layer』『SSL library』『SSL protocol』が複数回登場する。米国は失効済み（Expired - Lifetime）。現Current Assigneeは Meta Platforms Inc という数奇な歴史。HTTPS・TLS 1.3・HSTS・QUIC/HTTP3の前史として読む。Google Patentsより基本情報・Claim 1要旨・発明者・出願日・Abstract取得済み。本文精読・後続TLS RFCとの対応関係は未実施。"
+episode: 34
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "SSL", "TLS", "HTTPS", "Netscape", "Meta Platforms", "発掘メモ", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 9
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim全クレームの逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+ブラウザでURL欄に「https://」が出る瞬間。ネットバンキングのログイン画面で「鍵マーク」を確認する瞬間。クレジットカード番号をECサイトに入力する瞬間。Googleで検索する全ての通信。これらは**TLS（Transport Layer Security）**という暗号化プロトコルで保護されている。2024年現在の主流はTLS 1.3（RFC 8446、2018年）だ。
+
+TLSの直接の前身は**SSL（Secure Sockets Layer）**で、Netscape Communications社が1990年代に設計した。SSL 2.0が1995年、SSL 3.0が1996年、その後IETFがSSLを引き継いでTLSという名前に改名し、TLS 1.0（1999年、RFC 2246）→ 1.1（2006年）→ 1.2（2008年）→ 1.3（2018年）と進化した。
+
+その途中、1995年にNetscapeが特許出願した文書がUS5657390Aだ。発明者は**Taher Elgamal**（暗号学者・「ElGamal暗号」「ElGamal署名」の発明者として知られる）と**Kipp E. B. Hickman**。出願時は当然Netscapeの所有だったが、Netscapeは1999年にAOLに買収され、その後Mozillaに分裂、特許資産の一部が転々と譲渡されて、**現在の Current Assignee は Meta Platforms Inc（旧Facebook）**となっている。SSL特許がMetaの倉庫に眠っているという数奇な歴史も含め、30年前の特許を読む。
+
+## 特許の基本情報
+
+- **特許番号**：US5657390A
+- **タイトル**：Secure socket layer application program apparatus and method（セキュアソケットレイヤアプリケーションプログラム装置および方法）
+- **出願**：1995年8月25日
+- **成立**：1997年8月12日
+- **優先日**：1995年8月25日（米国出願日と同一）
+- **発明者**：Taher Elgamal、Kipp E. B. Hickman（**2名**）
+- **Original Assignee**：Netscape Communications Corp
+- **Current Assignee**：Meta Platforms Inc
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US5657390)（URL確認済み・タイトル・Abstract・Claim 1要旨・発明者・出願日・Legal Status・Current Assignee取得済み、本文・全Claimの逐語確認は未実施）
+- **Legal Status**：Expired - Lifetime（米国失効済み）
+
+## 核心（Google Patents取得済み情報）
+
+タイトルに「Secure socket layer」が明記されている点が重要だ。本文中には「Secure Sockets Layer」「SSL library」「SSL protocol」が複数回登場する（WebFetchで確認済み）。これはこの特許自体が**SSLプロトコルを名乗って書かれた一次資料**であることを示す。
+
+Claim 1の要旨はこうだ。
+
+> コンピュータ読み取り可能媒体を備え、クライアント・サーバ間の暗号化通信を実現するソケットAPI。アプリケーション層と転送層の間に配置されたセキュリティプロトコルにより、情報の暗号化・復号化を行う。
+
+Abstractはより具体的だ。
+
+> クライアント・サーバ間のネットワーク転送情報を暗号化・復号化する。ソケットAPIをアプリケーション層に提供し、暗号化情報を転送層に供給する機能を備えたコンピュータプログラム製品である。
+
+ここに**4つの設計選択**が書かれている。
+
+1. **アプリケーション層と転送層の間に暗号化を挟む**：HTTP/SMTP/IMAP等のアプリケーションプロトコルを書き換えずに、その下のソケット層で暗号化を行う。これがSSLの「上から下から透明」設計の核心で、HTTPSが「ただのHTTPの暗号化版」として動く理由でもある。
+2. **ソケットAPIとして提供**：Berkeley socketsのインターフェースに似た形で暗号化機能を提供する。プログラマは`socket()`の代わりに`SSL_socket()`相当を呼ぶだけで暗号化通信が得られる。
+3. **クライアント・サーバ間**：相互認証ではなくサーバ認証中心の設計（クライアント認証はオプション）。これは現代のTLSにも引き継がれた基本構造だ。
+4. **暗号化と復号化の両方向**：通信を双方向に暗号化する。
+
+引用には RSA暗号化標準（PKCS#1）、MD5ハッシュ関数、Diffie-Hellman鍵交換プロトコル の3点が挙げられている。これは1995年時点でSSLが組み合わせて使った具体的な暗号プリミティブだ。
+
+## 現代との接続仮説
+
+| US5657390A（1995年Netscape） | 現代のTLS/HTTPS | 評価（仮説段階） |
+|---|---|---|
+| アプリ層と転送層の間に暗号を挟むソケットAPI | TLSライブラリ（OpenSSL/BoringSSL/rustls）のAPI設計 | 類似（「下層で暗号化を行いHTTPは書き換えない」枠組みは継承、API設計は各実装で独自） |
+| サーバ認証中心の設計（クライアント認証オプション） | TLS 1.3 のサーバ証明書中心の認証 | 類似（基本構造は継承、相互TLS（mTLS）の運用拡大も別途進む） |
+| RSA・MD5・Diffie-Hellman の組み合わせ | TLS 1.3 の AEAD暗号（AES-GCM/ChaCha20-Poly1305）＋ECDHE | 別物（暗号プリミティブは全面更新、MD5は2005年以降破られて使用禁止、RSA鍵交換も TLS 1.3 で削除） |
+| Secure Sockets Layer（SSL）プロトコル | TLS 1.3（RFC 8446、2018年） | 類似（思想的後継だが実装は刷新、SSL 2.0/3.0/TLS 1.0/1.1/1.2 経由で30年かけて再設計） |
+| Netscape単独設計 | IETF TLS WG による標準化（多数の研究者・企業の参加） | 比喩（「単一企業が設計する」から「多者参加のIETFで標準化する」へ運用が大きく変わった） |
+
+**最も重要な変化**：1995年特許が提案したSSL 2.0は、その後のSSL 3.0（1996年）、TLS 1.0/1.1/1.2/1.3 を経て**設計が根本的に変わった**。TLS 1.3（2018年）はSSL 2.0/3.0と互換性を持たず、ハンドシェイクの往復回数を1-RTTまで削減し、認証付き暗号（AEAD）を必須化した。**「TLS 1.3 = SSL 2.0 の進化版」という言い方は不正確で、むしろ『同じ問題（HTTPの上に透明な暗号化を載せる）に対して、30年かけて根本的に再設計し続けたプロトコル群』**という整理が正確だ。
+
+**MD5・SHA-1の破綻（重要）**：US5657390Aは引用にMD5を挙げているが、MD5は2005年以降衝突攻撃が現実化し、現在は完全に使用禁止だ。SHA-1も2017年に衝突攻撃が公開された。SSL/TLSの設計は「使う暗号プリミティブが30年で陳腐化する」という事実そのものが、設計の前提として組み込まれている。「アプリ層と転送層の間で暗号化する」という枠組みは継承されたが、中身の暗号は完全に置き換わった。
+
+**Current Assignee = Meta Platforms の数奇さ**：Netscape は1999年にAOLに買収され、ブラウザ事業はMozillaとして分離した。AOLの一部資産はYahoo→Verizon Mediaを経て解体された。Netscape時代の特許の一部はMicrosoftに譲渡されたが、別の一部は数回の譲渡を経て**Meta Platforms（旧Facebook）に集約**された経緯がある。なぜFacebookが買い集めたかは推測の域だが、2010年代に各社が防御目的で旧通信・暗号系特許を集めた時期があり、Yahoo訴訟への対抗としてFacebookが大量取得した（2012年）という業界報道とも整合する。**ただし本記事では「なぜMetaが現在の保有者なのか」の一次資料には到達していない**。
+
+**これは一次資料の全文精読前の仮説。Description全文・Forward citations・MetaへのAssignment記録確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（特にSSL 2.0プロトコルの具体的ハンドシェイク記述、サポートされる暗号スイートの詳細）
+- Claim 2以降の全文（クライアント認証・セッション再開・ハンドシェイク再ネゴシエーションの扱い）
+- US5657390A から Meta Platforms への Assignment 記録（譲渡日・経由企業・譲渡対価の有無）
+- Taher Elgamal の他のSSL/TLS関連特許（同氏は「SSLの父」と呼ばれることがある、関連特許の網羅）
+- Kipp E. B. Hickman の経歴（Netscape Communications社内での役割、後続のSSL 3.0/TLS 1.0設計への関与の有無）
+- SSL 3.0（1996年）の仕様書（Netscape内部文書か、後にIETFドラフト化されたか）
+- TLS 1.0（RFC 2246、1999年）以降のSSL特許の参照状況
+- 「Netscape SSL特許がTLS標準化を阻害した／促進した」という業界評の一次資料
+- 1995年時点でのSSL 2.0の脆弱性（既知のもの・後年発見されたもの）の特許文書内記述の有無
+
+---
+
+参考リンク：
+- 元特許：[US5657390A on Google Patents](https://patents.google.com/patent/US5657390)
+- 同シリーズ #3（発掘ノート）：[QRコード US5726435A（1994年）](/notes/32-internet-crypto-patent-03)
+- 同シリーズ メモ#5：[JPEG US4698672A（1986年）](/notes/33-internet-crypto-patent-memo-05)
+- 同シリーズ メモ#3：[Diffie-Hellman US4200770A（1977年）](/notes/30-internet-crypto-patent-memo-03)

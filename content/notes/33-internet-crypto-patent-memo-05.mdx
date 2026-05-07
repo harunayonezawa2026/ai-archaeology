@@ -1,0 +1,85 @@
+---
+title: "『JPEG』と書いていない『JPEG特許』──Compression LabsのUS4698672Aが2002年にウェブを揺らした事件の核"
+subtitle: "インターネット・暗号特許 発掘メモ #5 — US4698672A、Compression Labs（Wen-Hsiung Chen / Daniel J. Klenke）、1986年出願"
+description: "1986年10月出願、Compression Labs（CLI）社のWen-Hsiung Chen・Daniel J. Klenkeによる US4698672A『Coding system for reducing redundancy』。本文は『ビデオ圧縮システムに有用』とだけ書かれ、『JPEG』という単語は本文に一度も出ない。にもかかわらず2002年、特許を承継したForgent Networks社がJPEG画像へのライセンス料を主張してウェブ業界を揺るがせた。米国は2006年10月失効。現代のWebP・AVIF・HEIC、そして特許プール運用の前史として読む。Google Patentsより基本情報・Claim 1要旨・発明者・出願日・優先日・Abstract取得済み。本文精読・Forgent訴訟一次資料は未実施。"
+episode: 33
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "JPEG", "Compression Labs", "Forgent Networks", "画像圧縮", "発掘メモ", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 8
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim全クレームの逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+ブラウザでウェブサイトを開く。LINEで写真を送る。Instagramで画像をアップロードする。スマホで撮った写真がカメラロールに保存される。これらの「画像を小さなファイルで送り届ける」設計の中心に、長らく**JPEG（ISO/IEC 10918、1992年）**という圧縮形式があった。
+
+ところが2002年、Forgent Networks（旧VTEL）という企業が突然「JPEGはうちが持つ特許の侵害だ」と主張し、Sony・PhilipsをはじめJPEG画像を扱う多くの企業に**1社あたり数百万ドル単位のライセンス料**を要求した。最終的に2007年までに約100億円のライセンス料を集めた後、訴訟は2007年に終結（USPTOによるClaimの一部無効化と和解）。
+
+この事件で振り回された特許がUS4698672Aだ。**ところがこの特許の本文には『JPEG』という単語が一度も出てこない**。それでもJPEG業界全体が脅かされた。「JPEG特許」と呼ばれる文書が実は別の名前で書かれていたという、特許制度の重要な構造を映し出す事例として40年前の特許を読む。
+
+## 特許の基本情報
+
+- **特許番号**：US4698672A
+- **タイトル**：Coding system for reducing redundancy（冗長性削減のための符号化システム）
+- **出願**：1986年10月27日
+- **成立**：1987年10月6日
+- **失効**：2006年10月27日（米国、成立から19年と少し、または出願から20年）
+- **発明者**：Wen-Hsiung Chen（陳文雄）、Daniel J. Klenke（**2名**）
+- **Original Assignee**：Compression Labs Inc（CLI）
+- **Current Assignee**：MAGNITUDE COMPRESSION SYSTEMS Inc
+- **Forgent Networks との関係**：CLIが企業買収・譲渡を経てForgent Networksの傘下となり、2002年にForgent社が本特許のJPEG画像への適用を主張（特許本文には記載なし、2002年の権利主張時の解釈）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US4698672A)（URL確認済み・タイトル・Abstract・Claim 1要旨・発明者・出願日・Legal Status取得済み、本文・全Claimの逐語確認は未実施）
+- **Legal Status**：Expired - Lifetime
+
+## 核心（Google Patents取得済み情報）
+
+タイトルとAbstractは「ビデオ圧縮」を明示する。
+
+> Title: Coding system for reducing redundancy
+> Abstract: 本発明は、冗長情報を除去して信号を限定帯域幅媒体での転送に適した形にする信号処理方法・装置に関し、特にビデオ圧縮システムに有用である。現在および過去のフレーム間の差異を検出し、複数の動作モードから最適なモードを選択後、処理済み信号を順序付き冗長性符号化により符号化して受信機に送信する。
+
+Claim 1の要旨は「順序付き冗長性（OR）符号化」による多値デジタル数字の圧縮方法だ。具体的には、複数の異なる周波数分布を持つデータをランレングス符号化と振幅符号化を組み合わせて圧縮する。
+
+**ここで重要な構造**：JPEG（ISO/IEC 10918、1992年）の中核アルゴリズムは「DCT（離散コサイン変換）→ 量子化 → ジグザグスキャン → ランレングス符号化＋ハフマン符号化」だ。US4698672AのClaim 1も「ランレングス符号化＋振幅符号化」を扱う。ここに**問題意識の重なり**があり、Forgent側はこの重なりを根拠にJPEG画像処理がClaimの範囲に入ると主張した。
+
+しかし特許本文（タイトル・Abstract）には**JPEGという単語が出てこない**。ビデオ圧縮システムの文脈で書かれた特許が、後年（2002年）になって静止画JPEGに適用される、という解釈が問題化した。
+
+## 現代との接続仮説
+
+| US4698672A（1986年出願・1987年成立） | 現代の画像・動画圧縮 | 評価（仮説段階） |
+|---|---|---|
+| 周波数分布データのランレングス符号化＋振幅符号化 | JPEGのDCT後ランレングス＋ハフマン符号化 | 類似（問題意識は重なる、特許本文ではビデオ圧縮文脈、JPEG適用は後年の解釈） |
+| ビデオ圧縮システム | H.261/H.263/H.264/H.265 等の動画符号化規格 | 類似（DCT＋量子化＋エントロピー符号化の枠組みを継承、現代はより精緻な動き予測・変換を使用） |
+| 「順序付き冗長性符号化」 | WebP/AVIF/HEIC等の現代画像規格のエントロピー符号化 | 類似（圧縮の最後段でエントロピー符号化を使う構造は共通、現代は算術符号化中心） |
+| 単一企業（CLI→Forgent）の特許保有 | JPEG/H.264/H.265等の特許プール（MPEG LA・Via Licensing） | 比喩（後の業界が「特許プール」方式に移行した一因はこの種の単独主張への反省） |
+
+**最も重要な構造**：JPEG標準（ISO/IEC 10918）には**多数の特許が関与**しており、US4698672Aは「JPEG特許」と単数形で呼ばれていたが、実際には標準全体を覆う1特許というものは存在しない。Forgentによる2002年の主張は「JPEG画像処理がClaimの範囲に入る」という解釈であり、特許本文がJPEG専用に書かれているわけではない。専門家からすると「JPEGをこの1特許で押さえている」という認識自体が誤解を含む。
+
+**訴訟の帰結（Wikipedia・業界記事経由の間接情報）**：Forgentは2002〜2007年に約100億円のライセンス料を集めた。一方でUSPTOによる再審査でClaimの一部が無効化された。Forgent側の権利行使は事実上2007年で終わったとされるが、本記事では一次資料（USPTO再審査記録、Forgent IR資料、判決文）に到達していない。
+
+**これは一次資料の全文精読前の仮説。Description全文・Forward citations・USPTO再審査記録確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（特にビデオ圧縮文脈での具体的アルゴリズム記述、JPEG画像への適用可能性が暗示されているかどうか）
+- Claim 2以降の全文（Forgentが主張根拠とした具体的Claim番号と範囲）
+- USPTO再審査（reexamination）記録（2006-2007年頃の判定内容と無効化されたClaim番号）
+- Forgent Networks 関連の連邦地裁判決（テキサス東部地区連邦地裁が主舞台と言われる）の判決文一次資料
+- Compression Labs（CLI）から VTEL → Forgent Networks へのアサインメント譲渡記録
+- Wen-Hsiung Chenの後年の経歴・関連論文（CCITT/CCIR・ISO/IEC関連の標準化活動への関与の有無）
+- JPEG標準（ISO/IEC 10918）の他の特許との関係（CCITT T.81、T.81 Annex F関連特許群）
+- Forgent訴訟が「特許プール」運用の業界普及を加速させたという通説の一次資料
+
+---
+
+参考リンク：
+- 元特許：[US4698672A on Google Patents](https://patents.google.com/patent/US4698672A)
+- 同シリーズ #3（発掘ノート）：[QRコード US5726435A（1994年）](/notes/32-internet-crypto-patent-03)
+- 同シリーズ #2（発掘ノート）：[FraunhoferのMP3核特許 US5579430（1989年）](/notes/29-internet-crypto-patent-02)
+- 同シリーズ #1（発掘ノート）：[Woodlandバーコード US2612994A（1949年）](/notes/26-internet-crypto-patent-01)

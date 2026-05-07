@@ -1,0 +1,162 @@
+---
+title: "'1:1:3:1:1 from Any Direction' — How Denso and Toyota Central R&D Labs' QR Code Patent US5726435A Wrote the Rules of Packing Information into a Plane in 1994"
+subtitle: "Internet & Cryptography Patents #3 — US5726435A, jointly assigned to Toyota Central R&D Labs + NipponDenso (Hara/Watabe/Nojiri/Nagaya/Uchiyama, 5 inventors), Japan priority 1994, U.S. filing 1995"
+description: "Filed in the U.S. on March 14, 1995, with priority from Japanese application JP4258794A (March 14, 1994), Toyota Central R&D Labs and NipponDenso jointly received US5726435A 'Optically readable two-dimensional code and method and apparatus using the same.' Three position-detecting symbols (finder patterns) are placed so that any scan line passing through a symbol's center returns the same black:white:black:white:black = 1:1:3:1:1 ratio, regardless of direction. Expired in the U.S. on March 14, 2015. Not Hara's solo invention — five co-inventors. The decisive design choice was Denso Wave's later policy: hold the patent but make the spec royalty-free. Read this as the precursor to PayPay, airline boarding QRs, and vaccination certificates. Title, Claim 1, inventors, filing/priority dates, and Abstract retrieved from Google Patents."
+episode: 32
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "QR Code", "Denso", "Masahiro Hara", "2D Code", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 7
+status: "published"
+---
+
+[Internet & Cryptography Patents #2 (Fraunhofer's MP3 Core Patent US5579430)](/en/notes/29-internet-crypto-patent-02) traced a 1989 question posed at the Fraunhofer Institute in Erlangen, West Germany — "can we discard sounds the human ear cannot perceive?"
+
+This time, we go to 1994. The setting is the research group at NipponDenso (now Denso) and Toyota Central R&D Labs in Kariya, Aichi, Japan. The question is: can we pack data into a small two-dimensional square so that a machine reads it correctly no matter from which direction a scan line enters?
+
+## The conclusion first
+
+Patent number: [US5726435A](https://patents.google.com/patent/US5726435A/en)
+Title: Optically readable two-dimensional code and method and apparatus using the same
+U.S. filing: March 14, 1995
+U.S. grant: March 10, 1998
+Priority date: March 14, 1994 (Japanese application JP4258794A)
+Expired: March 14, 2015 (in the U.S.)
+Inventors: Masahiro Hara, Motoaki Watabe, Tadao Nojiri, Takayuki Nagaya, Yuji Uchiyama (five names)
+Original Assignee: Toyota Central R&D Labs Inc + NipponDenso Co Ltd (joint assignment)
+Current Assignee: Denso Wave Inc + Toyota Central R&D Labs Inc
+Legal Status: **Expired - Lifetime**
+
+The question this patent posed can be written in one sentence: "If we embed 'landmarks' into a two-dimensional square such that a scan line through their centers returns the same intensity ratio regardless of direction, the position and rotation of the entire code can be determined in a single scan."
+
+The core of Claim 1 reads:
+
+> A two-dimensional code, comprising: cells representing binary coded data and a pattern arranged on a two-dimensional matrix; said two-dimensional code comprising at least two specified position-detecting symbols, each of said specified position-detecting symbols comprising a pattern in which a same frequency component ratio in a scan direction is obtained when a scanning line passes through a center of said specified position-detecting symbol regardless of the direction of said scanning line.
+
+"Regardless of the direction of said scanning line" and "a same frequency component ratio" — these two phrases capture the trick that lets a QR code be recognized even when the camera is held at an angle.
+
+The Abstract is more concrete. When a scan line passes through the center of a position-detecting symbol, a fixed ratio of **black:white:black:white:black = 1:1:3:1:1** is obtained, and this ratio holds for any scan direction. So the reader looks for that ratio first; once it locates the three position-detecting symbols (placed at three corners of the QR code), it instantly determines the code's overall position, rotation, and scale.
+
+When you scan a code with your phone at a convenience-store register, when you tap a boarding pass at an airport gate, when you show a vaccination QR at a venue — the "1:1:3:1:1" is being scanned every time.
+
+---
+
+You pay with PayPay at a convenience store. You split a check with LINE Pay. You hold an airline QR up to a gate scanner. You show a vaccination certificate at an event entrance. As the precursor to all of this — the design of "pack data into a tiny square and let a machine read it instantly" — we read a 31-year-old patent.
+
+## 1. How this was selected
+
+Selected from the candidate DB (`~/ai-archaeology/db/candidates.tsv`) — IC-010 (overall priority 15, Week 2 "Internet & Cryptography Patents," Japanese invention with strong everyday connection in payments, authentication, and inventory management; high affinity with our X account's "Japan Semiconductor File" axis).
+
+```
+[STEP 1] Compared the three IC priority-15 candidates (IC-003 JPEG, IC-006 SSL, IC-010 QR)
+[STEP 2] Selected IC-010 QR Code as the strongest "Japanese invention + general-reader connection"
+[STEP 3] Confirmed US5726435A on Google Patents
+[STEP 4] Retrieved title, Claim 1, inventors, filing/priority dates, Abstract, Legal Status, Current Assignee via WebFetch
+[STEP 5] DB entries "Denso Wave, Masahiro Hara" were inaccurate. Inventors are five names jointly (Hara, Watabe, Nojiri, Nagaya, Uchiyama); Original Assignees are Toyota Central R&D Labs and NipponDenso jointly. Corrected here.
+```
+
+Primary source status: Title, Claim 1 (head section), basic data, inventors, priority date, Legal Status, Current Assignee retrieved from Google Patents. Full Description text, later claims, and Forward citation counts not yet confirmed. Primary documents on Denso Wave's announcement of a royalty-free policy in 2002 are outside the scope of this round (indirectly known through Wikipedia and trade press).
+
+## 2. The core of the patent
+
+Claim 1 and the Abstract break into four parts.
+
+**Step 1: a 2D matrix of data cells.** A QR code is a grid of small black/white cells, each representing one bit of binary-coded data. This is an extension of 1D barcodes (where information is encoded in the widths of vertical lines) into the area dimension. A barcode's information capacity scales with its length; a QR code's scales with width × height — the area.
+
+**Step 2: three position-detecting symbols (finder patterns).** Claim 1 says "at least two," but the Abstract specifies three. Real QR codes place three large nested-square symbols at the top-left, top-right, and bottom-left corners. The reader finds these three first, then proceeds to read the data area.
+
+**Step 3: a direction-invariant frequency-component ratio.** This is the heart of the patent. When a scan line passes through the center of a position-detecting symbol, the ratio **black:white:black:white:black = 1:1:3:1:1** is obtained — regardless of scan direction. Why this ratio? Because the symbol consists of nested concentric squares (an outer black square, an inner white square inside it, and a black center square). Any straight line through the center, at any angle, traverses lengths in the ratio "black 1 : white 1 : black 3 : white 1 : black 1." **The ratio holds even when the camera is angled or rotated.**
+
+**Step 4: timing cells and apex detection cells.** Beyond the position-detecting symbols, the Abstract describes "timing cells" and "apex detection cells." Timing cells communicate the grid spacing (module size) to the reader; apex detection cells help identify the bottom-right corner — the only corner without a position-detecting symbol. Together they let the reader correct for tilt, scale, and distortion.
+
+In modern terms: pack data densely into a plane, but embed three "landmarks" so the reader can determine orientation, position, and scale in a single scan; make those landmarks direction-invariant. PayPay's payment screen, the e-ticket on a boarding pass, a vaccination certificate, factory DPM (Direct Part Marking) codes — all of it lives in the extension of this problem setting.
+
+But **modern QR codes are not covered by this single patent.** The QR code system was standardized as ISO/IEC 18004 (first edition 2000; current third edition 2015). It involves Reed-Solomon error correction, mask patterns, multiple symbol sizes (versions 1–40), and multiple encoding modes (numeric, alphanumeric, byte, kanji). US5726435A is the core patent for the optical 2D-readability mechanism — particularly the position-detecting symbol design. Reed-Solomon coding and the four mask patterns are described in other documents (later patents and the standard itself).
+
+## 3. Translation table to today
+
+| US5726435A (1994 Japan priority / 1998 U.S. grant) | Modern QR usage | Assessment |
+|---|---|---|
+| Three position-detecting symbols (finder patterns) | The Finder Pattern specified in ISO/IEC 18004 | Identical (the standard inherited this design directly) |
+| 1:1:3:1:1 frequency-component ratio | QR detection algorithms in smartphone cameras | Identical (iOS/Android standard QR readers still look for this ratio first) |
+| Timing cells | The Timing Pattern specified in ISO/IEC 18004 | Identical (the standard inherited this design directly) |
+| 2D-matrix data representation | PayPay/LINE Pay/d-payment QR displays | Similar (compliant with ISO/IEC 18004; the structural framing is the same) |
+| 2D-matrix data representation | Airline tickets / vaccination certificates / event passes | Similar (same standard; payload is JSON/JWT/signed strings) |
+| 2D-matrix data representation | DataMatrix / Aztec / MaxiCode and other 2D codes | Similar (same "2D optical code" category, but position detection and error correction differ) |
+
+**Reading guidance for the table.**
+
+Rows 1–3 inherit at the technical-design level into ISO/IEC 18004. The three position-detecting symbols, the 1:1:3:1:1 ratio, and the timing pattern — the specific numbers and structures written into the 1994 patent flow nearly verbatim into the 2000+ international standard. That is why we can say "identical."
+
+Rows 4–5 (payments, airlines, vaccination certificates) differ only in payload — the underlying code structure is the same ISO/IEC 18004 QR. PayPay's "store-scan method" places a QR on the user's screen with the merchant ID encoded; the staff scanner reads it. The "user-scan method" displays a QR at the storefront; the user's app reads it. Both use the same standard.
+
+Row 6 covers other 2D codes (DataMatrix, Aztec, MaxiCode). They were created with similar concepts but differ in position detection and error correction. DataMatrix uses an L-shaped solid black "finder line"; Aztec uses a bullseye (nested center squares). The category — "2D optical code" — is shared, but the designs are distinct.
+
+## 4. Why this is rarely cited in mainstream technology talk (speculation)
+
+**Reason 1: "Hara invented it alone" arrived first**
+
+Media accounts often summarize the story as "Denso's Masahiro Hara invented QR codes in 1994." Hara was central, but the inventor field of US5726435A lists **five names** (Hara, Watabe, Nojiri, Nagaya, Uchiyama). The work belongs to the joint research group at Toyota Central R&D Labs and NipponDenso. The "father of QR" framing is PR shorthand; the patent cover shows five names.
+
+**Reason 2: "Royalty-free = no patent" confusion**
+
+Denso Wave declared a policy of holding the patent but **not charging royalties** for use of the spec. This drove worldwide adoption. But "free of royalties" is not the same as "no patent." The patent itself was alive until March 14, 2015, and Denso Wave still holds the trademark "QR Code" today. Writing "patent-free" is inaccurate; the precise wording is "the patent existed but the policy was not to charge royalties."
+
+**Reason 3: Standardization vs. patents gets dropped**
+
+QR codes were standardized as an AIM (Automatic Identification Manufacturers) spec in 1999 and as ISO/IEC 18004 in 2000. Subsequent variants (Micro QR, iQR, SQRC, Frame QR) are each governed by separate patents and specifications. Lumping everything under "QR codes" hides the differences and the fact that PayPay uses the basic QR code, while DPM workflows often use Micro QR.
+
+## 5. What this means archaeologically
+
+When you tap your phone for payment at a convenience store. When you hold a boarding pass to a gate scanner. When you display a payment QR in LINE Pay. These are the texture of 2020s daily life in Japan.
+
+US5726435A gave patent form, in 1994, to the problem setting underneath them — "pack data into a tiny square and let a machine read it instantly while correcting for orientation, position, and scale." The implementation was three position-detecting symbols, the 1:1:3:1:1 ratio, timing cells, and apex detection cells. Standardization added Reed-Solomon error correction and mask patterns; ISO/IEC 18004 fixed the form. The implementation details evolved; the basic position-detecting design lives on.
+
+The idea — "pack densely, but embed direction-invariant landmarks so a reader can fix orientation" — spread over 30 years into mobile payments, boarding passes, vaccination certificates, inventory management, and parts traceability. The question Hara and four colleagues wrote into a patent in Kariya in 1994 now runs as the foundation of payments, authentication, and logistics networks across the world.
+
+Before LLMs, the cost of reading "regardless of the direction of said scanning line" alongside a modern smartphone QR reader implementation was high. AI archaeology lowers that cost.
+
+## 6. Pitfalls
+
+**Pitfall 1: "Hara invented QR codes solo" is inaccurate**
+
+The inventor field of US5726435A lists **five names** (Hara, Watabe, Nojiri, Nagaya, Uchiyama). Hara was central, but the work belongs to the joint research group at Toyota Central R&D Labs and NipponDenso. "Father of QR" is a PR phrase; the patent cover shows five.
+
+**Pitfall 2: "It is patent-free and open" is inaccurate**
+
+Denso Wave's policy is **no royalty charge**, not "no patent." US5726435A was a valid patent until March 14, 2015. The U.S. patent expired, but Denso Wave still holds the "QR Code" trademark, so trademark protection continues. "Royalty-free policy" and "patent does not exist" are different statements.
+
+**Pitfall 3: "QR codes are a single standard" is inaccurate**
+
+What is loosely called "QR codes" actually includes several variants: the basic QR code (ISO/IEC 18004), Micro QR (smaller), iQR (rectangular support), SQRC (read-restricted), Frame QR (image embedding) — each developed by Denso Wave. Payments and boarding passes use the basic QR code; some logistics workflows use Micro QR.
+
+**Pitfall 4: Don't oversimplify "PayPay etc. are the extension of this patent"**
+
+PayPay, d-payment, LINE Pay, and similar QR payments use the QR code spec (ISO/IEC 18004), but the patent's subject matter is "the optically readable structure of a 2D code." The full payment protocol (financial-institution integration, identity verification, credit management) is a separate matter. Saying "QR payments exist thanks to Denso's patent" obscures the design contribution of the payment protocol itself.
+
+---
+
+## To be precise
+
+**Confirmed facts**
+From Google Patents: US5726435A / U.S. filing 1995-03-14 / U.S. grant 1998-03-10 / Priority 1994-03-14 (Japanese JP4258794A) / Expired - Lifetime (U.S. expired 2015-03-14) / Five inventors (Masahiro Hara, Motoaki Watabe, Tadao Nojiri, Takayuki Nagaya, Yuji Uchiyama) / Original Assignees "Toyota Central R&D Labs Inc" and "NipponDenso Co Ltd" jointly / Current Assignees "Denso Wave Inc" and "Toyota Central R&D Labs Inc" / Head of Claim 1 retrieved ("two-dimensional code ... at least two specified position-detecting symbols ... a same frequency component ratio in a scan direction is obtained when a scanning line passes through a center of said specified position-detecting symbol regardless of the direction of said scanning line") / Abstract confirms three position-detecting symbols, "1:1:3:1:1" ratio, timing cells, and apex detection cells / Title "Optically readable two-dimensional code and method and apparatus using the same"
+
+**Author's interpretation**
+"The foundational QR code patent" and "precursor to modern PayPay / boarding passes / vaccination certificates" are the author's reading. The technical-design connection — position-detecting symbols, 1:1:3:1:1 ratio, timing cells inherited verbatim into ISO/IEC 18004 — is strong, but payload design and full payment protocols are separate concerns. The position taken here is that this is the origin point of the problem setting "pack densely but embed direction-invariant landmarks for orientation."
+
+**Metaphors and analogies**
+Row 6 of the table (QR ↔ DataMatrix/Aztec/MaxiCode) is a parallel within a category. Same "2D optical code" classification, but position detection and error correction differ. Rows 4–5 (payment, boarding, vaccination QRs) share the code structure (ISO/IEC 18004 compliant) but payload design and operational protocols are described in other patents and specs.
+
+**Not confirmed**
+Full text of Claim 2 onward / Full Description text / Forward citation count / Primary documents on the ISO/IEC 18004 standardization process (2000 first edition, 2015 third edition) / Primary text of Denso Wave's royalty-free policy announcement / "QR Code" trademark filing/registration dates in JP/US/EU / Patent numbers for Micro QR, iQR, SQRC, Frame QR / Later patents on Reed-Solomon error correction implementation / Source documents for the four mask pattern designs / Source of the DB's "Hara solo invention" attribution
+
+**Where this comparison breaks**
+US5726435A is not the single patent for the QR code spec (ISO/IEC 18004) — it is a core patent for position-detecting symbol design and reading method. Calling this "the Denso QR patent" risks misleading readers into thinking one patent covers the entire QR code, when QR codes are the combination of position-detecting symbols, timing patterns, error correction, mask patterns, symbol sizes, and encoding modes — each described in different patents or in the standard itself. Experts will push back first on the single-patent vs. standard-spec vs. variant-family conflation. Overplaying Hara's individual contribution understates the four co-inventors and the institutional team — that is the second push-back. Writing "patent-free" invites three more push-backs: trademark, variant-family patents, and the distinction between "no royalty" and "no patent."
+
+---
+
+Reference links:
+- Original patent: [US5726435A on Google Patents](https://patents.google.com/patent/US5726435A/en)
+- Internet & Cryptography Patents #2 (research note): [Fraunhofer's MP3 Core Patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)
+- Internet & Cryptography Patents #1 (research note): [Woodland Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)
+- Research memo #4 in this series: [CSIRO Wi-Fi US5487069 (1993)](/en/notes/31-internet-crypto-patent-memo-04)

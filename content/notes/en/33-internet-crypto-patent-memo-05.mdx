@@ -1,0 +1,85 @@
+---
+title: "The 'JPEG Patent' That Never Says 'JPEG' — Compression Labs' US4698672A and the 2002 Shock to the Web"
+subtitle: "Internet & Cryptography Patents Research Memo #5 — US4698672A, Compression Labs (Wen-Hsiung Chen / Daniel J. Klenke), filed 1986"
+description: "Filed October 1986, US4698672A 'Coding system for reducing redundancy' was issued to Compression Labs (CLI), invented by Wen-Hsiung Chen and Daniel J. Klenke. The text says it is 'particularly useful in video compression systems' and never once uses the word 'JPEG.' Yet in 2002, Forgent Networks — which had inherited the patent through corporate transfers — claimed JPEG images infringed it and demanded license fees from companies across the web. Expired in the U.S. on October 27, 2006. Read this as a precursor to WebP, AVIF, HEIC, and to the rise of patent-pool governance. Title, Abstract, Claim 1 outline, inventors, dates, and Legal Status retrieved from Google Patents; full text and Forgent litigation primary sources not yet read."
+episode: 33
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "JPEG", "Compression Labs", "Forgent Networks", "Image Compression", "Research Memo", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 8
+format: "memo"
+status: "published"
+---
+
+**About this research memo:** "Research memos" in this series are written at the moment we have confirmed the primary-source URL for a candidate. The full text and every claim have not yet been read line by line. Only confirmed facts appear below; speculative material is flagged as such.
+
+---
+
+## Why dig this
+
+You open a website in a browser. You send a photo on LINE. You upload an image to Instagram. The photos you take with your phone are stored in your camera roll. At the center of the design that delivers images in small files sat **JPEG (ISO/IEC 10918, 1992)** for a long time.
+
+Then in 2002, a company called Forgent Networks (formerly VTEL) suddenly claimed that "JPEG infringes a patent we hold," and demanded license fees on the order of millions of dollars per company from many businesses handling JPEG images, starting with Sony and Philips. Forgent eventually collected an estimated $100 million USD-equivalent before the matter ended around 2007 (with USPTO reexamination invalidating some claims and settlements following).
+
+The patent that did all this damage is US4698672A. **And the word "JPEG" never appears in its text.** Yet the entire JPEG ecosystem was threatened. We read this 40-year-old patent as a window into a structural reality of the patent system: a document called "the JPEG patent" that was actually written under a different name.
+
+## Patent basics
+
+- **Patent number:** US4698672A
+- **Title:** Coding system for reducing redundancy
+- **Filed:** October 27, 1986
+- **Issued:** October 6, 1987
+- **Expired:** October 27, 2006 (U.S.)
+- **Inventors:** Wen-Hsiung Chen, Daniel J. Klenke (**two names**)
+- **Original Assignee:** Compression Labs Inc (CLI)
+- **Current Assignee:** MAGNITUDE COMPRESSION SYSTEMS Inc
+- **Relationship to Forgent Networks:** CLI passed through corporate acquisitions until the patent ended up in Forgent's portfolio, and Forgent claimed in 2002 that the patent applied to JPEG images. The patent text itself contains no JPEG application — that was Forgent's interpretation at the time of the assertion.
+- **Primary source:** [Google Patents](https://patents.google.com/patent/US4698672A) (URL confirmed; title, Abstract, Claim 1 outline, inventors, filing date, Legal Status retrieved; full text and all claims not yet read line by line)
+- **Legal Status:** Expired - Lifetime
+
+## Core (info retrieved from Google Patents)
+
+The title and Abstract make video compression explicit.
+
+> Title: Coding system for reducing redundancy
+> Abstract: A signal processing method and apparatus for removing redundant information from a signal, particularly useful in video compression systems. The method detects differences between current and past frames, selects the optimal mode from multiple operating modes, and encodes the processed signal using ordered redundancy (OR) coding for transmission to a receiver.
+
+The outline of Claim 1 is a method for compressing multi-valued digital numbers using "ordered redundancy (OR) coding" — combining run-length coding and amplitude coding for data with multiple frequency distributions.
+
+**Important structural note:** The core algorithm of JPEG (ISO/IEC 10918, 1992) is "DCT (Discrete Cosine Transform) → quantization → zigzag scan → run-length coding + Huffman coding." Claim 1 of US4698672A also handles "run-length coding + amplitude coding." This is where **the problem settings overlap**, and Forgent built its 2002 assertion on that overlap, arguing that JPEG image processing fell within the scope of the claims.
+
+But the patent text — title and Abstract — **never says "JPEG."** A patent written in the context of video compression was, years later (2002), interpreted as covering still-image JPEG. That interpretive move is what became the legal controversy.
+
+## Modern connection hypotheses
+
+| US4698672A (filed 1986 / issued 1987) | Modern image and video compression | Assessment (still hypothesis) |
+|---|---|---|
+| Run-length + amplitude coding of frequency-distributed data | JPEG's post-DCT run-length + Huffman coding | Similar (overlapping problem setting; patent text is video-compression context; JPEG application is later interpretation) |
+| Video compression systems | H.261/H.263/H.264/H.265 video codecs | Similar (the framing of DCT + quantization + entropy coding is inherited; modern codecs use much more refined motion prediction and transforms) |
+| "Ordered redundancy coding" | Entropy coding in modern image standards (WebP, AVIF, HEIC) | Similar (entropy coding as the final stage is shared; modern codecs use arithmetic coding) |
+| Single-company (CLI → Forgent) patent ownership | Patent pools for JPEG/H.264/H.265 (MPEG LA, Via Licensing) | Metaphor (the industry's later move toward patent pools owes partly to the backlash against single-actor assertions like this) |
+
+**The most important structural point:** The JPEG standard (ISO/IEC 10918) involves **many patents**. US4698672A was called "the JPEG patent" in the singular, but no single patent covers the entire standard. Forgent's 2002 assertion was the interpretive claim that "JPEG image processing falls within the scope of the claims." The patent itself was not written for JPEG specifically. Experts will tell you that the very framing of "one patent locking up JPEG" contained a misunderstanding.
+
+**Outcome of the dispute (indirect knowledge from Wikipedia and trade press):** Forgent collected an estimated $100M-equivalent in license fees from 2002 to 2007. USPTO reexamination invalidated some claims. Forgent's enforcement effectively ended around 2007. We have not, in this round, reached the primary sources (USPTO reexamination records, Forgent IR documents, court decisions).
+
+**This is a hypothesis written before the full text is read line by line. It will be revised after Description, Forward citations, and USPTO reexamination records are confirmed.**
+
+## Open questions
+
+- Full Description text (especially the concrete video-compression algorithms; whether JPEG-image applicability is implied)
+- Full text of Claim 2 onward (which specific claim numbers and scopes Forgent relied on)
+- USPTO reexamination records around 2006–2007 (which claims were invalidated and on what grounds)
+- Court decisions from the Eastern District of Texas (commonly cited as the main venue for Forgent's enforcement) as primary sources
+- Assignment chain from CLI through VTEL to Forgent Networks
+- Wen-Hsiung Chen's later work and any involvement in CCITT/CCIR/ISO standardization
+- The patent landscape around the JPEG standard (CCITT T.81, T.81 Annex F-related patents)
+- Primary sources for the common claim that the Forgent litigation accelerated industry-wide adoption of patent-pool governance
+
+---
+
+Reference links:
+- Original patent: [US4698672A on Google Patents](https://patents.google.com/patent/US4698672A)
+- Internet & Cryptography Patents #3 (research note): [QR Code US5726435A (1994)](/en/notes/32-internet-crypto-patent-03)
+- Internet & Cryptography Patents #2 (research note): [Fraunhofer's MP3 Core Patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)
+- Internet & Cryptography Patents #1 (research note): [Woodland Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)

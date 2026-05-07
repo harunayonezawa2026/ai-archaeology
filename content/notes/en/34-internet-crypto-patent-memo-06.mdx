@@ -1,0 +1,96 @@
+---
+title: "Slipping Encryption Between the App and the Transport Layer — Netscape's 'Secure Socket Layer' Patent US5657390A and the Foundation of HTTPS in 1995"
+subtitle: "Internet & Cryptography Patents Research Memo #6 — US5657390A, Netscape Communications (Taher Elgamal / Kipp E. B. Hickman; currently held by Meta Platforms), filed 1995"
+description: "Filed August 1995 by Netscape Communications, US5657390A 'Secure socket layer application program apparatus and method' was invented by Taher Elgamal and Kipp E. B. Hickman. It describes a socket API that places a security protocol between the application layer and the transport layer. The body uses 'Secure Sockets Layer,' 'SSL library,' and 'SSL protocol' multiple times. Expired in the U.S. (Lifetime). Current Assignee is Meta Platforms Inc — a curious twist of corporate history. Read this as the precursor to HTTPS, TLS 1.3, HSTS, and QUIC/HTTP3. Title, Abstract, Claim 1 outline, inventors, dates, and Legal Status retrieved from Google Patents; full text and the chain of correspondences with later TLS RFCs not yet read."
+episode: 34
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "SSL", "TLS", "HTTPS", "Netscape", "Meta Platforms", "Research Memo", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 9
+format: "memo"
+status: "published"
+---
+
+**About this research memo:** "Research memos" in this series are written at the moment we have confirmed the primary-source URL for a candidate. The full text and every claim have not yet been read line by line. Only confirmed facts appear below; speculative material is flagged as such.
+
+---
+
+## Why dig this
+
+The moment "https://" appears in your browser's URL bar. The lock icon on a banking login screen. The instant you enter a credit card number on an e-commerce site. Every search query you type into Google. All of this is protected by **TLS (Transport Layer Security)**. As of 2024, the mainstream version is TLS 1.3 (RFC 8446, 2018).
+
+TLS's direct ancestor is **SSL (Secure Sockets Layer)**, designed by Netscape Communications in the 1990s. SSL 2.0 in 1995, SSL 3.0 in 1996, then IETF took over and renamed it TLS — TLS 1.0 (1999, RFC 2246) → 1.1 (2006) → 1.2 (2008) → 1.3 (2018).
+
+Along the way, in 1995, Netscape filed a patent: US5657390A. The inventors are **Taher Elgamal** (the cryptographer behind ElGamal encryption and ElGamal signatures) and **Kipp E. B. Hickman**. Originally owned by Netscape, but Netscape was acquired by AOL in 1999 and split off into Mozilla; portions of the patent estate changed hands several times, and **today the Current Assignee is Meta Platforms Inc** (the former Facebook). We read this 30-year-old patent — including the strange story of an SSL patent now sleeping in Meta's vault.
+
+## Patent basics
+
+- **Patent number:** US5657390A
+- **Title:** Secure socket layer application program apparatus and method
+- **Filed:** August 25, 1995
+- **Issued:** August 12, 1997
+- **Priority date:** August 25, 1995 (same as U.S. filing)
+- **Inventors:** Taher Elgamal, Kipp E. B. Hickman (**two names**)
+- **Original Assignee:** Netscape Communications Corp
+- **Current Assignee:** Meta Platforms Inc
+- **Primary source:** [Google Patents](https://patents.google.com/patent/US5657390) (URL confirmed; title, Abstract, Claim 1 outline, inventors, filing date, Legal Status, Current Assignee retrieved; full text and all claims not yet read line by line)
+- **Legal Status:** Expired - Lifetime (U.S. expired)
+
+## Core (info retrieved from Google Patents)
+
+The title says "Secure socket layer" outright. The body uses "Secure Sockets Layer," "SSL library," and "SSL protocol" multiple times (confirmed via WebFetch). That makes this patent **a primary source written under the name SSL itself**.
+
+The outline of Claim 1:
+
+> A computer-readable medium providing a socket API for encrypted communication between client and server. A security protocol placed between the application layer and the transport layer encrypts and decrypts the information.
+
+The Abstract is more concrete:
+
+> Encrypts and decrypts network-transmitted information between a client and a server. A computer program product that provides a socket API to the application layer and supplies the encrypted information to the transport layer.
+
+There are **four design choices** here.
+
+1. **Encryption inserted between the application layer and the transport layer.** Application protocols like HTTP/SMTP/IMAP are not rewritten; the socket layer underneath them handles encryption. This is the "transparent from above and below" core of SSL — the reason HTTPS works as "just HTTP, encrypted."
+2. **Provided as a socket API.** The interface mirrors Berkeley sockets. A programmer calls something equivalent to `SSL_socket()` instead of `socket()` and gets encryption with no other code change.
+3. **Client-server.** Server-authentication-centric (client authentication is optional). This basic structure carried into modern TLS.
+4. **Both directions encrypted.** Communication is encrypted in both directions.
+
+The citations include RSA encryption standard (PKCS#1), the MD5 hash function, and Diffie-Hellman key exchange protocol. Those are the cryptographic primitives SSL combined as of 1995.
+
+## Modern connection hypotheses
+
+| US5657390A (1995, Netscape) | Modern TLS/HTTPS | Assessment (still hypothesis) |
+|---|---|---|
+| Socket API inserting encryption between app and transport layers | API design of TLS libraries (OpenSSL/BoringSSL/rustls) | Similar (the framing of "encrypt below; do not rewrite HTTP" is inherited; API design is implementation-specific) |
+| Server-authentication-centric (client authentication optional) | Server-certificate-centric authentication in TLS 1.3 | Similar (basic structure inherited; mutual TLS (mTLS) deployment grew in parallel) |
+| Combination of RSA, MD5, Diffie-Hellman | AEAD ciphers (AES-GCM, ChaCha20-Poly1305) + ECDHE in TLS 1.3 | Different (cryptographic primitives entirely overhauled; MD5 broken since 2005 and forbidden; RSA key exchange removed in TLS 1.3) |
+| Secure Sockets Layer (SSL) protocol | TLS 1.3 (RFC 8446, 2018) | Similar (a successor in spirit; redesigned over 30 years through SSL 2.0/3.0 and TLS 1.0/1.1/1.2) |
+| Netscape solo design | IETF TLS WG standardization (many researchers and companies) | Metaphor (the operating model shifted from "designed by one company" to "standardized in a multi-stakeholder IETF working group") |
+
+**The most important shift:** SSL 2.0, proposed by this 1995 patent, was **fundamentally redesigned** through SSL 3.0 (1996), then TLS 1.0/1.1/1.2/1.3. TLS 1.3 (2018) is incompatible with SSL 2.0/3.0; it cuts handshake round-trips down to 1-RTT and mandates authenticated encryption (AEAD). **Saying "TLS 1.3 is the evolved form of SSL 2.0" is inaccurate.** A more accurate phrasing: "a family of protocols that has been fundamentally redesigned over 30 years to keep solving the same problem — putting transparent encryption underneath HTTP."
+
+**MD5 and SHA-1 collapse (important):** US5657390A cites MD5, but collision attacks against MD5 became practical around 2005, and MD5 is now forbidden. SHA-1 collisions were demonstrated publicly in 2017. The fact that "the cryptographic primitives go obsolete every 30 years" is now baked into the design of SSL/TLS as a premise. The framing — "encrypt between application and transport" — was inherited; the contents were entirely replaced.
+
+**Why Meta Platforms is the Current Assignee — a strange story:** Netscape was acquired by AOL in 1999, and the browser business was spun off as Mozilla. Some of AOL's assets passed to Yahoo and then to Verizon Media before being broken up. A portion of Netscape-era patents went to Microsoft, but another portion ended up consolidated at **Meta Platforms (formerly Facebook)** through several transfers. Why Facebook bought them is speculative; the 2010s saw a wave of defensive acquisitions of older communications and cryptography patents, and a 2012 trade-press report on Facebook's mass acquisition (in response to a Yahoo lawsuit) is consistent with this. **However, this memo has not reached the primary sources for "why Meta is the current holder."**
+
+**This is a hypothesis written before the full text is read line by line. It will be revised after Description, Forward citations, and the assignment record to Meta are confirmed.**
+
+## Open questions
+
+- Full Description text (especially the concrete SSL 2.0 handshake description and the supported cipher suite details)
+- Full text of Claim 2 onward (treatment of client authentication, session resumption, handshake renegotiation)
+- Assignment record for US5657390A → Meta Platforms (date, intermediate companies, presence of consideration)
+- Other SSL/TLS-related patents by Taher Elgamal (he is sometimes called "the father of SSL"; full landscape of related patents)
+- Kipp E. B. Hickman's role inside Netscape Communications and any involvement in later SSL 3.0/TLS 1.0 design
+- The SSL 3.0 (1996) specification (was it an internal Netscape document, later turned into an IETF draft?)
+- How TLS 1.0 onward (RFC 2246, 1999) referenced SSL patents
+- Primary sources for the trade discussion of "Did Netscape's SSL patents impede or accelerate TLS standardization?"
+- Whether the patent text records any vulnerabilities of SSL 2.0 known at the time (or those discovered later)
+
+---
+
+Reference links:
+- Original patent: [US5657390A on Google Patents](https://patents.google.com/patent/US5657390)
+- Internet & Cryptography Patents #3 (research note): [QR Code US5726435A (1994)](/en/notes/32-internet-crypto-patent-03)
+- Research memo #5 in this series: [JPEG US4698672A (1986)](/en/notes/33-internet-crypto-patent-memo-05)
+- Research memo #3 in this series: [Diffie-Hellman US4200770A (1977)](/en/notes/30-internet-crypto-patent-memo-03)
