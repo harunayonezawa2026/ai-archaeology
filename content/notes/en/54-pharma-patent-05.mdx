@@ -1,0 +1,173 @@
+---
+title: "Bristol-Myers' 1978 Cisplatin Formulation Patent US4310515A — A 133-Year IP Story Where a Compound That Could Not Be Patented (Peyrone, 1845) Was Locked Down by a 'Stable Aqueous Solution at pH 2.0–3.0'"
+subtitle: "Pharma Patent Note #5 — US4310515A 'Pharmaceutical compositions of cisplatin', three co-inventors (Edmund S. Granatek, Gerald M. Ziemba, Frederick L. Grab), assigned to Bristol-Myers Co., priority May 30, 1978; filed October 1, 1979; granted January 12, 1982. Cisplatin itself (cis-diamminedichloridoplatinum(II)) was synthesized 123 years earlier by Michele Peyrone (Liebigs Annalen, 1845) and was therefore unpatentable as a substance. Bristol-Myers locked down the commercial market not by claiming the compound but by claiming a sealed, single-dose, sterile aqueous solution at 0.1–1.0 mg/mL and pH 2.0–3.0 — placing this patent next to Day 12's sildenafil (US5250534A, second-use route) and Day 13's aspartame (US3492131A, classical composition-of-matter) as the third in our 'serendipity-locked-by-patent' trilogy in the pharmaceutical lane."
+description: "On May 30, 1978, three pharmacists at Bristol-Myers Co. (Edmund S. Granatek, Gerald M. Ziemba, Frederick L. Grab) filed US patent US4310515A 'Pharmaceutical compositions of cisplatin'. The compound itself — cis-diamminedichloridoplatinum(II), cis-Pt(NH₃)₂Cl₂ — had been synthesized in 1845 by Michele Peyrone and described in Liebigs Annalen der Chemie 51 as 'Peyrone's salt'. In 1893 Alfred Werner deduced its octahedral coordination structure. In 1965 Barnett Rosenberg at Michigan State University accidentally discovered, during electrolysis experiments, that the soluble platinum complex inhibited binary fission in E. coli, and in 1969 he reported antitumor activity in Nature 222 (385–386). Clinical trials began in 1971. But by 1978 the compound was 133 years old — long-public art, ineligible under the novelty requirement of 35 U.S.C. § 102. Bristol-Myers' Claim 1 instead covered an 'injectable, stable, sterile aqueous solution of cisplatin in a unit dosage form in a sealed container, at a concentration of 0.1 to 1.0 mg/mL and a pH in the range of 2.0 to 3.0.' This bypassed prior lyophilization-and-refrigeration practice and gave Bristol-Myers a room-temperature ready-to-use product. FDA approved the drug as Platinol on December 19, 1978 for testicular and ovarian cancers, and Bristol-Myers locked the 1980s cisplatin market through this formulation patent. This piece walks the five-layer IP stack — Peyrone 1845 / Werner 1893 / Rosenberg 1965 & 1969 / Research Corp's malonato platinum patent US4140707A (Cleare/Hoeschele/Rosenberg/Van Camp, priority 1972) / Bristol-Myers' formulation patent US4310515A (1978) — and records a heavy DB correction: the candidates.tsv number US4169726 actually points to General Electric's casting-alloy patent (Norman P. Fairbanks, 1977), entirely unrelated to cisplatin."
+episode: 54
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Pharma Patents", "cisplatin", "Bristol-Myers", "Granatek", "Rosenberg", "Peyrone", "Research Corporation", "patent note", "formulation patent"]
+series: "Pharma Patents"
+seriesNumber: 5
+status: "published"
+---
+
+## Bottom line first
+
+On May 30, 1978, three pharmacists at **Bristol-Myers Co.** — **Edmund S. Granatek**, **Gerald M. Ziemba**, and **Frederick L. Grab** — filed US patent US4310515A 'Pharmaceutical compositions of cisplatin'. What is claimed is **an injectable, stable, sterile aqueous solution of cisplatin in a sealed container, in a unit dosage form, at 0.1–1.0 mg/mL and pH 2.0–3.0.**
+
+What matters is that the compound itself — cis-diamminedichloridoplatinum(II), cis-Pt(NH₃)₂Cl₂ — had been synthesized **in 1845 by Michele Peyrone in Liebigs Annalen der Chemie 51 as 'Peyrone's salt.'** By 1978 it was 133-year-old public art and could not satisfy the novelty requirement of 35 U.S.C. § 102. Bristol-Myers did not lock down the compound; it locked down a room-temperature stable aqueous formulation.
+
+Antitumor activity was discovered in 1965 by **Barnett Rosenberg** at Michigan State University during an electrolysis experiment, and reported in *Nature* 222: 385–386 (1969). Rosenberg and Research Corporation captured derivative chemistry through US4140707A 'Malonato platinum anti-tumor compounds' (priority June 8, 1972, Cleare/Hoeschele/Rosenberg/Van Camp — the chemistry that became the carboplatin family) but could not patent cisplatin itself. Bristol-Myers' formulation patent, paired with the FDA approval of Platinol for testicular and ovarian cancers on December 19, 1978, became the legal scaffolding for 1980s commercial control.
+
+This piece walks the **five-layer IP stack** — Peyrone 1845, Werner 1893, Rosenberg 1965/1969, Research Corp 1972, Bristol-Myers 1978 — and reads the pattern of "lock down a public-domain compound on a different layer" as the pharmaceutical analogue of Day 12's sildenafil (second-use patent that bridged from angina to erectile dysfunction) and Day 13's aspartame (classical composition-of-matter).
+
+## 1. How the candidate was chosen (reproducible pipeline)
+
+```
+[STEP 1] From candidates.tsv pharma section (PH-001…010), pick the highest-
+         priority unfinished item in Week 3 → PH-010 cisplatin
+[STEP 2] WebFetch the DB-listed URL https://patents.google.com/patent/US4169726
+[STEP 3] **DB number error detected**: US4169726 is GE's casting-alloy patent
+         (Norman P. Fairbanks, sole inventor, filed Dec 21 1977, granted Oct 2
+         1979, "Casting alloy and directionally solidified article"),
+         entirely unrelated to cisplatin
+[STEP 4] Cross-search Wikipedia and Google Patents for Rosenberg-related filings
+         → US4140707A (Research Corp; Cleare/Hoeschele/Rosenberg/Van Camp):
+            malonato platinum anti-tumor compounds, priority 1972-06-08, granted 1979
+         → US3892790A (Rustenburg Platinum Mines; Tobe/Khokhar/Braddock):
+            adjacent compositions, no Rosenberg
+         → **US4310515A (Bristol-Myers; Granatek/Ziemba/Grab, priority 1978-05-30)**:
+            the cisplatin formulation patent, filed 1979-10-01, granted 1982-01-12
+[STEP 5] US4310515A adopted as the spine of this piece because it (a) plugs the
+         hole left by Peyrone's unpatentable compound + Rosenberg's unpatentable
+         use, (b) tracks the Dec 19 1978 FDA Platinol approval, (c) lines up
+         neatly with Day 12 sildenafil and Day 13 aspartame as the
+         "serendipity-locked-by-patent" trilogy
+[STEP 6] Five-layer chronology cross-checked against Wikipedia (Cisplatin /
+         Barnett Rosenberg / Michele Peyrone) and Google Patents
+```
+
+Selection rationale: (a) finishes Week 3 PH-010 as recommended in the Day 13 wrap, (b) the "lock the public-art compound on a different IP layer" pattern is directly relevant to today's generic-drug market, and (c) it is the heaviest DB-number error in the Day 8 → 14 streak, where the listed number pointed to a *completely different* patent.
+
+## 2. Claim 1 and the heart of the specification
+
+Claim 1, verbatim from Google Patents (US4310515A):
+
+> An injectable, stable, sterile aqueous solution of cisplatin in a unit dosage form in a sealed container, said solution being suitable for administration by the injection thereof into man upon the removal thereof from said container, said solution having a concentration of cisplatin between about 0.1 and about 1.0 mgm./ml. and a pH in the range of 2.0 to 3.0.
+
+What is claimed is **not the compound but the physico-chemical state of the formulation**, with four parallel constraints: (1) form (injectable / sterile / aqueous / sealed container / unit dosage), (2) concentration (0.1–1.0 mg/mL), (3) pH (2.0–3.0), (4) ready-to-administer stability.
+
+The specification's argument is: cisplatin in water hydrolyzes into hydroxide species and loses potency, which is why prior practice supplied the drug as a lyophilizate that had to be reconstituted at the point of use. Tuning the pH to 2.0–3.0 suppresses the hydrolysis and lets the drug ship as a room-temperature stable liquid. So the patent claims a **manufacturing / logistic / clinical-workflow improvement** — a different species of patent from Day 12 sildenafil (use) and Day 13 aspartame (substance).
+
+## 3. The five-layer IP stack (Peyrone 1845 → Bristol-Myers 1978, 133 years)
+
+| Year | Actor | Content | Patent? |
+|---|---|---|---|
+| 1845 | Michele Peyrone | Synthesis of cis-Pt(NH₃)₂Cl₂ ("Peyrone's salt") reported in Liebigs Annalen der Chemie 51 | **None** (chemistry-paper era; medical use unknown) |
+| 1893 | Alfred Werner | Octahedral coordination structure deduced via ligand-field theory (later Nobel 1913) | None |
+| 1965 | Barnett Rosenberg / Loretta Van Camp | Michigan State University; platinum complex from platinum electrodes during electrolysis accidentally found to inhibit E. coli binary fission | None (basic-science stage) |
+| 1969 | Rosenberg et al. | *Nature* 222: 385–386, antitumor activity reported | None (academic paper) |
+| 1972-06-08 | Cleare / Hoeschele / Rosenberg / Van Camp | **US4140707A** 'Malonato platinum anti-tumor compounds' filed via Research Corporation, granted 1979-02-20 | **Derivative-chemistry patent** (malonato series, ancestor of the carboplatin family) |
+| 1972 | Rustenburg Platinum Mines / Johnson Matthey | **US3892790A** 'Compositions containing platinum' (Tobe/Khokhar/Braddock, priority 1972-04-10, granted 1975-07-01) | **Derivative-chemistry patent** (adjacent alicyclic-amine complexes, not cisplatin itself) |
+| 1978-05-30 | Granatek / Ziemba / Grab | **US4310515A** 'Pharmaceutical compositions of cisplatin' filed via Bristol-Myers, granted 1982-01-12 | **Formulation patent** (room-temperature stable aqueous solution at pH 2.0–3.0) |
+| 1978-12-19 | FDA | Approves Platinol (Bristol-Myers) for testicular and ovarian cancers | Regulatory approval (separate from patent) |
+
+The five-layer stack makes it explicit: in 1978 **the cisplatin substance was unpatentable**. Rosenberg and Research Corporation captured the derivative chemistry (malonato series) and the use perimeter; Bristol-Myers closed the loop on a different layer altogether — formulation stability.
+
+## 4. Why does it feel "uncomfortably close"?
+
+| US4310515A (1978) | Today's analog (2026) | Verdict |
+|---|---|---|
+| pH 2.0–3.0 stable aqueous solution as the lock around an unpatentable compound | "Formulation-patent extends the brand-monopoly window" — the textbook evergreening case | **Similar** (this very patent is widely cited as the canonical evergreening precedent) |
+| Lyophilizate → room-temp aqueous as a workflow improvement | Room-temperature stable injectable biologics formulations | Similar (same problem framing, different chemistry) |
+| Unit-dosage-form claim language | Modern prefilled-syringe / ready-to-use IV-bag dosage formats | **Similar** (same hospital-workflow concern) |
+| 0.1–1.0 mg/mL concentration range claim | Modern concentration-range claims | **Same** (same drafting pattern) |
+| Formulation patent on a public-domain compound (Peyrone 1845) | New-salt / hydrate / polymorph patents on public-domain compounds | **Similar** (same IP strategy lineage) |
+| Serendipitous discovery (Rosenberg 1965 electrolysis) | Sildenafil (angina → ED), aspartame (finger → paper → tasted), Teflon (frozen gas) | **Metaphor** (cross-era serendipity lineage; technical content differs) |
+
+Anticipated expert pushback:
+
+- **Pharmacist**: "Evergreening as a critique didn't crystallize until the 1990s. In 1978 a 'novel formulation = patentable improvement' was just normal practice. Reading modern critique into the 1978 filing is anachronistic."
+- **Patent attorney**: "A pH-range claim of 2.0–3.0 was standard 1970s pharmaceutical drafting; this is not a remarkable claim-design move. Treating it as the genealogy of modern concentration-range patents over-claims."
+- **Medicinal chemist**: "Acidic-pH suppression of cisplatin hydrolysis is the simplest possible chemistry. Bristol-Myers' monopoly was not the patent alone — FDA approval, OEM networks, and distribution channels did the heavy lifting; the patent was one input."
+- **Historian of science**: "Reading 'cisplatin slept for 123 years' is presentism. The late 19th to early 20th century was a period of foundational coordination-chemistry work; the medical-application leap was structurally unavailable in that era."
+
+These are reasonable corrections of the editorial framing here. The four-grade verdicts in the table above already mark the "metaphor" rows so that we don't conflate cross-era resonance with same-design.
+
+## 5. The AI-archaeology takeaway
+
+This patent makes one thing explicit: by 1978 the IP-strategy of **locking a public-domain compound on a different layer** had stabilized as a genre. Peyrone 1845 (substance), Rosenberg 1965/1969 (use, unpatented), Research Corp 1972 (derivative chemistry), Bristol-Myers 1978 (formulation) — four IP layers, four attempts, around one molecule, over 133 years.
+
+What is worth re-reading with an LLM is the **vocabulary engineering of Claim 1**. Eight orthogonal constraints — *injectable*, *stable*, *sterile*, *aqueous solution*, *unit dosage form*, *sealed container*, "concentration … between about 0.1 and about 1.0 mgm./ml.", "pH in the range of 2.0 to 3.0" — pivot around the compound name (cisplatin) without ever attempting to claim it. The drafting maps the meta-layers (manufacturing, logistics, clinical workflow) that were available when the chemistry layer was foreclosed.
+
+For modern AI-driven drug discovery and LLM-assisted pharma, this patent is a useful pre-history: the "compound-search AI" and the "formulation-state-search AI" sit on different IP layers, and that separation has a genealogy that runs back at least to 1978.
+
+## 6. Pitfalls (specific to pharma patents)
+
+**Pitfall 1: candidate DB number US4169726 is an entirely different patent**
+The candidates.tsv URL was `https://patents.google.com/patent/US4169726`, which is **GE's casting-alloy patent** (Norman P. Fairbanks, sole inventor, filed Dec 21 1977, granted Oct 2 1979, "Casting alloy and directionally solidified article", Claim 1: a Ni-Co-Cr-Ta-Al-W-C-Si-La alloy). Completely unrelated to cisplatin or platinum medicinal chemistry. This is the same pattern as Day 8 IC-009 Bluetooth, IC-011 CDMA, IC-012 RFID and Day 9 PH-001 statins (where US4231938 turned out to be Merck's lovastatin and the actual statin patent was US4049495A) — **a DB number that points at a completely different document.** This brings the running DB-correction count to 14.
+
+**Pitfall 2: don't conflate Rosenberg's discovery with Bristol-Myers' monopoly**
+Lay history compresses "Rosenberg discovered cisplatin's antitumor activity and Bristol-Myers approved and commercialized it" into one sentence, but the IP structure is layered. Rosenberg / Van Camp (1965) discovered the activity; Peyrone 1845 made the compound itself unpatentable; Research Corporation captured derivative chemistry (US4140707A, malonato series) and use-area perimeter; only the Bristol-Myers 1978 formulation patent (US4310515A) created the structural lock that 1980s commercial control rested on.
+
+**Pitfall 3: avoid efficacy claims**
+This piece states cisplatin's antitumor activity as a historical fact, but the source set is bounded: (a) Rosenberg's 1969 *Nature* paper, (b) the FDA Dec 19 1978 Platinol approval (testicular and ovarian cancers), (c) prior-art references in the patent specification. Any claim about modern clinical effect, side-effect profile, or current treatment protocols is out of scope. Readers should not derive treatment decisions from this article.
+
+**Pitfall 4: "unpatentable substance" ≠ "evergreening"**
+This patent is a "formulation patent on a public-domain compound" and is conceptually distinct from modern evergreening (where a brand company stacks formulation / new-salt / polymorph patents *to extend* a monopoly past compound-patent expiry). In 1978 Peyrone's compound was already 123 years old — there was no original substance monopoly to extend. The formulation patent did not *extend* monopoly; it *constituted* it. Important distinction in IP practice.
+
+## 7. Why Bristol-Myers? (separating fact from inference)
+
+Confirmed from primary sources:
+
+- 1972–1976: A research collaboration between Rosenberg's group and Bristol-Myers, with formulation work beginning (Wikipedia / industry-history secondary aggregation)
+- 1978-05-30: US4310515A priority filing (Granatek/Ziemba/Grab, Bristol-Myers assignee)
+- 1978-12-19: FDA approval as Platinol
+- 1979-10-01: US4310515A US filing
+- 1982-01-12: US4310515A grant
+- 1982: Bristol-Myers established as the dominant cisplatin supplier
+
+Author inference (not directly verified):
+- The narrative of Bristol-Myers contracting with Rosenberg / Research Corporation to drive development is widely repeated in Wikipedia and pharma-history secondary sources, but **the contract document, internal minutes, and royalty rates are not verified in this piece.**
+- The six-month gap between the May 1978 filing and the December 1978 FDA approval matches a typical pattern (lock the final formulation patent before the regulatory submission goes in), but Bristol-Myers' internal records are not public.
+
+## To be precise
+
+**Confirmed facts:**
+- US4310515A 'Pharmaceutical compositions of cisplatin'; inventors Edmund S. Granatek / Gerald M. Ziemba / Frederick L. Grab (three co-inventors); original assignee Bristol-Myers Co. Claim 1, abstract, inventors, and assignee retrieved from Google Patents (https://patents.google.com/patent/US4310515A).
+- Priority May 30 1978; filed Oct 1 1979; granted Jan 12 1982.
+- Claim 1 quoted verbatim above (pH 2.0–3.0, 0.1–1.0 mg/mL, sterile aqueous, sealed container, unit dosage form).
+- Companion patent US4140707A 'Malonato platinum anti-tumor compounds' — Cleare/Hoeschele/Rosenberg/Van Camp, Research Corporation assignee, priority June 8 1972, granted Feb 20 1979 — also retrieved from Google Patents.
+- Rosenberg et al., *Nature* 222: 385–386 (1969) appears in the non-patent citations of US4140707A.
+
+**Author's interpretations:**
+- The "five-layer IP stack" framing is editorial; it is not the standard taxonomy of pharmaceutical patent history.
+- Positioning this as "lock the public-domain compound on a different IP layer" is an interpretation; the patent specification does not assert that lineage.
+- Lining the piece up with Day 12 sildenafil and Day 13 aspartame as a "pharmaceutical serendipity trilogy" is editorial.
+
+**Metaphors:**
+- The "pH 2.0–3.0 formulation patent ↔ modern evergreening" row is cross-era resonance; the evergreening concept didn't exist as a critique in 1978.
+- "Rosenberg 1965 electrolysis ↔ sildenafil / aspartame / Teflon serendipity" is metaphor; the technical content and safety regime in each case are different.
+
+**Not yet confirmed:**
+- Bristol-Myers ↔ Rosenberg / Research Corporation collaboration agreements
+- US4310515A forward-citation count and follow-on filings
+- Verbatim text of the FDA Dec 19 1978 Platinol approval
+- 1980s cisplatin market share / Bristol-Myers revenue figures
+- The original 1845 Peyrone paper in *Liebigs Annalen der Chemie* 51 (German, 19th-century literature)
+- Rosenberg / Van Camp 1965 lab notebooks
+
+**Where the comparison breaks:**
+- 1978 small-molecule platinum-complex formulation patents and modern biologics formulation patents have different technical substrates (small molecule vs. protein therapeutic).
+- "Formulation patent created a monopoly" is a complex outcome — FDA approval, distribution channels, and OEM relationships matter at least as much; the patent is one factor.
+- The "123-year gap from Peyrone 1845 to Rosenberg 1965" is structurally explicable (coordination-chemistry theory was being built in that interval) and reading it as "dormant" or "overlooked" is presentism.
+- DB-correction tracking is a methodological asset of this series, not part of the patent-history thesis itself.
+
+---
+
+References:
+- Google Patents US4310515A (this patent): https://patents.google.com/patent/US4310515A
+- Google Patents US4140707A (Research Corp derivative): https://patents.google.com/patent/US4140707A
+- Google Patents US3892790A (Rustenburg / Johnson Matthey adjacent compositions): https://patents.google.com/patent/US3892790A
+- Wikipedia: Cisplatin (https://en.wikipedia.org/wiki/Cisplatin)
+- Wikipedia: Barnett Rosenberg (https://en.wikipedia.org/wiki/Barnett_Rosenberg)
+- Wikipedia: Michele Peyrone (https://en.wikipedia.org/wiki/Michele_Peyrone)

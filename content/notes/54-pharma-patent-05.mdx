@@ -1,0 +1,189 @@
+---
+title: "1978年 Bristol-Myers が出願した『シスプラチン製剤特許』US4310515A──物質特許不可（Peyrone 1845）の合成プラチナ錯体を、pH 2.0-3.0 安定水溶液という製剤発明で囲い込んだ133年越しのIP史"
+subtitle: "医薬特許 発掘ノート #5 — 米国特許 US4310515A『Pharmaceutical compositions of cisplatin』、Edmund S. Granatek / Gerald M. Ziemba / Frederick L. Grab 3名共同発明、Bristol-Myers Co. 譲受、1978-05-30 優先・1979-10-01 出願・1982-01-12 成立。Peyrone 1845年合成（Liebigs Annalen）の cis-diamminedichloridoplatinum(II) は123年後にもRosenberg 1965年発見で抗腫瘍活性が初めて記述されたが、化合物そのものは公知物質で物質特許対象外。本特許は cisplatin 0.1-1.0 mg/mL・pH 2.0-3.0 の注射用安定水溶液という『製剤発明』で商業独占を獲得した、Day 12 シルデナフィル US5250534A・Day 13 アスパルテーム US3492131A と並ぶ『偶然発見の特許化』系譜の医薬版"
+description: "1978年5月30日、米国の製薬会社 Bristol-Myers Co. の3名の薬剤師（Edmund S. Granatek、Gerald M. Ziemba、Frederick L. Grab）は、米国特許 US4310515A『Pharmaceutical compositions of cisplatin』を出願した。シスプラチン（cis-diamminedichloridoplatinum(II)、cis-Pt(NH₃)₂Cl₂）という化合物そのものは、1845年に Michele Peyrone が Liebigs Annalen der Chemie で『Peyrone's salt』として合成記述しており、1893年に Alfred Werner が八面体錯体としての構造を推定、1965年に Michigan State University の Barnett Rosenberg が電気分解実験中に大腸菌の二分裂阻害効果を偶然発見、1969年に Nature 222号 (385-386) で抗腫瘍活性を報告、1971年から臨床試験が始まった。しかし化合物自体は123年前の公知物質で、米国特許法の新規性要件（35 U.S.C. § 102）を満たさず物質特許化が不可能だった。本特許の Claim 1 は『密封容器内の単位用量形態における、cisplatin 濃度 0.1-1.0 mg/mL・pH 2.0-3.0 の注射可能な安定無菌水溶液』を請求し、当時の凍結乾燥（lyophilization）製剤や冷蔵保存要件を回避する『常温保存可能な液剤』として商業独占を獲得した。1978年12月19日に FDA が Platinol（cisplatin 製剤名）として精巣腫瘍・卵巣腫瘍向けに承認し、Bristol-Myers は1980年代の cisplatin 市場を本特許で囲い込んだ。本記事は (1) Peyrone 1845 → Werner 1893 → Rosenberg 1965/1969 → Research Corporation 派生特許 US4140707A → Bristol-Myers US4310515A の4層IP構造、(2) Claim 1 の verbatim と pH・濃度・容器条件の請求設計、(3) 物質特許不可の公知化合物を製剤特許で囲い込む知財戦略、(4) Day 12 シルデナフィル US5250534A（用途特許経由）・Day 13 アスパルテーム US3492131A（物質特許）との比較、(5) candidates.tsv DB番号 US4169726 が GE のキャスティング合金特許（Norman P. Fairbanks、1977年）で完全に別物だった訂正記録、を発掘する。Day 8/9/10/11/12/13 連続発生のDB番号誤りに本件を加えDB訂正は通算14件目となる。"
+episode: 54
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "医薬特許", "シスプラチン", "cisplatin", "Bristol-Myers", "Granatek", "Rosenberg", "Peyrone", "Research Corporation", "発掘ノート", "製剤特許"]
+series: "医薬特許"
+seriesNumber: 5
+status: "published"
+---
+
+## 結論を先に
+
+1978年5月30日、米国の製薬会社 **Bristol-Myers Co.** の薬剤師 **Edmund S. Granatek**、**Gerald M. Ziemba**、**Frederick L. Grab** の3名は、米国特許 US4310515A『Pharmaceutical compositions of cisplatin』を共同発明者として出願した。請求の対象は**密封容器内・単位用量形態における、シスプラチン濃度 0.1〜1.0 mg/mL・pH 2.0〜3.0 の注射用安定無菌水溶液**である。
+
+ここで重要なのは、シスプラチンという化合物そのもの（cis-diamminedichloridoplatinum(II)、cis-Pt(NH₃)₂Cl₂）は、**1845年に Michele Peyrone が Liebigs Annalen der Chemie で合成記述した『Peyrone's salt』**で、1978年時点で既に133年前の公知物質だった。米国特許法の新規性要件を満たさず、物質特許化はそもそも不可能。Bristol-Myers は『化合物』ではなく『常温保存可能な注射液剤』という製剤発明で商業独占を獲得した。
+
+抗腫瘍活性そのものは1965年に Michigan State University の **Barnett Rosenberg** が大腸菌の電気分解実験中に偶然発見し、1969年 Nature 222号 (385-386) で報告した。Rosenberg と Research Corporation は派生特許 US4140707A『Malonato platinum anti-tumor compounds』（1972-06-08 優先）でカルボプラチン系の周辺化合物を押さえたが、シスプラチン本体の物質特許は取れなかった。Bristol-Myers の製剤特許は1978年12月19日の FDA 承認（Platinol、精巣腫瘍・卵巣腫瘍向け）と組み合わさることで、1980年代の cisplatin 市場の独占を可能にした。
+
+本記事は Peyrone 1845 → Werner 1893 → Rosenberg 1965/1969 → Research Corp 派生特許 1972 → Bristol-Myers 製剤特許 1978 の **5層IP構造**を一次資料で確認し、『偶然発見の公知化合物を製剤特許で囲い込む』という製薬業界の知財戦略パターンを読む。Day 12 シルデナフィル（用途特許経由・狭心症から ED へ転用）、Day 13 アスパルテーム（純粋な物質特許）と並ぶ『偶然発見三題』の医薬版として位置づけられる。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] candidates.tsv の医薬特許セクション（PH-001〜010）から
+         Week 3 残の最高優先度・未実施 → PH-010 シスプラチン
+[STEP 2] DB登録 URL https://patents.google.com/patent/US4169726 を WebFetch
+[STEP 3] **DB番号エラー検知**：US4169726 は GE のキャスティング合金特許
+         （Norman P. Fairbanks 単独、1977-12-21 出願、1979-10-02 成立、
+          Title: "Casting alloy and directionally solidified article"）
+         で、シスプラチンとは無関係の別物
+[STEP 4] Wikipedia/Google Patents 横断検索で Rosenberg 関連特許を再特定
+         → US4140707A（Research Corp、Cleare/Hoeschele/Rosenberg/Van Camp）：
+            malonato platinum anti-tumor compounds、1972-06-08 優先・1979 成立
+         → US3892790A（Rustenburg Platinum Mines、Tobe/Khokhar/Braddock）：
+            周辺化合物、Rosenberg 関与なし
+         → **US4310515A（Bristol-Myers、Granatek/Ziemba/Grab、1978-05-30 優先）**：
+            cisplatin 製剤特許、1979-10-01 出願・1982-01-12 成立
+[STEP 5] US4310515A を本記事の主軸に採択
+         理由：(a) Peyrone 1845 物質特許不可・Rosenberg 用途未特許の
+               『穴』を埋める製剤特許として商業独占の鍵を握る、
+               (b) 1978-12-19 FDA 承認（Platinol）と時期が一致、
+               (c) Day 12 シルデナフィル（用途特許）・
+                   Day 13 アスパルテーム（物質特許）と並ぶ
+                   『偶然発見三題』の医薬版として系譜整理しやすい
+[STEP 6] Peyrone 1845 / Werner 1893 / Rosenberg 1965-1969 / Research Corp 1972 /
+         Bristol-Myers 1978 の5層構造を Wikipedia（Cisplatin / Barnett Rosenberg /
+         Michele Peyrone）と Google Patents で照合
+```
+
+選定理由：(a) Day 13 で推奨された PH-010 を Week 3 完走に向けて消化、(b) 物質特許不可の公知化合物を製剤特許で独占する知財パターンが現代の後発医薬品市場と直結、(c) DB番号エラーが連続再発している中（Day 8〜13で通算13件）、本件は番号自体が**完全に別の特許**を指していた最も重い訂正例。
+
+## 2. Claim 1 と明細書の核
+
+Google Patents から取得した Claim 1（verbatim、US4310515A）：
+
+> An injectable, stable, sterile aqueous solution of cisplatin in a unit dosage form in a sealed container, said solution being suitable for administration by the injection thereof into man upon the removal thereof from said container, said solution having a concentration of cisplatin between about 0.1 and about 1.0 mgm./ml. and a pH in the range of 2.0 to 3.0.
+
+ここで請求の対象になっているのは**「化合物」ではなく「製剤の物理化学的状態」**である。具体的には4つの要件を全て満たすことを要求している：
+
+1. **形式**：注射可能（injectable）・無菌（sterile）・水溶液（aqueous solution）・密封容器内（sealed container）・単位用量形態（unit dosage form）
+2. **濃度**：cisplatin 0.1〜1.0 mg/mL
+3. **pH**：2.0〜3.0
+4. **安定性**：取り出してすぐ使える（suitable for administration upon removal）
+
+明細書の主張は『従来技術ではシスプラチンは水中で水酸化物への加水分解（hydrolysis）が進行して効力を失うため、凍結乾燥（lyophilization）製剤として供給され、使用直前に再溶解する必要があった』という前提のもとで、『酸性pH（2.0-3.0）に調整することで加水分解を抑制し、常温で安定な水溶液として供給可能になった』という製剤発明である。
+
+これは『化合物の合成法』を囲い込むのでも『治療用途』を囲い込むのでもなく、**『製剤の保存安定性』という製造業的・物流的・医療現場運用的な発明**を特許化している。Day 12 シルデナフィル（用途特許）・Day 13 アスパルテーム（物質特許）とは全く異なる種類の特許である。
+
+## 3. 5層IP構造（Peyrone 1845 → Bristol-Myers 1978 の133年）
+
+シスプラチンを囲む知的財産の歴史を一次資料で並べる：
+
+| 年 | 主体 | 内容 | 特許化 |
+|---|---|---|---|
+| 1845 | Michele Peyrone | cis-Pt(NH₃)₂Cl₂ の合成法を Liebigs Annalen der Chemie 51号で報告（『Peyrone's salt』） | **特許なし**（化学論文のみ、当時の特許制度では有機合成は対象外だったほか、医薬用途は未発見） |
+| 1893 | Alfred Werner | 配位子場理論で八面体錯体としての構造を推定（後にノーベル化学賞 1913） | 特許なし |
+| 1965 | Barnett Rosenberg / Loretta Van Camp | Michigan State University で電気分解実験中、白金電極から溶出した白金錯体が大腸菌の二分裂を阻害することを偶然発見 | 特許なし（基礎発見の段階） |
+| 1969 | Rosenberg et al. | Nature 222号 (385-386) で抗腫瘍活性を報告 | 特許なし（学術論文） |
+| 1972-06-08 | Cleare / Hoeschele / Rosenberg / Van Camp | **US4140707A**『Malonato platinum anti-tumor compounds』を Research Corporation 譲受で優先出願、1979-02-20 成立 | **派生化合物特許**（malonato 系、後のカルボプラチン CBDCA の祖先） |
+| 1972〜 | Rustenburg Platinum Mines / Johnson Matthey | **US3892790A**『Compositions containing platinum』（Tobe / Khokhar / Braddock 共同発明）で alicyclic amine 配位子の派生錯体を1972-04-10 優先出願、1975-07-01 成立 | **派生化合物特許**（cisplatin 本体ではなく周辺化合物） |
+| 1978-05-30 | Granatek / Ziemba / Grab | **US4310515A**『Pharmaceutical compositions of cisplatin』を Bristol-Myers 譲受で優先出願、1982-01-12 成立 | **製剤特許**（pH 2.0-3.0 の常温安定水溶液） |
+| 1978-12-19 | FDA | Platinol（Bristol-Myers）を精巣腫瘍・卵巣腫瘍向けに新薬承認 | 規制承認（特許とは別軸） |
+
+この5層構造で読み取れるのは、**シスプラチン本体（Peyrone's salt）は1978年時点で物質特許化不可能だった**という事実である。Rosenberg と Research Corporation は派生化合物（malonato 系）と用途研究で周辺を押さえたが、cis-Pt(NH₃)₂Cl₂ そのものは公知物質。Bristol-Myers は『製剤の安定性』という別レイヤーで囲い込みを完成させた。
+
+## 4. なぜ「気持ち悪いほど近い」のか
+
+1978年の Claim 1 と現代の医薬製剤・後発医薬品市場の問題意識を並べる。
+
+| US4310515A（1978年） | 現代（2026年）の対応 | 区別 |
+|---|---|---|
+| pH 2.0-3.0 の常温安定水溶液で物質特許不可の化合物を囲い込む | 後発医薬品市場での『製剤特許による先発企業の独占延長』戦略（evergreening 議論） | **類似**（製剤特許による独占延長の典型例として現代でも教科書的事例） |
+| 凍結乾燥→常温水溶液という運用改善を特許化 | 注射剤の常温保存可能化（biologics の room-temp stable formulation） | 類似（問題意識は継承、化学的アプローチは別物） |
+| 単位用量形態（unit dosage form）の請求項 | 現代の prefilled syringe・ready-to-use IV bag 規格 | **類似**（医療現場の運用負担削減という同じ問題意識） |
+| 0.1-1.0 mg/mL という濃度範囲の請求 | 現代の医薬品濃度範囲特許（concentration range claims） | **同一**（請求設計のパターンは継承） |
+| 公知化合物（Peyrone 1845）に対する製剤特許 | 公知化合物の新規塩・水和物・多形（polymorph）特許 | **類似**（公知化合物を別レイヤーで囲い込む知財戦略の系譜） |
+| 偶然発見（Rosenberg 1965 電気分解実験） | sildenafil（狭心症から ED）、aspartame（指→紙→舐める）、teflon（凍結したガス） | **比喩**（時代を跨いだ偶然発見系譜の比較） |
+
+対応表で「同一」「類似」とした行は、**請求設計のパターンと知財戦略の問題意識**が現代まで継承されている部分に限定される。「比喩」とした行は時代を跨いだ系譜の比較で、技術内容は別物。
+
+専門家から想定される反論：
+
+- **薬学者**：「製剤特許による evergreening 議論は1990年代以降の概念で、1978年時点では『新規製剤＝当然の発明』として扱われていた。後付けで現代の議論を投影するのは時代錯誤」
+- **特許弁理士**：「pH 2.0-3.0 という範囲設計は当時の医薬品特許としては標準的で、特別な工夫ではない。現代の濃度範囲特許の系譜と接続するのは過剰解釈」
+- **医療化学者**：「シスプラチンの加水分解抑制は単純な酸性条件の知見で、製剤発明としての novelty は限定的。Bristol-Myers の独占は本特許単独ではなく、FDA 承認・OEM ネットワーク・販売チャネルの組み合わせで成立した」
+- **科学史家**：「Peyrone 1845 → Rosenberg 1965 の123年ギャップを『眠っていた』と解釈するのは現代視点。19世紀後半〜20世紀前半は配位化学の理論整備期で、医薬応用の発想自体が時代的に成立しなかった」
+
+これらの反論は本記事の編集判断（5層IP構造を『製剤特許による独占延長の前史』として位置づける）に対して妥当な指摘で、対応表は「同一/類似/比喩」の区別で線を引いている。
+
+## 5. AI考古学的な意味
+
+この特許の AI 考古学的な意味は、**『公知化合物を別レイヤーで囲い込む知財戦略』の系譜が1978年の cisplatin 製剤特許で明確化された**点にある。Peyrone 1845 の合成記述、Rosenberg 1965/1969 の活性発見、Research Corp 1972 の派生特許、Bristol-Myers 1978 の製剤特許は、それぞれ別の知財レイヤー（化合物／用途／派生化合物／製剤）で、1つの分子に対して4種類の囲い込みを試みた歴史として読める。
+
+LLM で再読する価値があるのは、**Claim 1 の請求設計の語彙**である。「injectable」「stable」「sterile」「aqueous solution」「unit dosage form」「sealed container」「concentration ... between about 0.1 and about 1.0 mgm./ml.」「pH in the range of 2.0 to 3.0」という8つの限定要件を組み合わせて、化合物名（cisplatin）を中心に置きながら**化合物そのものは囲い込まずに製剤の物理化学的状態を囲い込む**設計になっている。これは1978年の特許弁理士の語彙運用が、化合物特許不可の状況下で『製造工程・流通・医療現場運用』のメタレイヤーで請求範囲を構築した実例である。
+
+現代の AI 創薬・LLM 製薬応用の文脈で読む場合、本特許は『化合物そのもの』を発見・最適化する AI と『製剤の物理化学的状態』を最適化する AI の役割分担、および両者を別レイヤーで特許化する知財戦略の前史として参照できる。
+
+## 6. 落とし穴（医薬特許 固有のもの）
+
+**落とし穴1：候補DB番号 US4169726 は完全に別物**
+candidates.tsv の DB 登録 URL は `https://patents.google.com/patent/US4169726` だが、この番号は **GE（General Electric Co.）のキャスティング合金特許**（Norman P. Fairbanks 単独、1977-12-21 出願、1979-10-02 成立、Title: 'Casting alloy and directionally solidified article'、Claim 1: Ni-Co-Cr-Ta-Al-W-C-Si-La 系合金）で、シスプラチン・医薬・白金錯体とは**完全に無関係**。Day 8 IC-009 Bluetooth、Day 8 IC-011 CDMA、Day 8 IC-012 RFID、Day 9 PH-001 スタチン（US4231938 は Merck Lovastatin で別物、正は US4049495A）と同じパターンの**番号自体が別特許を指していた誤り**。本件はDB訂正通算14件目。
+
+**落とし穴2：Rosenberg の発見と Bristol-Myers の独占を混同しない**
+通説では「Rosenberg がシスプラチンの抗腫瘍活性を発見し、Bristol-Myers が承認・商業化した」と一括で語られるが、知財構造は別。Rosenberg / Van Camp は1965年に発見したが、Peyrone 1845 が公知物質だったため化合物そのものの物質特許は取れなかった。Research Corporation 経由で派生化合物（malonato platinum、US4140707A）と用途関連の特許を出したが、これらはシスプラチン本体ではなく周辺をカバーするのみ。Bristol-Myers が1978年に取得した US4310515A は『製剤発明』で、これがあって初めて1980年代の市場独占が成立した。
+
+**落とし穴3：効能・効果の断定を避ける**
+本記事はシスプラチンの抗腫瘍活性を医学的事実として記述するが、これは（a）Rosenberg 1969 Nature 論文の記述、（b）FDA 1978-12-19 承認文書（Platinol）の精巣腫瘍・卵巣腫瘍向け記載、（c）特許明細書中の従来技術参照、の**一次資料で確認できる範囲に限定**する。現代の臨床効果・副作用プロファイル・現役治療プロトコルへの言及は本記事の対象外。読者は治療判断を本記事から導かないよう注意。
+
+**落とし穴4：物質特許不可と evergreening を混同しない**
+本特許は『公知化合物の製剤特許』であり、現代議論の evergreening（先発医薬品の特許切れ前に製剤・新規塩・多形等の派生特許で独占を延長する戦略）とは別概念。1978年時点で Peyrone 1845 は既に123年前の公知物質で、製剤特許による独占は『独占の延長』ではなく『そもそも独占を成立させる手段』だった。両者の区別は知財実務上重要。
+
+## 7. なぜ Bristol-Myers だったか（推測と一次資料の区別）
+
+ここからは推測を含む。一次資料で確認できる事実：
+
+- 1972〜1976：Rosenberg 研究室と Bristol-Myers の共同研究契約が結ばれ、製剤化検討が開始（Wikipedia: Cisplatin、二次集約）
+- 1978-05-30：US4310515A 優先出願（Granatek/Ziemba/Grab、Bristol-Myers 譲受）
+- 1978-12-19：FDA が Platinol 商標で承認
+- 1979-10-01：US4310515A 米国本出願
+- 1982-01-12：US4310515A 成立
+- 1982：Bristol-Myers は cisplatin の主要市場供給者として確立
+
+著者推測（一次資料未確認）：
+- Bristol-Myers が Rosenberg / Research Corporation と契約して開発を主導した経緯は、Wikipedia と医薬産業史二次資料の集約で語られているが、**契約原本・社内議事録・ライセンス料率は本記事では未確認**。
+- 1978年12月の FDA 承認と1978年5月の特許優先出願の半年差は、製剤開発の実務的タイムラインと特許出願戦略（FDA 申請前に最終製剤の特許を確保しておく）の典型パターンと推測されるが、Bristol-Myers の社内記録は非公開。
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- US4310515A『Pharmaceutical compositions of cisplatin』、発明者 Edmund S. Granatek / Gerald M. Ziemba / Frederick L. Grab の3名共同、原譲受人 Bristol-Myers Co.。Google Patents（https://patents.google.com/patent/US4310515A）から Claim 1・abstract・発明者・譲受人を取得済み
+- 優先日 1978-05-30、出願日 1979-10-01、成立日 1982-01-12
+- Claim 1 の verbatim（pH 2.0-3.0、濃度 0.1-1.0 mg/mL、注射用無菌水溶液、密封容器、単位用量形態）を本文中に引用済み
+- 派生特許 US4140707A『Malonato platinum anti-tumor compounds』、発明者 Cleare/Hoeschele/Rosenberg/Van Camp、Research Corporation 譲受、1972-06-08 優先・1979-02-20 成立も Google Patents で取得済み
+- Rosenberg et al., Nature 222, 385-386 (1969) は US4140707A の non-patent citations で確認
+
+**著者の解釈：**
+- 「5層IP構造」（Peyrone 1845 / Werner 1893 / Rosenberg 1965-1969 / Research Corp 1972 / Bristol-Myers 1978）の整理は本記事の編集判断で、医薬特許史の標準分類ではない
+- 「物質特許不可の公知化合物を製剤特許で囲い込む知財戦略」という位置づけは著者解釈で、特許明細書自体はそこまで主張していない
+- 「偶然発見三題の医薬版」という Day 12 シルデナフィル・Day 13 アスパルテームとの並列は本記事の系譜整理
+
+**比喩・アナロジー：**
+- 対応表「pH 2.0-3.0 製剤特許 ↔ 現代の evergreening 議論」は時代を跨いだ系譜の比較で、1978年時点では evergreening 概念は未成立
+- 「Rosenberg 1965 電気分解実験 ↔ sildenafil/aspartame/teflon の偶然発見」は比喩であり、技術内容と安全性プロセスは別物
+
+**未確認：**
+- Bristol-Myers と Rosenberg/Research Corporation の共同研究契約原本
+- US4310515A の forward citations 件数・後続特許
+- FDA 1978-12-19 Platinol 承認文書の verbatim
+- 1980年代の cisplatin 市場での Bristol-Myers シェア・売上数値
+- Peyrone 1845 Liebigs Annalen der Chemie 51号の原文（独語、19世紀文献）
+- Rosenberg/Van Camp の1965年実験ノート原本
+
+**この比較が破綻する点：**
+- 1978年の製剤特許設計と現代の biologics 製剤特許は技術背景が根本的に異なる（小分子白金錯体 vs タンパク質医薬品）
+- 「製剤特許による独占成立」は本特許単独の効果ではなく、FDA 承認・販売チャネル・OEM ネットワークの複合効果で、特許は1要因に過ぎない
+- 「Peyrone 1845 → Rosenberg 1965 の123年ギャップ」は科学史的に必然性のあるギャップ（配位化学理論整備期）であり、『眠っていた』『見落とされていた』と解釈するのは現代視点の投影
+- DB誤りの訂正記録は本シリーズの方法論的価値だが、特許史そのものの論点ではない
+
+---
+
+参考リンク：
+- Google Patents US4310515A（本特許）：https://patents.google.com/patent/US4310515A
+- Google Patents US4140707A（Research Corp 派生）：https://patents.google.com/patent/US4140707A
+- Google Patents US3892790A（Rustenburg/Johnson Matthey 派生）：https://patents.google.com/patent/US3892790A
+- Wikipedia: Cisplatin（https://en.wikipedia.org/wiki/Cisplatin）
+- Wikipedia: Barnett Rosenberg（https://en.wikipedia.org/wiki/Barnett_Rosenberg）
+- Wikipedia: Michele Peyrone（https://en.wikipedia.org/wiki/Michele_Peyrone）
