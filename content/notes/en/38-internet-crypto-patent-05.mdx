@@ -1,0 +1,186 @@
+---
+title: "'A $15 RFID Writer Can Clone My Apartment Key' Was Decided in 1970 — Cardullo & Parks' Patent US3713148A and the Birth of the Writable Passive Transponder"
+subtitle: "Internet & Cryptography Patents #5 — US3713148A, Communications Services Corporation Inc, Mario W. Cardullo + William L. Parks III (2 co-inventors), filed May 1970, granted January 1973, expired January 1990"
+description: "Filed in the U.S. on May 21, 1970, granted on January 23, 1973, expired on January 23, 1990 (Lifetime). Mario W. Cardullo and William L. Parks III, working at Communications Services Corporation (Rockville, Maryland), jointly invented the foundational RFID patent US3713148A 'Transponder Apparatus and System.' Claim 1 defines a 'self-contained transponder with writable memory powered by the interrogation signal itself.' Claim 4 extends the carrier wave to light frequency, Claim 5 to acoustic frequency. The Description explicitly cites 'automatic highway toll device for motor vehicles' as a sample application — the conceptual ancestor of ETC, written 31 years before Japan's ETC launched in 2001. 185 forward citations. Read this as the precursor to apartment key fobs, employee badges (HID Prox), Walmart inventory tags, pet ID chips, and the NFC tag inside an Apple TechWoven Case. Title, full Claim 1, inventors, filing/grant/expiration dates, Abstract, and forward citation count retrieved from Google Patents. **The DB record (candidates.tsv) attributing this to 'Charles Walton' is wrong** — Walton was a separate RFID pioneer; he is not an inventor on this patent."
+episode: 38
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "RFID", "NFC", "Mario Cardullo", "William Parks", "Passive Transponder", "Expired Patent", "Demand-Driven Lane"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 13
+status: "published"
+---
+
+[Internet & Cryptography Patents #4 (Ericsson's Bluetooth Core Patent US6590928B1)](/en/notes/35-internet-crypto-patent-04) traced a 1997 question posed in Emmen, the Netherlands — "can multiple independent piconets share the 2.4 GHz band without synchronizing their clocks?"
+
+This time, we set the clock back 27 years to May 1970, in Rockville, Maryland. The question is: can a small, battery-less chip wake up the moment it is hit by an external radio wave, and read back the contents of its internal writable memory using only that wave?
+
+## The conclusion first
+
+Patent number: [US3713148A](https://patents.google.com/patent/US3713148A/en)
+Title: Transponder Apparatus and System
+U.S. filing: May 21, 1970
+U.S. grant: January 23, 1973
+Expired: January 23, 1990 (Expired - Lifetime)
+Inventors: **Mario W. Cardullo** (Rockville, MD) + **William L. Parks III** (Bethesda, MD) — two co-inventors
+Original Assignee: Communications Services Corporation, Inc. (Rockville, MD)
+Current Assignee: Communications Services Corp Inc
+Forward citations: 185
+
+The question this patent posed can be written in one sentence: "Can a small device, holding no battery of its own, wake up the instant an interrogation signal arrives, derive its operating power solely from that signal, and then transmit back the contents of its internal writable memory as an answerback signal?"
+
+Claim 1 reads:
+
+> A transponder comprising: memory means for storing data; means responsive to a transmitted code signal for selectively writing data into or reading data out from said memory means, and for transmitting as an answerback signal data read-out from said memory means; and means for internally generating operating power for said transponder from said transmitted code signal, whereby said transponder is self-contained.
+
+"memory means," "writing data into or reading data out," "answerback signal," "internally generating operating power," "self-contained" — these five phrases set the design skeleton of every modern RFID/NFC device. The Abstract is more concrete: the transponder extracts its operating power from the carrier wave itself, memory writes and reads are performed selectively, and the memory contents are transmitted back as the answerback signal.
+
+The patent's Description explicitly names one sample application: **"automatic highway toll device for motor vehicles."** In 1970, Cardullo and Parks already sketched what would later be called Electronic Toll Collection (ETC).
+
+When you tap your employee badge at the office in the morning, when you hold a key fob to your apartment door, when you pass a Suica card through a train gate, when a vet scans the ID chip in your pet's neck, when a Walmart worker bulk-scans inventory with a UHF RFID gun, when an Apple TechWoven Case identifies its own material to your iPhone via an embedded NFC tag — **all of these inherit the design skeleton of Claim 1 of this 1970 patent**.
+
+---
+
+A note on motivation.
+
+In 2025, the top thread in r/RFID was "I just bought a $15 RFID writer from Amazon and it works!" (42 upvotes, 27 comments). The author had cloned an apartment key fob in minutes. r/NFC ran "Whats up with shops not protecting their nfc google review tags" (100 upvotes, 39 comments), where users documented stores whose NFC review tags were rewritten to redirect to malicious sites. "Managed to crack my smartrider (mifare classic transit card)" (43 upvotes) recorded a successful break of the CRYPTO-1 cipher used in many transit cards.
+
+These modern phenomena — **clonable, rewritable, indiscriminately answering** — are not bugs. They are the spec-defined behavior of the "writable memory + self-contained passive transponder" structure that Cardullo and Parks claimed in 1970.
+
+A design two engineers wrote at a small company in Rockville fifty years ago is now passed down, untouched in its core, into our keys, badges, transit cards, and inventory tags. Re-reading that design as a "diagnostic baseline" for present-day insecurity is the goal of this note.
+
+## 1. How this was selected
+
+Selected from the candidate DB (`~/ai-archaeology/db/candidates.tsv`) — IC-012 in the Week 2 "Internet & Cryptography Patents" theme. Overall priority is 11 (mid among Week 2 remainders: IC-009 Bluetooth, IC-011 CDMA, IC-012 RFID), but breadth of present-day connection was prioritized.
+
+```
+[STEP 1] Tested a "demand-driven lane" alongside the regular DB-driven lane. After confirming on Ubersuggest (free tier) that adjacent queries carry real demand (e.g., "when bluetooth invented" = 4.4K monthly searches), we surveyed top threads across r/RFID, r/NFC, r/AccessControl, r/biohacking
+[STEP 2] Extracted seven recurring present-day pain points: easy cloning, tag rewriting, broken legacy ciphers, reader-vs-reader interference, smartphone emulation, opacity of embedded NFC tags, HID Prox cloning
+[STEP 3] Selected IC-012 RFID (candidate URL: US3713148A) as the patent that connects most strongly to those pain points
+[STEP 4] Verified the primary source on Google Patents — the DB record attributing this to "Charles Walton (Proximity Devices Inc.)" is wrong. The actual inventors are Mario W. Cardullo + William L. Parks III, two co-inventors. Walton is a separate RFID pioneer who filed his first passive RFID patents (US3752960, US4097851 etc.) in 1973 and after.
+[STEP 5] Logged the DB correction and committed to writing this note with the correct inventors.
+```
+
+Primary source status: Title, full Claim 1, summaries of Claims 2-7, basic bibliographic data, inventors (two co-inventors), filing date, grant date, expiration date, and forward citation count have been retrieved and verified on Google Patents. Out of scope for this note: full text of Claims 8 onward, line-by-line reading of the Description, Cardullo's later patents at IDESCO Corporation, Parks' related patent filings, detailed comparison with Charles Walton's US3752960 (1973) and US4097851, original specifications of NXP Mifare, ISO 14443 / ISO 15693 / ISO 18000-6C, FeliCa, EMV contactless, and Apple Pay HCE.
+
+## 2. The patent's core
+
+We unpack Claim 1, the Abstract, and the Description in five steps.
+
+**Step 1 — The interrogation-transponder model.** The system rests on a request-response structure: a base station transmits an interrogation signal, the transponder returns an answerback signal. This pre-existing model is acknowledged in the patent's preamble: "The basic operation of an interrogation-transponder system of the type to which this invention relates is known." The novelty lies in what comes next.
+
+**Step 2 — Writable memory.** Claim 1's phrase "means responsive to a transmitted code signal for **selectively writing data into or reading data out from** said memory means" is the first decisive element. Earlier transponders — reflective patterns on rail cars for vehicle ID, military IFF — used **preset and non-changeable internal coding**. One transponder, one fixed answer. This patent introduced a transponder whose memory could be rewritten by an external interrogation signal, letting the same hardware play multiple identities. This is the lineage of "writable" tags in modern Mifare, HID Prox, and UHF RFID.
+
+**Step 3 — Self-contained (no internal battery).** The second decisive element is in Claim 1's tail: "means for internally generating operating power for said transponder from said transmitted code signal, whereby said transponder is self-contained." The transponder draws its operating power directly from the incoming carrier wave. No battery is needed. This makes transponders effectively immortal, miniaturizable, and disposable — the physical-layer ancestor of every passive RFID device today (13.56 MHz NFC, 125 kHz HID, UHF EPC Gen2).
+
+**Step 4 — Generalization of the carrier wave.** Claim 4 says "said carrier wave is of light frequency"; Claim 5 says "said carrier wave is of acoustic frequency." In 1970, Cardullo and Parks already wrote into the claims that radio is not the only viable medium. Optical RFID (parts of barcode systems), Surface Acoustic Wave (SAW) RFID, and ultrasonic transponders are all foreshadowed.
+
+**Step 5 — Electronic toll collection, written into the patent.** The Description states: "As one non-limiting and illustrative example of the utility of this system, its application as an automatic highway toll device for motor vehicles will be described." In 1970, the operational principle of ETC — base station interrogates, in-vehicle transponder responds with vehicle ID, base station logs the trip — is explicitly sketched. That is 16 years before the world's first ETC system in Bergen, Norway (1986), and 31 years before Japan's ETC launch (2001).
+
+Translated into present-day terms: "A small box with no battery wakes up purely on incoming radio energy, then reads back the contents of its rewritable internal memory. **The box does not check whether the reader is legitimate.**" That last sentence is the structural source of every present-day vulnerability.
+
+That said, **no single patent covers all of modern RFID/NFC**. The space splits into 13.56 MHz NFC (ISO 14443, ISO 15693), 125 kHz LF (HID Prox), and UHF 860–960 MHz (EPC Gen2, ISO 18000-6C), each governed by separate specifications. Mifare's CRYPTO-1 (NXP, ca. 1994), DESFire's AES, FeliCa (Sony), EMV contactless, and Apple Pay/Google Pay's HCE (Host Card Emulation) are each described in their own patents and standards. This patent describes the **minimal physical-and-logical-layer skeleton** — writable memory plus self-contained passive transponder — at the bottom of the stack.
+
+## 3. A correspondence table to the present
+
+| US3713148A (filed 1970, granted 1973) | Modern RFID / NFC | Evaluation |
+|---|---|---|
+| writable memory + self-contained transponder | 13.56 MHz NFC / 125 kHz HID / UHF EPC Gen2 | Same (physical and logical structure carried over directly) |
+| interrogation-then-answerback model | NFC Type 2/4 Tag, HID Prox, Mifare Classic | Same (request-response model is the baseline standard) |
+| Designed for **identification**, not authentication | Apartment key fobs, employee badges, pet ID chips, Walmart tags | Same (the same identification-only design is reused) |
+| Same data returned every time | Mifare Classic with CRYPTO-1 (broken in 2008) | Similar (encryption layered on top, but "same UID returned" remains) |
+| "Automatic highway toll device" written in the Description | Japan ETC (since 2001), E-ZPass (since 1989) | Same (sample application implemented 31 years later) |
+| Claim 4 light-frequency / Claim 5 acoustic-frequency carriers | Optical RFID, SAW RFID, ultrasonic RFID | Similar (the generalization is the same; mainstream is radio) |
+| Writable memory (no rewrite protection) | $15 RFID writers cloning fobs, store NFC tag tampering | Same (no rewrite-protection requirement carried over) |
+| Active authentication response is out of scope | EMV contactless (dynamic CVV), Apple Pay HCE | Different lineage (cryptographic active response is post-Cardullo) |
+
+**Reading the table.**
+
+Rows 1–3 carry over to modern ISO 14443 / ISO 15693 / ISO 18000-6C standards as a structural skeleton. The "writable memory + self-contained passive" combination is described in nearly identical engineering language across Mifare, HID Prox, and UHF EPC tags. Hence "Same."
+
+Row 4 (Mifare Classic) is similar. Mifare Classic layered NXP's proprietary CRYPTO-1 (ca. 1994) on top of Cardullo & Parks' Claim 1, but the structure of "always returning the same UID in the clear" is a direct descendant — and is what makes cloning (alongside the 2008 CRYPTO-1 break) so easy.
+
+Row 5 (ETC) is same. The Description explicitly describes the operating sequence; implementation came in stages (Bergen 1986, E-ZPass 1989, Japan ETC 2001). The patent stands as a clear point of origin.
+
+Row 6 (light/acoustic) is similar. The generalization is unambiguous in Claims 4–5; the dominant carrier today is radio (13.56 MHz, 125 kHz, UHF), with optical and acoustic RFID confined to niche applications.
+
+Row 7 (no rewrite protection) is same. $15 NFC writers (Proxmark3, Flipper Zero, generic Amazon USB writers) are widely available in 2025, and a substantial fraction of Mifare Ultralight, NTAG21x, and HID Prox tags shipping today retain Claim 1's "writable memory" structure unchanged.
+
+Row 8 (EMV contactless) is a different lineage. EMV contactless and Apple Pay/Google Pay HCE return a **freshly computed cryptogram every time** (dynamic CVV/Token), departing from the "same answerback from memory" model. These are not extensions of Cardullo & Parks' claims; they belong to a separate body of patents covering the EMV standard, ARM TrustZone, and Secure Elements.
+
+## 4. Why this is rarely cited in the usual technology narrative (speculation)
+
+**Reason 1 — "The father of RFID" is conflated with Charles Walton.**
+
+Multiple RFID histories — including the English and Japanese Wikipedia articles — describe Charles Walton (1921–2011, ex-IBM, founder of Proximity Devices Inc.) as "the father of RFID." Walton holds several passive RFID patents from 1973 onward (US3752960, US4097851, etc.) and is well-known in the HID/access-control industry. Cardullo and Parks' patent here, **filed earlier than any of Walton's**, is rarely mentioned in those histories. Even the AI Archaeology DB (`candidates.tsv`) listed "Charles Walton" as the inventor of IC-012 (this entry was incorrect). Without checking the primary source (the patent face), this kind of canonical error persists.
+
+**Reason 2 — "RFID is a 1990s technology" is an anachronism.**
+
+Walmart's RFID inventory rollout (2003–), the U.S. DoD's RFID cargo tracking (2003–), Suica (2001), E-ZPass (1989), and PetTrac/HomeAgain pet ID chips (1990s–) all reached consumer awareness in the 1990s and 2000s. So the technology is often discussed as if it originated then. In fact, as this patent shows, the design was already fixed in 1970.
+
+**Reason 3 — "There is one RFID patent" is an oversimplification.**
+
+Modern RFID/NFC is a stack of thousands of patents. This patent is one of the foundational ones (writable memory + self-contained), but ISO 14443 (NFC physical layer), Mifare (NXP), FeliCa (Sony), EMV contactless, HCE, and Apple Pay/Google Pay are each described in their own patents and standards.
+
+## 5. The AI Archaeology angle
+
+Holding a key fob to an apartment door each morning. Tapping a badge at an office security gate. Passing a Suica through a train turnstile. A vet scanning the ID chip in your pet's neck. The small NFC tag hidden inside an Apple TechWoven Case identifying its material to your iPhone. Someone using a $15 RFID writer from Amazon to clone an apartment key. These are everyday scenes in the 2020s.
+
+US3713148A gave a patent form, in 1970, to the question setting underneath all of them: "Can a small device with no battery wake up purely on external radio energy, and read back the contents of its rewritable internal memory?" The implementation combined writable memory, the interrogation-then-answerback model, self-contained power generation from the carrier, and generalization to radio/optical/acoustic carriers.
+
+Three design choices — rewritable, batteryless, answers when called — together became both the source of convenience and the source of fragility. Because there is no battery, a fifty-year-old key fob still works. Because the memory is rewritable, a single tag can be reused as a badge, then a visitor card, then something else. Because the chip answers when called, train gates clear in 0.1 seconds. **And for exactly the same reasons, $15 readers can clone, store NFC tags can be tampered with, and badges can be emulated by a phone.**
+
+The two cannot be separated. That inseparability is the essence of the passive-transponder invention. Fifty years on, we are paying the cost of having repurposed an **identification** design as an **authentication** mechanism. The fact that a $15 device can clone a key fob is the spec working as designed, not a defect.
+
+Before LLMs, reading Claim 1's plain phrasing — "means responsive to a transmitted code signal for selectively writing data into or reading data out from said memory means; and means for internally generating operating power for said transponder from said transmitted code signal" — and connecting it to modern NFC implementations, HID Prox security analyses, and the $15 RFID writer market, was high-cost work. AI Archaeology lowers that cost.
+
+## 6. Pitfalls
+
+**Pitfall 1 — "Charles Walton invented RFID" is inaccurate.**
+
+Cardullo & Parks' US3713148A (filed May 1970, granted January 1973) predates Walton's earliest passive RFID patents (1973 and after). Multiple histories, Wikipedia included, frame "Walton as the father of RFID," but on the patent record, Cardullo and Parks were first to claim the writable + self-contained combination. Walton independently contributed important passive RFID patents from 1973 onward. **"Multiple independent invention lineages exist" is the accurate framing.**
+
+**Pitfall 2 — "RFID is covered by US3713148A alone" is inaccurate.**
+
+This patent describes only the minimal physical-and-logical-layer skeleton (writable memory + self-contained + interrogation-answerback). The physical layer of 13.56 MHz NFC (ISO 14443, ISO 15693), the modulation of 125 kHz HID Prox, the anti-collision logic of UHF EPC Gen2, Mifare's CRYPTO-1, DESFire's AES, FeliCa, EMV contactless, and HCE are each described in their own patents and standards. "RFID's foundational patent" is shorthand for one foundational patent in a stack of thousands.
+
+**Pitfall 3 — "ETC is just an extension of Cardullo & Parks" is half right.**
+
+The Description does sketch the automatic highway toll application, but the actual ETC implementations (Bergen 1986, E-ZPass 1989, Japan ETC 2001) use different standards and frequency bands (5.8 GHz DSRC, ISO 14906). Distinguish "design point of origin" from "implementation lineage."
+
+**Pitfall 4 — "Passive transponders are inherently fragile" misses the point.**
+
+Claim 1's design is for **identification**, not **authentication**. In the patent's own example applications (toll collection, vehicle ID, cargo tracking), identification was sufficient. The "fragility" appears only when subsequent generations — apartment management companies, badge issuers, transit operators — repurposed the identification design for authentication. The design is not old; the design's purpose was over-extended.
+
+**Pitfall 5 — "Apple Pay and Suica are the same as a passive transponder" is inaccurate.**
+
+Apple Pay, Google Pay, FeliCa, and EMV contactless are active-response systems that compute and return a fresh dynamic CVV or token each time, departing clearly from the "same answerback from memory" model. They are not extensions of this patent; they belong to the later cryptographic-response RFID lineage and rest on Secure Element / TrustZone / HCE technology. Suica internally uses FeliCa, which performs active cryptographic responses.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts**
+From Google Patents: US3713148A / U.S. filing 1970-05-21 (Application US00039309A) / U.S. grant 1973-01-23 / Anticipated Expiration 1990-01-23 / Status "Expired - Lifetime" / Inventors **Mario W. Cardullo (Rockville, MD) + William L. Parks III (Bethesda, MD), two co-inventors** / Original Assignee "Communications Services Corporation, Inc. (Rockville, Md.)" / Current Assignee "Communications Services Corp Inc" / Forward citations 185 / Full text of Claim 1 retrieved ("A transponder comprising: memory means for storing data; means responsive to a transmitted code signal for selectively writing data into or reading data out from said memory means, and for transmitting as an answerback signal data read-out from said memory means; and means for internally generating operating power for said transponder from said transmitted code signal, whereby said transponder is self-contained.") / Claim 4 confirms "carrier wave is of light frequency"; Claim 5 confirms "carrier wave is of acoustic frequency" / Abstract confirms "base station," "interrogation signal," "answerback transmission," "changeable or writable memory," "generates its own operating power," "self-contained" / Description confirms the "automatic highway toll device for motor vehicles" sample application / Title "Transponder Apparatus and System."
+
+**Author's interpretation**
+"Precursor to apartment key fobs, employee badges, Suica, and the NFC tag inside an Apple TechWoven Case" is the author's interpretation. The structural inheritance of "writable memory + self-contained passive transponder" into modern RFID/NFC standards is a strong link, but each standard (NFC, HID Prox, Mifare, FeliCa, EMV contactless) has its own patent and specification lineage. The position taken here is that this patent is the structural origin of the "no battery, wake on interrogation, return contents of writable memory" design.
+
+**Analogies**
+Row 4 of the table (Mifare Classic) is a similarity: CRYPTO-1 was layered on top, but the "same UID returned" structure is direct descent. Row 6 (light/acoustic) is a similarity: the generalization is explicit, but the mainstream carrier today is radio. Row 8 (EMV contactless) is a different lineage: dynamic cryptographic responses depart clearly from the patent's model.
+
+**Not yet confirmed**
+Full text of Claims 8 and onward / line-by-line reading of the full Description / contents of all 185 forward citations / Mario W. Cardullo's later IDESCO Corporation patents / William L. Parks III's related patent record / detailed comparison with Charles Walton's US3752960 and US4097851 / corporate history of Communications Services Corporation Inc and the chain of patent assignments / NXP Mifare specification / ISO 14443 / ISO 15693 / ISO 18000-6C / FeliCa specification / EMV contactless specification / Apple Pay HCE public materials / primary sources on Walmart's RFID inventory rollout / primary source on Bergen's 1986 ETC / primary source on E-ZPass 1989 / primary source on Japan's ETC (2001) / relationship to Hedy Lamarr's US2292387 (no direct citation expected).
+
+**Where this comparison breaks**
+US3713148A is one foundational patent, not a covering patent for modern RFID/NFC. Saying "the foundational RFID patent" risks the impression that a single patent covers the whole space, when in fact ISO 14443, ISO 15693, ISO 18000-6C, Mifare, FeliCa, EMV contactless, and HCE are each described in separate patents and standards. The first kinds of expert pushback are: the "Walton vs. Cardullo paternity" debate; the passive-vs-active transponder distinction; differences across 13.56 MHz / 125 kHz / UHF specifications; and the relationship between NFC and RFID (NFC is a subset, not a separate concept). Calling Apple Pay/Google Pay/Suica/FeliCa/EMV contactless extensions of this patent will be corrected ("active cryptographic response is a separate lineage"). Over-emphasizing Cardullo & Parks' personal contribution risks understating Walton's, IBM's, and Texas Instruments' contributions. Calling ETC "an extension of this patent" will be corrected with "the implementations are 5.8 GHz DSRC, a different lineage."
+
+---
+
+References:
+- Source patent: [US3713148A on Google Patents](https://patents.google.com/patent/US3713148A/en)
+- Series #4 (excavation note): [Ericsson's Bluetooth Core Patent US6590928B1 (1997)](/en/notes/35-internet-crypto-patent-04)
+- Series #3 (excavation note): [Denso & Toyota Central R&D Labs' QR Code Patent US5726435A (1994)](/en/notes/32-internet-crypto-patent-03)
+- Series #2 (excavation note): [Fraunhofer's MP3 Core Patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)
+- Series #1 (excavation note): [Woodland's Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)
+- Excavation memo #7 (same series): [Qualcomm's CDMA Patent US4901307A (1986)](/en/notes/36-internet-crypto-patent-memo-07)
+- Excavation memo #8 (same series, same patent — short version): [RFID ancestor patent US3713148A — excavation memo](/en/notes/37-internet-crypto-patent-memo-08) (memo on the same patent. This note is a deeper, demand-driven-lane experiment that frames the patent through Reddit pain points and a present-day correspondence table.)

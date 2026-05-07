@@ -1,0 +1,186 @@
+---
+title: "『$15のRFIDライターでマンションのキーが複製できる』のは1970年に決まっていた──Cardullo & Parks特許US3713148Aが書いたwritable passive transponder"
+subtitle: "インターネット・暗号特許 #5 — US3713148A、Communications Services Corporation Inc、Mario W. Cardullo + William L. Parks III 2名共同発明、1970年5月出願・1973年1月成立・1990年1月失効"
+description: "1970年5月21日米国出願、1973年1月23日成立、1990年1月23日失効（Lifetime）。Communications Services Corporation Inc（メリーランド州Rockville）の Mario W. Cardullo と William L. Parks III が **2名共同**で発明したRFID基幹特許 US3713148A『Transponder Apparatus and System』。Claim 1は「書き込み・読み出し可能なメモリと、interrogation信号から自身の動作電力を生成する self-contained transponder」を定義した。Claim 4で光周波数、Claim 5で音響周波数まで含む拡張クレーム。本文には「automatic highway toll device for motor vehicles」（電子料金所の元祖）が応用例として記載されている。Forward citations 185件。マンションキー、社員証（HID Prox）、Walmart在庫タグ、ペットICチップ、Apple TechWoven Caseの内部NFCタグの前史として読む。Google Patentsよりタイトル・Claim 1全文・発明者・出願日・成立日・失効日・Abstract・Forward citations件数取得済み。**DB（candidates.tsv）にあった『Charles Walton発明』記載は誤り**。Walton は別系統の RFID 先駆者で、本特許の発明者ではない。"
+episode: 38
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "RFID", "NFC", "Mario Cardullo", "William Parks", "passive transponder", "失効特許", "需要起点レーン"]
+series: "インターネット・暗号特許"
+seriesNumber: 13
+status: "published"
+---
+
+[インターネット・暗号特許 #4（EricssonのBluetooth基幹特許 US6590928B1）](/notes/35-internet-crypto-patent-04)では1997年、オランダEmmenの研究室で立てられた「複数の独立したピコネットを時計合わせなしで共存させる」問いを掘った。
+
+今回は時計を27年戻して1970年5月のメリーランド州Rockville。問いは「電池を持たない小さなチップが、外部から呼ばれた瞬間に起動して、内部メモリの内容を電波で読み返す装置を作れるか」だ。
+
+## 結論を先に
+
+特許番号：[US3713148A](https://patents.google.com/patent/US3713148A/en)
+タイトル：Transponder Apparatus and System
+米国出願日：1970年5月21日
+米国成立日：1973年1月23日
+失効：1990年1月23日（Expired - Lifetime）
+発明者：**Mario W. Cardullo**（Rockville, MD）+ **William L. Parks III**（Bethesda, MD）の**2名共同発明**
+Original Assignee：Communications Services Corporation, Inc.（Rockville, MD）
+Current Assignee：Communications Services Corp Inc
+Forward citations：185件
+
+この特許が立てた問いは一文で書ける。「電池を持たない小さな装置が、外から送られてきた電波（interrogation signal）を受け取った瞬間に、その電波からだけ動作電力を作り出し、内部の書き換え可能メモリに格納されたデータを電波で送り返せるか（answerback signal）」。
+
+Claim 1はこう書かれている。
+
+> A transponder comprising: memory means for storing data; means responsive to a transmitted code signal for selectively writing data into or reading data out from said memory means, and for transmitting as an answerback signal data read-out from said memory means; and means for internally generating operating power for said transponder from said transmitted code signal, whereby said transponder is self-contained.
+
+「memory means」「writing data into or reading data out」「answerback signal」「internally generating operating power」「self-contained」──この5つのキーワードが、現代のRFID／NFCの設計骨格を決めている。Abstractはさらに具体的だ。**transponderは外部から送られてきたcarrier waveから動作電力を取り出し、メモリへの書き込み・読み出しが selectively（選択的に）行われ、メモリの内容が answerback signal として送り返される**。
+
+そして特許本文の応用例として、Cardullo + Parks 自身が書いている例が「**automatic highway toll device for motor vehicles**」だ。1970年の時点で、現代のETC（Electronic Toll Collection）の応用例が特許文書の中で具体的にスケッチされている。
+
+私たちが朝、社員証をかざしてオフィスに入る瞬間。マンションのキーフォブを玄関にかざす瞬間。Suicaで改札を通る瞬間。ペットの首にあるICチップを獣医がリーダーで読む瞬間。Walmartの倉庫スタッフがUHF RFIDで在庫を一括スキャンする瞬間。Apple TechWoven Caseの中に隠れているNFCタグがケースの素材を識別する瞬間。**これらすべてに、1970年の Cardullo + Parks 特許の Claim 1 の設計が骨格として残っている**。
+
+---
+
+ここで本記事の動機を書いておきたい。
+
+2025年のRedditで、r/RFIDに「I just bought a $15 RFID writer from Amazon and it works!」（42 upvotes、27コメント）という投稿が立った。マンションのキーフォブを複製できた、という素朴な驚きだ。r/NFCでは「Whats up with shops not protecting their nfc google review tags」（100 upvotes、39コメント）に「店舗が机に貼っているNFCレビュータグが書き換え可能で、悪意のあるリンクに飛ばされる事例が出ている」という議論が並ぶ。「Managed to crack my smartrider (mifare classic transit card)」（43 upvotes）では交通系ICの暗号CRYPTO-1を破った事例が記録されている。
+
+これらの「**書き換えられる／複製される／無防備に応答する**」という現代の現象は、欠陥ではない。1970年に Cardullo + Parks が Claim 1 で書いた "writable memory" + "self-contained passive transponder" の **仕様通りの動作**だ。
+
+50年前にメリーランド州の小さな会社の2人のエンジニアが書いた設計を、現代のキー・社員証・交通系IC・在庫タグはそのまま受け継いでいる。それを「再評価する補助線」として読むのが、本ノートの目的だ。
+
+## 1. どう選んだか
+
+候補DB（`~/ai-archaeology/db/candidates.tsv`）の Week 2「インターネット・暗号特許」テーマから IC-012 を選定した。総合優先度は11で Week 2残候補（IC-009 Bluetooth、IC-011 CDMA、IC-012 RFID）の中では中位だが、現代との接点がきわめて広いことを優先した。
+
+```
+[STEP 1] 通常レーンとは別に「需要起点レーン」を試行。Ubersuggest無料版で需要のある関連クエリ（例：when bluetooth invented = 月4.4K検索）の存在を確認後、RFID関連サブレディット（r/RFID、r/NFC、r/AccessControl、r/biohacking）でtopスレッドを横断調査
+[STEP 2] 7個の現代痛点（複製容易・タグ改ざん・暗号破綻・リーダー間干渉・エミュレーション・封入NFCの不可視性・HID Prox複製）を抽出
+[STEP 3] 痛点に最も強く接続する特許として、DBの IC-012 RFID（候補URL：US3713148A）を選定
+[STEP 4] Google Patentsで一次資料確認 → DB記載「Charles Walton（Proximity Devices Inc.）」が誤りで、実際はMario W. Cardullo + William L. Parks III の2名共同発明であることを発見（Walton は別系統のRFID先駆者）
+[STEP 5] DB訂正項目として記録し、本ノートでは正しい発明者で書く方針確定
+```
+
+一次資料到達状況：Google PatentsからAbstract・Claim 1全文（および Claim 2-7 の要旨）・基本情報・発明者（2名共同）・出願日・成立日・失効日・Forward citations件数を取得・確認済み。Description全文の逐語確認、Claim 8以降の全文、本特許がCardullo + Parks の前後特許群（Cardulloは後にIDESCO Corporationを設立してRFID事業化）との関係、Charles WaltonのUS3752960（1973年）等の関連特許との比較、HID GlobalやNXP Semiconductors、Mifare仕様書原文は本記事範囲外。
+
+## 2. 特許の核心
+
+Claim 1とAbstractと特許本文を5つに分解する。
+
+**ステップ1：interrogation-transponderモデル**：本特許のシステムは「base station が interrogation signal を送る → transponder が answerback signal を返す」という質問・応答モデルを採る。これは1970年以前から知られていた構造で、特許本文の冒頭でCardullo + Parks 自身が「The basic operation of an interrogation-transponder system of the type to which this invention relates is known」と認めている。新規性は次のステップにある。
+
+**ステップ2：書き換え可能メモリ**：Claim 1が「means responsive to a transmitted code signal for **selectively writing data into or reading data out from** said memory means」と書く点が決定的に重要だ。それまでのtransponder（鉄道車両識別のための反射板パターン、軍用IFF）は **preset and non-changeable internal coding** だった。一台のtransponderは固定された一つのID／応答しか返せなかった。本特許は「外部から interrogation signal でメモリ内容を書き換えられる」「同じハードで複数のIDを使い分けられる」設計を持ち込んだ。これが現代のmifare、HID Prox、UHF RFIDタグの「writable」の起源だ。
+
+**ステップ3：self-contained（電源内蔵不要）**：Claim 1の後段「means for internally generating operating power for said transponder from said transmitted code signal, whereby said transponder is self-contained」が第二の核心だ。transponderは外部から送られてくる電波そのものから動作電力を取り出す。電池がいらない。これによってtransponderは数十年単位で寿命を持ち、極小サイズに作れ、使い捨てが可能になる。これが現代の passive RFID（13.56MHz NFCタグ、125kHz HID、UHF EPC Gen2）の物理層の起源だ。
+
+**ステップ4：carrier waveの汎化**：Claim 4で「said carrier wave is of light frequency」、Claim 5で「said carrier wave is of acoustic frequency」と書かれている点も興味深い。1970年の時点でCardullo + Parks は「電波だけが媒体ではない」と明示している。光学RFID（バーコードスキャナの一部）、SAW（Surface Acoustic Wave）RFID、超音波 transponder の応用がすでにクレームに含まれている。
+
+**ステップ5：応用例として記された「electronic toll collection」**：本特許の Description に「As one non-limiting and illustrative example of the utility of this system, its application as an automatic highway toll device for motor vehicles will be described」と書かれている。1970年の時点で、ETCの動作原理（料金所通過時に車載transponderがbase stationから interrogation を受けて車両IDを返し、料金所が走行記録に書き込む）が特許に具体的にスケッチされている。日本のETC運用開始（2001年）の31年前、ノルウェーの世界初ETC（1986年Bergen）の16年前にあたる。
+
+現代の言葉で再翻訳するとこうなる。「電池を持たない小さな箱が、リーダーから飛んできた電波だけで起動し、内部の書き換え可能メモリの内容を電波で読み返す。**箱はリーダーが正規かどうかを判別しない**」。**最後の一文が、現代の脆弱性の源泉**だ。
+
+ただし、**現代のRFID／NFC全体をこの1特許で覆うことはできない**。RFIDは13.56MHz NFC（ISO 14443、ISO 15693）、125kHz LF（HID Prox）、UHF 860-960MHz（EPC Gen2、ISO 18000-6C）の3つの主要帯域で異なる仕様が並ぶ。Mifare ClassicのCRYPTO-1（NXP独自）、DESFireのAES、FeliCa（ソニー）、EMV contactless（Visa/Mastercard）、Apple Pay／Google PayのHCE（Host Card Emulation）はそれぞれ別の特許・別の標準で記述される。本特許は「writable memory + self-contained passive transponder」という **物理層と論理層の最小骨格**を記述する核特許の一つである。
+
+## 3. 現代との翻訳表
+
+| US3713148A（1970年出願・1973年成立） | 現代のRFID／NFC | 評価 |
+|---|---|---|
+| writable memory + self-contained transponder | 13.56MHz NFC / 125kHz HID / UHF EPC Gen2 | 同一（物理層・論理層の基本構造がそのまま継承） |
+| interrogation→answerback の質問応答モデル | NFC Type 2/4 Tag、HID Prox、Mifare Classic | 同一（質問応答モデルが標準のまま） |
+| 認証ではなく識別を目的とする設計 | マンションキーフォブ、社員証、ペットICチップ、Walmart在庫タグ | 同一（識別用途への適用がそのまま継承） |
+| 同じデータを毎回返す answerback | mifare classic（CRYPTO-1暗号、2008年破られた） | 類似（暗号化を後付けしたが「同じ識別子」を返す構造は残る） |
+| automatic highway toll（特許本文記載のETC） | 日本ETC（2001年〜）、E-ZPass（米国1989年〜） | 同一（応用パターンとして31年後に実装） |
+| Claim 4 light frequency / Claim 5 acoustic frequency | 光学 RFID、SAW RFID、超音波 RFID | 類似（同じ汎化思想だが現代の主流は電波） |
+| writable memory（書き換え保護なし） | $15 RFID writer によるキーフォブ複製、店舗NFCタグ改ざん | 同一（書き換え保護を持たない仕様がそのまま） |
+| 能動的な認証応答は範囲外 | EMV contactless（毎回 dynamic CVV）、Apple Pay HCE | 別系統（本特許の延長ではなく後発の暗号応答） |
+
+**この対応表の読み方について補足する。**
+
+1〜3行目は技術設計レベルでISO 14443・ISO 15693・ISO 18000-6C等の現代RFID／NFC標準にそのまま継承されている。「writable memory + self-contained passive」という構造は、Mifare、HID Prox、UHF EPCタグで設計言語がほぼ同じ。だから「同一」と書ける。
+
+4行目（mifare classic）は類似。Mifare ClassicはCardullo + Parks のClaim 1の上に NXP 独自の CRYPTO-1 暗号（1994年頃）を後付けしたが、「同じ識別子（UID）を毎回平文で返す」構造は本特許の延長で、これが2008年のCRYPTO-1破綻と並んで複製を容易にしている。
+
+5行目（ETC）は同一。本特許のDescriptionが具体的に automatic highway toll device の動作を記述しており、実装は1986年Bergen、1989年E-ZPass、2001年日本ETCで段階的に行われた。設計の起源として明確に位置づけられる。
+
+6行目（光・音響）は類似。Claim 4-5は汎化思想を明示するが、現代の主流は電波（13.56MHz、125kHz、UHF）で、光学・音響は限定的応用にとどまる。
+
+7行目（書き換え保護なし）は同一。$15のNFCライター（Proxmark3、Flipper Zero、Amazonの無名ブランドUSB writer）が市場に流通しており、Mifare Ultralight、NTAG21x、HID Proxの相当数がClaim 1の "writable memory" 構造のまま市場に出ている。
+
+8行目（EMV contactless）は別系統。EMV contactless と Apple Pay／Google Pay の HCE は「毎回異なる暗号応答（dynamic CVV/Token）」を返す設計で、Claim 1の "same answerback from memory" モデルから明確に離れている。これは Cardullo + Parks 特許の延長ではなく、後発の能動応答型RFIDで、別の特許群（EMV標準・ARM TrustZone・Secure Elementなど）に基づく。
+
+## 4. なぜ一般の技術語りでは参照されにくいか（推測）
+
+**理由1：「RFIDの父」がCharles Waltonと混同されている**
+
+Wikipedia英語版・日本語版を含め、複数の RFID 解説記事で「Charles Walton が RFID の父」と書かれている。Walton（1921-2011、IBM出身、Proximity Devices Inc 創業）は1973年以降に複数の passive RFID 特許（US3752960、US4097851 など）を取得し、HID／access control 業界で名が広く知られている。一方、Cardullo + Parks の本特許（1970年出願、1973年成立）は **Walton の最初の特許より早い**にもかかわらず、解説記事で言及されにくい。本記事の AI Archaeology DB（`candidates.tsv`）でも IC-012 の発明者欄が「Charles Walton」と記載されていた（誤り）。一次資料（特許表紙）を確認しないと、こういう通説の誤りが残る。
+
+**理由2：「RFIDは1990年代の技術」という時代誤認**
+
+Walmart の RFID 在庫管理（2003年〜）、米国国防総省のRFID貨物追跡（2003年〜）、Suica（2001年）、E-ZPass（1989年）、PetTrac／HomeAgain ペットICチップ（1990年代〜）といった**消費者の目に触れた応用**が1990-2000年代に集中したため、技術自体も1990年代以降のもののように語られる。実際は本特許のとおり、技術設計は1970年代に固まっていた。
+
+**理由3：「単一の RFID 特許」という単純化**
+
+「RFIDを支える特許」と単数形で書かれることが多いが、現代RFID／NFC は数千件の特許の積層で成り立っている。本特許は最古層（writable memory + self-contained）の核特許の一つだが、ISO 14443（NFC物理層）、Mifare（NXP）、FeliCa（ソニー）、EMV contactless、HCE、Apple Pay／Google Pay の各層は別の特許・別の標準で記述される。
+
+## 5. AI考古学的な意味
+
+朝、マンションのドアにキーフォブをかざす瞬間。会社のセキュリティゲートに社員証をタップする瞬間。Suicaで改札を抜ける瞬間。動物病院でペットの首のICチップをリーダーで読む瞬間。Apple TechWoven Caseの中の小さなNFCタグがケース素材を識別する瞬間。Amazonで買った$15のRFIDライターで誰かがマンションキーを複製する瞬間。これらは2020年代の日常だ。
+
+US3713148A は、これらの問題設定──「電池を持たない小さな装置が、外部からの電波だけで起動し、内部の書き換え可能メモリの内容を読み返す」──に1970年の時点で特許の形を与えた。実装は writable memory + interrogation→answerback + self-contained power generation + 電波／光／音響への汎化の組み合わせだった。
+
+「書き換え可能で、自分で電力を持たず、声をかけたら内容を読み返す」という3点を1970年に決めたCardullo + Parks の設計は、便利さの源泉でもあり、脆弱さの源泉でもある。電池を持たないから50年前のキーフォブが今も動く。書き換え可能だから1枚のタグを社員証から訪問者カードへ転用できる。声をかけたら答えるから改札の応答時間が0.1秒に収まる。**しかし同じ理由で、$15のリーダーで複製でき、店舗NFCが改ざんされ、社員証がスマホでエミュレートされる**。
+
+便利さと脆弱さを切り離せないのが、passive transponder という発明の本質だ。50年経って、私たちは「同じ識別子を毎回返す」設計を **認証** に使った代償を払い続けている。$15で複製できるのは特許の機能であって、欠陥ではない。
+
+LLM登場以前、Claim 1の「means responsive to a transmitted code signal for selectively writing data into or reading data out from said memory means」「means for internally generating operating power for said transponder from said transmitted code signal」という素朴な記述を、現代のNFC実装やHID Proxセキュリティ、$15 RFID writerの市場と接続しながら読むコストは高かった。AI考古学はそのコストを下げる。
+
+## 6. 落とし穴
+
+**落とし穴1：「RFIDを発明したのはCharles Walton」は不正確**
+
+Cardullo + Parks のUS3713148A（1970年5月出願・1973年1月成立）は、Charles Walton の最初のpassive RFID特許群（1973年以降）より早い。複数の解説記事・Wikipedia含めて「Walton が RFID の父」と書かれているが、特許表紙ベースで見れば Cardullo + Parks が writable + self-contained の組み合わせを最初にクレームした。一方、Walton も1973年以降のpassive RFID 特許で重要な貢献をしているので「父は誰か」は単純化できない。**「複数の独立した発明系統がある」と書くのが正確**。
+
+**落とし穴2：「RFID = US3713148A だけで覆える」は不正確**
+
+本特許は writable memory + self-contained + interrogation→answerback の物理層・論理層の最小骨格を記述するが、13.56MHz NFC（ISO 14443、ISO 15693）の物理層、125kHz HID Prox の変調方式、UHF EPC Gen2 の anti-collision、Mifare の CRYPTO-1、DESFireのAES、FeliCa、EMV contactless、HCE はそれぞれ別の特許・別の標準で記述される。「RFID基本特許1件」と書くのは便宜的表現で、実際は数千件の特許の積層がある。
+
+**落とし穴3：「ETCはCardullo + Parks の延長」は半分正解**
+
+特許本文に automatic highway toll device の応用例が記されているのは事実だが、実際のETC実装（1986年Bergen、1989年E-ZPass、2001年日本ETC）は別の標準・別の周波数帯（5.8GHz DSRC、ISO 14906）で行われた。「設計の起源として記述された」「実装は別系統」を区別する。
+
+**落とし穴4：「passive transponder は脆弱な設計だ」は半分誤解**
+
+Claim 1の設計は **識別** を目的としており、**認証** ではない。本特許の応用例（自動料金所、車両識別、貨物追跡）では、識別だけで足りた。「脆弱」になったのは、後の世代（マンション管理会社、社員証発行業者、交通系IC事業者）がこの設計を **認証** 用途に流用したから。設計が古いのではなく、設計目的を流用しすぎた。
+
+**落とし穴5：「Apple PayやSuicaも passive transponderと同じ」は不正確**
+
+Apple Pay／Google Pay／FeliCa／EMV contactless は「毎回 dynamic CVV／Token を生成して返す」能動応答型で、本特許の "same answerback from memory" モデルから明確に離れている。これは Cardullo + Parks 特許の延長ではなく、後発の暗号応答型RFIDで、Secure Element／TrustZone／HCE 等に基づく別系統。Suicaも内部はFeliCa で能動暗号応答を行う。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+Google Patentsより：US3713148A / 米国出願1970-05-21（Application US00039309A） / 米国成立1973-01-23 / Anticipated Expiration 1990-01-23 / Status「Expired - Lifetime」/ 発明者 **Mario W. Cardullo（Rockville, MD）+ William L. Parks III（Bethesda, MD）の2名共同** / Original Assignee「Communications Services Corporation, Inc.（Rockville, Md.）」/ Current Assignee「Communications Services Corp Inc」/ Forward citations 185件 / Claim 1全文取得済み（"A transponder comprising: memory means for storing data; means responsive to a transmitted code signal for selectively writing data into or reading data out from said memory means, and for transmitting as an answerback signal data read-out from said memory means; and means for internally generating operating power for said transponder from said transmitted code signal, whereby said transponder is self-contained."）/ Claim 4 で "carrier wave is of light frequency"、Claim 5 で "carrier wave is of acoustic frequency" 確認 / Abstract で「base station」「interrogation signal」「answerback transmission」「changeable or writable memory」「generates its own operating power」「self-contained」 の記載確認 / 特許本文 Description で "automatic highway toll device for motor vehicles" の応用例記載確認 / タイトル「Transponder Apparatus and System」
+
+**著者の解釈**
+「マンションキー・社員証・Suica・Apple TechWoven CaseのNFCタグの前史」は著者の解釈。技術設計として writable memory + self-contained passive transponder の組み合わせが現代RFID／NFC標準にそのまま継承された点は強い接続だが、各標準（NFC、HID Prox、Mifare、FeliCa、EMV contactless）は別の特許・別の標準書で記述される。「電池を持たず interrogation で起動し書き換え可能メモリを読み返す」という核設計の起源として読む立場を取っている。
+
+**比喩・アナロジー**
+対応表4行目（mifare classic）は類似。CRYPTO-1暗号を後付けしたが、同じ識別子を返す構造は本特許の延長。対応表6行目（光・音響）は類似。Claim 4-5の汎化思想は明確だが現代の主流は電波。対応表8行目（EMV contactless）は別系統。能動暗号応答は本特許のモデルから離れる。
+
+**未確認**
+Claim 8以降の全文 / Description全文の逐語確認 / 引用関係（Cited by 185件）の内容 / Mario W. Cardullo の関連特許群（IDESCO Corporation設立後の特許）/ William L. Parks III の関連特許群 / Charles Walton US3752960、US4097851 等の関連特許との詳細比較 / Communications Services Corporation Inc の企業履歴と特許の譲渡経緯 / NXP Mifare 仕様書原文 / ISO 14443 / ISO 15693 / ISO 18000-6C 標準書原文 / FeliCa 仕様書原文 / EMV contactless 仕様書原文 / Apple Pay HCE 公開資料 / Walmart RFID 在庫管理に関する一次資料 / Bergen 1986年 ETC 一次資料 / E-ZPass 1989年 一次資料 / 日本ETC（2001年） / Hedy Lamarr US2292387 との関係（直接引用関係はないと推定）
+
+**この比較が破綻する点**
+US3713148A はRFID基幹特許の一つだが、現代RFID／NFC全体を覆うものではない。「RFIDの基礎特許」と書くと読者は単一特許でRFID全体を覆えると誤解しがちだが、ISO 14443・ISO 15693・ISO 18000-6C・Mifare・FeliCa・EMV contactless・HCE はそれぞれ別特許または標準仕様書で記述される。専門家から最初に突っ込まれるのは「Walton vs Cardullo の発明者論争」「passive vs active transponder の違い」「13.56MHz / 125kHz / UHF の周波数帯ごとの仕様差」「NFC と RFID の関係（NFC は RFID のサブセットか別概念か）」の混同。Apple Pay／Google Pay／Suica／FeliCa／EMV contactless を本特許の延長と書くと「能動暗号応答は別系統」と訂正される。Cardullo + Parks 個人の貢献を強調しすぎると、Charles Walton や IBM／Texas Instruments の貢献を矮小化する点も指摘されやすい。「ETCはこの特許の延長」と書くと「実装は5.8GHz DSRC で別系統」と訂正される。
+
+---
+
+参考リンク：
+- 元特許：[US3713148A on Google Patents](https://patents.google.com/patent/US3713148A/en)
+- 同シリーズ #4（発掘ノート）：[EricssonのBluetooth基幹特許 US6590928B1（1997年）](/notes/35-internet-crypto-patent-04)
+- 同シリーズ #3（発掘ノート）：[デンソー＋豊田中研のQRコード特許 US5726435A（1994年）](/notes/32-internet-crypto-patent-03)
+- 同シリーズ #2（発掘ノート）：[FraunhoferのMP3核特許 US5579430（1989年）](/notes/29-internet-crypto-patent-02)
+- 同シリーズ #1（発掘ノート）：[Woodlandバーコード US2612994A（1949年）](/notes/26-internet-crypto-patent-01)
+- 発掘メモ #7（同シリーズ）：[Qualcomm CDMA特許 US4901307A（1986年）](/notes/36-internet-crypto-patent-memo-07)
+- 発掘メモ #8（同シリーズ・同特許の速報）：[RFID祖先特許 US3713148A 発掘メモ](/notes/37-internet-crypto-patent-memo-08)（同じ特許の発掘メモ。本ノートは需要起点レーン実験として Reddit 痛点起点フックで深掘りした版）
