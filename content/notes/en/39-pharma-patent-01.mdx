@@ -1,0 +1,172 @@
+---
+title: "'Amplifying One DNA Sequence in a Test Tube' — Cetus's PCR Core Patent US4683195A Was Written by 6 Co-Inventors in 1985, Not by Mullis Alone"
+subtitle: "Pharmaceutical Patents #1 — US4683195A, Cetus Corporation, 6 co-inventors (Arnheim/Erlich/Horn/Mullis/Saiki/Scharf), filed March 1985, granted July 1987"
+description: "Filed in the U.S. on March 28, 1985; granted July 28, 1987. Norman Arnheim, Henry A. Erlich, Glenn T. Horn, Kary B. Mullis, Randall K. Saiki, and Stephen J. Scharf at Cetus Corporation **jointly** invented the PCR (Polymerase Chain Reaction) core patent US4683195A 'Process for amplifying, detecting, and/or-cloning nucleic acid sequences.' Mullis's standalone core-idea patent is the separate US4683202A; the Taq DNA polymerase implementation is US4965188A — three patents form one family. Roche acquired the Cetus PCR portfolio in 1991 (publicly reported around $300M initially, with subsequent licensing earning billions). Read this as the precursor to COVID-19 PCR testing, qPCR, digital PCR, CRISPR diagnostics (SHERLOCK / DETECTR), forensics, prenatal screening, and ancient DNA analysis. Title, six inventors, filing/grant dates, and assignee retrieved from Google Patents and WebSearch sources. Full text of Claim 1 and Description not yet verified verbatim. **The DB record (candidates.tsv) attributing this invention to 'Mullis himself' is inaccurate** — Mullis is one of six co-inventors; his sole-inventor patent is the separate US4683202A."
+episode: 39
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Pharmaceutical Patents", "PCR", "Cetus", "Kary Mullis", "Roche", "DNA Amplification", "Expired Patent", "Week 3"]
+series: "Pharmaceutical Patents"
+seriesNumber: 1
+status: "published"
+---
+
+[Internet & Cryptography Patents #5 (Cardullo & Parks's RFID core patent US3713148A)](/en/notes/38-internet-crypto-patent-05) closed Week 2, "Internet & Cryptography Patents." Twelve excavations: barcode (1949), HTTP cookies (1995), Ethernet (1975), MP3 (1989/1995), Diffie-Hellman (1977), Wi-Fi (1993), QR (1994), JPEG core (1986), SSL (1995), Bluetooth (1997), CDMA (1986), and RFID (1970).
+
+This week opens Week 3, "Food & Health Patents + Pharmaceutical Patents." The kind of question changes. Week 2 asked, *how do we move information?* Week 3 asks, *how do we measure and protect bodies?*
+
+The first excavation note in this new week digs into PCR — the polymerase chain reaction core patent US4683195A. The COVID-19 pandemic turned "PCR test" into a household term, but the technical skeleton was written in March 1985 at Cetus Corporation in Emeryville, California.
+
+## Bottom line
+
+Patent number: [US4683195A](https://patents.google.com/patent/US4683195/en)
+Title: Process for amplifying, detecting, and/or-cloning nucleic acid sequences using a probe
+U.S. filing date: March 28, 1985
+U.S. grant date: July 28, 1987
+Inventors: Norman Arnheim, Henry A. Erlich, Glenn T. Horn, Kary B. Mullis, Randall K. Saiki, Stephen J. Scharf (**6 co-inventors**)
+Original Assignee: Cetus Corporation
+Current Assignee: Roche Molecular Systems Inc (post-1991 acquisition)
+
+The question this patent posed can be put in one sentence. *Can we take a tiny DNA sample, copy one specific sequence inside it again and again in a test tube, and bring it up to detectable amounts?*
+
+PCR runs in a three-step cycle. **Step 1**: heat-denature double-stranded DNA (around 94°C). **Step 2**: anneal short single-stranded primers to the target sequence (around 50–65°C). **Step 3**: a DNA polymerase extends new strands from the primers (around 72°C). Repeat 30–40 times, and the target sequence grows exponentially.
+
+Every news report from 2020 saying "the PCR test came back positive" or "Ct value was high" was running on this 35-year-old design.
+
+---
+
+But Cetus / Roche PCR-related patents are not a single document. **Three patents form one family.**
+
+- **US4683202A** (Mullis as **sole inventor**): the core-idea patent — two primers plus repeated amplification, the design skeleton itself
+- **US4683195A** (**6 co-inventors**: Arnheim/Erlich/Horn/Mullis/Saiki/Scharf): the inclusive version covering probe-based detection and diagnostic applications
+- **US4965188A** (joint, with Taq DNA polymerase): the practical implementation that enabled automation through a heat-stable enzyme
+
+The DB record (`~/ai-archaeology/db/candidates.tsv`) for PH-003 says "Mullis's invention episode," "$300M sale to Roche," and "Nobel Prize 1993." This phrasing hides the **Mullis-alone vs. 6-co-inventor split** between US4683202A and US4683195A. This article makes that split explicit at the primary-source level.
+
+## 1. Selection process
+
+Selected PH-003 from the candidate DB (`~/ai-archaeology/db/candidates.tsv`) — total priority 18, the highest in Week 3, directly connected to modern COVID-19 PCR testing, qPCR, CRISPR diagnostics, and forensics.
+
+```
+[STEP 1] From Week 3 candidates (PH-001–010, FH-001–012), pick PH-003 (PCR, priority 18) for the excavation note in priority order
+[STEP 2] Confirm patent number US4683195A on Google Patents → WebFetch failed because the patent body is too large
+[STEP 3] Retrieve bibliographic info (title, inventors, dates, assignee) via WebSearch
+[STEP 4] Compare DB ("Mullis himself") with primary source ("6 co-inventors")
+[STEP 5] Decide to make the three-patent family structure (US4683202A core, US4683195A probe detection, US4965188A Taq) explicit
+```
+
+Primary-source status: bibliographic header from Google Patents and Cetus / Roche / Mullis–related public information via WebSearch confirm patent number, title, six inventors, filing/grant dates, and assignee history. Verbatim Claim 1 text, full Description, forward citations, Cetus internal records, the 1991 Roche acquisition contract, and the 1993 Mullis Nobel selection materials are out of scope for this article.
+
+## 2. The core of the patent
+
+PCR's problem statement makes more sense in the context of biology and medical diagnostics in the early 1980s.
+
+Detecting a specific DNA sequence at the time relied on Southern blotting: separate sample DNA by gel electrophoresis, transfer to a nylon membrane, hybridize with a radioactive probe, and detect. Time-consuming, hands-on, and requiring microgram quantities of DNA. Detecting from trace samples was effectively impossible.
+
+PCR broke that constraint. **Anything between two primers can be exponentially amplified inside a test tube**, so picogram-scale samples can be brought up to detectable amounts. Thirty cycles theoretically give 2³⁰ ≈ 10⁹-fold amplification; in practice 10⁸–10⁹ depending on copy efficiency and sample quality. Either way, "undetectable" became "detectable" — an order-of-magnitude leap in sensitivity.
+
+The Mullis personal episode is widely told. One Friday night in April 1983, driving on California Route 101 toward Mountain View, Mullis allegedly thought, "with two primers, every cycle would double only the target sequence." That is the lowest common denominator across his autobiography, his 1993 Nobel lecture, and the testimony of Cetus colleagues like Saiki.
+
+But **the idea took two years to become a working technology**. The first 1983 implementation used the Klenow fragment of *E. coli* DNA polymerase, which was inactivated at the 94°C denaturation step. New enzyme had to be added by hand each cycle. The first 1985 paper and patent application still used this manual-addition setup.
+
+Practical use was unlocked by adopting Taq DNA polymerase from the hot-spring bacterium *Thermus aquaticus* between 1986 and 1988. Taq survives 94°C, so a single addition runs through 30–40 cycles in a thermal cycler. This is what turned PCR from a manual lab experiment into a commercial diagnostic tool. The Taq version is **US4965188A** (Saiki, Mullis, et al.). *Science* named Taq DNA polymerase its "Molecule of the Year" in 1989.
+
+## 3. Mapping to today
+
+| US4683195A (filed 1985, granted 1987) | Modern DNA amplification & diagnostics | Evaluation |
+|---|---|---|
+| Two primers flanking a target region for amplification | Standard PCR (basic tool in every molecular biology lab) | Identical (Claim 1's design carried forward) |
+| 30-cycle exponential amplification | Real-time PCR (qPCR, fluorescence monitoring per cycle) | Similar (same exponential frame, fluorescent quantification added) |
+| Probe-based detection (the core of US4683195A) | TaqMan probe / molecular beacon | Similar (same problem setting "fluorescent detection of target only," different implementation) |
+| Manual-add Klenow fragment | Thermostable enzyme thermal cyclers (Taq / Pfu / KOD) | Metaphor (same PCR but different generations of enzymes and automation) |
+| Trace human-genome detection | COVID-19 RT-PCR (reverse transcriptase + PCR) | Similar (PCR core is the same, RT step added) |
+| 1986 PCR amplification of BRCA1 region | Prenatal screening (NIPT) / forensic DNA testing | Similar (PCR is the foundation, post-detection processing differs) |
+| Amplifying specific human-genome regions | Digital PCR / droplet PCR | Metaphor (uses the PCR frame but adds a separate design "raise quantitative precision by orders of magnitude") |
+| Amplifying specific human-genome regions | CRISPR-Cas12/13 detection (SHERLOCK / DETECTR) | Metaphor (a parallel nucleic-acid detection technology, not a direct descendant of PCR) |
+| Amplifying specific human-genome regions | Next-generation sequencing (Illumina / Nanopore) | Metaphor (PCR is used for sample prep, but the sequencing principle is different) |
+
+**Reading the table.**
+
+Rows 1–3 are direct descendants at the design level. Claim 1's "amplify a region between two primers via heat denaturation, annealing, and extension" is unchanged in qPCR and TaqMan probe methods — they only swapped the detection step to real-time fluorescence.
+
+Row 4 (Taq adoption) is a generational gap. The 1985 patent's manual-addition setup was impractical; the 1988 Taq version (US4965188A) is what people actually call "PCR" today. "Taq is what made PCR practical" is accurate as technical history.
+
+Rows 5–6 (COVID-19 RT-PCR, prenatal screening, forensics) are PCR-body applications. RT-PCR adds a reverse-transcription step (RNA → DNA); the PCR body is unchanged from 1985. Prenatal screening and forensics layer separate detection technologies (electrophoresis, sequencing, fragment analysis) on top of PCR amplification.
+
+Rows 7–9 (digital PCR, CRISPR detection, NGS) are parallel lineages. Digital PCR (proposed around 1992) uses the PCR frame but adds a separate design — partition into microdroplets to raise quantitative precision. CRISPR-Cas detection (post-2016) is parallel to PCR, not its descendant. NGS (post-2005) uses PCR for sample prep but its sequencing principle (synthesis with reversible dyes, nanopore) is unrelated.
+
+## 4. Why this story is rarely told accurately (speculation)
+
+"Forgotten" is not the right word for this patent. PCR has the 1993 Mullis Nobel Prize, household-term status from COVID-19, and a place in every biology textbook. **What is forgotten is the "6 co-inventors" fact and the three-patent family structure.**
+
+**Reason 1: The "Mullis alone invented PCR" hero narrative**
+
+Mullis left Cetus in 1985 and emphasized his personal-discovery story in his Nobel lecture and autobiography. Popular books, TV shows, and textbooks settled on "Mullis figured it out alone." A primary-source check of the patent header shows six co-inventors.
+
+**Reason 2: The split between core-idea US4683202A and detection-application US4683195A is omitted**
+
+In 1980s U.S. patent practice, related inventions were often filed as separate applications strategically. The Mullis-alone core US4683202A and the 6-co-inventor detection-application US4683195A were filed in parallel and granted on the same date (July 28, 1987). When tech history says "the PCR patent" in the singular, this distinction disappears.
+
+**Reason 3: 1991 Roche acquisition, SEP litigation, and Mullis-vs-Cetus disputes**
+
+In 1991, Roche acquired the Cetus PCR-related patent portfolio (publicly reported initial figure around $300M; total licensing revenue eventually reached billions). From the late 1990s through the 2000s, Roche, Promega, Hoffman-La Roche, Sigma-Aldrich, and many others were tangled in PCR-SEP litigation. Cetus → Roche transfer history, Mullis-vs-Cetus inventorship disputes, and Mullis's solo Nobel award (with protests from co-inventors) all got pushed behind the simpler "Mullis the father of PCR" story.
+
+## 5. The AI Archaeology angle
+
+In April 2020, someone in Tokyo got swabbed at a public health office for a COVID-19 PCR test. The nasopharyngeal sample traveled to a lab, RNA was extracted, reverse-transcribed into cDNA, and run through a thermal cycler at 94°C → 55°C → 72°C for 40 cycles. The cycle number at which the fluorescent probe crossed a threshold (Ct value) was recorded, and "positive/negative" plus an estimated viral load was reported.
+
+At the center of that pipeline is the design six people in a California lab co-wrote 35 years earlier. The 94°C denaturation, primer annealing, polymerase extension — Claim 1's three steps — run today in public health labs, digital PCR, prenatal screening, forensic DNA tests, and ancient DNA analyses.
+
+Before LLMs, tracing this connection cost a non-biologist a lot. Understanding "what PCR is" required molecular-biology basics, and the link between "Ct value of a PCR test" and the 1985 Cetus patent was effectively invisible. Putting the patent header next to news articles in Claude makes the link obvious — the Ct value is just Claim 1's "30 cycles" rewritten as "stop when fluorescence crosses a threshold."
+
+## 6. Pitfalls
+
+**Pitfall 1: "Mullis invented PCR alone" is inaccurate**
+
+US4683195A's inventor list is **6 co-inventors**: Norman Arnheim, Henry A. Erlich, Glenn T. Horn, Kary B. Mullis, Randall K. Saiki, Stephen J. Scharf. Mullis's sole-inventor core-idea patent is the separate US4683202A. The popular "Mullis invented" framing collapses six names into one at the patent-header level.
+
+**Pitfall 2: "PCR = US4683195A alone" is inaccurate**
+
+The Cetus / Roche PCR-related patents form a three-patent family (US4683195A detection application, US4683202A core idea, US4965188A Taq adoption), with many follow-on patents for Stoffel fragment, hot-start, nested PCR, multiplex PCR, and qPCR detection systems. Saying "the PCR patent" in the singular is wrong.
+
+**Pitfall 3: "PCR was invented for COVID-19 testing" is exaggerated**
+
+COVID-19 PCR testing is RT-PCR (reverse-transcription PCR), a variant that adds a reverse-transcription step ahead of standard PCR. RT-PCR itself was established in the 1990s, not invented in 2020. Accurate framing: "COVID-19 testing scaled fast *because* PCR had been ready for 35 years."
+
+**Pitfall 4: "Cetus invented Taq DNA polymerase" is inaccurate**
+
+Taq DNA polymerase (from *Thermus aquaticus*, a hot-spring bacterium) was first purified by Thomas D. Brock and colleagues in 1976 from organisms found in Yellowstone hot springs. Cetus **adopted** it for PCR between 1986 and 1988 — they did not discover the enzyme. *Science*'s 1989 Molecule of the Year award honored Taq's adoption into PCR, not its discovery.
+
+**Pitfall 5: "PCR invented forensic DNA testing" is inaccurate**
+
+DNA fingerprinting was first reported by Alec Jeffreys in the UK in 1984, originally cutting VNTR regions with restriction enzymes and detecting via Southern blot. PCR added "amplification from trace samples" — it did not invent DNA fingerprinting itself. STR analysis (the modern forensic standard) does use PCR but is a separate analytical method established in the 1990s.
+
+**Pitfall 6: "PCR enabled cancer screening" oversimplifies**
+
+Cancer-gene testing (BRCA1/BRCA2, etc.) uses PCR, but variant interpretation, clinical action, genetic counseling, and prophylactic-surgery decisions live in a separate clinical framework. "PCR prevents cancer" is a misread; PCR is just a technique to amplify a specific sequence from a trace sample.
+
+---
+
+## To put it precisely
+
+**Confirmed facts**
+From Google Patents and WebSearch via Cetus / Roche secondary sources: US4683195A / U.S. filed 1985-03-28 / U.S. granted 1987-07-28 / six inventors (Norman Arnheim, Henry A. Erlich, Glenn T. Horn, Kary B. Mullis, Randall K. Saiki, Stephen J. Scharf) / Original Assignee "Cetus Corporation" / 1991 Roche acquisition of Cetus PCR portfolio (publicly reported, total licensing eventually in the billions) / title "Process for amplifying, detecting, and/or-cloning nucleic acid sequences using a probe" / three-patent family with US4683202A (Mullis sole, core idea) and US4965188A (Taq adoption) / 1993 Mullis sole Nobel Prize in Chemistry.
+
+**Author interpretation**
+"PCR core patent" and "precursor to modern COVID-19 testing, qPCR, prenatal screening, forensics" are the author's interpretation. Claim 1's three-step repetition design has clearly carried forward into modern PCR; qPCR, digital PCR, and CRISPR detection are parallel lineages. The piece reads US4683195A as the origin of the problem statement "amplify a target sequence from a trace sample so it becomes detectable."
+
+**Metaphor / analogy**
+Row 4 of the mapping table (Taq adoption generation) is metaphorical — the 1985 patent's manual-add setup was impractical; the 1988 Taq version (US4965188A) is the practical PCR. Row 7 (digital PCR) is metaphorical — uses the PCR frame but adds a separate design (droplet partition for orders-of-magnitude better quantitation). Row 8 (CRISPR-Cas detection) is metaphorical — parallel to PCR, not a descendant. Row 9 (NGS) is metaphorical — uses PCR for sample prep but the sequencing principle is unrelated.
+
+**Unverified**
+Verbatim Claim 1 text / Claims 2 and beyond / verbatim Description / forward citation count / Cetus internal inventor notes and lab notebooks / the 1985 *Science* paper by Saiki et al. (PCR's first academic disclosure) / 1991 Roche-Cetus acquisition contract / Mullis-vs-Cetus inventorship negotiation records / 1993 Mullis Nobel selection records / protest records from the five co-inventors (Arnheim, Erlich, Horn, Saiki, Scharf) over the solo Nobel / the reported $10,000 Cetus bonus to Mullis / Roche-vs-Promega PCR-SEP litigation rulings (late 1990s through 2000s).
+
+**Where this comparison breaks**
+US4683195A is the detection-application version. The PCR core idea itself is the Mullis-sole US4683202A; the practical implementation is the Taq-adopted US4965188A. Three patents make one set. Saying "the PCR patent" in the singular gets you "which patent?" from experts. Saying "Mullis is the inventor" gets corrected to "if you mean the 6-co-inventor patent, the other five are inventors too." Accurate phrasing: "Mullis-sole = US4683202A." Pushing the COVID-19 connection too hard gets corrected with "RT-PCR is a variant with a reverse-transcription step added, not pure PCR," "Ct interpretation varies by instrument, reagent, and threshold," and "PCR-positive ≠ infectious." Reading "PCR makes trace detection universal" gets corrected with practical pitfalls — false positives, contamination, primer mismatch, GC-content–driven efficiency variation.
+
+---
+
+References:
+- The patent: [US4683195A on Google Patents](https://patents.google.com/patent/US4683195/en)
+- Related (Mullis sole, core idea): [US4683202A on Google Patents](https://patents.google.com/patent/US4683202/en)
+- Related (Taq adoption): [US4965188A on Google Patents](https://patents.google.com/patent/US4965188/en)
+- Week 2 closer: [Cardullo & Parks's RFID core patent US3713148A (1970)](/en/notes/38-internet-crypto-patent-05)

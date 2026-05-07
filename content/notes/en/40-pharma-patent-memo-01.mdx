@@ -1,0 +1,139 @@
+---
+title: "'Isolating ML-236B from 6,000 Fungal Strains' — Endo's Statin Core Patent Is Not US4231938 But US4049495A, with 5 Co-Inventors and Filed by Sankyo"
+subtitle: "Pharmaceutical Patents Excavation Memo #1 — US4049495A, Sankyo Co Ltd, 5 co-inventors (Endo/Kuroda/Terahara/Tsujita/Tamura), Japanese priority June 1974, U.S. filed December 1975, granted September 1977"
+description: "Japanese priority June 7, 1974; U.S. filed December 4, 1975; granted September 20, 1977. Akira Endo, Masao Kuroda, Akira Terahara, Yoshio Tsujita, and Chihiro Tamura at Sankyo Co Ltd **jointly** invented the statin core patent US4049495A 'Physiologically active substances and fermentative process for producing the same.' The patent describes a fermentation process to obtain HMG-CoA reductase inhibitors ML-236A, ML-236B (later compactin / mevastatin), and ML-236C from the genus *Penicillium*. Verbatim Claim 1 text, title, five inventors, filing/priority/grant dates, and assignee retrieved from Google Patents. **The DB record (candidates.tsv) listing patent number US4231938 is wrong.** US4231938A is Merck's Lovastatin patent (MSD803, Monaghan/Alberts/Hoffman/Albers-Schonberg, filed 1979, granted 1980) — a different compound. The DB entries 'sole inventor,' 'discovered 1973, filed 1976' are also wrong. Read this as the precursor to the statin class (Mevacor / Pravachol / Zocor / Lipitor / Crestor) and modern coronary-disease prevention."
+episode: 40
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Pharmaceutical Patents", "Statin", "Akira Endo", "Sankyo", "Compactin", "HMG-CoA Reductase", "Excavation Memo", "Expired Patent"]
+series: "Pharmaceutical Patents"
+seriesNumber: 2
+format: "memo"
+status: "published"
+---
+
+**About excavation memos:** Memos record candidates at the stage where the primary-source URL has been confirmed but the body has not yet been fully read. Only verified facts are stated; speculation is marked as such.
+
+---
+
+## Why dig
+
+People with high LDL cholesterol are usually prescribed something from the statin class (HMG-CoA reductase inhibitors). Brand names: Mevacor, Pravachol, Zocor, Lipitor, Crestor — drugs that have dominated the global pharmaceutical sales charts for the past 30 years. They are now part of the standard of care for secondary prevention of coronary disease.
+
+The statin class began with a fungal screening project that Akira Endo started at Sankyo Co Ltd in 1971. He searched roughly 6,000 fungal cultures for a substance that inhibits HMG-CoA reductase, the rate-limiting enzyme of cholesterol synthesis. In 1973, ML-236B (later compactin / mevastatin) was isolated from *Penicillium citrinum*.
+
+Sankyo filed for the resulting Japanese patent on June 7, 1974, then filed in the U.S. on December 4, 1975, and the patent was granted on September 20, 1977 — that is **US4049495A**.
+
+But our pipeline DB (`~/ai-archaeology/db/candidates.tsv`) row PH-001 listed Endo's statin patent as "**US4231938**." A primary-source comparison shows **this number is wrong**.
+
+- **US4231938A**: filed by Merck and Co Inc on June 15, 1979, granted November 4, 1980. Inventors: Richard L. Monaghan, Alfred W. Alberts, Carl H. Hoffman, George Albers-Schonberg (**4 co-inventors**). This is Merck's "MSD803" — the eventual **Lovastatin (Mevacor)**, the world's first FDA-approved statin (1987). The patent body cites Endo's earlier patents US4049495 and US3983140 as prior art.
+
+So the DB **conflated Endo's patent with Merck's**. This memo corrects the DB error and records Endo's actual statin patent US4049495A at the primary-source level.
+
+## Patent header
+
+- **Patent number**: US4049495A
+- **Title**: Physiologically active substances and fermentative process for producing the same
+- **U.S. filing date**: December 4, 1975
+- **U.S. grant date**: September 20, 1977
+- **Priority date**: June 7, 1974 (Japan)
+- **Inventors**: Akira Endo, Masao Kuroda, Akira Terahara, Yoshio Tsujita, Chihiro Tamura (**5 co-inventors**)
+- **Original Assignee**: Sankyo Co Ltd (now Daiichi Sankyo Co Ltd)
+- **Current Assignee**: Sankyo Co Ltd
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US4049495A/en) (URL verified; title, full Claim 1 text, inventors, filing/priority/grant dates, and assignee all retrieved)
+
+## The core (from Google Patents)
+
+Claim 1 reads:
+
+> A process for the production of substances, ML-236A, ML-236B and ML-236C having the formulae, respectively, ##STR4## which comprises cultivating an ML-236-producing microorganism belonging to the genus Penicillium in a culture medium under aerobic condition and recovering said ML-236 substances from the cultured broth.
+
+The skeleton: cultivate an ML-236-producing *Penicillium* under aerobic conditions, then recover ML-236A, ML-236B, and ML-236C from the broth. Of the three, ML-236B was later named compactin and is also known as mevastatin.
+
+ML-236B's medical value sits in its **selective inhibition of HMG-CoA reductase, the rate-limiting enzyme in cholesterol synthesis**. Cholesterol is built through HMG-CoA → mevalonate → cholesterol; stop the first enzyme, and the entire downstream pathway shuts down. This was an early successful application of the "design molecules that hit a specific receptor or enzyme only" drug-discovery paradigm, established by James Black (β-blockers, H2 blockers) in 1972, to cholesterol metabolism.
+
+But **compactin (ML-236B) was never commercialized**. Sankyo ran animal studies starting in 1976, confirmed good LDL-lowering effects in monkey trials, but in 1980 a long-term dog study reported gastrointestinal lymphoma, and clinical development was suspended in August 1980 (primary source unverified — this is the consensus view in later pharma-history books). Sankyo allowed Endo and colleagues to publish, so ML-236B's structure and mechanism were openly available in academic journals.
+
+Merck's Alfred W. Alberts (later one of the inventors on US4231938A) visited Sankyo in 1976. After collaborative information-sharing with Endo, Merck independently isolated a related compound MSD803 (later Lovastatin) from *Aspergillus terreus*. Merck did not reproduce the GI lymphoma in dogs and obtained **the world's first FDA approval for a statin** with Lovastatin (Mevacor) in 1987. Sankyo discovered the compound first; Merck commercialized first. Sankyo eventually entered the statin market in 1989 with pravastatin (Pravachol), the hydroxylated metabolite of ML-236B.
+
+## Mapping to today (with speculation)
+
+| US4049495A (priority 1974, granted 1977) | Modern statins / lipid medicine | Evaluation |
+|---|---|---|
+| ML-236B (compactin) | Mevastatin (academic name); Sankyo did not commercialize | Identical (same compound, different name) |
+| ML-236B structure | Lovastatin (Mevacor, Merck, 1987 FDA approval) | Similar (close structural analog, independent discovery by Merck) |
+| Hydroxylated form of ML-236B | Pravastatin (Pravachol, Sankyo, 1989) | Similar (same statin class, an ML-236B metabolite) |
+| HMG-CoA reductase inhibition | Simvastatin (Zocor, Merck, 1988) | Similar (same mechanism, different synthesis route) |
+| HMG-CoA reductase inhibition | Atorvastatin (Lipitor, Pfizer, 1996; one of the highest-grossing drugs ever) | Similar (same mechanism, fully synthetic super-phenyl class) |
+| HMG-CoA reductase inhibition | Rosuvastatin (Crestor, AstraZeneca, 2003) | Similar (same mechanism, strong LDL reduction) |
+| Screening 6,000 fungal cultures | Modern DNA-encoded chemical libraries / high-throughput screening | Metaphor (different scale and methodology, only the "search broadly" idea is shared) |
+
+**Reading the table.**
+
+Rows 1–3 (compactin / lovastatin / pravastatin) are direct analogs and metabolites of the patent's compound. Identical compound vs. structural analog vs. metabolite — these distinctions matter, since each is patent-eligible separately.
+
+Rows 4–6 (simvastatin / atorvastatin / rosuvastatin) share the **mechanism** (HMG-CoA reductase inhibition) but the chemistry and synthesis are different. The class-level concept "statins" was opened up by ML-236B's discovery; each company developed their own synthesis and structure within the class.
+
+Row 7 (modern HTS) is a metaphor. The 1971–1973 hand-screening of 6,000 strains is three orders of magnitude smaller than modern million-compound libraries. Only the idea "search broadly" is shared.
+
+## Why this is worth digging (speculation)
+
+**Reason 1: A rare case of a Japanese-born, Japanese-corporate–patented breakthrough at world-class scale**
+
+The statin class topped global pharmaceutical sales rankings throughout the 2000s, with cumulative worldwide sales estimated above $1 trillion (primary source unverified). It is rare for a globally dominant drug class to trace back to Japanese research and a Japanese corporate patent — comparable cases (Mitsubishi-Tanabe SGLT2 inhibitors, Eisai lenalidomide analogs, Takeda leuprorelin) are few.
+
+**Reason 2: "Compactin was never commercialized" as a pharma-strategy lesson**
+
+Sankyo discontinued ML-236B (compactin) development in 1980. The widely cited reason — gastrointestinal lymphoma in dogs — is a secondary-source / later-reminiscence claim; the actual internal Sankyo decision-making documents are not public (primary source unverified). "The first discoverer does not always win the market" is a textbook pharma-strategy case, frequently cited in venture strategy, business management, and IP-strategy curricula.
+
+**Reason 3: The mix-up with US4231938A**
+
+The DB error probably came from one of these:
+- A textbook or Wikipedia entry attributing "the statin patent" to US4231938A
+- US4231938A (Merck Lovastatin) cites Endo's US4049495 in its body, so search results blend together
+- "World's first prescription statin = 1987 Merck Lovastatin" got crossed with "first discovery = 1973 Endo," accidentally pairing Lovastatin's number with Endo's discovery
+
+Either way, looking at the Google Patents header makes the distinction immediately. Day 8's RFID patent had the same pattern (the wrong "Walton sole-inventor" claim), and Day 9 hit it again. The `feedback_db_meta_verify_primary` memory's relevance is reinforced.
+
+## Pitfalls
+
+**Pitfall 1: "Akira Endo discovered statins alone" is inaccurate**
+
+US4049495A's inventor list has **five co-inventors** — Endo, Masao Kuroda, Akira Terahara, Yoshio Tsujita, Chihiro Tamura. Endo led the project as principal investigator and isolated and characterized ML-236B, but the patent header lists five names.
+
+**Pitfall 2: "The world's first prescription statin is Endo's compactin" is inaccurate**
+
+The world's first prescription statin is Merck's Lovastatin (Mevacor), FDA-approved in 1987. Compactin (ML-236B) was discontinued by Sankyo in 1980 and was never marketed. Distinguish "first discoverer" from "first to commercialize."
+
+**Pitfall 3: "Merck Lovastatin is a copy of compactin" is inaccurate**
+
+Lovastatin (MSD803) is a separate compound discovered independently from *Aspergillus terreus* (compactin came from *Penicillium citrinum*) — different biosynthesis, different source. The structures are close analogs, but Merck's discovery, after the 1976 Sankyo visit, came from independent screening. "Copy" misrepresents the patent record; "influenced by prior discovery, then independently isolated" is accurate.
+
+**Pitfall 4: "Statins are a magic bullet for coronary disease" oversimplifies**
+
+Statins have strong evidence in **secondary** prevention (patients with prior cardiovascular events). For **primary** prevention (no prior events), the evidence is debated. Side effects include rhabdomyolysis, liver-enzyme abnormalities, and new-onset diabetes. "Take a statin and avoid heart attacks" is poor medical communication; modern standard of care is risk-score-based individualized decision.
+
+---
+
+## To put it precisely
+
+**Confirmed facts**
+From Google Patents: US4049495A / U.S. filed 1975-12-04 / U.S. granted 1977-09-20 / priority 1974-06-07 (Japan) / five inventors (Akira Endo, Masao Kuroda, Akira Terahara, Yoshio Tsujita, Chihiro Tamura) / Original Assignee "Sankyo Co Ltd" / Current Assignee "Sankyo Co Ltd" (now Daiichi Sankyo) / verbatim Claim 1 text retrieved / title "Physiologically active substances and fermentative process for producing the same" / related patent US4231938A (Merck Lovastatin, Monaghan/Alberts/Hoffman/Albers-Schonberg, filed 1979-06-15, granted 1980-11-04, body cites US4049495).
+
+**Author interpretation**
+"The origin of the statin class" and "precursor to Mevacor / Pravachol / Zocor / Lipitor / Crestor" are author interpretation. The strong link is at the **mechanism**-discovery level — the establishment of HMG-CoA reductase inhibition as a viable target with Endo's compactin. Each subsequent statin is its own independent synthesis with its own structure, not an extension of US4049495A. The piece reads US4049495A as "one of the foundational patents that opened the statin paradigm."
+
+**Metaphor / analogy**
+Rows 4–6 of the mapping (simvastatin / atorvastatin / rosuvastatin) are similar — same mechanism, different chemistry. Row 7 (modern HTS) is a metaphor — three orders of magnitude apart in scale and method.
+
+**Unverified**
+Claim 2 onward / verbatim Description / forward citations / 1973 internal Sankyo lab notebooks for ML-236B discovery / 1976 minutes of Merck Alberts's Sankyo visit / 1980 Sankyo internal decision to halt compactin clinical development; FDA / PMDA submissions / any Sankyo-vs-Merck inventorship or infringement disputes / Akira Endo's autobiographical primary sources (secondary sources like *The Discovery of Statins* exist) / 2005 Sankyo–Daiichi merger transfer of statin patent rights / Sankyo's independent pravastatin (Pravachol) development records (1989) / 1985 Goldstein & Brown Nobel Prize (LDL receptor / cholesterol metabolism) and its influence on Endo's research.
+
+**Where this comparison breaks**
+US4049495A is a fermentation-process patent for ML-236A/B/C; the **mechanism** "HMG-CoA reductase inhibition" itself is not patented (laws of nature are not patentable subject matter). Calling it "the foundational statin patent" implies it covers the entire class, but the actual patent scope is "fermentation production from *Penicillium*." Synthetic statins (simvastatin, atorvastatin, rosuvastatin) are described in independent patents. "Endo alone," "world's first prescription statin" get corrected in patent and pharma-history. The Lovastatin (US4231938A) relationship is best stated as "influenced by prior discovery, then independently isolated" — calling it "copying" is legally and historically inaccurate. This memo only confirms what is on the Google Patents header; full Description, Sankyo internals, Merck internals, Endo's autobiographical primary sources, and per-country litigation records remain unobtained.
+
+---
+
+References:
+- The patent: [US4049495A on Google Patents](https://patents.google.com/patent/US4049495/en)
+- For comparison (Merck Lovastatin, the wrong-number conflation in the DB): [US4231938A on Google Patents](https://patents.google.com/patent/US4231938/en)
+- Same series #1 (excavation note): [Cetus PCR core patent US4683195A (1985)](/en/notes/39-pharma-patent-01)
