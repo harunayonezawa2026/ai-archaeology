@@ -1,0 +1,123 @@
+---
+title: "'In 1986, Qualcomm Wrote CDMA for Satellite Repeaters' — US4901307A Is by Gilhousen / Jacobs / Weaver, Not Viterbi"
+subtitle: "Internet & Cryptography Patents Excavation Memo #7 — US4901307A, Qualcomm Inc, three co-inventors Gilhousen / Jacobs / Weaver Jr, filed October 1986, granted February 1990"
+description: "Filed in the U.S. on October 17, 1986; granted February 13, 1990. Qualcomm Inc obtained the CDMA core patent US4901307A, 'Spread spectrum multiple access communication system using satellite or terrestrial repeaters.' Inventors are Klein S. Gilhousen, Irwin M. Jacobs, and Lindsay A. Weaver, Jr. — **three co-inventors** (Andrew Viterbi, listed in the local DB, is not on this patent). Claim 1 defines a 'spread spectrum multiple access communication system through satellite or terrestrial repeaters' and lays the design skeleton that connects to IS-95 (cdmaOne) → CDMA2000 → 3G WCDMA. Read this as the precursor to 3G/4G/5G. Basic info, Claim 1 summary, inventors, filing/grant dates, and Abstract retrieved from Google Patents. Full description and Viterbi-related patents not yet checked."
+episode: 36
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "CDMA", "Qualcomm", "Irwin Jacobs", "Spread Spectrum", "Excavation Memo", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 11
+format: "memo"
+status: "published"
+---
+
+**About this excavation memo:** The "excavation memo" pieces in this series record a candidate's outline at the point where its primary-source URL has been confirmed. Full description text and verbatim review of every claim are not done. Only confirmed facts are stated; conjecture is marked as conjecture.
+
+---
+
+## Why excavate this
+
+Make a phone call on a smartphone. Watch YouTube on a train. Open X (formerly Twitter) on the metro. The "send and receive large amounts of data wirelessly while moving" design has 4G LTE and 5G NR at its center today. Behind those, a generation earlier, sat 3G WCDMA / cdma2000, and behind those sat IS-95 (cdmaOne). The technical skeleton was Code Division Multiple Access — CDMA, "spread spectrum multiple access by code."
+
+Frequently cited as the core CDMA patent: US4901307A, filed by Qualcomm Inc in October 1986 and granted in February 1990. **The notable fact is that the inventors are Klein S. Gilhousen / Irwin M. Jacobs / Lindsay A. Weaver, Jr. — three co-inventors**. Andrew Viterbi (inventor of the Viterbi algorithm), well known as a Qualcomm co-founder, is not on this patent. The simplified narrative "Qualcomm's CDMA was invented by Jacobs and Viterbi" is inaccurate at the level of patent covers. We read this 40-year-old spread-spectrum-communications ancestor.
+
+## Basic facts of the patent
+
+- **Patent number**: US4901307A
+- **Title**: Spread spectrum multiple access communication system using satellite or terrestrial repeaters
+- **Filing date**: October 17, 1986
+- **Grant date**: February 13, 1990
+- **Priority date**: October 17, 1986
+- **Inventors**: Klein S. Gilhousen, Irwin M. Jacobs, Lindsay A. Weaver, Jr. (**three co-inventors**; the local DB's "Viterbi" entry is in error)
+- **Original Assignee**: Qualcomm Inc (a California corporation)
+- **Current Assignee**: Qualcomm Incorporated (a Delaware corporation)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US4901307A/en) (URL confirmed; title, abstract, Claim 1 summary, inventors, filing date, grant date retrieved; full description and verbatim review of all claims not done)
+
+## Core (information retrieved from Google Patents)
+
+Claim 1 describes "a multiple access, spread spectrum communication system" and includes "code-division-spread-spectrum communication signals" and "isolation means for providing marginal isolation between said user communication signals." **The idea of separating users by code while tolerating some interference (marginal isolation)** is the core design philosophy of CDMA.
+
+The Abstract is more concrete. It describes a system carrying CDMA spread-spectrum signals to mobile or remote user terminals via satellite or terrestrial repeaters, combining:
+
+- multiple beam phased array antennas
+- polarization-enhanced mobile antennas
+- voice/data activity switching
+- adjustable power control
+
+Together these are said to achieve "increased capacity within standard spectral allocation bandwidths." Alongside FDMA (frequency division) and TDMA (time division), CDMA presented a third multiple-access scheme: **multiple users coexist on the same frequency band at the same time, distinguished by different code sequences**.
+
+## Modern connection (with conjecture)
+
+| US4901307A (filed 1986) | Modern communications | Assessment |
+|---|---|---|
+| CDMA spread-spectrum multiple access | IS-95 (cdmaOne, commercialized 1995) | Near-identical (this design fed directly into IS-95) |
+| CDMA + power control + voice activity detection | cdma2000 (3G, commercialized 2000) | Near-identical (an evolution of IS-95) |
+| CDMA multiple access | 3G WCDMA (UMTS, commercialized 2001) | Similar (CDMA family but separate ETSI/3GPP implementation) |
+| Satellite CDMA | Globalstar, Iridium NEXT, etc. | Similar (precursor of satellite CDMA) |
+| CDMA multiple access | 4G LTE (OFDMA-based, commercialized 2010) | Metaphor (multiple-access problem is shared; LTE is a different OFDMA approach) |
+| CDMA multiple access | 5G NR (OFDMA-based, commercialized 2019) | Metaphor (5G is also OFDMA. CDMA has effectively retired as core technology) |
+
+**Notes on reading the table.**
+
+Rows 1–2 (IS-95, cdma2000) are spec lines into which this patent's design was directly built; Qualcomm led their standardization. "Near-identical." Row 3 (3G WCDMA / UMTS) is Europe's ETSI/3GPP-led separate implementation in the CDMA family — same core, but different chip rate and spreading-code design. Row 4 (satellite CDMA) directly connects to the patent's original framing of satellite communications.
+
+Rows 5–6 (4G LTE / 5G NR) are different. **4G LTE and 5G NR adopt OFDMA (Orthogonal Frequency Division Multiple Access), not CDMA — and CDMA has effectively retired as core mobile technology** (IS-95 / cdma2000 networks have been shut down in many countries by the 2020s). "CDMA leads to today's 5G" is inaccurate; the precise statement is "CDMA was core through 3G; 4G onward moved to OFDMA."
+
+## Why this is worth excavating (a guess)
+
+**Reason 1: Correcting the "Qualcomm = Jacobs + Viterbi" simplification.**
+
+Media articles and intro books often write "Qualcomm was co-founded in 1985 by Jacobs and Viterbi and changed mobile communications with CDMA." Viterbi (inventor of the Viterbi algorithm — maximum-likelihood decoding for convolutional codes) was a key technical figure at Qualcomm, but **Viterbi is not on US4901307A**. Klein S. Gilhousen was Jacobs's colleague from Linkabit days and is, in fact, on more of Qualcomm's core CDMA patents than Viterbi (this last is an unverified guess from Wikipedia). Lindsay A. Weaver, Jr. was a young Qualcomm engineer at the time who later rose to vice president of Qualcomm (unverified). "Qualcomm's CDMA was not just two co-founders" is visible at the patent-cover level.
+
+**Reason 2: "CDMA underpins modern communications" is no longer accurate in the 2020s.**
+
+The intro-book line "your phone connects thanks to CDMA" was true through the 2010s but is wrong today. From 4G LTE onward, OFDMA took over, and IS-95 / cdma2000 networks have been shut down in many countries. In Japan, au (KDDI) operated cdmaOne / cdma2000 and shut them down in March 2022. CDMA "underpinned the 3G generation" — not the 2020s — is the precise framing.
+
+**Reason 3: Qualcomm's SEP litigation history.**
+
+Qualcomm's CDMA SEP licensing model produced large numbers of disputes with Apple, Samsung, Huawei — the FTC v. Qualcomm case (2017), the Apple settlement (2019), and antitrust fines from China, Korea, Taiwan, and the EU together totaling tens of billions of dollars — making it a frequent reference in patent-business history. This is not a US4901307A-only issue but a question of operating the entire CDMA SEP pool.
+
+## Pitfalls
+
+**Pitfall 1: "CDMA = US4901307A alone" is wrong.**
+
+Qualcomm holds thousands of CDMA-related SEPs; this is one core patent, not all of them. Power control, soft handoff, Rake receivers, Walsh-code allocation, voice codecs (CELP family) — each is described in a separate patent.
+
+**Pitfall 2: "Viterbi is an inventor on this patent" is wrong.**
+
+US4901307A lists Gilhousen / Jacobs / Weaver Jr (three names); Viterbi is not on it. Viterbi was a Qualcomm co-founder and vice chair and led CDMA technical work, but is not on this particular patent. "Qualcomm's CDMA = Jacobs + Viterbi" is inaccurate as patent history.
+
+**Pitfall 3: "CDMA is the ancestor of 5G" is overstated.**
+
+4G LTE and 5G NR are OFDMA-based; they differ from CDMA in multiple-access scheme. The same "high-capacity mobile communications" problem framing leads to a clear discontinuity — Qualcomm vs. Ericsson/Nokia in standardization, and OFDMA winning around 2010.
+
+**Pitfall 4: Don't over-emphasize "military-to-civilian transfer."**
+
+Spread-spectrum communications themselves trace back to Hedy Lamarr's 1942 patent US2292387 and U.S. military research from the 1950s–60s, but Qualcomm's CDMA is not a simple porting of military technology. It combines power control, soft handoff, and Rake receivers tuned for mobile communications. "Military-to-civilian transfer" alone misses Qualcomm's distinct contributions.
+
+---
+
+## To be precise
+
+**Confirmed facts**
+From Google Patents: US4901307A / U.S. filing 1986-10-17 / U.S. grant 1990-02-13 / priority date 1986-10-17 / three inventors (Klein S. Gilhousen, Irwin M. Jacobs, Lindsay A. Weaver, Jr.) / Original Assignee "Qualcomm Inc" (California) / Current Assignee "Qualcomm Incorporated" (Delaware) / Claim 1 summary retrieved ("a multiple access, spread spectrum communication system ... code-division-spread-spectrum communication signals ... isolation means for providing marginal isolation between said user communication signals") / Abstract confirmed ("multiple beam phased array antennas," "polarization-enhanced mobile antennas," "voice/data activity switching," "adjustable power control," "increased capacity within standard spectral allocation bandwidths") / title "Spread spectrum multiple access communication system using satellite or terrestrial repeaters."
+
+**Author's interpretation**
+"CDMA core patent" and "precursor to IS-95 / cdma2000" are the author's interpretation. This patent's design feeding directly into IS-95 is a strong link, but full IS-95 / cdma2000 specifications are separate documents, 3G WCDMA is a separate implementation, and 4G LTE onward is a separate OFDMA lineage. I take the position that "spread-spectrum multiple access via satellite or terrestrial repeaters" is the origin of the problem framing.
+
+**Metaphors and analogies**
+Row 3 of the table (3G WCDMA / UMTS) is similar — CDMA family but a separate ETSI/3GPP implementation. Rows 5–6 (4G LTE / 5G NR) are metaphors — shared multiple-access problem but different OFDMA approach.
+
+**Unverified**
+Full text of Claim 2 onward / verbatim Description / forward-citations count / primary records of Klein S. Gilhousen's Linkabit-era career / primary records of Lindsay A. Weaver, Jr.'s Qualcomm career / Qualcomm CDMA-related patents on which Andrew Viterbi is listed / IS-95 (TIA/EIA-95, 1993) text / cdma2000 specification text / Qualcomm v. Apple (2017–2019) primary records / FTC v. Qualcomm (2017) decision text / antitrust decisions in China, Korea, Taiwan, EU / Japan au (KDDI) cdma2000 shutdown (March 2022) primary records / technical relationship to Hedy Lamarr's 1942 patent US2292387.
+
+**Where this comparison breaks**
+US4901307A is one of the CDMA core patents but does not cover Qualcomm's CDMA SEP pool (thousands of patents) as a whole. "Qualcomm's CDMA patent" misleads readers into thinking a single patent covers all of CDMA — power control, soft handoff, Rake receivers, Walsh-code allocation, and voice codecs are described in other patents. The first specialist corrections will be (1) Viterbi is not on this patent, (2) 4G LTE onward moved to OFDMA so CDMA has retired, and (3) spread spectrum itself traces back to Hedy Lamarr's 1942 patent. "CDMA is the ancestor of today's 5G" will be corrected as "you missed the CDMA → OFDMA generational change." This excavation memo stops at what Google Patents shows; full description, later claims, forward citations, and country-by-country litigation records are not retrieved.
+
+---
+
+References:
+- Original patent: [US4901307A on Google Patents](https://patents.google.com/patent/US4901307A/en)
+- Same series #4 (excavation note): [Ericsson's Bluetooth Core Patent US6590928B1 (1997)](/en/notes/35-internet-crypto-patent-04)
+- Same series #3 (excavation note): [Denso + Toyota Central R&D Labs' QR Code Patent US5726435A (Japan priority 1994)](/en/notes/32-internet-crypto-patent-03)
+- Same series #2 (excavation note): [Fraunhofer's MP3 Core Patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)

@@ -1,0 +1,123 @@
+---
+title: "『1986年、Qualcommは衛星リピータ向けにCDMAを書いた』──US4901307AはJacobsだけでなくGilhousen/Weaverとの3名共同発明だった"
+subtitle: "インターネット・暗号特許 発掘メモ #7 — US4901307A、Qualcomm Inc、Gilhousen/Jacobs/Weaver Jr 3名共同、1986年10月出願・1990年2月成立"
+description: "1986年10月17日米国出願、1990年2月13日成立。Qualcomm Inc が取得した CDMA 基幹特許 US4901307A『Spread spectrum multiple access communication system using satellite or terrestrial repeaters』。発明者は Klein S. Gilhousen、Irwin M. Jacobs、Lindsay A. Weaver, Jr. の **3名共同**（DBに記載された Andrew Viterbi は本特許には含まれない）。Claim 1は「衛星または地上リピータを介したスペクトル拡散多重アクセス通信」を定義し、CDMA を IS-95（cdmaOne）→ CDMA2000 → 3G WCDMA へとつなぐ設計骨格を書いた。3G/4G/5Gの前史として読む。Google Patentsより基本情報・Claim 1要旨・発明者・出願日・成立日・Abstract取得済み。本文精読・Viterbi の関連特許群調査は未実施。"
+episode: 36
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "CDMA", "Qualcomm", "Irwin Jacobs", "スペクトル拡散", "発掘メモ", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 11
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim全クレームの逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+スマートフォンで通話する。電車内でYouTubeを見る。地下鉄でX（旧Twitter）を開く。これらの「移動しながら無線で大容量データをやり取りする」設計の中心に、現代では4G LTE、5G NRがある。その前世代の3G WCDMA・cdma2000、その前のIS-95（cdmaOne）の技術骨格を作ったのが、CDMA（Code Division Multiple Access、符号分割多元接続）という多重アクセス方式だ。
+
+CDMAの基幹特許としてしばしば言及されるのが US4901307A、Qualcomm Inc が1986年10月に出願し1990年2月に成立した特許である。**注目すべきは発明者欄が Klein S. Gilhousen / Irwin M. Jacobs / Lindsay A. Weaver, Jr. の3名共同**で、Qualcomm 共同創業者として有名な Andrew Viterbi（Viterbi アルゴリズムの発明者）はこの特許には含まれない点だ。「QualcommのCDMAはJacobsとViterbiが発明した」という単純化された語りは、特許表紙レベルでは正確ではない。40年前のスペクトル拡散通信の祖先として読む。
+
+## 特許の基本情報
+
+- **特許番号**：US4901307A
+- **タイトル**：Spread spectrum multiple access communication system using satellite or terrestrial repeaters（衛星または地上リピータを使うスペクトル拡散多元接続通信システム）
+- **出願日**：1986年10月17日
+- **成立日**：1990年2月13日
+- **優先日**：1986年10月17日
+- **発明者**：Klein S. Gilhousen、Irwin M. Jacobs、Lindsay A. Weaver, Jr.（**3名共同**、DB記載「Viterbi」は誤り）
+- **Original Assignee**：Qualcomm Inc（カリフォルニア法人）
+- **Current Assignee**：Qualcomm Incorporated（デラウェア法人）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US4901307A/en)（URL確認済み・タイトル・Abstract・Claim 1要旨・発明者・出願日・成立日取得済み、本文・全Claimの逐語確認は未実施）
+
+## 核心（Google Patents取得済み情報）
+
+Claim 1は「a multiple access, spread spectrum communication system」と書き、その中で「code-division-spread-spectrum communication signals」と「isolation means for providing marginal isolation between said user communication signals」を要素として定義する。**ユーザ間の信号を符号で分離し、わずかな干渉を許容する（marginal isolation）**という発想が CDMA の核となる設計思想だ。
+
+Abstractはより具体的だ。CDMA スペクトル拡散信号を移動局・遠隔ユーザ端末に対して衛星または地上リピータ経由で運ぶシステムを記述し、以下の要素を組み合わせる：
+
+- 多ビーム位相配列アンテナ（multiple beam phased array antennas）
+- 偏波増強型移動アンテナ（polarization-enhanced mobile antennas）
+- 音声・データのアクティビティ切替（voice/data activity switching）
+- 調整可能な電力制御（adjustable power control）
+
+これらの組み合わせにより「標準的なスペクトル割当帯域内で容量を増やす（increased capacity within standard spectral allocation bandwidths）」と書かれている。FDMA（周波数分割）・TDMA（時分割）と並ぶ第3の多元接続方式として、CDMA は **同じ周波数帯・同じ時刻に複数ユーザが共存し、各ユーザは別の符号系列で識別される** という設計を提示した。
+
+## 現代との接続（推測を含む）
+
+| US4901307A（1986年出願） | 現代の通信 | 評価 |
+|---|---|---|
+| CDMA スペクトル拡散多元接続 | IS-95（cdmaOne、1995年商用化） | 同一に近い（本特許の設計が IS-95 に直接組み込まれた） |
+| CDMA + 電力制御 + 音声活性検出 | cdma2000（3G、2000年商用化） | 同一に近い（IS-95 の進化版） |
+| CDMA 多元接続 | 3G WCDMA（UMTS、2001年商用化） | 類似（CDMA 系列だが ETSI/3GPP 仕様で別実装） |
+| 衛星CDMA | Globalstar、Iridium NEXT 等の衛星通信 | 類似（衛星通信向けCDMAの先行事例） |
+| CDMA 多元接続 | 4G LTE（OFDMA ベース、2010年商用化） | 比喩（多元接続問題は共通だが、LTE は OFDMA で別アプローチ） |
+| CDMA 多元接続 | 5G NR（OFDMA ベース、2019年商用化） | 比喩（5G も OFDMA。CDMA は基幹技術としては引退した） |
+
+**この対応表の読み方について補足する。**
+
+1〜2行目（IS-95、cdma2000）は本特許の設計が直接組み込まれた仕様で、Qualcomm が標準化を主導した。「同一に近い」と書ける。3行目（3G WCDMA/UMTS）は欧州主導のETSI/3GPPがCDMA系列の仕様を別実装したもの。CDMAという核は共通だが、チップレート・拡散コード設計が別物。4行目（衛星CDMA）は本特許がもともと衛星通信を含めて書いた点との直接接続。
+
+5〜6行目（4G LTE / 5G NR）は別アプローチ。**4G LTE と 5G NR は CDMA ではなく OFDMA（Orthogonal Frequency Division Multiple Access、直交周波数分割多元接続）を採用しており、CDMA は通信業界の基幹技術としては事実上引退した**（IS-95/cdma2000 は2020年代までに多くの国で停波）。「CDMAが現代の5Gにつながる」と書くと不正確で、正確には「CDMAが3Gまでの基幹で、4G以降はOFDMAに移行した」となる。
+
+## なぜ掘る価値があるか（推測）
+
+**理由1：「Qualcomm = Jacobs + Viterbi」という単純化の修正**
+
+メディア記事や入門書では「Qualcommは1985年にJacobsとViterbiが共同創業し、CDMAで携帯通信を変えた」と書かれることが多い。Viterbi は Viterbi アルゴリズム（畳み込み符号の最尤復号）の発明者として実際に Qualcomm の技術中核に関わったが、**US4901307A の発明者欄には Viterbi の名前は含まれない**。Klein S. Gilhousen は Linkabit時代からの Jacobs の同僚で、CDMA の基幹特許群の中心人物として実は Viterbi 以上に数多く名を連ねている（一次資料未確認・Wikipedia 経由の推測）。Lindsay A. Weaver, Jr. は当時 Qualcomm の若手エンジニアで、後に Qualcomm 副社長まで昇進した（一次資料未確認）。「QualcommのCDMAは創業者2人だけの仕事ではない」という事実が、特許表紙レベルで確認できる。
+
+**理由2：「CDMAが現代の通信を支える」は2020年代では不正確**
+
+「あなたのスマホが繋がるのはCDMAのおかげ」という入門書記述は2010年代までは正しかったが、2020年代では不正確だ。4G LTE 以降は OFDMA に移行し、IS-95/cdma2000 ネットワークは2020年代に多くの国で停波した。日本では au（KDDI）が cdmaOne / cdma2000 を運用していたが、2022年3月で停波。CDMA は「現代を支える」のではなく「2010年代までの3G世代を支えた」と書くのが正確だ。
+
+**理由3：Qualcomm のSEP訴訟問題**
+
+Qualcomm は CDMA 関連の SEP（標準必須特許）ライセンス料モデルで Apple・Samsung・Huawei と多数の訴訟を抱え、2017年の FTC vs. Qualcomm 訴訟、2019年の Apple との和解、各国独禁法当局からの制裁金（中国・韓国・台湾・EU で計数十億ドル）など、特許経営史の重要事例として頻繁に参照される。US4901307A 単体の問題ではなく、CDMA SEP プール全体の運用問題だ。
+
+## 落とし穴
+
+**落とし穴1：「CDMA = US4901307A だけで覆える」は不正確**
+
+CDMA 関連の Qualcomm 特許群は数千件におよぶ SEP プールを成しており、本特許は核特許の一つだが全てではない。電力制御、ソフトハンドオフ、Rake 受信機、Walsh コード割当、音声コーデック（CELP系）、それぞれ別特許で記述される。
+
+**落とし穴2：「Viterbi がこの特許の発明者」は不正確**
+
+US4901307A の発明者欄は Gilhousen / Jacobs / Weaver Jr の3名で、Viterbi は含まれない。Viterbi 自身は Qualcomm 共同創業者・副会長として CDMA 開発を技術的にリードしたが、本特許に限れば名を連ねていない。「QualcommのCDMA = Jacobs + Viterbi」という単純化は特許史としては不正確だ。
+
+**落とし穴3：「CDMA が5Gの祖先」は誇張**
+
+4G LTE と 5G NR は OFDMA ベースで、CDMA とは多元接続方式が異なる。同じ「移動通信の高容量化」問題への解だが、CDMA から OFDMA への移行は2010年前後の業界の選択（Qualcomm vs. Ericsson/Nokia の標準化競争で OFDMA 側が勝った）として明確に断絶がある。
+
+**落とし穴4：「軍事技術の民間転用」を強調しすぎない**
+
+スペクトル拡散通信自体は1940年代の Hedy Lamarr 特許 US2292387 や1950〜60年代の米軍研究にルーツがあるが、Qualcomm の CDMA は軍事技術の単純移植ではなく、移動通信向けに電力制御・ソフトハンドオフ・Rake 受信機などを組み合わせた独自設計が含まれる。「軍事技術の民間転用」と単純化すると、Qualcomm 独自の貢献が見えなくなる。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+Google Patentsより：US4901307A / 米国出願1986-10-17 / 米国成立1990-02-13 / 優先日1986-10-17 / 発明者3名（Klein S. Gilhousen, Irwin M. Jacobs, Lindsay A. Weaver, Jr.）/ Original Assignee「Qualcomm Inc」（California）/ Current Assignee「Qualcomm Incorporated」（Delaware）/ Claim 1 要旨取得済み（"a multiple access, spread spectrum communication system ... code-division-spread-spectrum communication signals ... isolation means for providing marginal isolation between said user communication signals"）/ Abstract で「multiple beam phased array antennas」「polarization-enhanced mobile antennas」「voice/data activity switching」「adjustable power control」「increased capacity within standard spectral allocation bandwidths」の記載確認 / タイトル「Spread spectrum multiple access communication system using satellite or terrestrial repeaters」
+
+**著者の解釈**
+「CDMA基幹特許」「IS-95/cdma2000の前史」は著者の解釈。本特許の設計が IS-95 に直接組み込まれた点は強い接続だが、IS-95/cdma2000 仕様書全体は別資料、3G WCDMA は別実装、4G LTE 以降は OFDMA で別系統。「衛星または地上リピータを介したスペクトル拡散多元接続」という問題設定の起源として読む立場を取っている。
+
+**比喩・アナロジー**
+対応表3行目（3G WCDMA/UMTS）は類似。CDMA系列だがETSI/3GPPの別実装。対応表5〜6行目（4G LTE / 5G NR）は比喩。多元接続問題は共通だがOFDMAで別アプローチ。
+
+**未確認**
+Claim 2以降の全文 / Description全文の逐語確認 / Forward citations件数 / Klein S. Gilhousen の Linkabit 時代の経歴一次資料 / Lindsay A. Weaver, Jr. の Qualcomm 在籍経歴一次資料 / Andrew Viterbi が発明者として名を連ねる別のCDMA関連Qualcomm特許群 / IS-95（TIA/EIA-95、1993年制定）原文 / cdma2000 仕様書原文 / Qualcomm vs. Apple 訴訟（2017〜2019年）一次資料 / FTC vs. Qualcomm 判決文（2017年）/ 中国・韓国・台湾・EU の独禁法制裁金一次資料 / 日本 au（KDDI）cdma2000 停波（2022年3月）一次資料 / Hedy Lamarr 1942年特許 US2292387 との技術的関係
+
+**この比較が破綻する点**
+US4901307A はCDMA基幹特許の一つだが、CDMA 関連 Qualcomm 特許プール全体（数千件のSEP）を覆うものではない。「QualcommのCDMA特許」と書くと読者は単一特許でCDMA全体を覆えると誤解しがちだが、電力制御・ソフトハンドオフ・Rake 受信機・Walsh コード割当・音声コーデックなど別特許群で記述される。専門家から最初に突っ込まれるのは（1）Viterbi はこの特許の発明者ではない、（2）4G LTE 以降は OFDMA で CDMA は引退、（3）スペクトル拡散自体は Hedy Lamarr 1942年特許に祖先がある、の3点。「CDMAが現代の5G の祖先」と書くと「CDMA→OFDMA の世代交代を見落としている」と訂正される。発掘メモは Google Patents 範囲の確認止まりで、Description全文・後続Claim・Forward citations・各国訴訟一次資料は未取得である点も明示する。
+
+---
+
+参考リンク：
+- 元特許：[US4901307A on Google Patents](https://patents.google.com/patent/US4901307A/en)
+- 同シリーズ #4（発掘ノート）：[EricssonのBluetooth基幹特許 US6590928B1（1997年）](/notes/35-internet-crypto-patent-04)
+- 同シリーズ #3（発掘ノート）：[デンソー＋豊田中研のQRコード特許 US5726435A（1994年日本優先）](/notes/32-internet-crypto-patent-03)
+- 同シリーズ #2（発掘ノート）：[FraunhoferのMP3核特許 US5579430（1989年）](/notes/29-internet-crypto-patent-02)

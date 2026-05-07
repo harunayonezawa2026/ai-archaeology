@@ -1,0 +1,132 @@
+---
+title: "『無線で物を識別し、応答する電力は受信信号から取り出す』──RFID祖先特許US3713148AはWaltonではなくCardullo＆Parks IIIの1970年出願だった"
+subtitle: "インターネット・暗号特許 発掘メモ #8 — US3713148A、Communications Services Corporation、Mario W. Cardullo / William L. Parks III 2名共同、1970年5月出願・1973年1月成立"
+description: "1970年5月21日米国出願、1973年1月23日成立。Communications Services Corporation が取得した RFID（無線識別）祖先特許 US3713148A『Transponder apparatus and system』。発明者は Mario W. Cardullo と William L. Parks III の **2名共同**（DB記載「Charles Walton」は別系統の特許で本特許には含まれない）。Claim 1は「書き換え可能なメモリ」「インテロゲーション信号からの自家発電」「読み出し/書き込み制御」を要素に含む transponder システムを記述した。1973年成立から既に50年以上、Suica、PASMO、NFC決済、電子パスポート、商品タグ、家畜マイクロチップの前史として読む。Google Patentsより基本情報・Claim 1要旨・発明者・出願日・成立日・Abstract取得済み。本文精読・Charles Walton 特許群との関係調査は未実施。"
+episode: 37
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "RFID", "transponder", "Cardullo", "Walton", "発掘メモ", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 12
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim全クレームの逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+改札機にSuicaをかざす。コンビニで電子マネー決済する。空港で電子パスポートを機械に通す。アパレル店で万引き防止タグが鳴る。動物病院で犬猫のマイクロチップを読み取る。これらの「電池を内蔵せず、電波だけで識別される小さな装置」の設計の中心に、現代では NFC（13.56 MHz）、UHF RFID（860〜960 MHz）、LF RFID（125 kHz）など複数のRFID規格がある。
+
+その50年前の祖先特許としてしばしば言及されるのが US3713148A、Communications Services Corporation が1970年5月に出願し1973年1月に成立した特許である。**興味深いのは候補DBに記載された「Charles Walton（Proximity Devices Inc.）、1973年出願」が本特許とは別の系統で、本特許の発明者は Mario W. Cardullo と William L. Parks III の2名共同**である点だ。Walton は1973年に別の RFID 関連特許 US3752960（Card or chassis recognizer with random sensing or counting code）を出願しており、Walton ブランド神話と本特許は混同されやすい。50年前のパッシブ無線識別の祖先として読む。
+
+## 特許の基本情報
+
+- **特許番号**：US3713148A
+- **タイトル**：Transponder apparatus and system（トランスポンダ装置およびシステム）
+- **出願日**：1970年5月21日
+- **成立日**：1973年1月23日
+- **優先日**：1970年5月21日
+- **発明者**：Mario W. Cardullo、William L. Parks III（**2名共同**、DB記載「Charles Walton」は誤り）
+- **Original Assignee**：Communications Services Corporation, Inc.
+- **Current Assignee**：Communications Services Corporation, Inc.
+- **失効**：1990年1月23日（成立から17年、当時の米国特許制度ベース）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US3713148A/en)（URL確認済み・タイトル・Abstract・Claim 1要旨・発明者・出願日・成立日取得済み、本文・全Claimの逐語確認は未実施）
+
+## 核心（Google Patents取得済み情報）
+
+Abstractはこう書く。「ベース局が遠隔のトランスポンダに『インテロゲーション』信号を送信し、トランスポンダが『アンサーバック』伝送で応答する一般的なタイプのシステム」。これがRFIDの基本原理そのものだ。さらに以下の要素を含む：
+
+- **書き換え可能なメモリ**（changeable memory）：単なる固定IDの読み出しではなく、応答内容が更新できる
+- **読み出し/書き込み機能の選択**：インテロゲーション信号を処理してメモリを読むか書くかを判断
+- **応答信号にメモリ内容を含む**：内部メモリの内容を含むアンサーバックを送信
+- **インテロゲーション信号からの自家発電**：トランスポンダはインテロゲーション信号から動作電力を生成する（"the transponder generates its own operating power from the transmitted interrogation signal"）
+
+最後の「自家発電」がパッシブRFIDの核心だ。トランスポンダ側に電池を持たず、リーダから送られる電波エネルギーを整流して動作電力に変える。これが「電池レスタグ」の発想の起源であり、Suica・PASMO・NFC決済タグ・商品万引き防止タグ・電子パスポートの全てに継承された設計思想だ。
+
+応用例として Abstract は「自動料金収受（automated toll collection）」を挙げる。これは現代の ETC（日本）、E-ZPass（米国）、ERP（シンガポール）の前史にあたる。さらに「無線、光、または音響信号」での実装可能性も明記しており、純粋に電波に限定されない設計として書かれている。
+
+## 現代との接続（推測を含む）
+
+| US3713148A（1970年出願） | 現代のRFID・NFC | 評価 |
+|---|---|---|
+| インテロゲーション信号からの自家発電 | パッシブUHF RFID（860〜960 MHz）の電力収集 | 同一に近い（パッシブタグの基本原理がそのまま継承） |
+| 書き換え可能なメモリ | EPC Gen2 タグの User Memory Bank | 同一（書き換え可能メモリは現代のRFID標準仕様にも存在） |
+| トランスポンダ＋ベース局構成 | Suica / PASMO のFeliCa（13.56 MHz） | 類似（パッシブ＋電力収集は同じ、プロトコル・周波数・暗号は別） |
+| トランスポンダ＋ベース局構成 | NFC（ISO/IEC 14443、ISO/IEC 18092） | 類似（同じパッシブ原理、近接通信に最適化） |
+| 自動料金収受への応用 | ETC（日本、5.8 GHz DSRC）、E-ZPass（米国、915 MHz RFID） | 類似（用途は同じ「無人通過課金」、周波数・プロトコルは別） |
+| パッシブ無線識別 | 動物用マイクロチップ（ISO 11784/11785、134.2 kHz LF） | 類似（同じパッシブ原理、低周波で生体内通過に最適化） |
+| パッシブ無線識別 | 電子パスポート（ISO/IEC 14443 ベース、13.56 MHz） | 類似（同じパッシブ原理、暗号化・PKI 認証を追加） |
+| パッシブ無線識別 | アパレル万引き防止タグ（EAS、各種周波数） | 比喩（識別ではなく「タグの存在検出」用途、設計思想は近い） |
+
+**この対応表の読み方について補足する。**
+
+1〜2行目（パッシブUHF RFIDの電力収集、書き換え可能メモリ）は、本特許が書いた具体的な要素が現代のEPC Gen2標準仕様にもそのまま入っている点で「同一に近い」。
+
+3〜7行目（FeliCa・NFC・ETC・動物マイクロチップ・電子パスポート）は、同じパッシブ＋電力収集＋トランスポンダ応答の問題設定への解だが、周波数・プロトコル・暗号化・通信距離の最適化が用途別に大きく分岐している。「類似」と書ける。
+
+8行目（EAS万引き防止）は比喩。タグの「ID識別」ではなく「存在検出」（タグが店外に持ち出されたかどうか）が主目的で、設計思想は近いが用途は別。
+
+## なぜ掘る価値があるか（推測）
+
+**理由1：「Charles Walton が RFID を発明」という誤った神話の修正**
+
+入門書や特許史の記事では「Charles Walton が1973年に最初の RFID 特許を取得した」と書かれることが多い。実際には Walton も1973年に US3752960 などの関連特許を出願しているが、本記事の US3713148A（1970年出願・1973年成立）は **Cardullo と Parks III の特許** で、Walton は含まれない。Cardullo は1969年に最初の RFID プロトタイプを実演したと自伝で語っており（一次資料未確認）、特許の出願順としても Walton より3年早い。「最初の RFID 特許 = Walton」という単純化された語りは特許表紙レベルでは不正確だ。
+
+**理由2：「電池レスタグの設計思想」の起源を確認できる**
+
+「インテロゲーション信号から自家発電する」という発想は、現代のパッシブRFID（電池なしで動く商品タグ・交通系ICカード）の根本設計だ。1970年の Cardullo＆Parks III 特許がこの設計を明示的に書いた点は技術史として重要で、後の TI（Texas Instruments）、Philips（現NXP）、IBM、Sony FeliCa、各社の RFID 特許群はこの基本原理の上に構築された。
+
+**理由3：自動料金収受の応用例が1970年に書かれていた**
+
+Abstract が「automated toll collection」を応用例として明示している点は、現代の ETC（日本、1997年商用化）、E-ZPass（米国、1987年）、SunPass（フロリダ、1999年）が登場する20〜30年前に既に問題設定が立っていたことを示す。「無人で車両を識別し課金する」というアイデアは、この特許の時点で具体的に応用先が想定されていた。
+
+## 落とし穴
+
+**落とし穴1：「Charles Walton が RFID 発明者」は不正確**
+
+US3713148A の発明者欄は Mario W. Cardullo と William L. Parks III の2名で、Walton は含まれない。Walton 自身も1973年以降に複数の RFID 関連特許（US3752960等）を出願しており、業界に貢献したが、本特許とは別系統だ。「最初の RFID 特許 = Walton」という単純化は特許史としては誤りで、特許出願順としては Cardullo＆Parks III が先（1970年5月）になる。
+
+**落とし穴2：「RFID = US3713148A だけで覆える」は不正確**
+
+RFID は周波数帯ごとに別の規格群があり（LF 125 kHz / HF 13.56 MHz / UHF 860〜960 MHz / マイクロ波 2.45 GHz）、それぞれ別の特許プールが運用されている。EPC Gen2（UHF）、ISO/IEC 14443（NFC）、ISO/IEC 15693（HF Vicinity）、ISO 11784/11785（動物識別 LF）など標準仕様も多数。本特許は全体の祖先ではあるが、現代の各規格の核特許は別だ。
+
+**落とし穴3：「Suica は本特許の延長」は不正確**
+
+Suica は Sony FeliCa（1999年実用化）をベースとし、FeliCa は ISO/IEC 18092 NFC-F として標準化されている。FeliCa の暗号認証・高速処理の中核技術は Sony 独自の特許群に基づき、Cardullo＆Parks III 特許の直接延長ではない。「パッシブ＋電力収集＋トランスポンダ応答」という大枠の設計思想は共通だが、実装は別物だ。
+
+**落とし穴4：「ETC は本特許の延長」は不正確**
+
+日本のETCは5.8 GHz DSRC（Dedicated Short-Range Communications）規格で、米国の E-ZPass（915 MHz）とも別系統だ。両者とも「無人で車両を識別し課金する」という問題設定は同じだが、周波数・プロトコル・通信距離が大きく異なる。
+
+**落とし穴5：「アクティブRFID（電池内蔵）も本特許の延長」は不正確**
+
+本特許の核心は「インテロゲーション信号から自家発電する」パッシブ設計だ。アクティブRFID（電池内蔵で能動的に電波を出す、長距離追跡用）は別の設計思想に基づく。物流コンテナ追跡や軍事用RFID は多くがアクティブ型で、本特許の直接延長ではない。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+Google Patentsより：US3713148A / 米国出願1970-05-21 / 米国成立1973-01-23 / 優先日1970-05-21 / Status「Expired - Lifetime」（成立から17年で1990-01-23失効、当時の米国特許制度ベース）/ 発明者2名（Mario W. Cardullo, William L. Parks III）/ Original/Current Assignee「Communications Services Corporation, Inc.」/ Claim 1 要旨取得済み（書き換え可能メモリ、信号処理による読み書き選択、自家発電）/ Abstract で「ベース局がインテロゲーション信号送信」「トランスポンダがアンサーバック応答」「内部メモリ書き換え可能」「インテロゲーション信号から自家発電」「自動料金収受応用例」「無線/光/音響信号での実装」の記載確認 / タイトル「Transponder apparatus and system」
+
+**著者の解釈**
+「RFID祖先特許」「Suica/NFC/ETC/電子パスポートの前史」は著者の解釈。「インテロゲーション信号から自家発電する」という設計思想は本特許に明記されており、これが現代のパッシブRFID全般の基本原理として継承された点は強い接続だが、各規格（EPC Gen2、ISO/IEC 14443、ISO/IEC 15693、FeliCa、ISO 11784等）は別の標準仕様で記述される。「パッシブで遠隔から識別される装置の設計思想」の起源として読む立場を取っている。
+
+**比喩・アナロジー**
+対応表3〜7行目（FeliCa、NFC、ETC、動物マイクロチップ、電子パスポート）は類似。同じパッシブ＋電力収集の問題設定への解だが、周波数・プロトコル・暗号化が大きく異なる。対応表8行目（EAS）は比喩。識別ではなく存在検出が主目的で、設計思想は近いが用途は別。
+
+**未確認**
+Claim 2以降の全文 / Description全文の逐語確認 / Forward citations件数 / Mario W. Cardullo の自伝・経歴一次資料 / William L. Parks III の経歴一次資料 / Communications Services Corporation の沿革一次資料 / Charles Walton の関連特許群（US3752960等）の出願順・内容比較 / Hedy Lamarr 1942年特許 US2292387 との関係 / EPC Gen2（GS1標準）原文 / ISO/IEC 14443・18092・15693・11784/11785 各原文 / Sony FeliCa 特許群（特開平等の日本特許）/ 日本 ETC 5.8 GHz DSRC 規格原文 / 1969年に Cardullo が RFID プロトタイプを実演したという情報の一次資料
+
+**この比較が破綻する点**
+US3713148A はRFID祖先特許だが、現代のRFID/NFC全体を覆うものではない。「最初の RFID 特許」と書くと「Charles Walton 説と矛盾する」と訂正される（実際は出願順では Cardullo＆Parks III が先だが、入門書では Walton 起源説が広まっている）。「Suica/NFC は本特許の延長」と書くと「FeliCa は Sony 独自特許群に基づく」「NFC は ISO/IEC 14443 ベース」と訂正される。「アクティブRFID も本特許の延長」と書くと「アクティブは電池内蔵で別設計思想」と訂正される。発掘メモは Google Patents 範囲の確認止まりで、Description全文・後続Claim・Forward citations・Walton 関連特許との比較・Cardullo 自伝原文は未取得である点も明示する。
+
+---
+
+参考リンク：
+- 元特許：[US3713148A on Google Patents](https://patents.google.com/patent/US3713148A/en)
+- 同シリーズ #4（発掘ノート）：[EricssonのBluetooth基幹特許 US6590928B1（1997年）](/notes/35-internet-crypto-patent-04)
+- 同シリーズ #3（発掘ノート）：[デンソー＋豊田中研のQRコード特許 US5726435A（1994年日本優先）](/notes/32-internet-crypto-patent-03)
+- 同シリーズ 発掘メモ #7：[Qualcomm CDMA特許 US4901307A（1986年）](/notes/36-internet-crypto-patent-memo-07)

@@ -1,0 +1,166 @@
+---
+title: "'Hopping Sequence Derived from Master Address, Phase from Master Clock' — How Ericsson's Bluetooth Core Patent US6590928B1 Was Written by Jaap Haartsen Alone in 1997"
+subtitle: "Internet & Cryptography Patents #4 — US6590928B1, Telefonaktiebolaget LM Ericsson AB, sole inventor Jaap Haartsen, filed September 1997, granted July 2003, expired August 2018"
+description: "Filed in the U.S. on September 17, 1997; granted July 8, 2003; expired August 15, 2018. Jaap Haartsen (Jacobus Cornelis Haartsen) of Ericsson is registered as the **sole inventor** on the Bluetooth core patent US6590928B1, 'Frequency hopping piconets in an uncoordinated wireless multi-user system.' Claim 1 defines a wireless network of master and slave units, in which a virtual frequency hopping channel is derived from the master address and master clock. Multiple piconets coexist without synchronizing with each other (uncoordinated). Read this as the precursor to AirPods, Magic Mouse, hearing aids, Apple Watch, fitness bands, and smart locks. Title, full Claim 1, inventor, filing date, priority date, grant date, abstract, and current assignee retrieved from Google Patents."
+episode: 35
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "Bluetooth", "Ericsson", "Jaap Haartsen", "Piconet", "Frequency Hopping", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 10
+status: "published"
+---
+
+[Internet & Cryptography Patents #3 (Denso + Toyota Central R&D Labs' QR Code Patent US5726435A)](/en/notes/32-internet-crypto-patent-03) traced a 1994 question posed in Kariya, Aichi, Japan: "can we embed direction-invariant landmarks into a small two-dimensional square?"
+
+This time, we go to 1997. The setting is Ericsson Mobile Terminals' research lab in Emmen, in the southeast of the Netherlands. The question: can multiple independent small wireless subnetworks (piconets) coexist in the same 2.4 GHz band without synchronizing their clocks (uncoordinated)?
+
+## The conclusion first
+
+Patent number: [US6590928B1](https://patents.google.com/patent/US6590928/en)
+Title: Frequency hopping piconets in an uncoordinated wireless multi-user system
+U.S. filing / priority date: September 17, 1997
+U.S. grant: July 8, 2003
+Expired: August 15, 2018 (Expired – Lifetime)
+Inventor: Jacobus Cornelis Haartsen (Jaap Haartsen) — **sole**
+Original Assignee: Telefonaktiebolaget LM Ericsson AB
+Current Assignee: Telefonaktiebolaget LM Ericsson AB
+
+The question this patent posed can be written in one sentence: "When multiple independent wireless subnets coexist in a small space — homes, offices, cafes — can each network reuse the same 2.4 GHz band without synchronizing clocks, while keeping mutual interference minimized?"
+
+Claim 1 reads:
+
+> A wireless network comprising: a master unit; and a slave unit. The master unit comprises: means for sending a master address to the slave unit; means for sending a master clock to the slave unit; and means for communicating with the slave unit by means of a virtual frequency hopping channel.
+
+"Master address," "master clock," and "virtual frequency hopping channel" — these three set the architectural skeleton of every modern Bluetooth piconet. The Abstract is more concrete: **the hopping sequence is derived from the master address, and the phase (timing) is derived from the master clock**. Different masters produce different hopping sequences automatically, so piconets do not need to share a clock to avoid colliding most of the time.
+
+When you pair AirPods with an iPhone, when a wireless mouse connects to your MacBook, when a hearing aid streams audio directly from your phone, when an Apple Watch sends heart-rate data to its paired iPhone — a hopping sequence derived from a master address and a phase from a master clock is running every time.
+
+---
+
+Four people in an office meeting room, each using wireless earbuds. The person at the next café table is also using a Bluetooth keyboard. Hundreds of Bluetooth devices on a moving train. As precursor to all these "many independent networks share the same band without clock synchronization" arrangements, we read a 29-year-old patent.
+
+## 1. How it was selected
+
+From the candidates DB (`~/ai-archaeology/db/candidates.tsv`), I selected IC-009 (overall priority 13, Week 2 "Internet & Cryptography Patents" theme). It connects directly to AirPods, hearing aids, smartwatches, and IoT, and has good adjacency with @haruko_ai_jp's China-AI × Korea/Taiwan-semiconductor niche (major Bluetooth IC suppliers include Realtek and Mediatek in Taiwan and Samsung System LSI in Korea).
+
+```
+[STEP 1] From Week 2 remainders (IC-009 Bluetooth, IC-011 CDMA, IC-012 RFID), pick IC-009 — sole inventor is a rare feature
+[STEP 2] Confirm patent number US6590928B1 on Google Patents
+[STEP 3] WebFetch retrieves title, full Claim 1, inventor, filing/priority/grant dates, abstract, legal status, current assignee
+[STEP 4] DB note "Jaap Haartsen (sole inventor)" matches retrieved data
+[STEP 5] Honor DB caveat ("Bluetooth is a patent pool, not a single patent") — limit the article's scope to what this single patent actually claims
+```
+
+Primary-source status: Title, full Claim 1, basic info, sole inventor, priority date, grant date, legal status, current assignee, and Abstract retrieved from Google Patents. The full description text, Claim 2 onward, forward citations, Bluetooth SIG (founded 1998) standardization records, and Bluetooth 1.0 specification (1999) are out of scope for this article.
+
+## 2. The core of the patent
+
+Break Claim 1 and the Abstract into four steps.
+
+**Step 1: Master/slave piconet structure.** Claim 1 defines the wireless network as comprising "a master unit" and "a slave unit." A star-shaped network with one master and multiple slaves is the basic unit (the piconet). The Bluetooth specification allows one master plus up to seven active slaves per piconet (a spec-level number). Claim 1 itself defines the minimal master-1, slave-1 case, but the patent as a whole covers multi-slave arrangements.
+
+**Step 2: Hopping sequence derived from the master address.** It is decisive that Claim 1 says "means for sending a master address to the slave unit." The hopping sequence — which channel to switch to and when — is computed deterministically from the master's address. If piconet A has master address 0xAA and piconet B has 0xBB, A and B walk through the 79 channels of the 2.4 GHz band (a Bluetooth Classic spec number) along different pseudo-random sequences. The probability that the two piconets occupy the same channel at the same instant drops to about 1/79.
+
+**Step 3: Phase derived from the master clock.** "Means for sending a master clock to the slave unit" is the other key. Even with the same master address, a different clock yields a different channel at the same instant. When a slave joins, it receives the master clock and aligns its local clock to it. Within a piconet, the master's clock is the reference; **piconets do not need to synchronize with each other** — that is the meaning of "uncoordinated."
+
+**Step 4: The "virtual frequency hopping channel" abstraction.** The phrase "virtual frequency hopping channel" in Claim 1 matters. Physically the radio is hopping rapidly across 79 channels; from the perspective of communication inside a piconet, it behaves as a single virtual channel. The application layer can treat the master-slave link as a stable logical link without being aware of frequency hopping. This connects directly to Bluetooth Classic L2CAP and the SDP profile family.
+
+Re-translated into modern language: when independent wireless subnets coexist in a small space, derive each subnet's hopping sequence from its ID and the phase from its local clock, and the subnets need not synchronize — they statistically avoid each other. AirPods do not interfere with the Magic Mouse at the next desk; my Apple Watch does not break someone else's pairing — the design that makes that possible has its origin here.
+
+That said, **modern Bluetooth is not covered by this single patent**. Bluetooth Classic (BR/EDR) is built on a pool of 3,000+ Standard Essential Patents managed by the Bluetooth SIG. AFH (Adaptive Frequency Hopping, introduced in Bluetooth 1.2 to avoid Wi-Fi interference), SCO/eSCO voice links, pairing, bonding, encryption (including Simple Secure Pairing), and the L2CAP/RFCOMM/SDP/OBEX/HFP/A2DP/AVRCP profile family are described in different patents and specifications. BLE (Bluetooth Low Energy, introduced in 4.0 in 2010) uses 40 channels, a different hopping scheme, and different packet structures, with origins in Nokia's Wibree — a separate lineage. US6590928B1 is one core patent describing "the basic piconet structure and how the hopping sequence is derived."
+
+## 3. Modern translation table
+
+| US6590928B1 (filed 1997, granted 2003) | Modern Bluetooth / wireless | Assessment |
+|---|---|---|
+| Piconet (1 master + slaves) | Piconet in Bluetooth Core Spec | Identical (term and basic structure inherited) |
+| Hopping sequence from master clock + master address | Bluetooth Classic (BR/EDR) hopping computation | Near-identical (same design philosophy in spec; AFH adds interference avoidance) |
+| "Virtual frequency hopping channel" abstraction | Bluetooth Classic L2CAP logical link | Identical (physical hopping abstracted into a logical link) |
+| Master address → hopping sequence | BLE access address (40-channel hopping) | Similar (channel count and derivation redesigned in BLE, Wibree-derived) |
+| Short-range wireless replacement for cables | AirPods / Magic Mouse / Magic Keyboard / hearing aids | Similar (same problem framing, mixed Bluetooth Classic / BLE / proprietary implementations) |
+| Coexistence of unsynchronized networks | Wi-Fi 6 OFDMA / 5G NR | Metaphor (multiple-access problem in common; OFDMA is not hopping) |
+| Frequency hopping (1997 patent) | Hedy Lamarr 1942 patent US2292387 (torpedo guidance) | Metaphor (frequency hopping itself predates this patent by 50+ years) |
+
+**Notes on reading the table.**
+
+Rows 1–3 are inherited at the design level into the Bluetooth Core Specification. The term "piconet," derivation of the hopping sequence from master clock + master address, and the virtual channel abstraction all entered the 1999 Bluetooth 1.0 spec almost verbatim from this patent. Hence "identical."
+
+Row 4 (BLE) is a separate lineage. BLE originated in Nokia's Wibree (2006) and was integrated into the Bluetooth SIG umbrella in Bluetooth 4.0 (2010). The channel count went from 79 to 40, the hopping scheme is different, and the packet structure differs. **It is more a conceptual relative than a direct extension of the Haartsen patent.**
+
+Row 5 (AirPods etc.) is an example of solving the same "cable elimination" problem. AirPods mix Bluetooth Classic (audio over SCO/eSCO) with Apple's proprietary protocol (W1/H1 chip proximity pairing). The Haartsen patent's piconet design is partly used, but Apple's optimizations dominate.
+
+Rows 6–7 are different. Wi-Fi 6 OFDMA is not frequency hopping; it orthogonally divides subcarriers and multiplexes them simultaneously. The 1942 Lamarr patent is the ancestor of frequency hopping itself but does not contain the piconet concept or master/slave structure.
+
+## 4. Why this is rarely cited in mainstream tech narrative (a guess)
+
+**Reason 1: People stop at "Ericsson invented Bluetooth."**
+
+Media articles often write "Bluetooth is a short-range wireless standard developed by Ericsson in 1994." On the actual patent cover, **Jaap Haartsen alone** is named as inventor. He led the design at Ericsson Mobile Terminals (now in Emmen, Netherlands) between roughly 1994 and 1998. "Invented by the company" hides the fact that a single name appears on the cover. **Sole inventorship is unusual** for a patent that becomes a foundational piece of an industry standard — that is itself a piece of historical trivia worth preserving.
+
+**Reason 2: "Bluetooth is one patent" is wrong.**
+
+Startup blogs and intro books often write "the patent behind Bluetooth" in the singular. Bluetooth Classic is built on a pool of 3,000+ standard essential patents. The Bluetooth SIG (founded 1998 by Ericsson, IBM, Intel, Nokia, and Toshiba; now 30,000+ member companies) manages standardization and patent operations. US6590928B1 is one of the core patents, not all of them.
+
+**Reason 3: The Bluetooth Classic vs. BLE distinction is glossed over.**
+
+BLE (Bluetooth Low Energy, introduced in 4.0 in 2010) shares the Bluetooth brand but originates in Nokia's Wibree (announced 2006). It differs in channel count (79 vs. 40), hopping scheme, packet structure, and power profile. Saying "BLE is also an extension of the Haartsen patent" is inaccurate; the precise statement is that "a separate protocol from Wibree was integrated under the Bluetooth SIG umbrella from 4.0 onward." AirPods mix Bluetooth Classic (for audio), Apple's proprietary protocol (for pairing detection), and BLE (for settings sync).
+
+## 5. The AI archaeology meaning
+
+You put AirPods Pro into your ears in the morning. You move the Magic Mouse on a MacBook. The Apple Watch reads your wrist heart rate and sends it to your iPhone. The hearing aid streams audio directly from the phone. These are everyday moments in 2020s Japan.
+
+US6590928B1 gave patent form, in 1997, to the problem framing behind those moments — "how can multiple independent wireless subnets coexist in a small space without synchronizing clocks?" The implementation was a master/slave piconet, a hopping sequence derived from the master address, phase derived from the master clock, and the "virtual frequency hopping channel" abstraction. The 1999 Bluetooth 1.0 specification fixed this design as a skeleton; AFH (1.2, 2003), EDR (2.0, 2004), HS (3.0, 2009), BLE (4.0, 2010), and Bluetooth Mesh (2017) extended and branched from it. The implementation details have moved; the basic piconet and master/slave design still runs in Bluetooth Classic.
+
+The idea that "if many independent wireless subnets are to share a small space, deriving each subnet's hopping sequence from its ID is enough" has, in 30 years, spread to wireless earbuds, smartwatches, hearing aids, smart locks, body composition scales, blood-pressure monitors, glucose monitors, keyboards, and mice. The question Jaap Haartsen wrote down in a lab in Emmen in 1997 still runs as the design skeleton of billions of Bluetooth devices today.
+
+Before LLMs, reading the plain phrasing of Claim 1 — "means for sending a master address to the slave unit," "means for communicating with the slave unit by means of a virtual frequency hopping channel" — and connecting it to a modern AirPods implementation or BLE protocol was costly. AI archaeology lowers that cost.
+
+## 6. Pitfalls
+
+**Pitfall 1: "Jaap Haartsen alone invented Bluetooth" is wrong.**
+
+US6590928B1 is sole-inventor, but only this patent. Sven Mattisson, Nathan Silberman, and many other Ericsson, IBM, Intel, Nokia, and Toshiba engineers appear across the 3,000+ SEPs that make up Bluetooth Classic. "Father of Bluetooth" is too strong as technical history; "central figure in piconet design" is precise.
+
+**Pitfall 2: "Bluetooth = US6590928B1 alone" is wrong.**
+
+This patent describes the basic piconet structure and hopping sequence derivation. AFH (Wi-Fi interference avoidance), SCO/eSCO voice, pairing/bonding/encryption (including SSP), and L2CAP/RFCOMM/SDP/OBEX/HFP/A2DP/AVRCP profiles are described in other patents and specifications. "One foundational patent of Bluetooth" is shorthand; in reality there are many core patents.
+
+**Pitfall 3: "BLE is also an extension of this patent" is wrong.**
+
+BLE (introduced in 4.0 in 2010) originates in Nokia's Wibree (2006); it differs in channel count, hopping scheme, and packet structure. It was integrated under the Bluetooth SIG brand, but specialists will correct any phrasing that calls it a direct continuation: "the design philosophy is close, but the implementation is separate." AirPods and Apple Watch use a mix of BLE and Classic.
+
+**Pitfall 4: "Frequency hopping itself was Haartsen's invention" is wrong.**
+
+Frequency-hopping wireless is classically attributed to Hedy Lamarr and George Antheil's 1942 patent US2292387 (for torpedo guidance, military). Haartsen's contribution is the specific design that "multiple piconets can coexist without synchronization because the hopping sequence is derived from the master address" — not the invention of frequency hopping itself.
+
+**Pitfall 5: "The name 'Bluetooth' is technical" is wrong.**
+
+The name comes from the 10th-century Danish king Harald "Bluetooth" Gormsson. Jim Kardach (Intel) proposed it as a code name at a 1996 joint Intel/Ericsson/Nokia meeting and the code name became the official name. The technical design and the name are separate stories: "piconet" and "frequency hopping" are technical terms; "Bluetooth" and "Harald" are brand origin.
+
+---
+
+## To be precise
+
+**Confirmed facts**
+From Google Patents: US6590928B1 / U.S. filing 1997-09-17 / U.S. grant 2003-07-08 / priority date 1997-09-17 / Expired – Lifetime (U.S. expiration 2018-08-15) / sole inventor Jacobus Cornelis Haartsen / Original Assignee "Telefonaktiebolaget LM Ericsson AB" / Current Assignee "Telefonaktiebolaget LM Ericsson AB" / Full Claim 1 retrieved ("A wireless network comprising: a master unit; and a slave unit. The master unit comprises: means for sending a master address to the slave unit; means for sending a master clock to the slave unit; and means for communicating with the slave unit by means of a virtual frequency hopping channel.") / Abstract confirmed ("hopping sequence derives from a master address," "phase derives from a master clock," "inquiry messages solicit slave topology information," "configuration trees for route determination," "hierarchical connectivity rings") / title "Frequency hopping piconets in an uncoordinated wireless multi-user system."
+
+**Author's interpretation**
+"Bluetooth core patent" and "precursor to AirPods / Apple Watch / hearing aids" are the author's interpretation. The piconet concept, master/slave structure, and master-address-derived hopping sequence are inherited verbatim into the Bluetooth Core Specification — that is a strong link. AFH, BLE, and individual profiles are described elsewhere. I take the position that this patent is the origin of the problem framing "let independent wireless subnets coexist in a small space without synchronization."
+
+**Metaphors and analogies**
+Row 4 of the table (BLE) is similar — Wibree-derived, conceptually a relative but a separate implementation. Row 5 (AirPods etc.) is similar — same "cable elimination" problem, but mixed with Apple proprietary protocols. Rows 6–7 (Wi-Fi 6 OFDMA / 5G NR; Hedy Lamarr 1942) are metaphors — the multiple-access problem is shared, but OFDMA is a different design, and the Lamarr patent has neither piconets nor master/slave.
+
+**Unverified**
+Full text of Claim 2 onward / verbatim Description / forward citations count / primary records of Bluetooth SIG founding (1998) / Bluetooth 1.0 specification text (July 1999) / patents on joint research with Sven Mattisson / primary records on Ericsson "MC-Link" (Bluetooth's internal codename) / primary interview records with Jaap Haartsen / full text of Hedy Lamarr's 1942 patent US2292387 / Nokia Wibree specification text / full list of Bluetooth SEP pool / follow-on patents on AFH (Bluetooth 1.2, 2003) / public materials on Apple's W1/H1 chip proximity pairing.
+
+**Where this comparison breaks**
+US6590928B1 is one of the Bluetooth core patents but does not cover Bluetooth Classic as a whole. "Bluetooth's foundational patent" misleads readers into thinking a single patent covers Bluetooth — Bluetooth Classic is a 3,000+ SEP pool, with AFH, SCO/eSCO, pairing, encryption, and individual profiles described in other patents or specs. The first specialist correction will be the conflation of single patent / standard / BLE separate lineage. Over-emphasizing Jaap Haartsen's individual contribution also flattens the contributions of the larger Ericsson research group (including Sven Mattisson) and the five Bluetooth SIG founders. "BLE is also an extension of the Haartsen patent" will be corrected on three fronts: Wibree origin, different channel count, and different packet structure. "Frequency hopping itself was Haartsen's invention" will be corrected to Hedy Lamarr's 1942 patent.
+
+---
+
+References:
+- Original patent: [US6590928B1 on Google Patents](https://patents.google.com/patent/US6590928/en)
+- Same series #3 (excavation note): [Denso + Toyota Central R&D Labs' QR Code Patent US5726435A (Japan priority 1994)](/en/notes/32-internet-crypto-patent-03)
+- Same series #2 (excavation note): [Fraunhofer's MP3 Core Patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)
+- Same series #1 (excavation note): [Woodland Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)
+- Same series excavation memo #6: [Netscape SSL Patent US5657390A (1995)](/en/notes/34-internet-crypto-patent-memo-06)

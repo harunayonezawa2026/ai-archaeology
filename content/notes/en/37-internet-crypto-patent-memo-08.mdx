@@ -1,0 +1,132 @@
+---
+title: "'Identify Things by Radio, and Generate the Reply Power from the Incoming Signal' — RFID Ancestor Patent US3713148A Was Filed in 1970 by Cardullo and Parks III, Not Walton"
+subtitle: "Internet & Cryptography Patents Excavation Memo #8 — US3713148A, Communications Services Corporation, two co-inventors Mario W. Cardullo / William L. Parks III, filed May 1970, granted January 1973"
+description: "Filed in the U.S. on May 21, 1970; granted January 23, 1973. Communications Services Corporation obtained the RFID (radio frequency identification) ancestor patent US3713148A, 'Transponder apparatus and system.' Inventors are Mario W. Cardullo and William L. Parks III — **two co-inventors** (the 'Charles Walton' entry in the local DB belongs to a separate patent line and is not on this patent). Claim 1 describes a transponder system with 'changeable memory,' 'self-powering from the interrogation signal,' and 'read/write control.' More than 50 years after grant in 1973, read this as the precursor to Suica, PASMO, NFC payment, electronic passports, retail anti-theft tags, and livestock microchips. Basic info, Claim 1 summary, inventors, filing/grant dates, and Abstract retrieved from Google Patents. Full description and comparison to Charles Walton's patents not yet checked."
+episode: 37
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "RFID", "Transponder", "Cardullo", "Walton", "Excavation Memo", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 12
+format: "memo"
+status: "published"
+---
+
+**About this excavation memo:** The "excavation memo" pieces in this series record a candidate's outline at the point where its primary-source URL has been confirmed. Full description text and verbatim review of every claim are not done. Only confirmed facts are stated; conjecture is marked as conjecture.
+
+---
+
+## Why excavate this
+
+Tap a Suica on a station gate. Pay at a convenience store with electronic money. Slip an electronic passport through a reader at the airport. An anti-theft tag screams in an apparel store. A vet reads a microchip from a dog or cat. The "small device that runs without a battery and is identified by radio" design has multiple modern RFID standards at its center: NFC (13.56 MHz), UHF RFID (860–960 MHz), LF RFID (125 kHz), and so on.
+
+Frequently cited as the ancestor of these, 50 years earlier: US3713148A, filed by Communications Services Corporation in May 1970 and granted in January 1973. **An interesting observation: the local DB's note "Charles Walton (Proximity Devices Inc.), filed 1973" actually belongs to a separate patent line. The inventors of this patent are Mario W. Cardullo and William L. Parks III — two co-inventors.** Walton himself filed a separate RFID-related patent in 1973 (US3752960, "Card or chassis recognizer with random sensing or counting code"), and the Walton-as-RFID-pioneer story is easily conflated with this patent. We read this 50-year-old ancestor of passive radio identification.
+
+## Basic facts of the patent
+
+- **Patent number**: US3713148A
+- **Title**: Transponder apparatus and system
+- **Filing date**: May 21, 1970
+- **Grant date**: January 23, 1973
+- **Priority date**: May 21, 1970
+- **Inventors**: Mario W. Cardullo, William L. Parks III (**two co-inventors**; the local DB's "Charles Walton" entry is in error)
+- **Original Assignee**: Communications Services Corporation, Inc.
+- **Current Assignee**: Communications Services Corporation, Inc.
+- **Expired**: January 23, 1990 (17 years after grant, under U.S. patent term rules of the time)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US3713148A/en) (URL confirmed; title, abstract, Claim 1 summary, inventors, filing date, grant date retrieved; full description and verbatim review of all claims not done)
+
+## Core (information retrieved from Google Patents)
+
+The Abstract reads: "A novel transponder apparatus and system is disclosed, the system being of the general type wherein a base station transmits an 'interrogation' signal to a remote transponder, the transponder responding with an 'answerback' transmission." This is the basic principle of RFID itself. The patent further covers:
+
+- **Changeable memory**: not just reading a fixed ID — the response content can be updated
+- **Read / write selection**: the device processes the interrogation signal to decide whether to read or write memory
+- **Memory contents in the response**: the answerback transmission carries internal memory contents
+- **Self-powering from the interrogation signal**: the transponder generates its own operating power from the transmitted interrogation signal
+
+That last item — "self-powering" — is the core of passive RFID. The transponder carries no battery and rectifies the radio energy from the reader to power itself. This is the origin of "battery-less tags," and it is inherited in Suica / PASMO, NFC payment tags, anti-theft tags, and electronic passports alike.
+
+As an application example, the Abstract names "automated toll collection." This is the precursor to Japan's ETC, the U.S. E-ZPass, and Singapore's ERP. The patent also explicitly notes that the implementation is not limited to radio: "radio frequency, optical, or acoustic signal capability."
+
+## Modern connection (with conjecture)
+
+| US3713148A (filed 1970) | Modern RFID / NFC | Assessment |
+|---|---|---|
+| Self-powering from interrogation signal | Power harvesting in passive UHF RFID (860–960 MHz) | Near-identical (basic principle of passive tags inherited verbatim) |
+| Changeable memory | User Memory Bank in EPC Gen2 tags | Identical (writable memory exists in modern RFID standards) |
+| Transponder + base station structure | FeliCa (13.56 MHz) used in Suica / PASMO | Similar (same passive + harvesting principle; protocol, frequency, encryption differ) |
+| Transponder + base station structure | NFC (ISO/IEC 14443, ISO/IEC 18092) | Similar (same passive principle; optimized for proximity) |
+| Automated toll collection application | ETC (Japan, 5.8 GHz DSRC), E-ZPass (US, 915 MHz RFID) | Similar (same "unmanned drive-through billing"; different frequency and protocol) |
+| Passive radio identification | Animal microchip (ISO 11784/11785, 134.2 kHz LF) | Similar (same passive principle; low frequency tuned for passing through tissue) |
+| Passive radio identification | Electronic passport (ISO/IEC 14443-based, 13.56 MHz) | Similar (same passive principle; encryption and PKI added) |
+| Passive radio identification | Apparel anti-theft tag (EAS, various frequencies) | Metaphor (purpose is "tag presence detection," not identification; design philosophy close) |
+
+**Notes on reading the table.**
+
+Rows 1–2 (passive UHF RFID power harvesting, changeable memory) match this patent's specific elements verbatim into modern EPC Gen2 standards. "Near-identical."
+
+Rows 3–7 (FeliCa, NFC, ETC, animal microchip, electronic passport) are solutions to the same passive + harvesting + transponder-response problem framing, branched by use case in frequency, protocol, encryption, and range. "Similar."
+
+Row 8 (EAS anti-theft) is a metaphor. The aim is "tag-presence detection" (whether the tag has been carried out of the store), not ID identification — design philosophy is close, but the use is different.
+
+## Why this is worth excavating (a guess)
+
+**Reason 1: Correcting the "Charles Walton invented RFID" myth.**
+
+Intro books and patent-history articles often write "Charles Walton obtained the first RFID patent in 1973." Walton did file related patents in 1973, including US3752960, but the patent at hand — US3713148A (filed 1970, granted 1973) — **belongs to Cardullo and Parks III**, not Walton. Cardullo has said in his autobiography that he demonstrated the first RFID prototype in 1969 (this is unverified), and the filing precedes Walton's by three years. "First RFID patent = Walton" is inaccurate at the patent-cover level.
+
+**Reason 2: Confirming the origin of the "battery-less tag" design philosophy.**
+
+"Self-power from the interrogation signal" is the root design of modern passive RFID — battery-less retail tags and transit IC cards. That a 1970 Cardullo & Parks III patent wrote this explicitly is technically important: subsequent RFID patents from TI, Philips (now NXP), IBM, Sony FeliCa, and others build on this basic principle.
+
+**Reason 3: The automated-toll-collection application was already on the page in 1970.**
+
+The Abstract lists "automated toll collection" as an application example — 20 to 30 years before ETC (Japan, commercialized 1997), E-ZPass (US, 1987), or SunPass (Florida, 1999) appeared. The idea of "identifying a vehicle and billing it without a person" was already concretely projected at the time of this patent.
+
+## Pitfalls
+
+**Pitfall 1: "Charles Walton invented RFID" is wrong.**
+
+US3713148A's inventor field lists Mario W. Cardullo and William L. Parks III; Walton is not on it. Walton himself filed multiple RFID-related patents from 1973 onward (e.g., US3752960) and contributed to the industry, but those are a separate line. By filing order, Cardullo & Parks III come first (May 1970).
+
+**Pitfall 2: "RFID = US3713148A alone" is wrong.**
+
+RFID has separate standard families per frequency band (LF 125 kHz / HF 13.56 MHz / UHF 860–960 MHz / microwave 2.45 GHz), each operated under different patent pools. EPC Gen2 (UHF), ISO/IEC 14443 (NFC), ISO/IEC 15693 (HF Vicinity), ISO 11784/11785 (animal ID, LF), and many other standards exist. This patent is the ancestor as a whole, but the core patents of each modern standard are separate.
+
+**Pitfall 3: "Suica is an extension of this patent" is wrong.**
+
+Suica is built on Sony FeliCa (commercialized 1999), and FeliCa is standardized as ISO/IEC 18092 NFC-F. FeliCa's encryption authentication and high-speed processing rely on Sony-specific patents and are not direct continuations of the Cardullo & Parks III patent. The broad "passive + harvesting + transponder response" design philosophy is shared, but the implementations are separate.
+
+**Pitfall 4: "ETC is an extension of this patent" is wrong.**
+
+Japan's ETC uses 5.8 GHz DSRC (Dedicated Short-Range Communications), different from the U.S. E-ZPass (915 MHz). Both share the "identify a vehicle and bill it without a person" framing, but frequency, protocol, and range differ greatly.
+
+**Pitfall 5: "Active RFID (battery-included) is also an extension of this patent" is wrong.**
+
+The core of this patent is the passive design — "self-power from the interrogation signal." Active RFID (battery-included, actively transmitting, used for long-range tracking) is based on a different design philosophy. Logistics container tracking and military RFID are largely active and are not direct extensions of this patent.
+
+---
+
+## To be precise
+
+**Confirmed facts**
+From Google Patents: US3713148A / U.S. filing 1970-05-21 / U.S. grant 1973-01-23 / priority date 1970-05-21 / Status "Expired – Lifetime" (17 years after grant, expiration 1990-01-23 under U.S. patent term rules of the time) / two inventors (Mario W. Cardullo, William L. Parks III) / Original / Current Assignee "Communications Services Corporation, Inc." / Claim 1 summary retrieved (changeable memory; signal processing for read/write selection; self-powering) / Abstract confirmed ("base station transmits 'interrogation' signal," "transponder responds with 'answerback'," "internal memory writable," "transponder generates its own operating power from the transmitted interrogation signal," "automated toll collection" application example, "radio, optical, or acoustic signal" implementation) / title "Transponder apparatus and system."
+
+**Author's interpretation**
+"RFID ancestor patent" and "precursor to Suica / NFC / ETC / electronic passports" are the author's interpretation. The "self-power from interrogation signal" design philosophy is explicit in the patent and is inherited as the basic principle of all modern passive RFID — that is a strong link. Each standard (EPC Gen2, ISO/IEC 14443, ISO/IEC 15693, FeliCa, ISO 11784, etc.) is described in a separate spec. I take the position that this is the origin of "the design philosophy of devices identified passively from a distance."
+
+**Metaphors and analogies**
+Rows 3–7 of the table (FeliCa, NFC, ETC, animal microchip, electronic passport) are similar — solutions to the same passive + harvesting framing, but with greatly different frequency, protocol, and encryption. Row 8 (EAS) is a metaphor — presence detection, not identification, with a close design philosophy but different use.
+
+**Unverified**
+Full text of Claim 2 onward / verbatim Description / forward-citations count / primary records of Mario W. Cardullo's autobiography and career / William L. Parks III's career / Communications Services Corporation's company history / Charles Walton's related patents (US3752960, etc.) — filing order and content comparison / relationship to Hedy Lamarr's 1942 patent US2292387 / EPC Gen2 (GS1 standard) text / texts of ISO/IEC 14443, 18092, 15693, 11784/11785 / Sony FeliCa patents (Japanese kokai patents, etc.) / Japan's ETC 5.8 GHz DSRC specification / primary record of Cardullo's claim that he demonstrated an RFID prototype in 1969.
+
+**Where this comparison breaks**
+US3713148A is the ancestor RFID patent but does not cover modern RFID / NFC as a whole. "First RFID patent" will be challenged: "what about Charles Walton?" (in fact, Cardullo & Parks III file earlier, but the Walton-origin story is widespread in intro books). "Suica / NFC is an extension of this patent" will be corrected as "FeliCa is built on Sony-specific patents" and "NFC is based on ISO/IEC 14443." "Active RFID is also an extension of this patent" will be corrected as "active is battery-included and a different design philosophy." This excavation memo stops at what Google Patents shows; full description, later claims, forward citations, comparison with Walton's related patents, and the original Cardullo autobiography are not retrieved.
+
+---
+
+References:
+- Original patent: [US3713148A on Google Patents](https://patents.google.com/patent/US3713148A/en)
+- Same series #4 (excavation note): [Ericsson's Bluetooth Core Patent US6590928B1 (1997)](/en/notes/35-internet-crypto-patent-04)
+- Same series #3 (excavation note): [Denso + Toyota Central R&D Labs' QR Code Patent US5726435A (Japan priority 1994)](/en/notes/32-internet-crypto-patent-03)
+- Same series excavation memo #7: [Qualcomm CDMA Patent US4901307A (1986)](/en/notes/36-internet-crypto-patent-memo-07)

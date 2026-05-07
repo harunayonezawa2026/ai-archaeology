@@ -1,0 +1,166 @@
+---
+title: "『master clockとmaster addressから周波数ホッピング系列を導く』──EricssonのBluetooth基幹特許US6590928B1がJaap Haartsen単独で1997年に書いたピコネット設計"
+subtitle: "インターネット・暗号特許 #4 — US6590928B1、Telefonaktiebolaget LM Ericsson AB、Jaap Haartsen 単独発明、1997年9月出願・2003年7月成立・2018年8月失効"
+description: "1997年9月17日に米国出願、2003年7月8日成立、2018年8月15日失効。Ericssonの Jaap Haartsen（Jacobus Cornelis Haartsen）が単独発明者として登録された Bluetooth 基幹特許 US6590928B1『Frequency hopping piconets in an uncoordinated wireless multi-user system』。Claim 1はmaster unitとslave unitから成る無線ネットワークを定義し、master addressとmaster clockから virtual frequency hopping channel が導かれる構造を書いた。複数のピコネットが互いに同期せず（uncoordinated）共存できる点が核心で、ここから現代のBluetooth Classic/BLEへとつながる。AirPods、Magic Mouse、補聴器、Apple Watch、フィットネスバンド、スマートロックの前史として読む。Google Patentsよりタイトル・Claim 1全文・発明者・出願日・優先日・成立日・Abstract・現Assignee取得済み。"
+episode: 35
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "Bluetooth", "Ericsson", "Jaap Haartsen", "ピコネット", "周波数ホッピング", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 10
+status: "published"
+---
+
+[インターネット・暗号特許 #3（デンソー＋豊田中研のQRコード特許 US5726435A）](/notes/32-internet-crypto-patent-03)では1994年、愛知県刈谷市で立てられた「平面に情報を詰めるが向きを決定できる目印を入れる」問いを掘った。
+
+今回は1997年。場所はオランダ南東部のEmmen、Ericssonのモバイル端末研究所。問いは「複数の独立した小さな無線ネットワークが、互いに時計を合わせず（uncoordinated）、同じ2.4GHz帯で共存できるか」だ。
+
+## 結論を先に
+
+特許番号：[US6590928B1](https://patents.google.com/patent/US6590928/en)
+タイトル：Frequency hopping piconets in an uncoordinated wireless multi-user system（同期しない無線多重ユーザシステムにおける周波数ホッピングピコネット）
+米国出願・優先日：1997年9月17日
+米国成立：2003年7月8日
+失効：2018年8月15日（Expired - Lifetime）
+発明者：Jacobus Cornelis Haartsen（Jaap Haartsen）**単独**
+Original Assignee：Telefonaktiebolaget LM Ericsson AB
+Current Assignee：Telefonaktiebolaget LM Ericsson AB
+
+この特許が立てた問いは一文で書ける。「家・オフィス・カフェなど狭い空間に複数の独立した無線サブネット（ピコネット）が共存するとき、各ネットワークが互いに時計を合わせず、しかもお互いの干渉を最小化しながら同じ2.4GHz帯を再利用できるか」。
+
+Claim 1はこう書かれている。
+
+> A wireless network comprising: a master unit; and a slave unit. The master unit comprises: means for sending a master address to the slave unit; means for sending a master clock to the slave unit; and means for communicating with the slave unit by means of a virtual frequency hopping channel.
+
+「master address」「master clock」「virtual frequency hopping channel」──この3つが現代のBluetoothピコネットの設計骨格を決めている。Abstractはさらに具体的だ。**ホッピング系列はmaster addressから導出され、ホッピングの位相（タイミング）はmaster clockから導出される**。各ピコネットでmasterが違えば自動的に違うホッピング系列を持つので、ネットワーク同士で時計を合わせなくてもぶつかりにくい。
+
+私たちがAirPodsをiPhoneとペアリングする瞬間、ワイヤレスマウスがMacBookと繋がる瞬間、補聴器が直接スマホから音声を受け取る瞬間、Apple Watchが手首の心拍を測る瞬間──そこで毎回このmaster address＋master clock由来のホッピング系列が走っている。
+
+---
+
+オフィス会議室で4人がそれぞれワイヤレスイヤホンを使う。喫茶店で隣の席の人もBluetoothキーボードを使っている。電車内で何百人ものBluetoothデバイスが同時に動いている。これらの「同じ周波数帯を多数の独立ネットワークが時計合わせなしで共有する」設計の前史として、29年前の特許を読む。
+
+## 1. どう選んだか
+
+候補DB（`~/ai-archaeology/db/candidates.tsv`）からIC-009を選定（総合優先度13、Week 2「インターネット・暗号特許」テーマ、現代の AirPods・補聴器・スマートウォッチ・IoT に直結、はるこ@haruko_ai_jp の中国AI×韓台半導体翻訳ニッチとも親和性が高い：Bluetooth関連ICの主要サプライヤーは台湾Realtek・Mediatek、韓国Samsung System LSI）。
+
+```
+[STEP 1] Week 2 残（IC-009 Bluetooth、IC-011 CDMA、IC-012 RFID）から「単独発明者」というレア要素を持つIC-009を発掘ノート選定
+[STEP 2] 特許番号US6590928B1をGoogle Patentsで確認
+[STEP 3] WebFetchでタイトル・Claim 1全文・発明者・出願日・優先日・成立日・Abstract・Legal Status・Current Assigneeを取得（確認済み）
+[STEP 4] DB記載「Jaap Haartsen（単独発明者）」と一致を確認
+[STEP 5] DB注記「Bluetooth特許はHaartsen特許一本ではなく特許プール」を念頭に、本特許がBluetooth全体を覆うかのような記述を避けて、本特許の貢献範囲を限定して書く方針確定
+```
+
+一次資料到達状況：Google PatentsからAbstract・Claim 1全文・基本情報・発明者（単独）・優先日・成立日・Legal Status・Current Assigneeを取得・確認済み。Description全文の逐語確認、Claim 2以降の全文、Forward citations、Bluetooth SIG（1998年設立）の標準化過程の一次資料、Bluetooth 1.0 仕様書（1999年）原文は本記事範囲外。
+
+## 2. 特許の核心
+
+Claim 1とAbstractを4つに分解する。
+
+**ステップ1：master/slave 構成のピコネット**：Claim 1は無線ネットワークを「a master unit」「a slave unit」で構成すると書く。masterが1台、slaveが複数台というスター型のネットワーク（ピコネット）が基本単位だ。Bluetoothの仕様では1つのピコネットで master 1台＋active slave 最大7台が同時通信できる（仕様書ベースの数字）。Claim 1自体はmaster 1とslave 1の最小構成を定義するが、特許全体としては多slave対応を含む。
+
+**ステップ2：master address からホッピング系列を導出**：Claim 1が「means for sending a master address to the slave unit」と書く点が決定的に重要だ。ホッピング系列（どの周波数チャネルにいつ移るか）は master のアドレスから決定論的に計算される。ピコネットAのmasterアドレスが0xAA、ピコネットBのmasterアドレスが0xBBなら、AとBは異なる擬似ランダム系列で2.4GHz帯79チャネル（後にBluetooth Classic仕様で確定）を渡り歩く。だから2つのピコネットが同じチャネルを同時に使う確率は1/79に下がる。
+
+**ステップ3：master clock からホッピング位相を導出**：「means for sending a master clock to the slave unit」もう1つのキーだ。同じmasterアドレスでも、時計（位相）が違えばどの瞬間にどのチャネルにいるかは別になる。slaveはmasterに参加するときmaster clockを受け取り、自分のローカル時計をそれに合わせる。ピコネット内ではmasterの時計が基準で、slaveはそれに同期する。**ピコネット同士は同期しなくてよい**──これが「uncoordinated（同期しない）」の意味だ。
+
+**ステップ4：virtual frequency hopping channel という抽象化**：Claim 1の「virtual frequency hopping channel」という表現は重要だ。物理的には79のチャネルを高速に渡り歩いているが、ピコネット内の通信から見ると「1つの仮想チャネル」として振る舞う。アプリケーション層は周波数ホッピングを意識せずに、master-slave間で安定した論理リンクが張られたかのように扱える。これは現代のBluetooth Classic L2CAP・SDPプロファイル設計に直接つながっている。
+
+現代の言葉で再翻訳するとこうなる。「狭い空間に独立した複数の無線サブネットが共存するとき、各サブネットのIDからホッピング系列を、ローカル時計から位相を導けば、サブネット同士が同期しなくても干渉が確率的に下がる」。AirPodsが隣の席のMagic Mouseを邪魔せず、自分のApple Watchが他人のスマホペアリングを邪魔しない仕組みの設計の起源にあたる。
+
+ただし、**現代のBluetoothはこの1特許で覆えない**。Bluetooth Classic（BR/EDR）は3,000件以上のSEP（Standard Essential Patents）からなる特許プール（Bluetooth SIGが管理）の上に成り立っており、AFH（Adaptive Frequency Hopping、Wi-Fi干渉回避のための拡張、Bluetooth 1.2で導入）、SCO/eSCOによる音声リンク、ペアリング・ボンディング・暗号化、L2CAP・RFCOMM・SDPなど多数の構成要素は別の特許・別の仕様書で記述される。BLE（Bluetooth Low Energy、4.0で2010年導入）は40チャネル・別ホッピング方式・別パケット構造で、Nokia Wibreeを源流とする別系統だ。US6590928B1はそのうち「ピコネットの基本構造とホッピング系列の導出方法」を記述する核特許の一つである。
+
+## 3. 現代との翻訳表
+
+| US6590928B1（1997年出願・2003年成立） | 現代のBluetooth・無線通信 | 評価 |
+|---|---|---|
+| ピコネット（master 1＋slaves） | Bluetooth Core Spec のピコネット | 同一（用語・基本構造がそのまま継承） |
+| master clock + master address からホッピング系列導出 | Bluetooth Classic（BR/EDR）のホッピング系列計算 | 同一に近い（仕様書に同じ設計思想が継承、AFHで干渉回避を追加） |
+| virtual frequency hopping channel という抽象化 | Bluetooth Classic L2CAP 論理リンク | 同一（物理ホッピングを抽象化して論理リンクを提供） |
+| master address → ホッピング系列 | BLE の Access Address（40ch Hopping） | 類似（チャネル数も導出方式もBLEで再設計、Wibree由来） |
+| 短距離無線でケーブル代替 | AirPods / Magic Mouse / Magic Keyboard / 補聴器 | 類似（同じ問題意識「ケーブル排除」、実装はBluetooth Classic/BLE/独自プロトコル混在） |
+| 同期しない複数ネットワークの共存 | Wi-Fi 6 OFDMA / 5G NR | 比喩（多重アクセス問題は共通だが、ホッピングではなく直交周波数分割多元接続） |
+| 1997年の周波数ホッピング | Hedy Lamarr 1942年特許 US2292387（魚雷誘導用） | 比喩（周波数ホッピング自体の起源は本特許より50年以上前） |
+
+**この対応表の読み方について補足する。**
+
+1〜3行目は技術設計レベルでBluetooth Core Specificationにそのまま継承されている。「ピコネット」という用語、master clock + master address からのホッピング系列導出、virtual channel の抽象化は、1999年のBluetooth 1.0 仕様にこの特許が書いた具体的な構造がほぼそのまま入っている。だから「同一」と書ける。
+
+4行目（BLE）は別系統。BLE は Nokia の Wibree（2006年）を源流とし、2010年のBluetooth 4.0でBluetooth SIGに統合された。チャネルが79→40、ホッピング方式が異なる、パケット構造も別。**Haartsen特許の延長というより、思想的な親戚**だ。
+
+5行目（AirPods等）は同じ「ケーブル排除」問題の解決例。AirPods は Bluetooth Classic（音声 SCO/eSCO）と Apple 独自プロトコル（W1/H1チップによる近接ペアリング）の混合で、Haartsen特許のピコネット設計が一部使われているが、Apple独自の最適化が大きい。
+
+6〜7行目は完全に別物。Wi-Fi 6 の OFDMA は周波数ホッピングではなく、サブキャリアを直交分割して同時多重化する別アプローチ。Hedy Lamarr の1942年特許は周波数ホッピング自体の祖先だが、ピコネット概念や master/slave 構成は持たない。
+
+## 4. なぜ一般の技術語りでは参照されにくいか（推測）
+
+**理由1：「Bluetoothを発明したのはEricsson」で止まる**
+
+メディア記事では「BluetoothはEricssonが1994年に開発した短距離無線規格」と書かれることが多い。実際の特許表紙にはJaap Haartsen個人の名前が単独で載っており、彼が1994〜1998年にEricsson Mobile Terminals社（現所在地オランダEmmen）で中心となって設計した。「会社が発明した」と単純化されると、特許表紙に並ぶ単独発明者の存在が見えなくなる。Bluetooth関連特許で **単独発明者** はかなり珍しい（多くは共同発明）。これ自体が技術史のトリビアとして価値がある。
+
+**理由2：「Bluetoothは1つの特許」という誤解**
+
+ベンチャー記事や入門書では「Bluetoothを支える特許」と単数形で書かれがちだが、Bluetooth Classic は3,000件以上のSEP（標準必須特許）からなる特許プールの上に成り立つ。Bluetooth SIG（1998年設立、Ericsson・IBM・Intel・Nokia・Toshiba の5社が創設、現在3万社以上が加盟）が標準化と特許運用を管理しており、US6590928B1はその核特許の一つだが、すべてではない。
+
+**理由3：「Bluetooth Classic と BLE の違い」が省かれる**
+
+BLE（Bluetooth Low Energy、Bluetooth 4.0で2010年導入）は名称こそBluetoothを冠するが、Nokia の Wibree（2006年公表）を源流とする別系統で、チャネル数（79→40）、ホッピング方式、パケット構造、消費電力プロファイルがすべて異なる。「BLEもHaartsen特許の延長」と書くと不正確で、正確には「Bluetooth SIGの傘下で運用される別プロトコルが、Bluetooth 4.0以降に統合された」となる。AirPodsは音声に Bluetooth Classic、ペアリング検出に独自プロトコル、設定同期に BLE を使う混合実装だ。
+
+## 5. AI考古学的な意味
+
+朝起きてAirPods Proを耳に入れる瞬間。MacBookでMagic Mouseを動かす瞬間。Apple Watchが手首の心拍を測ってiPhoneに送る瞬間。補聴器がスマホから直接ストリーミング音声を受け取る瞬間。これらは2020年代の日本の日常だ。
+
+US6590928B1は、これらの問題設定──「狭い空間で複数の独立した無線サブネットが時計を合わせず共存する」──に1997年の時点で特許の形を与えた。実装は master/slave 構成のピコネット＋master address からのホッピング系列導出＋master clock からの位相同期＋virtual frequency hopping channel という抽象化の組み合わせだった。Bluetooth 1.0仕様（1999年）でこの設計が骨格として固定され、AFH（1.2、2003年）、EDR（2.0、2004年）、HS（3.0、2009年）、BLE（4.0、2010年）、Bluetooth Mesh（2017年）と拡張・分岐していった。実装の細部は変わったが、ピコネットとmaster/slaveの基本設計はBluetooth Classicでそのまま生きている。
+
+「狭い空間で多数の独立した無線サブネットが共存するには、各サブネットのIDから決定論的にホッピング系列を導けばよい」というアイデアは、その後30年でワイヤレスイヤホン・スマートウォッチ・補聴器・スマートロック・体組成計・血圧計・血糖値モニタ・キーボード・マウスへと広がった。Jaap Haartsenが1997年にEmmenの研究室で特許に書いた問いは、現在の世界の数十億台の Bluetooth デバイスの設計骨格として動いている。
+
+LLM登場以前、Claim 1の「means for sending a master address to the slave unit」「means for communicating with the slave unit by means of a virtual frequency hopping channel」という素朴な記述を、現代のAirPods実装やBLEプロトコルと接続しながら読むコストは高かった。AI考古学はそのコストを下げる。
+
+## 6. 落とし穴
+
+**落とし穴1：「Jaap Haartsen が一人でBluetoothを発明した」は不正確**
+
+US6590928B1の発明者欄は Jaap Haartsen 単独だが、これはこの特許に限った話だ。Bluetooth Classic を構成する3,000件以上のSEPには Sven Mattisson、Nathan Silberman、その他多数のEricsson・IBM・Intel・Nokia・Toshiba の発明者が並ぶ。「Bluetoothの父」という呼称は技術史としては不正確で、「Bluetooth ピコネット設計の中心人物の一人」が正確だ。
+
+**落とし穴2：「Bluetooth = US6590928B1 だけで覆える」は不正確**
+
+US6590928B1はピコネット基本構造とホッピング系列導出を記述するが、AFH（Wi-Fi干渉回避）、SCO/eSCO音声リンク、ペアリング・ボンディング・暗号化（後のSimple Secure Pairing含む）、L2CAP・RFCOMM・SDP・OBEX・HFP・A2DP・AVRCP等のプロファイル群は別の特許・別の仕様書で記述される。「Bluetooth基本特許1件」と書くのは便宜的表現で、実際は多数の核特許がある。
+
+**落とし穴3：「BLE もこの特許の延長」は不正確**
+
+BLE（Bluetooth Low Energy、4.0で2010年導入）は Nokia の Wibree（2006年公表）を源流とする別プロトコルで、チャネル数・ホッピング方式・パケット構造が異なる。Bluetooth SIGが管理するブランドの傘下で統合されたが、「Haartsen特許の直接の延長」と書くと専門家から「設計思想は近いが実装は別物だ」と訂正される。AirPodsもApple Watchも BLE と Classic を併用する混合実装だ。
+
+**落とし穴4：「周波数ホッピング自体がHaartsen発明」は不正確**
+
+周波数ホッピング無線通信そのものは Hedy Lamarr と George Antheil の1942年特許 US2292387（魚雷誘導用、軍事技術）が古典的な起源として知られる。Haartsen特許の貢献は「複数のピコネットがmaster addressからのホッピング系列導出により同期不要で共存できる」という具体的な設計であり、周波数ホッピング自体の発明ではない。
+
+**落とし穴5：「Bluetoothの命名が技術と関係ある」は不正確**
+
+「Bluetooth」の名は10世紀デンマーク王 Harald "Bluetooth" Gormsson に由来する。1996年のIntel・Ericsson・Nokia 3社合同会議で Jim Kardach（Intel）が提案したコードネームがそのまま正式名になった。技術設計と命名は別の話で、「ピコネット」「frequency hopping」が技術用語、「Bluetooth」「Harald」がブランド由来となる。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+Google Patentsより：US6590928B1 / 米国出願1997-09-17 / 米国成立2003-07-08 / 優先日1997-09-17 / Expired - Lifetime（米国は2018-08-15失効）/ 発明者 Jacobus Cornelis Haartsen **単独** / Original Assignee「Telefonaktiebolaget LM Ericsson AB」/ Current Assignee「Telefonaktiebolaget LM Ericsson AB」/ Claim 1 全文取得済み（"A wireless network comprising: a master unit; and a slave unit. The master unit comprises: means for sending a master address to the slave unit; means for sending a master clock to the slave unit; and means for communicating with the slave unit by means of a virtual frequency hopping channel."）/ Abstract で「hopping sequence derives from a master address」「phase derives from a master clock」「inquiry messages solicit slave topology information」「configuration trees for route determination」「hierarchical connectivity rings」の記載確認 / タイトル「Frequency hopping piconets in an uncoordinated wireless multi-user system」
+
+**著者の解釈**
+「Bluetooth基幹特許」「現代のAirPods/Apple Watch/補聴器の前史」は著者の解釈。技術設計としてはピコネット概念、master/slave 構成、master address からのホッピング系列導出が Bluetooth Core Specification にそのまま継承された点は強い接続だが、AFH・BLE・各プロファイルは別の特許や仕様書で記述される。「狭い空間に独立した無線サブネットを同期不要で共存させる」という問題設定の起源として読む立場を取っている。
+
+**比喩・アナロジー**
+対応表4行目（BLE）は類似。Wibree由来の別プロトコルで、思想的親戚だが実装は別。対応表5行目（AirPods等）は類似。同じ「ケーブル排除」問題の解決例だが、Apple独自プロトコルとの混合実装が大きい。対応表6行目（Wi-Fi 6 OFDMA / 5G NR）は比喩。多重アクセス問題は共通だが、設計アプローチは直交周波数分割で別物。対応表7行目（Hedy Lamarr 1942年特許）は比喩。周波数ホッピング自体の祖先だが、ピコネット概念や master/slave 構成は持たない。
+
+**未確認**
+Claim 2以降の全文 / Description全文の逐語確認 / Forward citations件数 / Bluetooth SIG（1998年設立）の創設経緯一次資料 / Bluetooth 1.0 仕様書（1999年7月公開）原文 / Sven Mattisson との共同研究の特許群 / EricssonのMC-Link（Bluetoothの社内コードネーム）に関する一次資料 / Jaap Haartsen の個人インタビュー一次資料 / Hedy Lamarr 1942年特許 US2292387 の本文 / Nokia Wibree 仕様書原文 / Bluetooth SEP特許プールの全リスト / AFH（Bluetooth 1.2、2003年）の実装に関する後続特許 / Apple W1/H1チップの近接ペアリングに関する公開資料
+
+**この比較が破綻する点**
+US6590928B1はBluetooth基幹特許の一つだが、Bluetooth Classic 全体を覆うものではない。「Bluetoothの基礎特許」と書くと読者は単一特許でBluetooth全体を覆えると誤解しがちだが、Bluetooth Classic は3,000件以上のSEPからなる特許プールで、AFH・SCO/eSCO・ペアリング・暗号化・各プロファイル（HFP・A2DP・AVRCP等）はそれぞれ別特許または標準仕様書で記述される。専門家から最初に突っ込まれるのはこの単一特許 vs. 標準仕様 vs. BLE別系統の混同。Jaap Haartsen個人の貢献を強調しすぎると、Sven Mattisson含むEricsson研究グループ全体や、Bluetooth SIG創設5社の貢献を矮小化する点も指摘されやすい。「BLEもHaartsen特許の延長」と書くと「Wibree由来」「チャネル数違い」「パケット構造違い」の3点で訂正される。「周波数ホッピング自体がHaartsen発明」と書くとHedy Lamarr 1942年特許で訂正される。
+
+---
+
+参考リンク：
+- 元特許：[US6590928B1 on Google Patents](https://patents.google.com/patent/US6590928/en)
+- 同シリーズ #3（発掘ノート）：[デンソー＋豊田中研のQRコード特許 US5726435A（1994年日本優先）](/notes/32-internet-crypto-patent-03)
+- 同シリーズ #2（発掘ノート）：[FraunhoferのMP3核特許 US5579430（1989年）](/notes/29-internet-crypto-patent-02)
+- 同シリーズ #1（発掘ノート）：[Woodlandバーコード US2612994A（1949年）](/notes/26-internet-crypto-patent-01)
+- 発掘メモ #6（同シリーズ）：[Netscape SSL特許 US5657390A（1995年）](/notes/34-internet-crypto-patent-memo-06)
