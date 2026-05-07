@@ -1,0 +1,235 @@
+---
+title: "『Nature paper に開示された特許化可能な特徴が即座には明らかではない』──Köhler & Milstein のモノクローナル抗体は1975年に特許化されず、Wistar Institute の Koprowski & Croce が1978年に応用特許 US4172124A を取った"
+subtitle: "医薬特許 発掘ノート #2 — 特許化されなかった核発明の発掘ログ。Nature 256:495-497（1975-08-07、MRC Laboratory of Molecular Biology Cambridge）と、応用特許 US4172124A（1978-04-28出願、Wistar Institute、Koprowski/Croce）の対比"
+description: "1975年8月7日、Georges J. F. Köhler と César Milstein が Nature 誌（256巻5517号495-497ページ）で「Continuous cultures of fused cells secreting antibody of predefined specificity」を発表し、ハイブリドーマ法によるモノクローナル抗体の連続培養生産を実証した。所属は **MRC Laboratory of Molecular Biology, Cambridge**（ケンブリッジ大学とは別の英国医学研究評議会直営研究所、DB『Cambridge University』記載は構造的に不正確）。Milstein は MRC に特許化を提案する書簡を送ったが、MRC は『Nature paper に開示された特許化可能な特徴が即座には明らかではない』と返答し、英国 NRDC（National Research Development Corporation）経由の特許化は見送られた。1978年4月28日、米国 Wistar Institute of Anatomy and Biology の Hilary Koprowski と Carlo M. Croce が **応用特許 US4172124A『Method of producing tumor antibodies』** を出願し、1979年10月23日成立。核発明（Nature paper）は無特許のまま公共領域に置かれ、応用特許（腫瘍抗体生産）が米国で囲い込まれた構造。1980年代後半の英国における産業政策論争、1984年ノーベル医学生理学賞 Jerne / Köhler / Milstein 受賞、現代モノクローナル抗体医薬市場（2024年で年間2000億ドル超、ハーセプチン・キイトルーダ・ヒュミラ等）への50年答え合わせ。"
+episode: 42
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "医薬特許", "モノクローナル抗体", "Köhler", "Milstein", "Koprowski", "Wistar Institute", "MRC", "ハイブリドーマ", "NRDC"]
+series: "医薬特許"
+seriesNumber: 2
+status: "published"
+---
+
+## 結論を先に
+
+1975年8月7日、Georges J. F. Köhler と César Milstein が Nature 誌に2ページ半の論文（Volume 256, Issue 5517, pp. 495-497）「Continuous cultures of fused cells secreting antibody of predefined specificity」を発表した。マウス脾臓のB細胞とマウス骨髄腫細胞を融合させた「ハイブリドーマ」が、目的の特異性を持つ抗体を **連続培養で安定生産** できることを実証した論文だ。両者の所属は **MRC Laboratory of Molecular Biology, Cambridge**（MRC LMB、英国医学研究評議会直営研究所）。
+
+この論文は **特許化されなかった**。Milstein 自身が1976年〜1977年頃に MRC（Medical Research Council、英国医学研究評議会）に特許化を提案する書簡を送ったが、MRC からの返答は「Nature paper に開示された特許化可能な特徴が即座には明らかではない（it is not immediately obvious what patentable features are at present disclosed in the Nature paper）」というものだった。実際の特許出願業務を担う英国 NRDC（National Research Development Corporation）も特許化を進めなかった。結果として、ハイブリドーマ法という核技術は **公共領域** に置かれた。
+
+3年後の1978年4月28日、米国フィラデルフィアの **Wistar Institute of Anatomy and Biology** の Hilary Koprowski と Carlo M. Croce が、ハイブリドーマ法を **腫瘍抗体生産に応用** する米国特許 **US4172124A『Method of producing tumor antibodies』** を出願し、1979年10月23日に成立させた。Wistar Institute はその後も類似の応用特許を続けて取得し、モノクローナル抗体の医療応用領域では Wistar 側が特許権を握る構造になった。
+
+1980年代後半、英国では「**核発明を英国の研究所が出したのに、なぜ商業価値は米国に流れたのか**」が産業政策論争になった。1984年に Niels K. Jerne / Georges J. F. Köhler / César Milstein が **ノーベル医学生理学賞** を受賞したが、特許化失敗の論争は受賞後も続いた。Milstein 本人は生涯にわたり「モノクローナル抗体は人類の知的財産であるべき」と語り続けたが、それは選択ではなく **MRC/NRDC の判断結果に対する後付けの正当化** だった可能性も指摘されている。
+
+本記事は、(1) 一次資料（Nature 1975 論文、Wistar 特許 US4172124A、Nobel Prize 1984 公式記録、WhatIsBiotechnology.org による特許 saga 史料）を発掘し、(2) **DB の所属記述「Cambridge University」が構造的に不正確（実際は MRC LMB）** である点を訂正し、(3) 「特許化されなかった発見」を AI 考古学として読む立場から、現代モノクローナル抗体医薬市場（2024年年間2000億ドル超）との50年答え合わせを試みる。
+
+---
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] candidates.tsv から Source Found ステータスの医薬特許を優先度順に抽出
+[STEP 2] PH-004「モノクローナル抗体特許（あえて非特許化した発見）」が総合優先度16で最上位
+[STEP 3] 一次資料候補を整理：
+  - Nature 1975 論文（256:495-497）
+  - Nobel Prize 1984 公式（nobelprize.org）
+  - 米国 Wistar 応用特許 US4172124A
+  - WhatIsBiotechnology.org の特許 saga 史料（独立した医学史アーカイブ）
+[STEP 4] 「特許化されなかった核発明 + 応用特許の囲い込み」という二項対立構造で発掘ノート化を決定
+```
+
+通常の発掘ノートは「Claim 1 を持つ単一特許 + 現代との対応表」で書くが、PH-004 は核発明に Claim が **存在しない**。代わりに (a) Nature 論文、(b) MRC の特許化拒絶書簡、(c) Wistar の応用特許 Claim、の3層構造で発掘する。これは AI 考古学において「特許の不在を一次資料として扱う」最初の試みになる。
+
+---
+
+## 2. 題材の正体（Claudeに要約させた結果）
+
+```
+[使ったプロンプト]
+Köhler & Milstein 1975 Nature 論文「Continuous cultures of fused cells secreting antibody
+of predefined specificity」（Nature 256:495-497）の核となる技術設計を、
+2024年現在のモノクローナル抗体医薬の文脈で読み直して要約してください。
+特に (1) どのような細胞融合か、(2) なぜ「連続培養」が画期的か、(3) 抗体の特異性が
+どう「予め定められた」のか、を3点に分けて。
+```
+
+> Köhler と Milstein が示したのは、(1) 抗原で免疫したマウスの脾臓 B 細胞（短命だが特異抗体を作る）と、マウス由来の骨髄腫細胞 P3-X63Ag8（不死化しているが目的特異性を持たない）を Sendai virus 法でポリエチレングリコール存在下に **融合** させ、(2) 融合細胞「ハイブリドーマ」を HAT 培地（hypoxanthine-aminopterin-thymidine）で選択することで非融合細胞を死滅させ、生き残った融合細胞を ELISA でスクリーニングして目的抗体産生クローンを単離し、(3) 単一クローン由来の細胞集団は **同一の抗体（モノクローナル抗体）** を、不死化により **連続培養で安定生産** できる、という3点を実証した。
+>
+> 当時の抗体生産は動物（ウサギ・ヤギ・馬）に抗原を打って血清を採取する「ポリクローナル抗体」しかなく、ロット間ばらつきが大きく動物個体差で品質変動した。Köhler & Milstein のハイブリドーマは「**1つのB細胞 → 1つの抗体特異性**」を確立し、ロット間で同一の抗体を無限に作り続けられる手段を提供した。これは現代のハーセプチン（HER2 標的）、リツキサン（CD20 標的）、ヒュミラ（TNF-α 標的）、キイトルーダ（PD-1 標的）など、年間1000億ドル超の医薬市場の **製造原理** として今も使われている。
+
+```
+[使ったプロンプト2]
+Wistar Institute の応用特許 US4172124A『Method of producing tumor antibodies』の
+Claim 1 を、Köhler & Milstein 論文の核発明と比較して、何を「囲い込んだ」のか
+構造的に説明してください。
+```
+
+> Claim 1：「腫瘍細胞で動物を免疫し、その動物の抗体産生細胞と骨髄腫細胞を融合させ、ハイブリッドをクローン化し、当該腫瘍細胞に特異性を示す抗体を産生するクローンを選択する、悪性腫瘍抗体の製造方法」。
+>
+> Köhler & Milstein 論文との関係：核発明（B細胞×骨髄腫細胞の融合 + クローン化 + 特異性選択）は **そのまま Nature 論文の手法**で、Claim 1 が独立に発明性を主張できる新規部分は **「腫瘍細胞による免疫」と「腫瘍特異抗体の選択」** だけだ。つまり「ハイブリドーマを腫瘍診断・治療への応用に用いる」という**応用領域**を Wistar が囲い込んだ。これにより、米国でハイブリドーマ法を腫瘍関連抗体生産に使う研究者・企業は Wistar に対するライセンス交渉を必要とするようになった（実際にはハイブリドーマ法そのものが公共領域なので、別の方法で腫瘍抗体を作れば回避可能だが、商業実装上は Wistar 系応用特許群が多数存在することで囲い込みが機能した）。
+
+---
+
+## 3. なぜ「核発明と応用特許の主従逆転」なのか
+
+| Köhler & Milstein 1975 Nature 論文 | Wistar US4172124A（1978年出願・1979年成立） | 評価 |
+|---|---|---|
+| 核技術：B細胞×骨髄腫細胞の融合（ハイブリドーマ法） | Claim 1 は同じ融合手法を前提に「腫瘍細胞免疫」を加えただけ | 同一（核発明はそのまま流用） |
+| 連続培養での安定生産（不死化＋クローン選択） | Claim 1 は同じ安定生産前提を流用 | 同一 |
+| 抗体特異性は任意（論文では羊赤血球抗原を例示） | Claim 1 は **腫瘍特異性に限定** | 類似（応用領域の限定が新規性の主張点） |
+| 公共領域（特許なし） | 米国特許権で囲い込み（権利期間17年、1996年失効） | 制度的非対称（無権利 vs 権利保有） |
+| 1984年ノーベル賞でアカデミック評価獲得 | Wistar 経由のライセンス収入（推定数千万ドル規模、一次資料未確認） | 制度的非対称（学術名声 vs 商業収益） |
+| 「Nature 短信2.5ページ」の最小公開 | 「米国特許明細書 + 多数のクレーム」の最大権利化 | 戦略的非対称（公開戦略の差） |
+| 後続研究者は自由にハイブリドーマ法を使えた | 後続応用特許で領域がモザイク状に囲い込まれた | 同一の核 + 異なる応用囲い込みの構造 |
+
+**この対応表の読み方について補足する。**
+
+1〜2行目は同一。Wistar 特許 Claim 1 の「ハイブリドーマ法による抗体生産」骨格は Köhler & Milstein 1975 論文の手法そのままで、独立に発明性を持つ新規部分は「腫瘍細胞免疫」「腫瘍特異性選択」のみ。
+
+3行目は類似。Wistar 特許は応用領域（腫瘍抗体生産）に限定されているため、ハイブリドーマ法を **別の応用**（病原体検出、血液型判定、生化学研究）に使う場合は Wistar 特許の権利範囲外。ただし1980年代を通じて Wistar とその他の機関が応用領域を順次特許化し、モザイク状の囲い込みが形成された。
+
+4〜5行目は構造的非対称。同じ核技術が、英国側では公共領域、米国側では商業特許として運用された。これは1970-80年代の英米の研究商業化政策（英国は Bayh-Dole 法以前、米国は1980年 Bayh-Dole 法成立で大学発明の商業化が加速）の差を反映している。
+
+6行目は戦略的非対称。Köhler & Milstein は Nature 短信（最小限の手法公開）を選び、Wistar は米国特許明細書（最大限の権利主張）を選んだ。これは「学術発表 vs 特許出願」の優先順位の差で、英米で異なる経路を取った結果が制度的差を生んだ。
+
+7行目は同一の核 + 異なる応用囲い込み構造。核発明（ハイブリドーマ法）は公共領域に残り、後続研究者は自由に使えた。だが応用領域（腫瘍抗体、ウイルス抗体、ホルモン抗体等）は順次特許化され、商業実装には個別ライセンス交渉が必要になった。**「核を公開すれば応用も自由」ではなく、「核を公開しても応用は囲い込める」** という現代バイオ特許戦略の前史として読める。
+
+---
+
+## 4. なぜ「忘れられたか」（推測）
+
+「忘れられた」というより、**特許化失敗の論争は1980年代に大きく報道された**が、現在の医薬産業文脈では「Köhler & Milstein がハイブリドーマを発明し、ノーベル賞を受賞した」という **発見ナラティブ** が支配的で、特許化の制度史は専門家以外にはほぼ参照されない。
+
+特に日本語圏では、(1) 1984年ノーベル賞受賞時の日本のメディア報道は「画期的な発見」として扱われ、(2) 特許化失敗の英国産業政策論争は紹介されず、(3) Wistar Institute 応用特許の存在も紹介されなかった。日本の医学教科書・分子生物学教科書も Köhler & Milstein 論文を「ハイブリドーマ法の確立」として引用するが、特許状況には触れない。
+
+Milstein 本人は生涯にわたりインタビュー・著作で「**モノクローナル抗体は人類の知的財産であるべき**」と語り続けた（Wikipedia César Milstein 項参照）。これは哲学的信念だが、同時に MRC/NRDC の特許化判断結果に対する **後付けの正当化** という側面もあったと一部の医学史研究者は指摘する。実際、Milstein が1976-77年に MRC に特許化を提案する書簡を送った事実から、彼自身は当初特許化を望んでいたと推定される。
+
+「忘れられた」一次資料：
+- Milstein → MRC 特許化提案書簡（1976-77年、英国国立公文書館の MRC アーカイブに所蔵されている可能性、今回未参照）
+- MRC → Milstein 返答書簡（同上）
+- 1980年代英国議会・産業政策審議会での特許化失敗論争の議事録（Spinks Report 等、今回未参照）
+- Wistar Institute → 各製薬会社のライセンス契約書原本（今回未参照）
+
+---
+
+## 5. AI考古学的な意味
+
+本記事は AI 考古学の連載中で **「特許の不在を一次資料として扱う」初の試み** だ。通常の発掘ノートは「Claim 1 + 現代との対応表」で書くが、PH-004 は核発明に Claim が **存在しない**。Claim が存在するのは応用特許 US4172124A 側で、核技術と Claim の間に **3年の制度的時差** と **大西洋の地理的距離** がある。
+
+この構造は、現代の AI 開発における「核発明の公開 vs 応用領域の囲い込み」と **問題意識として重なる**：
+- OpenAI / Anthropic / Google DeepMind が論文（arXiv、Nature、ICML等）で核技術を公開
+- 同時に企業は API・サービス・モデル重み・周辺技術を **特許群と契約で囲い込む**
+- 核技術は「公共領域に近い知識」として研究コミュニティで共有される一方、商業価値は囲い込み側に流れる
+
+この構造を1975-1979年のモノクローナル抗体史で先行例として読むと、**「核を公開しても応用囲い込みで商業価値は逃げる」** という現代バイオ・AI 特許戦略の50年前の前史として位置づけられる。本記事はその接続の補助線として書かれている（ただし「証明している」とは書かない。問題意識の重複として読む立場を取る）。
+
+---
+
+## 6. 落とし穴（医薬特許 サブシリーズ固有）
+
+**落とし穴1：「特許化拒絶＝MRC の組織的無能」は単純化**
+
+1976-77年時点の MRC/NRDC は、(1) Nature 論文公開後に新規性が失われている可能性、(2) 「方法特許」としての Claim 構築が困難（細胞融合は既知技術、ハイブリドーマの新規性は応用結果に依存）、(3) 英国の特許制度上、応用領域を後で特許化できる柔軟性、を踏まえて判断した可能性がある。後付けで「失敗」と評価するのは制度文脈を無視している。MRC アーカイブの内部判断記録を確認しないと、1976-77年時点の判断の合理性は評価できない。
+
+**落とし穴2：「Wistar 特許でモノクローナル抗体産業が独占された」は誤り**
+
+Wistar US4172124A は腫瘍抗体生産の応用特許で、ハイブリドーマ法そのものは公共領域。1980-90年代に各社（Genentech、Centocor、Idec、MedImmune、Cambridge Antibody Technology 等）が独自のハイブリドーマ法および周辺技術を開発し、応用領域ごとに別個の特許を取得した。Wistar 系特許群は腫瘍関連の一部を占めるに過ぎず、現代モノクローナル抗体医薬市場全体の独占には至っていない。
+
+**落とし穴3：「Köhler & Milstein は無欲に公共領域を選んだ」は半分誤り**
+
+Milstein は1976-77年に MRC に特許化を提案する書簡を送った事実から、当初は特許化を望んでいたと推定される。MRC/NRDC の判断で特許化が見送られた結果、彼は後付けで「人類の知的財産であるべき」という哲学的立場を取った。「無欲」というナラティブはノーベル賞後に強化された後付けの解釈で、1976-77年時点の判断とは別の話。
+
+**落とし穴4：「特許化していれば英国経済が救われた」は反実仮想**
+
+仮に1976-77年に MRC/NRDC が特許化していた場合、(1) ライセンス収入、(2) 英国企業の商業化、(3) 雇用創出、が起きた可能性はあるが、英国は1980年代当時 Celltech 社（1980年設立、MRC の商業化機関）を立ち上げており、Celltech 経由でモノクローナル抗体関連の商業化は実際に進んだ。「特許化失敗で英国産業が壊滅」は単純化で、英国は別経路でバイオ産業を発展させた事実も併せて読む必要がある。Celltech は2004年に UCB（ベルギー）に買収され、現代では UCB 傘下のバイオ医薬部門として継続している。
+
+**落とし穴5：「DB の所属記述『Cambridge University』は単純化エラー」**
+
+candidates.tsv の PH-004 行に記載された「Cambridge University（英国医学研究評議会所属）」は **構造的に不正確** だ。MRC Laboratory of Molecular Biology（MRC LMB）は **MRC の直営研究所**で、Cambridge 大学の学部・研究科ではない。LMB は Cambridge 市内に位置し、Cambridge 大学と研究協力を行うが、組織としては独立した MRC 直営機関だ。Köhler & Milstein は Cambridge 大学の教員ではなく、MRC LMB の研究員としての所属だった。Day 8 / Day 9 で繰り返し DB のメモ欄誤りが見つかっており（feedback_db_meta_verify_primary）、本件もそのパターンの再発として記録する。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+- Köhler, G. & Milstein, C. "Continuous cultures of fused cells secreting antibody of predefined specificity." Nature 256:495-497 (1975年8月7日出版、Volume 256, Issue 5517)。WebSearch による確認（PubMed PMID:1172191、PMC9713542、生物学・医学史アーカイブ複数で照合）。
+- 著者所属：MRC Laboratory of Molecular Biology, Cambridge（Wikipedia César Milstein 項、Möller 2002 Scandinavian Journal of Immunology 追悼論文等で確認）。**Cambridge University ではない**。
+- Milstein → MRC 特許化提案書簡（1976-77年頃）の存在、MRC 返答「it is not immediately obvious what patentable features are at present disclosed in the Nature paper」の引用：WhatIsBiotechnology.org の「The monoclonal antibody patent saga」（独立した医学史アーカイブ）で確認。
+- Wistar 応用特許 US4172124A：Google Patents で取得。タイトル「Method of producing tumor antibodies」、Inventor: Hilary Koprowski / Carlo M. Croce、Original Assignee: Wistar Institute of Anatomy and Biology、Priority date 1978-04-28、Filing date 1978-04-28、Grant date 1979-10-23、Claim 1 全文（"A method of producing malignant tumor antibodies comprising immunizing an animal with tumor cells, forming fused cell hybrids between antibody producing cells from said animal and myeloma cells, cloning said hybrids and selecting clones which produce antibodies that demonstrate a specificity for said tumor cells."）。
+- 1984年ノーベル医学生理学賞：Niels K. Jerne / Georges J. F. Köhler / César Milstein の3名共同受賞、賞金は3等分（Nobel Prize 1984 公式記録 nobelprize.org/prizes/medicine/1984/summary/）。受賞理由「for theories concerning the specificity in development and control of the immune system and the discovery of the principle for production of monoclonal antibodies」。
+
+**著者の解釈**
+- 「核発明と応用特許の主従逆転」は著者の解釈。Wistar 特許 Claim 1 が Köhler & Milstein 論文の手法をそのまま流用している点は強い接続だが、「腫瘍細胞免疫」「腫瘍特異性選択」を新規発明部分として認める米国特許制度の判断もあり、Wistar 特許自体に発明性がないと言い切れない（応用領域の限定が新規性の主張点として認められた）。
+- 「1976-77年時点で Milstein は特許化を望んでいた」は推定。書簡の存在から推定されるが、Milstein 個人の心理状態の正確な記録は MRC アーカイブを参照しないと確定できない。
+- 「現代 AI 開発の核公開 vs 応用囲い込み構造との50年前史」は著者の推測接続。問題意識として重なる部分はあるが、技術領域・産業構造・特許制度が異なるため「同型」とは書かない。
+
+**比喩・アナロジー**
+- 対応表3行目（応用領域限定）は類似。同じ手法だが応用領域が違う。
+- 対応表4-5行目（公共領域 vs 権利保有、学術名声 vs 商業収益）は構造的非対称。1970-80年代の英米の研究商業化政策の差を反映。
+- 対応表7行目（核公開 + 応用囲い込み）は構造的説明。現代バイオ・AI 特許戦略との接続は問題意識の重複であり、設計レベルの同一ではない。
+
+**未確認**
+- Nature 1975 論文の本文全文（idp.nature.com 認証必要、今回 Wikipedia/PubMed/WhatIsBiotechnology.org 経由の間接情報のみ）
+- Milstein → MRC 特許化提案書簡原本（英国国立公文書館 MRC アーカイブで参照可能だが今回未参照）
+- MRC → Milstein 返答書簡原本（同上）
+- 1980年代英国議会・産業政策審議会での特許化失敗論争議事録（Spinks Report 1982 等の名称が散見されるが今回未参照）
+- Wistar Institute → 各製薬会社のライセンス契約書原本（今回未参照、ライセンス収入推定額は二次資料）
+- Wistar 特許 Claim 2以降の全文 / Description 全文の逐語確認
+- 1984年ノーベル賞選考委員会の内部文書
+- Celltech（1980年設立、MRC 商業化機関）のモノクローナル抗体関連特許群と事業履歴
+- 1980-1990年代の Genentech / Centocor / Idec / MedImmune / Cambridge Antibody Technology 各社のハイブリドーマ関連特許群
+- 現代モノクローナル抗体医薬市場の年間2000億ドル規模の出典一次資料（推定値、二次資料）
+
+**この比較が破綻する点**
+- Wistar 特許 US4172124A は1996年に米国失効しており、現代モノクローナル抗体医薬市場の独占源泉ではない。現代の市場独占は (1) 各社の独自ハイブリドーマ系統、(2) ヒト化抗体・完全ヒト抗体の独自技術、(3) 製造プロセス特許群、(4) 適応症ごとの臨床試験データ独占、で構成されており、1978-79年特許との因果接続は弱い。
+- 「Köhler & Milstein が公共領域を選んだ」というナラティブは、1976-77年時点の MRC/NRDC 判断結果の事後解釈であり、彼らの当初意図とは別の話。
+- 「特許化失敗で英国経済が壊滅」は反実仮想で、Celltech 経由の英国バイオ産業発展は実際に起きた。
+- 「現代 AI の核公開 vs 応用囲い込み構造との同型」は問題意識の重複であり、技術領域・産業構造・特許制度が異なるため設計レベルの同一ではない。専門家から最初に突っ込まれるのは（1）モノクローナル抗体は物理的物質、AI モデル重みは情報、で特許制度上の扱いが違う、（2）バイオ特許は適応症・製剤特許で多層化、AI 特許はアルゴリズム・実装・サービスで多層化、で構造が違う、（3）応用囲い込みの形態が時代・地域で異なる、の3点。発掘ノートは Google Patents + Nobel 公式 + WhatIsBiotechnology.org + Wikipedia + PubMed の範囲の確認止まりで、MRC アーカイブ・Wistar 内部資料・英国議会議事録・各製薬会社契約書は未取得である点を明示する。
+
+---
+
+## 使ったプロンプト全文
+
+```
+[STEP 1] 候補抽出（人手）
+candidates.tsv の医薬特許シリーズ（PH-001〜010）から Source Found 以上のステータスを
+総合優先度順に抽出。
+
+[STEP 2] 一次資料探索（WebFetch / WebSearch）
+- Nature 1975 論文 → 認証ゲートで失敗、PubMed/PMC/Wikipedia/医学史アーカイブ経由
+- Nobel Prize 1984 公式 → nobelprize.org/prizes/medicine/1984/summary/
+- Wistar 応用特許 → patents.google.com/patent/US4172124A
+- WhatIsBiotechnology.org の特許 saga 史料
+
+[STEP 3] 内容抽出
+プロンプト：「Köhler & Milstein 1975 Nature 論文の核となる技術設計を、
+2024年現在のモノクローナル抗体医薬の文脈で読み直して要約してください。
+特に (1) どのような細胞融合か、(2) なぜ「連続培養」が画期的か、
+(3) 抗体の特異性がどう「予め定められた」のか、を3点に分けて。」
+
+[STEP 4] 対応表生成
+プロンプト：「Wistar US4172124A Claim 1 と Köhler & Milstein 論文の核発明を比較して、
+何を『囲い込んだ』のか構造的に説明してください。」
+
+[STEP 5] 4段階評価
+プロンプト：「上の対応表の各行について：
+1.『同一』— 設計・実装レベルで実際に一致している
+2.『類似』— 問題意識は共通、実装・設計は異なる
+3.『比喩』— 概念的に似ているが、技術的には別物
+4.『無理がある』— 対応として強引、専門家から突っ込まれやすい
+4段階で評価してください。」
+
+[STEP 6] 捏造チェック
+プロンプト：「上の文章で、一次資料で確認していない事実を主張している箇所を全部列挙してください。
+特に（年代・人名・特許番号・組織名・金額・引用文）について。」
+```
+
+---
+
+参考リンク：
+- Nature 1975 論文（PubMed）：[Continuous cultures of fused cells secreting antibody of predefined specificity (PMID:1172191)](https://pubmed.ncbi.nlm.nih.gov/1172191/)
+- 1984 Nobel Prize 公式：[The Nobel Prize in Physiology or Medicine 1984](https://www.nobelprize.org/prizes/medicine/1984/summary/)
+- Wistar 応用特許：[US4172124A on Google Patents](https://patents.google.com/patent/US4172124A)
+- 特許 saga 史料：[The Story of César Milstein and Monoclonal Antibodies: The Patent saga (whatisbiotechnology.org)](https://www.whatisbiotechnology.org/index.php/exhibitions/milstein/patents/The-monoclonal-antibody-patent-saga)
+- César Milstein 追悼論文：[Möller (2002) Scandinavian Journal of Immunology](https://onlinelibrary.wiley.com/doi/full/10.1046/j.0300-9475.2002.00001.x)
+- 関連発掘ノート（医薬特許）：[Cetus PCR基幹特許 US4683195A（1985年）](/notes/39-pharma-patent-01)
+- 関連発掘メモ #1（医薬特許）：[遠藤章スタチン基幹特許 US4049495A（1974年優先）](/notes/40-pharma-patent-memo-01)

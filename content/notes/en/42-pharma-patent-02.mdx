@@ -1,0 +1,234 @@
+---
+title: "'It Is Not Immediately Obvious What Patentable Features Are at Present Disclosed in the Nature Paper' — Köhler & Milstein's Monoclonal Antibody Was Not Patented in 1975, and Wistar Institute's Koprowski & Croce Took the Application Patent US4172124A in 1978"
+subtitle: "Pharma Patents Excavation Note #2 — An excavation log of an unpatented core invention. Comparison between Nature 256:495-497 (August 7, 1975, MRC Laboratory of Molecular Biology Cambridge) and the application patent US4172124A (filed April 28, 1978, Wistar Institute, Koprowski/Croce)."
+description: "On August 7, 1975, Georges J. F. Köhler and César Milstein published 'Continuous cultures of fused cells secreting antibody of predefined specificity' in Nature (volume 256, issue 5517, pages 495-497), demonstrating monoclonal antibody production via continuous culture using the hybridoma method. Affiliation: **MRC Laboratory of Molecular Biology, Cambridge** — a Medical Research Council-operated research institute that is *not* part of Cambridge University (the DB record listing 'Cambridge University' is structurally inaccurate). Milstein wrote to the MRC proposing patenting, and the MRC replied: 'it is not immediately obvious what patentable features are at present disclosed in the Nature paper.' The UK NRDC (National Research Development Corporation) did not pursue patenting. On April 28, 1978, Hilary Koprowski and Carlo M. Croce of the Wistar Institute of Anatomy and Biology in the U.S. filed the **application patent US4172124A 'Method of producing tumor antibodies,'** granted October 23, 1979. The core invention (Nature paper) remained in the public domain; the application patent (tumor antibody production) was enclosed in the U.S. The 1980s UK industrial-policy debate, the 1984 Nobel Prize in Physiology or Medicine awarded to Jerne / Köhler / Milstein, and the 50-year reckoning with today's monoclonal antibody pharmaceutical market (over $200 billion annually as of 2024 — Herceptin, Keytruda, Humira, etc.)."
+episode: 42
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Pharma Patents", "Monoclonal Antibody", "Köhler", "Milstein", "Koprowski", "Wistar Institute", "MRC", "Hybridoma", "NRDC"]
+series: "Pharma Patents"
+seriesNumber: 2
+status: "published"
+---
+
+## Conclusion first
+
+On August 7, 1975, Georges J. F. Köhler and César Milstein published a 2.5-page paper in Nature (volume 256, issue 5517, pages 495-497), "Continuous cultures of fused cells secreting antibody of predefined specificity." It demonstrated that "hybridomas" — cells produced by fusing mouse spleen B cells with mouse myeloma cells — could **stably produce antibodies of predefined specificity in continuous culture**. Both authors were affiliated with the **MRC Laboratory of Molecular Biology, Cambridge** (MRC LMB) — a Medical Research Council-operated research institute.
+
+This paper was **not patented**. Around 1976-77 Milstein himself wrote to the MRC proposing that the technique be patented, but the MRC's reply was: "it is not immediately obvious what patentable features are at present disclosed in the Nature paper." The UK NRDC (National Research Development Corporation), which would have handled actual filing, did not proceed. As a result, the core technique of the hybridoma method was placed in the **public domain**.
+
+Three years later, on April 28, 1978, **Hilary Koprowski and Carlo M. Croce** of the **Wistar Institute of Anatomy and Biology** in Philadelphia filed the U.S. patent **US4172124A "Method of producing tumor antibodies,"** which **applies** the hybridoma method to **tumor antibody production**. It was granted on October 23, 1979. Wistar continued to obtain related application patents, and U.S. patent rights over the medical applications of monoclonal antibodies came to be held by Wistar.
+
+In the late 1980s, the UK political debate became: "**why did the commercial value flow to the U.S. when the core invention came from a British research institute?**" In 1984, Niels K. Jerne / Georges J. F. Köhler / César Milstein were awarded the **Nobel Prize in Physiology or Medicine**, but the patent debate continued after the prize. Milstein himself spoke throughout his life about how "monoclonal antibodies should belong to humanity" — but some medical historians point out that this was not so much a *choice* as a **post hoc rationalization** of the MRC/NRDC's decision.
+
+This article (1) excavates primary sources (the Nature 1975 paper, Wistar patent US4172124A, the Nobel Prize 1984 official record, the WhatIsBiotechnology.org patent saga history); (2) **corrects the DB's structurally inaccurate affiliation note "Cambridge University" (it is in fact MRC LMB)**; and (3) reads "an unpatented discovery" as AI archaeology, attempting a 50-year reckoning with today's monoclonal antibody pharmaceutical market (over $200 billion annual revenue as of 2024).
+
+---
+
+## 1. How the topic was selected (a reproducible pipeline)
+
+```
+[STEP 1] From candidates.tsv, extract Pharma Patent rows with Source Found status, sorted by composite priority
+[STEP 2] PH-004 "Monoclonal antibody patent (a discovery deliberately not patented)" with composite priority 16 sits at the top
+[STEP 3] Organize primary-source candidates:
+  - Nature 1975 paper (256:495-497)
+  - Nobel Prize 1984 official (nobelprize.org)
+  - U.S. Wistar application patent US4172124A
+  - WhatIsBiotechnology.org patent saga history (independent medical-history archive)
+[STEP 4] Decide to write as an excavation note around the binary structure: "an unpatented core invention + an application patent that captured the field"
+```
+
+Standard excavation notes are built around "Claim 1 of a single patent + a modern correspondence table." But for PH-004, no Claim **exists** for the core invention. Instead the excavation works in three layers: (a) the Nature paper, (b) the MRC's patent-rejection correspondence, and (c) the application Claim of the Wistar patent. This is the first attempt in this AI Archaeology series to **treat the absence of a patent as a primary source**.
+
+---
+
+## 2. The body (Claude's summary)
+
+```
+[Prompt]
+Re-read the core technical design of Köhler & Milstein 1975 Nature paper
+"Continuous cultures of fused cells secreting antibody of predefined specificity" (Nature 256:495-497)
+in the context of 2024 monoclonal antibody pharmaceuticals. Specifically:
+(1) what kind of cell fusion, (2) why "continuous culture" is novel,
+(3) how antibody specificity is "predefined" — in three points.
+```
+
+> Köhler & Milstein showed: (1) fuse antigen-immunized mouse spleen B cells (short-lived but specific-antibody-producing) with mouse-derived myeloma cells P3-X63Ag8 (immortal but lacking target specificity) using Sendai virus and polyethylene glycol; (2) select **hybridomas** in HAT medium (hypoxanthine-aminopterin-thymidine) so unfused cells die, screen survivors by ELISA, isolate clones producing the target antibody; (3) cell populations from a single clone, due to immortalization, **stably produce identical antibodies (monoclonal antibodies) in continuous culture**.
+>
+> At the time, antibody production relied on injecting antigens into animals (rabbits, goats, horses) and harvesting "polyclonal antibody" sera — with batch-to-batch variation and individual-animal differences. Köhler & Milstein established "**one B cell → one antibody specificity**" and gave the world a method to produce identical antibodies indefinitely. This is still the **manufacturing principle** behind today's market — Herceptin (HER2), Rituxan (CD20), Humira (TNF-α), Keytruda (PD-1), and others worth over $100 billion annually.
+
+```
+[Prompt 2]
+Compare Wistar's application patent US4172124A "Method of producing tumor antibodies" Claim 1
+to the core invention in Köhler & Milstein, and explain structurally what was "enclosed."
+```
+
+> Claim 1: "A method of producing malignant tumor antibodies comprising immunizing an animal with tumor cells, forming fused cell hybrids between antibody producing cells from said animal and myeloma cells, cloning said hybrids and selecting clones which produce antibodies that demonstrate a specificity for said tumor cells."
+>
+> Relation to Köhler & Milstein: the core invention (B-cell × myeloma fusion + cloning + specificity selection) is **exactly the Nature paper's method**, and what Claim 1 can claim independently as novel is only "**immunization with tumor cells**" and "**selection of tumor-specific antibodies**." That is, Wistar enclosed the **application domain** of "using hybridomas for tumor diagnosis / treatment." Researchers and companies in the U.S. wanting to use the hybridoma method for tumor-related antibody production now needed to negotiate a license with Wistar (in principle one could circumvent by producing tumor antibodies through another method — since the hybridoma method itself is in the public domain — but in commercial implementation the existence of many Wistar-related application patents made enclosure effectively functional).
+
+---
+
+## 3. Why "the inversion of core and application"
+
+| Köhler & Milstein 1975 Nature | Wistar US4172124A (filed 1978, granted 1979) | Evaluation |
+|---|---|---|
+| Core technique: B-cell × myeloma fusion (hybridoma method) | Claim 1 inherits the same fusion technique with "tumor immunization" added | Same (core invention reused as is) |
+| Stable production by continuous culture (immortalization + clone selection) | Claim 1 inherits same stable-production assumption | Same |
+| Antibody specificity arbitrary (paper exemplifies sheep red blood cell antigen) | Claim 1 **limited to tumor specificity** | Similar (the limitation is the novelty claim) |
+| Public domain (no patent) | Enclosed by U.S. patent rights (17-year term, expired 1996) | Institutional asymmetry (no rights vs rights held) |
+| 1984 Nobel Prize secured academic recognition | License revenue via Wistar (estimated tens of millions of dollars range, primary source unverified) | Institutional asymmetry (academic prestige vs commercial revenue) |
+| Minimal disclosure: 2.5-page Nature letter | Maximal rights: U.S. patent specification with multiple claims | Strategic asymmetry (different disclosure strategies) |
+| Subsequent researchers freely used the hybridoma method | Subsequent application patents enclosed the field in mosaic form | Same core + different application enclosure |
+
+**How to read this table.**
+
+Rows 1-2: Same. The "antibody production via hybridoma" backbone of Claim 1 is exactly the Köhler & Milstein 1975 method. Independently novel parts of Wistar's claim are only "tumor immunization" and "tumor specificity selection."
+
+Row 3: Similar. Wistar's patent is limited to the application domain of tumor antibody production, so **other applications** of the hybridoma method (pathogen detection, blood typing, biochemical research) fall outside its scope. But during the 1980s, Wistar and other institutions sequentially patented application areas, forming a mosaic enclosure.
+
+Rows 4-5: Structural asymmetry. The same core technology operated in the public domain on the British side and as a commercial patent on the U.S. side. This reflects the gap in research-commercialization policy between the UK and U.S. in the 1970s-80s (the UK before Bayh-Dole, the U.S. after the 1980 Bayh-Dole Act accelerated university-invention commercialization).
+
+Row 6: Strategic asymmetry. Köhler & Milstein chose a Nature letter (minimal disclosure of method); Wistar chose a U.S. patent specification (maximal rights claim). It's a difference in priority between "academic publication vs patent application," and the institutional-difference outcome flowed from the path each side took.
+
+Row 7: Same core + different application enclosure structure. The core invention (hybridoma method) remained in the public domain and was free for subsequent researchers. But application areas (tumor antibodies, viral antibodies, hormone antibodies, etc.) were sequentially patented, requiring individual license negotiations for commercial implementation. **Not "if you publish the core, the applications are also free" — but "even if you publish the core, the applications can still be enclosed"**: this can be read as the precursor of modern bio-patent strategy.
+
+---
+
+## 4. Why was it "forgotten"? (speculation)
+
+"Forgotten" is the wrong frame — **the patenting failure was widely reported in the 1980s**. But in today's pharmaceutical industry context, the **discovery narrative** "Köhler & Milstein invented hybridomas and won the Nobel Prize" dominates, and the institutional patent history is rarely referenced outside specialists.
+
+Especially in Japanese-language sources: (1) 1984 Nobel Prize coverage in Japanese media treated it as a "groundbreaking discovery"; (2) the UK industrial-policy debate over patenting failure was not introduced; (3) the existence of Wistar Institute's application patent was not introduced. Japanese medical and molecular-biology textbooks cite Köhler & Milstein as "establishing the hybridoma method" but say nothing about its patent status.
+
+Milstein himself spoke throughout his life — in interviews and writings — about how "**monoclonal antibodies should belong to humanity's intellectual property**" (see Wikipedia's César Milstein entry). It's a philosophical conviction, but at the same time, some medical historians point out it has the aspect of a **post hoc rationalization** of the MRC/NRDC patenting decision. From the fact that he wrote to the MRC proposing patenting in 1976-77, his initial intent appears to have favored patenting.
+
+"Forgotten" primary sources:
+- Milstein → MRC patenting proposal correspondence (1976-77; possibly held in the UK National Archives' MRC archive — not accessed in this pass)
+- MRC → Milstein reply correspondence (same)
+- 1980s UK Parliament and industrial-policy reviews on the patenting failure (the Spinks Report, etc. — not accessed in this pass)
+- Wistar Institute → pharmaceutical company licensing contracts (not accessed in this pass)
+
+---
+
+## 5. AI Archaeology meaning
+
+This article is **the first attempt in this series to treat the absence of a patent as a primary source**. Standard excavation notes are built on "Claim 1 + modern correspondence table," but for PH-004 the core invention has **no Claim**. The Claim exists on the application side (US4172124A), with **a 3-year institutional time gap and an Atlantic geographic gap** between the core technology and the Claim.
+
+This structure **overlaps in problem set** with today's AI development pattern of "core invention publication vs application enclosure":
+- OpenAI / Anthropic / Google DeepMind publish core technologies in papers (arXiv, Nature, ICML, etc.)
+- Simultaneously, companies enclose APIs, services, model weights, and surrounding technology in **patent families and contracts**
+- The core technology is shared as "knowledge close to the public domain" within the research community, while commercial value flows to the enclosing side
+
+If we read this structure as a precursor in 1975-1979 monoclonal antibody history, it can be positioned as a **50-year-earlier precursor** of today's bio and AI patent strategies: "**publishing the core does not stop application enclosure from siphoning commercial value**." This article is written as a bridge for that comparison (without claiming "this proves it." We take the position of overlapping problem sets).
+
+---
+
+## 6. Pitfalls (Pharma Patents subseries-specific)
+
+**Pitfall 1: "Patenting failure = MRC organizational incompetence" is an oversimplification.**
+
+In 1976-77, the MRC/NRDC may have judged based on (1) loss of novelty after Nature publication, (2) difficulty of constructing "method patent" Claims (cell fusion was known technique; novelty depended on application results), (3) flexibility under UK patent law to file application-area patents later. Calling it a "failure" in retrospect ignores the institutional context. Without consulting the MRC archive's internal-decision records, the rationality of the 1976-77 judgment cannot be evaluated.
+
+**Pitfall 2: "Wistar's patent monopolized the monoclonal antibody industry" is wrong.**
+
+Wistar US4172124A is a tumor-antibody application patent; the hybridoma method itself is in the public domain. Throughout the 1980s-90s, companies (Genentech, Centocor, Idec, MedImmune, Cambridge Antibody Technology, etc.) developed their own hybridoma methods and surrounding technology and obtained separate patents per application area. Wistar-derived patents occupy only a portion of tumor-related applications and never constituted a monopoly over the modern monoclonal antibody pharmaceutical market.
+
+**Pitfall 3: "Köhler & Milstein selflessly chose the public domain" is half wrong.**
+
+From the fact that Milstein wrote to the MRC proposing patenting in 1976-77, his initial intent appears to have favored patenting. The result of MRC/NRDC's decision was that he then took the philosophical position — after the fact — that "they should belong to humanity's intellectual property." The "selfless" narrative was reinforced after the Nobel Prize and is a post hoc reinterpretation, separate from his 1976-77 position.
+
+**Pitfall 4: "If patented, the UK economy would have been saved" is counterfactual.**
+
+If the MRC/NRDC had patented in 1976-77, perhaps (1) license revenue, (2) UK corporate commercialization, (3) job creation would have happened. But the UK actually launched Celltech (1980, the MRC's commercialization arm), and monoclonal-antibody commercialization in the UK proceeded via Celltech. "Patenting failure devastated UK industry" is an oversimplification — the UK actually built up bio-industry on a different path. Celltech was acquired by UCB (Belgium) in 2004 and continues today as a UCB-owned bio-pharma division.
+
+**Pitfall 5: "DB's affiliation note 'Cambridge University' is a structural simplification error."**
+
+The note in candidates.tsv PH-004 reading "Cambridge University (Medical Research Council affiliated)" is **structurally inaccurate**. The MRC Laboratory of Molecular Biology (MRC LMB) is **a Medical Research Council-operated research institute** — not a department or faculty of Cambridge University. The LMB is located within the city of Cambridge and collaborates with Cambridge University in research, but as an organization it is an independent MRC-operated institute. Köhler & Milstein were not Cambridge University faculty — their affiliation was as researchers at MRC LMB. We've repeatedly found memo-field errors in the DB on Days 8 and 9 (feedback_db_meta_verify_primary), and this case is recorded as a recurrence of that pattern.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts**
+- Köhler, G. & Milstein, C. "Continuous cultures of fused cells secreting antibody of predefined specificity." Nature 256:495-497 (published August 7, 1975, volume 256, issue 5517). Confirmed via WebSearch (PubMed PMID:1172191, PMC9713542, multiple cross-checks in biology and medical history archives).
+- Author affiliation: MRC Laboratory of Molecular Biology, Cambridge (confirmed via Wikipedia César Milstein entry, Möller 2002 Scandinavian Journal of Immunology obituary, etc.). **Not Cambridge University.**
+- Existence of Milstein → MRC patenting proposal correspondence (around 1976-77) and quotation of MRC's reply "it is not immediately obvious what patentable features are at present disclosed in the Nature paper": confirmed via WhatIsBiotechnology.org's "The monoclonal antibody patent saga" (independent medical-history archive).
+- Wistar application patent US4172124A: retrieved on Google Patents. Title: "Method of producing tumor antibodies." Inventors: Hilary Koprowski / Carlo M. Croce. Original Assignee: Wistar Institute of Anatomy and Biology. Priority date 1978-04-28. Filing date 1978-04-28. Grant date 1979-10-23. Claim 1 full text: "A method of producing malignant tumor antibodies comprising immunizing an animal with tumor cells, forming fused cell hybrids between antibody producing cells from said animal and myeloma cells, cloning said hybrids and selecting clones which produce antibodies that demonstrate a specificity for said tumor cells."
+- 1984 Nobel Prize in Physiology or Medicine: Niels K. Jerne / Georges J. F. Köhler / César Milstein, 3-way joint award, prize money split into thirds (Nobel Prize 1984 official record nobelprize.org/prizes/medicine/1984/summary/). Citation: "for theories concerning the specificity in development and control of the immune system and the discovery of the principle for production of monoclonal antibodies."
+
+**Author's interpretation**
+- "Inversion of core and application" is author interpretation. Wistar's Claim 1 strongly inherits Köhler & Milstein's method, but the U.S. patent system recognized "tumor immunization" and "tumor specificity selection" as novel inventive parts, so saying Wistar's patent has no inventive substance is too strong (the application-domain limitation was accepted as the novelty claim).
+- "Milstein wanted to patent in 1976-77" is inferred. From the existence of correspondence we infer this, but exact records of Milstein's psychological state require accessing the MRC archive.
+- "50-year precursor of modern AI development's core-publication vs application-enclosure structure" is speculative bridging by the author. Problem sets overlap, but technical domains, industrial structures, and patent systems differ — so we don't claim "isomorphism."
+
+**Metaphor / analogy**
+- Row 3 (application-domain limitation) is similar. Same method, different application area.
+- Rows 4-5 (public domain vs rights held, academic prestige vs commercial revenue) are structural asymmetry. They reflect the UK-US gap in research-commercialization policy in the 1970s-80s.
+- Row 7 (core publication + application enclosure) is structural explanation. Connection to modern bio/AI patent strategies is overlap of problem sets, not design-level identity.
+
+**Unconfirmed**
+- Full text of the Nature 1975 paper (idp.nature.com authentication required; this pass relied on indirect information via Wikipedia/PubMed/WhatIsBiotechnology.org)
+- Original Milstein → MRC patenting proposal correspondence (possibly held in UK National Archives' MRC archive, not accessed)
+- Original MRC → Milstein reply correspondence (same)
+- 1980s UK Parliament and industrial-policy review minutes on the patenting failure (the Spinks Report 1982 etc. mentioned, not accessed)
+- Wistar Institute → pharmaceutical company licensing contracts (not accessed; license revenue estimates are secondary)
+- Full text of Wistar Claim 2 onwards / verbatim confirmation of the full Description
+- Internal Nobel Selection Committee documents from the 1984 prize
+- Celltech (1980, MRC commercialization arm) monoclonal-antibody-related patent families and business history
+- Hybridoma-related patent families of Genentech / Centocor / Idec / MedImmune / Cambridge Antibody Technology in the 1980s-90s
+- Primary source for the modern monoclonal antibody pharmaceutical market's $200+ billion annual revenue (estimate, secondary)
+
+**Where this comparison breaks down**
+- Wistar US4172124A expired in the U.S. in 1996 and is not the source of today's monoclonal antibody pharmaceutical market dominance. Today's market dominance is driven by (1) each company's proprietary hybridoma lineages, (2) humanized and fully human antibody proprietary technology, (3) manufacturing-process patent families, (4) clinical-trial-data exclusivity per indication. The causal chain to the 1978-79 patent is weak.
+- The "Köhler & Milstein chose the public domain" narrative is a post-hoc reinterpretation of the MRC/NRDC's 1976-77 decision result, separate from their initial intent.
+- "Patenting failure devastated the UK economy" is counterfactual; UK bio-industry developed via Celltech.
+- "Isomorphism with modern AI's core-publication vs application-enclosure structure" is an overlap of problem sets, not design-level identity. Likely first expert critiques: (1) monoclonal antibodies are physical substances and AI model weights are information — patent law treats them differently, (2) bio patents stratify across indications and formulations, AI patents stratify across algorithms / implementations / services — different structures, (3) application-enclosure forms differ across eras and regions. This excavation note is limited to Google Patents + Nobel official + WhatIsBiotechnology.org + Wikipedia + PubMed-level confirmation; MRC archive, Wistar internal documents, UK Parliament minutes, and pharmaceutical-company contracts are not retrieved.
+
+---
+
+## Full prompts used
+
+```
+[STEP 1] Candidate extraction (manual)
+Extract Pharma Patent series rows (PH-001 through PH-010) from candidates.tsv
+with status Source Found or higher, sorted by composite priority.
+
+[STEP 2] Primary-source exploration (WebFetch / WebSearch)
+- Nature 1975 paper → blocked by auth gate, indirect via PubMed/PMC/Wikipedia/medical history archives
+- Nobel Prize 1984 official → nobelprize.org/prizes/medicine/1984/summary/
+- Wistar application patent → patents.google.com/patent/US4172124A
+- WhatIsBiotechnology.org patent saga history
+
+[STEP 3] Body extraction
+Prompt: "Re-read the core technical design of Köhler & Milstein 1975 Nature paper
+in the context of 2024 monoclonal antibody pharmaceuticals. Specifically:
+(1) what kind of cell fusion, (2) why 'continuous culture' is novel,
+(3) how antibody specificity is 'predefined' — in three points."
+
+[STEP 4] Correspondence table generation
+Prompt: "Compare Wistar US4172124A Claim 1 to the core invention in Köhler & Milstein,
+and explain structurally what was 'enclosed.'"
+
+[STEP 5] 4-stage evaluation
+Prompt: "For each row of the correspondence table:
+1. 'Same' — actually identical at design / implementation level
+2. 'Similar' — problem set is shared, implementation / design is different
+3. 'Metaphor' — conceptually similar but technically separate
+4. 'Stretched' — the mapping is forced; specialists will easily critique it
+Evaluate in 4 stages."
+
+[STEP 6] Fabrication check
+Prompt: "List every place in the text above where a fact is asserted without primary-source
+confirmation — particularly years, names, patent numbers, organization names, amounts, quotations."
+```
+
+---
+
+References:
+- Nature 1975 paper (PubMed): [Continuous cultures of fused cells secreting antibody of predefined specificity (PMID:1172191)](https://pubmed.ncbi.nlm.nih.gov/1172191/)
+- 1984 Nobel Prize official: [The Nobel Prize in Physiology or Medicine 1984](https://www.nobelprize.org/prizes/medicine/1984/summary/)
+- Wistar application patent: [US4172124A on Google Patents](https://patents.google.com/patent/US4172124A)
+- Patent saga history: [The Story of César Milstein and Monoclonal Antibodies: The Patent saga (whatisbiotechnology.org)](https://www.whatisbiotechnology.org/index.php/exhibitions/milstein/patents/The-monoclonal-antibody-patent-saga)
+- César Milstein obituary: [Möller (2002) Scandinavian Journal of Immunology](https://onlinelibrary.wiley.com/doi/full/10.1046/j.0300-9475.2002.00001.x)
+- Related excavation note (Pharma Patents): [Cetus PCR foundational patent US4683195A (1985)](/en/notes/39-pharma-patent-01)
+- Related excavation memo #1 (Pharma Patents): [Akira Endo statin foundational patent US4049495A (1974 priority)](/en/notes/40-pharma-patent-memo-01)
