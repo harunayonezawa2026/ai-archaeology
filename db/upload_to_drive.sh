@@ -50,17 +50,17 @@ echo "[3/3] Drive にアップロード（タイトル: ${TITLE}）..."
 TMP_NAMED="/tmp/${TITLE}.csv"
 cp "$CSV" "$TMP_NAMED"
 
-# 既存同名ファイルがあれば削除（重複防止）
-EXISTING=$(rclone lsf "gdrive:" --include "${TITLE}*" 2>/dev/null || true)
-if [ -n "$EXISTING" ]; then
-  echo "  → 既存ファイルを削除: $EXISTING"
-  echo "$EXISTING" | while read -r f; do
-    [ -n "$f" ] && rclone delete "gdrive:$f" 2>/dev/null || true
-  done
-fi
+# 既存の同名ファイル（.csv / .xlsx）のみピンポイント削除（差分ファイルや他の似た名前は触らない）
+for ext in csv xlsx; do
+  TARGET="${TITLE}.${ext}"
+  if rclone lsf "gdrive:" --files-only --include "/${TARGET}" 2>/dev/null | grep -q .; then
+    echo "  → 既存ファイル削除: ${TARGET}"
+    rclone deletefile "gdrive:${TARGET}" 2>/dev/null || true
+  fi
+done
 
-# CSV→Google Sheets変換アップロード
-rclone copy "$TMP_NAMED" "gdrive:" --drive-import-formats csv 2>&1 | tail -5
+# CSVのままアップロード（Driveでダブルクリックすると自動でSheetsとして開く）
+rclone copy "$TMP_NAMED" "gdrive:" 2>&1 | tail -5
 rm -f "$TMP_NAMED"
 
 echo ""
