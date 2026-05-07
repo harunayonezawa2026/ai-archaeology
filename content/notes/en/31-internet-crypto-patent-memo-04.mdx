@@ -1,0 +1,76 @@
+---
+title: "An Australian Public Research Body Held Wi-Fi Up: CSIRO's US5487069 and the Question of 'High-Speed Communication Inside Multipath'"
+subtitle: "Internet & Cryptography Patents Research Memo #4 — US5487069, Commonwealth Scientific and Industrial Research Organisation (CSIRO), filed 1993"
+description: "Filed November 1993, US5487069 'Wireless LAN' by O'Sullivan and four co-inventors at Australia's CSIRO describes multi-subchannel modulation (effectively OFDM) for practical data transmission in indoor multipath environments at frequencies above 10 GHz. Later asserted as a standard-essential patent on IEEE 802.11a/g/n/ac, drawing more than $430M in cumulative settlements from 14 Wi-Fi equipment makers worldwide. Title, gist of Claim 1, inventors, filing date, and Legal Status retrieved from Google Patents. Full Description and litigation primary sources not yet read."
+episode: 31
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "Wi-Fi", "CSIRO", "OFDM", "Standard Essential Patent", "Research Memo"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 6
+format: "memo"
+status: "published"
+---
+
+**About this research memo:** "Research memos" in this series document a candidate at the point where the primary-source URL is confirmed and the basics are noted. Full text of the Description, verbatim review of all claims, and litigation primary sources are not yet done. Only confirmed facts are presented; speculation is marked as such.
+
+---
+
+## Why dig
+
+You open your MacBook in a café and connect to Wi-Fi. Your phone joins the home router automatically. A Shinkansen passing through receives email over onboard Wi-Fi. Underneath all of this sits a hard problem: **how to deliver wireless signals quickly and stably in indoor environments full of walls, floors, and ceilings reflecting the signal back at you.**
+
+The first patent for the solution did not come from a Silicon Valley company or a U.S. university. It came from **Australia's public research body, CSIRO**. The patent is US5487069, filed November 1993. The world's Wi-Fi equipment makers were eventually told, "If you want to sell Wi-Fi, you license CSIRO's patent." We read that primary source.
+
+## Patent basics
+
+- **Patent number**: US5487069
+- **Title**: Wireless LAN
+- **Filed**: November 23, 1993
+- **Granted**: January 23, 1996
+- **Inventors**: John D. O'Sullivan, Graham R. Daniels, Terence M. P. Percival, Diethelm I. Ostry, John F. Deane (**five names**)
+- **Original Assignee**: Commonwealth Scientific and Industrial Research Organisation (CSIRO, Australia)
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US5487069) (URL confirmed; Abstract and gist of Claim 1 retrieved)
+- **Legal Status**: Expired - Lifetime (U.S. expired)
+
+## The core (from Google Patents)
+
+Abstract core: "a wireless LAN system capable of operating at frequencies exceeding 10 GHz in multipath transmission environments." A wireless LAN that runs above 10 GHz in **multipath transmission** environments.
+
+The gist of Claim 1: a hub transceiver and multiple mobile transceivers operate inside a confined multipath environment. Each transceiver transmits and receives data above 10 GHz, **decomposing input data across multiple sub-channels**, with each sub-channel's symbol period designed to exceed the delay time of non-direct paths.
+
+In modern communications terminology, that is OFDM (Orthogonal Frequency Division Multiplexing). A high-speed signal becomes many slow parallel signals; each subcarrier's symbol becomes **longer than the delay of reflected paths**, suppressing inter-symbol interference. **The core technique for delivering data fast in indoor multipath environments.**
+
+The patent does not necessarily use the exact acronym "OFDM" (within the text retrieved here, "OFDM" and "IEEE 802.11" did not appear), but per Google Patents the Description discusses ensemble modulation using FFT/IFFT.
+
+## Modern translation hypotheses
+
+| US5487069 (1993) | Modern Wi-Fi standards | Assessment (hypothesis) |
+|---|---|---|
+| Multipath-resilient wireless LAN above 10 GHz | OFDM/OFDMA in IEEE 802.11a/g/n/ac/ax | Similar (the framing of subcarrier decomposition for multipath resilience carries) |
+| Hub + multiple mobile-terminal topology | Modern Wi-Fi router + clients | Same (the basic topology is unchanged) |
+| Decomposition into sub-channels + symbol-period extension | OFDM subcarrier design in 802.11n/ac/ax | Similar (same problem, same solution; scaled with more subcarriers and MIMO) |
+| FFT/IFFT-based ensemble modulation | OFDMA in modern Wi-Fi 6 (802.11ax) | Similar (OFDM → OFDMA adds multi-user multiplexing; the fundamental operation is shared) |
+
+**The historically important fact**: CSIRO asserted this patent against the world's Wi-Fi equipment makers as a **Standard Essential Patent (SEP)** for IEEE 802.11a/g implementations — in effect, "if you implement these standards, you need a CSIRO license." Through litigation and settlements with HP, Dell, Microsoft, Buffalo, Asus, Lenovo, Toshiba, Sony, Acer, Belkin, Netgear, 3Com, Apple, Intel, and others — fourteen companies in total — CSIRO collected more than **$430M in cumulative settlement revenue**, as widely reported in business press (Sydney Morning Herald and others, citing U.S. court filings). **A rare case of a public research body single-handedly extracting royalties from the entire global Wi-Fi market.**
+
+**The "inventor of Wi-Fi" trap**: CSIRO did not invent Wi-Fi as a whole through this patent. The IEEE 802.11 standards were a collective achievement of many companies, universities, and research bodies; CSIRO held **a standard-essential patent on a specific design within the OFDM application**. The simplification "Australia invented Wi-Fi" is common in popular media; the more accurate framing is "early holder of a standard-essential patent on OFDM-based multipath countermeasures."
+
+**Hypotheses written before reading the full Description. To be revised after reviewing the Description, litigation records, and IEEE 802.11 standardization documentation.**
+
+## Open questions
+
+- Full Description text (whether the term "OFDM" appears, the exact scope of FFT/IFFT description)
+- Forward citations (Google Patents not yet checked)
+- Primary documents on each of the 14 settlements (U.S. district court filings)
+- Primary source for the cumulative "$430M+" figure (multiple media reports exist; an authoritative breakdown in court records would be ideal)
+- The discussion of this patent inside the IEEE 802.11 standardization committee in the late 1990s
+- The path from CSIRO's 1992 invention to the 1993 U.S. filing, and any Australian-domestic filing
+- How the SEP treatment changed after the U.S. patent expired (presumed around 2017)
+- O'Sullivan's later contributions (he was originally a radio astronomer; the relationship between that work and Wi-Fi technology)
+
+---
+
+Reference links:
+- Original patent: [US5487069 on Google Patents](https://patents.google.com/patent/US5487069)
+- Internet & Cryptography Patents #2 (research note): [Fraunhofer MP3 core patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)
+- Internet & Cryptography Patents Research Memo #3: [Diffie-Hellman Patent US4200770A (1977)](/en/notes/30-internet-crypto-patent-memo-03)

@@ -1,0 +1,164 @@
+---
+title: "『よく出る係数は短い符号で表せ』──FraunhoferのMP3核特許US5579430が1989年に書いた音声圧縮の核心"
+subtitle: "インターネット・暗号特許 #2 — US5579430、Fraunhofer Gesellschaft（Grill/Brandenburg/Sporer/Kurten/Eberlein）、1995年米国出願（独優先1989年）"
+description: "1995年1月米国出願（独DE3912605から優先権主張、1989年）、Fraunhoferが取得したUS5579430『Digital encoding process』。スペクトル変換→可変精度量子化→『頻度の高い係数ほど短い符号』という可変長符号化（Huffman型）で音声を圧縮する設計をClaim 1に書いた。MP3全体の単一特許ではなく、ISO/IEC 11172-3 Layer 3の核技術の一つ。2013年に米国で失効、2017年Fraunhofer正式ライセンス終了宣言。Spotify/Apple Music/Podcast/Discordの音声配信の前史として読む。Google Patentsよりタイトル・Claim 1・発明者・出願日・優先日・Abstract取得済み。"
+episode: 29
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "MP3", "Fraunhofer", "Brandenburg", "音声圧縮", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 4
+status: "published"
+---
+
+[インターネット・暗号特許 #1（バーコードUS2612994A）](/notes/26-internet-crypto-patent-01)では1949年、フィラデルフィアの大学院で立てられた「機械に物を識別させる」問いを掘った。
+
+今回は1989年。場所は西ドイツ・エルランゲンのFraunhofer研究所。問いは「人間の耳が聞き取れない音を捨てて、音楽ファイルを10分の1以下に圧縮できるか」だ。
+
+## 結論を先に
+
+特許番号：[US5579430](https://patents.google.com/patent/US5579430)
+タイトル：Digital encoding process（デジタル符号化プロセス）
+米国出願：1995年1月26日
+米国成立：1996年11月26日
+優先日：1989年4月17日（西ドイツ出願 DE3912605）
+失効：2013年（成立から17年）
+発明者：Bernhard Grill、Karl-Heinz Brandenburg、Thomas Sporer、Bernd Kurten、Ernst Eberlein（5名）
+Original Assignee：Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.
+Legal Status：**Expired**（Lifetime）
+
+この特許が立てた問いは一文で書ける。「音声の周波数成分を係数化したとき、頻繁に出てくる係数ほど短いビット列で表現すれば、音声ファイル全体のサイズを劇的に減らせるのではないか」。
+
+Claim 1の核心はこうだ。
+
+> sampling an acoustical signal ... transforming the samples ... using a transform/filter bank into a sequence of second samples to thereby reproduce a spectral composition ... quantizing said sequence ... with varying precision ... at least partially coding said sequence using an optimum encoder ... correlating the occurrence probability of the quantized spectral coefficient to the length of the code utilizing a code in such a way that the more frequently said spectral coefficient occurs, the shorter the code word.
+
+「the more frequently said spectral coefficient occurs, the shorter the code word」──頻度の高い係数ほど短い符号語。
+
+これは情報理論で言うエントロピー符号化（Huffman符号など）の音声への適用だ。**ここに二つの常識破りがある**。**ひとつは、音声を時間波形ではなく周波数成分に変換してから圧縮するという発想**。**もうひとつは、人間の聴覚特性（マスキング効果）を考慮して、聞こえない係数は粗く量子化するという「心理音響的ループ（psychoacoustical iteration loop）」の枠組み**。
+
+私たちが知っている.mp3ファイルの中身は、まさにこの設計の延長にある。
+
+---
+
+Spotifyで通勤中に音楽を聴く。YouTubeで動画の音声を再生する。Discordで友人と通話する。Podcastを倍速で流す。これらの「音声を小さなファイルで送り届ける」設計の前史として、37年前の特許を読む。
+
+## 1. どう選んだか
+
+候補DB（`~/ai-archaeology/db/candidates.tsv`）からIC-004を選定（総合優先度17、Week 2「インターネット・暗号特許」テーマで一次資料到達難度が中程度かつ現代との接続が強い）。
+
+```
+[STEP 1] 候補DB未実施候補のうちIC系優先度15以上の6本（IC-001/003/004/005/006/010）を比較
+[STEP 2] 発掘ノートとして「ストーリー性 + 一般読者の現代接続」が最強のIC-004 MP3を選定
+[STEP 3] 特許番号US5579430をGoogle Patentsで確認
+[STEP 4] WebFetchでタイトル・Claim 1・発明者・出願日・優先日・Abstract・Legal Statusを取得（確認済み）
+[STEP 5] DB記載の「1992年提出」「Karlheinz Brandenburg中心」は不正確。実際の米国出願は1995年1月、発明者は5名共同であることをWebFetchで確認・訂正
+```
+
+一次資料到達状況：Google PatentsからAbstract・Claim 1・基本情報・発明者・優先日・Legal Statusを取得・確認済み。Description全文の逐語確認とForward citationsは未実施。Fraunhoferが2017年4月23日に発表したMP3ライセンスプログラム終了に関する公式声明文の一次資料は本記事範囲外。
+
+## 2. 特許の核心
+
+Claim 1を四つに分解する。
+
+**ステップ1：時間波形→周波数表現への変換**：音声サンプル（PCM）を「transform/filter bank」（変換またはフィルタバンク）に通して、時間軸の波形を周波数軸の係数列に変える。これはMDCT（Modified Discrete Cosine Transform、修正離散コサイン変換）やサブバンド分割と呼ばれる処理に対応する（Claim自体はMDCTを名指ししていない、Description内で具体化される）。
+
+**ステップ2：可変精度の量子化**：周波数係数列を「varying precision」で量子化する。**人間の耳が聞き取れない領域（マスキングされる帯域）は粗く量子化し、聞き取りやすい領域は細かく量子化する**。これがMP3の「聞こえないものを捨てる」核心であり、Description内では「psychoacoustical iteration loop」「masking effect from high to low frequencies」として記載される。
+
+**ステップ3：可変長符号化（optimum encoder）**：量子化した係数列を、頻度に応じて長さの違う符号語で符号化する。「the more frequently said spectral coefficient occurs, the shorter the code word」──これは情報理論のHuffman符号と同じ発想だ。よく出るパターンに短いビット列を、稀なパターンに長いビット列を割り当てる。
+
+**ステップ4：可変長符号テーブルの圧縮**：Claim 1は最後に、符号テーブル自体のサイズを減らす工夫を書いている。「allocating a code word to several elements of said sequence or to a value range」「directly assigning a code word to only one part of the value range」──値域の一部にだけ直接の符号を割り当て、その範囲外は共通の識別子と特殊符号で表す。
+
+現代の言葉で再翻訳するとこうなる。「音声を周波数成分に変換し、人間の聴覚特性に基づいて聞こえない部分を粗く扱い、頻度に応じた可変長符号で圧縮する」。Spotifyの音声配信（AACまたはOgg Vorbis）、YouTubeの音声トラック（AAC/Opus）、Discordの音声通話（Opus）、Podcastの.mp3配信──全部この問題設定の延長にある。
+
+ただし、**MP3全体はこの1特許では覆えない**。MP3（ISO/IEC 11172-3 Layer 3、1993年）は多数の技術が組み合わさったシステムで、Fraunhofer・Thomson・AT&T等が複数の特許を保有していた。US5579430はそのうち「可変長エントロピー符号化」部分の核特許であり、サブバンド分析・ビットアロケーション・ハフマンテーブル設計など他の構成要素は別の特許・公開文書で記述される。
+
+## 3. 現代との翻訳表
+
+| US5579430（1989年優先・1995年米国出願） | 現代の音声・データ圧縮 | 評価 |
+|---|---|---|
+| Transform/filter bankによる周波数変換 | AAC・Opus・Ogg VorbisのMDCT処理 | 類似（周波数領域での圧縮という枠組みは継承、変換アルゴリズムは進化） |
+| 可変精度量子化＋心理音響モデル | AAC/Opusの心理音響モデル、HE-AAC SBR | 類似（聴覚特性の活用という問題意識は共通、モデルは精緻化） |
+| 頻度ベースの可変長符号（Huffman型） | AAC・FLAC・Opusのレンジ符号化、AV1の算術符号化 | 類似（エントロピー符号化という枠組みは共通、Huffmanから算術符号化へ移行） |
+| 符号テーブルのサイズ削減（値域分割＋共通識別子） | 標準コードブック方式（AACのコードブック切替）、Vorbisの動的コードブック | 比喩（テーブル設計の問題意識は近いが、現代は標準コードブック群の事前定義と動的選択） |
+| MP3ファイル（.mp3拡張子） | AAC（.m4a）、Opus（.opus）、FLAC（.flac）、Ogg Vorbis（.ogg） | 比喩（MP3を直接置き換えた後継規格群、設計は別物） |
+
+**この対応表の読み方について補足する。**
+
+1行目（周波数変換）は技術系統として継承されている。MP3のサブバンド＋MDCT、AACの純MDCT、OpusのCELT/SILKハイブリッドと進化したが、「時間波形ではなく周波数領域で扱う」という枠組みは共通する。
+
+2行目（心理音響モデル）はMP3が広く実装した最初期の例で、AACではモデルが大幅に精緻化された。問題意識「人間の聴覚特性を圧縮に使う」は共通する。
+
+3行目（エントロピー符号化）は情報理論の応用で、Huffman符号は1952年David A. Huffmanの論文に遡る。MP3はこれを音声に適用した先行例。AAC・Opus・AV1動画ではより効率的な算術符号化（CABAC等）に移行した。
+
+4行目（テーブル削減）は実装の問題意識として近いが、現代は標準で複数のコードブックを定義しビットストリーム中で切り替える方式が主流。
+
+5行目はファイル形式の系譜の話。MP3 → AAC（2000年代主流） → Opus（2010年代以降のリアルタイム通信主流） → FLAC（ロスレス用途）への変遷で、技術的には別物の規格が次々に登場した。
+
+## 4. なぜ一般の技術語りでは参照されにくいか（推測）
+
+**理由1：「Brandenburg一人がMP3を発明した」エピソードが先行している**
+
+メディア記事や入門書ではしばしば「Karlheinz Brandenburgが博士論文（1989年）でMP3を発明した」と単純化されて書かれる。実際にはBrandenburgは中心人物の一人だが、US5579430のような核特許には**5名の共同発明者**（Grill、Brandenburg、Sporer、Kurten、Eberlein）が記載されている。Erlangen-Nürnberg大学とFraunhoferの研究グループによる共同研究の成果であり、特許の表紙に5名並ぶ事実は技術内容の理解より広報の物語に埋もれやすい。
+
+**理由2：MP3全体と単一特許の混同**
+
+MP3形式（ISO/IEC 11172-3 Layer 3）は1993年にISO/IEC標準として承認された。これを支える特許は数十件あり、Fraunhofer単独ではなくThomson Multimedia・AT&T Bell Labs・複数の研究機関の共同保有だった。US5579430はそのうち「Digital encoding process」（エントロピー符号化）という核技術の一つ。「Fraunhoferが持つMP3特許」と単数形で言われると単一特許のイメージになるが、実際は**特許プール**の構成要素だ。
+
+**理由3：失効と無料化の物語が先に立つ**
+
+2017年4月にFraunhoferが「MP3に関するライセンスプログラムを終了する」と発表した報道は広く知られているが、その背景にある「特許群の失効スケジュール」「2017年時点で米欧の主要特許がほぼ満了」「市場の主流がAACに移行済み」といった文脈は省かれがちだ。「MP3は無料になった」という見出しが、技術内容の理解より優先される。
+
+## 5. AI考古学的な意味
+
+iPhoneで音楽アプリを起動する瞬間。Discordで通話を開始する音。YouTubeで動画の音声が流れる。Podcastアプリで再生ボタンを押す。これらは2020年代の日常だ。
+
+US5579430はこれらの問題設定──「人間の聴覚特性を活用して、音声データを実用的な大きさに圧縮し、配信・保存可能にする」──に1989年の時点で特許の形を与えた。実装はサブバンド・MDCT・心理音響モデル・Huffman符号の組み合わせだった。AACでは設計が精緻化し、Opusでは設計が刷新された。実装は変わったが、問題設定は変わっていない。
+
+「音声を周波数領域で扱い、聴覚特性に基づいて重要度を割り振り、頻度ベースの可変長符号で圧縮する」というアイデアは、その後35年で音楽配信・動画配信・リアルタイム通信・音声認識前処理に広がった。Brandenburgらが1989年にエルランゲンの研究所で特許に書いた問いは、現在の世界の音声配信ネットワークの基盤として動いている。
+
+LLM登場以前、Claim 1の「the more frequently said spectral coefficient occurs, the shorter the code word」という一文を、現代のAAC・Opus・FLAC・AV1音声トラックと接続しながら読むコストは高かった。AI考古学はそのコストを下げる。
+
+## 6. 落とし穴
+
+**落とし穴1：「FraunhoferがMP3を発明した」は不正確**
+
+US5579430はMP3の核技術の一つを記述するが、MP3形式全体（ISO/IEC 11172-3 Layer 3）はFraunhofer単独の発明ではない。Thomson Multimedia・AT&T Bell Labs・複数の共同研究機関が関与し、特許プールとして運用された。「FraunhoferがMP3の特許を持っていた」と言うときは、複数特許のうちの主要な保有者の一つという意味で書く必要がある。
+
+**落とし穴2：「2017年に特許切れで自由になった」は単純化**
+
+2017年4月のFraunhofer声明は「ライセンスプログラム終了」であって「全特許が完全失効」ではない。米国の主要MP3特許の多くは2007〜2017年の間に段階的に失効した。各国・各特許で失効時期が異なり、また当時にはAACが業界標準として既に主流化していたため、「失効＝市場での価値消失」のタイミングは特許失効と一致しない。
+
+**落とし穴3：「Brandenburg一人で作った」は不正確**
+
+Brandenburgは博士論文時代からの中心人物で、MP3普及の象徴として広く知られる。しかし**US5579430の発明者欄は5名連名**であり、Erlangen-Nürnberg大学・Fraunhofer・関連研究機関のチーム成果として読む必要がある。「MP3の父」という表現は広報の比喩として広まったが、技術史としては共同研究の成果として記述するのが正確だ。
+
+**落とし穴4：「1992年に出願」は誤り**
+
+候補DB（IC-004）には「1992年Fraunhofer提出」と記載されていたが、Google Patents表紙の正確な情報は**米国出願1995年1月26日、優先日（独DE3912605）1989年4月17日**だった。1992年は本記事のリサーチでは特定の出願イベントとして確認できなかったため、本記事では訂正した。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実**
+Google Patentsより：US5579430 / 米国出願1995-01-26 / 米国成立1996-11-26 / 優先日1989-04-17（独DE3912605）/ Expired（Lifetime）/ 発明者5名（Bernhard Grill, Karl-Heinz Brandenburg, Thomas Sporer, Bernd Kurten, Ernst Eberlein）/ Original Assignee「Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.」/ Claim 1 全文取得済み（"sampling ... transforming ... transform/filter bank ... varying precision ... optimum encoder ... the more frequently said spectral coefficient occurs, the shorter the code word"）/ Description内に「psychoacoustical iteration loop」「masking effect from high to low frequencies」記載 / タイトル「Digital encoding process」
+
+**著者の解釈**
+「MP3核特許」「現代のAAC・Opus・FLAC・AV1音声トラックの前史」は著者の解釈。技術系統としての連続性はあるが、各規格は独立に設計された別物。「音声を周波数領域で扱い、聴覚特性で重要度を割り振り、可変長符号で圧縮する」という問題設定の先行例として読む立場を取っている。
+
+**比喩・アナロジー**
+対応表4行目（符号テーブル削減 ↔ 標準コードブック方式）は比喩レベル。現代のAAC等では事前定義された複数のコードブックを動的に切り替える方式が主流で、US5579430の値域分割＋共通識別子設計とは実装が異なる。対応表5行目（MP3 ↔ AAC/Opus/FLAC/Ogg）はファイル形式の系譜であり、技術設計としては別物の規格の連なり。
+
+**未確認**
+Description全文の逐語確認（MDCTの具体的記述、サブバンド分割の段数）/ Forward citations件数（Google Patents未確認）/ ISO/IEC 11172-3の標準化過程一次資料 / Fraunhofer 2017年4月23日声明文の一次資料 / 米欧各国の対応特許失効日 / Thomson Multimedia・AT&T Bell Labsとの特許プール運営契約 / Brandenburg博士論文（1989年）の逐語 / Layer 1/2/3の技術差の特許上の記載 / DBに記載された「1992年提出」がどのイベントを指していたかの確認
+
+**この比較が破綻する点**
+US5579430はMP3全体の単一特許ではなく、エントロピー符号化（可変長符号化）部分の核特許である。「FraunhoferのMP3特許」と書くと読者は単一特許でMP3を覆えると誤解しがちだが、MP3はサブバンド分析・MDCT・心理音響モデル・ビットアロケーション・Huffman符号化など複数の構成要素の組み合わせで、それぞれ別特許または別技術文書で記述される。専門家から最初に突っ込まれるのはこの単一特許 vs. 特許プールの混同。Brandenburg個人の貢献を強調しすぎると、共同発明者4名と研究機関全体の成果を矮小化する点も指摘されやすい。
+
+---
+
+参考リンク：
+- 元特許：[US5579430 on Google Patents](https://patents.google.com/patent/US5579430)
+- 同シリーズ #1（発掘ノート）：[Woodlandバーコード US2612994A（1949年）](/notes/26-internet-crypto-patent-01)
+- 発掘メモ #1（同シリーズ）：[HTTPクッキー特許 US5774670A（1995年）](/notes/27-internet-crypto-patent-memo-01)
+- 発掘メモ #2（同シリーズ）：[Ethernet LAN US4063220A（1975年）](/notes/28-internet-crypto-patent-memo-02)

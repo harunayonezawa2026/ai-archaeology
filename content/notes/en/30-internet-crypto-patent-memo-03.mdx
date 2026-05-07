@@ -1,0 +1,82 @@
+---
+title: "Sharing a Key Without Sending It: Stanford's US4200770A and the 1977 Filing of Diffie-Hellman"
+subtitle: "Internet & Cryptography Patents Research Memo #3 — US4200770A, Stanford University (Hellman/Diffie/Merkle), filed 1977"
+description: "Filed September 1977, US4200770A 'Cryptographic apparatus and method' by Hellman, Diffie, and Merkle at Stanford. Built on the computational hardness of the discrete logarithm problem, it patented a way for two parties to derive a shared secret key over an insecure channel without any prior shared secret. Expired in the U.S. in 1997. The ancestor of TLS/HTTPS, Signal, WireGuard, and SSH handshakes. Title, Claim 1, and the Y₁^X₂ mod q = Y₂^X₁ mod q description retrieved from Google Patents. Full Description text and related litigation primary sources not yet read."
+episode: 30
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "Diffie-Hellman", "Public-Key Cryptography", "Stanford", "Research Memo", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**About this research memo:** "Research memos" in this series document a candidate at the point where the primary-source URL is confirmed and the basics are noted. Full text of the Description and verbatim review of all claims are not yet done. Only confirmed facts are presented; speculation is marked as such.
+
+---
+
+## Why dig
+
+You open an HTTPS site in your browser. You send a Signal message. You connect to a WireGuard VPN. You SSH into a server. The very first step in all of this runs the same procedure: **two computers that have never met share the same secret key over a channel they cannot guarantee is unwatched.**
+
+The first patent for the seemingly contradictory idea — "share a key without sending it" — is US4200770A, filed by Stanford University in September 1977. We read a 49-year-old patent.
+
+## Patent basics
+
+- **Patent number**: US4200770A
+- **Title**: Cryptographic apparatus and method
+- **Filed**: September 6, 1977
+- **Granted**: April 29, 1980
+- **Expired**: April 29, 1997 (17 years from grant)
+- **Inventors**: Martin E. Hellman, Bailey Whitfield Diffie, Ralph C. Merkle (**three names**)
+- **Original Assignee**: The Board of Trustees of The Leland Stanford Junior University
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US4200770A/en) (URL confirmed; Abstract, Claim 1, and discrete-log description retrieved)
+- **Legal Status**: Expired - Lifetime (U.S. expired in 1997)
+
+## The core (from Google Patents)
+
+The core of Claim 1:
+
+> means for generating at the first output a third signal, that is a transformation of said first signal and which transformation is infeasible to invert, and for generating at the second output a fourth signal, that is a transformation of said second signal with said first signal, which represents a secure key and is infeasible to generate solely with said second signal and said third signal.
+
+"Infeasible to invert" and "infeasible to generate solely with said second signal and said third signal" — these two phrases hold the core idea of modern public-key cryptography.
+
+The Description records the actual math:
+
+> K = Y₁^X₂ mod q = Y₂^X₁ mod q
+
+Here X is each user's secret, Y is a public value, q is a prime. Alice keeps X₁ secret and publishes Y₁ = a^X₁ mod q. Bob keeps X₂ secret and publishes Y₂ = a^X₂ mod q. Each computes K = Y_other^X_self mod q, and the results match mathematically. **But a third party recovering K from Y₁ and Y₂ alone must solve the discrete logarithm problem (log_a Y mod q), which is computationally hard for sufficiently large q.** That hardness is the security argument.
+
+The patent describes the discrete logarithm as "the logarithm of Y to the base a modulo q" and states that, with proper parameters, this computation is practically infeasible.
+
+## Modern translation hypotheses
+
+| US4200770A (1977) | Modern protocols | Assessment (hypothesis) |
+|---|---|---|
+| Discrete-log-based key exchange | TLS 1.3 DHE/ECDHE key exchange | Similar (key-exchange framing carries; modern systems use elliptic curves to shrink computation) |
+| DH with public prime q and generator a | Signal protocol X3DH (Extended Triple Diffie-Hellman) | Similar (X3DH composes DH multiple times for forward secrecy; the underlying operation is the same) |
+| No prior shared secret needed before communication | WireGuard / OpenSSH key-exchange handshakes | Similar (DH-based shared-key derivation is the shared frame) |
+| The "infeasible to invert" assumption | The risk of being broken by Shor's algorithm on a quantum computer | Similar (the same assumption breaks under future quantum capability; Post-Quantum Cryptography research is in progress) |
+
+**Most important change**: In the 1977 patent, the hardness base was the discrete logarithm in a finite field. In modern TLS 1.3 the mainstream is **ECDHE (Elliptic Curve Diffie-Hellman Ephemeral)**, replacing the finite field with an elliptic curve. The "discrete log" framework is the same, but the venue moves from finite fields to elliptic curves, allowing equivalent security with much shorter keys. Saying "DH's design is unchanged since 1977" is inaccurate; the more accurate framing is "same problem setting, implementation has migrated to elliptic curves."
+
+**The quantum-computer break**: Shor's algorithm (Peter Shor, 1994) can solve discrete-log problems in polynomial time given a sufficiently large quantum computer. If quantum computing becomes practical, both finite-field DH and ECDHE break. Migration to lattice-based Post-Quantum Cryptography (PQC) — selected by NIST and standardized in August 2024 as FIPS 203/204/205 (Kyber, Dilithium, SPHINCS+) — is now in progress. **The 1977 design will likely be displaced into a different problem setting as quantum computing matures during the 2030s.**
+
+**These are hypotheses written before reading the full Description. Subject to revision after the full text and forward-citation review.**
+
+## Open questions
+
+- Full Description text (notably the operational protocol details and any mention of countermeasures against the man-in-the-middle attack on unauthenticated DH)
+- Forward citation count (Google Patents not yet checked)
+- The chronological relationship to the RSA patent (US4405829, filed December 1977)
+- The path from the 1976 New Directions paper (Diffie & Hellman, IEEE Transactions on Information Theory) to this patent
+- The post-1997 expansion into IETF and W3C standards
+- Whether NSA or other government agencies imposed disclosure restrictions or required nondisclosure agreements at filing
+- The exact scope of Merkle's contribution (relationship to Merkle Puzzles)
+
+---
+
+Reference links:
+- Original patent: [US4200770A on Google Patents](https://patents.google.com/patent/US4200770A/en)
+- Internet & Cryptography Patents #2 (research note): [Fraunhofer MP3 core patent US5579430 (1989)](/en/notes/29-internet-crypto-patent-02)
+- Internet & Cryptography Patents Research Memo #1: [HTTP Cookie Patent US5774670A (1995)](/en/notes/27-internet-crypto-patent-memo-01)

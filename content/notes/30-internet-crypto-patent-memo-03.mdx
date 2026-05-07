@@ -1,0 +1,82 @@
+---
+title: "鍵を送らずに鍵を共有する──Stanford特許US4200770Aが1977年に書いたDiffie-Hellman鍵交換"
+subtitle: "インターネット・暗号特許 発掘メモ #3 — US4200770A、Stanford University（Hellman/Diffie/Merkle）、1977年出願"
+description: "1977年9月出願、Stanford University のHellman・Diffie・Merkle 3名によるUS4200770A『Cryptographic apparatus and method』。離散対数問題の計算困難性を使い、暗号化されていない通信路でも事前共有なしに秘密鍵を作る方法を特許化した。1997年米国失効。現代のTLS/HTTPS・Signal・WireGuard・SSHのハンドシェイクの祖。Google Patentsより基本情報・Claim 1・Y₁^X₂ mod q = Y₂^X₁ mod q 記述を確認済み。本文精読・関連訴訟一次資料は未実施。"
+episode: 30
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "Diffie-Hellman", "公開鍵暗号", "Stanford", "発掘メモ", "失効特許"]
+series: "インターネット・暗号特許"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・Claim全クレームの逐語確認は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+ブラウザでHTTPSサイトを開く。Signalで暗号化メッセージを送る。WireGuardでVPNに接続する。SSHでサーバーにログインする。これら全部の最初のステップで、**互いに会ったことのない2台のコンピュータが、盗聴されている可能性のある通信路で同じ秘密鍵を共有する**処理が走っている。
+
+この一見矛盾した処理──「鍵を送らずに鍵を共有する」──のアイデアを最初に特許化した文書が、1977年9月にStanford大学が出願したUS4200770Aだ。49年前の特許を読む。
+
+## 特許の基本情報
+
+- **特許番号**：US4200770A
+- **タイトル**：Cryptographic apparatus and method
+- **出願**：1977年9月6日
+- **成立**：1980年4月29日
+- **失効**：1997年4月29日（成立から17年）
+- **発明者**：Martin E. Hellman、Bailey Whitfield Diffie、Ralph C. Merkle（**3名**）
+- **Original Assignee**：The Board of Trustees of The Leland Stanford Junior University
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US4200770A/en)（URL確認済み・Abstract・Claim 1・離散対数記述取得済み）
+- **Legal Status**：Expired - Lifetime（米国は1997年に満了済み）
+
+## 核心（Google Patents取得済み情報）
+
+Claim 1の核心はこうだ。
+
+> means for generating at the first output a third signal, that is a transformation of said first signal and which transformation is infeasible to invert, and for generating at the second output a fourth signal, that is a transformation of said second signal with said first signal, which represents a secure key and is infeasible to generate solely with said second signal and said third signal.
+
+「infeasible to invert（逆変換が計算的に困難）」「infeasible to generate solely with said second signal and said third signal（公開された情報だけからは秘密鍵を作れない）」──この2つのフレーズに、現代の公開鍵暗号の核心が書かれている。
+
+特許のDescriptionには具体的な数式が記載されている。
+
+> K = Y₁^X₂ mod q = Y₂^X₁ mod q
+
+ここでXは各ユーザーの秘密鍵、Yは公開された値、qは素数だ。AliceはX₁を秘密に、Y₁=a^X₁ mod q を公開する。BobはX₂を秘密に、Y₂=a^X₂ mod q を公開する。両者ともK=Y_相手^X_自分 mod q を計算でき、その結果は数学的に一致する。**しかし第三者がY₁とY₂だけからKを復元するには、離散対数問題（log_a Y mod q を解く問題）を解かねばならず、これが大きなqに対して計算的に困難である**ことが安全性の根拠だ。
+
+特許文書は離散対数を「the logarithm of Y to the base a modulo q」と表現し、適切なパラメータ選択でこの計算が現実的に不可能となることを述べている。
+
+## 現代との接続仮説
+
+| US4200770A（1977年） | 現代のプロトコル | 評価（仮説段階） |
+|---|---|---|
+| 離散対数問題ベースの鍵交換 | TLS 1.3のDHE/ECDHE鍵交換 | 類似（鍵交換の枠組みは継承、現代は楕円曲線で計算量を削減） |
+| 公開された素数qと生成元aによるDH | Signalプロトコル X3DH（Extended Triple Diffie-Hellman） | 類似（DHを複数回組み合わせてForward Secrecyを実現、基本演算は同じ） |
+| 通信前の共有秘密が不要 | WireGuard・OpenSSH の鍵交換ハンドシェイク | 類似（DHベースの鍵共有という枠組みは共通） |
+| 「逆変換が計算困難」の前提 | 量子コンピュータによるShorアルゴリズムでの破綻リスク | 類似（前提が崩れる将来リスクは同じ問題、Post-Quantum Cryptography研究が進行中） |
+
+**最も重要な変化**：1977年の特許では、有限体上の離散対数を計算困難性の基盤としていた。現代TLS 1.3の主流である**ECDHE（楕円曲線Diffie-Hellman Ephemeral）**では、楕円曲線上の離散対数問題に置き換わっている。同じ「離散対数」でも舞台が有限体から楕円曲線に移ったことで、より小さな鍵長で同等のセキュリティが得られるようになった。「DHの設計は1977年から変わっていない」と言うと不正確で、**問題設定は同じ・実装は楕円曲線へ移行**という整理が正確だ。
+
+**量子コンピュータ時代の破綻**：Shorアルゴリズム（1994年Peter Shor）は、十分大きな量子コンピュータがあれば離散対数問題を多項式時間で解ける。量子計算が実用化すれば、有限体DH・ECDHEともに破綻する。NIST が選定した格子ベースのKyber等のPost-Quantum Cryptography（PQC）への移行が現在進行中（2024年8月にNIST FIPS 203/204/205として標準化）。**1977年の設計は、2030年代以降の量子計算進展により別の問題に置き換わる可能性が高い**。
+
+**これは一次資料の全文精読前の仮説。Description全文・Forward citations確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（特にプロトコル運用の詳細、認証なしDHの中間者攻撃への対策言及の有無）
+- Forward citations件数（Google Patents未確認）
+- RSA特許（US4405829、1977年12月出願）との出願先後関係の詳細
+- 1976年New Directions論文（Diffie & Hellman, IEEE Transactions on Information Theory）の特許化までの経緯
+- 失効後（1997年〜）のIETF・W3Cでの実装拡散経緯
+- NSA/政府機関による出願時の情報開示制限（誓約書要求）の有無の一次資料
+- Merkleの寄与の正確な範囲（Merkle Puzzlesとの関係）
+
+---
+
+参考リンク：
+- 元特許：[US4200770A on Google Patents](https://patents.google.com/patent/US4200770A/en)
+- 同シリーズ #2（発掘ノート）：[FraunhoferのMP3核特許 US5579430（1989年）](/notes/29-internet-crypto-patent-02)
+- 同シリーズ #1（発掘メモ）：[HTTPクッキー特許 US5774670A（1995年）](/notes/27-internet-crypto-patent-memo-01)

@@ -1,0 +1,76 @@
+---
+title: "オーストラリアの公的研究機関がWi-Fiを止めた──CSIRO特許US5487069が立てた『多重反射の中で高速通信』の問い"
+subtitle: "インターネット・暗号特許 発掘メモ #4 — US5487069、Commonwealth Scientific and Industrial Research Organisation（CSIRO）、1993年出願"
+description: "1993年11月出願、オーストラリアCSIROのO'Sullivan他5名によるUS5487069『Wireless LAN』。10GHz超の周波数で多重反射の屋内環境でも実用的なデータ伝送を成立させる多重サブチャネル変調（OFDM相当の発想）を記述する。後にIEEE 802.11a/g/n/ac の標準必須特許として認定され、世界14社のWi-Fi機器メーカーから合計1,000億円超のライセンス和解金を取った。Google Patentsよりタイトル・Claim 1要旨・発明者・出願日・Legal Status取得済み。本文精読・訴訟一次資料は未実施。"
+episode: 31
+publishedAt: "2026-05-07"
+tags: ["AI考古学", "インターネット・暗号特許", "Wi-Fi", "CSIRO", "OFDM", "標準必須特許", "発掘メモ"]
+series: "インターネット・暗号特許"
+seriesNumber: 6
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料URLを確認した段階で候補の概要を記録したものです。本文精読・全クレームの逐語確認・訴訟一次資料は未実施です。確認済み事実のみ記載し、推測は推測として明示しています。
+
+---
+
+## なぜ掘るか
+
+カフェでMacBookを開いてWi-Fiに繋ぐ。スマホがホームルーターに自動接続する。新幹線車内のWi-Fiでメールを受ける。これら全部の根底に、**屋内のような壁・床・天井の多重反射環境で、無線信号を高速かつ安定に届ける**という難問がある。
+
+この難問への解法を最初に特許化したのは、シリコンバレーの企業でも米国大学でもなく、**オーストラリアの公的研究機関CSIRO**だった。1993年11月出願のUS5487069。後に世界のWi-Fi機器メーカーが「Wi-Fiを売りたければCSIROにライセンス料を払え」と言われた特許の一次資料を読む。
+
+## 特許の基本情報
+
+- **特許番号**：US5487069
+- **タイトル**：Wireless LAN
+- **出願**：1993年11月23日
+- **成立**：1996年1月23日
+- **発明者**：John D. O'Sullivan、Graham R. Daniels、Terence M. P. Percival、Diethelm I. Ostry、John F. Deane（**5名**）
+- **Original Assignee**：Commonwealth Scientific and Industrial Research Organisation（CSIRO、オーストラリア連邦科学産業研究機構）
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US5487069)（URL確認済み・Abstract・Claim 1要旨取得済み）
+- **Legal Status**：Expired - Lifetime（米国は失効済み）
+
+## 核心（Google Patents取得済み情報）
+
+Abstractの核心：「a wireless LAN system capable of operating at frequencies exceeding 10 GHz in multipath transmission environments」──10GHz超の周波数で**多重反射（マルチパス）伝送環境**でも動作する無線LAN。
+
+Claim 1の要旨はこうだ。ハブ送受信機と複数の移動送受信機が、囲まれた多重反射環境で動作する。各送受信機は10GHz超でデータを送受信し、入力データを**複数のサブチャネルに分解する変調方式**を使う。各サブチャネルのシンボル周期は、非直接経路の遅延時間より長くなるよう設計される。
+
+これは現代の通信用語で言うとOFDM（Orthogonal Frequency Division Multiplexing、直交周波数分割多重）に相当する発想だ。1本の高速信号を多数の遅い並列信号に分解することで、各サブキャリアのシンボルが**反射波の遅延時間より長くなり**、シンボル間干渉（Inter-Symbol Interference）が抑制される。**屋内のような多重反射環境で、データを高速に届けるための核心技術**だ。
+
+特許文書がOFDMという正確な略号を使っているわけではない（取得した範囲では「OFDM」「IEEE 802.11」の文言は確認していない）が、Description内ではFFT/IFFT技術によるアンサンブル変調（ensemble modulation）が議論されている、というGoogle Patents経由の情報を取得済み。
+
+## 現代との接続仮説
+
+| US5487069（1993年） | 現代のWi-Fi標準 | 評価（仮説段階） |
+|---|---|---|
+| 10GHz超でのマルチパス耐性無線LAN | IEEE 802.11a/g/n/ac/ax のOFDM/OFDMA | 類似（マルチパス耐性のためのサブキャリア分割という枠組みは継承） |
+| ハブ＋複数モバイル端末の構成 | 現代のWi-Fiルーター＋端末構成 | 同一（基本トポロジは変わっていない） |
+| サブチャネルへの分解とシンボル周期延伸 | 802.11n/ac/ax のOFDMサブキャリア設計 | 類似（同じ問題への同じ解法、サブキャリア数とMIMO対応で大規模化） |
+| FFT/IFFTベースのアンサンブル変調 | 現代Wi-Fi 6（802.11ax）のOFDMA | 類似（OFDM→OFDMAで複数ユーザー多重化、根本演算は共通） |
+
+**最も重要な歴史的事実**：CSIROはこの特許を世界のWi-Fi機器メーカーに対して「IEEE 802.11a/g規格を実装するなら必須でライセンスが要る」標準必須特許（SEP、Standard Essential Patent）として主張した。HP、Dell、Microsoft、Buffalo、Asus、Lenovo、東芝、ソニー、Acer、Belkin、Netgear、3Com、Apple、Intel等の世界14社と訴訟・和解を経て、合計**$430M超（4億3千万ドル超）**のライセンス和解金を獲得した、と公知資料で広く報じられている（Sydney Morning Herald等の経済メディア、米法廷文書経由）。**研究機関が単独で取った特許が、世界のWi-Fi市場全体からロイヤリティを徴収した稀有な事例**だ。
+
+**「Wi-Fiの発明者」表現の落とし穴**：CSIROがこの特許でWi-Fi全体を発明したわけではない。IEEE 802.11規格全体は多数の企業・大学・研究機関の貢献の集合体で、CSIROは**OFDM適用部分の特定設計に関する標準必須特許**を持っていただけだ。「オーストラリアがWi-Fiを発明した」と単純化されがちだが、技術史としては「OFDMマルチパス対策設計の早期特許保有者」という位置付けが正確だ。
+
+**これは一次資料の全文精読前の仮説。Description全文・訴訟記録・IEEE 802.11標準化過程の確認後に修正する。**
+
+## 未確認ポイント
+
+- Description全文（OFDMという用語の有無、FFT/IFFT記述の正確な範囲）
+- Forward citations件数（Google Patents未確認）
+- 14社訴訟・和解の各案件の和解金額の一次資料（米連邦地裁文書）
+- 合計和解金「$430M超」の出典の一次資料（複数のメディアが報じているが正確な数字と内訳の公的文書）
+- IEEE 802.11標準化委員会内での本特許の議論経緯（1990年代後半の標準化過程文書）
+- CSIROが1992年の発明から1993年米国出願に至る経緯と、オーストラリア国内出願の有無
+- 失効後（米国2017年前後失効と推定）のSEP扱いの変化
+- O'Sullivanの後年の貢献（電波天文学の研究者だったこととWi-Fi技術の関係）
+
+---
+
+参考リンク：
+- 元特許：[US5487069 on Google Patents](https://patents.google.com/patent/US5487069)
+- 同シリーズ #2（発掘ノート）：[FraunhoferのMP3核特許 US5579430（1989年）](/notes/29-internet-crypto-patent-02)
+- 同シリーズ #3（発掘メモ）：[Diffie-Hellman特許 US4200770A（1977年）](/notes/30-internet-crypto-patent-memo-03)

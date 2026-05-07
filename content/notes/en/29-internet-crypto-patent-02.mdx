@@ -1,0 +1,164 @@
+---
+title: "'The More Frequent the Coefficient, the Shorter the Code Word' — Fraunhofer's MP3 Core Patent US5579430 and the Heart of Audio Compression"
+subtitle: "Internet & Cryptography Patents #2 — US5579430, Fraunhofer Gesellschaft (Grill/Brandenburg/Sporer/Kurten/Eberlein), filed 1995 in the U.S. (priority 1989, Germany)"
+description: "Filed January 1995 in the U.S. with priority from German DE3912605 (April 1989), Fraunhofer's US5579430 'Digital encoding process' captures the heart of MP3: spectral transform, variable-precision quantization, and a variable-length code where 'the more frequent the spectral coefficient, the shorter the code word.' Not the single MP3 patent — one core piece of ISO/IEC 11172-3 Layer 3. U.S. expired 2013; Fraunhofer's licensing program ended in 2017. A precursor to Spotify, Apple Music, Podcasts, and Discord audio. Title, Claim 1, inventors, filing/priority dates, and Abstract retrieved from Google Patents."
+episode: 29
+publishedAt: "2026-05-07"
+tags: ["AI Archaeology", "Internet & Cryptography Patents", "MP3", "Fraunhofer", "Brandenburg", "Audio Compression", "Expired Patent"]
+series: "Internet & Cryptography Patents"
+seriesNumber: 4
+status: "published"
+---
+
+[Internet & Cryptography Patents #1 (Barcode US2612994A)](/en/notes/26-internet-crypto-patent-01) traced the question — "let a machine identify an article instantly" — posed in 1949 in a Philadelphia graduate program.
+
+This time, we go to 1989. The setting is the Fraunhofer Institute in Erlangen, West Germany. The question is: can we discard sounds the human ear cannot perceive and compress a music file to a tenth of its size or less?
+
+## The conclusion first
+
+Patent number: [US5579430](https://patents.google.com/patent/US5579430)
+Title: Digital encoding process
+U.S. filing: January 26, 1995
+U.S. grant: November 26, 1996
+Priority date: April 17, 1989 (German application DE3912605)
+Expired: 2013 (17 years from grant)
+Inventors: Bernhard Grill, Karl-Heinz Brandenburg, Thomas Sporer, Bernd Kurten, Ernst Eberlein (five names)
+Original Assignee: Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.
+Legal Status: **Expired** (Lifetime)
+
+The question this patent posed can be written in one sentence: "If we represent the spectral components of audio as coefficients, can we drastically shrink the file by giving the most frequently occurring coefficients the shortest bit strings?"
+
+The core of Claim 1 reads:
+
+> sampling an acoustical signal ... transforming the samples ... using a transform/filter bank into a sequence of second samples to thereby reproduce a spectral composition ... quantizing said sequence ... with varying precision ... at least partially coding said sequence using an optimum encoder ... correlating the occurrence probability of the quantized spectral coefficient to the length of the code utilizing a code in such a way that the more frequently said spectral coefficient occurs, the shorter the code word.
+
+"The more frequently said spectral coefficient occurs, the shorter the code word." This is entropy coding (a Huffman-style scheme) applied to audio.
+
+**Two break-with-convention moves are here.** **First, transforming audio from the time domain into the frequency domain before compression.** **Second, using human auditory characteristics (masking effects) so that inaudible coefficients can be quantized coarsely — the framework called the "psychoacoustical iteration loop" in the Description.**
+
+The contents of the .mp3 files we know live in the extension of this design.
+
+---
+
+You open Spotify on your morning commute. You play a YouTube video and it has audio. You join a Discord call. You speed-listen to a podcast. As the precursor to all of this — the design of "delivering audio in tiny files" — we read a 37-year-old patent.
+
+## 1. How this was selected
+
+Selected from the candidate DB (`~/ai-archaeology/db/candidates.tsv`) — IC-004 (overall priority 17, Week 2 "Internet & Cryptography Patents," moderate primary-source difficulty with strong modern connection).
+
+```
+[STEP 1] Compared the six IC priority-15+ candidates (IC-001/003/004/005/006/010)
+[STEP 2] Selected IC-004 MP3 as strongest in storytelling + general-reader connection
+[STEP 3] Confirmed US5579430 on Google Patents
+[STEP 4] Retrieved title, Claim 1, inventors, filing/priority dates, Abstract, and Legal Status via WebFetch
+[STEP 5] DB's "1992 filing" and "Karlheinz Brandenburg-led" entries were inaccurate — the actual U.S. filing is January 1995, and the inventor list contains five people. Corrected here.
+```
+
+Primary source status: Title, Claim 1, basic data, inventors, priority date, and Legal Status retrieved from Google Patents. Full Description text and Forward citation counts not yet confirmed. Fraunhofer's official April 23, 2017 statement on ending the MP3 licensing program is outside the scope of this round.
+
+## 2. The core of the patent
+
+Claim 1 breaks into four parts.
+
+**Step 1: time waveform → frequency representation.** Audio samples (PCM) pass through a "transform/filter bank" — a transform or a filter bank — turning the time-axis waveform into a frequency-axis sequence of coefficients. This corresponds to MDCT (Modified Discrete Cosine Transform) or subband decomposition (the claim does not name MDCT directly; the Description specifies it).
+
+**Step 2: variable-precision quantization.** The frequency coefficients are quantized "with varying precision." **Bands the human ear cannot perceive (masked bands) are quantized coarsely; bands easy to hear are quantized finely.** This is the heart of MP3's "discard the inaudible" — recorded in the Description as "psychoacoustical iteration loop" and "masking effect from high to low frequencies."
+
+**Step 3: variable-length coding (the optimum encoder).** Each quantized coefficient gets a code word whose length depends on its frequency of occurrence: "the more frequently said spectral coefficient occurs, the shorter the code word." This is the same idea as Huffman coding from information theory — short bit strings for common patterns, long ones for rare ones.
+
+**Step 4: shrinking the code table itself.** The end of Claim 1 records a way to reduce the code table's size: "allocating a code word to several elements of said sequence or to a value range" and "directly assigning a code word to only one part of the value range." A direct code is assigned only to part of the value range, with values outside that part mapped to a common identifier and a special code.
+
+In modern terms: transform audio into frequency components, weight them by auditory importance, and compress with frequency-based variable-length codes. Spotify (AAC or Ogg Vorbis), YouTube audio (AAC/Opus), Discord voice (Opus), MP3 podcasts — all of it lives in the extension of this problem setting.
+
+But **MP3 as a whole is not covered by this single patent.** MP3 (ISO/IEC 11172-3 Layer 3, 1993) combines many techniques, with patents held by Fraunhofer, Thomson Multimedia, AT&T Bell Labs, and other research bodies. US5579430 is a core patent for the entropy-coding part. Subband analysis, bit allocation, and Huffman table design are described in other patents and public documents.
+
+## 3. Translation table to today
+
+| US5579430 (1989 priority / 1995 U.S. filing) | Modern audio & data compression | Assessment |
+|---|---|---|
+| Frequency transform via transform/filter bank | MDCT in AAC, Opus, Ogg Vorbis | Similar (the frequency-domain framing carries over; transform algorithms have evolved) |
+| Variable-precision quantization + psychoacoustic model | AAC/Opus psychoacoustic models, HE-AAC SBR | Similar (the use of auditory characteristics is shared; models are far more refined) |
+| Frequency-based variable-length code (Huffman-style) | AAC/FLAC/Opus range coding, AV1 arithmetic coding | Similar (entropy coding as a frame is shared; the field has migrated from Huffman to arithmetic coding) |
+| Code table reduction (value-range split + common identifier) | Standard codebook schemes (AAC codebook switching), Vorbis dynamic codebooks | Metaphor (the design intent of shrinking tables is similar; the modern approach is a predefined family of standard codebooks with dynamic selection) |
+| The MP3 file (.mp3) | AAC (.m4a), Opus (.opus), FLAC (.flac), Ogg Vorbis (.ogg) | Metaphor (a successor family of formats; designs are different) |
+
+**Reading guidance for the table.**
+
+Row 1 (frequency transform) inherits as a technical lineage. MP3's subband-plus-MDCT, AAC's pure MDCT, Opus's CELT/SILK hybrid — they evolved, but the framing of "work in the frequency domain instead of the time domain" persists.
+
+Row 2 (psychoacoustic models) — MP3 was an early widely deployed instance; AAC sharpened the models considerably. The shared problem setting is "use human hearing to drive compression."
+
+Row 3 (entropy coding) — Huffman coding traces back to David A. Huffman's 1952 paper. MP3 was an early application to audio. AAC, Opus, and AV1 video have moved to more efficient arithmetic coding (CABAC, etc.).
+
+Row 4 (table reduction) — close in design intent, but modern codecs predefine multiple codebooks in the standard and switch between them in the bitstream, which is a different implementation choice.
+
+Row 5 — a lineage of file formats: MP3 → AAC (mainstream in the 2000s) → Opus (mainstream for real-time communication in the 2010s onward) → FLAC (lossless niche). Technically distinct standards, succeeding each other in deployment.
+
+## 4. Why this is rarely cited in mainstream technology talk (speculation)
+
+**Reason 1: "Brandenburg single-handedly invented MP3" arrived first**
+
+Media articles and intro books often summarize the story as "Karlheinz Brandenburg invented MP3 in his 1989 PhD thesis." Brandenburg was central, but core patents like US5579430 list **five co-inventors** (Grill, Brandenburg, Sporer, Kurten, Eberlein). The work belongs to the joint research at Erlangen-Nürnberg University and Fraunhofer; the fact that five names sit on the patent's cover gets buried under PR storytelling.
+
+**Reason 2: Confusion between MP3-the-format and a single patent**
+
+MP3 (ISO/IEC 11172-3 Layer 3) was approved as an ISO/IEC standard in 1993. The supporting patents number in the dozens, jointly held by Fraunhofer, Thomson Multimedia, AT&T Bell Labs, and others. US5579430 is one core patent — the "Digital encoding process" for entropy coding. When people say "the Fraunhofer MP3 patent" in the singular, the image becomes that of one patent, but in reality it was a **patent pool**.
+
+**Reason 3: The "expired and free" narrative dominates**
+
+Fraunhofer's April 2017 announcement that "the MP3 licensing program is being terminated" was widely covered. The fuller context — staggered patent expirations, most major U.S./European patents expired by 2017, and AAC having long been the de facto standard — gets dropped. The headline "MP3 is now free" outcompetes the technical detail.
+
+## 5. What this means archaeologically
+
+When you open the music app on your iPhone. The chime on a Discord call connecting. The audio playing under a YouTube video. The play button in your podcast app. These are the texture of 2020s daily life.
+
+US5579430 gave patent form, in 1989, to the problem setting underneath them — "use human auditory characteristics to compress audio to a usable size and make it deliverable and storable." The implementation was a combination of subband, MDCT, psychoacoustic model, and Huffman coding. AAC refined the design. Opus rebuilt it. The implementation changed; the problem setting did not.
+
+The idea of "treat audio in the frequency domain, weight by perceptual importance, and compress with frequency-based variable-length codes" expanded over the past 35 years into music streaming, video streaming, real-time communication, and speech-recognition preprocessing. The question Brandenburg and colleagues wrote into a patent in Erlangen in 1989 now runs as the foundation of the world's audio delivery network.
+
+Before LLMs, the cost of reading "the more frequently said spectral coefficient occurs, the shorter the code word" alongside modern AAC, Opus, FLAC, and AV1 audio tracks was high. AI archaeology lowers that cost.
+
+## 6. Pitfalls
+
+**Pitfall 1: "Fraunhofer invented MP3" is inaccurate**
+
+US5579430 captures one core piece of MP3, but MP3-the-format (ISO/IEC 11172-3 Layer 3) is not Fraunhofer's solo invention. Thomson Multimedia, AT&T Bell Labs, and other partners contributed; the system ran as a patent pool. When you say "Fraunhofer held an MP3 patent," it should mean "one of the major holders among multiple patents."
+
+**Pitfall 2: "It became free in 2017 when the patents expired" is an oversimplification**
+
+The April 2017 Fraunhofer statement was about ending the licensing program, not about every patent reaching full expiry. Major U.S. MP3 patents expired in stages between 2007 and 2017. Expiration dates differ by patent and country, and AAC was already the industry-mainstream standard by then; "expiry" and "loss of market value" do not coincide on the same date.
+
+**Pitfall 3: "Brandenburg made it alone" is inaccurate**
+
+Brandenburg has been central since his PhD work and is widely known as the symbol of MP3's spread. But **the inventor field of US5579430 lists five names jointly**. The work belongs to a team across Erlangen-Nürnberg University, Fraunhofer, and partner institutions. "Father of MP3" is a PR shorthand; the technical history is collaborative.
+
+**Pitfall 4: "Filed in 1992" is wrong**
+
+The candidate DB (IC-004) said "Fraunhofer submitted in 1992." Google Patents shows **U.S. filing January 26, 1995, with priority April 17, 1989 (German DE3912605)**. We could not, in this round, verify any specific 1992 filing event, so this article corrects to the verified dates.
+
+---
+
+## To be precise
+
+**Confirmed facts**
+From Google Patents: US5579430 / U.S. filing 1995-01-26 / U.S. grant 1996-11-26 / Priority 1989-04-17 (German DE3912605) / Expired (Lifetime) / Five inventors (Bernhard Grill, Karl-Heinz Brandenburg, Thomas Sporer, Bernd Kurten, Ernst Eberlein) / Original Assignee "Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V." / Full Claim 1 ("sampling ... transforming ... transform/filter bank ... varying precision ... optimum encoder ... the more frequently said spectral coefficient occurs, the shorter the code word") / Description references "psychoacoustical iteration loop" and "masking effect from high to low frequencies" / Title "Digital encoding process"
+
+**Author's interpretation**
+"MP3 core patent" and "precursor to modern AAC, Opus, FLAC, AV1 audio tracks" are the author's reading. Technical continuity exists, but each format is an independently designed standard. The position taken here is that this is a precursor to the problem setting of "treat audio in the frequency domain, weight by perceptual importance, and compress with variable-length codes."
+
+**Metaphors and analogies**
+Row 4 of the table (code-table reduction ↔ standard codebook scheme) is at the metaphor level. Modern AAC predefines multiple codebooks in the standard and switches between them dynamically — an implementation choice different from the value-range split with common identifier. Row 5 (MP3 ↔ AAC/Opus/FLAC/Ogg) is a format lineage, technically a chain of distinct standards.
+
+**Not confirmed**
+Full Description text (concrete MDCT description, subband decomposition stages) / Forward citations / Primary documents on the ISO/IEC 11172-3 standardization process / Primary text of the Fraunhofer April 23, 2017 statement / Expiration dates of corresponding patents in major countries / Patent-pool agreements between Fraunhofer, Thomson Multimedia, and AT&T Bell Labs / Brandenburg's 1989 PhD thesis / Patent-level descriptions of the differences between Layer 1/2/3 / Which event the DB's "1992 filing" referred to
+
+**Where this comparison breaks**
+US5579430 is not the single patent for MP3 as a whole — it is a core patent for the entropy-coding (variable-length coding) component. Calling this "the Fraunhofer MP3 patent" risks misleading readers into thinking one patent covers MP3, when MP3 is the combination of subband analysis, MDCT, psychoacoustic model, bit allocation, and Huffman coding, each described in different patents or technical documents. Experts will push back first on the single-patent vs. patent-pool conflation. Overplaying Brandenburg's individual contribution understates the four co-inventors and the institutional team — that is the second thing they will push back on.
+
+---
+
+Reference links:
+- Original patent: [US5579430 on Google Patents](https://patents.google.com/patent/US5579430)
+- Internet & Cryptography Patents #1 (research note): [Woodland Barcode US2612994A (1949)](/en/notes/26-internet-crypto-patent-01)
+- Research memo #1 in this series: [HTTP Cookie Patent US5774670A (1995)](/en/notes/27-internet-crypto-patent-memo-01)
+- Research memo #2 in this series: [Ethernet LAN US4063220A (1975)](/en/notes/28-internet-crypto-patent-memo-02)
