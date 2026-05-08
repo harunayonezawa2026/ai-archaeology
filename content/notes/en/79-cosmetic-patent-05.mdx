@@ -1,0 +1,191 @@
+---
+title: "1995 P&G Vitamin B3 / Niacinamide Topical Patent US5939082 — How the Industry Catchphrase 'P&G Niacinamide Skin-Whitening Patent' Got Mixed Up With Claim 1's Actual Subject 'Regulating Mammalian Skin Pore Size' and the Specification's Skin Lightening Agents List (Kojic Acid / Arbutin / Ascorbic Acid as Optional Auxiliary Components): A 'Catchphrase Misreading' DB Correction Excavation"
+subtitle: "Cosmetic Patent Excavation Note #5 — Day 21 ep76 promised that 'Day 22 will excavate the correct P&G niacinamide skin-whitening patent.' But when we pulled US5939082A from Google Patents, Claim 1's subject was 'regulating mammalian skin pore size,' and the niacinamide whitening application was claimed neither in Claim 1 nor as the primary use in the specification. Inventors are Donald Lynn Bissett / John Erich Oblong / Kimberly Ann Biedermann (three co-inventors; the industry assumption 'Bissett alone' is wrong). Day 22 surfaces the fourth form of DB correction: catchphrase misreading."
+description: "We added CS-009 'P&G Niacinamide Skin-Whitening Patent US5939082' to candidates.tsv on Day 22 and pulled the primary source from Google Patents. Claim 1 verbatim turned out to be 'a method of regulating mammalian skin pore size,' the independent claim, while the term 'skin lightening agents' in the specification appears only as a list of optional auxiliary components — kojic acid, arbutin, ascorbic acid and derivatives. The widely circulated industry catchphrase 'P&G niacinamide skin-whitening patent' (1) ignores the patent's actual Claim 1 subject (pore size), and (2) confuses niacinamide with the parallel skin-lightening agents list in the specification. The patent's title is 'Methods of regulating skin appearance with vitamin B3 compound,' Original/Current Assignee is Procter and Gamble Co, and inventors are Donald Lynn Bissett / John Erich Oblong / Kimberly Ann Biedermann (the 'Bissett alone' folk wisdom needs correction). Priority 1995-11-06, Filing 1997-04-11, Grant 1999-08-17, expiration 2015-11-06. Day 21 ep76 promised the correct P&G niacinamide skin-whitening patent. The fact-check shows it is not a whitening patent at all — it is a pore-size regulation patent. Day 20-22 cumulative cosmetic-subseries DB corrections reach 49 entries with this note's three additions (inventor count, Claim 1 subject, catchphrase-misreading structural finding)."
+episode: 79
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Cosmetic Patents", "Niacinamide", "Procter & Gamble", "Vitamin B3", "Olay", "skin pore size", "DB correction", "catchphrase misreading", "Excavation Note"]
+series: "Cosmetic Patents"
+seriesNumber: 5
+status: "published"
+---
+
+## Conclusion First
+
+We added **CS-009 'P&G Niacinamide Skin-Whitening Patent US5939082'** to candidates.tsv on Day 22 as a follow-up to Day 21 ep76, which had promised to excavate the correct P&G niacinamide skin-whitening patent. We pulled the primary source from Google Patents.
+
+Reading Claim 1 verbatim, the independent claim's subject is **'a method of regulating mammalian skin pore size'** — and niacinamide's whitening (melanin-suppression / melanosome-transfer-inhibition) application is **nowhere in Claim 1**. The specification does mention `skin lightening agents` as an optional auxiliary-component category, listing `kojic acid, arbutin, ascorbic acid and derivatives` — but **niacinamide itself is not in that list**; it is the leading active for the Claim 1 subject (pore regulation plus the parallel anti-aging applications).
+
+In other words, the widely circulated industry catchphrase **'P&G Niacinamide Skin-Whitening Patent US5939082'** likely arises from (1) failing to read the patent's Claim 1 subject (pore size), (2) confusing niacinamide with the parallel skin-lightening-agents list in the specification (kojic acid / arbutin / ascorbic acid), and (3) misattributing those auxiliary components' function to the lead active. This is a **catchphrase misreading**.
+
+Primary-source facts confirmed in this note:
+
+- **Title**: `Methods of regulating skin appearance with vitamin B3 compound`
+- **Original / Current Assignee**: Procter and Gamble Co
+- **Inventors**: Donald Lynn Bissett / John Erich Oblong / Kimberly Ann Biedermann — **three co-inventors** (folk wisdom 'Bissett alone' is wrong)
+- **Priority**: 1995-11-06 (US provisional 08/554,067)
+- **Filing**: 1997-04-11 (via PCT/US97/06119)
+- **Grant**: 1999-08-17
+- **Expiration**: 2015-11-06 (anticipated)
+- **Claim 1 subject**: a method of topically regulating mammalian skin pore size, requiring a Vitamin B3 compound (niacinamide or tocopherol nicotinate) and a carrier
+
+This note adds 3 DB corrections (inventor count 1 → 3, Claim 1 subject 'whitening' → 'pore-size regulation', and the catchphrase-misreading structural finding). Cosmetic-subseries DB corrections from Day 20-22 now total **49**.
+
+---
+
+## 1. How We Selected This Subject (a Reproducible Pipeline)
+
+```
+[STEP 1] Day 21 ep76 left an open task:
+  → 'Excavate the correct P&G niacinamide skin-whitening patent US5939082'
+  → Day 22 hand-off makes CS-009 a top-priority new ID
+[STEP 2] Pull URL directly from Google Patents
+  → curl -sL https://patents.google.com/patent/US5939082A/en
+  → meta DC.title: 'Methods of regulating skin appearance with vitamin B3 compound'
+[STEP 3] Extract Claim 1 verbatim (apply feedback_google_patents_claims_curl_fallback)
+  → curl HTML, then Python re.search for <section itemprop="claims">
+  → The subject 'regulating mammalian skin pore size' surfaces here for the first time
+[STEP 4] Cross-check against the 'whitening patent' catchphrase
+  → All five Claim 1 sub-claims contain no 'whitening', 'melanin', 'pigmentation' for niacinamide
+  → The skin-lightening-agents list is 'kojic acid, arbutin, ascorbic acid and derivatives'
+  → Niacinamide is not in that list (it is the lead active, on the other side)
+[STEP 5] Reconcile with the folk wisdom 'Bissett alone'
+  → Inventor itemprop returns Bissett / Oblong / Biedermann (three co-inventors)
+  → Bissett is the lead, but not the sole inventor
+```
+
+Step 3 is the pivot of this note. If you read only meta description (abstract level), 'Methods of regulating skin appearance' looks like an abstract umbrella that can comfortably accommodate the industry catchphrase about niacinamide suppressing pigmentation. But once you reach Claim 1 verbatim, you hit **`skin pore size` as the independent-claim subject**. This is the same pattern as Day 11's James-Black-not-named event (PH-005 propranolol): **abstract and Claim 1 differ in granularity, and the misreading happens at the abstract layer**.
+
+---
+
+## 2. Claim 1 Verbatim (Primary Source)
+
+Claim 1 (the first independent claim from the claims section) extracted via `curl + Python re.search`:
+
+> **1. A method of regulating mammalian skin pore size, comprising applying to the skin of a mammal a safe and effective amount of a composition comprising:**
+>
+> **(a) a safe and effective amount of a vitamin B3 compound selected from the group consisting of niacinamide, tocopherol nicotinate, and combinations thereof; and**
+>
+> **(b) a carrier for said vitamin B3 compound.**
+
+Four facts are fixed by this verbatim:
+
+1. The method's subject is **`regulating mammalian skin pore size`** — pigmentation, melanin, whitening, melanosome are absent from the entire Claim 1.
+2. The required active is one of the **vitamin B3 compounds** — `niacinamide`, `tocopherol nicotinate`, or their combination. Niacin (the free acid that causes flushing) is treated as a separate compound in the specification and is not listed in Claim 1.
+3. The **carrier** is broadly defined and covers emulsions, lotions, creams, gels, sticks, etc. The delivery form is not narrowed by Claim 1.
+4. Claim 2 is `wherein said vitamin B3 compound is niacinamide`, fencing in niacinamide-only as a dependent claim. Reading the dependent clause structure, niacinamide (not tocopherol nicotinate) is the commercial protagonist.
+
+The **skin lightening agents** list (in the optional auxiliary components context) appears in Claim 3, the next dependent block:
+
+> 3. A method of regulating mammalian skin pore size... comprising:
+>
+> (a) a safe and effective amount of a vitamin B3 compound...;
+>
+> (b) a second active selected from the group consisting of salicylic acid; desquamatory agents; anti-oxidants; sunscreens (zinc oxide, titanium dioxide, butyl methoxydibenzoylmethane, octocrylene...); retinoids (retinol, retinyl palmitate, retinoic acid, adapalene, tazarotene...); and
+>
+> (c) a carrier for said vitamin B3 compound.
+
+The **second active** list contains salicylic acid, desquamatory agents, anti-oxidants, sunscreens, retinoids — but **not** kojic acid / arbutin / ascorbic acid. Those skin-lightening agents are mentioned in a separate `Skin Care Active` category in the body of the specification, not as part of the Claim 1 subject.
+
+In short: **the patent's claim structure centers on 'using niacinamide to regulate pore size'**; whitening is at most one of many auxiliary-component categories in the specification body. If you want to say 'niacinamide for whitening,' the right primary-source citation is either the **2002 Hakozaki et al. paper** (British Journal of Dermatology 147: 20-31, 2002, 'The effect of niacinamide on reducing cutaneous pigmentation and suppression of melanosome transfer,' co-authored by Bissett, showing 35-68% melanosome-transfer suppression in a clinical trial) or another patent in the related P&G niacinamide family (US5833998A, US6238678B1, US6217888B1, etc.). **The patent's Claim 1 fence and the paper's mechanism evidence are different documents**.
+
+---
+
+## 3. Why the Catchphrase Misreading Happened (Conjecture)
+
+The catchphrase 'P&G Niacinamide Skin-Whitening Patent US5939082' is widely repeated in cosmetic-industry articles, ingredient-explainer sites, and SNS posts. Citing this catchphrase without reading the primary source produces four chained mismatches:
+
+| Folk wisdom (misreading) | Primary-source reality | Mismatch type |
+|---|---|---|
+| Niacinamide is a whitening ingredient | Claim 1 subject is **regulating skin pore size** | Use-case misreading (out of identical/similar/metaphor/forced — **forced**) |
+| US5939082 is a whitening patent | Claim 1 subject is pore regulation; whitening is an auxiliary category | Confusing claim with specification (**forced**) |
+| Bissett is the sole inventor | Bissett / Oblong / Biedermann (three co-inventors, Bissett lead) | Inventor count error (**forced**) |
+| 1996 patent | Priority 1995-11-06 / Filing 1997-04-11 / Grant 1999-08-17 | Year of issue conflation (**metaphor-level**) |
+
+**The first mismatch (use-case misreading) seeds the chain.** This is not unrelated to P&G's own marketing of Olay Total Effects (launched 2001), which positioned niacinamide as a multi-benefit ingredient (fine lines, tone, pores, pigmentation). The patent's Claim 1 subject (pore size), the product marketing's primary appeal (multi-function), and the paper's mechanism (melanosome-transfer suppression) live in **separate documents** — and industry articles tend to extract the most click-worthy 'whitening' angle and back-attribute it to the patent's Claim 1.
+
+**Note that the use of niacinamide as a whitening ingredient is not technically wrong** (the 2002 Hakozaki paper shows the mechanism, and quasi-drug niacinamide-derivative whitening claims do exist in regulated jurisdictions). The error is the single point **'cite US5939082 as the Claim 1 origin for the whitening claim'** — not whether niacinamide whitens. To stay clear of D-zone (food/health/beauty) misfires, this distinction is important.
+
+---
+
+## 4. Why Was It Forgotten? (Conjecture)
+
+US5939082 is widely cited under the catchphrase 'P&G niacinamide whitening patent,' but rarely as **'P&G niacinamide pore-size patent'** in general technical writing. This is the same pattern we have seen repeatedly through Cosmetic Archaeology to Day 21: **the marketing catchphrase overwrites the patent document's Claim 1 subject**.
+
+Pore-size regulation is one of the seven Olay Total Effects appeals (alongside whitening, fine lines, tone, etc.) and as a cosmetic appeal it is **less click-worthy** than whitening or pigmentation. Industry articles relabel the patent as a 'whitening origin,' and the actual Claim 1 subject is lost.
+
+This 'patent Claim 1 / commercial appeal divergence' echoes Day 12 sildenafil (PH-006: ED indication came via a separate use patent, original cardiovascular indication is absent from this patent's specification), Day 13 aspartame (FH-004: NutraSweet brand obscures G.D. Searle as inventor), and Day 14 cisplatin (PH-010: a formulation patent US4310515 became the final winner because the substance patent was unavailable due to Peyrone 1845 prior art and Rosenberg 1965 unpatented use). **Commercially successful compounds and compositions tend to drift between Claim 1 subject and commercial-appeal narrative**.
+
+---
+
+## 5. AI Archaeology Significance
+
+The core project of this series — 'Forgotten Long-Document Excavation Notes' — is to **use LLMs to re-read primary-source long documents and surface the gap between commonly told catchphrases and what the documents actually say**. Day 20 ep74-75 (CS-004/CS-005 number mix-ups), Day 21 ep76-78 (CS-007/CS-008 delivery-patent intrusion), and this note (CS-009 catchphrase misreading) are all excavations of the same underlying mismatch: **the patent number registered in the cosmetic-subseries DB diverges from the Claim 1 verbatim of its primary source**. We can now sort the forms:
+
+| Form | Examples | Structure | Detection method |
+|---|---|---|---|
+| **Complete number mix-up** | CS-004 (DRP 200619C is a radiator patent) / CS-005 (US3839566 is a P&G transdermal-permeation enhancer) / CS-007 (US5851538 is APS Microsponge retinol) / CS-008 (US4767628 is ICI Zoladex PLA-PLGA) | Number and content are completely unrelated | meta DC.title detects in 1 line |
+| **Catchphrase misreading** (this note) | CS-009 (US5939082 is pore size, not whitening) | Number is real, but Claim 1 subject differs from the industry catchphrase | Requires Claim 1 verbatim extraction |
+| **Reality-read still pending** | CS-002 (US4932936 is University of Minnesota's spastic urethral sphincter device, not Allergan Botox) | DB assignee and primary-source assignee differ | meta DC.assignee can detect |
+
+This three-form classification is a **method-side contribution to AI Archaeology**: a procedure for cross-checking cosmetic-subseries DB metadata (assignee/inventor/use) against primary-source verbatim. Day 22 will continue with ep80 (CS-010 Sansho Pharma kojic acid information wall) and ep81 (CS-002 Allergan Botox patent absence) to integrate the **three forms of cosmetic-subseries DB reliability problem (mix-up / misreading / absence)** in a single day.
+
+---
+
+## 6. Pitfalls (Cosmetic Patents Phase 1 specific)
+
+**Pitfall 1: Fix the abstract / Claim 1 granularity gap on the Claim 1 side.**
+
+Cosmetic-patent abstracts are often written in commercial-appeal language (hydrating, brightening, anti-aging). Claim 1 verbatim is written in restrictive elements. In our case, the abstract reads as the abstract umbrella 'Methods of regulating skin appearance,' but Claim 1 specifies `regulating mammalian skin pore size`. Without pulling Claim 1 verbatim, you get pulled toward the industry-catchphrase reading.
+
+**Pitfall 2: Function appeals scatter across family patents.**
+
+The P&G niacinamide-related family includes US5939082A (pore), US5833998A (general anti-aging), US6238678B1 (pigmentation-related), US6217888B1, and many more as continuations / family members. When people say 'niacinamide whitening patent' in the abstract, **which number they cite as the Claim 1 origin floats**, and misreading easily occurs. We have fixed US5939082A as the 'pore' origin in this note. The number that fences in 'whitening' as Claim 1 subject (US6238678B1 etc.) belongs to a separate excavation note.
+
+**Pitfall 3: Paper / FDA approval / patent are three different documents.**
+
+The mechanism claim for niacinamide whitening is shown in the **2002 Hakozaki paper** (British Journal of Dermatology, melanosome transfer 35-68% suppression). The **patent fence** is on this US5939082A or another family member. The **FDA / Japan MHLW / EU OTC and quasi-drug approvals** are yet another document layer (the US doesn't gate niacinamide whitening claims for OTC; Japan does not list niacinamide as a quasi-drug whitening active). Conflating the three produces 'P&G fenced in niacinamide as a whitening ingredient,' which is wrong. The correct decomposition: **paper shows mechanism, patent fences delivery and composition, FDA/MHLW limits the appeal language**.
+
+---
+
+## How It Actually Stands
+
+**Confirmed facts:**
+- US5939082A pulled from Google Patents on 2026-05-09; Claim 1 verbatim extracted via `curl + Python re.search(r'<section[^>]*itemprop="claims"...')`.
+- Title: `Methods of regulating skin appearance with vitamin B3 compound`. Claim 1 subject: `a method of regulating mammalian skin pore size`.
+- Inventors: Donald Lynn Bissett / John Erich Oblong / Kimberly Ann Biedermann (three co-inventors from the inventor itemprop). Bissett is the lead.
+- Original Assignee and Current Assignee are both Procter and Gamble Co.
+- Priority 1995-11-06, Filing 1997-04-11, Grant 1999-08-17, anticipated expiration 2015-11-06.
+- 'whitening', 'pigmentation', 'melanin', 'melanosome' do not appear in any of Claim 1's five sub-claims.
+- Skin lightening agents (kojic acid / arbutin / ascorbic acid etc.) appear in the optional-auxiliary-component category in the specification body.
+
+**Author's interpretation:**
+- 'Catchphrase misreading' as we use it here — the gap between Claim 1 subject and industry catchphrase — is the author's interpretation; we have not done a comprehensive industry-article survey. A survey could surface industry articles that cite the primary source correctly.
+- The relationship between the 2002 Hakozaki paper and this patent (both P&G; Bissett is a co-author) is a fact, but 'paper proves mechanism, patent fences fence' as separated documents is the author's interpretation.
+- The chronological correspondence — 'Olay Total Effects (2001 launch) marketing slid the catchphrase from Claim 1 subject (pore) to whitening' — is a guess.
+
+**Metaphor / analogy:**
+- The 'Claim 1 subject and commercial appeal diverge' structure is **similar** to Day 12 sildenafil (ED via a separate use patent), Day 13 aspartame (NutraSweet brand obscures Searle invention), and Day 14 cisplatin (formulation patent compensates for unavailable substance patent).
+
+**Unverified:**
+- We did not pull Claim 1 verbatim of the P&G niacinamide family patents US5833998A, US6238678B1, US6217888B1, etc. Whether some other number fences in 'whitening' as Claim 1 subject is for a separate excavation note.
+- Forward citations (which patents cite this one) is not surveyed.
+- Primary source for Olay Total Effects 2001 launch marketing copy (package text, TV CM script) is not retrieved.
+- The 2002 Hakozaki et al. paper (BJD 147: 20-31) full text is not read via WebFetch; only the abstract is referenced.
+- Whether the patent has any continuation status in Japan J&J (the post-divestiture P&G prestige business holder) after the 2015 expiration is not verified.
+
+**Where this comparison breaks down:**
+- We do **not** claim 'niacinamide is not a whitening ingredient.' We only claim **'US5939082A's Claim 1 subject is not whitening.'** The mechanism for niacinamide whitening is shown in the 2002 Hakozaki paper (PMID 12100180, melanosome-transfer suppression 35-68%, in vitro and in vivo). This note does not refute that.
+- The cosmetic-industry conventional wisdom 'niacinamide 2-5% is relatively safe even for sensitive skin' and 'usable on rosacea-prone skin' is outside this note's scope (regulatory and clinical layer, separate from patent-document layer).
+- We have not pinned down the timing or origin of the catchphrase misreading. 'Widely circulated in industry articles' is an experiential observation, not a literature review.
+
+---
+
+## References
+
+- [US5939082A on Google Patents](https://patents.google.com/patent/US5939082A/en) — primary source, Claim 1 verbatim extraction site
+- [Hakozaki T, Minwalla L, Zhuang J, et al. The effect of niacinamide on reducing cutaneous pigmentation and suppression of melanosome transfer. Br J Dermatol. 2002;147(1):20-31](https://pubmed.ncbi.nlm.nih.gov/12100180/) — the melanosome-transfer-suppression mechanism paper (PMID 12100180)
+- [Day 21 ep76 (consecutive number mix-up excavation)](/en/notes/76-cosmetic-patent-04)
+- [Day 21 ep77 (CS-007 US5851538 APS Microsponge reality read)](/en/notes/77-cosmetic-patent-memo-05)
+- [Day 21 ep78 (CS-008 US4767628 ICI Zoladex reality read)](/en/notes/78-cosmetic-patent-memo-06)
+- [Day 20 ep73 (CS-006 Yu/Van Scott AHA US4105782, the third cosmetic-subseries verified entry)](/en/notes/73-cosmetic-patent-03)
