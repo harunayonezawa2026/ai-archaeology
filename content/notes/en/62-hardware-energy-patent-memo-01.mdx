@@ -1,0 +1,112 @@
+---
+title: "Re-reading Texas Instruments' Jack S. Kilby's 1959 Sole-Inventor Patent US3138743 'Miniaturized Electronic Circuits' Through the 5-Month Filing Gap with Noyce's Planar IC and the Sole-Inventor 2000 Nobel Physics Prize"
+subtitle: "Hardware & Energy Patent Memo #1 — Filed 1959-02-06, granted 1964-06-23, sole-invented by Jack S. Kilby, assigned to Texas Instruments Inc. Claim 1 covers an integrated circuit with 'a plurality of junction transistors defined in a single-crystal semiconductor wafer + thin elongated semiconductor resistor regions in the wafer + conductive means.' This is the origin point of the contemporary microprocessor problem framing. Kilby's filing preceded Noyce's planar IC (Fairchild, filed 1959-07-30) by 5 months, but commercial ICs followed the Noyce lineage (monolithic structure with on-chip Al wiring) — Kilby's gold flying-wire structure is, strictly speaking, not a monolithic IC."
+description: "On February 6, 1959, in Dallas, Texas, the new Texas Instruments engineer Jack S. Kilby filed US Patent US3138743 'Miniaturized electronic circuits' as sole inventor. Claim 1 requests 'a plurality of junction transistors defined in a single-crystal semiconductor wafer (each transistor with thin opposite-conductivity layers on one major face providing base and emitter regions overlying a collector region, with the base-emitter and base-collector junctions both extending wholly to that major face) + a plurality of thin elongated regions in the wafer providing semiconductor resistors + conductive means selectively connecting them.' Background: Kilby joined TI in May 1958 and conceived the IC during the company-wide vacation period when, as a new hire, he had no vacation rights. On September 12, 1958, he assembled an oscillation circuit on a germanium mesa p-n-p transistor and confirmed continuous sine-wave output on an oscilloscope — the world's first working IC. The patent was granted June 23, 1964 and expired June 23, 1981. In parallel, Robert N. Noyce of Fairchild Semiconductor filed US2981877 'Semiconductor device-and-lead structure' on July 30, 1959 (about 5 months after Kilby), granted April 25, 1961. Noyce, building on Hoerni's planar process, achieved monolithic structure with on-chip Al wiring; whereas Kilby's chip used thin gold (Au) flying wires between elements, a hybrid structure that is, strictly speaking, not a monolithic IC. Commercial ICs followed the Noyce lineage. Kilby received half of the 2000 Nobel Physics Prize (the other half to Alferov and Kroemer for heterostructures); Noyce, having died in 1990, was ineligible. In his Nobel lecture, Kilby remarked, 'Bob ought to have been here.' This memo confirms primary source URL and Claim 1, but the full specification text remains unread. We position this as a starting point for organizing what's analogy and what's similarity in the modern China RISC-V vs. ARM vs. x86 instruction-set split."
+episode: 62
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Hardware & Energy Patent", "Integrated Circuit", "IC", "Jack Kilby", "Texas Instruments", "Noyce", "Memo"]
+series: "Hardware & Energy Patent"
+seriesNumber: 2
+format: "memo"
+status: "published"
+---
+
+**About this memo:** "Memos" in this series record candidate summaries at the stage where the primary source URL has been confirmed. We have retrieved Claim 1, inventors, filing/grant dates, assignee, and family members from Google Patents, but the full specification text (mesa transistor figure details, examples, 1958 September 12 demo records) remains unread. We list only confirmed facts and explicitly mark speculation.
+
+---
+
+## Why Excavate
+
+The integrated circuit (IC) is the foundation underlying all modern: (a) microprocessors, (b) DRAM/flash memory, (c) GPUs/NPUs/TPUs, (d) all smartphones/PCs/servers, (e) Chinese AI chips (Huawei Ascend, Cambricon, manufactured by SMIC). The starting point is September 12, 1958, when Texas Instruments' Jack S. Kilby confirmed working oscillation on a germanium mesa transistor — that filing being the subject of this memo, **US3138743**. The excavation's significance: **confirm the 5-month patent-history gap between Kilby (TI, filed 1959-02-06) and Noyce (Fairchild, filed 1959-07-30) from primary sources, and create a starting point for organizing what's analogy and what's similarity in the modern RISC-V vs. ARM vs. x86 instruction-set split**.
+
+## Patent Basic Info
+
+- **Patent number**: US3138743
+- **Title**: Miniaturized electronic circuits
+- **Filing date**: 1959-02-06
+- **Grant date**: 1964-06-23
+- **Expiration**: 1981-06-23 (Expired - Lifetime)
+- **Inventor**: Jack S. Kilby (sole)
+- **Original assignee**: Texas Instruments Inc.
+- **Current assignee**: Texas Instruments Inc.
+- **Primary source**: [Google Patents](https://patents.google.com/patent/US3138743A/en) (URL confirmed, Claim 1 retrieved)
+- **Family members**: US3138747A / US3350760A / US3261081A / US3434015A, plus 40+ international (GB / DE / FR / CH / AT / BE / DK / NL / SE / MY / JP)
+
+## Claim 1 (Verbatim)
+
+> IN AN INTEGRATED CIRCUIT HAVING A PLURALITY OF ELECTRICAL CIRCUIT COMPONENTS IN A WAFER OF SINGLE-CRYSTAL SEMICONDUCTOR MATERIAL, A PLURALITY OF JUNCTION TRANSISTORS DEFINED IN THE WAFER, EACH TRANSISTOR INCLUDING THIN LAYERS OF SEMICONDUCTOR MATERIAL OF OPPOSITE CONDUCTIVITY-TYPES ADJACENT ONE MAJOR FACE OF THE WAFER PROVIDING A BASE AND AN EMITTER REGION WHICH OVERLIE A COLLECTOR REGION, THE BASE-EMITTER AND BASE-COLLECTOR JUNCTIONS OF EACH OF SAID TRANSISTORS EXTENDING WHOLLY TO SAID ONE MAJOR FACE, A PLURALITY OF THIN ELONGATED REGIONS OF THE WAFER EXHIBITING SUBSTANTIAL RESISTANCE TO PROVIDE SEMICONDUCTOR RESISTORS, THE ELONGATED REGIONS BEING SPACED ON SAID ONE MAJOR FACE FROM THE TRANSISTORS, AND CONDUCTIVE MEANS CONNECTING SELECTED ONES OF THE ELONGATED REGIONS TO REGIONS OF SELECTED ONES OF THE TRANSISTORS.
+
+Five claim elements:
+
+1. **Plurality of electrical circuit components in a single-crystal semiconductor wafer**
+2. **Plurality of junction transistors defined in the wafer**: each transistor has thin opposite-type semiconductor layers on one major face providing base and emitter regions overlying a collector region, with both base-emitter and base-collector junctions extending wholly to that major face (planar-like description, but not Hoerni's planar process)
+3. **Thin elongated regions in the wafer** providing semiconductor resistors
+4. **Elongated resistor regions are spatially separated** from the transistors
+5. **Conductive means** for selective connections
+
+Design core: **"Integrate multiple active elements (transistors) and passive elements (resistors) within the same single-crystal semiconductor wafer."** This is the basic IC concept, but the actual Kilby chip connected elements with thin gold (Au) flying wires — a hybrid structure that is strictly speaking not a monolithic IC.
+
+## Kilby vs. Noyce Design Split
+
+| Axis | Kilby (TI) | Noyce (Fairchild) |
+|---|---|---|
+| Patent number | US3138743 | US2981877 |
+| Filing date | 1959-02-06 | 1959-07-30 |
+| Grant date | 1964-06-23 | 1961-04-25 |
+| Wiring method | Au flying wires (hand wiring) | Al deposited (on-chip) |
+| Planar process | Not adopted (mesa structure) | Adopted (Hoerni 1959 planar) |
+| Monolithic | Strictly not | Yes |
+| Commercial dominance | Brief (1962-1964 military) | Late 1960s onward mainstream |
+
+Design split: (a) Kilby established the conception of placing elements on the substrate (a precursor) but flying wires limited mass producibility; (b) Noyce, building on Hoerni's planar process, achieved monolithic on-chip Al wiring and enabled mass production. The two are "different solutions to the same IC implementation problem" — commercial ICs followed the Noyce lineage.
+
+## The September 12, 1958 First Working Demo
+
+Kilby joined TI in May 1958 (new engineer, IC development and applications). Unlike Bell Labs researchers, TI had a custom of granting summer mass vacations to employees, but as a brand-new hire Kilby had no vacation rights and got the chance to focus alone on IC concepts.
+
+On September 12, 1958, Kilby assembled an oscillation circuit on a germanium mesa p-n-p transistor and confirmed continuous sine-wave output on an oscilloscope. This was the first IC to operate in history. The filing came about 5 months later, on February 6, 1959.
+
+Note: The DB "unconfirmed" column says "first working demo" but the **demo year is 1958-09-12, not 1959-09-12** (possible DB year typo; Computer History Museum and Wikipedia both confirm 1958).
+
+## 2000 Nobel Physics Prize Background
+
+The 2000 Nobel Physics Prize was split among 3:
+- **Jack S. Kilby (half)**: "for his contribution to the invention of the integrated circuit"
+- **Zhores I. Alferov + Herbert Kroemer (other half)**: "for developing semiconductor heterostructures"
+
+Robert N. Noyce died of heart failure on June 3, 1990; Nobel Prizes cannot be awarded posthumously, so he was ineligible. In his Nobel lecture, Kilby reportedly said, "Bob ought to have been here."
+
+## Contemporary Connection Hypothesis (Speculation)
+
+| Past | Contemporary |
+|---|---|
+| Single-crystal wafer integration (1959) | TSMC / Samsung / Intel modern microprocessor manufacturing (precursor with continuity, design differs) |
+| Kilby Au flying wires vs. Noyce Al monolithic | China RISC-V vs. ARM vs. x86 ISA split (similar problem framing, technically different) |
+| Kilby sole filing vs. Noyce parallel invention | Modern OpenAI vs. Anthropic vs. DeepSeek parallel LLM development (analogy, structurally different) |
+| Sept 12, 1958 demo → Feb 1959 filing | China DeepSeek paper publication → commercial deployment timing gap (weak analogy) |
+
+**No row reaches "identity."** Saying Kilby's chip is "the same as" modern microprocessors is a design-level error — modern processor manufacturing flowed through Hoerni planar process → Dennard scaling → Mead-Conway VLSI → Mead-Conway PLA → Carver Mead synthesis. Kilby's patent's significance is its position as **an important precursor that first defined the problem of integrating multiple elements on the same wafer**.
+
+## Unconfirmed
+
+- Specification body (Detailed Description, figure details) not read in this episode
+- TI internal records (notes, photos, video) of September 12, 1958 not retrieved (indirectly confirmed via Computer History Museum exhibits)
+- Kilby vs. Noyce patent litigation (1961-1969, ultimately settled with cross-license) judgment documents not retrieved
+- Forward citations count not retrievable due to Google Patents display limits
+- Whether modern TSMC / Samsung processor lines fall within this patent's claim scope: not a legal issue since it expired in 1981
+
+## Next Actions
+
+- Future Note upgrade candidate: combine with Noyce US2981877 for a deep-dive Note on Kilby vs. Noyce design split
+- DB-match result (HW-002): second consecutive match in the Day 8~15 19-correction series (HW-001 and HW-002)
+- Add to DB "unconfirmed" column that 1958-09-12 is the correct demo year
+
+---
+
+References:
+- [Google Patents: US3138743](https://patents.google.com/patent/US3138743A/en)
+- [Google Patents: US2981877 (Noyce planar IC)](https://patents.google.com/patent/US2981877A/en)
+- [Computer History Museum: 1958 All Semiconductor "Solid Circuit"](https://www.computerhistory.org/siliconengine/all-semiconductor-solid-circuit-is-demonstrated/)
+- [Wikipedia: Jack Kilby](https://en.wikipedia.org/wiki/Jack_Kilby)
+- [Wikipedia: Invention of the integrated circuit](https://en.wikipedia.org/wiki/Invention_of_the_integrated_circuit)
+- [NobelPrize.org: Physics 2000](https://www.nobelprize.org/prizes/physics/2000/summary/)

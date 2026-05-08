@@ -1,0 +1,112 @@
+---
+title: "1959年 Texas Instruments の Jack S. Kilby が単独出願した『ミニチュア化電子回路』特許 US3138743 を、Noyce 平面型 IC との出願日5ヶ月差と2000年 Nobel 物理学賞単独受賞から読み返す"
+subtitle: "ハードウェア・エネルギー特許 発掘メモ #1 — 1959-02-06 出願・1964-06-23 成立、Jack S. Kilby 単独発明、Texas Instruments Inc. 譲受。Claim 1 で『単結晶半導体ウェハ内の複数接合トランジスタ＋ウェハ内エロンゲート抵抗領域＋導電配線』を集積回路として囲い込んだ、現代マイクロプロセッサの問題設定の起点。Noyce 平面型 IC（Fairchild、1959-07-30 出願）に5ヶ月先行したが、商業 IC は Noyce 系列（同一基板内 Al 配線によるモノリシック構造）が主流に──Kilby の Au flying-wires 構造は厳密にはモノリシック IC ではないという設計分岐"
+description: "1959年2月6日、テキサス州ダラスの Texas Instruments Inc. の新人エンジニア Jack S. Kilby は、米国特許 US3138743『Miniaturized electronic circuits』を単独発明者として出願した。Claim 1 は『単結晶半導体ウェハ内に定義された複数接合トランジスタ（各トランジスタは反対導電型の薄半導体層を一方の主面側に持ちベースとエミッタ領域を形成、ベース・エミッタ接合とベース・コレクタ接合は両方とも当該主面に達する）＋ウェハ内の細長い半導体抵抗領域＋導電手段による選択的接続』を請求する。出願背景は1958年5月の TI 入社後、社内有給休暇期間中に着想し、1958年9月12日にゲルマニウム mesa p-n-p トランジスタ片で発振回路を組み連続正弦波出力をオシロで確認したという初動作デモ。本特許は1964年6月23日に成立、1981年6月23日に失効。並行して Fairchild Semiconductor の Robert N. Noyce が1959年7月30日（Kilby より約5ヶ月遅）に米国特許 US2981877『Semiconductor device-and-lead structure』を出願し1961年4月25日に成立した。Noyce は Hoerni のプレーナプロセスを基盤に同一基板内で Al 配線を行うモノリシック構造を実現したのに対し、Kilby チップは細い金（Au）の flying wires で素子間を接続したハイブリッド構造で、厳密には monolithic IC ではない。商業 IC は Noyce 系列が主流となったが、Kilby は2000年 Nobel 物理学賞を半額受賞（残り半分は Alferov・Kroemer のヘテロ構造、Noyce は1990年逝去のため対象外）、受賞時に『Bob もここにいるべきだった』と発言した。本メモは一次資料 URL 確認済み・Claim 1 取得済み・明細書全文未読、Kilby vs Noyce の設計分岐と特許史が現代の中国 RISC-V vs ARM vs x86 命令セット分岐と何が比喩で何が類似かを整理する起点として位置づける。"
+episode: 62
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ハードウェア・エネルギー特許", "集積回路", "IC", "Jack Kilby", "Texas Instruments", "Noyce", "発掘メモ"]
+series: "ハードウェア・エネルギー特許"
+seriesNumber: 2
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料 URL を確認した段階で候補の概要を記録したものです。本メモは Google Patents から Claim 1・発明者・出願日・成立日・譲受人・関連特許まで取得済みですが、明細書全文（mesa トランジスタ図面の詳細・実施例・1959年9月12日デモ記録との関係文書）は未読。確認済み事実のみ記載し、推測は推測として明示します。
+
+---
+
+## なぜ掘るか
+
+集積回路（IC）は現代の (a) マイクロプロセッサ、(b) DRAM・フラッシュメモリ、(c) GPU・NPU・TPU、(d) スマートフォン・PC・サーバ全機種、(e) 中国 AI チップ（Huawei Ascend、Cambricon、SMIC 製造）の全てが上に乗る基盤技術である。出発点は1958年9月12日、Texas Instruments の Jack S. Kilby がゲルマニウム mesa トランジスタ片で組んだ発振回路の動作確認で、その出願文書が本メモの対象 **US3138743** である。発掘の意義は、**Kilby（TI、1959-02-06 出願）と Noyce（Fairchild、1959-07-30 出願）の5ヶ月差の特許史を一次資料で確認し、現代の RISC-V vs ARM vs x86 命令セット分岐と何が比喩で何が類似かを整理する起点**を作ることにある。
+
+## 特許の基本情報
+
+- **特許番号**：US3138743
+- **タイトル**：Miniaturized electronic circuits
+- **出願日**：1959-02-06
+- **成立日**：1964-06-23
+- **失効**：1981-06-23（Expired - Lifetime）
+- **発明者**：Jack S. Kilby 単独
+- **原譲受人**：Texas Instruments Inc.
+- **現譲受人**：Texas Instruments Inc.
+- **一次資料**：[Google Patents](https://patents.google.com/patent/US3138743A/en)（URL確認済み・Claim 1 取得済み）
+- **関連特許**：US3138747A / US3350760A / US3261081A / US3434015A、海外40件超（GB / DE / FR / CH / AT / BE / DK / NL / SE / MY / JP）
+
+## Claim 1（一次資料 verbatim）
+
+> IN AN INTEGRATED CIRCUIT HAVING A PLURALITY OF ELECTRICAL CIRCUIT COMPONENTS IN A WAFER OF SINGLE-CRYSTAL SEMICONDUCTOR MATERIAL, A PLURALITY OF JUNCTION TRANSISTORS DEFINED IN THE WAFER, EACH TRANSISTOR INCLUDING THIN LAYERS OF SEMICONDUCTOR MATERIAL OF OPPOSITE CONDUCTIVITY-TYPES ADJACENT ONE MAJOR FACE OF THE WAFER PROVIDING A BASE AND AN EMITTER REGION WHICH OVERLIE A COLLECTOR REGION, THE BASE-EMITTER AND BASE-COLLECTOR JUNCTIONS OF EACH OF SAID TRANSISTORS EXTENDING WHOLLY TO SAID ONE MAJOR FACE, A PLURALITY OF THIN ELONGATED REGIONS OF THE WAFER EXHIBITING SUBSTANTIAL RESISTANCE TO PROVIDE SEMICONDUCTOR RESISTORS, THE ELONGATED REGIONS BEING SPACED ON SAID ONE MAJOR FACE FROM THE TRANSISTORS, AND CONDUCTIVE MEANS CONNECTING SELECTED ONES OF THE ELONGATED REGIONS TO REGIONS OF SELECTED ONES OF THE TRANSISTORS.
+
+請求の構成要素は5つ：
+
+1. **単結晶半導体ウェハ（single-crystal semiconductor material）** に定義された複数の電気回路コンポーネント
+2. **ウェハ内に定義された複数の接合トランジスタ**：各トランジスタは反対導電型の薄半導体層を一方の主面側に持ち、ベースとエミッタ領域を形成し、ベース・エミッタ接合とベース・コレクタ接合は両方とも当該主面に達する（プレーナ的記述ではあるが Hoerni プレーナプロセスではない）
+3. **ウェハ内の細長い領域（elongated regions）** が抵抗を提供（半導体抵抗）
+4. **エロンゲート抵抗領域はトランジスタから空間的に離れた配置**
+5. **導電手段（conductive means）** による選択的接続
+
+設計の核は **「同一の単結晶半導体ウェハ内に複数の能動素子（トランジスタ）と受動素子（抵抗）を集積する」**。これが集積回路の基本概念だが、Kilby チップ実物は素子間を細い金（Au）の flying wires で接続したハイブリッド構造で、厳密には monolithic IC（同一基板内配線）ではない。
+
+## Kilby vs Noyce の設計分岐
+
+| 軸 | Kilby（TI） | Noyce（Fairchild） |
+|---|---|---|
+| 特許番号 | US3138743 | US2981877 |
+| 出願日 | 1959-02-06 | 1959-07-30 |
+| 成立日 | 1964-06-23 | 1961-04-25 |
+| 配線手法 | 金 flying wires（手配線） | Al 蒸着配線（同一基板内） |
+| プレーナプロセス | 不採用（mesa構造） | 採用（Hoerni 1959プレーナ） |
+| Monolithic 性 | 厳密には不該当 | 該当 |
+| 商業的優位 | 短期（1962-1964 軍事用途） | 1960年代後半以降の主流 |
+
+設計分岐：(a) Kilby は基板内素子配置という発想を確立した先行例だが、配線が flying wires で量産性が低い、(b) Noyce は Hoerni プレーナプロセスを基盤に同一基板内 Al 配線でモノリシック構造を実現し量産可能になった。両者は「集積回路をどう実装するか」という同じ問題に対する2系統の解で、商業 IC は Noyce 系列が主流になった。
+
+## 1958年9月12日の初動作デモ
+
+Kilby は1958年5月に TI 入社（社内では新人エンジニア、IC 開発・応用担当）。Bell Labs の研究者と異なり、TI は新入社員に夏季休暇（mass vacation）を与える慣行があったが、入社直後の Kilby は休暇権を持たず、社内で1人で残って IC の構想に集中する機会を得た。
+
+1958年9月12日、Kilby はゲルマニウム mesa p-n-p トランジスタ片で発振回路を組み、オシロスコープで連続正弦波の出力を確認した。これが歴史上最初に動作した集積回路である。出願は約5ヶ月後の1959年2月6日。
+
+注意：DB の「未確認ポイント」欄に「最初のデモ動画」とあるが、**動作確認年は1959年9月12日ではなく1958年9月12日**である（DB 内に年度誤記の可能性。Computer History Museum・Wikipedia ともに1958年で一致確認）。
+
+## 2000年 Nobel 物理学賞の経緯
+
+2000年 Nobel 物理学賞は3名で分割：
+- **Jack S. Kilby（半額）**：「集積回路発明への貢献」
+- **Zhores I. Alferov + Herbert Kroemer（残り半分）**：「半導体ヘテロ構造発展への貢献」
+
+Robert N. Noyce は1990年6月3日に心不全で逝去しており、Nobel 賞は死後授与不可のため対象外となった。Kilby は受賞講演で「Bob（Noyce）もここにいるべきだった」と言及したと記録されている。
+
+## 現代との接続仮説（推測）
+
+| 過去 | 現代 |
+|---|---|
+| 単結晶半導体ウェハ内集積（1959）| TSMC・Samsung・Intel の現代マイクロプロセッサ製造（先行例として連続性あり、設計は別物） |
+| Kilby Au flying wires vs Noyce Al monolithic | 中国 RISC-V vs ARM vs x86 の命令セット分岐（類似の問題設定、技術的には別物） |
+| Kilby 単独出願 vs Noyce 平行発明 | 現代 OpenAI vs Anthropic vs DeepSeek の並行 LLM 開発（類比、構造としては別物） |
+| 1958年9月12日デモ → 1959年2月出願 | 中国 DeepSeek の論文公開 → 商業展開タイミング差（弱い類比） |
+
+**「同一」レベルは無い**。Kilby チップが現代マイクロプロセッサと「同じものです」と言うのは設計レベルで誤りで、現代のプロセッサ製造は Hoerni プレーナプロセス → Dennard scaling → Mead-Conway VLSI → Mead-Conway PLA → Carver Mead synthesis 等を経た発展の成果である。Kilby 特許の意義は「同一ウェハ内に複数素子を集積する」問題を初めて定義した**重要な前史**として位置付ける。
+
+## 未確認
+
+- 明細書本文（Detailed Description、図面の詳細）は今回未読
+- 1958年9月12日の TI 社内記録（ノート・写真・動画）は今回未取得（Computer History Museum 展示で間接確認）
+- Kilby vs Noyce の特許訴訟（1961-1969、最終的にクロスライセンスで和解）の判決文書は未取得
+- Forward citations 件数は Google Patents 表示制限で取得できず
+- TSMC・Samsung の現代プロセッサ系列が本特許のクレーム範囲を侵害する可能性は1981年失効済みのため法的問題なし
+
+## 次アクション
+
+- 後日 ep ノート格上げ候補：Noyce US2981877 と並べて発掘ノート1本（Kilby vs Noyce 設計分岐の深掘り）
+- DB 一致確認結果（HW-002）：Day 8〜15 の19件訂正系列の中で2件目の連続一致（HW-001 と HW-002）
+- 1958年9月12日が正しい動作確認年であることを DB「未確認ポイント」欄に追記する
+
+---
+
+参考リンク：
+- [Google Patents: US3138743](https://patents.google.com/patent/US3138743A/en)
+- [Google Patents: US2981877（Noyce 平面型 IC）](https://patents.google.com/patent/US2981877A/en)
+- [Computer History Museum: 1958 All Semiconductor "Solid Circuit"](https://www.computerhistory.org/siliconengine/all-semiconductor-solid-circuit-is-demonstrated/)
+- [Wikipedia: Jack Kilby](https://en.wikipedia.org/wiki/Jack_Kilby)
+- [Wikipedia: Invention of the integrated circuit](https://en.wikipedia.org/wiki/Invention_of_the_integrated_circuit)
+- [NobelPrize.org: Physics 2000](https://www.nobelprize.org/prizes/physics/2000/summary/)

@@ -1,0 +1,197 @@
+---
+title: "1948年 Bell Telephone Laboratories の Bardeen と Brattain が出願した『半導体材料を用いた三電極回路素子』特許 US2524035──Shockley が発明者欄に不在の点接触型トランジスタ核特許、1956年 AT&T 同意審決でロイヤリティフリー強制ライセンス対象になり半導体産業の世界拡散の制度的起点となった"
+subtitle: "ハードウェア・エネルギー特許 発掘ノート #1 — 米国特許 US2524035『Three-electrode circuit element utilizing semiconductive materials』、John Bardeen / Walter H. Brattain 2名共同発明、Bell Telephone Laboratories Inc. 譲受、1948-02-26 優先・1948-06-17 出願（先行出願 Serial No. 11,165 の continuation-in-part）・1950-10-03 成立、現譲受人 AT&T Corp。Claim 1 は『一方の導電型のブロックに反対導電型の薄表面層を設け、エミッタ・コレクタ・ベース3電極を表面層と本体に接触させた回路素子』を囲い込み、点接触型トランジスタの基本構造を覆う。本特許の発明者欄に William Shockley が不在である事実、および1956年1月24日の AT&T 同意審決で本特許が反トラスト和解の一環としてロイヤリティフリー強制ライセンス対象に含まれた事実を、半導体産業の世界拡散・東アジア半導体覇権の制度的起点として読み返す"
+description: "1948年2月26日、ニュージャージー州 Murray Hill の Bell Telephone Laboratories で物理学者 John Bardeen と実験家 Walter H. Brattain は、米国特許 Serial No. 11,165（後に放棄、本特許 US2524035 の継続出願元）として『半導体材料を用いた三電極回路素子』を出願した。本特許は1948年6月17日に continuation-in-part として再出願され、1950年10月3日に成立。発明の対象は、(a) 一方の導電型を持つ半導体ブロックの本体、(b) その表面に形成された反対導電型の薄層、(c) 表面層に接触するエミッタ電極、(d) エミッタから広がる電流を集めるコレクタ電極、(e) 本体と接触するベース電極からなる回路素子で、Claim 1 はこの5要素の組合せを請求する。設計の核は『電流を増幅する半導体3端子素子』で、これが点接触型トランジスタ（point-contact transistor）の基本特許である。本特許の発明者欄に William Shockley が不在である事実は、1947年12月23日の点接触型動作確認実験に Shockley が直接関与せず、Bardeen の表面状態理論と Brattain の実験技術で成立したという Bell Labs 内部の役割分担を反映している（Shockley は別系統の接合型トランジスタ特許 US2569347 を1948年6月26日に単独出願し1951年9月25日に成立、Bardeen-Brattain 特許とは別物）。1956年 Nobel 物理学賞は3名共同受賞となったが、特許名義は2名共同のまま残った。さらに1956年1月24日の米司法省 vs AT&T 反トラスト訴訟和解（Consent Decree）で、本特許を含む Bell Labs の半導体既存特許群は審決前発行分について全申請者にロイヤリティフリーで強制ライセンスされた。これにより Texas Instruments・IBM・Sony 等が低コストで参入可能となり、東芝・NEC・日立・サムスン・TSMC へと続く半導体産業の世界的拡散の制度的起点になった（Watzinger et al. の経済史研究は本同意審決をマーシャル・プランを超える経済貢献と評価）。本記事は (1) Google Patents で取得した US2524035 の Claim 1 verbatim、(2) 点接触型と接合型の設計分岐、(3) Shockley 名義不在の経緯、(4) 1956年同意審決の制度効果、(5) 現代の中国 AI×韓台半導体ニッチへの接続、(6) Week 4「ハードウェア・エネルギー特許」サブシリーズ初回としての位置付けを発掘する。"
+episode: 61
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ハードウェア・エネルギー特許", "トランジスタ", "Bell Labs", "Bardeen", "Brattain", "Shockley", "AT&T同意審決", "半導体", "発掘ノート"]
+series: "ハードウェア・エネルギー特許"
+seriesNumber: 1
+status: "published"
+---
+
+## 結論を先に
+
+1948年2月26日、ニュージャージー州 Murray Hill の **Bell Telephone Laboratories** で物理学者 **John Bardeen** と実験家 **Walter H. Brattain** は、米国特許 Serial No. 11,165 として『半導体材料を用いた三電極回路素子』を出願した。これは1948年6月17日に continuation-in-part として再出願され（Serial No. 33,466）、**1950年10月3日に US2524035 として成立**した。Claim 1 は『一方の導電型ブロックに反対導電型の薄表面層を設け、エミッタ・コレクタ・ベース3電極を配置した回路素子』を請求し、これが**点接触型トランジスタの基本特許**である。
+
+本特許の発明者欄には **William Shockley が不在**である。Shockley は別系統の **接合型トランジスタ特許 US2569347**（1948-06-26 出願・1951-09-25 成立、単独発明者）を出願しており、両特許は同じ「半導体3端子増幅素子」という問題に対する2系統の解として設計が分岐している。1956年 Nobel 物理学賞は3名共同受賞となったが、本特許名義は2名のまま残った。
+
+そして1956年1月24日、米司法省 vs AT&T 反トラスト訴訟の Consent Decree（同意審決）で、本特許を含む Bell Labs の審決前発行半導体特許群は、**全申請者にロイヤリティフリーで強制ライセンスされた**。Texas Instruments・IBM・Sony は低コストで参入可能となり、その後の東芝・NEC・サムスン・TSMC へと続く**半導体産業の世界的拡散の制度的起点**となった（Watzinger et al. 2020 の経済史研究はこの同意審決を「マーシャル・プランを超える経済貢献」と評価する）。
+
+Week 4「ハードウェア・エネルギー特許」サブシリーズ初回として、本記事はこの77年前の3ページ少々の特許文書を、現代の中国 AI×韓台半導体ニッチの起点として読み返す。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] candidates.tsv の HW-001〜010 セクションから優先度16の未実施候補を抽出
+         → HW-001 トランジスタ特許（Bell Labs Bardeen-Brattain）が
+           Week 4 着手の象徴として最適と判断
+[STEP 2] DB登録 URL（https://patents.google.com/patent/US2524035）の到達確認
+[STEP 3] WebFetch で Google Patents から Claim 1・発明者・譲受人・日付を取得
+[STEP 4] DB記述「Bell Telephone Laboratories、Bardeen/Brattain。成立1950年10月3日」と
+         一次資料の照合
+         → 発明者・譲受人・成立日とも一致確認（DB誤り訂正なし＝7件目の一致確認）
+[STEP 5] 周辺事実検証：Shockley 不在の経緯、接合型 US2569347 との関係、
+         1956年 AT&T 同意審決の効果、Nobel 1956 物理学賞 3名共同受賞
+[STEP 6] 現代ニッチ接続：中国 AI×韓台半導体ロードマップが本特許の延長線上に
+         位置するか、AT&T 同意審決の制度効果を経由した Sony・サムスン・TSMC の
+         系譜で確認
+```
+
+選定理由：(a) Week 4「ハードウェア・エネルギー特許」初回として象徴性が最大、(b) Bardeen-Brattain と Shockley の特許名義分離という史実上の重要論点、(c) 1956年 AT&T 同意審決という制度史側の発掘テーマが半導体産業のグローバル化を解く鍵、(d) はるこの主軸ニッチ（中国 AI×韓台半導体）の77年前の起点を1セッションで読み切れる、(e) DB一致確認ケース（Day 8〜15 の19件訂正系列の中で稀少）。
+
+## 2. Claim 1 と明細書の核
+
+Google Patents から取得した Claim 1（verbatim）：
+
+> A circuit element which comprises a block of semiconductive material of which the body is of one conductivity type and a thin surface layer is of the opposite conductivity type, an emitter electrode making contact with said layer, a collector electrode making contact with said layer disposed to collect current spreading from said emitter electrode, and a base electrode making contact with the body of the block.
+
+ここで重要なのは5点：
+
+1. **対象は『回路素子』（circuit element）**。デバイス全体ではなく、半導体3端子増幅素子の基本構造として請求している。
+2. **半導体ブロックは一方の導電型**（n型 or p型）。
+3. **表面層は反対導電型の薄層**（thin surface layer of the opposite conductivity type）。これが現代 MOSFET の反転層・チャネル層の概念的前史。
+4. **エミッタ電極とコレクタ電極は表面層に接触**（making contact with said layer）。点接触型では金属針が直接接触する設計。
+5. **ベース電極は本体側**（making contact with the body of the block）。
+
+明細書冒頭の発明定義：
+
+> This invention relates to a novel method of and means for translating electrical variations for such purposes as amplification, wave generation, and the like.
+
+つまり「電気的変動を増幅・発振等の目的で変換する方法および手段」として設計された。1950年代以前の真空管（vacuum tube）が担っていた増幅・発振機能を、固体素子（solid-state device）で置き換える発想がここに固定された。
+
+なお1950年の USPTO 慣行では明示的な Abstract セクションが存在しないため、本特許には独立した Abstract が無い（1976年以降の特許には Abstract が必須化）。本記事は冒頭定義文を Abstract 相当として扱う。
+
+## 3. 点接触型と接合型の設計分岐──Shockley 不在の経緯
+
+### 1947年12月の点接触型動作確認
+
+Bell Labs の固体物理グループは、1945年に Shockley が立ち上げた。当初の構想は **field-effect amplifier**（電界効果増幅器、現代 FET の前身）で、Shockley が主導したが実験は失敗を重ねた。Bardeen は1945年に表面状態理論（surface states theory）を提唱し、半導体表面の電子状態が電界効果を阻害する原因を説明した。
+
+1947年11月から12月にかけて、Bardeen と Brattain はゲルマニウム（Ge）表面に金属針を接触させる実験を繰り返した。1947年12月16日、ゲルマニウム単結晶に2本の金属箔接点を約0.05mm 間隔で接触させた素子で**増幅動作を確認**した。1947年12月23日には Bell Labs 上層部に対するデモで **増幅率約18倍** の動作を示した。これが歴史上最初のトランジスタである。
+
+Shockley はこの実験には**直接関与していない**。Computer History Museum の整理によれば、Shockley は実験成功後に「自分が点接触型の発明者欄から外れた」事実に強い不満を抱き、1948年1月から3月にかけて独自に接合型トランジスタの構想を進めた。
+
+### 接合型 US2569347 の設計
+
+Shockley は1948年6月26日に米国特許 US2569347『Circuit Element Utilizing Semiconductive Material』を**単独発明者**として出願し、1951年9月25日に成立した。これが接合型トランジスタ（junction transistor）の核特許である。
+
+| 軸 | 点接触型 US2524035 | 接合型 US2569347 |
+|---|---|---|
+| 発明者 | Bardeen / Brattain 2名 | Shockley 単独 |
+| 出願日 | 1948-06-17（CIP、優先1948-02-26） | 1948-06-26 |
+| 成立日 | 1950-10-03 | 1951-09-25 |
+| 構造 | 金属針2本＋ベース | 半導体PNP（またはNPN）3層 |
+| 製造性 | 手作業組立、量産困難 | 結晶引き上げで量産可 |
+| 商業的優位 | 短期間 | 1950年代以降の主流 |
+
+設計分岐：(a) 点接触型は実験室レベルで世界初の動作確認だったが製造再現性が低い、(b) 接合型は結晶成長技術と組み合わせて量産可能で1950年代以降の半導体産業の標準形になった。両者は「同じ問題（半導体3端子増幅）を異なる構造で解いた」関係（先行例＋並行発明）であって、Bardeen-Brattain 特許が現代 MOSFET の直接の祖というわけではない（現代 MOSFET の祖は1959年 Atalla-Kahng の MOS構造特許）。
+
+## 4. 1956年 AT&T 同意審決──半導体産業のグローバル化の制度的起点
+
+1956年1月24日、米司法省と AT&T は反トラスト訴訟（United States v. Western Electric Co. & AT&T、1949年提訴）の和解として **Consent Decree**（同意審決）を締結した。主要条件は：
+
+1. **既存特許**（審決前発行分）= 全申請者に**ロイヤリティフリー**で強制ライセンス（RCA・GE・Westinghouse は既存クロスライセンスのため除外）
+2. **将来特許**（審決後発行分）= "reasonable royalties" で非排他ライセンス義務
+3. AT&T の事業範囲は通信サービスに制限、半導体製造業への進出禁止
+
+US2524035 と US2569347 はいずれも**審決前発行**のため、ロイヤリティフリー強制ライセンス対象に含まれた。これにより：
+
+- **Texas Instruments**（1954年シリコントランジスタ商業化）
+- **IBM**（1950年代半ば、半導体メモリ研究本格化）
+- **Sony**（1955年トランジスタラジオ TR-55、ライセンス取得後の量産化）
+- **東芝・NEC・日立**（1950年代後半、AT&T 経由ライセンスで半導体事業立ち上げ）
+
+が低コストで参入可能になった。Watzinger・Fackler・Nagler・Schnitzer の2020年経済史論文（"Bell Labs and the 1956 Consent Decree"）は、この同意審決の経済効果について「マーシャル・プランを上回る貢献」と評価している。
+
+その後の系譜は：1960年代の日本半導体産業の確立 → 1980年代の DRAM 競争 → 1990年代以降の韓国（サムスン・SK ハイニックス）・台湾（TSMC）の台頭 → 2020年代の中国 AI×韓台半導体ロードマップへと続く。**77年前の3ページの特許が、現代の地政学的半導体ニッチの制度的起点になった**という対応関係は、1956年同意審決という「ライセンス強制」の中継点を経由する。
+
+## 5. なぜ「気持ち悪いほど近い」のか（現代との対応表）
+
+| 過去の要素 | 現代の中国 AI×韓台半導体ニッチ |
+|---|---|
+| 半導体3端子増幅素子（1948）| 現代 MOSFET / FinFET / GAA トランジスタ（先行例として連続性あり、ただし設計は別物） |
+| 点接触型 vs 接合型の設計分岐 | 中国 RISC-V vs ARM vs x86 の命令セット分岐（類似の問題設定、技術的には別物） |
+| 1956年 AT&T 同意審決＝ライセンス強制 | 米中半導体規制（Entity List・輸出管理）＝逆方向のライセンス制限（比喩・反転構造） |
+| Bell Labs → 世界拡散（東芝・サムスン・TSMC）| TSMC → 世界依存（NVIDIA・Apple・中国 AI 全社）（並行構造、ただし TSMC が中継ハブ） |
+| Shockley の発明者欄不在 | Jensen Huang・Lisa Su 等の表象的人物と TSMC 等インフラ提供側の関係（類比、構造として別物） |
+
+この対応表のうち、**「同一」レベルは無い**。点接触型トランジスタが現代 MOSFET と「同じものです」と言うのは設計レベルで誤りで、現代 MOSFET の祖は1959年 Atalla-Kahng MOS 特許 US3102230、さらに3D化の祖は1989年 Hisamoto FinFET 特許 JPS62-105474A 等が並ぶ別系列である。本特許の意義は「半導体3端子増幅という問題を初めて解いた」前史としての位置付けで、その後の MOSFET 系列・FinFET 系列・GAA 系列は全てこの問題設定の上に成立する**重要な前史**である。
+
+「設計レベルで違うが、問題意識は重なる」が正しい言い方である。
+
+## 6. なぜ忘れられたか（推測）
+
+本特許自体は**忘れられていない**。Bell Labs の歴史を語る一般書・教科書・Computer History Museum の展示で必ず参照される。むしろ「忘れられたのは特許そのものよりも、特許の文面（Claim 1 verbatim）が現代の半導体産業の起点として何を覆っているかの具体像」である：
+
+1. **Claim 1 を読む人がほぼ居ない**：歴史書・教科書は1947年12月23日の動作確認デモを語るが、特許出願文書そのものを引用することは少ない。
+2. **1956年同意審決の制度効果が一般語りで参照されにくい**：「Bell Labs がトランジスタを発明した」という英雄史観は流通するが、「同意審決でロイヤリティフリーになったから世界拡散した」という制度史側面は経済史専門の論文に閉じている。
+3. **Shockley の発明者欄不在は技術史マニア以外には届きにくい**：Nobel 賞は3名共同受賞だが特許は2名のまま残ったという食い違いは、1次資料側でしか確認できない。
+
+## 7. AI考古学的な意味
+
+本連載の問題意識「人類が読まなかった長文を、LLM で再読する」に対して、本特許は典型的な発掘対象である：
+
+- 特許文書としては3ページ少々で「長文」ではないが、**Claim 1 verbatim を読む読者がほぼ居ない**点で読まれていない長文に該当する。
+- 1956年同意審決の25ページ強の Consent Decree 文書も、**経済史専門外では読まれていない**長文の代表例である（本記事ではまだ全文を読んでいないため、後日 ep62 以降の発掘ノートで深掘り対象になり得る）。
+- 現代の中国 AI×韓台半導体ニッチを語るとき、77年前の3ページ特許＋25ページ同意審決を起点に置き直すと、**地政学的半導体覇権の制度史的前史**が見えてくる。
+
+LLM はこの「短いが読まれない」一次資料群を高速横断する用途に最適である。
+
+## 8. 落とし穴（Hardware Archaeology 固有のもの）
+
+**落とし穴1：「直系の祖先」と書かない**
+
+本特許は現代 MOSFET の「直系の祖先」ではない。MOSFET 系列の祖は1959年 Atalla-Kahng 特許 US3102230 で、設計レベルで本特許と別物である。本記事では一貫して「重要な前史」「先行例」と書いている。
+
+**落とし穴2：Nobel 賞 3名 vs 特許 2名の食い違い**
+
+1956年 Nobel 物理学賞は Shockley・Bardeen・Brattain 3名共同受賞だが、本特許 US2524035 の発明者は Bardeen・Brattain の**2名のみ**である。Shockley は別特許 US2569347 の単独発明者として記録されている。この食い違いを「Nobel 賞＝特許名義」と混同しない。
+
+**落とし穴3：1956年同意審決の射程**
+
+同意審決の射程は **Bell Labs（AT&T 子会社）の特許**に限定される。当時の半導体特許は他にも RCA・GE・Philco 等があり、これらは同意審決の対象外である。「半導体産業全体がロイヤリティフリーになった」と一般化するのは誤り。
+
+**落とし穴4：現代ニッチ接続の比喩濫用**
+
+「米中半導体規制が1956年同意審決の反転構造」は本記事の比喩であって、設計・制度レベルで構造として一致するわけではない。前者は輸出管理規制で「ライセンス制限」、後者は反トラスト和解で「ライセンス強制」という対立構造であり、比喩としては成立するが分析モデルとしては別物である。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- Google Patents から US2524035 の Claim 1・発明者（Bardeen/Brattain 2名）・譲受人（Bell Telephone Laboratories Inc., 現 AT&T Corp）・優先日（1948-02-26、先行出願 Serial No. 11,165 から CIP）・出願日（1948-06-17）・成立日（1950-10-03）・失効状況（Expired Lifetime）を取得
+- Shockley 接合型特許 US2569347 が別出願（1948-06-26 出願・1951-09-25 成立・単独発明者）であることを Google Patents 二次取得で確認
+- 1956年1月24日 AT&T Consent Decree の存在を Watzinger et al. 2020 論文・PBS Transistor 番組記事で確認
+- 1956年 Nobel 物理学賞は Shockley・Bardeen・Brattain 3名共同受賞であることを NobelPrize.org で確認
+
+**著者の解釈：**
+- 「現代の中国 AI×韓台半導体ニッチの制度的起点は1956年同意審決」は著者の解釈であって、定量的な経済モデルで立証されたものではない（Watzinger et al. の経済史論文が最も近い実証）
+- 「点接触型と接合型は同じ問題に対する2系統の解」は技術史的整理で、特許文面そのものは両者を比較していない
+
+**比喩・アナロジー：**
+- 「米中半導体規制は1956年同意審決の反転構造」は比喩
+- 「中国 RISC-V vs ARM vs x86 の命令セット分岐は点接触 vs 接合の構造類似」は概念類比であって設計レベルでは別物
+- 「Shockley 不在は Jensen Huang・Lisa Su の表象構造類比」は類比、構造としては別物
+
+**未確認：**
+- 1956年同意審決の Consent Decree 全文（25ページ強）は今回未読、引用は二次資料経由
+- Bell Labs の社内ライセンス交渉記録（AT&T アーカイブ・Murray Hill）は今回未取得
+- Forward citations 件数は Google Patents 表示制限で取得できず
+- TSMC・サムスンの初期ライセンス契約が AT&T 経由で取得されたかの一次資料は未確認（二次資料 Watzinger et al. 経由）
+
+**この比較が破綻する点：**
+- 「77年前の特許＝現代半導体ニッチの起点」は制度史的整理であって、技術系譜としては Atalla-Kahng MOS 1959・Dennard scaling 1974・Mead-Conway VLSI 1980・Hoeneisen-Mead 1972 等の中継点を多数経由している。本記事はこの中継点を省略している。
+- 1956年同意審決の効果は半導体に限らずレーザー・通信・コンピューティング全体に及ぶため、半導体産業のみへの効果を切り出すのは事後的整理である。
+
+---
+
+参考リンク：
+- [Google Patents: US2524035](https://patents.google.com/patent/US2524035)
+- [Google Patents: US2569347（Shockley 接合型）](https://patents.google.com/patent/US2569347)
+- [Computer History Museum: 1947 Point-Contact Transistor](https://www.computerhistory.org/siliconengine/invention-of-the-point-contact-transistor/)
+- [Computer History Museum: 1948 Junction Transistor](https://www.computerhistory.org/siliconengine/conception-of-the-junction-transistor/)
+- [NobelPrize.org: Physics 1956](https://www.nobelprize.org/prizes/physics/1956/summary/)
+- [PBS Transistor: Deciding to Share (1956 Consent Decree)](https://www.pbs.org/transistor/background1/events/sharing.html)
+- [Watzinger, Fackler, Nagler, Schnitzer 2020: Bell Labs and the 1956 Consent Decree](http://www.monika-schnitzer.com/uploads/4/9/4/1/49415675/watzinger_etal_0219.pdf)
