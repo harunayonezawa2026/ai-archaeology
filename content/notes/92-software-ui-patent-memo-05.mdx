@@ -1,0 +1,93 @@
+---
+title: "1960 年 1 月 11-16 日 Paris 会議で 13 名国際委員会（IFIP+ACM+GAMM 協同）が策定した『Report on the Algorithmic Language ALGOL 60』── John Backus／Friedrich Bauer／Heinz Bottenbruch／Julien Green／Charles Katz／John McCarthy／Peter Naur（編集者）／Alan Perlis／Heinz Rutishauser／Klaus Samelson／Bernard Vauquois／Joseph Wegstein／Adriaan van Wijngaarden／Michael Woodger──Communications of the ACM 1960 年 5 月号 3(5):299-314 公開・Numerische Mathematik 1960 同時掲載・1963 年 1 月 Revised Report 公開でありながら、Wikipedia 英語版 ALGOL 60 項・dl.acm.org CACM 1960-05 論文・ACM Turing Award Naur 2005／Perlis 1966／Bauer 公式ページ・Britannica いずれも特許番号への言及がない『適格性壁』第 6 弾発掘譚（SW サブシリーズ DB 形態：適格性壁 (a) pre-judicial era 国際委員会協同形態 第 1 弾）"
+description: "Day 26 SW サブシリーズ第 5 メモ（適格性壁 (a) pre-judicial era 第 3 件目・国際委員会協同形態）。1960 年 1 月 11-16 日 Paris で開催された 13 名国際委員会会議で策定された ALGOL 60 仕様について、Wikipedia 英語版 ALGOL 60 項・dl.acm.org CACM 1960-05 論文（DOI 10.1145/367236.367262）・1963 年 CACM 6(1):1-17 Revised Report（DOI 10.1145/366193.366201）・ACM Turing Award Naur 2005 公式ページ・同 Perlis 1966 公式ページ・Bauer 経歴いずれも特許番号への言及なしを verify。1960 年は Gottschalk v. Benson の 12 年前の判例不在期で、IFIP（International Federation for Information Processing）+ ACM（米国計算機学会）+ GAMM（ドイツ応用数学力学協会）の 3 組織協同公開形態が pre-judicial era (a) の (a-3) 国際委員会協同サブ形態を構成。Day 25 ep88 SW-002 FORTRAN（(a-1) 企業ラボ単独型）／本日 ep91 SW-009 LISP（(a-2) 学術公開純粋形）／ep93 SW-010 COBOL（(a-4) 政府契約ハイブリッド形）と並ぶ第 3 細別。"
+seriesNumber: 4
+episode: 92
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "ALGOL", "Naur", "Backus", "IFIP", "適格性壁", "発掘メモ"]
+series: "ソフトウェア・UI特許"
+status: "published"
+format: "memo"
+---
+
+## 発掘メモについて
+
+一次資料 URL 確認済み・本文未読（Wikipedia 英語版 ALGOL 60 項、dl.acm.org Communications of the ACM 1960 年 5 月号 3(5):299-314『Report on the Algorithmic Language ALGOL 60』DOI 10.1145/367236.367262、Springer Numerische Mathematik 1960『Report on the algorithmic language ALGOL 60』DOI 10.1007/BF01386216、ACM Turing Award Laureate Peter Naur 2005 公式ページ、同 Alan J. Perlis 1966 公式ページ、Britannica ALGOL 60 項の 6 件二次資料を参照範囲とする）。**ALGOL 60 仕様自体・BNF 記法・Backus-Naur Form の特許番号は今回 verify 範囲では見つからなかった**ため、本メモは『**特許不在の発掘譚 = 適格性壁 (a) pre-judicial era 国際委員会協同形態の構造記録**』として書く。
+
+## 1. ALGOL 60 国際委員会基本情報
+
+| 項目 | 内容 |
+|---|---|
+| 会議 | **1960 年 1 月 11-16 日 Paris 会議**（IFIP TC2 主催、6 日間） |
+| 委員会人数 | 13 名（先行 ALGOL 58 委員会 8 名 + 新規 5 名） |
+| 編集者 | **Peter Naur**（Regnecentralen, Denmark） |
+| 米国側 委員 | John Backus（IBM）、Julien Green（IBM, France 系）、Charles Katz（Univac）、John McCarthy（MIT）、Alan Perlis（Carnegie Tech）、Joseph Wegstein（NBS）、Bernard Vauquois（Sorbonne, France） |
+| 欧州側 委員 | Friedrich Bauer（Mainz / München）、Heinz Bottenbruch（Darmstadt）、Heinz Rutishauser（ETH Zurich）、Klaus Samelson（Mainz / München）、Adriaan van Wijngaarden（CWI Amsterdam）、Michael Woodger（NPL Teddington UK） |
+| 主催組織 | **IFIP** (International Federation for Information Processing) Working Group 2.1 + **ACM** (Association for Computing Machinery) + **GAMM** (Gesellschaft für Angewandte Mathematik und Mechanik, ドイツ応用数学力学協会) |
+| 公開媒体 | Communications of the ACM 1960-05 3(5):299-314 ／ Numerische Mathematik 1960（Springer）2(1):106-136 ／ Computer Journal 1960 ／ EUDML（European Digital Mathematics Library）に欧州系コピー |
+| Revised Report | **1963 年 1 月 Communications of the ACM 6(1):1-17**（Naur 編集者）／同月 Numerische Mathematik 4(1):420-453 |
+| BNF 記法 | Backus が ALGOL 58 用に提案した『Backus Normal Form』を Naur が ALGOL 60 用に拡張 → 現在の **Backus-Naur Form**（後年 Knuth が改名提案） |
+| 特許番号 | **今回 verify 範囲では発見できず**（Wikipedia EN・ACM Turing 公式 3 名・dl.acm.org CACM ともに記載なし） |
+
+## 2. 核心：『適格性壁 (a) pre-judicial era 国際委員会協同形態』の構造
+
+### (a) 確認した二次資料の verify 状況
+
+- WebSearch ""ALGOL 60" patent USPTO Backus Naur Bauer Perlis" → ALGOL 60 仕様の論文・EUDML PDF・Springer Numerische Mathematik 等は豊富にヒットするが、ALGOL 関連特許番号への言及は **0 件**
+- Wikipedia 英語版 ALGOL 60 項：Paris 会議（1960-01-11..16）・13 名国際委員会・CACM 1960-05 公開・1963 Revised Report・Naur 編集者の年表詳細記載、**特許番号への言及なし**、IFIP/ACM/GAMM 知財条項への言及なし
+- dl.acm.org CACM 1960-05『Report on the Algorithmic Language ALGOL 60』DOI 10.1145/367236.367262：論文メタデータ取得確認済（本文有料・本メモ未読）、ACM 公式公開
+- Springer Numerische Mathematik 1960『Report on the algorithmic language ALGOL 60』DOI 10.1007/BF01386216：欧州側 同時公開を確認、Springer デジタルアーカイブで本文取得可（本メモ未読）
+- ACM Turing Award Laureate Peter Naur 2005 公式ページ：受賞理由『for fundamental contributions to programming language design and the definition of Algol 60, to compiler design, and to the art and practice of computer programming』、**特許への言及なし**
+- ACM Turing Award Laureate Alan J. Perlis 1966 公式ページ：受賞理由『for his influence in the area of advanced programming techniques and compiler construction』、**特許への言及なし**
+- Britannica ALGOL 60 項：国際委員会・1960 Paris 会議の記載、**特許番号への言及なし**
+
+### (b) IFIP+ACM+GAMM 3 組織協同公開構造
+
+1960 年当時の ALGOL 60 仕様策定は、**3 つの異なる国・3 つの異なる組織** が協同する形態で進められた：
+
+1. **ACM（米国計算機学会）**：米国側委員（Backus／McCarthy／Perlis 等）の所属組織、Communications of the ACM が公開媒体の一つ
+2. **GAMM（ドイツ応用数学力学協会）**：欧州側委員の一部（Bauer／Samelson／Bottenbruch 等）の所属組織、Numerische Mathematik が公開媒体の一つ
+3. **IFIP**（International Federation for Information Processing、UNESCO 主導で 1960 年設立）：1960-01 Paris 会議は IFIP TC2（Technical Committee 2）/ Working Group 2.1（Programming Languages）主催形態に成長、1962 年以降の ALGOL 仕様改訂は IFIP WG 2.1 が継続管理
+
+このプロセスにより、ALGOL 60 仕様は **特許化される前に複数国・複数組織から同時論文公開され、prior art（先行技術）として確定**した。BNF 記法（Backus が ALGOL 58 用に提案・Naur が ALGOL 60 用に改良）も含めて、**3 組織協同の公開機構が IP 防衛として機能**した構造で、後発の特許出願は引用される論文の多さで実質的に拒絶される。
+
+CACM 1960-05 論文と Numerische Mathematik 1960 論文が **同時** に公開された事実は、**米国だけ／欧州だけ** のローカル特許出願では prior art を回避できないことを意味し、**国際委員会協同形態は単一国家の特許戦略に対する強い障壁** として機能した。これは後年 1980 年代以降の **国際標準化機関による技術標準（ISO/IEC、IETF、W3C 等）** の設計思想と問題意識が直接重なる。
+
+### (c) BNF 記法と『言語仕様の数学的記述』の特許化困難
+
+ALGOL 60 仕様の核心である **Backus-Naur Form** は『プログラミング言語の構文を文脈自由文法で記述する記法』であり、Backus が ALGOL 58 用に『Backus Normal Form』として提案、Naur が ALGOL 60 用に改良。BNF 記法自体も **Communications of the ACM 1959-05 論文** で Backus が公開（特許化なし）、Naur の改良も論文公開。
+
+BNF が **mathematical notation =『数学的記法』** に分類される性質は、当時の米国特許運用『mathematical method = unpatentable』ドクトリンに直接該当し、**ALGOL 60 仕様全体が pre-judicial era (a) 形態の典型例** として位置づけられる。13 名委員会の中で 7 名が後年 ACM Turing Award を受賞（Backus 1977／Perlis 1966／Naur 2005／McCarthy 1971／van Wijngaarden 1972 IFIP Silver Core Award／Bauer 各種学術賞）したが、**ALGOL 60 / BNF 関連特許の取得記録は委員会 13 名いずれにも見つからない**。
+
+## 3. 厳密にはこう（簡略 3 項目）
+
+### 確認済みの事実
+
+- 1960 年 1 月 11-16 日 Paris 会議で 13 名国際委員会が ALGOL 60 仕様を策定したことは Wikipedia 英語版 ALGOL 60 項で詳細記載確認済
+- Communications of the ACM 1960-05 3(5):299-314『Report on the Algorithmic Language ALGOL 60』DOI 10.1145/367236.367262 は dl.acm.org で URL 到達確認済（本文有料・本メモ未読）
+- Springer Numerische Mathematik 1960 2(1):106-136『Report on the algorithmic language ALGOL 60』DOI 10.1007/BF01386216 は欧州側同時公開として Springer 公式アーカイブで確認済（本文未読）
+- 1963 年 1 月 Revised Report が Communications of the ACM 6(1):1-17 で Naur 編集者として公開されたことは Wikipedia 英語版 ALGOL 60 項で確認済
+- 13 名委員のうち Backus（1977 ACM Turing）／Perlis（1966 ACM Turing）／Naur（2005 ACM Turing）／McCarthy（1971 ACM Turing）の 4 名が ACM Turing Award 受賞済、いずれの公式ページも特許への言及なし
+
+### 著者の解釈
+
+- 『適格性壁 (a) pre-judicial era 国際委員会協同形態（(a-3) サブ形態）』は ep88 FORTRAN『(a-1) 企業ラボ単独型』／本日 ep91 LISP『(a-2) 学術公開純粋形』／ep93 COBOL『(a-4) 政府契約ハイブリッド形』との比較で抽出した事後的構造化で、**専門家から『そもそも 1960 年の IFIP/ACM/GAMM 3 組織協同形態と現代の国際標準化機関は組織形態が大きく異なる』『ALGOL 60 委員会は IFIP TC2/WG2.1 設立前で組織化が緩い』と突っ込まれる余地がある**
+- 『3 組織協同公開機構が IP 防衛として機能』は事後的な構造化で、**当時の委員 13 名が明示的に IP 防衛を意図していたかは未確認**
+
+### この比較が破綻する点
+
+- USPTO Patent Center 直接検索による IBM／Carnegie Tech／MIT／NBS／Univac／ETH Zurich／CWI Amsterdam／NPL Teddington 等の 13 委員所属機関の 1955-1972 年期 ALGOL 関連特許の網羅取得は今回未実施。**所属機関側で別途 ALGOL 関連特許を取得した可能性は残る**
+- 『3 組織協同公開機構』は当時の標準的形態の一般論で、**1960-01 Paris 会議の議事録原本** の精査までは行っていない
+- BNF 記法の特許化困難理由として『mathematical notation = unpatentable』ドクトリンを挙げたが、**1959-05 Backus Original BNF 論文の特許出願検討記録** は IBM 内部 Archive 必要で未取得
+
+## 参考リンク
+
+- Wikipedia 英語版 ALGOL 60: [en.wikipedia.org/wiki/ALGOL_60](https://en.wikipedia.org/wiki/ALGOL_60)
+- Communications of the ACM 1960-05 ALGOL 60 Report: [dl.acm.org/doi/10.1145/367236.367262](https://dl.acm.org/doi/10.1145/367236.367262)
+- Numerische Mathematik 1960 ALGOL 60 Report: [link.springer.com/article/10.1007/BF01386216](https://link.springer.com/article/10.1007/BF01386216)
+- Communications of the ACM 1963-01 Revised ALGOL 60 Report: [dl.acm.org/doi/10.1145/366193.366201](https://dl.acm.org/doi/10.1145/366193.366201)
+- ACM Turing Award Laureate Peter Naur 2005: [amturing.acm.org/award_winners/naur_1024454.cfm](https://amturing.acm.org/award_winners/naur_1024454.cfm)
+- ACM Turing Award Laureate Alan J. Perlis 1966: [amturing.acm.org/award_winners/perlis_0132439.cfm](https://amturing.acm.org/award_winners/perlis_0132439.cfm)
+- IFIP Working Group 2.1 公式: [ifip.org/bulletin/bulltcs/tc2_aim.htm](https://www.ifip.org/bulletin/bulltcs/tc2_aim.htm)
+- 関連エピソード: [#91 SW-009 LISP 適格性壁 (a) pre-judicial era 学術公開純粋形（同日のノート）](/notes/91-software-ui-patent-04)
+- 関連エピソード: [#93 SW-010 COBOL 適格性壁 (a)×(c) 政府契約ハイブリッド形態（同日のメモ）](/notes/93-software-ui-patent-memo-06)

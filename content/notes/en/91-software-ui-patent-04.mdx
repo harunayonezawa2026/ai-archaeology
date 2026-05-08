@@ -1,0 +1,216 @@
+---
+title: "1958 MIT AI Memo No. 1 'An Algebraic Language for the Manipulation of Symbolic Expressions' — John McCarthy as Sole Designer / Steve Russell First Hand-Coded the eval Function on the IBM 704 / Tim Hart and Mike Levin Built the First Compiler in 1962 / Communications of the ACM Published 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I' in April 1960 — and Yet Wikipedia EN Lisp, McCarthy's Own 'History of Lisp' PDF, ACM Turing Award Laureate McCarthy 1971 Page, Britannica McCarthy Article, and Stoyan 1984 'Early LISP History' Carry No Patent Number for LISP: Eligibility Wall Excavation #5 (SW Subseries DB Form: Eligibility Wall (a) pre-judicial era pure academic-disclosure form — third instance)"
+subtitle: "Software/UI Patent Excavation Note #4 — When McCarthy typed AI Memo No. 1 at the MIT AI Lab in September 1958, the United States had no judicial precedent on software-patent subject-matter eligibility (Gottschalk v. Benson would not arrive until 1972). LISP is at once 'the mother language of AI research' and 'a pure-software invention 14 years ahead of any precedent,' and McCarthy's strategy of 'numbered AI Memos + an ACM Communications paper + delegating implementation to students' lines up directly with the problem space of LLM agent loops, functional programming, and inference engines in 2026."
+description: "Day 26 SW subseries' fourth note (third instance of Eligibility Wall (a) pre-judicial era). Starting from McCarthy's solo September 1958 MIT AI Memo No. 1, 'An Algebraic Language for the Manipulation of Symbolic Expressions,' the four-year LISP genesis runs through Steve Russell hand-coding eval on the IBM 704 in fall 1958, the April 1960 publication of Communications of the ACM 3(4):184-195 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I,' and Tim Hart + Mike Levin's first proper compiler in 1962. Verification: Wikipedia EN Lisp, the dl.acm.org CACM 1960-04 paper (DOI 10.1145/367177.367199), MIT AI Memo No. 1 via Stoyan 1984 ACM Symposium, McCarthy's own 'History of Lisp' PDF (jmc.stanford.edu/articles/lisp/lisp.pdf), and the ACM Turing Award Laureate McCarthy 1971 page all carry no LISP-related patent number. Together with Day 25 ep88 SW-002 FORTRAN (pre-judicial era #1) and today's ep92 SW-008 ALGOL 60 (international-committee form, #2) plus ep93 SW-010 COBOL (government-contract hybrid form, #4), this becomes the third instance in the SW subseries' Eligibility Wall (a) pre-judicial era form. Across McCarthy's 30-year career — FP language proposal, situation calculus, circumscription — every contribution was published as a paper with no patent record, and the 'shared academic-community culture' of contemporaries Backus / Hoare / Dijkstra / Knuth / Naur / Perlis underpinned the pure form of pre-judicial era (a). Set alongside today's ep92 ALGOL 60 international-committee form and ep93 COBOL government-contract hybrid form, this gives form (a) a three-sub-form resolution."
+episode: 91
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Software/UI Patent", "LISP", "McCarthy", "MIT", "Eligibility Wall", "Excavation Note"]
+series: "Software/UI Patent"
+seriesNumber: 4
+status: "published"
+---
+
+## Bottom Line First
+
+Day 26 stands up the SW subseries' fourth episode (second full note). The subject is **LISP, starting from MIT AI Memo No. 1 'An Algebraic Language for the Manipulation of Symbolic Expressions,' which McCarthy solo-typed at the MIT AI Lab in September 1958**.
+
+Conclusion up front. **No patent number for LISP itself, the eval function implementation, S-expressions, lambda abstraction, garbage collection, or dynamic typing was found within today's verify scope.** Wikipedia EN Lisp, the dl.acm.org Communications of the ACM April 1960 paper at 3(4):184-195 (DOI 10.1145/367177.367199), MIT AI Memo No. 1 (via Stoyan 1984 ACM LISP Symposium), McCarthy's own 'History of Lisp' PDF (jmc.stanford.edu/articles/lisp/lisp.pdf), the ACM Turing Award Laureate McCarthy 1971 page, and the Britannica John McCarthy entry all contain zero references to a LISP-related patent. 1958 predates any U.S. judicial precedent on software-patent eligibility — **Gottschalk v. Benson (1972), Parker v. Flook (1978), Diamond v. Diehr (1981), State Street Bank (1998), and Alice Corp v. CLS Bank (2014)** are the five Supreme Court / Federal Circuit decisions whose accumulation only later sketched the boundary of 'pure-algorithm patent eligibility.' LISP is **a pure-software invention 14 years ahead of any precedent**, and McCarthy's strategy was '**numbered AI Memos + ACM Communications academic paper + implementation delegated to students**.'
+
+Place Day 25 ep88 SW-002 FORTRAN (1957, 15 years before Gottschalk v. Benson 1972, pre-judicial era #1) next to today's ep91 SW-009 LISP (1958, 14 years prior, #2), ep92 SW-008 ALGOL 60 (1960, 12 years prior, #3), and ep93 SW-010 COBOL (1960, 12 years prior, #4). The SW subseries' **Eligibility Wall (a) pre-judicial era** form is **not a one-off but a structural problem with at least four parallel cases in 1957-1960**. The four further split into **(a-1) corporate-lab solo type (FORTRAN, IBM) / (a-2) pure academic-disclosure type (LISP, MIT) / (a-3) international-committee cooperative type (ALGOL 60, IFIP+ACM+GAMM) / (a-4) government-contract hybrid type (COBOL, US DoD + CODASYL)** — a one-step-finer resolution on form (a).
+
+## 1. How the Subject Was Picked (Reproducible Pipeline)
+
+```
+[STEP 1] After Day 25 closed with the SW-002 FORTRAN note and the
+         pairing with SW-005 HyperCard establishing pre-judicial era (a)
+         form, Day 26's plan (haruko's call) is to excavate how many
+         other parallel pre-judicial era eligibility-wall cases ran
+         alongside in 1957-1960.
+
+[STEP 2] Web verification of LISP-related patents
+   - Direct Google Patents xhr API
+     URL: patents.google.com/?inventor=John+McCarthy
+          &assignee=Massachusetts+Institute+of+Technology
+          &before=priority:19720101&after=priority:19550101
+     Result: 503 Service Unavailable (Captcha wall) →
+             fall back to WebSearch ""John McCarthy" LISP MIT patent
+             USPTO 1958 1960"
+   - Top 10 WebSearch hits: Wikipedia EN John McCarthy, History of Lisp PDF,
+     Stoyan 1984 ACM paper, Medium articles — none mention any patent
+
+[STEP 3] Secondary-source cross-check
+   - Wikipedia EN Lisp: detailed development chronology (1958-1962),
+     no patent reference, no MIT IP-strategy reference
+   - Wikipedia EN John McCarthy: 1958 LISP / 1959 ALGOL 60 contribution /
+     1962 move to Stanford / 1971 Turing Award / 1986 Common Sense Reasoning /
+     2011 death — **no patent reference at all**
+   - ACM Turing Award Laureate McCarthy 1971 page: citation 'for his
+     lectures on the present state of artificial intelligence research'
+     (official PDF), 1971 lecture covers LISP and AI — no patent reference
+   - Britannica John McCarthy: awards and career — no patent reference
+   - McCarthy's own 'History of Lisp' PDF (jmc.stanford.edu/articles/lisp/lisp.pdf):
+     1956 Dartmouth Conference / 1957-58 IPL / 1958-09 AI Memo No. 1 /
+     1958-fall implementation start / 1959 Steve Russell eval implementation /
+     1962 Hart-Levin compiler — McCarthy's first-person chronology, no patent
+   - Stoyan 1984 'Early LISP History (1956-1959)' ACM Symposium paper:
+     verbatim record that AI Memo No. 1 was written September 1958, AI Memo
+     No. 2 the same month, AI Memo No. 3 / No. 4 in October 1958 — no patent
+
+[STEP 4] Confirm the legal status of U.S. software-patent eligibility
+        during the four-year LISP genesis (1958-1962)
+   - 1972 Gottschalk v. Benson Supreme Court: rejection of a BCD-to-binary
+     conversion algorithm patent application; first ruling that 'mental
+     processes are outside § 101 patent-eligible subject matter'
+   - LISP (1958) is 14 years earlier, sitting in the **pre-judicial era**
+     alongside Day 25 ep88 FORTRAN (1957, 15 years earlier)
+
+[STEP 5] Conclude: 'no LISP patent record found within today's verify
+        scope,' write up as Eligibility Wall (a) pre-judicial era pure
+        academic-disclosure form #2. Today's ep92 ALGOL 60 (international-
+        committee form) and ep93 COBOL (government-contract hybrid form)
+        complete the four-instance run that resolves form (a) into four
+        sub-forms.
+```
+
+## 2. LISP Genesis Chronology (Cross-checked Across Secondary Sources)
+
+| Date | Event |
+|---|---|
+| June-Aug 1956 | Dartmouth Summer Research Project on Artificial Intelligence; McCarthy proposes the term 'AI' and encounters Newell + Simon's IPL (Information Processing Language) |
+| 1957 | McCarthy moves to MIT, lays groundwork for an AI lab |
+| Sept 1958 | **AI Memo No. 1 'An Algebraic Language for the Manipulation of Symbolic Expressions'**, McCarthy as sole author, MIT AI Lab Cambridge |
+| Sept 1958 | AI Memo No. 2 'A Revised Version of MAPLIST' |
+| Oct 1958 | AI Memo No. 3 / No. 4 'Symbol Manipulating Language - Revisions of the Language' |
+| Fall 1958 | LISP 1.5 implementation begins; Steve Russell hand-codes eval on the IBM 704 |
+| 1959 | Russell's eval implementation enables interactive LISP execution; AI Memos extend |
+| April 1960 | **Communications of the ACM 3(4):184-195 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I'** by McCarthy, ACM publication (DOI 10.1145/367177.367199) |
+| 1962 | **Tim Hart + Mike Levin build the first proper LISP compiler** (for the IBM 704) |
+| 1962 | McCarthy moves to Stanford and launches the Stanford AI Project |
+| 1963 | LISP 1.5 Programmer's Manual (MIT Press) co-authored by Levin / McCarthy / Edwards / Hart / Maling / Mills / Russell |
+| 1971 | McCarthy receives the ACM Turing Award |
+| 1972 | **Gottschalk v. Benson Supreme Court decision (14 years after LISP publication)** |
+| 1986 | McCarthy's 'Common Sense Reasoning' paper, circumscription proposal — paper publication, no patent |
+| Oct 2011 | McCarthy dies (aged 84) |
+
+The chronology is cross-confirmed across Wikipedia EN Lisp, McCarthy's own 'History of Lisp' PDF, Stoyan 1984 ACM paper, and the MIT AI Memo numbered archive. **No patent application or grant for LISP appears in any secondary source for 1958-1972.**
+
+## 3. Core: Structure of 'Eligibility Wall' pre-judicial era Form (Pure Academic-Disclosure)
+
+### (a) Status of U.S. Software Patents in 1958
+
+In 1958 the United States had **neither judicial precedent nor USPTO examination guidance** on software-patent eligibility. The first significant case is the 1972 Gottschalk v. Benson Supreme Court decision, which lands 12 years after LISP's CACM publication (April 1960). Day 25 ep88 SW-002 FORTRAN (1957, 15 years earlier) and today's ep91 SW-009 LISP (1958, 14 years earlier) are **two parallel cases inside the same pre-judicial era**, making LISP the second instance that prevents form (a) from looking like an isolated event.
+
+In the 1950s, U.S. patent practice followed the **'mathematical method = unpatentable' doctrine** descended from the 17th-century English Statute of Monopolies, and pure-algorithm inventions were rejected as a matter of working practice at the examination stage. LISP's core technologies — **S-expressions (symbolic expression), eval (universal evaluator), lambda abstraction (rooted in lambda calculus), garbage collection (proposed by McCarthy in 1959), dynamic typing (run-time type determination)** — are all algorithm- and data-structure inventions, and drafting Claim 1 itself was likely difficult under the operating practice of the time.
+
+### (b) MIT AI Lab + McCarthy's Strategy: 'Numbered AI Memos + Academic Paper + Delegated Implementation'
+
+Where patenting was difficult, the MIT AI Lab + McCarthy went with a three-part strategy:
+
+1. **Numbered AI Memo disclosure (start: Sept 1958, MIT AI Lab internal numbering)**: a numbered memo series starting at AI Memo No. 1, with No. 2 / 3 / 4 issued at weekly-to-monthly cadence — **time-stamped public exposure of the language spec's evolution itself**. This reads as the problem-space precursor of later 'versioned spec disclosure' (C++ standards, Python PEPs, JavaScript ECMAScript)
+2. **Academic paper publication in ACM Communications (April 1960)**: 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I' published in Communications of the ACM 3(4):184-195. Formal academic publication into the ACM membership made **citations of the paper a collective IP-defense mechanism** for LISP — the same 'broadcast to the academic community = collective recognition of IP' strategy used by Knuth / Hoare / Dijkstra and other contemporaries
+3. **Implementation delegated to students and junior researchers**: Steve Russell first implemented eval on the IBM 704 (1959); Tim Hart + Mike Levin built the first compiler (1962); Daniel Edwards / Marvin Minsky / Patrick Fischer joined later. **McCarthy himself stayed on the language-design side and let students own implementation**, distributing patenting risk on the implementation side
+
+The strategy lines up at the problem-space level with the AI-researcher culture of Stanford SAIL / CMU AI Lab / MIT AI Lab in the 1980s, OpenAI's founding-era 'non-profit paper publication' strategy in the 2010s, and Anthropic Claude's open-research strategy in the 2020s.
+
+### (c) McCarthy's Long-Run Strategy: 'AI Research as Property of the Academic Community'
+
+McCarthy's personal invention strategy did not lean toward patenting. **The 1959 garbage-collection proposal** is detailed in the LISP 1.5 Manual — paper publication, no patent. **The post-1962 situation calculus proposal** is paper publication, no patent. **The 1986 circumscription proposal** is paper publication in AI Journal, no patent. Across **McCarthy's 53-year career (from the 1956 Dartmouth Conference to his death in 2011), paper publication and academic disclosure were consistent**, and **no individual patent record was found within today's verify scope**.
+
+This aligns with the period's cultural assumption that AI researchers belong to the academic community. McCarthy's contemporaries — Backus (FORTRAN, 1957 / BNF, 1959 / FP, 1977), Newell + Simon (IPL, 1957 / Logic Theorist, 1956), Minsky (perceptron critique, 1969 / society of mind, 1986), Knuth (TAOCP, 1968-), Dijkstra (shortest path, 1956 / structured programming, 1968), Hoare (QuickSort, 1959 / CSP, 1978), Naur (ALGOL 60 editor, 1960) — all **published their core algorithms and chose not to patent**.
+
+## 4. Parallel With the Modern Era (4-Level Evaluation)
+
+| 1958-1962 LISP | 2026 LLM agent loops + functional inference engines | Design-level relation |
+|---|---|---|
+| McCarthy as solo designer + Russell / Hart / Levin as student implementers | OpenAI / Anthropic / Google DeepMind 50-200-person teams 'first general-purpose AI chat' | **Metaphor** (team size differs by 1-2 orders of magnitude; 'designer-implementer separation' continues structurally, but modern LLM research and implementation are more integrated; specialists will push back that 'LISP is a language, LLM is a probabilistic model — different at the design level') |
+| AI Memos + ACM Communications academic-disclosure strategy | OpenAI / Anthropic paper publication + API publication + system prompt non-disclosure | **Similar** (the problem of 'where to draw the disclosure / non-disclosure line' continues; specialists will push back that 'LISP made the spec public and even paper-published the implementation, while LLMs keep weights closed — degree of disclosure differs') |
+| eval = universal evaluator that recursively evaluates symbolic expressions | LLM agent loop = universal evaluator that recursively evaluates natural-language prompts | **Similar** (the 'universal evaluator' concept continues; specialists will push back that 'eval is deterministic tree search, LLMs are probabilistic next-token prediction — evaluation regime differs') |
+| S-expression = data and program share the same structural representation | LLM prompt + tool-call JSON = data and program share the same structure (natural language + structured data) | **Similar** (a modern echo of homoiconicity; specialists will push back that 'S-expressions are strict tree structures, LLM prompts are natural language — structural strictness differs') |
+| Lambda abstraction + higher-order functions + emphasis on pure functions | LangChain / LangGraph / LlamaIndex function-composition patterns | **Similar** (the problem space of 'compose functions to assemble complex processing' continues; specialists will push back that 'LISP's lambda is a foundation in computation theory, LangChain is an implementation pattern — abstraction layers differ') |
+| Garbage collection (1959 McCarthy proposal) = the machine reclaims unused memory automatically | LLM context window = the machine compresses and discards old conversation history automatically | **Same** (the problem of 'auto-recycling computer resources' continues from 1959 to 2026, 67 years; the target shifts from memory management to context management, but the underlying structure is unchanged; specialists will push back that 'GC is a deterministic algorithm, context compression is probabilistic — determinism differs') |
+| Until Gottschalk v. Benson 1972, no precedent = pre-judicial era eligibility wall | From Diamond v. Diehr 1981 to Alice 2014, judicial unsettled-era eligibility wall | **Same** (the U.S. statute 35 U.S.C. § 101 has read the same since 1952, and judicial reinterpretation is what shapes the eligibility wall — the structure is continuous from 1958 to 2026; specialists will push back that 'same is too strong; Bilski 2010 / Mayo 2012 / Alice 2014 changed operations significantly') |
+
+### How to read the parallel table
+
+After grading on a 4-level scale (Same / Similar / Metaphor / Strained), **out of 7 rows: 2 Same (GC across 67 years / § 101 statutory text unchanged), 4 Similar, 1 Metaphor**. The honest summary is that LISP (1958-1962) and modern LLMs (2026) match **at the problem-space level but not at the implementation level**.
+
+The claim 'LISP is the prehistory of LLMs' should be read as **a precedent at the problem-space level (symbolic processing / inference / function composition / memory management / publication strategy under an eligibility wall)** — for **direct technical lineage**, the path **LISP → Scheme → Common Lisp → Clojure / LISP → ML (1973) → OCaml → Haskell → PyTorch / JAX (2016-)** is more accurate, and LISP is the **headwaters and a parent, not a direct ML/LLM implementation precursor**.
+
+## 5. Pitfalls (5 Items)
+
+1. **'LISP patent absence = McCarthy tried to patent and was rejected' is not what was confirmed.** Today's verify scope only confirmed 'no application of record' — 'application filed and rejected' would require the dialogue-only USPTO Patent Center, beyond curl-level automation, and MIT-internal application-consideration records were also not retrieved. **Three possibilities remain: 'never filed,' 'filed but not published,' 'filed but missed in this note's verify scope'**
+2. **'MIT did not take software patents in 1958' is not what was confirmed.** MIT held many **hardware patents** in the 1950s (Whirlwind I magnetic-core memory, Project MAC time-sharing-related patents), and the limited claim is that **the LISP compiler / interpreter as software was not patented**
+3. **'McCarthy was opposed to patents' is not confirmable.** McCarthy's lack of personal patent record within today's verify scope is separate from any ideological opposition. **Whether ideology, culture, practice, or legal climate was the dominant cause is not identifiable within this scope**
+4. **'1958 is pre-judicial era so applications were pointless' is not confirmable.** Even before Gottschalk v. Benson 1972, software / algorithm filings were technically possible, and **a small number of filings from the 1960s are on record**. LISP's non-patenting was substantially a strategic choice by both MIT and McCarthy
+5. **'1959 Russell eval implementation' has fuzzy dating.** Multiple secondary sources (McCarthy's autobiography, Stoyan, Wikipedia EN) variably say 'fall 1958 implementation start, 1959 first running' — **no exact date for completion is confirmable**. Russell's own recollection ('How LISP got its name' etc.) needs additional verification
+
+## 6. To Be Strict (5 Required Items)
+
+### Confirmed Facts
+
+- McCarthy's solo authorship of MIT AI Memo No. 1 'An Algebraic Language for the Manipulation of Symbolic Expressions' in September 1958 is verbatim recorded in Stoyan 1984 ACM Symposium paper: 'McCarthy authored "An Algebraic Language for the Manipulation of Symbolic Expressions," MIT AI Lab., AI Memo No. 1, Cambridge Sept. 1958'
+- The expansion of AI Memos No. 2-4 (Sept-Oct 1958) is also verbatim in Stoyan
+- The April 1960 Communications of the ACM 3(4):184-195 'Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I' at DOI 10.1145/367177.367199 has been verified to be reachable on dl.acm.org (full text is paywalled and not read by this note; only metadata retrieved)
+- Steve Russell's IBM 704 eval implementation (fall 1958-1959) and Tim Hart + Mike Levin's first compiler in 1962 are verbatim recorded in Wikipedia EN Lisp
+- McCarthy's 1971 ACM Turing Award is in the ACM official record; citation: 'for his lectures on the present state of artificial intelligence research'
+- Google Patents xhr API for inventor=John McCarthy + assignee=MIT was unreachable (503), but WebSearch confirmed no LISP-related McCarthy patents are findable (verified 2026-05-09)
+- That Gottschalk v. Benson 1972 is the first significant U.S. precedent on software-patent eligibility is settled legal history
+
+### Author's Interpretation
+
+- The three-factor inference 'LISP went unpatented because of (eligibility wall + AI Memo strategy + McCarthy's AI-researcher culture)' is this author's interpretation; MIT-internal materials and McCarthy's personal correspondence have not been cross-checked
+- The reading 'McCarthy's 53-year career was consistent in paper publication + academic disclosure' is extrapolation from 5 data points (AI Memo No. 1 1958, CACM Recursive Functions paper 1960, GC proposal 1959, situation calculus 1962, circumscription 1986); patent records from the post-1962 Stanford SAIL DARPA-funded period are unverified
+- The 'three-pillar MIT AI Lab + McCarthy strategy' is a post-hoc framing; it has not been verified that the MIT AI Lab leadership or McCarthy himself explicitly intended these three pillars at the time
+
+### Metaphor / Analogy
+
+- The 'LISP (1958-1962) versus modern LLM (2026)' parallel is 4 Similar + 2 Same + 1 Metaphor at the problem-space level; **as direct technical lineage, LISP → Scheme → Common Lisp → Clojure / LISP → ML → Haskell → PyTorch is the accurate path, and LISP is the headwaters / parent, not the direct implementation precursor of ML/LLM**
+- The two-sub-form split 'pre-judicial era eligibility wall (FORTRAN / LISP) versus judicial unsettled-era eligibility wall (HyperCard)' is a post-hoc framing built from Day 25 SW-002 and today's SW-009; specialists may push back that 'the partition of judicial history is too coarse'
+- 'eval = LLM agent loop universal evaluator continuum' is **metaphor-level analogy**; deterministic tree search and probabilistic next-token prediction are different evaluation mechanisms
+
+### Unverified
+
+- Comprehensive USPTO Patent Center search for McCarthy-name LISP-related patents in 1955-1972 (dialogue-UI only; curl-level automation infeasible; Google Patents was 503 / Captcha-walled today)
+- MIT legal / IP-office internal application-consideration records (related materials at MIT Archives & Special Collections)
+- Full text of the Communications of the ACM April 1960 paper (paywalled at dl.acm.org)
+- Steve Russell's autobiographical recollections ('How LISP got its name,' 'Lambda Papers,' etc.) in original form
+- The AI Memo number and full text of Tim Hart + Mike Levin's 1962 LISP compiler implementation
+
+### Where the Comparison Breaks
+
+- **'LISP patent absence is established' is not the right phrasing; 'not found within today's verify scope' is.** The note will be updated if a comprehensive USPTO Patent Center search or an MIT Archives query surfaces a related patent
+- The pre-judicial era eligibility-wall framing is a post-hoc construct built from two samples (Day 25 ep88 SW-002 FORTRAN and today's ep91 SW-009 LISP); **today's ep92 ALGOL 60 / ep93 COBOL bring the four-instance run that finally pins this down as a structural problem**
+- 'McCarthy's AI-researcher culture' is extrapolated from 5 paper-publication data points across a 53-year career; confirming **ideological opposition to patents** would require careful study of his own statements (Turing Award lecture text, interview transcripts)
+- The 'MIT AI Lab three-pillar strategy' is a post-hoc framing; **post-1980s MIT integrated CSAIL and shifted toward patent acquisition**, so '1958 strategy was not MIT's essence but a response to the situation' is plausible
+
+## 7. SW Subseries DB Form: Third Instance of Eligibility Wall (a) pre-judicial era
+
+Place Day 25 ep88 SW-002 FORTRAN (1957, pre-judicial era #1) next to today's ep91 SW-009 LISP (1958, #2), ep92 SW-008 ALGOL 60 (1960, #3), and ep93 SW-010 COBOL (1960, #4). The SW subseries' 'Eligibility Wall (a) pre-judicial era' form resolves into **four sub-forms**:
+
+| Sub-form | Episodes | Character |
+|---|---|---|
+| (a-1) **Corporate-lab solo type** | Day 25 ep88 SW-002 FORTRAN | Single-company in-house lab (IBM) handles language design + implementation + customer distribution end-to-end; three pillars: manual disclosed first + free distribution + Trade Secret |
+| (a-2) **Pure academic-disclosure type (this note)** | **Day 26 ep91 SW-009 LISP** | **MIT AI Lab + McCarthy personally execute numbered AI Memos + ACM Communications paper publication; implementation is delegated to students (Russell / Hart / Levin), separating designer from implementer** |
+| (a-3) International-committee cooperative type | Day 26 ep92 SW-008 ALGOL 60 | A 13-member international committee from IFIP + ACM + GAMM (Backus / Naur as editor / Bauer / McCarthy / Perlis etc.) writes the spec at the Paris meeting (January 1960); simultaneous publication in CACM and Numerische Mathematik |
+| (a-4) Government-contract hybrid type | Day 26 ep93 SW-010 COBOL | US DoD (Charles Phillips) convenes; CODASYL (founded June 1959) Short-Range Committee (6 vendors + 3 government agencies) drafts; published as a GPO printed work titled 'COBOL 60' |
+
+What this four-sub-form resolution adds:
+
+1. **Form (a) is not an isolated event but a structural problem.** The fact that all four major U.S. programming languages of 1957-1960 hit the pre-judicial era eligibility wall is **not individual corporate or researcher strategy** — it is **a structural feature of the entire U.S. patent system during the period without precedent**
+2. **Disclosure-strategy diversity exists inside form (a).** Four different disclosure mechanisms run in parallel: (a-1) corporate Trade Secret / (a-2) academic publication / (a-3) international-committee cooperation / (a-4) government contract. Even within the same pre-judicial era, organizational form branches the disclosure strategy
+3. **Form (a) is not exclusive of forms (b) / (c) / (d).** Today's ep93 COBOL is a hybrid of (a) and (c), showing that **form classification is not single-attribution but read as superposition**
+
+In a single Day 26 session, **form (a) gets a four-sub-form resolution**, and the SW subseries is now organized along the **(1) patents that succeeded with hardware-bearing display-system / cursor-control-device claims (SW-001 Engelbart mouse / SW-006 Atkinson image compression) versus (2) inventions that the eligibility wall kept from being patented (SW-002 FORTRAN / SW-003 BBN IMP / SW-004 Smalltalk / SW-005 HyperCard / SW-008 ALGOL 60 / SW-009 LISP / SW-010 COBOL)** two-group contrast across a 10-entry DB (SW-001 through SW-010).
+
+## References
+
+- Wikipedia EN Lisp: [en.wikipedia.org/wiki/Lisp_(programming_language)](https://en.wikipedia.org/wiki/Lisp_(programming_language))
+- Wikipedia EN John McCarthy: [en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)](https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist))
+- ACM Turing Award Laureate John McCarthy: [amturing.acm.org/award_winners/mccarthy_1118322.cfm](https://amturing.acm.org/award_winners/mccarthy_1118322.cfm)
+- Communications of the ACM 1960-04 LISP paper: [dl.acm.org/doi/10.1145/367177.367199](https://dl.acm.org/doi/10.1145/367177.367199)
+- McCarthy 'History of Lisp' PDF: [jmc.stanford.edu/articles/lisp/lisp.pdf](http://jmc.stanford.edu/articles/lisp/lisp.pdf)
+- Stoyan 1984 ACM Symposium 'Early LISP History (1956-1959)': [dl.acm.org/doi/10.1145/800055.802047](https://dl.acm.org/doi/10.1145/800055.802047)
+- USPTO Patent Subject Matter Eligibility: [uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility](https://www.uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility)
+- Related episode: [#88 SW-002 FORTRAN — Eligibility Wall (a) pre-judicial era #1 (Day 25 note)](/en/notes/88-software-ui-patent-03)
+- Related episode: [#92 SW-008 ALGOL 60 — Eligibility Wall (a) international-committee form (today's memo)](/en/notes/92-software-ui-patent-memo-05)
+- Related episode: [#93 SW-010 COBOL — Eligibility Wall (a) × (c) government-contract hybrid form (today's memo)](/en/notes/93-software-ui-patent-memo-06)

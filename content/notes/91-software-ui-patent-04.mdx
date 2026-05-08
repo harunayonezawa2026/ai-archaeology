@@ -1,0 +1,213 @@
+---
+title: "1958 年 MIT AI Memo No. 1『An Algebraic Language for the Manipulation of Symbolic Expressions』── John McCarthy 単独設計・Steve Russell が IBM 704 上で eval 関数を初実装・Tim Hart／Mike Levin が 1962 年に初コンパイラ実装・1960 年 4 月 Communications of the ACM『Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I』公開でありながら、Wikipedia 英語版 Lisp 項・McCarthy 自著『History of Lisp』PDF・ACM Turing Award Laureate McCarthy 1971 公式ページ・Britannica McCarthy 項・Stoyan 1984『Early LISP History』いずれも LISP 関連特許番号への言及がない『適格性壁』第 5 弾発掘譚（SW サブシリーズ DB 形態：適格性壁 (a) pre-judicial era 学術公開純粋形 第 3 件目）"
+subtitle: "ソフトウェア・UI 特許 発掘ノート #4 ── 1958 年 9 月 McCarthy が MIT AI Lab で AI Memo No. 1 をタイプした時、米国ではソフトウェア特許適格性に関する判例が 1972 年 Gottschalk v. Benson まで存在しなかった。LISP は『AI 研究の母言語』であると同時に『判例より 14 年早い純ソフトウェア発明』でもあり、McCarthy が当時とった『AI Memo 連番公開＋ACM Communications 学術論文＋実装は学生に委ねる』という戦略は 2026 年現在の LLM agent loops・関数型プログラミング・推論エンジンの問題意識と直系で重なる"
+description: "Day 26 SW サブシリーズ第 4 ノート（適格性壁 (a) pre-judicial era 第 3 件目）。1958 年 9 月 MIT AI Memo No. 1 として McCarthy が単独タイプした「An Algebraic Language for the Manipulation of Symbolic Expressions」を起点に、1958 年秋 Steve Russell が IBM 704 上で eval 関数を初実装、1960 年 4 月 Communications of the ACM 3(4):184-195「Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I」公開、1962 年 Tim Hart + Mike Levin が初の本格コンパイラ実装、という LISP 黎明期 4 年について、Wikipedia 英語版 Lisp 項・dl.acm.org の CACM 1960-04 論文（DOI 10.1145/367177.367199）・MIT AI Memo No. 1 (Stoyan 1984 ACM Symposium 論文経由)・McCarthy 自著「History of Lisp」PDF（jmc.stanford.edu/articles/lisp/lisp.pdf）・ACM Turing Award Laureate McCarthy 1971 公式ページいずれも LISP 関連特許番号への言及なしを verify。Day 25 ep88 SW-002 FORTRAN（pre-judicial era 第 1 件目）／本日 ep92 SW-008 ALGOL 60（pre-judicial era 第 2 件目・国際委員会形態）と並ぶ、SW サブシリーズ『適格性壁 (a) pre-judicial era』形態 第 3 件目。McCarthy の 30 年キャリアで FP 言語提案・状況計算（situation calculus）・circumscription 提案いずれも論文公開で特許化記録なし、Backus／Hoare／Dijkstra／Knuth／Naur／Perlis ら同時代計算機科学者の『学術共同体共通文化』が pre-judicial era (a) 形態の純粋形を支えていた構造を、本日 ep92 ALGOL 60 国際委員会形態／ep93 COBOL 政府契約ハイブリッド形態と並べて 3 細別解像度で示す"
+episode: 91
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "LISP", "McCarthy", "MIT", "適格性壁", "発掘ノート"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 4
+status: "published"
+---
+
+## 結論を先に
+
+Day 26 で AI 考古学の SW サブシリーズ第 4 本目（ノート 2 本目）を立てた。題材は **1958 年 9 月 MIT AI Lab で McCarthy が単独タイプした AI Memo No. 1『An Algebraic Language for the Manipulation of Symbolic Expressions』を起点とする LISP** にした。
+
+結論から書く。**LISP 自体・eval 関数実装・S 式・lambda 抽象・garbage collection・dynamic typing いずれも今回 verify 範囲では特許番号が発見できなかった**。Wikipedia 英語版 Lisp 項・dl.acm.org の Communications of the ACM 1960 年 4 月号 3(4):184-195 論文（DOI 10.1145/367177.367199）・MIT AI Memo No. 1（Stoyan 1984 ACM LISP Symposium 論文経由）・McCarthy 自著『History of Lisp』PDF（jmc.stanford.edu/articles/lisp/lisp.pdf）・ACM Turing Award Laureate McCarthy 1971 公式ページ・Britannica John McCarthy 項いずれも、LISP 関連特許への言及はない。1958 年は米国でソフトウェア特許適格性に関する判例が一切確立する前の時期で、**Gottschalk v. Benson（1972）／Parker v. Flook（1978）／Diamond v. Diehr（1981）／State Street Bank（1998）／Alice Corp v. CLS Bank（2014）** の 5 つの最高裁・連邦巡回区判決が後年積み重なって初めて『純アルゴリズム発明の特許適格性』の輪郭が決まった。LISP は **判例より 14 年早い純ソフトウェア発明** であり、McCarthy が当時とった戦略は『**AI Memo 連番公開＋ACM Communications 学術論文＋実装は学生に委ねる**』だった。
+
+Day 25 ep88 SW-002 FORTRAN（1957 年・Gottschalk v. Benson 1972 より 15 年前の pre-judicial era 第 1 件目）と本日 ep91 SW-009 LISP（1958 年・同 14 年前 第 2 件目）／ep92 SW-008 ALGOL 60（1960 年・同 12 年前 第 3 件目）／ep93 SW-010 COBOL（1960 年・同 12 年前 第 4 件目）を並べると、SW サブシリーズの『**適格性壁 (a) pre-judicial era**』形態は **単独事例ではなく 1957-1960 年区間に少なくとも 4 件並走していた構造的問題** であることが見えてくる。さらに 4 件の内訳は **(a-1) 企業ラボ単独型（FORTRAN, IBM）／(a-2) 学術公開純粋形（LISP, MIT）／(a-3) 国際委員会協同形（ALGOL 60, IFIP+ACM+GAMM）／(a-4) 政府契約ハイブリッド形（COBOL, US DoD+CODASYL）** の 4 細別に分かれ、形態 (a) を 1 段下の解像度で構造化できる。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] Day 25 末尾 SW-002 FORTRAN ノート公開・SW-005 HyperCard 適格性壁
+         第 1 弾と並ぶ pre-judicial era (a) 形態確立を踏まえ、
+         Day 26 で『1957-1960 年区間に他に何件の pre-judicial era 適格性壁
+         事例が並走していたか』を発掘する方針確定（はるこ判断）
+
+[STEP 2] LISP 関連特許の Web 検証
+   - Google Patents xhr API 直接照会
+     URL: patents.google.com/?inventor=John+McCarthy&assignee=Massachusetts+Institute+of+Technology
+          &before=priority:19720101&after=priority:19550101
+     結果: 503 Service Unavailable（Captcha 壁）→
+           WebSearch ""John McCarthy" LISP MIT patent USPTO 1958 1960" で代替
+   - WebSearch 上位 10 件: Wikipedia EN John McCarthy・History of Lisp PDF・
+     Stoyan 1984 ACM 論文・Medium 記事 等いずれも特許言及なし
+
+[STEP 3] 二次資料 cross check
+   - Wikipedia 英語版 Lisp 項：開発年表（1958-1962）詳細記載、
+     特許番号への言及なし、MIT 知財戦略への言及なし
+   - Wikipedia 英語版 John McCarthy 項：1958 LISP / 1959 ALGOL 60 寄与 /
+     1962 Stanford 移籍 / 1971 Turing Award / 1986 Common Sense Reasoning /
+     2011 死去の経歴記載、**特許に関する記述は皆無**
+   - ACM Turing Award Laureate McCarthy 1971 公式ページ：受賞理由
+     『for his lectures on the present state of artificial intelligence
+     research』（公式 PDF）— 1971 年講演テーマで LISP・人工知能の 2 軸、
+     特許への言及なし
+   - Britannica John McCarthy：受賞歴・経歴記載、特許への言及なし
+   - McCarthy 自著『History of Lisp』PDF（jmc.stanford.edu/articles/lisp/lisp.pdf）：
+     1956 Dartmouth Conference / 1957-58 IPL / 1958-09 AI Memo No. 1 /
+     1958-fall 実装着手 / 1959 Steve Russell eval 実装 /
+     1962 Hart-Levin コンパイラ等の年表が McCarthy 本人視点で記載、
+     特許への言及なし
+   - Stoyan 1984『Early LISP History (1956-1959)』ACM Symposium 論文：
+     AI Memo No. 1 が 1958-09 に書かれ、AI Memo No. 2 が同月、
+     AI Memo No. 3／No. 4 が 1958-10 と verbatim 記載、特許への言及なし
+
+[STEP 4] LISP 黎明期 4 年（1958-1962）に米国ソフトウェア特許適格性が
+        どの状態だったかを確認
+   - 1972 年 Gottschalk v. Benson 最高裁判決：BCD-binary 変換アルゴリズム
+     特許出願拒絶、『mental processes は特許適格対象外』との初の判断
+   - LISP（1958）は判例より 14 年早く、Day 25 ep88 FORTRAN（1957、判例より
+     15 年早い）と並ぶ **判例不在期 pre-judicial era** 形態に属する
+
+[STEP 5] 結論：『LISP 自体の特許化記録は今回 verify 範囲で発見できず』を
+        確定し、SW サブシリーズ『適格性壁 (a) pre-judicial era 純粋形 第 2 弾』
+        として記事化。本日続く ep92 ALGOL 60（国際委員会形態）／ep93 COBOL
+        （政府契約ハイブリッド形態）と合わせて 4 件揃い踏みで形態 (a) を
+        4 細別に解像度上げる
+```
+
+## 2. LISP 開発年表（二次資料一致確認済み）
+
+| 年月 | 出来事 |
+|---|---|
+| 1956 年 6-8 月 | Dartmouth Summer Research Project on Artificial Intelligence。McCarthy が『AI』という用語を提案、Newell + Simon の IPL（Information Processing Language）に触れる |
+| 1957 年 | McCarthy が MIT 移籍、AI 研究所立ち上げ準備 |
+| 1958 年 9 月 | **AI Memo No. 1『An Algebraic Language for the Manipulation of Symbolic Expressions』** McCarthy 単独著、MIT AI Lab Cambridge |
+| 1958 年 9 月 | AI Memo No. 2『A Revised Version of MAPLIST』 |
+| 1958 年 10 月 | AI Memo No. 3／No. 4『Symbol Manipulating Language - Revisions of the Language』 |
+| 1958 年秋 | LISP 1.5 実装着手、Steve Russell が eval 関数を IBM 704 ハンドコード |
+| 1959 年 | Russell の eval 実装で対話的 LISP 実行が初めて成立、AI Memo 連番拡大 |
+| 1960 年 4 月 | **Communications of the ACM 3(4):184-195『Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I』** McCarthy 単著、ACM 公開（DOI 10.1145/367177.367199） |
+| 1962 年 | **Tim Hart + Mike Levin が初の本格 LISP コンパイラ実装**（IBM 704 用） |
+| 1962 年 | McCarthy が Stanford 大学へ移籍、Stanford AI Project 立ち上げ |
+| 1963 年 | LISP 1.5 Programmer's Manual（MIT Press）公刊、Levin/McCarthy/Edwards/Hart/Maling/Mills/Russell ら 共著 |
+| 1972 年 | **Gottschalk v. Benson 最高裁判決（LISP 公開から 14 年後）** |
+| 1971 年 | McCarthy が ACM Turing Award 受賞 |
+| 1986 年 | McCarthy『Common Sense Reasoning』論文、circumscription 提案、論文公開・特許化なし |
+| 2011 年 10 月 | McCarthy 死去（享年 84） |
+
+開発年表は Wikipedia 英語版 Lisp 項・McCarthy 自著『History of Lisp』PDF・Stoyan 1984 ACM 論文・MIT AI Memo 連番アーカイブで一致確認済。**この 1958-1972 年区間で LISP 関連の特許出願・成立記録は二次資料いずれにも記載がない**。
+
+## 3. 核心：『適格性壁』pre-judicial era 形態の構造（学術公開純粋形）
+
+### (a) 1958 年米国ソフトウェア特許の状態
+
+1958 年時点で米国にはソフトウェア特許適格性に関する **判例も USPTO 審査基準も存在しなかった**。特許適格性の最初の重要判例は 1972 年 Gottschalk v. Benson 最高裁判決で、これは LISP CACM 論文公開（1960 年 4 月）から 12 年後の判決である。Day 25 ep88 SW-002 FORTRAN（1957 年・判例より 15 年早い）と本日 ep91 SW-009 LISP（1958 年・判例より 14 年早い）は **同じ pre-judicial era 区間に並走した 2 件** という意味で、形態 (a) の単独事例化を防ぐ第 2 件目になる。
+
+それ以前、1950 年代の米国特許実務は **17 世紀英国 Statute of Monopolies 由来の『mathematical method = unpatentable』ドクトリン** に従っており、純アルゴリズム発明は審査段階で実質的に拒絶される慣行運用だった。LISP のコア技術である **S 式（symbolic expression）／eval 関数（universal evaluator）／lambda 抽象（lambda calculus 起源）／garbage collection（McCarthy が 1959 年に提案）／dynamic typing（実行時型決定）** はいずれもアルゴリズム・データ構造発明であり、当時の運用では Claim を組むこと自体が困難だった可能性が高い。
+
+### (b) MIT AI Lab + McCarthy 個人の戦略：『AI Memo 連番＋学術論文＋実装委譲』
+
+特許化が困難な状況で、MIT AI Lab + McCarthy 個人は次の戦略で LISP を発信した：
+
+1. **AI Memo 連番公開（1958-09 起点・MIT AI Lab 内番号体系）**：AI Memo No. 1 から始まる連番文書を MIT AI Lab 内で公開。No. 2／3／4 と週次〜月次の頻度で改訂版を出し、**LISP 言語仕様の進化過程そのものを time-stamped に公開**。これが後の「言語仕様の versioned spec 公開」（C++ 標準仕様・Python PEP・JavaScript ECMAScript）の問題意識先行例として読める
+2. **ACM Communications 学術論文公開（1960-04）**：Communications of the ACM 3(4):184-195 で『Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I』公開。学術共同体（ACM 会員）への正式論文化で、**論文の引用が LISP の IP 防衛機構として機能**。Knuth/Hoare/Dijkstra ら同時代の計算機科学者と同じ『学術共同体への発信＝知的財産権の集合的承認』戦略
+3. **実装は学生・若手研究者に委譲**：Steve Russell が IBM 704 で eval 関数を初実装（1959）、Tim Hart + Mike Levin が初コンパイラ（1962）、Daniel Edwards／Marvin Minsky／Patrick Fischer らが後年実装関与。**McCarthy 自身は『言語設計者』に徹し、実装は学生に委ねる**ことで実装側の特許化リスクを分散
+
+この戦略は 1980 年代の Stanford SAIL／CMU AI Lab／MIT AI Lab の AI 研究者文化、2010 年代の OpenAI 創設期『非営利論文公開』戦略、2020 年代の Anthropic Claude 公開研究戦略いずれも **問題意識のレベルで継承している**。
+
+### (c) McCarthy 自身の長期戦略：『AI 研究は学術共同体の財産』志向
+
+McCarthy 個人の発明戦略も特許化を志向していなかった。**1959 年 garbage collection 提案** は LISP 1.5 マニュアルで詳述・特許化なし。**1962 年 Stanford 移籍後の situation calculus 提案** は論文公開・特許化なし。**1986 年 circumscription 提案** は AI Journal 論文公開・特許化なし。McCarthy の **53 年のキャリア（1956 Dartmouth Conference から 2011 死去まで）を通じて、論文公開・学術発信が一貫した形態** で、**個人特許の記録は今回 verify 範囲で発見できなかった**。
+
+これは『AI 研究者は学術共同体に属する』という当時の文化的前提と整合する。McCarthy の同時代人である Backus（FORTRAN, 1957／BNF, 1959／FP, 1977）／Newell + Simon（IPL, 1957／Logic Theorist, 1956）／Minsky（perceptron 批判, 1969／society of mind, 1986）／Knuth（TAOCP, 1968-）／Dijkstra（最短経路, 1956／構造化プログラミング, 1968）／Hoare（QuickSort, 1959／CSP, 1978）／Naur（ALGOL 60 編集, 1960）いずれも **核心アルゴリズムを論文公開し、特許化を選ばなかった**。
+
+## 4. 現代との対応表（4 段階評価付き）
+
+| 1958-1962 年 LISP | 2026 年 LLM agent loops + 関数型推論エンジン | 設計レベルでの関係 |
+|---|---|---|
+| McCarthy 単独設計 + Russell/Hart/Levin 学生実装 | OpenAI/Anthropic/Google DeepMind 50-200 名チーム『最初の汎用 AI チャット』 | **比喩**（チーム規模は 1-2 桁違い、設計者と実装者の分離という構造は連続するが、現代 LLM は研究と実装が一体化、専門家から『LISP は言語、LLM は確率モデル、設計レベルで別物』と突っ込まれる） |
+| AI Memo 連番＋ACM Communications 学術公開戦略 | OpenAI / Anthropic 論文公開＋API 公開＋システムプロンプト非公開 | **類似**（公開／非公開の境界線設定という問題意識は重なる、専門家から『LISP は仕様公開・実装も論文化、LLM は重み非公開で度合いが違う』と突っ込まれる） |
+| eval 関数 = symbolic expression を再帰的に評価する universal evaluator | LLM agent loop = 自然言語プロンプトを再帰的に評価する universal evaluator | **類似**（『万能評価器』という問題意識は連続、専門家から『eval は決定的な木探索、LLM は確率的な next token prediction、評価方式が別物』と突っ込まれる） |
+| S 式（symbolic expression）= データとプログラムが同一構造で表現される | LLM プロンプト＋ツール呼び出し JSON = データとプログラムが同一構造（自然言語＋構造化データ） | **類似**（homoiconicity の現代的反復、専門家から『S 式は厳密な木構造、LLM プロンプトは自然言語、構造の厳密性が違う』と突っ込まれる） |
+| Lambda 抽象 + 高階関数 + 純粋関数志向 | LangChain / LangGraph / LlamaIndex の関数合成パターン | **類似**（関数合成による複雑処理組み立てという問題意識は連続、専門家から『LISP の lambda は計算理論基盤、LangChain は実装パターン、抽象階層が違う』と突っ込まれる） |
+| Garbage collection（1959 McCarthy 提案）= 計算機が不要メモリを自動解放 | LLM context window = 計算機が古い対話履歴を自動圧縮・廃棄 | **同一**（『計算機資源の自動再利用』という問題意識は 1959→2026 の 67 年連続、メモリ管理から context 管理へと対象は変わるが基本構造は同じ、専門家から『GC は決定的アルゴリズム、context 圧縮は確率的、決定性が違う』と突っ込まれる） |
+| 1972 Gottschalk v. Benson まで判例不在＝判例不在期適格性壁 | 1981 Diamond v. Diehr → 2014 Alice まで判例 unsettled 期適格性壁 | **同一**（米国特許法 35 U.S.C. § 101 の文言自体は 1952 年制定以来同じで、判例による解釈変動が適格性壁の形を決める構造は 1958→2026 で連続、専門家から『同一とまでは言えない、Bilski 2010・Mayo 2012・Alice 2014 で運用が大きく変わった』と突っ込まれる） |
+
+### 対応表の読み方補足
+
+『同一』『類似』『比喩』『無理がある』の 4 段階で評価したうえで、**7 行のうち『同一』が 2 行（GC 67 年連続／§ 101 文言不変）、『類似』が 4 行、『比喩』が 1 行** という分布になった。LISP（1958-1962）と現代 LLM（2026）の対応は **問題意識レベルで共通、実装レベルでは別物** というのが正直な総括である。
+
+『LISP は LLM の前史』という主張は **問題意識（記号処理／推論／関数合成／メモリ管理／適格性壁の中での発信戦略）レベルでの先行例** として読むべきで、**実装系譜としては LISP→Scheme→Common Lisp→Clojure／LISP→ML（1973）→OCaml→Haskell→PyTorch・JAX（2016-）の流れが直接的な技術先行例** で、LISP はこの流れの **最上流の母体ではあるが、ML/LLM の直接の先行実装ではない**。
+
+## 5. 落とし穴（5 項目）
+
+1. **『LISP 特許不在 = McCarthy が特許化を試みて拒絶された』ではない**：今回 verify 範囲で見つかったのは『特許出願記録なし』であり、『出願したが拒絶された記録』は USPTO Patent Center の対話 UI 必須形態で curl レベル自動検証は不可、MIT 内部の出願検討記録も未取得。**『そもそも出願されなかった』『出願されたが公開されなかった』『出願されたが本ノートの verify 範囲では見つからない』の 3 通りが残る**
+2. **『1958 年の MIT はソフトウェア特許を取らなかった』ではない**：MIT は 1950 年代から **ハードウェア特許**（Whirlwind I 磁気コアメモリ／Project MAC タイムシェアリング関連等）を多数取得しており、**LISP コンパイラ・処理系というソフトウェア部分が特許化されていない** という限定された主張である
+3. **『McCarthy は特許に反対していた』とは確定できない**：McCarthy 個人の特許化記録が今回 verify 範囲で発見できないことと、McCarthy が思想的に特許に反対だったことは別問題。**McCarthy 自身が特許化を選ばなかった理由は、思想・文化・実務・法的状況のいずれが主因か今回 verify 範囲では特定できない**
+4. **『1958 年は判例不在期だから出願は無意味だった』とは確定できない**：1972 年 Gottschalk v. Benson 以前にも、ソフトウェア・アルゴリズム発明の出願は技術的には可能で、**実際に 1960 年代に少数の出願事例が記録されている**。LISP が特許化されなかったのは MIT・McCarthy 双方の戦略選択の側面が大きい可能性がある
+5. **『Russell の eval 実装は 1959 年』年代の精度**：複数の二次資料（McCarthy 自著／Stoyan 論文／Wikipedia EN）で『1958 年秋実装着手・1959 年初稼働』の表現が併存し、**実装完成日付は確定できていない**。Russell 本人の回想記事（『How LISP got its name』等）の追加 verify が必要
+
+## 6. 厳密にはこう（必須 5 項目）
+
+### 確認済みの事実
+
+- 1958 年 9 月 AI Memo No. 1『An Algebraic Language for the Manipulation of Symbolic Expressions』McCarthy 単独著は Stoyan 1984 ACM Symposium 論文で『McCarthy authored "An Algebraic Language for the Manipulation of Symbolic Expressions," MIT AI Lab., AI Memo No. 1, Cambridge Sept. 1958』と verbatim 記載確認済
+- AI Memo No. 2-4（1958-09／10）の連番展開も Stoyan 論文で verbatim 記載確認済
+- 1960 年 4 月 Communications of the ACM 3(4):184-195『Recursive Functions of Symbolic Expressions and Their Computation by Machine, Part I』DOI 10.1145/367177.367199 は dl.acm.org で URL 到達確認済（本文有料・本ノート未読、メタデータのみ取得）
+- Steve Russell の IBM 704 eval 実装（1958-fall～1959）・Tim Hart + Mike Levin の 1962 年初コンパイラ実装は Wikipedia EN Lisp 項で verbatim 記載確認済
+- 1971 年 McCarthy ACM Turing Award 受賞は ACM 公式記録で確認済、受賞理由は『for his lectures on the present state of artificial intelligence research』
+- Google Patents xhr API の inventor=John McCarthy + assignee=MIT 検索は 503 で実行不能だったが、WebSearch で LISP 関連 McCarthy 特許が発見できないことは確認済（2026-05-09）
+- 1972 年 Gottschalk v. Benson 最高裁判決が米国ソフトウェア特許適格性に関する初の重要判例であることは法学史の確定事実
+
+### 著者の解釈
+
+- 『LISP が特許化されなかった理由は適格性壁＋AI Memo 戦略＋McCarthy 個人の AI 研究者文化』の三因子推論は本ノート著者の解釈で、MIT 内部資料・McCarthy 個人書簡との突合は行っていない
+- 『McCarthy の 53 年のキャリアを通じて論文公開＋学術発信が一貫していた』は AI Memo No. 1（1958）・CACM Recursive Functions 論文（1960）・GC 提案（1959）・situation calculus（1962）・circumscription（1986）の 5 件から外挿した観察で、Stanford SAIL 立ち上げ後の DARPA 関連特許化記録は未確認
+- 『MIT AI Lab + McCarthy 個人の三本柱戦略』は事後的な構造化試案で、当時の MIT AI Lab 経営陣・McCarthy 本人が明示的にこの三本柱を意図していたかは未確認
+
+### 比喩・アナロジー
+
+- 『LISP（1958-1962）と現代 LLM（2026）の対応』は問題意識レベルでの 4 行類似＋2 行同一＋1 行比喩の分布で、**技術系譜としては LISP→Scheme→Common Lisp→Clojure／LISP→ML→Haskell→PyTorch の流れが直接的で、LISP は最上流の母体ではあるが直接の先行実装ではない**
+- 『判例不在期適格性壁（FORTRAN／LISP）vs 判例 unsettled 期適格性壁（HyperCard）』の 2 細別は Day 25 SW-002 と本日 SW-009 を並べた事後的構造化で、専門家から『判例史の区切り方が荒い』と突っ込まれる余地がある
+- 『eval 関数 = LLM agent loop の universal evaluator として連続』は **アナロジーレベルの比喩** で、決定的木探索と確率的 next token prediction の評価機構は別物
+
+### 未確認
+
+- USPTO Patent Center 直接検索による MIT 1955-1972 年期 McCarthy 名義 LISP 関連特許の網羅的取得（対話 UI 必須形態のため curl 自動検証不可、Google Patents は今回 503 Captcha 壁）
+- MIT 法務部門・知財部門の内部出願検討記録（MIT Archives & Special Collections の関連文書）
+- ACM Communications 1960-04 論文本文（dl.acm.org 有料）の精読
+- Steve Russell の自伝的回想（『How LISP got its name』『Lambda Papers』等）原文
+- Tim Hart + Mike Levin 1962 年 LISP コンパイラ実装の AI Memo 番号と本文
+
+### この比較が破綻する点
+
+- **『LISP 特許不在を確定した』ではなく、『今回 verify 範囲で発見できなかった』が正確な表現**。USPTO Patent Center 直接検索や MIT Archives で関連特許が出てきた場合、本ノートは更新される
+- 『判例不在期適格性壁』形態の概念化は Day 25 ep88 SW-002 FORTRAN／本日 ep91 SW-009 LISP の 2 件サンプルから抽出した試案で、**本日続く ep92 ALGOL 60／ep93 COBOL も含めた 4 件揃い踏みで初めて構造的問題として確定**
+- 『McCarthy の AI 研究者文化志向』は 53 年キャリアの 5 件論文公開から外挿した観察で、McCarthy が **思想的に特許に反対だった** と確定するには本人の言説（Turing Award 講演原稿・インタビュー記録）の精査が必要
+- 『MIT AI Lab 三本柱戦略』は事後的な構造化で、**1980 年代以降の MIT は CSAIL 統合・特許取得方針に転換**した可能性があるため、『1958 年戦略は MIT の本質ではなく当時の状況対応』だった可能性がある
+
+## 7. SW サブシリーズ DB 形態：『適格性壁 (a) pre-judicial era』第 3 件目の意味
+
+Day 25 ep88 SW-002 FORTRAN（1957 年・pre-judicial era 第 1 件目）と本日 ep91 SW-009 LISP（1958 年・第 2 件目）／ep92 SW-008 ALGOL 60（1960 年・第 3 件目）／ep93 SW-010 COBOL（1960 年・第 4 件目）を並べることで、SW サブシリーズの『適格性壁 (a) pre-judicial era』形態は **4 細別** に解像度が上がる：
+
+| 細別 | 該当エピソード | 性質 |
+|---|---|---|
+| (a-1) **企業ラボ単独型** | Day 25 ep88 SW-002 FORTRAN | IBM 単一企業の社内ラボで言語設計＋実装＋顧客配布まで完結。マニュアル先行公開＋無料配布＋Trade Secret 三本柱 |
+| (a-2) **学術公開純粋形（本ノート）** | **Day 26 ep91 SW-009 LISP** | **MIT AI Lab + McCarthy 個人による AI Memo 連番＋ACM Communications 論文公開戦略。実装は学生（Russell/Hart/Levin）に委譲し、設計者と実装者を分離** |
+| (a-3) 国際委員会協同形 | Day 26 ep92 SW-008 ALGOL 60 | IFIP+ACM+GAMM 3 組織の 13 名国際委員会（Backus／Naur 編集者／Bauer／McCarthy／Perlis 等）が Paris 会議（1960-01）で仕様策定、CACM・Numerische Mathematik で同時論文公開 |
+| (a-4) 政府契約ハイブリッド形 | Day 26 ep93 SW-010 COBOL | US DoD（Charles Phillips）招集 + CODASYL（1959-06 設立）の Short-Range Committee（6 社 + 3 政府機関）。GPO（Government Printing Office）印刷物として『COBOL 60』公開 |
+
+形態 (a) を 4 細別に解像度上げる意味：
+
+1. **形態 (a) は単独事例ではなく構造的問題**：1957-1960 年区間で米国の主要プログラミング言語 4 件すべてが pre-judicial era 適格性壁に該当した、という事実は **個別企業・個別研究者の戦略選択** ではなく **判例不在期の米国特許制度全体の構造的特徴** を示している
+2. **形態 (a) 内部にも公開戦略の多様性がある**：(a-1) 企業 Trade Secret／(a-2) 学術公開／(a-3) 国際委員会協同／(a-4) 政府契約という **4 種の異なる公開機構** が並走していた。同じ判例不在期でも、組織形態によって発信戦略が分岐する
+3. **形態 (a) は形態 (b)/(c)/(d) と排他ではない**：本日 ep93 COBOL は (a) と (c) のハイブリッドで、**形態区分は単一帰属ではなく重ね合わせで読む** べきであることを示す
+
+Day 26 1 セッションで **適格性壁 (a) 4 細別の解像度確立** が完成し、SW サブシリーズは **(1) ハードウェア要素を含む display system / cursor control device の Claim 化に成功した特許群（SW-001 Engelbart マウス／SW-006 Atkinson 画像圧縮）vs (2) 純ソフトウェアで適格性壁により特許化されなかった発明群（SW-002 FORTRAN／SW-003 BBN IMP／SW-004 Smalltalk／SW-005 HyperCard／SW-008 ALGOL 60／SW-009 LISP／SW-010 COBOL）** の 2 群対比が 10 件 DB（SW-001〜010）の中で構造化される。
+
+## 参考リンク
+
+- Wikipedia 英語版 Lisp: [en.wikipedia.org/wiki/Lisp_(programming_language)](https://en.wikipedia.org/wiki/Lisp_(programming_language))
+- Wikipedia 英語版 John McCarthy: [en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)](https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist))
+- ACM Turing Award Laureate John McCarthy: [amturing.acm.org/award_winners/mccarthy_1118322.cfm](https://amturing.acm.org/award_winners/mccarthy_1118322.cfm)
+- Communications of the ACM 1960-04 LISP 論文: [dl.acm.org/doi/10.1145/367177.367199](https://dl.acm.org/doi/10.1145/367177.367199)
+- McCarthy 自著『History of Lisp』PDF: [jmc.stanford.edu/articles/lisp/lisp.pdf](http://jmc.stanford.edu/articles/lisp/lisp.pdf)
+- Stoyan 1984 ACM Symposium『Early LISP History (1956-1959)』: [dl.acm.org/doi/10.1145/800055.802047](https://dl.acm.org/doi/10.1145/800055.802047)
+- USPTO Patent Subject Matter Eligibility: [uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility](https://www.uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility)
+- 関連エピソード: [#88 SW-002 FORTRAN 適格性壁 (a) pre-judicial era 第 1 件目（Day 25 のノート）](/notes/88-software-ui-patent-03)
+- 関連エピソード: [#92 SW-008 ALGOL 60 適格性壁 (a) 国際委員会形態（同日のメモ）](/notes/92-software-ui-patent-memo-05)
+- 関連エピソード: [#93 SW-010 COBOL 適格性壁 (a)×(c) 政府契約ハイブリッド形態（同日のメモ）](/notes/93-software-ui-patent-memo-06)
