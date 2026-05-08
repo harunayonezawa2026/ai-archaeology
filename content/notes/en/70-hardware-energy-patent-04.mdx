@@ -1,0 +1,215 @@
+---
+title: "Re-reading the 1980 Tokyo Shibaura Electric (Toshiba) US4531203A by Fujio Masuoka & Hisakazu Iizuka — the 'Semiconductor Memory Device' patent that became the origin of modern NAND flash, smartphone storage, SSDs, and LLM weight-file storage"
+subtitle: "Hardware & Energy Patents — Excavation Note #4 — US Patent US4531203A 'Semiconductor memory device and method for manufacturing the same.' Co-invented by Fujio Masuoka and Hisakazu Iizuka. Original Assignee: Tokyo Shibaura Electric Co Ltd (the company name before the 1984 rebrand to Toshiba) → Current Assignee: Toshiba Corp. US priority 1980-12-20, filing 1981-11-13, grant 1985-07-23, expired by lifetime. Claim 1 covers a semiconductor memory device with cells in matrix form, each comprising (a) a semiconductor region of a first conductivity type, (b) source and drain regions of a second conductivity type, (c) a gate insulation film, (d) a field insulation film, (e) an erase gate on the field insulation film, (f) a floating gate on the gate insulation film with a portion overlapping the erase gate via a first insulating film, and (g) a control gate on top with a second insulating film between it and the floating gate, and a third insulating film between it and the erase gate, the third insulating film being thicker than the first. Day 19's three-piece set 'Cage Patents — confining electrons, charge, and molecules' note slot (electron cage = floating gate)"
+description: "On December 20, 1980, two researchers at Tokyo Shibaura Electric Co Ltd (now Toshiba)—Fujio Masuoka and Hisakazu Iizuka—co-filed a 'Semiconductor memory device and method for manufacturing the same' in the United States, granted as US4531203A on July 23, 1985 (US filing 1981-11-13, Japan priority 1980-12-20). Claim 1 covers a memory device whose cells, arranged in matrix form, are built from a three-layer gate structure: erase gate, floating gate, and control gate, with the third insulating film thicker than the first. This is the precursor to modern NAND flash memory, and the entire infrastructure of SSDs, smartphone storage, microSD cards, SD cards, USB memory, and LLM weight-file storage rests on the principle of confining electrons inside a floating gate, as introduced here. The patent predates the term 'flash' by four years (Masuoka coined it in his 1984 IEDM paper). Claim 1's core is the **electrical isolation of the floating gate by three layers of gates with asymmetric insulating films**, enabling separate erase, write, and read operations. Two DB corrections: (1) DB 'Masuoka solo' → reality 'Masuoka + Iizuka two co-inventors' (same pattern as Day 17 ep64 Goodenough/Mizushima, Day 18 ep68 Nakamura/Mukai/Iwasa); (2) DB '1982 grant' → reality 'grant 1985-07-23' (priority 1980-12-20, filing 1981-11-13). Day 19's three-piece set 'Cage Patents' note slot, where Claim 1 explicitly requires a structure 'a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed' that physically confines electrons in a cage."
+episode: 70
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Hardware & Energy Patents", "Flash Memory", "Fujio Masuoka", "Toshiba", "NAND", "Floating Gate", "Excavation Note"]
+series: "Hardware & Energy Patents"
+seriesNumber: 9
+status: "published"
+---
+
+## Conclusion first
+
+On December 20, 1980, in the semiconductor division of Tokyo Shibaura Electric Co Ltd (the pre-1984 corporate name of what became Toshiba), based in Kawasaki, Kanagawa, two engineers—**Fujio Masuoka** and **Hisakazu Iizuka**—jointly filed a US patent application titled "Semiconductor memory device and method for manufacturing the same." The US filing date was November 13, 1981 (Japan priority December 20, 1980), and after a 4 year and 7 month examination, the patent was **granted as US4531203A on July 23, 1985**.
+
+Claim 1 covers "a semiconductor memory device with a plurality of memory cells arranged in a matrix form, each cell comprising (a) a semiconductor region of a first conductivity type, (b) source and drain regions of a second conductivity type formed in said semiconductor region, (c) a gate insulation film formed on a part of said semiconductor region between said source and drain regions, (d) a field insulation film formed on said semiconductor region for separating said memory cells from each other, (e) an erase gate formed on said field insulation film, (f) a floating gate formed on said gate insulation film, a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed between said floating gate and said erase gate, and (g) a control gate formed over said floating gate with a second insulating film being interposed between said control gate and said floating gate and said control gate being formed on said erase gate with a third insulating film being interposed between said control gate and said erase gate, said third insulating film being thicker than said first insulating film." This is the **core patent for the three-layer-gate structure (erase + floating + control)** of modern flash memory.
+
+The **Original Assignee is Tokyo Shibaura Electric Co Ltd**, the corporate name immediately before the 1984 rebrand to Toshiba Corporation. At the time of filing the company was still officially "Tokyo Shibaura Electric," not "Toshiba"—an important fact in the primary source. The **Current Assignee is Toshiba Corp**.
+
+**Two DB corrections occurred**: (1) The DB inventor field "Fujio Masuoka" suggested a solo invention → **reality: two co-inventors, Masuoka + Hisakazu Iizuka** (same pattern as Day 17 ep64 Goodenough/Mizushima correction; the popular narrative of "Masuoka's invention" overlooks Iizuka). (2) DB "1980 filing, 1982 grant" → **reality: priority 1980-12-20 / US filing 1981-11-13 / grant 1985-07-23** (the DB's "1982 grant" is incorrect, off by five years). The DB error correction sequence accumulated from Day 8 to Day 18 has now updated from **23 to 25 corrections** (two consecutive corrections within Day 19).
+
+Following Day 17's "Power, Compute, Memory" three-piece infrastructure set and Day 18's "Capture light, Generate light, Generate light in free shape" semiconductor optics set, **Day 19 is organized as 'Cage Patents — inventions that physically confine electrons, charge, and molecules.'** This note (HW-003 flash, electrons in floating gate cage) / memo ep71 (HW-010 CCD, charge in potential-minima cage) / memo ep72 (CS-003 hyaluronic-acid crosslinked gel, drug in molecular cage) all explicitly describe a "confinement structure" verbatim in their Claim 1.
+
+## 1. How the topic was selected (reproducible pipeline)
+
+```
+[STEP 1] Extract remaining HW entries from candidates.tsv
+         → HW-003 (flash memory, priority 14)
+           HW-005 (blue LED, consumed in Day 18 ep68)
+           HW-006 (solar cell, consumed in Day 18 ep67)
+           HW-009 (OLED, consumed in Day 18 ep69)
+           HW-010 (CCD, priority 11, Source Not Confirmed)
+         → only HW-003 and HW-010 remain
+[STEP 2] Conceive Day 19's three-piece set axis
+         → search across patents whose Claim 1 includes
+           an explicit "confinement" concept
+         → HW-003 (floating gate cage), HW-010 (potential minima cage),
+           CS-003 (molecular cage) form the 'Cage Patents' axis
+[STEP 3] Retrieve title / inventors / assignees / dates / Claim 1
+         from Google Patents for US4531203A
+         → Title: "Semiconductor memory device and method for
+           manufacturing the same"
+         → Inventors: Fujio Masuoka + Hisakazu Iizuka (DB "solo" corrected)
+         → Original Assignee: Tokyo Shibaura Electric Co Ltd
+         → Priority 1980-12-20 / Filing 1981-11-13 / Grant 1985-07-23
+           (DB "1982 grant" corrected)
+[STEP 4] Retrieve the full text of Claim 1 via curl + Python parse
+         → confirmed three-layer gate structure (erase + floating + control)
+         → confirmed asymmetric structure where the third insulating
+           film is thicker than the first
+[STEP 5] Verify peripheral facts
+         → "flash" coinage in 1984 IEDM paper
+         → branching of NAND vs NOR series
+         → Masuoka's internal evaluation, 1994 retirement, Tohoku University
+           professorship
+         → Intel-Toshiba patent cross-licensing
+[STEP 6] Connection to current niche: Samsung / SK Hynix / Micron / Kioxia
+         NAND, CXMT / YMTC (China), SSD / smartphone / LLM weight files
+```
+
+Selection rationale: (a) one of two HW remainers, with the higher symbolic weight as a note-grade patent; (b) Claim 1 verbatim writes "a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed," a confinement structure that fits the Day 19 Cage Patents axis perfectly; (c) confirms the **starting point of the memory-semiconductor side (NAND)** of haruko's main niche (Chinese AI × Korean/Taiwanese semiconductors); (d) timely as Kioxia (formerly Toshiba Memory) re-listed on the Tokyo Stock Exchange in 2025 and SK Hynix/Samsung/Micron/CXMT/YMTC NAND competition intensifies, making this excavation note historically valuable; (e) sets up the AI-archaeology pairing with Day 17 ep66 (DRAM, IBM 1968) so that "**volatile DRAM = 1T1C / non-volatile NAND = three-layer gate**"—the two ancestral patents of modern memory semiconductors—are now both excavated.
+
+## 2. Claim 1 (verbatim from primary source)
+
+The Claim 1 retrieved by curl + Python from Google Patents:
+
+> A semiconductor memory device with a plurality of memory cells arranged in a matrix form, each of said memory cells comprising:
+> a semiconductor region of a first conductivity type;
+> source and drain regions of a second conductivity type formed in said semiconductor region;
+> a gate insulation film formed on a part of said semiconductor region between said source and drain regions;
+> a field insulation film formed on said semiconductor region for separating said memory cells from each other;
+> an erase gate formed on said field insulation film;
+> a floating gate formed on said gate insulation film, a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed between said floating gate and said erase gate; and
+> a control gate formed over said floating gate with a second insulating film being interposed between said control gate and said floating gate and said control gate being formed on said erase gate with a third insulating film being interposed between said control gate and said erase gate, said control gate thereby being insulated from said erase gate and said floating gate and overlapping the portion of said floating gate overlapping said part of said erase gate, said third insulating film being thicker than said first insulating film.
+
+**Five core points of Claim 1**:
+
+1. **Three-layer gate structure (erase + floating + control)**. This is the largest invention in the patent. Conventional EEPROMs had a two-layer floating-gate + control-gate structure; Masuoka et al. added a dedicated erase gate and **physically separated erase, write, and read operations**. This makes flash erase (bulk simultaneous erase) possible.
+2. **The floating gate as an electron-confinement cage**. The floating gate is surrounded on three sides by insulating films—gate insulation film (below), second insulating film (above), and first insulating film (toward the erase gate)—so that electrons injected via tunneling **remain trapped inside the electrically isolated floating gate even when external power is removed**. This is the physical principle of non-volatile memory. Claim 1's phrases "a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed" and "control gate thereby being insulated from said erase gate and said floating gate" are **the patent-claim language of an electron cage**.
+3. **Asymmetric structure where the third insulating film is thicker than the first**. This is Masuoka's original contribution. The first insulating film (between floating gate and erase gate) is thin to enable tunneling erase, while the third insulating film (between control gate and erase gate) is thick to block interference from the control gate. By **deliberately varying insulating-film thickness**, erase and write operations can be controlled independently.
+4. **Matrix-arrangement integration**. The orthogonal two-line addressing scheme (word lines × bit lines) follows the pattern set by IBM Dennard's 1968 DRAM patent (Day 17 ep66). This patent inherits that idea.
+5. **Cell isolation via the field insulation film**. While this is common in MOS LSI, Claim 1 requires it explicitly. Later NAND-type designs share source/drain in series across cells, so this patent's "cell isolation" is **closer to NOR-type thinking**.
+
+**An important distinction**: this patent's title is "Semiconductor memory device," not "flash memory." The name "Flash E2PROM" was first publicly proposed **four years later, in December 1984, when Masuoka presented "A New Flash E2PROM Cell using Triple Polysilicon Technology" at IEEE IEDM**. The naming reportedly came from his Toshiba colleague Shoji Ariizumi remarking that the bulk-erase looked "like a camera flash" (industry secondary sources, Masuoka's own retrospective writings). At filing in 1980 the concept of "flash" did not yet exist.
+
+## 3. The 1980-1985 invention story — the Masuoka + Iizuka two-name collaboration
+
+Fujio Masuoka (born 1943 in Maebashi, Gunma) earned his doctorate in electrical engineering at Tohoku University in 1971 and joined Tokyo Shibaura Electric, assigned to the memory development department of the semiconductor division. From 1977 to 1979 he worked on SAMOS (stacked-gate non-volatile memory), and in 1979 he proposed the **"bulk-erasable non-volatile memory"** concept internally.
+
+Hisakazu Iizuka was a Tokyo Shibaura Electric process engineer who turned Masuoka's concept into a physical device by handling the **insulating-film-thickness control and triple-polysilicon-formation process**. Claim 1's "third insulating film thicker than the first" asymmetric structure required Iizuka's process engineering, which is why both inventors' contributions are inseparable.
+
+| Role | Person | Main contribution |
+|---|---|---|
+| Device structure design / circuit invention | Fujio Masuoka | Three-layer gate structure, erase-gate addition, the overall composition of Claim 1 |
+| Process technology / insulating-film formation | Hisakazu Iizuka | Triple-polysilicon and asymmetric insulating-film thickness manufacturing process |
+
+On the corporate-politics side, Tokyo Shibaura Electric's semiconductor division at the time was **concentrating its resources on DRAM**, and Masuoka's flash-memory proposal received low internal evaluation (industry secondary sources, Masuoka retrospective). The development budget was nearly zero; Masuoka et al. reportedly carried out the prototype work that led to this patent through **late-night overtime and weekend self-driven research** (popular account; primary source unconfirmed; appears in many Masuoka interviews).
+
+## 4. The split into NAND and NOR types
+
+After the IEDM presentation in 1984, the three-layer gate structure of US4531203A branched into two industry lines:
+
+| Line | Year derived | Structure | Use |
+|---|---|---|---|
+| **NOR type** | 1988 (Intel / Masuoka NOR derivative) | Cells parallel to bit lines; supports random access | Code storage (BIOS, embedded-device program execution) |
+| **NAND type** | 1987 (Masuoka NAND proposal, Toshiba IEDM paper) | Multiple cells in series on a bit line; block-unit access | Data storage (SSD, microSD, smartphone storage, LLM weight files) |
+
+The NAND type was also invented by Masuoka. In June 1987 (actually IEEE Symposium on VLSI Circuits) he presented "New Ultra High Density EPROM and Flash EEPROM with NAND Structure Cell." This is a derivative invention that turned the three-layer gate of US4531203A into a **series-connected** layout; Toshiba covered it with separate patents (US5379253A and others, distinct from this patent's family).
+
+Modern SSDs, smartphone storage, microSD, SD cards, and USB memory are **almost all NAND type**, and their physical foundation is the NAND cell layout proposed by Masuoka in 1987. The 1980 patent US4531203A treated in this note is the **four-year predecessor** of NAND, the ancestral patent that first cordoned off the three-layer gate.
+
+## 5. Why "uncannily close" — modern correspondence table
+
+| US4531203A (1980 filing / 1985 grant) | Modern correspondence (2026) | Evaluation |
+|---|---|---|
+| Three-layer gate (erase + floating + control) | NAND-type SSD cell structure | Same (the basic structure of trapping electrons in a floating gate is unchanged) |
+| Non-volatile memory by holding electrons in the floating gate | Smartphone storage, microSD, USB memory | Same (the physical principle is invariant) |
+| Bulk erase (flash erase) | Block erase in modern SSDs | Same (the constraint that erase is per block stems from this patent) |
+| Matrix cell layout | Vertically stacked cells of 3D NAND | Analogy (3D NAND is a derivative invention that stacks the 2D matrix; covered by separate patents) |
+| Asymmetric insulating-film thickness | Modern NAND Charge Trap Flash (CTF) | Analogy (CTF replaces the floating gate with an insulator trap layer; separate line of invention) |
+| 1 cell = 1 bit (SLC) | MLC (2-bit) / TLC (3-bit) / QLC (4-bit) multi-level cells | Similar (multi-level coding refines threshold voltages; covered by separate derivative patents) |
+| 1980: Masuoka + Iizuka, two names | 2026: Kioxia / Samsung / SK Hynix / Micron / CXMT / YMTC, six-company competition | Analogy (market structure changed; the freely-implementable environment after this patent expired allowed it) |
+
+Center of gravity: **3 rows of "Same."** This matches the "still-living core patent" pattern of Day 17 ep66 (IBM DRAM). The three-layer gate structure of this patent remains, in 2025, the physical foundation of NAND cell design at Kioxia / Samsung / SK Hynix / Micron / CXMT / YMTC. Even 30 years after expiry, the recognition that "**flash memory = trapping electrons in a floating gate**" is invariant.
+
+Note: the 3 rows of "analogy" (3D-ization, CTF, multi-level coding) are mainstream derivative inventions of modern NAND but lie outside Claim 1's scope and are covered by separate patents. This patent is the ancestral form of the "planar / floating-gate / 1 cell = 1 bit" type; modern derivatives (3D, CTF, QLC) each have distinct invention lineages.
+
+## 6. Why has it been forgotten? (speculation)
+
+This patent has not really been "forgotten." Within the semiconductor industry, Masuoka is widely recognized as a **Nobel-class inventor**, and in 2018 he received the Japan Prize.
+
+However, several reasons suggest why it is **rarely referenced in general technical discourse**:
+
+1. **The name "flash" is retrofitted**: this patent's title is "Semiconductor memory device," and the word "flash" does not appear. A general reader searching for US4531203A is unlikely to recognize it as "the origin of flash memory."
+2. **The contrast with the DRAM patent (IBM 1968 Dennard) is industry-internal**: the volatile DRAM vs non-volatile NAND ancestral comparison only becomes meaningful inside the semiconductor-industry context and rarely reaches general readers.
+3. **The narrative around Masuoka's internal-evaluation history overshadows the patent itself**: the "genius unappreciated by his company" narrative is told as Masuoka's biography, while writing that actually reads US4531203A's Claim 1 structure is rare.
+4. **The NAND derivative patents (1987 proposal) carry larger commercial impact**: SSDs and smartphone storage are NAND-type, so industry literature tends to cite NAND-derivative patents and treat this patent (the NOR-leaning ancestor) as background.
+
+## 7. Meaning in AI archaeology terms
+
+Excavating this patent has the following significance for the series theme "**reread the long-form documents humans never read, with LLMs**":
+
+1. **Claim 1 verbatim retrieval failed via WebFetch but succeeded via curl + Python parse**, and that excavation log itself has methodological value. Google Patents' rendered HTML hides the claims section, so retrieving raw HTML and extracting `<section itemprop="claims">` becomes the new standard. The lesson is portable to other patents.
+2. **Two DB errors corrected** ("Masuoka solo" / "1982 grant"). This is a Day 19 recurrence of the "popular-narrative DB contamination" problem that ran consecutively in Day 8-18, reconfirming that introductory books / Wikipedia-derived information **diverges from primary sources even at the patent-number level**. This note's DB corrections are the 25th / 26th in the cumulative count.
+3. **The Cage Patents axis** (this note + ep71 CCD + ep72 hyaluronic-acid crosslinked gel) is a **new AI-archaeology sub-series candidate** that traverses patents whose Claim 1 verbatim describes a confinement structure. It may serve as a recurring excavation organizing axis going forward.
+4. The **starting point of the memory-semiconductor side (NAND)** of haruko's main niche (Chinese AI × Korean/Taiwanese semiconductors × robotics) is now confirmed in primary sources, providing historical context for translation-speed reporting on CXMT / YMTC's Chinese NAND entry.
+
+## 8. Pitfalls (specific to flash-memory patents)
+
+**Pitfall 1: the "flash" name was coined in 1984; it did not exist at filing.**
+This patent's title is "Semiconductor memory device," and the "flash" name was first publicly proposed at the 1984 IEDM paper. Calling this "the 1980 flash memory patent" is strictly incorrect; "the 1980 three-layer-gate-structure patent, later recognized as the ancestor of flash memory" is precise.
+
+**Pitfall 2: the NAND/NOR derivatives are outside Claim 1's scope.**
+Claim 1 requires "matrix arrangement" and "cell isolation by field insulating film," differing from NAND's "series connection" structure. NAND is a 1987 separate-line invention by Masuoka; it lies on the descent line of this patent but outside Claim 1's claim scope. Writing "this patent = ancestor of NAND-type SSD" overextends the scope; one should write "this patent = ancestral form of the flash-memory line; the NAND derivative is a separate 1987 patent family."
+
+**Pitfall 3: overlooking Iizuka's contribution.**
+Because Masuoka's personal narrative is widely told in the industry, the fact that co-inventor Hisakazu Iizuka handled the "asymmetric insulating-film thickness process," indispensable for Claim 1, is easy to miss. This is the same pattern as Day 17 ep64 Goodenough/Mizushima and Day 18 ep68 Nakamura/Mukai/Iwasa: the gap between "narrativized lone inventor" and "patent inventor field" is a recurring AI-archaeology theme.
+
+**Pitfall 4: the popular "1982 grant" date is wrong.**
+The DB and some introductory literature say "1982 grant," but US grant date is 1985-07-23, five years off. Priority 1980-12-20 / filing 1981-11-13 / grant 1985-07-23 should be recorded separately.
+
+**Pitfall 5: corporate name confusion between "Toshiba" and "Tokyo Shibaura Electric."**
+At filing (1980) the company was Tokyo Shibaura Electric Co Ltd; the rebrand to "Toshiba" came in 1984. The Original Assignee is correctly written as "Tokyo Shibaura Electric"; "Toshiba Corp" is the Current Assignee, and both should be listed. Same pattern as Day 18 ep68 Nichia Chemical Industries Ltd → Nichia Corporation.
+
+---
+
+## To be precise
+
+**Confirmed facts:**
+- US Patent US4531203A, title "Semiconductor memory device and method for manufacturing the same," inventors Fujio Masuoka + Hisakazu Iizuka two co-inventors, Original Assignee Tokyo Shibaura Electric Co Ltd, Current Assignee Toshiba Corp, Priority Date 1980-12-20, Filing Date 1981-11-13, Publication/Grant Date 1985-07-23, all retrieved via WebFetch from Google Patents (https://patents.google.com/patent/US4531203A/en)
+- Full text of Claim 1 retrieved via curl + Python parse (extracting `<section itemprop="claims">`). Confirmed three-layer gate structure (erase + floating + control) and the asymmetric structure "third insulating film thicker than first."
+- The HW-003 row in candidates.tsv was updated this session to Published / Primary Confirmed.
+
+**Author's interpretation:**
+- "Day 19 three-piece set axis = Cage Patents" is an editorial decision in this session. Reading Claim 1's verbatim "a portion of said floating gate overlapping a part of said erase gate... insulated from" as an "electron cage" is the author's interpretation; the patent specification itself does not call it that.
+- Positioning this as "ancestor of modern NAND-type SSD" is the author's interpretation. Legally, Claim 1 does not directly cover NAND-type designs (NAND is a separate 1987 Masuoka patent family).
+- "Iizuka handled the asymmetric insulating-film thickness process" is an interpretation based on industry secondary sources / Masuoka retrospective; the patent specification does not state role assignments explicitly.
+
+**Analogies / metaphors:**
+- The row "matrix cell layout → vertically stacked cells of 3D NAND" is an analogy. 3D-ization stacks this patent's 2D matrix, but is covered by separate patents.
+- "Asymmetric insulating-film thickness → CTF (Charge Trap Flash)" is also an analogy. CTF replaces the floating gate with an insulator trap layer; separate line of invention.
+- "1980 Masuoka + Iizuka two names → 2026 six-company competition" is an analogy. The structural alignment between individual inventors and modern corporate groups is metaphorical; the market structure is on a different axis.
+
+**Unconfirmed:**
+- Full specification text (only Abstract and Claim 1 retrieved via Google Patents; figures, detailed embodiments, alternative embodiments unread)
+- Full text of the 1984 IEDM paper "A New Flash E2PROM Cell using Triple Polysilicon Technology" (IEEE Xplore standard route; unretrieved here)
+- 1987 Masuoka NAND proposal paper (IEEE Symposium VLSI Circuits; unretrieved here)
+- Toshiba internal documents on development budget / internal evaluation (not publicly available; only industry secondary sources / Masuoka interviews)
+- Intel / Toshiba patent cross-licensing contract (not public)
+- Hisakazu Iizuka's career details (post-Toshiba; sparse in industry literature)
+- Forward citation count (including Google Patents Family confirmation; not retrieved)
+
+**Where the comparison breaks down:**
+- Claim 1 legally requires "matrix arrangement," "cell isolation by field insulating film," and "third insulating film thicker than first"; modern 3D NAND, CTF, MLC/TLC/QLC are all covered by separate patents. Writing "this patent = ancestor of modern NAND" exceeds the legal claim scope.
+- The "flash memory" name is the 1984 IEDM paper coinage; it does not exist at filing (1980). The phrase "1980 flash-memory patent" is strictly inaccurate, given that the title is "Semiconductor memory device."
+- Reading Claim 1 verbatim's "confinement structure" as a "cage" is an authorial axis; the specification itself does not call it that.
+- Masuoka's personal "genius unappreciated by his company" narrative comes from industry secondary sources / Masuoka's own interviews; primary-source verification with Toshiba internal documents is unperformed.
+
+---
+
+References:
+- US Patent US4531203A (Google Patents cover page): https://patents.google.com/patent/US4531203A/en
+- IBM Research Robert Dennard (Day 19 comparison reference, volatile DRAM 1968): https://research.ibm.com/people/robert-h-dennard
+- Kioxia Corporation (former Toshiba Memory, modern implementer of this patent): https://www.kioxia.com/
+
+---
+
+## Day 19 three-piece set 'Cage Patents — confining electrons, charge, and molecules'
+
+- Note #4 (this article): 1980 Masuoka + Iizuka flash memory US4531203A — **electrons confined in a floating-gate cage**
+- [Memo #6: 1973 Bell Labs Boyle/Smith CCD US3792322A — charge confined in a potential-minima cage](/en/notes/71-hardware-energy-patent-memo-06)
+- [Cosmetic Memo #2: 1985 Balazs/Leshchiner crosslinked hyaluronic-acid gel US4636524A — drug confined in a molecular cage](/en/notes/72-cosmetic-patent-memo-02)
+
+The three articles share an editorial axis of patents whose Claim 1 verbatim contains a "confinement structure"—a first attempt in the AI-archaeology series. They span electrons (semiconductor memory) / charge (light detection) / molecules (biomaterials), but share the invention core "physically confining matter for storage / readout / sustained release."

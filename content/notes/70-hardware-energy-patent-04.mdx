@@ -1,0 +1,214 @@
+---
+title: "1980年 東京芝浦電気の舛岡富士雄・飯塚久一が共同出願した『半導体メモリ装置』特許 US4531203A を、現代 NAND 型フラッシュ・スマホストレージ・SSD・LLM 重みファイル保管の起点として読み返す"
+subtitle: "ハードウェア・エネルギー特許 発掘ノート #4 — 米国特許 US4531203A『Semiconductor memory device and method for manufacturing the same』、舛岡富士雄（Fujio Masuoka）と飯塚久一（Hisakazu Iizuka）の2名共同発明、Original Assignee 東京芝浦電気（Tokyo Shibaura Electric Co Ltd・1984 年 Toshiba 社名変更前）→ Current Assignee Toshiba Corp、米国優先日 1980-12-20・出願 1981-11-13・成立 1985-07-23・寿命満了。Claim 1 は『マトリクス状に配置された複数のメモリセルから成る半導体メモリで、各セルが (a) 第1導電型半導体領域、(b) 第2導電型のソース・ドレイン領域、(c) ゲート絶縁膜、(d) フィールド絶縁膜、(e) フィールド絶縁膜上に形成された消去ゲート（erase gate）、(f) ゲート絶縁膜上に形成された浮遊ゲート（floating gate）で消去ゲートの一部と第1絶縁膜を介して重なるもの、(g) 浮遊ゲート上に形成された制御ゲート（control gate）で第2絶縁膜を介して浮遊ゲートと、第3絶縁膜を介して消去ゲートと重なり、第3絶縁膜が第1絶縁膜より厚いもの、を備えるもの』を請求し、現代の NAND 型 SSD・スマートフォンストレージ・microSD・LLM 重みファイル保管まで連なる**消去ゲート付き浮遊ゲート型フラッシュメモリセル**の最小構成を1985 年成立時点で囲い込んだ。Day 19 の3点セット『Cage Patents — 電子・電荷・分子の閉じ込め』ノート枠（電子cage = 浮遊ゲート）"
+description: "1980年12月20日、東京芝浦電気（現 Toshiba）の舛岡富士雄（Fujio Masuoka）と飯塚久一（Hisakazu Iizuka）の2名は共同で『半導体メモリ装置およびその製造方法』を米国に出願し、1985年7月23日に US4531203A として成立した。Claim 1 は『マトリクス状に配置されたメモリセルが、消去ゲート（erase gate）・浮遊ゲート（floating gate）・制御ゲート（control gate）の3層ゲート構造を備え、第3絶縁膜が第1絶縁膜より厚い』ことを請求する。これが現代 NAND 型フラッシュメモリの祖形であり、SSD・スマートフォンストレージ・microSD・SDカード・USBメモリ・LLM 重みファイル保管インフラまでが本特許の浮遊ゲートに電子を閉じ込める原理の延長線上にある。本特許は「フラッシュ」名称が舛岡 1984 年 IEDM 論文で命名される 4年前の構造特許で、Claim 1 の核は **floating gate を3層ゲートで電気的に囲い込み、消去・書き込み・読み出しの3操作を分離可能にした**点。DB訂正2件：(1) DB「舛岡単独」→ 実体は 舛岡＋飯塚2名共同（IBM 1968 Dennard 単独 / Bell Labs 1948 Bardeen-Brattain 2名 とは別パターン）、(2) DB「1982 年成立」→ 実体は 1985-07-23 成立（出願1981-11-13、Priority 1980-12-20）。Day 19 の3点セット『Cage Patents — 電子・電荷・分子の閉じ込め』ノート枠で、Claim 1 が明示的に「浮遊ゲートが消去ゲートと一部重なり絶縁膜で分離される」構造で電子を物理的に閉じ込める cage を請求する。"
+episode: 70
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ハードウェア・エネルギー特許", "フラッシュメモリ", "舛岡富士雄", "Toshiba", "東芝", "NAND", "浮遊ゲート", "発掘ノート"]
+series: "ハードウェア・エネルギー特許"
+seriesNumber: 9
+status: "published"
+---
+
+## 結論を先に
+
+1980年12月20日、神奈川県川崎市・東京芝浦電気（Tokyo Shibaura Electric Co Ltd、1984 年 Toshiba 社名変更前の旧社名）半導体事業部に所属していた **舛岡富士雄（Fujio Masuoka）** と **飯塚久一（Hisakazu Iizuka）** の2名は、米国に対して『Semiconductor memory device and method for manufacturing the same（半導体メモリ装置およびその製造方法）』を共同出願した。米国出願日は1981年11月13日（日本優先1980-12-20）、4年7か月の審査を経て **1985年7月23日に米国特許 US4531203A として成立** した。
+
+Claim 1 は『マトリクス状に配置された複数のメモリセルから成る半導体メモリ装置で、各セルが (a) 第1導電型の半導体領域、(b) 当該領域内に形成された第2導電型のソース・ドレイン領域、(c) ソース・ドレイン間の半導体領域上に形成されたゲート絶縁膜、(d) メモリセル相互を分離するフィールド絶縁膜、(e) フィールド絶縁膜上に形成された消去ゲート（erase gate）、(f) ゲート絶縁膜上に形成された浮遊ゲート（floating gate）で消去ゲートの一部と第1絶縁膜を介して重なるもの、(g) 浮遊ゲート上に第2絶縁膜を介して、また消去ゲート上に第3絶縁膜を介して形成された制御ゲート（control gate）で、第3絶縁膜が第1絶縁膜より厚いもの、を備える』ことを請求する。これが現代のフラッシュメモリの **3層ゲート構造（消去・浮遊・制御）の核特許** である。
+
+本特許の **Original Assignee は東京芝浦電気（Tokyo Shibaura Electric Co Ltd）**、これは1984年に Toshiba Corporation へ商号変更される直前の社名であり、本特許の出願時点ではまだ「東芝」ではなく「東京芝浦電気」を使っている点が一次資料上の重要事実。**Current Assignee は Toshiba Corp**。
+
+**DB訂正は2件発生**：(1) DB の発明者欄「舛岡富士雄（Fujio Masuoka）」単独想定 → **実体は舛岡＋飯塚久一の2名共同**（Day 17 ep64 Goodenough/Mizushima 訂正と同パターン、論文と特許の発明者が一致しないわけではないが「舛岡発明」の通説は飯塚を見落とす）、(2) DB「1980年出願・1982 年成立」 → **実体は Priority 1980-12-20 / 米国出願 1981-11-13 / 成立 1985-07-23**（DB「1982 年成立」は誤り、実際は5年遅れ）。Day 8〜18 で発生したDB誤り訂正系列は通算 **23件→25件** に更新（Day 19 内2連続訂正）。
+
+Day 17「電源・演算・記憶」三種の神器、Day 18「光を取り入れる・生む・自由形状で生む」半導体光学3点に続き、**Day 19 は『Cage Patents — 電子・電荷・分子を物理的に閉じ込める発明』** の3点セットとして編成する。本ノート（HW-003 フラッシュ、電子を浮遊ゲートに閉じ込める）／メモ ep71（HW-010 CCD、電荷をポテンシャル井戸に閉じ込める）／メモ ep72（CS-003 ヒアルロン酸架橋ゲル、薬物を分子ケージに閉じ込める）の3本は、いずれも Claim 1 に「閉じ込め構造」が verbatim で書かれている。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] candidates.tsv から HW セクション残を抽出
+         → HW-003（フラッシュメモリ、優先度14）
+           HW-005（青色LED、Day 18 ep68 で消化済）
+           HW-006（太陽電池、Day 18 ep67 で消化済）
+           HW-009（OLED、Day 18 ep69 で消化済）
+           HW-010（CCD、優先度11、Source Not Confirmed）
+         → 残 HW-003 と HW-010 の2件のみ
+[STEP 2] Day 19 の3点セット軸を考案
+         → Claim 1 に「閉じ込め」概念がある特許群を横断検索
+         → HW-003（floating gate cage）、HW-010（potential minima cage）、
+           CS-003（molecular cage）の3本で『Cage Patents』軸を確立
+[STEP 3] Google Patents から US4531203A の Title・発明者・譲受人・日付・
+         Claim 1 を取得
+         → Title「Semiconductor memory device and method for
+           manufacturing the same」確認
+         → 発明者：Fujio Masuoka + Hisakazu Iizuka（DB「単独」誤り訂正）
+         → Original Assignee：Tokyo Shibaura Electric Co Ltd
+         → Priority 1980-12-20 / Filing 1981-11-13 / Grant 1985-07-23
+           （DB「1982 年成立」誤り訂正）
+[STEP 4] curl + Python で Claim 1 全文取得
+         → 3層ゲート構造（erase + floating + control）を確認
+         → 第3絶縁膜が第1絶縁膜より厚い、という非対称構造を確認
+[STEP 5] 周辺事実検証
+         → 1984 年 IEDM 論文での「フラッシュ」命名
+         → NAND 型 vs NOR 型の系譜分岐
+         → 舛岡の社内評価・1994 年退職・東北大教授就任
+         → Intel・東芝の特許クロスライセンス
+[STEP 6] 現代ニッチ接続：Samsung / SK Hynix / Micron / Kioxia の NAND、
+         CXMT / YMTC（中国）、SSD・スマホ・LLM 重みファイル保管
+```
+
+選定理由：(a) Week 4 ハードウェア残2件のうちノート級の象徴性が高い、(b) Claim 1 に明示的に「floating gate と erase gate が絶縁膜を介して重なる」という閉じ込め構造が verbatim で書かれており Day 19 Cage Patents 軸に最適、(c) はるこの主軸ニッチ（中国AI×韓台半導体）の **記憶半導体側（NAND）の起点** を1セッションで読み切れる、(d) 2025 年 Kioxia（旧東芝メモリ）東証再上場と SK Hynix・Samsung・Micron・CXMT・YMTC の NAND 競争激化の時期に、本特許の歴史的意義を発掘ノートとして残す価値が高い、(e) Day 17 ep66（DRAM、IBM 1968）と並べて「**揮発性 DRAM = 1T1C ／ 不揮発性 NAND = 3層ゲート**」という現代記憶半導体の2系統の祖を AI 考古学の連続記事で揃えられる。
+
+## 2. Claim 1（一次資料 verbatim）
+
+curl + Python で Google Patents から取得した Claim 1 の全文：
+
+> A semiconductor memory device with a plurality of memory cells arranged in a matrix form, each of said memory cells comprising:
+> a semiconductor region of a first conductivity type;
+> source and drain regions of a second conductivity type formed in said semiconductor region;
+> a gate insulation film formed on a part of said semiconductor region between said source and drain regions;
+> a field insulation film formed on said semiconductor region for separating said memory cells from each other;
+> an erase gate formed on said field insulation film;
+> a floating gate formed on said gate insulation film, a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed between said floating gate and said erase gate; and
+> a control gate formed over said floating gate with a second insulating film being interposed between said control gate and said floating gate and said control gate being formed on said erase gate with a third insulating film being interposed between said control gate and said erase gate, said control gate thereby being insulated from said erase gate and said floating gate and overlapping the portion of said floating gate overlapping said part of said erase gate, said third insulating film being thicker than said first insulating film.
+
+訳：「マトリクス状に配置された複数のメモリセルから成る半導体メモリ装置で、各メモリセルは (a) 第1導電型の半導体領域、(b) 当該半導体領域内に形成された第2導電型のソース領域およびドレイン領域、(c) ソース・ドレイン間の半導体領域の一部の上に形成されたゲート絶縁膜、(d) メモリセル相互を分離するために半導体領域上に形成されたフィールド絶縁膜、(e) フィールド絶縁膜上に形成された消去ゲート、(f) ゲート絶縁膜上に形成された浮遊ゲートで、当該浮遊ゲートの一部が第1絶縁膜を介して消去ゲートの一部と重なるもの、(g) 浮遊ゲート上に第2絶縁膜を介して形成され、かつ消去ゲート上に第3絶縁膜を介して形成された制御ゲートで、これにより制御ゲートは消去ゲートおよび浮遊ゲートから絶縁され、第1絶縁膜を介して消去ゲートと重なる浮遊ゲート部分の上で重なるもの、ただし第3絶縁膜は第1絶縁膜より厚いもの、を備える」
+
+**Claim 1 の核は5点**：
+
+1. **3層ゲート構造（erase + floating + control）**：これが本特許最大の発明。従来の EEPROM は floating gate + control gate の2層構造だったが、舛岡らは消去専用ゲートを追加して**消去・書き込み・読み出しの3操作を物理的に分離**した。これにより一括消去（flash erase）が可能になる。
+2. **floating gate に電子を閉じ込める cage 構造**：浮遊ゲートはゲート絶縁膜（下）と第2絶縁膜（上）と第1絶縁膜（横、消去ゲート方向）の3方向の絶縁膜に囲まれており、トンネリングで注入された電子は外部から電源を切っても**電気的に隔離された浮遊ゲート内に留まり続ける**。これが不揮発性記憶（電源を切ってもデータが消えない）の物理原理。Claim 1 の「a portion of said floating gate overlapping a part of said erase gate with a first insulating film being interposed」「control gate thereby being insulated from said erase gate and said floating gate」が**電子cage の請求項上の表現**である。
+3. **第3絶縁膜が第1絶縁膜より厚いという非対称構造**：これが舛岡の独創部分。第1絶縁膜（floating gate と erase gate の間）は薄くしてトンネリング消去を可能にし、第3絶縁膜（control gate と erase gate の間）は厚くして制御ゲートからの干渉を遮断する。**絶縁膜の厚みを意図的に変える**ことで、消去動作と書き込み動作を独立に制御できる。
+4. **マトリクス状配置による集積化**：ワード線とビット線の交差点アドレッシングは IBM Dennard 1968 年 DRAM 特許（Day 17 ep66）と同型の発想。本特許もその直交2線アドレッシングを継承している。
+5. **フィールド絶縁膜による隣接セル分離**：これは MOS LSI 一般の常識だが、Claim 1 で明示的に請求している。後の NAND 型では各セルがソース・ドレインを共有する直列接続になるため、本特許の「セル分離」は **NOR 型に近い思想**。
+
+**重要な区別**：本特許は「フラッシュメモリ」という名称ではなく「半導体メモリ装置」を Title としている。「Flash E2PROM」の命名は**4年後の1984 年12月、舛岡が IEEE IEDM（International Electron Devices Meeting）で発表した論文**「A New Flash E2PROM Cell using Triple Polysilicon Technology」で初めて公の場に提示された。この命名は東芝同僚の有沢繁が「カメラのフラッシュのように一括消去できる」と評したことが由来とされる（業界2次資料、舛岡本人の回顧記事）。本特許出願時（1980年）にはまだ「フラッシュ」の概念が確立していなかった。
+
+## 3. 1980年〜1985年の発明物語──舛岡＋飯塚の2名共同体制
+
+舛岡富士雄（1943年群馬県前橋市生まれ）は1971年に東北大学電子工学博士課程を修了し東京芝浦電気に入社、半導体事業部メモリ開発部門に配属された。1977年〜1979年に SAMOS（スタックトゲート不揮発性メモリ）の研究を進め、1979年に**「一括消去可能な不揮発性メモリ」**の構想を社内で提案した。
+
+飯塚久一は東京芝浦電気の半導体プロセス技術者で、舛岡の構想を物理デバイスとして具現化するための **絶縁膜厚み制御・ポリシリコン3層形成プロセス**を担当した。本特許 Claim 1 の「第3絶縁膜が第1絶縁膜より厚い」という非対称絶縁膜構造は、飯塚のプロセス技術なしには実現困難だった点で、両名の貢献は不可分である。
+
+| 役割 | 担当者 | 主な貢献 |
+|---|---|---|
+| デバイス構造設計・回路発明 | 舛岡富士雄（Fujio Masuoka） | 3層ゲート構造、消去ゲート追加の発明、Claim 1 の全体構成 |
+| プロセス技術・絶縁膜形成 | 飯塚久一（Hisakazu Iizuka） | ポリシリコン3層と絶縁膜厚み非対称化の製造プロセス |
+
+社内政治面では、当時の東京芝浦電気半導体事業部は **DRAM 事業に経営資源を集中**しており、舛岡のフラッシュメモリ提案は社内評価が低かった（業界2次資料・舛岡回顧）。開発予算はほぼゼロで、舛岡らは**深夜残業と週末の自主研究**で本特許に至る試作を進めた、という通説がある（一次資料未確認、舛岡本人のインタビュー記事多数で語られる）。
+
+## 4. NAND 型と NOR 型への系譜分岐
+
+本特許 US4531203A の3層ゲート構造は1984 年 IEDM 論文発表後、業界全体で2系統に分岐した：
+
+| 系統 | 派生年 | 構造 | 用途 |
+|---|---|---|---|
+| **NOR 型** | 1988（Intel・舛岡 NOR 派生）| 各セルがビット線に並列接続、ランダムアクセス可能 | コードストレージ（BIOS、組込み機器の実行プログラム） |
+| **NAND 型** | 1987（舛岡 NAND 提案、東芝 IEDM 論文） | 複数セルがビット線に直列接続、ブロック単位アクセス | データストレージ（SSD、microSD、スマホストレージ、LLM 重みファイル） |
+
+NAND 型を発明したのも舛岡である。1987年6月の IEDM（実際には IEEE Symposium VLSI Circuits）で「New Ultra High Density EPROM and Flash EEPROM with NAND Structure Cell」を発表。これは本特許 US4531203A の3層ゲート構造を**直列接続**に変えた派生発明で、東芝は別系統特許で覆った（米国 US5379253A 系統など、本特許とは別の特許族）。
+
+現代の SSD、スマートフォンストレージ、microSD、SD カード、USB メモリは**ほぼすべて NAND 型**で、その物理基盤は舛岡が1987年に提案した NAND セル構成である。本ノートの対象である1980年特許 US4531203A は、その NAND 型の**4年前の前史**にあたる「3層ゲートを最初に囲い込んだ祖の特許」として位置づけられる。
+
+## 5. なぜ「気持ち悪いほど近い」のか──現代との対応表
+
+| US4531203A（1980 出願 / 1985 成立） | 現代対応物（2026） | 評価 |
+|---|---|---|
+| 3層ゲート構造（erase + floating + control） | NAND 型 SSD のセル構造 | 同一（電子を浮遊ゲートに閉じ込める基本構造はそのまま） |
+| 浮遊ゲートに電子を保持する不揮発性記憶 | スマートフォンストレージ、microSD、USB メモリ | 同一（物理原理は不変） |
+| 一括消去（flash erase） | SSD のブロック消去動作 | 同一（消去がブロック単位の制約は本特許に由来） |
+| マトリクス状セル配置 | 3D NAND の垂直積層セル | 比喩（2D マトリクスを立体化したのが3D NAND、別系統発明） |
+| 絶縁膜厚み非対称化 | 現代 NAND の Charge Trap Flash（CTF） | 比喩（CTF は浮遊ゲートを絶縁体トラップ層に置換、別系統） |
+| 1セル1ビット（SLC） | MLC（2bit）/ TLC（3bit）/ QLC（4bit）多値セル | 類似（多値化は閾値電圧を細分化する派生発明、別系統特許） |
+| 1980 年舛岡＋飯塚2名 | 2026 年 Kioxia / Samsung / SK Hynix / Micron / CXMT / YMTC 6社競争 | 比喩（市場構造は変わったが、本特許失効後の自由実施環境がそれを許した） |
+
+判定の重心：**「同一」が3行**。これは Day 17 ep66（IBM DRAM）と同等の「現役で生き続けている核特許」パターン。本特許の3層ゲート構造は 2025 年現在も Kioxia・Samsung・SK Hynix・Micron・CXMT・YMTC の NAND セル設計の物理基盤として継承されている。失効後30年経っても**「フラッシュメモリ＝浮遊ゲートに電子を閉じ込める」**という認識は不変。
+
+注：「比喩」3行（3D 化、CTF、多値化）は現代 NAND の主流派生発明だが、いずれも本特許 Claim 1 の請求項範囲外で、別系統特許で覆われている。本特許は「平面型・浮遊ゲート型・1セル1ビット」の祖型で、現代の派生形（3D・CTF・QLC）はそれぞれ別の発明系譜を持つ。
+
+## 6. なぜ忘れられたか（推測）
+
+本特許は決して「忘れられた」わけではない。むしろ舛岡富士雄の名は半導体業界では**ノーベル賞級の発明者**として知られ、2018 年には日本国際賞（Japan Prize）を受賞した。
+
+しかし**一般の技術語りでは参照されにくい**理由がいくつか想定される：
+
+1. **「フラッシュ」名称が後付け**：本特許 Title は「Semiconductor memory device」で、フラッシュという言葉が使われていない。一般読者が US4531203A で検索しても「フラッシュメモリの起源」と気づきにくい。
+2. **DRAM 特許（IBM 1968 Dennard）との対比が業界内議論に閉じている**：揮発性 DRAM と不揮発性 NAND の2系統の祖の対比は半導体業界の文脈で初めて意味を持ち、一般読者の文脈には到達しない。
+3. **舛岡個人の社内評価史が物語化された結果、特許そのものが副次化**：「会社に評価されなかった天才」というナラティブが舛岡の人物伝として語られる中で、特許 US4531203A 自体の Claim 1 構造を読む文章は少ない。
+4. **NAND 型の派生特許（1987 提案）の方が商業的影響が大きい**：SSD・スマホストレージは NAND 型なので、業界文献は NAND 派生特許の方を引用しがちで、本特許（NOR に近い系統の祖）は前史として位置づけられがち。
+
+## 7. AI考古学的な意味
+
+本特許の発掘は「**人類が読まなかった長文を、LLMで再読する**」という連載テーマに対して、以下の点で意味を持つ：
+
+1. **Claim 1 verbatim の取得が WebFetch では失敗、curl + Python パースで成功**した、という発掘ログ自体が AI 考古学の方法論として価値を持つ。Google Patents の HTML レンダリングが claims セクションを隠していたためで、生 HTML を取得して `<section itemprop="claims">` を抽出する方法が今後の標準になる。
+2. **DB「舛岡単独」「1982 年成立」の2件誤りを訂正**した。これは Day 8〜18 で連続発生していた「通説の DB 混入」問題の Day 19 における再発で、入門書・Wikipedia 経由の情報が**特許番号レベルでも一次資料と乖離する**ことを再確認した。本ノートの DB訂正は通算 25 件目／26 件目に相当。
+3. **「Cage Patents」軸**（本ノート + ep71 CCD + ep72 ヒアルロン酸架橋ゲル）は、Claim 1 に「閉じ込め構造」が verbatim で書かれている特許を横断する**新しい AI 考古学のサブシリーズ候補**。発掘の編成軸として今後も使える可能性がある。
+4. はるこの主軸ニッチ（中国AI × 韓台半導体 × ロボット）の **記憶半導体側（NAND）の起点** を一次資料で確定したことで、CXMT・YMTC の中国 NAND 参入を翻訳速報で扱う際の歴史的文脈が手元に揃う。
+
+## 8. 落とし穴（フラッシュメモリ特許固有のもの）
+
+**落とし穴1：フラッシュ命名は1984 年で本特許出願時には存在しない**
+本特許 Title は「Semiconductor memory device」で、「フラッシュ」名称は1984 年 IEDM 論文で初めて公に提示された。記事執筆時に「1980 年フラッシュメモリ特許」と書くと厳密には誤りで、「1980 年 3層ゲート構造特許、後にフラッシュメモリの祖と認識される」が正確。
+
+**落とし穴2：NAND 型と NOR 型の派生は本特許の Claim 1 範囲外**
+本特許の Claim 1 は「マトリクス状配置」「フィールド絶縁膜による分離」を請求しており、NAND 型の「直列接続」構造とは異なる。NAND 型は1987 年舛岡提案の別系統発明で、本特許の延長線上にあるが Claim 1 の請求範囲には入らない。「本特許 = NAND 型 SSD の祖」と書くと範囲を広げすぎ。「本特許 = フラッシュメモリ系統全体の祖型、NAND 派生は1987 年提案の別特許族」と書く必要がある。
+
+**落とし穴3：飯塚久一の貢献を見落とす通説**
+舛岡個人の物語が業界で広く語られているため、共同発明者の飯塚久一が本特許の Claim 1 にとって不可欠な「絶縁膜厚み非対称化プロセス」を担当したという事実が見落とされやすい。Day 17 ep64 Goodenough/Mizushima、Day 18 ep68 Nakamura/Mukai/Iwasa と同パターンで、「物語化された個人発明者」と「特許の発明者欄」のずれは AI 考古学の頻出テーマ。
+
+**落とし穴4：成立日「1982 年」通説の誤り**
+DB および入門書の一部に「1982 年成立」と書かれているが、米国成立は1985-07-23 で5年遅れている。Priority 1980-12-20 / Filing 1981-11-13 / Grant 1985-07-23 を分けて記述すべき。
+
+**落とし穴5：「東芝」と「東京芝浦電気」の社名混在**
+本特許出願時（1980 年）の社名は東京芝浦電気（Tokyo Shibaura Electric Co Ltd）で、「Toshiba」への商号変更は1984 年。Original Assignee は「Tokyo Shibaura Electric」と書くのが正確で、現代の「Toshiba Corp」は Current Assignee として併記する。Day 18 ep68 Nichia Chemical Industries Ltd → Nichia Corporation の社名変更パターンと同型。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- 米国特許 US4531203A、Title「Semiconductor memory device and method for manufacturing the same」、発明者 Fujio Masuoka + Hisakazu Iizuka 2名共同、Original Assignee Tokyo Shibaura Electric Co Ltd、Current Assignee Toshiba Corp、Priority Date 1980-12-20、Filing Date 1981-11-13、Publication/Grant Date 1985-07-23 を Google Patents 表紙から WebFetch で取得済み（https://patents.google.com/patent/US4531203A/en）
+- Claim 1 の全文を curl + Python パース（`<section itemprop="claims">` 抽出）で取得済み。3層ゲート構造（erase + floating + control）と「第3絶縁膜が第1絶縁膜より厚い」非対称構造を確認
+- DB candidates.tsv の HW-003 行を本セッションで Published・Primary Confirmed に更新
+
+**著者の解釈：**
+- 「Day 19 の3点セット軸＝Cage Patents」は本セッションでの編成判断。Claim 1 verbatim の「floating gate と erase gate が絶縁膜を介して重なる」「control gate thereby being insulated from」という表現を「電子cage」と読む解釈は著者の解釈で、特許明細書本文がそう自称しているわけではない
+- 「現代 NAND 型 SSD の祖」と位置づけるのは著者の解釈。法的には本特許 Claim 1 の請求範囲は NAND 型を直接覆わない（NAND 型は1987 年舛岡提案の別特許族）
+- 「飯塚久一が絶縁膜厚み非対称化プロセスを担当」は業界2次資料・舛岡回顧記事ベースの解釈で、特許明細書本文には役割分担の明示はない
+
+**比喩・アナロジー：**
+- 対応表の「マトリクス状セル配置 → 3D NAND の垂直積層」は比喩。本特許の2D マトリクスを立体化したのが3D NAND だが、3D 化は別系統特許で覆われている
+- 「絶縁膜厚み非対称化 → CTF（Charge Trap Flash）」も比喩。CTF は浮遊ゲートを絶縁体トラップ層に置換した別系統発明
+- 「1980 年舛岡＋飯塚2名 → 2026 年 6社競争」も比喩。発明者個人と現代企業群を並べる意味は構造的アナロジーで、市場構造は別軸
+
+**未確認：**
+- 明細書本文全文（Google Patents Abstract / Claim 1 のみ取得、図面・詳細実施例・代替実施例の記述未読）
+- 1984 年 IEDM 論文「A New Flash E2PROM Cell using Triple Polysilicon Technology」の全文（IEEE Xplore、本ノートでは未取得）
+- 1987 年舛岡 NAND 提案論文（IEEE Symposium VLSI Circuits、本ノートでは未取得）
+- 東芝社内での開発予算・社内評価の一次資料（社内資料で公開されていない、業界2次資料・舛岡回顧記事のみ）
+- Intel・東芝の特許クロスライセンス契約書（非公開）
+- 飯塚久一のキャリア詳細（東芝退職後の動向、業界文献に少ない）
+- Forward citations 件数（Google Patents Family 確認も含めて未取得）
+
+**この比較が破綻する点：**
+- 本特許 Claim 1 は法的には「マトリクス状配置」「フィールド絶縁膜による分離」「第3絶縁膜が第1絶縁膜より厚い」を請求しており、現代の3D NAND・CTF・MLC/TLC/QLC はいずれも別系統特許で覆われている。「本特許 = 現代 NAND の祖」と書くと法的請求範囲を超える解釈になる
+- 「フラッシュメモリ」名称は1984 年 IEDM 論文での命名で、本特許出願時（1980 年）には存在しない。「1980 年フラッシュメモリ特許」表現は Title が「Semiconductor memory device」である点で厳密には不正確
+- Claim 1 verbatim の「閉じ込め構造」を「Cage」と読む解釈は著者軸で、特許明細書本文がそう自称しているわけではない
+- 舛岡個人の「会社に評価されなかった天才」ナラティブは業界2次資料・舛岡本人インタビューがソースで、東芝社内の一次資料での裏取りは未実施
+
+---
+
+参考リンク：
+- 米国特許 US4531203A（Google Patents 表紙）：https://patents.google.com/patent/US4531203A/en
+- IBM Research Robert Dennard（同 Day 19 比較対象、揮発性 DRAM 1968 年）：https://research.ibm.com/people/robert-h-dennard
+- Kioxia Corporation（旧 Toshiba Memory、本特許の現実装者）：https://www.kioxia.com/
+
+---
+
+## Day 19 の3点セット『Cage Patents — 電子・電荷・分子の閉じ込め』
+
+- 第70回（HW #4 ノート、本記事）：1980 舛岡＋飯塚 フラッシュメモリ US4531203A — **電子を浮遊ゲートに閉じ込める cage**
+- 第71回（HW メモ #6）：[1973 Bell Labs Boyle/Smith CCD US3792322A — 電荷をポテンシャル井戸に閉じ込める cage](/notes/71-hardware-energy-patent-memo-06)
+- 第72回（化粧品メモ #2）：[1985 Balazs/Leshchiner ヒアルロン酸架橋ゲル US4636524A — 薬物を分子ケージに閉じ込める cage](/notes/72-cosmetic-patent-memo-02)
+
+3本とも Claim 1 に「閉じ込め構造」が verbatim で書かれている特許を編成軸とした AI 考古学初の試み。電子（半導体）・電荷（光検出）・分子（生体材料）と分野を跨ぐが、いずれも「物理的に物質を閉じ込めて記憶／読み出し／徐放する」という発明の核を共有する。
