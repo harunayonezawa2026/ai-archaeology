@@ -1,0 +1,201 @@
+---
+title: "1957 IBM FORTRAN 'The Fortran Automatic Coding System for the IBM 704' — John W. Backus's Solo Proposal, a 10-Person Team's Implementation, Reference Manual Released 1956-10-15, and Compiler Shipped April 1957, Yet Google Patents inventor=Backus / IBM, Wikipedia EN John Backus, ACM Turing Award Laureate Page, and Britannica All Carry No Patent Number: 'Eligibility Wall' Excavation Log #2 (SW Subseries DB Form: Eligibility Wall #2 / Origin of US Software-Patent Eligibility's Pre-Gottschalk Era 1957)"
+subtitle: "Software/UI Patent Excavation Note #3 — When 'The Fortran Automatic Coding System for the IBM 704' shipped in April 1957, no judicial precedent on US software-patent eligibility existed until Gottschalk v. Benson 15 years later in 1972. FORTRAN was both 'the first widely-used high-level language' and 'a pure-software invention 15 years ahead of the relevant case law.' IBM's strategy at the time — early reference-manual publication, free distribution to customers, and trade-secret defense of source code — overlaps in problem framing with the public-disclosure strategies of 2026 LLM foundation models."
+description: "Day 25 SW subseries' third note (Eligibility Wall #2). Verification of FORTRAN, with timeline: late-1953 Backus solo proposal, 1954-11 draft spec 'The IBM Mathematical Formula Translating System,' 1956-10-15 first reference manual 'The Fortran Automatic Coding System for the IBM 704,' April 1957 first compiler shipment. Google Patents query (inventor=Backus/assignee=IBM/priority 1953-1960) returns 0 results. ACM Turing Award Backus official page, Wikipedia EN John Backus, and Britannica Backus all contain no patent reference. 1957 predates US software-patent-eligibility case law by 15 years; Gottschalk v. Benson (1972) / Parker v. Flook (1978) / Diamond v. Diehr (1981) / State Street Bank (1998) / Alice Corp v. CLS Bank (2014) are the five later Supreme Court / Federal Circuit decisions that subsequently shaped 'pure-algorithm-invention eligibility.' FORTRAN sits 15 years before this case-law arc. IBM's three-pronged strategy — early manual disclosure (1956-10-15), free customer distribution, and source-code trade secrecy — overlaps with 2026 LLM foundation-model strategies (private weights / public APIs / public papers). Combined with Day 24 SW-005 HyperCard (1987 — eligibility-unsettled era post-Diamond v. Diehr), this completes Eligibility Wall forms #1 and #2 of the SW subseries. Today's ep89 SW-003 BBN IMP (1969 ARPA contract / public spec) and ep90 SW-004 Xerox PARC Smalltalk (1972 corporate lab / 4-licensee public release) round out the four-form lineup, raising resolution on 'eligibility wall' into four sub-forms."
+episode: 88
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Software/UI Patent", "FORTRAN", "Backus", "IBM", "Eligibility Wall", "Excavation Note"]
+series: "Software/UI Patent"
+seriesNumber: 3
+status: "published"
+---
+
+## Conclusion First
+
+Day 25 establishes the SW subseries' third note. The subject is **IBM FORTRAN**, with John W. Backus's solo proposal in late 1953, the first reference manual published 1956-10-15, and the first compiler shipped April 1957.
+
+To the point: **no patent number for FORTRAN itself was found within today's verify scope**. The Google Patents query `inventor=Backus John+assignee=IBM+priority:1953-1960` returns 0 results. The ACM Turing Award Laureate Backus official page, Wikipedia EN John Backus, Britannica Backus, and the History of Information FORTRAN article all carry no FORTRAN-related patent reference. The 1953-1957 period predates any US judicial precedent on software-patent eligibility. **Gottschalk v. Benson (1972) / Parker v. Flook (1978) / Diamond v. Diehr (1981) / State Street Bank (1998) / Alice Corp v. CLS Bank (2014)** — these five Supreme Court / Federal Circuit decisions later cumulatively defined the 'pure-algorithm-invention eligibility' boundary. FORTRAN is **a pure-software invention 15 years ahead of this case-law arc**, and IBM's strategy at the time consisted of three pillars: '**early reference-manual publication (1956-10-15) + free distribution to customers + internal trade secrecy of source code**.'
+
+Combining Day 24 SW-005 HyperCard (1987 — eligibility-unsettled era right after Diamond v. Diehr 1981) and today's ep88 SW-002 FORTRAN (1957 — pre-judicial era, 15 years before Gottschalk v. Benson 1972), the SW subseries' '**eligibility wall**' form resolves into two sub-forms: **(a) pre-judicial era (pre-1972) / (b) eligibility-unsettled era (1972-1998)**. Today's continuing ep89 SW-003 BBN IMP (1969 ARPA contract, mandated public spec) and ep90 SW-004 Xerox PARC Smalltalk (1972 corporate lab, voluntary 4-licensee public release) add **(c) public-disclosure mandated by government contract / (d) voluntary public disclosure as corporate strategy**. Day 25's editing achieves a four-form line-up of the eligibility wall in a single session.
+
+## 1. How the Subject Was Selected (Reproducible Pipeline)
+
+```
+[STEP 1] Building on Day 24's SW-005 HyperCard Eligibility Wall #1,
+         confirm with Haruko the plan to excavate SW-002 (FORTRAN) /
+         SW-003 (BBN IMP) / SW-004 (Smalltalk) sequentially in Day 25
+
+[STEP 2] Web verification on FORTRAN-related patents
+   - Google Patents xhr API direct query
+     URL: patents.google.com/xhr/query?url=inventor%3D%22John%2BW%2BBackus%22
+          %26assignee%3DIBM%26before%3Dpriority%3A19600101%26after%3Dpriority%3A19530101
+     Result: total_num_results = 0
+   - WebSearch ""John W. Backus" inventor US patent IBM"
+     Result: only unrelated patents from a different John W. Backus
+     (medical diagnostics, US6300075B1 etc.); no FORTRAN-inventor patents
+
+[STEP 3] Secondary-source cross-check
+   - Wikipedia EN Fortran: detailed development chronology (1953-1957),
+     no patent number reference, no IBM IP-strategy reference
+   - Wikipedia EN John Backus: career covers Speedcoding (1953) /
+     FORTRAN (1954-) / BNF (1959 ALGOL) / FP language (1977 IBM Research),
+     **zero patent references**
+   - ACM Turing Award Laureate Backus official page (1977 award):
+     'for profound, influential, and lasting contributions to the design
+     of practical high-level programming systems, notably through his
+     work on FORTRAN, and for publication of formal procedures for the
+     specification of programming languages' — no patent reference
+   - Britannica John Backus: career & awards, no patent reference
+   - History of Information article confirms: 1956-10-15 first reference
+     manual, April 1957 compiler shipment, 10-person team
+     (Richard Goldberg, Sheldon F. Best, Harlan Herrick, Peter Sheridan,
+      Roy Nutt, Robert Nelson, Irving Ziller, Harold Stern, Lois Haibt,
+      David Sayre); no patent reference
+
+[STEP 4] Confirm legal status of US software-patent eligibility in 1957
+   - 1972 Gottschalk v. Benson Supreme Court: rejected a BCD-binary
+     conversion algorithm patent application; first ruling that 'mental
+     processes are outside 35 U.S.C. § 101 patentable subject matter'
+   - Pre-1972: **no precedent existed at all**; USPTO examination
+     guidelines were not established. As an examination practice,
+     'an algorithm = a mathematical method = unpatentable' was the
+     operating norm.
+   - FORTRAN (1957) sits 15 years before the case law, in
+     **the pre-judicial era**
+
+[STEP 5] Conclude: 'No FORTRAN patent record found in today's verify
+        scope.' Treat this as SW subseries' Eligibility Wall #2.
+```
+
+## 2. FORTRAN Development Chronology (Cross-Verified Across Secondary Sources)
+
+| Year/Month | Event |
+|---|---|
+| Late 1953 | John W. Backus proposes an alternative to assembly language for the IBM 704 mainframe |
+| Nov. 1954 | Draft specification 'The IBM Mathematical Formula Translating System' completed |
+| 1955-1956 | 10-person team (Backus + Goldberg, Best, Herrick, Sheridan, Nutt, Nelson, Ziller, Stern, Haibt, Sayre) implements and tests the compiler |
+| 1956-10-15 | First reference manual 'The Fortran Automatic Coding System for the IBM 704' released |
+| April 1957 | FORTRAN compiler first shipped (for IBM 704) |
+| 1958 | FORTRAN II released; subroutines, functions, common blocks added |
+| 1962 | FORTRAN IV released; logical data type added |
+| 1966 | ANSI X3.9-1966 (FORTRAN 66) standardized |
+| 1972 | **Gottschalk v. Benson Supreme Court ruling (15 years after FORTRAN shipment)** |
+| 1977 | Backus receives ACM Turing Award; proposes functional programming 'FP' in his Turing Lecture |
+| 1978 | ANSI X3.9-1978 (FORTRAN 77) standardized |
+
+This chronology is cross-verified by Wikipedia EN Fortran, History of Information, and the IBM official Backus page. **No record of FORTRAN-related patent applications or grants exists in any secondary source within this 1953-1972 window.**
+
+## 3. Core: The Structure of 'Eligibility Wall (a) Pre-Judicial Era Form'
+
+### (a) US Software-Patent Status in 1957
+
+In 1957 the United States had **neither judicial precedent nor USPTO examination guidelines** on software-patent eligibility. The first significant ruling on patent eligibility was the 1972 Gottschalk v. Benson Supreme Court decision, which rejected a patent application involving a BCD-to-pure-binary conversion algorithm and held that 'mental processes are outside the scope of 35 U.S.C. § 101.' That ruling came 15 years after FORTRAN compiler shipment.
+
+Before that, US patent practice in the 1950s adhered to the **'mathematical method = unpatentable' doctrine inherited from the 17th-century English Statute of Monopolies**. Pure-algorithm inventions were effectively rejected at examination as a customary operating norm. The core technologies of the FORTRAN compiler — **parsing, register allocation, code generation, expression optimization** — are all algorithmic inventions; under the prevailing operating norms it was likely difficult to draft viable claims around them.
+
+### (b) IBM's 1957 IP Strategy: 'Manual Disclosure + Free Distribution + Trade Secrecy' — Three Pillars
+
+In a context where patenting was difficult, IBM defended FORTRAN with three pillars:
+
+1. **Early reference-manual publication (1956-10-15)**: about half a year ahead of compiler shipment, the grammar specification, built-in functions, and I/O formats were published. This **established FORTRAN as a de facto standard** and limited the risk of competing vendors building compatible compilers from a different syntactic basis.
+2. **Free distribution to IBM 704 customers**: the FORTRAN compiler itself was given free to IBM 704 buyers. Positioning the compiler as 'an accessory of IBM 704 hardware, not an independent product' meant the cost was internalized into hardware pricing as a viable business model.
+3. **Source code as internal trade secret**: the compiler's source code was not published; it was managed internally as IBM confidential. Optimization-algorithm details were partially disclosed in ACM papers (1957 SHARE Conference, etc.) while the full implementation was retained as IBM IP.
+
+The same three-pillar pattern continues, in problem framing, through Microsoft MS-DOS / Windows in the 1980s, Sun Microsystems Java in the 1990s, Apple Swift in the 2010s, and OpenAI GPT-4 / Anthropic Claude in the 2020s.
+
+### (c) Backus's Long-Term Strategy: A Mathematician's 'Algorithms Are a Public Good' Disposition
+
+Backus's personal pattern of invention also seems to point away from patenting. In **1959**, during the design of ALGOL 60, Backus proposed **BNF (Backus-Naur Form)**, publishing it via ACM Communications (no patent). In his **1977 ACM Turing Award lecture**, Backus proposed the functional programming language FP and again published in ACM Communications (no patent). Across Backus's 30-year career, the consistent mode was '**publish papers + standardize languages**' — and **no personal patent record was discovered within today's verify scope**.
+
+This is consistent with the era's cultural premise that 'programming-language designers belong to the mathematicians' community.' Backus's contemporaries — McCarthy (LISP, 1958) / Hoare (QuickSort, 1959 / CSP, 1978) / Dijkstra (Shortest Path, 1956 / Structured Programming, 1968) / Knuth (TAOCP, 1968-) — each chose to **publish core algorithms as papers and not pursue patents**.
+
+## 4. Modern Correspondence Table (with 4-Level Evaluation)
+
+| 1957 FORTRAN | 2026 LLM Foundation Model | Design-Level Relationship |
+|---|---|---|
+| Backus + 10-person team builds 'first widely-used high-level language' for IBM 704 | OpenAI / Anthropic / Google DeepMind 50-200-person teams build 'first general-purpose AI chat' | **Similar** (team sizes differ by an order of magnitude, but the problem framing of launching a new product category overlaps; expert objection: 'FORTRAN is language design, LLMs are probabilistic models — design layer differs') |
+| Source code trade-secreted / manuals published / distributed free as IBM 704 accessory | Weights trade-secreted / API published / papers published / ChatGPT Plus monthly subscription | **Similar** (the framing 'where to draw the disclosure boundary' overlaps; expert objection: 'FORTRAN was not SaaS — hardware-bundled accessories and cloud APIs are different business models') |
+| Algorithmic inventions (parsing, register allocation, code generation) — eligibility wall | Algorithmic inventions (Transformer attention, RLHF, MoE) — post-Alice eligibility wall | **Similar** (the framing 'patent eligibility of pure-algorithm inventions' continues for 69 years from 1957 → 2026, judged within the Gottschalk → Alice arc; expert objection: 'post-Alice, including hardware elements makes claims viable; that's different from FORTRAN-era practice') |
+| ANSI X3.9-1966 / X3.9-1978 standardization moves de facto into de jure | ISO/IEC 23053 (ML standard) / ISO/IEC 42001 (AI Management System) etc. de jure underway | **Similar** (the path from hard-to-patent technology to standardized collective consensus overlaps; expert objection: 'FORTRAN standardization is grammar; AI standardization is governance — different objects') |
+| Solo proposal by Backus → 10-person team / 3-year implementation → 1957 shipment | Solo idea → 50-200-person team / 1-2 year training → model shipment | **Metaphor** (the structure 'origin is an individual's idea, implementation is a large team' is continuous, but the substance — compiler vs neural-network training — differs; expert objection: 'works as inventive-history metaphor; breaks as technical genealogy') |
+| Pre-Gottschalk v. Benson (1972) — pre-judicial era eligibility wall | Pre-Diamond v. Diehr (1981) → Pre-Alice (2014) — eligibility-unsettled-era wall | **Same** (35 U.S.C. § 101's wording itself is unchanged since 1952; the structure where case law's interpretive shifts shape the eligibility wall is continuous from 1957 → 2026; expert objection: 'not strictly identical — Bilski 2010 / Mayo 2012 / Alice 2014 changed operations significantly') |
+
+### How to Read the Table
+
+Across the four-level evaluation (Same / Similar / Metaphor / Forced), **only 1 of 6 rows is 'Same' (the unchanged § 101 statutory wording), 4 are 'Similar,' and 1 is 'Metaphor'**. The honest summary: the FORTRAN (1957) ↔ LLM (2026) correspondence holds **at the level of problem framing, but diverges at the implementation level**.
+
+The claim 'FORTRAN is a precursor of LLMs' should be read as **a precursor at the framing level** (programming abstraction, high-level language, invention strategy under eligibility walls). At the implementation lineage level, the direct technical predecessors of ML/LLM are **LISP (1958) → Smalltalk (1972) → Self (1987) → JavaScript (1995) → Python (1991), and LISP → Common Lisp → Scheme → ML (1973) → OCaml (1996) → Haskell (1990) → PyTorch / JAX (2016-)**. FORTRAN is the **upstream parent of these flows but not a direct implementation predecessor of ML/LLM**.
+
+## 5. Pitfalls (5 Items)
+
+1. **'No FORTRAN patent record' ≠ 'Backus tried and was rejected'**: today's verify scope only confirms 'no application record' was found; 'application-rejected records' would require USPTO Patent Center, which is dialog-UI mandatory and not amenable to curl-level automated verification. IBM internal application-evaluation records were also not retrieved. **Three possibilities remain: 'no application was ever filed,' 'an application was filed but never published,' or 'an application exists but was not found in today's verify scope.'**
+2. **'IBM in 1957 didn't take software patents' ≠ 'IBM took no patents'**: IBM held many **hardware patents** in the 1950s — IBM 704 mainframe itself, magnetic-core memory, I/O channels are all patented. The narrower factual claim here is that **the FORTRAN compiler software portion was not patented**.
+3. **Cannot conclude 'Backus opposed patenting'**: the absence of Backus's personal patent record in today's verify scope does not entail that Backus was ideologically opposed to patenting. **Whether the primary cause was philosophy, culture, practice, or legal context cannot be determined within today's verify scope.**
+4. **Cannot conclude '1957 was a pre-judicial era so application was futile'**: even before Gottschalk v. Benson (1972), software-/algorithm-invention applications were technically possible, and **a small number of 1960s application examples are recorded** (Bernard Bull patents, etc.). The reason FORTRAN was not patented may be substantially due to IBM's strategic choice.
+5. **'IBM's trade-secret strategy succeeded' is not unconditional**: from the late 1960s, **compatible compilers** (Univac / Honeywell / CDC) emerged, and FORTRAN moved away from IBM-only dominance via de facto standardization. **IBM's strategy was completed not in FORTRAN but in System/360 (1964) / OS/360 (1966)**; evaluating it on FORTRAN alone is suboptimal.
+
+## 6. To Be Strictly Accurate (Mandatory 5 Items)
+
+### Confirmed Facts
+
+- The chronology — late 1953 Backus solo proposal / Nov. 1954 draft spec / 1956-10-15 manual / April 1957 compiler shipment — is cross-verified across Wikipedia EN Fortran, History of Information, and IBM's official Backus page
+- The 10-person team membership (Goldberg, Best, Herrick, Sheridan, Nutt, Nelson, Ziller, Stern, Haibt, Sayre) is verbatim-confirmed in Wikipedia EN Fortran: 'Backus' historic FORTRAN team consisted of programmers Richard Goldberg, Sheldon F. Best, Harlan Herrick, Peter Sheridan, Roy Nutt, Robert Nelson, Irving Ziller, Harold Stern, Lois Haibt, and David Sayre.'
+- The Google Patents xhr API query (`inventor=John W Backus + assignee=IBM + priority:1953-1960`) returns 0 results, and WebSearch likewise yields no FORTRAN-related Backus patent
+- The 1972 Gottschalk v. Benson decision being the first significant US software-patent-eligibility precedent is established legal history
+
+### Author's Interpretation
+
+- The three-factor explanation — 'FORTRAN was not patented because of (1) eligibility wall, (2) trade-secret strategy, (3) Backus's mathematician culture' — is this author's interpretation; it has not been cross-checked with IBM internal records or Backus's personal correspondence
+- The observation 'paper-publication + standardization was consistent across Backus's 30-year career' was extrapolated from the 2 documents (BNF paper 1959, Turing FP paper 1977); patent-record existence for Speedcoding (1953) / FP implementations (1977 IBM Research internal) was not separately verified
+- The 'three-pillar 1957 IBM strategy' is an after-the-fact structural reconstruction; whether IBM management explicitly intended this triad at the time is unverified
+
+### Metaphors and Analogies
+
+- The FORTRAN (1957) ↔ LLM (2026) correspondence distributes as 4 'Similar' + 1 'Same' + 1 'Metaphor'; **the implementation lineage runs LISP → Smalltalk → ML → PyTorch, and FORTRAN is the upstream parent of those flows, not a direct implementation predecessor of ML/LLM**
+- The two-form distinction 'pre-judicial-era eligibility wall (FORTRAN) vs eligibility-unsettled-era wall (HyperCard)' is an after-the-fact structuring from Day 24 SW-005 and today's SW-002; experts may push back that 'the case-law periodization is too coarse'
+
+### Unverified
+
+- Comprehensive USPTO Patent Center search across Backus-named, IBM-1953-1972 FORTRAN-related patents (dialog-UI mandatory, not amenable to automated curl)
+- IBM legal/IP department's internal application-evaluation records (would require IBM Research Almaden archive access)
+- Full text of Backus's 1957 SHARE Conference paper (not reachable within Web scope)
+- Comprehensive 1960s US software-patent application list including Bernard Bull et al. examples
+- Backus's personal correspondence / unpublished papers (Library of Congress Backus papers — catalog PDF reached, but main contents unread)
+
+### Where This Comparison Breaks
+
+- **The accurate phrasing is 'no record was found within today's verify scope,' not 'FORTRAN's patent absence is confirmed.'** If USPTO Patent Center or IBM internal archives surface related patents, this note will be updated
+- The 'pre-judicial-era eligibility wall' concept is a tentative framework abstracted from the 2-sample base of Day 24 SW-005 and today's SW-002; **whether the same form applies to other pre-1972 software inventions (COBOL 1959 / LISP 1958 / ALGOL 1960) is unverified**, and excavation of those neighbors is needed
+- The 'Backus's mathematician-culture orientation' observation extrapolates from 2 published papers across a 30-year career; to conclude that Backus was **ideologically anti-patent** would require closer reading of his statements (Turing Lecture transcript, interview records)
+- The 'IBM three-pillar strategy' is an after-the-fact reconstruction; **post-1980, IBM pivoted to massive software-patent acquisition** (IBM has held the top US-annual-patent-grant rank for 30 consecutive years), so the '1957 strategy may have been a contextual response, not IBM's enduring essence' caveat applies
+
+## 7. SW Subseries DB Form: 'Eligibility Wall' #2 (Pre-Judicial Era Form)
+
+Pairing Day 24 SW-005 HyperCard (1987 — eligibility-unsettled era right after Diamond v. Diehr 1981) with today's ep88 SW-002 FORTRAN (1957 — pre-judicial era 15 years before Gottschalk v. Benson 1972) raises the resolution of the SW subseries' 'eligibility wall' form into **two sub-forms**:
+
+| Subseries | Eligibility-Wall Sub-Form | Nature |
+|---|---|---|
+| **SW-002 FORTRAN (this note)** | **(a) Pre-Judicial Era Form** | **Pre-1972 Gottschalk v. Benson. No precedent existed; USPTO examination guidelines were not established; the operating norm was 'mathematical method = unpatentable.'** |
+| SW-005 HyperCard (Day 24 ep87) | (b) Eligibility-Unsettled Era Form | The 26-year span 1972 Gottschalk → 1981 Diamond v. Diehr → 1998 State Street Bank. Precedents existed but operations shifted; viable application strategies for pure-software inventions were difficult. |
+
+Today's continuing ep89 SW-003 BBN IMP (1969, ARPA government contract, public-spec mandated) and ep90 SW-004 Xerox PARC Smalltalk (1972, corporate lab, voluntary 4-licensee public release) add further sub-forms:
+
+| Sub-Form | Episode | Nature |
+|---|---|---|
+| (c) Public disclosure mandated by government contract | ep89 SW-003 BBN IMP | ARPA contract clauses force public spec (BBN Report 1822 = Internet STD 39) |
+| (d) Voluntary public disclosure as corporate strategy | ep90 SW-004 Smalltalk | Xerox PARC distributes to Tek/HP/Apple/DEC under 'unrestricted redistribution'; ACM Computing Surveys 1981 special issue makes it fully public |
+
+Day 25's single session yields **a four-form line-up of the eligibility wall**, structuring the SW subseries' 7-entry DB into a two-group contrast: **(1) patents successfully claimed via display-system / cursor-control-device claims that include hardware elements (SW-001 Engelbart Mouse / SW-006 Atkinson Image Compression) vs (2) inventions where the eligibility wall blocked patenting (SW-002 FORTRAN / SW-003 BBN IMP / SW-004 Smalltalk / SW-005 HyperCard).**
+
+## References
+
+- Wikipedia EN Fortran: [en.wikipedia.org/wiki/Fortran](https://en.wikipedia.org/wiki/Fortran)
+- Wikipedia EN John Backus: [en.wikipedia.org/wiki/John_Backus](https://en.wikipedia.org/wiki/John_Backus)
+- ACM Turing Award Laureate John Backus: [amturing.acm.org/award_winners/backus_0703524.cfm](https://amturing.acm.org/award_winners/backus_0703524.cfm)
+- History of Information 'John Backus & Team Develop FORTRAN': [historyofinformation.com/detail.php?id=755](https://www.historyofinformation.com/detail.php?id=755)
+- IBM Official John Backus: [ibm.com/history/john-backus](https://www.ibm.com/history/john-backus)
+- IBM Official Fortran: [ibm.com/history/fortran](https://www.ibm.com/history/fortran)
+- USPTO Patent Subject Matter Eligibility: [uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility](https://www.uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility)
+- Related episode: [#87 SW-005 Apple HyperCard Eligibility Wall #1 (Day 24 memo)](/en/notes/87-software-ui-patent-memo-02)
+- Related episode: [#89 SW-003 BBN IMP Eligibility Wall #3 (today's memo)](/en/notes/89-software-ui-patent-memo-03)
+- Related episode: [#90 SW-004 Xerox PARC Smalltalk Eligibility Wall #4 (today's memo)](/en/notes/90-software-ui-patent-memo-04)

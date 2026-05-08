@@ -1,0 +1,87 @@
+---
+title: "1972 年 Xerox PARC Smalltalk-72・Alan Kay 設計／Dan Ingalls 実装（700 行 BASIC で書かれた最初のインタプリタ、Data General Nova 用、1972 年 10 月）／Adele Goldberg ドキュメント── Smalltalk-76 を経て 1980 年 Smalltalk-80 公開、1981 年 Tektronix／Hewlett-Packard／Apple Computer／DEC の 4 社に『unrestricted redistribution』条件で配布、1981 年 ACM Communications 特集号で全面公開でありながら、Wikipedia 英語版 Smalltalk 項・Wikipedia 英語版 Alan Kay 項・Britannica Alan Kay 項・Lemelson-MIT Alan Kay 項いずれも特許番号への言及なしで発見できない『適格性壁 (d) 企業戦略による自発公開』形態 第 4 弾（SW サブシリーズ DB 形態）"
+description: "Day 25 SW サブシリーズ第 5 メモ。1971 年 Alan Kay 設計の Smalltalk-71 から始まり、1972 年 9 月 Smalltalk-72（Dan Ingalls が約 700 行の BASIC で Data General Nova 用インタプリタを 1972 年 10 月実装）・1973 年 4 月 Xerox Alto 移植・Smalltalk-76 を経て 1981 年 11 月 Smalltalk-80 Version 1 公開（Adele Goldberg ドキュメント）の Xerox PARC Smalltalk について、Wikipedia 英語版 Smalltalk 項・Wikipedia 英語版 Alan Kay 項・Britannica Alan Kay 項・Lemelson-MIT Alan Kay 項・ACM Turing Award Alan Kay 2003 受賞公式ページいずれも特許番号への言及なしを verify。Xerox PARC は Smalltalk-80 を 1981 年に Tektronix/Hewlett-Packard/Apple Computer/DEC の 4 社に『unrestricted redistribution』条件で配布、1981 年 8 月 ACM Computing Surveys 特集号『Special Issue on Smalltalk』で全面公開した。これは ARPA 契約（IMP）と異なり Xerox 自社判断による自発的公開で、企業戦略としての適格性壁形態として SW サブシリーズに位置付けられる。"
+seriesNumber: 4
+episode: 90
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Smalltalk", "Xerox PARC", "Alan Kay", "適格性壁", "発掘メモ"]
+series: "ソフトウェア・UI特許"
+status: "published"
+format: "memo"
+---
+
+## 発掘メモについて
+
+一次資料 URL 確認済み・本文未読（Wikipedia 英語版 Smalltalk 項、Wikipedia 英語版 Alan Kay 項、Wikipedia 英語版 Dan Ingalls 項、Britannica Alan Kay 項、Lemelson-MIT Alan Kay 項、ACM Turing Award Alan Kay 2003 受賞公式ページ、Computer History Museum Dan Ingalls プロフィールの 7 件二次資料を参照範囲とする）。**Smalltalk 自体・オブジェクト指向プログラミング・メッセージパッシング・クラス階層に関する Xerox PARC 名義の特許番号は今回 verify 範囲では見つからなかった**ため、本メモは『**特許不在の発掘譚 = 適格性壁 (d) 企業戦略による自発公開形態の構造記録**』として書く。
+
+## 1. Xerox PARC Smalltalk プロジェクト基本情報
+
+| 項目 | 内容 |
+|---|---|
+| 開発開始 | 1970 年 Alan Kay が Xerox PARC 入所、1971 年 Smalltalk-71 設計 |
+| Smalltalk-72 | 1972 年 9 月-10 月、Dan Ingalls が約 **700 行の BASIC で Data General Nova 用インタプリタを実装**、1972 年 11 月 MIT AI Lab で Alan Kay がデモ |
+| Xerox Alto 移植 | 1973 年 4 月、Smalltalk-72 を新型 Xerox Alto に移植（Alto 第 1 号機運用開始と同月） |
+| Smalltalk-76 | Simula-like クラス継承モデル採用、Dan Ingalls 設計の VM がコンパクト・効率的、後の Smalltalk-80 の基盤 |
+| Smalltalk-80 | 1980 年公開準備、**1981 年 11 月 Version 1 final release**、Dan Ingalls がリード |
+| Adele Goldberg の役割 | Smalltalk のドキュメント大半を執筆、ACM Computing Surveys 1981 年特集号の編集 |
+| 4 社共有配布 | **1981 年、Tektronix／Hewlett-Packard／Apple Computer／DEC の 4 社に『unrestricted redistribution』条件で配布** |
+| 全面公開 | **1981 年 8 月 ACM Computing Surveys『Special Issue on Smalltalk』** で言語仕様・実装・VM 設計を全面公開 |
+| 特許番号 | **今回 verify 範囲では発見できず**（Wikipedia EN Smalltalk・Alan Kay・Dan Ingalls 項、ACM Turing Alan Kay 公式ページともに記載なし） |
+
+## 2. 核心：『適格性壁 (d) 企業戦略による自発公開』の構造
+
+### (a) 確認した二次資料の verify 状況
+
+- WebSearch ""Alan Kay" Xerox patent Smalltalk inventor USPTO 1970s object oriented" → Wikipedia・Britannica・Lemelson-MIT・ACM Turing 等の経歴ページが豊富にヒットするが、Smalltalk 関連特許番号への言及は **0 件**
+- Wikipedia 英語版 Smalltalk 項：開発年表（Smalltalk-71/72/76/80）詳細記載、4 社配布条件『unrestricted redistribution』も verbatim 記載、**特許番号への言及なし**
+- Wikipedia 英語版 Alan Kay 項：1970 年 Xerox PARC 入所・GUI 設計・Dynabook ビジョン記載、**特許への言及なし**
+- ACM Turing Award Alan Kay 2003 公式ページ：受賞理由『for pioneering many of the ideas at the root of contemporary object-oriented programming languages, leading the team that developed Smalltalk, and for fundamental contributions to personal computing』、**特許への言及なし**
+- Lemelson-MIT Alan Kay 項：発明・教育貢献の経歴、**Smalltalk 特許への言及なし**
+
+### (b) 1981 年 Xerox PARC の自発公開戦略
+
+ARPA 契約（IMP, ep89）が政府による公開強制だったのに対し、Smalltalk-80 の公開は **Xerox 自社判断による自発戦略** だった：
+
+1. **4 社共有配布（1981 年）**：Tektronix・Hewlett-Packard・Apple Computer・DEC の 4 社に Smalltalk-80 Version 1 を配布、**『unrestricted redistribution』** 条件付与で各社が独自プラットフォームで自由に再配布可能に
+2. **ACM 特集号公開（1981 年 8 月）**：ACM Computing Surveys の **『Special Issue on Smalltalk』** で言語仕様・VM 実装・UI 設計を全面公開、Adele Goldberg が編集
+3. **書籍出版（1983 年）**：『Smalltalk-80: The Language and its Implementation』（通称『Blue Book』、Adele Goldberg + David Robson 共著、Addison-Wesley）で実装詳細を商業出版
+
+これらの公開行動により、Smalltalk 言語仕様・VM 設計・MVC アーキテクチャ・クラスベース継承モデル等は **特許化される前に公開技術として確定** した。後年 Apple／Sun／Microsoft が Smalltalk の影響を受けた製品（Objective-C／Java／C# 等）を開発するときも、**Smalltalk のコア概念は prior art として誰でも利用可能** だった。
+
+### (c) Xerox PARC『発明はしたが収益化に失敗した』論との接続
+
+Xerox PARC の Smalltalk 公開戦略は、後年『**Xerox は GUI／Ethernet／Smalltalk を発明したが商業化に失敗した**』論の文脈で批判される。1979 年 Steve Jobs の PARC 訪問を契機に Apple Lisa（1983）／Macintosh（1984）が GUI を商業化し、Xerox 自身は Star（1981）の市場失敗で PARC 成果から十分な収益を得られなかった。
+
+しかし **Smalltalk の特許化を回避し公開した戦略は、Xerox が当時のソフトウェア特許適格性 unsettled 期（1972 Gottschalk → 1981 Diamond v. Diehr）に対応した合理的判断** だった可能性がある。同時期の Apple は **ハードウェア要素を含む display system / cursor control device の Claim** で特許化に成功しており（SW-006 Atkinson 画像圧縮 US4622545／SW-007 Lapson cursor control US4464652）、両社の戦略差は『純ソフトウェア発明の特許適格性をどう評価するか』の判断分岐として読める。
+
+## 3. 厳密にはこう（簡略 3 項目）
+
+### 確認済みの事実
+
+- 1972 年 9-10 月 Dan Ingalls による Smalltalk-72 BASIC 実装・1972 年 11 月 MIT AI Lab デモ・1973 年 4 月 Xerox Alto 移植・1981 年 11 月 Smalltalk-80 Version 1 公開・1981 年 4 社（Tek/HP/Apple/DEC）配布の年表は Wikipedia 英語版 Smalltalk 項で一致確認済
+- 4 社配布条件『**unrestricted redistribution**』は Wikipedia 英語版 Smalltalk 項で verbatim 記載確認済
+- Alan Kay（設計）／Dan Ingalls（実装）／Adele Goldberg（ドキュメント）の役割分担は Wikipedia 英語版 Smalltalk 項・ACM Turing Alan Kay 公式・Computer History Museum Dan Ingalls プロフィールで一致確認済
+- ACM Computing Surveys 1981 年 8 月号『Special Issue on Smalltalk』が存在することは ACM Digital Library で確認済（DOI 範囲、本文は有料アクセスのため未読）
+
+### 著者の解釈
+
+- 『適格性壁 (d) 企業戦略による自発公開形態』は ep88 SW-002 FORTRAN『判例不在期 (a)』／Day 24 ep87 SW-005 HyperCard『判例 unsettled 期 (b)』／本日 ep89 SW-003 BBN IMP『政府契約による公開強制 (c)』との比較で抽出した事後的構造化で、**専門家から『Xerox は実際には Smalltalk 関連で複数の Xerox 名義特許を持っていた可能性、自発公開ではなく事後的位置付け』と突っ込まれる余地がある**
+- 『Xerox PARC は商業化に失敗したが特許戦略は合理的だった』は本メモ著者の事後的再評価で、当時の Xerox 法務部門・知財部門の戦略文書との突合は行っていない
+
+### この比較が破綻する点
+
+- USPTO Patent Center 直接検索による Xerox 1972-1985 年期 Alan Kay／Dan Ingalls／Adele Goldberg 名義の網羅特許リスト取得は今回未実施。Xerox は GUI ハードウェア（Alto／Star）・Ethernet（Robert Metcalfe US4063220）等で多数特許取得しており、Smalltalk 周辺技術で個別特許が存在する可能性は残る
+- 『1981 年 ACM Computing Surveys 特集号』本文は有料アクセスのため未読、Smalltalk-80 仕様の公開範囲・公開条件の詳細確認まではできていない
+- 『4 社配布条件 unrestricted redistribution』は Wikipedia 記載の引用で、原 Xerox-Tek/HP/Apple/DEC 契約書本文は未取得。実際の契約条項に特許関連の留保が含まれていた可能性は排除できない
+- 『Smalltalk のコア概念は prior art として誰でも利用可能』は一般論で、個別特許出願時の prior art 適用は USPTO 審査官個別判断であり、本メモは確定させていない
+
+## 参考リンク
+
+- Wikipedia 英語版 Smalltalk: [en.wikipedia.org/wiki/Smalltalk](https://en.wikipedia.org/wiki/Smalltalk)
+- Wikipedia 英語版 Alan Kay: [en.wikipedia.org/wiki/Alan_Kay](https://en.wikipedia.org/wiki/Alan_Kay)
+- Wikipedia 英語版 Dan Ingalls: [en.wikipedia.org/wiki/Dan_Ingalls](https://en.wikipedia.org/wiki/Dan_Ingalls)
+- ACM Turing Award Laureate Alan Kay: [amturing.acm.org/award_winners/kay_3972189.cfm](https://amturing.acm.org/award_winners/kay_3972189.cfm)
+- Computer History Museum Dan Ingalls プロフィール: [computerhistory.org/profile/dan-ingalls-2](https://computerhistory.org/profile/dan-ingalls-2)
+- Lemelson-MIT Alan Kay: [lemelson.mit.edu/resources/alan-kay](https://lemelson.mit.edu/resources/alan-kay)
+- 関連エピソード: [#88 SW-002 FORTRAN 適格性壁第 2 弾（同日のノート）](/notes/88-software-ui-patent-03)
+- 関連エピソード: [#89 SW-003 BBN IMP 適格性壁第 3 弾（同日のメモ）](/notes/89-software-ui-patent-memo-03)

@@ -1,0 +1,198 @@
+---
+title: "1957 年 IBM FORTRAN『The Fortran Automatic Coding System for the IBM 704』── John W. Backus 単独提案・10 名チーム開発・1956 年 10 月 15 日リファレンスマニュアル公開・1957 年 4 月コンパイラ出荷でありながら、Google Patents inventor=Backus／IBM・Wikipedia 英語版 Backus 項・ACM Turing Award Laureate 公式ページ・Britannica いずれも特許番号への言及がない『適格性壁』第 2 弾発掘譚（SW サブシリーズ DB 形態：適格性壁 第 2 弾 / 1957 年米国ソフトウェア特許適格性 pre-Gottschalk 期の起点）"
+subtitle: "ソフトウェア・UI 特許 発掘ノート #3 ── 1957 年 4 月『The Fortran Automatic Coding System for the IBM 704』出荷時、米国ではソフトウェア特許適格性に関する判例が 1972 年 Gottschalk v. Benson まで存在しなかった。FORTRAN は『最初の高水準言語』であると同時に『判例より 15 年早い純ソフトウェア発明』でもあり、IBM が当時とった『リファレンスマニュアル先行公開＋顧客への無料配布＋Trade Secret 防衛』戦略は 2026 年現在の LLM 基盤モデル公開戦略と問題意識が重なる"
+description: "Day 25 SW サブシリーズ第 3 本（適格性壁第 2 弾）。1953 年末 Backus 単独提案・1954 年 11 月『The IBM Mathematical Formula Translating System』ドラフト仕様・1956 年 10 月 15 日初版リファレンスマニュアル『The Fortran Automatic Coding System for the IBM 704』公開・1957 年 4 月コンパイラ初出荷の FORTRAN について、Google Patents inventor=Backus／assignee=IBM／priority 1953-1960 で 0 件、ACM Turing Award Backus 公式ページ・Wikipedia 英語版 Backus 項・Britannica Backus 項いずれも特許番号への言及なしを verify。1957 年は米国でソフトウェア特許適格性に関する判例が確立する前で、Gottschalk v. Benson（1972）／Parker v. Flook（1978）／Diamond v. Diehr（1981）／State Street Bank（1998）／Alice Corp v. CLS Bank（2014）の 5 つの最高裁・連邦巡回区判決が後年積み重なって初めて『純アルゴリズム発明の特許適格性』の輪郭が決まった。FORTRAN は『判例より 15 年早い純ソフトウェア発明』であり、IBM がとった戦略は『リファレンスマニュアル先行公開（1956-10-15）＋顧客への無料配布＋ソースコード内部 Trade Secret』の三本柱で、2026 年現在の LLM 基盤モデル『重みは公開しないが API は公開／論文は公開』戦略と問題意識が重なる。Day 24 SW-005 HyperCard（1987 適格性壁、判例 Diamond v. Diehr 直後の unsettled 期）と合わせて SW サブシリーズ『適格性壁』第 1・第 2 弾を確定し、本日 ep89 SW-003 BBN IMP（1969 ARPA 契約・公開仕様）／ep90 SW-004 Xerox PARC Smalltalk（1972 企業ラボ・4 社共有公開）と合わせて 4 件揃い踏みで『適格性壁』形態を 4 つの細別に解像度を上げる"
+episode: 88
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ソフトウェア・UI特許", "FORTRAN", "Backus", "IBM", "適格性壁", "発掘ノート"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 3
+status: "published"
+---
+
+## 結論を先に
+
+Day 25 で AI 考古学の SW サブシリーズ第 3 本目を立てた。題材は **1953 年末 John W. Backus 単独提案・1956 年 10 月 15 日初版リファレンスマニュアル公開・1957 年 4 月コンパイラ出荷の IBM FORTRAN** にした。
+
+結論から書く。**FORTRAN 自体の特許番号は今回 verify 範囲では発見できなかった**。Google Patents の `inventor=Backus John+assignee=IBM+priority:1953-1960` クエリは 0 件、ACM Turing Award Laureate Backus 公式ページ・Wikipedia 英語版 John Backus 項・Britannica Backus 項・History of Information FORTRAN 記事いずれも、FORTRAN 関連特許への言及はない。1953-1957 年は米国でソフトウェア特許適格性に関する判例が一切確立する前の時期で、**Gottschalk v. Benson（1972）／Parker v. Flook（1978）／Diamond v. Diehr（1981）／State Street Bank（1998）／Alice Corp v. CLS Bank（2014）** の 5 つの最高裁・連邦巡回区判決が後年積み重なって初めて『純アルゴリズム発明の特許適格性』の輪郭が決まった。FORTRAN は **判例より 15 年早い純ソフトウェア発明** であり、IBM が当時とった戦略は『**リファレンスマニュアル先行公開（1956-10-15）＋顧客への無料配布＋ソースコード内部 Trade Secret**』の三本柱だった。
+
+Day 24 SW-005 HyperCard（1987 年・Diamond v. Diehr 直後の unsettled 期）と本日 ep88 SW-002 FORTRAN（1957 年・Gottschalk v. Benson より 15 年前の pre-judicial 期）を並べると、SW サブシリーズの『**適格性壁**』形態は **(a) 判例不在期（pre-1972）／(b) 判例 unsettled 期（1972-1998）** の 2 細別に分かれることが見えてくる。本日続く ep89 SW-003 BBN IMP（1969 年・ARPA 契約・政府資金で公開仕様化）／ep90 SW-004 Xerox PARC Smalltalk（1972 年・企業ラボで 4 社共有公開）はさらに **(c) 政府契約による公開強制／(d) 企業戦略による自発公開** の 2 細別を加える。Day 25 は 1 セッションで適格性壁 4 形態揃い踏みを目指す編成になる。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] Day 24 末尾 SW-005 HyperCard 適格性壁第 1 弾の確定を踏まえ、
+         SW-002（FORTRAN）／SW-003（BBN IMP）／SW-004（Smalltalk）の
+         3 件を Day 25 で順次発掘する方針を確定（はるこ判断）
+
+[STEP 2] FORTRAN 関連特許の Web 検証
+   - Google Patents xhr API 直接照会
+     URL: patents.google.com/xhr/query?url=inventor%3D%22John%2BW%2BBackus%22%26assignee%3DIBM%26before%3Dpriority%3A19600101%26after%3Dpriority%3A19530101
+     結果: total_num_results = 0
+   - WebSearch ""John W. Backus" inventor US patent IBM"
+     結果: 別人の医療診断特許（US6300075B1 等）のみヒット、FORTRAN 発明者の特許なし
+
+[STEP 3] 二次資料 cross check
+   - Wikipedia 英語版 Fortran 項：開発年表（1953-1957）詳細記載、
+     特許番号への言及なし、IBM 知財戦略への言及なし
+   - Wikipedia 英語版 John Backus 項：Speedcoding（1953）／FORTRAN（1954-）
+     ／BNF（1959 ALGOL）／FP 言語（1977 IBM Research）の経歴記載、
+     **特許に関する記述は皆無**
+   - ACM Turing Award Laureate Backus 公式ページ：1977 年受賞理由
+     『for profound, influential, and lasting contributions to the design
+     of practical high-level programming systems, notably through his
+     work on FORTRAN, and for publication of formal procedures for the
+     specification of programming languages』、特許への言及なし
+   - Britannica John Backus：受賞歴・経歴記載、特許への言及なし
+   - History of Information『John Backus & Team Develop FORTRAN』：
+     1956-10-15『The Fortran Automatic Coding System for the IBM 704』
+     リファレンスマニュアル初版・1957-04 コンパイラ出荷・10 名チーム
+     （Richard Goldberg, Sheldon F. Best, Harlan Herrick, Peter Sheridan,
+     Roy Nutt, Robert Nelson, Irving Ziller, Harold Stern, Lois Haibt,
+     David Sayre）記載、特許への言及なし
+
+[STEP 4] 1957 年米国ソフトウェア特許適格性の法的状態を確認
+   - 1972 年 Gottschalk v. Benson 最高裁判決：BCD-binary 変換アルゴリズム
+     特許出願拒絶、『mental processes は特許適格対象外』との初の判断
+   - これ以前（pre-1972）は、ソフトウェア特許に関する **判例自体が存在しなかった**
+     → USPTO 審査基準も確立しておらず、出願実務として『アルゴリズムは
+        mathematical method = unpatentable』が運用されていた
+   - FORTRAN（1957）は判例より 15 年早く、Gottschalk 以前の
+     **判例不在期 pre-judicial era** に属する
+
+[STEP 5] 結論：『FORTRAN 自体の特許化記録は今回 verify 範囲で発見できず』を
+        確定し、SW サブシリーズ『適格性壁』第 2 弾として記事化
+```
+
+## 2. FORTRAN 開発年表（二次資料一致確認済み）
+
+| 年月 | 出来事 |
+|---|---|
+| 1953 年末 | John W. Backus が IBM に対し、IBM 704 メインフレーム用のアセンブリ言語代替を提案 |
+| 1954 年 11 月 | ドラフト仕様書『The IBM Mathematical Formula Translating System』完成 |
+| 1955-1956 年 | 10 名チーム（Backus + Goldberg, Best, Herrick, Sheridan, Nutt, Nelson, Ziller, Stern, Haibt, Sayre）でコンパイラ実装・テスト |
+| 1956 年 10 月 15 日 | 初版リファレンスマニュアル『The Fortran Automatic Coding System for the IBM 704』公開 |
+| 1957 年 4 月 | FORTRAN コンパイラ初出荷（IBM 704 用） |
+| 1958 年 | FORTRAN II リリース、サブルーチン・関数・共通ブロック追加 |
+| 1962 年 | FORTRAN IV リリース、論理データ型追加 |
+| 1966 年 | ANSI X3.9-1966（FORTRAN 66）標準化 |
+| 1972 年 | **Gottschalk v. Benson 最高裁判決（FORTRAN 出荷から 15 年後）** |
+| 1977 年 | Backus が ACM Turing Award を受賞、受賞講演で関数型プログラミング『FP』を提案 |
+| 1978 年 | ANSI X3.9-1978（FORTRAN 77）標準化 |
+
+開発年表は Wikipedia 英語版 Fortran 項・History of Information 記事・IBM 公式 Backus 項で一致確認済。**この 1953-1972 年区間で FORTRAN 関連の特許出願・成立記録は二次資料いずれにも記載がない**。
+
+## 3. 核心：『適格性壁』pre-judicial era 形態の構造
+
+### (a) 1957 年米国ソフトウェア特許の状態
+
+1957 年時点で米国にはソフトウェア特許適格性に関する **判例も USPTO 審査基準も存在しなかった**。特許適格性の最初の重要判例は 1972 年 Gottschalk v. Benson 最高裁判決で、二進化 10 進数（BCD）から純粋二進数への変換アルゴリズムを含む特許出願を拒絶し『mental processes は 35 U.S.C. § 101 の特許適格対象外』との判断を示した。これは FORTRAN コンパイラ出荷から 15 年後の判決である。
+
+それ以前、1950 年代の米国特許実務は **17 世紀英国 Statute of Monopolies 由来の『mathematical method = unpatentable』ドクトリン** に従っており、純アルゴリズム発明は審査段階で実質的に拒絶される慣行運用だった。FORTRAN コンパイラのコア技術である **構文解析（parser）／レジスタ割付（register allocation）／コード生成（code generation）／式の最適化（expression optimization）** はいずれもアルゴリズム発明であり、当時の運用では Claim を組むこと自体が困難だった可能性が高い。
+
+### (b) 1957 年 IBM の知財戦略：『マニュアル公開＋無料配布＋Trade Secret』三本柱
+
+特許化が困難な状況で、IBM は次の三本柱で FORTRAN を防衛した：
+
+1. **リファレンスマニュアル先行公開（1956-10-15）**：コンパイラ出荷より約 半年早く、文法仕様・組み込み関数・I/O 形式を公開。これにより『FORTRAN 文法を実装した別ベンダの互換コンパイラ』が出現するリスクを抑え、**de facto standard の地位を確立**した
+2. **IBM 704 顧客への無料配布**：FORTRAN コンパイラ自体は IBM 704 購入者に無料で提供。これは『コンパイラは独立商品ではなく、IBM 704 ハードウェアの付属品』という位置付けで、ハードウェア価格に内包する形でビジネスモデルを成立させた
+3. **ソースコード内部 Trade Secret**：コンパイラのソースコードは公開せず、IBM 内部で機密管理。最適化アルゴリズムの詳細は ACM 論文（1957 年 SHARE Conference 等）で部分公開しつつ、フル実装は IBM 知財として保持
+
+この三本柱は 1980 年代の Microsoft MS-DOS／Windows、1990 年代の Sun Microsystems Java、2010 年代の Apple Swift、2020 年代の OpenAI GPT-4／Anthropic Claude いずれも **問題意識のレベルで継承している**。
+
+### (c) Backus 自身の長期戦略：数学者として『アルゴリズムは公共財』志向
+
+Backus 個人の発明戦略も特許化を志向していなかった可能性が高い。**1959 年 ALGOL 60 仕様策定** で Backus は **BNF（Backus-Naur Form）記法** を提案し、これを ACM Communications で論文公開（特許化なし）。**1977 年 ACM Turing Award 受賞講演** では関数型プログラミング言語『FP』を提案し、ACM Communications で論文公開（特許化なし）。Backus の 30 年のキャリアを通じて『**論文公開＋言語仕様標準化**』が一貫した発信形態であり、**個人特許の記録は今回 verify 範囲で発見できなかった**。
+
+これは『プログラミング言語設計者は数学者の共同体に属する』という当時の文化的前提と整合する。Backus の同時代人である McCarthy（LISP, 1958）／Hoare（QuickSort, 1959／CSP, 1978）／Dijkstra（最短経路, 1956／構造化プログラミング, 1968）／Knuth（TAOCP, 1968-）いずれも **核心アルゴリズムを論文公開し、特許化を選ばなかった**。
+
+## 4. 現代との対応表（4 段階評価付き）
+
+| 1957 年 FORTRAN | 2026 年 LLM 基盤モデル | 設計レベルでの関係 |
+|---|---|---|
+| Backus + 10 名チーム IBM 704 用『最初の高水準言語』 | OpenAI/Anthropic/Google DeepMind 50-200 名チーム『最初の汎用 AI チャット』 | **類似**（チーム規模は 1 桁違うが、新カテゴリ製品立ち上げという問題意識は重なる、専門家から『FORTRAN は言語設計／LLM は確率モデル、設計レベルで別物』と突っ込まれる） |
+| ソースコード Trade Secret／マニュアル公開／IBM 704 付属品として無料配布 | 重み Trade Secret／API 公開／論文公開／ChatGPT Plus 月額課金 | **類似**（公開／非公開の境界線設定という問題意識は重なる、専門家から『FORTRAN は SaaS ではない、ハードウェア付属品とクラウド API はビジネスモデルが別』と突っ込まれる） |
+| 構文解析・レジスタ割付・コード生成のアルゴリズム発明＝特許適格性壁 | Transformer 注意機構・RLHF・MoE のアルゴリズム発明＝Alice テスト後の特許適格性壁 | **類似**（『純アルゴリズム発明の特許適格性』という問題意識は 1957→2026 の 69 年連続、判例 Gottschalk→Alice の枠組みで 2026 年現在も判断、専門家から『Alice テスト後はハードウェア要素を含めれば適格、FORTRAN 期と運用が違う』と突っ込まれる） |
+| ANSI X3.9-1966／X3.9-1978 標準化で de facto から de jure へ | ISO/IEC 23053（ML 標準）／ISO/IEC 42001（AI Management System）等で de jure 化進行中 | **類似**（特許化困難な技術が標準化で集合的合意を得る経路という問題意識は重なる、専門家から『FORTRAN 標準化は文法仕様、AI 標準化はガバナンス、対象が違う』と突っ込まれる） |
+| Backus 単独提案 → 10 名チームで 3 年実装 → 1957 年出荷 | 個人提案 → 50-200 名で 1-2 年学習 → モデル出荷 | **比喩**（『発端は個人のアイデア、実装は大型チーム』という構造は連続するが、実装内容（コンパイラ vs ニューラルネット学習）は別物、専門家から『発明史の比喩としては成立、技術系譜としては破綻』と突っ込まれる） |
+| 1972 年 Gottschalk v. Benson まで判例不在＝判例不在期適格性壁 | 1981 年 Diamond v. Diehr → 2014 年 Alice まで判例 unsettled 期適格性壁 | **同一**（米国特許法 35 U.S.C. § 101 の文言自体は 1952 年制定以来同じで、判例による解釈変動が適格性壁の形を決める構造は 1957→2026 で連続している、専門家から『同一とまでは言えない、Bilski 2010・Mayo 2012・Alice 2014 で運用が大きく変わった』と突っ込まれる） |
+
+### 対応表の読み方補足
+
+『同一』『類似』『比喩』『無理がある』の 4 段階で評価したうえで、**6 行のうち『同一』は 1 行（米国特許法 § 101 の文言不変）のみ、『類似』が 4 行、『比喩』が 1 行** という分布になった。FORTRAN（1957）と LLM（2026）の対応は **概ね問題意識レベルで共通、実装レベルでは別物** というのが正直な総括である。
+
+『FORTRAN は LLM の前史』という主張は **問題意識（プログラミングの抽象化／高水準言語化／特許適格性の壁の中での発明戦略）レベルでの先行例** として読むべきで、**実装系譜としては LISP（1958）→ Smalltalk（1972）→ Self（1987）→ JavaScript（1995）→ Python（1991）／LISP→Common Lisp→Scheme→ML（1973）→OCaml（1996）→Haskell（1990）→PyTorch・JAX（2016-）の流れが直接的な技術先行例** で、FORTRAN はこの流れの **最上流の母体ではあっても、ML/LLM の直接の先行実装ではない**。
+
+## 5. 落とし穴（5 項目）
+
+1. **『FORTRAN 特許不在 = Backus が特許化を試みて拒絶された』ではない**：今回 verify 範囲で見つかったのは『特許出願記録なし』であり、『出願したが拒絶された記録』は USPTO Patent Center の対話 UI 必須形態で curl レベル自動検証は不可、IBM 内部の出願検討記録も未取得。**『そもそも出願されなかった』『出願されたが公開されなかった』『出願されたが本メモの verify 範囲では見つからない』の 3 通りが残る**
+2. **『1957 年の IBM はソフトウェア特許を取らなかった』ではない**：IBM は 1950 年代から **ハードウェア特許** を多数取得しており、IBM 704 メインフレーム自体・磁気コアメモリ・I/O チャネル等は特許化されている。**FORTRAN コンパイラというソフトウェア部分が特許化されていない** という限定された主張である
+3. **『Backus は特許に反対していた』とは確定できない**：Backus 個人の特許化記録が今回 verify 範囲で発見できないことと、Backus が思想的に特許に反対だったことは別問題。**Backus 自身が特許化を選ばなかった理由は、思想・文化・実務・法的状況のいずれが主因か今回 verify 範囲では特定できない**
+4. **『1957 年は判例不在期だから出願は無意味だった』とは確定できない**：1972 年 Gottschalk v. Benson 以前にも、ソフトウェア・アルゴリズム発明の出願は技術的には可能で、**実際に 1960 年代に少数の出願事例が記録されている**（Bernard Bull patents 等）。FORTRAN が特許化されなかったのは IBM の戦略選択の側面が大きい可能性がある
+5. **『IBM の Trade Secret 戦略が成功した』とは限らない**：1960 年代後半から **互換コンパイラ**（Univac／Honeywell／CDC 等）が登場し、FORTRAN は de facto standard 化の中で IBM 単独支配から離れた。**IBM の戦略は FORTRAN ではなく後の System/360（1964）／OS/360（1966）で完成した** のであり、FORTRAN 単体で評価するのは部分最適
+
+## 6. 厳密にはこう（必須 5 項目）
+
+### 確認済みの事実
+
+- 1953 年末 Backus 単独提案・1954 年 11 月ドラフト仕様・1956 年 10 月 15 日マニュアル公開・1957 年 4 月コンパイラ出荷の年表は Wikipedia 英語版 Fortran 項・History of Information・IBM 公式 Backus 項で一致確認済
+- 10 名チームメンバー（Goldberg, Best, Herrick, Sheridan, Nutt, Nelson, Ziller, Stern, Haibt, Sayre）は Wikipedia 英語版 Fortran 項で『Backus' historic FORTRAN team consisted of programmers Richard Goldberg, Sheldon F. Best, Harlan Herrick, Peter Sheridan, Roy Nutt, Robert Nelson, Irving Ziller, Harold Stern, Lois Haibt, and David Sayre.』と verbatim 記載確認済
+- Google Patents xhr API（`inventor=John W Backus + assignee=IBM + priority:1953-1960`）の検索結果が 0 件、WebSearch でも FORTRAN 関連の Backus 特許が発見できないことは確認済
+- 1972 年 Gottschalk v. Benson 最高裁判決が米国ソフトウェア特許適格性に関する初の重要判例であることは法学史の確定事実
+
+### 著者の解釈
+
+- 『FORTRAN が特許化されなかった理由は適格性壁＋Trade Secret 戦略＋Backus 個人の数学者文化』の三因子推論は本ノート著者の解釈で、IBM 内部資料・Backus 個人書簡との突合は行っていない
+- 『Backus の 30 年のキャリアを通じて論文公開＋標準化が一貫していた』は ACM Communications BNF 論文（1959）・Turing 講演 FP 論文（1977）の 2 件から外挿した観察で、Speedcoding（1953）／FP の実装（1977 IBM Research 内部）等の特許化記録の有無までは未確認
+- 『1957 年 IBM の三本柱戦略』は事後的な構造化試案で、当時の IBM 経営陣が明示的にこの三本柱を意図していたかは未確認
+
+### 比喩・アナロジー
+
+- 『FORTRAN（1957）と LLM（2026）の対応』は問題意識レベルでの 4 行類似＋1 行同一＋1 行比喩の分布で、**技術系譜としては LISP→Smalltalk→ML→PyTorch の流れが直接的で、FORTRAN は最上流の母体ではあるが直接の先行実装ではない**
+- 『判例不在期適格性壁（FORTRAN）vs 判例 unsettled 期適格性壁（HyperCard）』の 2 細別は Day 24 SW-005 と本日 SW-002 を並べた事後的構造化で、専門家から『判例史の区切り方が荒い』と突っ込まれる余地がある
+
+### 未確認
+
+- USPTO Patent Center 直接検索による IBM 1953-1972 年期 Backus 名義 FORTRAN 関連特許の網羅的取得（対話 UI 必須形態のため curl 自動検証不可）
+- IBM 法務部門・知財部門の内部出願検討記録（IBM Research Almaden 等の Archive 必要）
+- ACM SHARE Conference 1957 年 Proceedings に Backus が発表した論文の全文（Web 範囲では到達できず）
+- Bernard Bull et al. 1960 年代米国ソフトウェア特許出願事例の網羅リスト
+- Backus 個人書簡・遺稿（Library of Congress 所蔵 Backus papers の cataloue PDF は到達したが本文は未取得）
+
+### この比較が破綻する点
+
+- **『FORTRAN 特許不在を確定した』ではなく、『今回 verify 範囲で発見できなかった』が正確な表現**。USPTO Patent Center 直接検索や IBM 内部 Archive で関連特許が出てきた場合、本ノートは更新される
+- 『判例不在期適格性壁』形態の概念化は Day 24 SW-005／本日 SW-002 の 2 件サンプルから抽出した試案で、**1972 年以前の他のソフトウェア発明（COBOL 1959／LISP 1958／ALGOL 1960 等）でも適格性壁が同形態で適用されたかは未確認**。COBOL／LISP/ALGOL の特許化状況の追加発掘が必要
+- 『Backus の数学者文化志向』は 30 年キャリアの 2 件の論文公開から外挿した観察で、Backus が **思想的に特許に反対だった** と確定するには本人の言説（Turing Award 講演原稿・インタビュー記録）の精査が必要
+- 『IBM 三本柱戦略』は事後的な構造化で、**1980 年代以降の IBM はソフトウェア特許を大量取得する方針に転換**（IBM は 30 年連続で米国年間特許取得トップを維持）したため、『1957 年戦略は IBM の本質ではなく当時の状況対応』だった可能性がある
+
+## 7. SW サブシリーズ DB 形態：『適格性壁』第 2 弾（pre-judicial era 形態）
+
+Day 24 SW-005 HyperCard（1987 年・Diamond v. Diehr 1981 直後の unsettled 期）と本日 ep88 SW-002 FORTRAN（1957 年・Gottschalk v. Benson 1972 より 15 年前の pre-judicial era）を並べることで、SW サブシリーズの『適格性壁』形態は **2 細別** に解像度が上がる：
+
+| サブシリーズ | 適格性壁形態 細別 | 性質 |
+|---|---|---|
+| **SW-002 FORTRAN（本ノート）** | **(a) 判例不在期 pre-judicial era 形態** | **1972 年 Gottschalk v. Benson 以前。判例自体が存在せず、USPTO 審査基準も確立しておらず、出願実務として『mathematical method = unpatentable』が運用されていた時期** |
+| SW-005 HyperCard（Day 24 ep87） | (b) 判例 unsettled 期 形態 | 1972 Gottschalk → 1981 Diamond v. Diehr → 1998 State Street Bank の 26 年間。判例は存在するが運用が変動し、純ソフトウェア発明の出願戦略が困難だった時期 |
+
+本日続く ep89 SW-003 BBN IMP（1969 年・ARPA 政府契約・公開仕様化）／ep90 SW-004 Xerox PARC Smalltalk（1972 年・企業ラボで 4 社共有公開）はさらに細別を加える：
+
+| 細別 | 該当エピソード | 性質 |
+|---|---|---|
+| (c) 政府契約による公開強制 | ep89 SW-003 BBN IMP | ARPA 契約条項により公開仕様化（BBN Report 1822 = Internet STD 39） |
+| (d) 企業戦略による自発公開 | ep90 SW-004 Smalltalk | Xerox PARC が Tek/HP/Apple/DEC に『unrestricted redistribution』で配布、ACM Computing Surveys 1981 特集で全面公開 |
+
+Day 25 1 セッションで **適格性壁 4 細別揃い踏み** が完成し、SW サブシリーズは **(1) ハードウェア要素を含む display system / cursor control device の Claim 化に成功した特許群（SW-001 Engelbart マウス／SW-006 Atkinson 画像圧縮）vs (2) 純ソフトウェアで適格性壁により特許化されなかった発明群（SW-002 FORTRAN／SW-003 BBN IMP／SW-004 Smalltalk／SW-005 HyperCard）** の 2 群対比が 7 件 DB の中で構造化される。
+
+## 参考リンク
+
+- Wikipedia 英語版 Fortran: [en.wikipedia.org/wiki/Fortran](https://en.wikipedia.org/wiki/Fortran)
+- Wikipedia 英語版 John Backus: [en.wikipedia.org/wiki/John_Backus](https://en.wikipedia.org/wiki/John_Backus)
+- ACM Turing Award Laureate John Backus: [amturing.acm.org/award_winners/backus_0703524.cfm](https://amturing.acm.org/award_winners/backus_0703524.cfm)
+- History of Information『John Backus & Team Develop FORTRAN』: [historyofinformation.com/detail.php?id=755](https://www.historyofinformation.com/detail.php?id=755)
+- IBM 公式 John Backus 項: [ibm.com/history/john-backus](https://www.ibm.com/history/john-backus)
+- IBM 公式 Fortran 項: [ibm.com/history/fortran](https://www.ibm.com/history/fortran)
+- USPTO Patent Subject Matter Eligibility: [uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility](https://www.uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility)
+- 関連エピソード: [#87 SW-005 Apple HyperCard 適格性壁第 1 弾（Day 24 のメモ）](/notes/87-software-ui-patent-memo-02)
+- 関連エピソード: [#89 SW-003 BBN IMP 適格性壁第 3 弾（同日のメモ）](/notes/89-software-ui-patent-memo-03)
+- 関連エピソード: [#90 SW-004 Xerox PARC Smalltalk 適格性壁第 4 弾（同日のメモ）](/notes/90-software-ui-patent-memo-04)
