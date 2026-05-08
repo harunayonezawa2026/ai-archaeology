@@ -8,8 +8,8 @@ export default function Header() {
   const isEn = pathname.startsWith("/en");
 
   const t = isEn
-    ? { tagline: "AI Archaeology", title: "Mining Forgotten Documents", articles: "Episodes", apps: "Apps", about: "About", lang: "日本語", langHref: pathname.replace(/^\/en/, "") || "/" }
-    : { tagline: "AI ARCHAEOLOGY", title: "忘れられた長文発掘ノート", articles: "記事", apps: "アプリ", about: "著者", lang: "EN", langHref: "/en" + (pathname === "/" ? "" : pathname) };
+    ? { tagline: "AI Archaeology", title: "Mining Forgotten Documents", articles: "Episodes", apps: "Apps", about: "About", premium: "Premium", lang: "日本語", langHref: pathname.replace(/^\/en/, "") || "/" }
+    : { tagline: "AI ARCHAEOLOGY", title: "忘れられた長文発掘ノート", articles: "記事", apps: "アプリ", about: "著者", premium: "プレミアム", lang: "EN", langHref: "/en" + (pathname === "/" ? "" : pathname) };
 
   const base = isEn ? "/en" : "";
 
@@ -26,6 +26,7 @@ export default function Header() {
           <Link href={isEn ? "/en" : "/"} className="text-navy hover:text-gold-600">{t.articles}</Link>
           <Link href={`${base}/apps`} className="text-navy hover:text-gold-600">{t.apps}</Link>
           <Link href={`${base}/about`} className="text-navy hover:text-gold-600">{t.about}</Link>
+          <a href="https://note.com/haruko_ai" target="_blank" rel="noopener noreferrer" className="text-gold-600 hover:text-gold-700 font-medium">{t.premium}</a>
           <a href="https://x.com/haruko_ai_jp" target="_blank" rel="noopener noreferrer" className="text-navy hover:text-gold-600">X</a>
           <Link href={t.langHref} className="text-gold-600 font-bold hover:text-gold-700 border border-gold-500 px-2 py-0.5 rounded">{t.lang}</Link>
         </nav>

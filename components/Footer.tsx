@@ -9,6 +9,12 @@ export default function Footer() {
           人間が読まない長尺ドキュメントをLLMに読ませて、現代に意味を再付与する実践記。
         </div>
 
+        <div className="mt-6 p-4 border border-gold-500/40 rounded bg-navy/40">
+          <div className="text-gold-500 font-bold mb-1">月次プレミアムマガジン</div>
+          <div className="text-paper/70 text-xs mb-2">毎日連載の裏側＋月次メタ分析。週1本・月4本を4テーマローテで配信。月額500円・初月無料。</div>
+          <a href="https://note.com/haruko_ai" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-gold-400 text-xs font-medium underline">noteで購読する →</a>
+        </div>
+
         <NewsletterForm />
 
         <div className="mt-6 text-paper/40 text-xs">
