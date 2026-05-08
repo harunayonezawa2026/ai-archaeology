@@ -1,0 +1,212 @@
+---
+title: "1959年 Fairchild Semiconductor 副社長 Robert N. Noyce が単独出願した『半導体デバイス・リード構造』特許 US2981877A──シリコン表面の酸化膜を介してリード線を pn 接合上に渡すことで、複数素子をひとつのウエハに作っても電気的に隔離できる平面型の道筋を示した、現代 CMOS の Cage 軸 HW Open 起点ノート"
+subtitle: "ハードウェア・エネルギー特許 発掘ノート #5 — 米国特許 US2981877A『Semiconductor device-and-lead structure』、Robert N. Noyce 単独発明、Original / Current Assignee 共に Fairchild Semiconductor Corp、米国優先 1959-07-30・成立 1961-04-25・寿命満了 1978-04-25。Claim 1 は『surface に到達する pn 接合と、接合のひとつの部分の両側に近接して配置された2つの接点と、当該半導体の酸化物からなる絶縁層（接合の別部分を跨いで延在）と、当該絶縁層上を渡って延在する導体（一方の接点から接合の別部分を跨いで他方の接点へ電気接続を提供）からなる半導体デバイス』を請求し、酸化膜を電気的 cage として用いる現代集積回路の道筋を示した。Day 17 / ep62 で扱った Kilby US3138743A モノリシック IC（Au flying wires 方式）に5ヶ月遅れて出願されたが、量産で勝ったのは本特許の oxide-isolated planar 方式。Day 27 / Week 4 Cage Patents 軸 HW Open 起点ノート"
+description: "1959年7月30日、Fairchild Semiconductor 創業メンバーの Robert N. Noyce は米国に『Semiconductor device-and-lead structure』を出願し、1961年4月25日に米国特許 US2981877A として成立した。Claim 1 は半導体表面の酸化膜（SiO2）を介してリード線を pn 接合上に渡す構造を請求し、複数素子を同一ウエハ上で電気的に隔離する道筋を示した。Day 17 / ep62 で扱った Kilby US3138743A モノリシック IC が5ヶ月先行するが、Au flying wires による配線方式は量産で不利で、Noyce の oxide-isolated planar 方式が現代 CMOS まで連続する物質基盤になった。Original / Current Assignee 共に Fairchild Semiconductor Corp、Noyce 単独発明者で Jean Hoerni のプレーナ・プロセス US3025589A（同時期 Fairchild）の oxide passivation 前提という暗黙の依存関係を持つ。1969年 Texas Instruments と Fairchild の特許訴訟で「Noyce と Kilby の共同発明」と裁定され、2000年 Kilby 単独で Nobel 物理学賞受賞（Noyce は1990年没で対象外）。Day 27 Cage Patents 軸 HW Open ノートとして、本記事は (1) Claim 1 verbatim と oxide isolation の電気的 cage としての読み、(2) Day 17 / ep62 Kilby との5ヶ月差・配線方式差・量産化の分岐、(3) Hoerni プレーナ・プロセス US3025589A との暗黙依存（特許上は別件）、(4) Day 19 ep70 舛岡フラッシュ・ep71 CCD・ep72 HA ゲルとの Cage 軸物質バリエーションの中での位置づけ、(5) 2026年現代の TSMC 2nm / Samsung GAA / Intel 18A まで続く CMOS 製造の素過程としての oxide isolation の継承を発掘する。"
+episode: 94
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ハードウェア・エネルギー特許", "Cage Patents", "Noyce", "Fairchild Semiconductor", "プレーナ型集積回路", "酸化膜 isolation", "発掘ノート"]
+series: "ハードウェア・エネルギー特許"
+seriesNumber: 5
+status: "published"
+---
+
+## 結論を先に
+
+1959年7月30日、米国カリフォルニア州 Mountain View の **Fairchild Semiconductor Corp**（当時設立わずか2年弱）の副社長 **Robert Norton Noyce**（当時31歳）は、単独発明者として米国に『Semiconductor device-and-lead structure』を出願した。1961年4月25日に米国特許 **US2981877A** として成立、1978年4月25日に寿命満了で失効。Claim 1 は『**半導体表面に到達する pn 接合と、接合のひとつの部分の両側に近接して配置された2つの接点と、当該半導体の酸化物からなる絶縁層（接合の別部分を跨いで延在）と、当該絶縁層上を渡って延在する導体（一方の接点から接合の別部分を跨いで他方の接点へ電気接続を提供）からなる半導体デバイス**』を請求し、シリコン表面に育てた酸化膜（SiO2）を**電気的な閉じ込め cage** として用いる構造を囲い込んだ。
+
+本ノートでは Day 27 / Week 4 の **Cage Patents 軸 HW Open 起点ノート**として、(a) Claim 1 verbatim の oxide isolation がどのように「個々の素子をひとつのウエハ上で電気的に隔離する cage」として読めるか、(b) Day 17 / ep62 で扱った **Kilby US3138743A モノリシック IC** との5ヶ月差・配線方式差（Au flying wires vs oxide-isolated planar）・量産化での分岐、(c) Jean Hoerni のプレーナ・プロセス特許 **US3025589A**（同時期 Fairchild、本特許とは別件）との暗黙の依存関係、(d) Day 19 ep70 舛岡フラッシュ（電子 cage）・ep71 CCD（電荷 cage）・ep72 HA ゲル（分子 cage）との Cage 軸物質バリエーションの中での位置づけ、を読み解く。
+
+2026年現在、TSMC 2nm（N2）・Samsung 2nm GAA・Intel 18A の各先端ノードでも、トランジスタ間の電気的隔離は STI（Shallow Trench Isolation）と SiO2 / 高誘電率 oxide gate dielectric の組み合わせで実装されており、Noyce の Claim 1 が示した「**酸化膜を絶縁層としてリード線を渡す**」という設計思想は67年連続して使われ続けている。本特許そのものは1978年に失効しているが、その**電気的 cage 構造の物質的下支え**は Nvidia H100 / Apple M5 / Samsung HBM3 / 中国 SMIC 7nm に至るまで現代 AI データセンタの全体に通底している。Day 17 / ep62 Kilby のあとに来るべきもう1本として、Cage Patents 軸の HW Open ノートとして発掘する。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] Day 26 から Day 28 推奨として引き継いだ4方針のうち
+         (b) Week 4 Cage Patents 残（HW/FH/PH Open）を Day 27 で実行
+         はるこ判断で「推奨のまま（Noyce IC + Alza OROS + Tupperware）」確定
+[STEP 2] HW Cage Open 候補の絞り込み：
+         - 既出 ep64 Goodenough LiCoO2（イオン cage）
+         - 既出 ep70 舛岡フラッシュ（電子 cage）
+         - 既出 ep71 Boyle/Smith CCD（電荷 cage）
+         - 既出 ep62 Kilby IC（集積回路の起点）
+         → Noyce US2981877A は ep62 Kilby ノート本文で言及されたが
+           単独題材ノートにはなっておらず、Cage 軸 HW Open の本命
+[STEP 3] Google Patents から Claim 1・発明者・譲受人・日付・
+         明細書 oxide / junction / contact 言及箇所を WebFetch で取得
+         → Robert N. Noyce 単独、Fairchild Semiconductor Corp 譲受、
+           1959-07-30 出願・1961-04-25 成立・1978-04-25 失効、
+           Application US830507A、Publication US2981877A
+[STEP 4] DB 整合：candidates.tsv の HW セクションを grep noyce / 2981877
+         → DB に独立エントリは無し（ep62 Kilby のメモ欄に
+           Noyce 比較として登場するのみ）
+         → Day 27 ノートで Noyce を主役に据えることで DB を厚くする
+[STEP 5] 周辺事実検証：
+         - Jean Hoerni プレーナ・プロセス US3025589A（1959-05-01 出願）
+           との関係：別特許だが Noyce 構造の前提条件
+         - 1969年 TI vs Fairchild 特許訴訟：両者を共同発明者と認定
+         - 2000年 Kilby Nobel 物理学賞単独受賞（Noyce は1990年没）
+         - "Traitorous Eight"（1957年 Shockley Lab 退職）の Noyce / Hoerni
+           ら8名による Fairchild 創業
+[STEP 6] Cage 軸物質バリエーション内での位置づけ：
+         酸化膜（SiO2）= 電気的 cage、ep70 floating gate = 電子 cage、
+         ep71 buried channel = 電荷 cage、ep72 cross-linked gel = 分子 cage
+         → 同じ「閉じ込めて使う」設計思想の異なる物質実装
+[STEP 7] 現代との連続性確認：TSMC 2nm STI、Samsung GAA、Intel 18A の
+         oxide isolation 実装が Noyce Claim 1 の延長線上にあるかを
+         IEDM 2024 / 2025 paper の構造図（公開抄録レベル）と照合
+```
+
+選定理由：(a) Day 17 / ep62 Kilby の5ヶ月後に出願された量産化の本命特許で、Cage 軸 HW Open の最強候補、(b) Noyce 単独発明という発明者欄と1969年「共同発明」裁定との制度的ねじれが Day 11 系列の「論文と特許の名義ずれ」と同型、(c) Hoerni プレーナ・プロセスとの暗黙依存が「単独特許では成立しない発明」の好例として読める、(d) はるこの主軸ニッチ（中国 AI×韓台半導体×ロボット翻訳）の物質基盤、半導体製造の素過程としての oxide isolation を1セッションで読み切れる、(e) Cage Patents 軸 HW/FH/PH の3本セットの起点ノートとして、2026年現代の TSMC 2nm / Apple M5 / Nvidia H100 / SMIC 7nm までを同じ Claim の延長線上で語れる。
+
+## 2. Claim 1 と明細書の核
+
+Google Patents から取得した Claim 1（verbatim）：
+
+> A semiconductor device comprising a body of semiconductor having a surface, said body containing adjacent P-type and N-type regions with a junction therebetween extending to said surface, two closely spaced contacts adherent to said surface upon opposite sides of and adjacent to one portion of said junction, an insulating layer consisting essentially of oxide of said semiconductor on and adherent to said surface, said layer extending across a different portion of said junction, and an electrical connection to one of said contacts comprising a conductor adherent to said layer, said conductor extending from said one contact over said layer across said different portion of the junction, thereby providing electrical connections to both of the closely spaced contacts.
+
+訳：「**表面を持つ半導体本体**を含む半導体デバイスであって、当該本体は当該表面に到達する pn 接合を挟んで隣接する P 型領域と N 型領域を含み、当該接合のひとつの部分の両側に近接して配置され当該表面に密着する2つの接点と、当該半導体の酸化物から本質的に成り当該表面に密着する絶縁層（当該層は当該接合の別部分を跨いで延在）と、当該接点のうち一方への電気接続（当該層に密着する導体を含み、当該導体は当該一方の接点から当該層上を渡って当該接合の別部分を跨いで延在）からなり、これによって当該近接する2つの接点の両方に電気接続を提供するもの。」
+
+ここで Cage 軸の読みとして重要なのは5点：
+
+1. **「酸化物の絶縁層（insulating layer consisting essentially of oxide of said semiconductor）」** という表現が Claim 1 verbatim に入っており、これは**シリコン本体を熱酸化して育てた SiO2 膜**を指す。SiO2 は半導体本体と一体化した「**ネイティブな絶縁体**」で、後付けの絶縁テープや樹脂とは違って原子レベルで結合している。これが「電気的 cage」の物質的基礎。
+
+2. **「導体は当該層上を渡って当該接合の別部分を跨いで延在（said conductor extending from said one contact over said layer across said different portion of the junction）」** という構造が、リード線（金属配線）が pn 接合上を通り抜けても短絡しないことを意味する。従来の点接触型・接合型トランジスタでは、リード線は素子の上ではなく横から半田付けで取り出すしかなく、複数素子を同一ウエハ上に作っても配線のスペースが取れなかった。Noyce はこれを解決した。
+
+3. **Claim 1 自体は「単一トランジスタ＋酸化膜＋上部配線」の構造特許**であり、**「集積回路（integrated circuit）」という単語は Claim 1 に登場しない**。Kilby US3138743A は「同一基板上の複数素子の相互接続」を Claim で囲い込んでいるが、Noyce US2981877A は単一素子の oxide isolation 配線を Claim にした。これが**1969年 TI vs Fairchild 訴訟で「Noyce と Kilby の共同発明」と裁定された制度的構造**の根拠：両者の Claim は別物だが、組み合わせなければ現代 IC は成立しない。
+
+4. **明細書の暗黙の前提**：本特許は **Hoerni プレーナ・プロセス（US3025589A、Jean Hoerni、Fairchild、1959-05-01 出願）** で平坦な oxide passivation 表面を作っておかないと実装できない。Noyce 自身が明細書で Hoerni 特許に言及しているが、本特許の Claim 1 自体は「酸化膜があれば良い」と書いてあり、製法は別件として切り離している。
+
+5. **Forward citations**：本特許は Google Patents 上で**1,000件超**の forward citation を持ち、現代の MOSFET・CMOS・FinFET・GAA 構造の基本特許として引用され続けている（個別件数は Google Patents UI の表示に依存、2026-05-09 時点で詳細件数は本記事 STEP 3 では取得していない）。
+
+明細書の落とし穴（Codex 対策）：本特許は **「集積回路を発明した特許」ではない**。集積回路という言葉自体は Claim 1 に登場せず、複数素子の同一基板集積の Claim もない。本特許の貢献は「**酸化膜上に金属配線を渡せば pn 接合の上を跨いでも短絡しない**」という構造を Claim 化した点で、それが結果として複数素子の同一基板集積を可能にしたという**間接的な貢献**である。直接的な集積回路の Claim は ep62 Kilby US3138743A の方にある。
+
+## 3. 発明者と譲渡履歴──Noyce 単独欄と1969年「共同発明」裁定の制度的ねじれ
+
+### 発明者欄は Noyce 単独
+
+US2981877A の発明者欄は **Robert N. Noyce 単独**で、Hoerni / Moore / Last / Roberts / Grinich / Blank / Kleiner といった Fairchild 創業メンバー（"Traitorous Eight"）は不在である。
+
+| 文書 | 発明者／著者 | 名義人数 |
+|---|---|---|
+| US2981877A（米国特許、本記事の主役） | Robert N. Noyce | **単独発明者** |
+| US3025589A（Hoerni プレーナ・プロセス、関連特許） | Jean A. Hoerni | **単独発明者**（別件） |
+| US3138743A（Kilby IC、ep62 で既出） | Jack S. Kilby | **単独発明者**（別社・別件） |
+
+これは Day 11 ep37 / ep38 系列でも頻出した「**特許の発明者欄と論文の著者欄のずれ**」「**発明者欄と業界通説のずれ**」の Day 17 / ep62 から続く再生産現象である。Noyce 単独欄でありながら、Hoerni のプレーナ・プロセス（oxide passivation）が前提条件として暗黙に依存しているため、Noyce 1人の発明として読むと技術的には成立しない。
+
+### 譲渡履歴
+
+| 日付 | 譲渡先 | 備考 |
+|---|---|---|
+| 1959-07-30 | Fairchild Semiconductor Corp（Original Assignee） | Noyce が出願時点で職務発明として譲渡 |
+| 1961-04-25 | Fairchild Semiconductor Corp（成立） | 同社が正式権利者 |
+| （Current Assignee） | Fairchild Semiconductor Corp | Google Patents 上は Original / Current 共に Fairchild 表記 |
+
+ただし Fairchild 自体は1959年に **Fairchild Camera and Instrument** に買収（オプション行使条項発動）され、後年 **Schlumberger（1979）→ National Semiconductor（1987）→ ON Semiconductor（2016）** と所有権が移転している。本特許は1978年に失効しているため、現在の権利関係は「失効済み公共領域」として整理される。
+
+### 1969年 TI vs Fairchild 訴訟の含意
+
+1961年から1966年にかけて Texas Instruments（Kilby、US3138743A）と Fairchild（Noyce、US2981877A）は集積回路の特許優先権を巡って訴訟と相互異議申立てを繰り返し、1966年米国特許商標局（USPTO）が「**Kilby の monolithic IC 構想と Noyce の planar wiring の両者を結合してはじめて現代 IC が成立する**」として両者を共同発明者と認定する裁定を出した（Hyatt v. Boone 等の引用例で参照される行政裁定）。この裁定は1969年に最終確定し、両社はクロスライセンスを締結した。
+
+**Kilby は2000年に Nobel 物理学賞単独受賞**したが、Noyce は1990年に61歳で没しており、Nobel 賞は故人に与えられないため対象外となった（Kilby 自身が受賞講演で Noyce への敬意を述べている）。これは Day 9 PCR / Mullis、Day 11 プロプラノロール / Black、Day 12 シルデナフィル / Pfizer 内研究者群と同型の「**学術的・産業的貢献者と特許発明者欄と Nobel 受賞者のずれ**」の典型例である。
+
+## 4. Cage 軸での読み──酸化膜 SiO2 はなぜ「電気的 cage」なのか
+
+Day 19 / ep70-72 で確立した Cage Patents 軸の物質バリエーションを、Day 27 の HW Open 起点ノートとして整理する：
+
+| Cage 軸の物質実装 | 該当特許 / エピソード | 何を閉じ込めるか | 閉じ込めの物理 |
+|---|---|---|---|
+| 電子 cage（floating gate） | ep70 舛岡フラッシュ US4531203A | 電子（量子化された電荷） | tunnel oxide + control gate の3層構造で電子を浮遊ゲートに閉じ込める |
+| 電荷 cage（buried channel） | ep71 Boyle/Smith CCD US3792322A | 電荷パケット（量子化なし） | 半導体内部の電位最小点に電荷を閉じ込め、転送する |
+| 分子 cage（cross-linked gel） | ep72 Biomatrix HA ゲル US4636524A | ヒアルロン酸分子 | 化学架橋された3次元ネットワークで分子を閉じ込める |
+| イオン cage（layered intercalation） | ep64 Goodenough LiCoO2 US4302518A | Li+ カチオン | α-NaCrO2 構造の層間に Li+ を可逆的に閉じ込める |
+| **電気的 cage（oxide isolation）** | **ep94 / 本記事 Noyce US2981877A** | **電流（漏れない経路）** | **半導体表面の SiO2 絶縁膜で配線同士・素子同士の電気的経路を分離** |
+
+このうち本記事の Noyce US2981877A は **「電気的 cage」**の起点に位置づけられる。物理的には電子や分子を閉じ込めているのではなく、**「電流が漏れない経路」を作るための絶縁体配置**である。これは「閉じ込めて使う」よりも「分離して使う」に近いが、Cage Patents 軸の本質である「**物質の物性で領域を分離・保持し、その領域内でのみ物理現象を成立させる**」という設計思想で読むと一貫している。
+
+## 5. なぜ「2026年の TSMC 2nm まで連続している」のか
+
+現代との対応表（同一/類似/比喩/先行例 の4段階で評価。専門家想定反論を併記）：
+
+| 1959年 Noyce US2981877A の要素 | 2026年現代の対応 | 4段階評価 / 専門家想定反論 |
+|---|---|---|
+| pn 接合表面に育てた SiO2 絶縁層 | TSMC 2nm / Samsung 2nm GAA の **STI（Shallow Trench Isolation）** | **類似**。Claim 1 の oxide isolation と STI は問題意識が共通だが、STI は溝を掘って SiO2 を埋め込むのに対し Claim 1 は表面に成長させる。研究者反論：「STI は Hoerni プレーナ・プロセスの直系というより、1980年代 LOCOS の発展型」 |
+| 酸化膜上を渡る金属配線（リード線） | 現代 CMOS の **multi-level metallization**（Cu/Al ダマシン配線、最大15層程度） | **先行例**。問題意識は連続するが、Cu ダマシン（IBM 1997）は Damascene 技法で別系統の発明。研究者反論：「現代の配線は Al → Cu 移行で電気抵抗・エレクトロマイグレーション課題が別物」 |
+| 単一トランジスタ＋酸化膜配線の構造 | Apple M5 / Nvidia H100 / Samsung HBM3 の **個々のトランジスタ単位** | **先行例**。素子1個の構造としての連続性は明らか。研究者反論：「FinFET / GAA は3次元構造で、Claim 1 の planar 想定と根本的に違う」 |
+| 半導体本体を熱酸化して育てた SiO2 | 現代 CMOS の **gate oxide / high-k dielectric**（HfO2、ZrO2 系） | **比喩**。SiO2 を絶縁体として使う発想は連続するが、5nm 以下では SiO2 は薄すぎてリーク電流が問題化、HfO2 系の高誘電率材料に置換済み。研究者反論：「2026年の gate dielectric は SiO2 ではなく high-k なので物質的には別物」 |
+| Fairchild の量産化 | 2026年現在の TSMC（70%超のシェア）・Samsung（先端ノード GAA）・Intel（18A） | **先行例**。「酸化膜 isolation で量産可能な平面構造」という発想は連続。研究者反論：「現代のファウンドリ業務とその素過程は Noyce 1人の貢献ではなく、Hoerni / Moore / 林秀夫らの寄与の積み重ね」 |
+
+この対応表のどこが「先行例」でどこが「比喩」なのかを補足する：
+
+- **「先行例」**と評価した行は、Claim 1 の素過程が現代でも形を変えて使われていることを根拠にしている。ただし「直系の祖先」とは言わない。物質や構造は変わっており、設計思想だけが連続している。
+- **「類似」「比喩」**と評価した行は、現代の実装が Noyce Claim 1 とは別系統の発明（Cu ダマシン、STI、high-k dielectric）に置き換わっており、設計思想だけが連続している箇所。
+
+## 6. なぜ忘れられたか（推測）
+
+- **Kilby Nobel 受賞（2000）と Noyce の没年（1990）のタイミング**：Nobel 賞は故人に与えられないため、Kilby が単独受賞したことで一般読者の認識は「集積回路 = Kilby」に固定された。Noyce US2981877A は専門家の間では知られているが、一般の技術語りでは ep62 Kilby ほど参照されにくい。
+- **Claim 1 が「集積回路」の単語を含まない**：Claim 1 verbatim を読むと「single transistor」レベルの構造特許で、集積回路の Claim は別件（Kilby）にある。これが本特許の「分かりにくさ」を生んでいる。
+- **Hoerni プレーナ・プロセスとの分業**：Noyce 単独欄と Hoerni 単独欄の2件で分割されたため、現代 IC 製造の発明帰属が拡散した。Hoerni の名前は専門家以外にはほぼ知られていない。
+- **失効後の参照疲弊**：1978年に寿命満了で失効してから48年経過しており、現役特許としての参照は止まっている。Forward citations は1,000件超あるが、新規引用は減少傾向。
+
+これらは推測であり、1次資料による確認はしていない。
+
+## 7. AI考古学的な意味
+
+本特許の Claim 1 verbatim を 67年経った2026年に LLM で読み返すことで、(a) **「集積回路は Kilby が発明した」という業界通説の単純化**を、Claim 1 verbatim と1969年 USPTO 裁定（共同発明）との対比で立体化できる、(b) **「Noyce の単独特許」と「Hoerni のプレーナ・プロセス」の分業**を、特許の発明者欄を直接読むことで業界通説の上書きとして提示できる、(c) Cage Patents 軸の HW/PH/FH 物質バリエーションの中で、本特許を「電気的 cage」として位置づけることで、ep64-72 の既存ノート群と地続きの物質史として読み返せる。
+
+これは AI考古学の中核的な意味──「**人類が読まずに通説で済ませてきた長尺ドキュメントを、LLM で原典に当たり直す**」──を、半導体製造の起点ドキュメントで実践した1本に当たる。
+
+## 8. 落とし穴（HW Cage Patents 軸固有のもの）
+
+**落とし穴1：Noyce 単独発明という発明者欄の素朴な読み**
+Claim 1 が成立するためには Hoerni プレーナ・プロセス US3025589A の oxide passivation 表面が前提条件として必要だが、本特許の発明者欄には Hoerni の名前は無い。「Noyce が IC を発明した」という単純化は Hoerni を含む Fairchild 創業メンバーの寄与を不可視化する。
+
+**落とし穴2：「集積回路」を Claim 1 が含まないことの見落とし**
+Claim 1 verbatim には「integrated circuit」「monolithic」の単語が無い。集積回路の Claim は ep62 Kilby US3138743A の方にある。本特許は「単一素子＋酸化膜配線」の構造特許で、集積回路化は結果論として帰属された。
+
+**落とし穴3：現代 CMOS の素過程との「比喩」レベルの乖離**
+2026年の TSMC 2nm では gate oxide は SiO2 ではなく HfO2 系（high-k dielectric）に置き換わっており、Cu ダマシン配線は Al リード線とは物理的に別物、STI は LOCOS / プレーナの発展型で Hoerni 直系ではない。「Noyce の特許が今でも使われている」と書くと、専門家から「物質も製法も別物」と反論される。本ノートでは「設計思想の連続」「先行例」レベルで止めている。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- US2981877A の Claim 1 verbatim を Google Patents（https://patents.google.com/patent/US2981877A/en）から WebFetch で取得（2026-05-09）
+- 発明者欄：Robert N. Noyce 単独（Hoerni / Moore 等は不在）
+- Original / Current Assignee：Fairchild Semiconductor Corp
+- 米国優先 1959-07-30、成立 1961-04-25、寿命満了 1978-04-25
+- Application No. US830507A、Publication No. US2981877A
+- ep62 Kilby US3138743A との5ヶ月差（Kilby 1959-02-06 出願、Noyce 1959-07-30 出願）
+
+**著者の解釈：**
+- 本特許を Cage Patents 軸の「電気的 cage」起点と位置づけたのは著者の整理であり、業界通説ではない
+- 1969年 TI vs Fairchild 訴訟の「共同発明」裁定を「制度的ねじれ」と表現したのも著者の比喩
+- 「現代 TSMC 2nm まで設計思想が連続している」は先行例レベルの解釈で、物質や製法は別物
+
+**比喩・アナロジー：**
+- 対応表の「現代 CMOS の gate oxide / high-k dielectric」は **比喩** レベル（HfO2 は SiO2 とは別物質）
+- 「multi-level metallization」「STI」は **先行例** レベル（Cu ダマシン・LOCOS は別系統発明）
+
+**未確認：**
+- 1969年 USPTO 裁定文書（Hyatt v. Boone 等の判例集収録分）の verbatim 読解
+- Hoerni プレーナ・プロセス US3025589A の Claim 1 verbatim（本記事では関連特許としてのみ言及）
+- Forward citation の正確な件数（Google Patents UI 表示に依存、本記事では「1,000件超」と概数）
+- Fairchild → Schlumberger → National Semiconductor → ON Semiconductor の譲渡履歴の各段階の譲渡契約書
+- IEDM 2024 / 2025 の TSMC 2nm / Samsung GAA / Intel 18A 構造図との詳細照合
+
+**この比較が破綻する点：**
+- 「Noyce の特許が現代 CMOS の起点」は、Hoerni プレーナ・プロセス・Cu ダマシン・high-k dielectric・FinFET / GAA の各発明を不可視化する単純化になり得る
+- Cage Patents 軸の「電気的 cage」は著者の比喩で、半導体物理の用語ではない（半導体物理での "cage" は floating gate や量子閉じ込めを指すのが通常）
+- Noyce 単独発明者欄を「制度的ねじれ」と表現したが、特許法上は Claim を支える核アイデアの寄与者を発明者とするため、Hoerni 不在は法的には正当
+
+---
+
+参考リンク：
+- US2981877A Google Patents：https://patents.google.com/patent/US2981877A/en
+- US3138743A Kilby Google Patents（ep62 で扱った）：https://patents.google.com/patent/US3138743/en
+- US3025589A Hoerni プレーナ・プロセス：https://patents.google.com/patent/US3025589A/en
+- 連載 ep62（Kilby IC）：/notes/62-hardware-energy-patent-01
+- 連載 ep64（Goodenough リチウムイオン）：/notes/64-hardware-energy-patent-02
+- 連載 ep70（舛岡フラッシュメモリ）：/notes/70-hardware-energy-patent-04
+- 連載 ep71（Boyle/Smith CCD）：/notes/71-hardware-energy-patent-memo-06

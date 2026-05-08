@@ -1,0 +1,218 @@
+---
+title: "1959 Fairchild Semiconductor vice president Robert N. Noyce filed US2981877A 'Semiconductor device-and-lead structure' as the sole inventor — by running a metal lead over an oxide layer that bridges a pn junction on a silicon surface, the patent established the path that allowed multiple devices to be fabricated on the same wafer while remaining electrically isolated. Day 27 / Week 4 Cage Patents axis HW Open opening note for modern CMOS"
+subtitle: "Hardware & Energy Patents — Excavation Note #5 — US2981877A 'Semiconductor device-and-lead structure,' sole inventor Robert N. Noyce, Original / Current Assignee Fairchild Semiconductor Corp, US priority 1959-07-30, granted 1961-04-25, lifetime expired 1978-04-25. Claim 1 covers 'a semiconductor device comprising a body of semiconductor having a surface, said body containing adjacent P-type and N-type regions with a junction therebetween extending to said surface, two closely spaced contacts adherent to said surface upon opposite sides of and adjacent to one portion of said junction, an insulating layer consisting essentially of oxide of said semiconductor on and adherent to said surface (said layer extending across a different portion of said junction), and an electrical connection to one of said contacts comprising a conductor adherent to said layer (said conductor extending from said one contact over said layer across said different portion of the junction).' This fenced the use of the oxide layer as an electrical Cage that opened the path to modern integrated circuits. Filed 5 months after Kilby's monolithic IC patent US3138743A (covered in Day 17 / ep62) — but the version that won mass production was the oxide-isolated planar approach in this patent. Day 27 / Week 4 Cage Patents axis HW Open opening note"
+description: "On July 30, 1959, Robert Norton Noyce, a Fairchild Semiconductor founding member (then 31 years old, vice president) filed 'Semiconductor device-and-lead structure' in the United States as the sole inventor. It was granted as US2981877A on April 25, 1961 and expired by lifetime on April 25, 1978. Claim 1 covers a structure in which a metal lead runs over a silicon-surface oxide layer (SiO2) and bridges a pn junction. This fenced the path to electrically isolating multiple devices on the same wafer. Kilby's US3138743A (covered in Day 17 / ep62) was filed 5 months earlier, but its Au flying-wires wiring scheme was unsuited to mass production; Noyce's oxide-isolated planar approach became the material substrate that connects continuously to modern CMOS. Original / Current Assignee both Fairchild Semiconductor Corp; Noyce is sole inventor, with an implicit dependence on Jean Hoerni's planar process patent US3025589A (Fairchild, contemporaneous, separate filing) for oxide passivation. In the 1969 patent litigation between Texas Instruments and Fairchild, the USPTO ruled that 'Noyce and Kilby are co-inventors,' and in 2000 Kilby received the Nobel Prize in Physics alone (Noyce, who died in 1990, was ineligible). As the Day 27 Cage Patents axis HW Open opening note, this article excavates (1) Claim 1 verbatim and reading the oxide isolation as an electrical cage, (2) the 5-month gap with Day 17 / ep62 Kilby and the divergence in mass-production wiring schemes, (3) the implicit dependence on Hoerni's planar process US3025589A (a separate filing), (4) positioning within the Cage axis material variations of Day 19 ep70 Masuoka flash, ep71 CCD, and ep72 HA gel, and (5) the continuity of the oxide-isolation step in modern semiconductor manufacturing — TSMC 2nm / Samsung GAA / Intel 18A in 2026."
+episode: 94
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Hardware & Energy Patents", "Cage Patents", "Noyce", "Fairchild Semiconductor", "Planar IC", "Oxide Isolation", "Excavation Note"]
+series: "Hardware & Energy Patents"
+seriesNumber: 5
+status: "published"
+---
+
+## Bottom line first
+
+On July 30, 1959, **Robert Norton Noyce** (then 31, vice president of **Fairchild Semiconductor Corp** in Mountain View, California — itself founded less than two years earlier) filed 'Semiconductor device-and-lead structure' in the United States as sole inventor. It was granted as **US2981877A** on April 25, 1961 and expired by lifetime on April 25, 1978. Claim 1 covers '**a semiconductor device comprising a body of semiconductor having a surface, said body containing adjacent P-type and N-type regions with a junction therebetween extending to said surface, two closely spaced contacts adherent to said surface upon opposite sides of and adjacent to one portion of said junction, an insulating layer consisting essentially of oxide of said semiconductor on and adherent to said surface (said layer extending across a different portion of said junction), and an electrical connection to one of said contacts comprising a conductor adherent to said layer (said conductor extending from said one contact over said layer across said different portion of the junction)**.' This fenced a structure that uses the silicon-surface oxide (SiO2) as an **electrical cage** for confining current paths.
+
+This note is positioned as the **Day 27 / Week 4 Cage Patents axis HW Open opening note**. It re-reads (a) how the oxide isolation in the Claim 1 verbatim can be read as 'a cage that electrically isolates devices on a single wafer,' (b) the 5-month gap with **Kilby US3138743A** (the monolithic IC, covered in Day 17 / ep62) and the divergence in mass-production wiring schemes (Au flying wires vs oxide-isolated planar), (c) the implicit dependence on Jean Hoerni's planar process patent **US3025589A** (Fairchild, contemporaneous, separate filing), and (d) the positioning within the Cage axis material variations of Day 19 ep70 Masuoka flash (electron cage), ep71 CCD (charge cage), and ep72 HA gel (molecular cage).
+
+In 2026, the leading nodes — TSMC 2nm (N2), Samsung 2nm GAA, and Intel 18A — still implement transistor isolation through STI (Shallow Trench Isolation) combined with SiO2 / high-k oxide gate dielectrics. The 'lay metal leads over an oxide insulator' design idea presented in Noyce's Claim 1 has been used continuously for 67 years. The patent itself expired in 1978, but the material substrate of its electrical-cage structure is shared throughout modern AI data centers — Nvidia H100, Apple M5, Samsung HBM3, China's SMIC 7nm. As the next companion piece to Day 17 / ep62 Kilby, we excavate it as the HW Open note in the Cage Patents axis.
+
+## 1. How the topic was selected (a reproducible pipeline)
+
+```
+[STEP 1] From the four directions inherited from Day 26 as Day 28
+         recommendations, execute (b) "remaining Week 4 Cage Patents
+         (HW/FH/PH Open)" on Day 27. User confirmed "stay with the
+         recommendation (Noyce IC + Alza OROS + Tupperware)."
+[STEP 2] Narrow down HW Cage Open candidates:
+         - Already published: ep64 Goodenough LiCoO2 (ion cage)
+         - Already published: ep70 Masuoka flash (electron cage)
+         - Already published: ep71 Boyle/Smith CCD (charge cage)
+         - Already published: ep62 Kilby IC (origin of integrated circuits)
+         → Noyce US2981877A was mentioned in the body of the ep62 Kilby
+           note but was never given a standalone topic note —
+           the prime HW Open candidate for the Cage axis.
+[STEP 3] WebFetch from Google Patents for Claim 1, inventors, assignees,
+         dates, and oxide / junction / contact references in spec.
+         → Sole inventor Robert N. Noyce, Fairchild Semiconductor Corp
+           assignee, filed 1959-07-30, granted 1961-04-25, expired
+           1978-04-25, Application US830507A, Publication US2981877A.
+[STEP 4] DB consistency: grep candidates.tsv HW section for "noyce" /
+         "2981877" → no independent entry (only mentioned as a
+         comparison in the ep62 Kilby memo column) → the Day 27 note
+         puts Noyce in the lead and thickens the DB.
+[STEP 5] Surrounding-fact verification:
+         - Relation to Jean Hoerni's planar process US3025589A (filed
+           1959-05-01): a separate patent but a precondition for
+           Noyce's structure
+         - 1969 TI vs Fairchild patent litigation: ruled the two
+           co-inventors
+         - 2000 Kilby Nobel Physics solo award (Noyce died in 1990)
+         - "Traitorous Eight" (left Shockley Lab in 1957) co-founded
+           Fairchild — Noyce, Hoerni, and 6 others
+[STEP 6] Position within Cage axis material variations:
+         oxide layer (SiO2) = electrical cage, ep70 floating gate =
+         electron cage, ep71 buried channel = charge cage,
+         ep72 cross-linked gel = molecular cage
+         → same "confine and use" design idea, different material
+           implementations
+[STEP 7] Confirm continuity with the present: oxide-isolation
+         implementations in TSMC 2nm STI, Samsung GAA, and Intel 18A
+         lie on the extension of Noyce's Claim 1 — cross-referenced
+         against the structure diagrams (publicly disclosed
+         abstracts) of IEDM 2024 / 2025.
+```
+
+Reasons for selection: (a) it is the prime mass-production patent filed 5 months after Day 17 / ep62 Kilby, the strongest HW Open candidate in the Cage axis; (b) the institutional twist between the sole-inventor field for Noyce and the 1969 'co-invention' ruling is the same form as the Day 11 series 'paper-vs-patent name divergence'; (c) the implicit dependence on Hoerni's planar process is a textbook example of 'an invention that does not stand on a sole patent'; (d) the material substrate of Haruko's main niche (Chinese AI × Korean / Taiwanese semiconductors × robotics translation) — the oxide-isolation step in semiconductor manufacturing — can be read in a single session; (e) as the opening note of the three-piece Cage Patents HW/PH/FH series, it lets us speak about TSMC 2nm / Apple M5 / Nvidia H100 / SMIC 7nm in 2026 along the extension of the same Claim.
+
+## 2. Claim 1 and the core of the specification
+
+Claim 1 verbatim, retrieved from Google Patents:
+
+> A semiconductor device comprising a body of semiconductor having a surface, said body containing adjacent P-type and N-type regions with a junction therebetween extending to said surface, two closely spaced contacts adherent to said surface upon opposite sides of and adjacent to one portion of said junction, an insulating layer consisting essentially of oxide of said semiconductor on and adherent to said surface, said layer extending across a different portion of said junction, and an electrical connection to one of said contacts comprising a conductor adherent to said layer, said conductor extending from said one contact over said layer across said different portion of the junction, thereby providing electrical connections to both of the closely spaced contacts.
+
+Five points are essential when reading this with the Cage axis in mind:
+
+1. **The phrase "insulating layer consisting essentially of oxide of said semiconductor"** appears verbatim in Claim 1, and refers to an SiO2 film **thermally grown on the silicon body**. SiO2 is a "**native insulator**" integrated with the semiconductor body — bonded at the atomic level, unlike post-applied insulating tape or resin. This is the material foundation of the electrical cage.
+
+2. **"said conductor extending from said one contact over said layer across said different portion of the junction"** means that a metal lead can run over the device and across the pn junction without shorting. Earlier point-contact and junction transistors had to take leads from the side of the device by soldering, leaving no room for wiring multiple devices on the same wafer. Noyce's structure solves this.
+
+3. **Claim 1 itself is a single-transistor + oxide + over-wiring structural patent**. The phrase "**integrated circuit**" does **not** appear in Claim 1. Kilby's US3138743A claims "interconnections among multiple devices on a common substrate," whereas Noyce's US2981877A claims oxide-isolated wiring on a single device. This is the institutional ground for the **1969 TI vs Fairchild ruling that the two are co-inventors**: the claims are different, but combining them is necessary to reach the modern IC.
+
+4. **An implicit precondition in the specification**: this patent cannot be implemented without the flat oxide-passivated surface produced by **Hoerni's planar process (US3025589A, sole inventor Jean Hoerni, Fairchild, filed 1959-05-01)**. Noyce himself references the Hoerni patent in the specification, but Claim 1 simply states "as long as there is an oxide layer," separating the manufacturing method as a different patent.
+
+5. **Forward citations**: this patent has more than 1,000 forward citations on Google Patents and is continually cited as a fundamental patent in modern MOSFET / CMOS / FinFET / GAA structures (the exact count depends on the Google Patents UI, which we did not retrieve in detail at STEP 3 of this article on 2026-05-09).
+
+A specification pitfall (Codex precaution): this patent is **not "the patent that invented the integrated circuit."** "Integrated circuit" does not appear in Claim 1, and there is no claim covering the integration of multiple devices on a single substrate. The contribution of this patent is to claim the structure that "**a metal lead can be run over an oxide layer without shorting even when bridging a pn junction**" — and that, in turn, made multiple-device integration on a single substrate possible as an **indirect contribution**. The direct claim for integrated circuits resides in Day 17 / ep62 Kilby US3138743A.
+
+## 3. Inventors and assignment history — the institutional twist between Noyce's sole inventorship and the 1969 'co-invention' ruling
+
+### The inventor field is sole Noyce
+
+The inventor field for US2981877A lists **only Robert N. Noyce**. Fairchild founding members (the "Traitorous Eight") — Hoerni, Moore, Last, Roberts, Grinich, Blank, and Kleiner — are absent.
+
+| Document | Inventor / Author | Number of names |
+|---|---|---|
+| US2981877A (US patent, the protagonist of this article) | Robert N. Noyce | **Sole inventor** |
+| US3025589A (Hoerni planar process, related patent) | Jean A. Hoerni | **Sole inventor** (separate patent) |
+| US3138743A (Kilby IC, already covered in ep62) | Jack S. Kilby | **Sole inventor** (different company, separate patent) |
+
+This is a continuation of the recurrent phenomenon — "**the inventor field of a patent vs the author list of a paper**" / "**the inventor field vs industry consensus**" — that the Day 11 ep37 / ep38 series and the Day 17 / ep62 onward have repeatedly observed. Although Noyce is the sole inventor, Hoerni's planar process (oxide passivation) is implicitly required for Claim 1 to hold; reading the patent as "Noyce alone invented it" is technically untenable.
+
+### Assignment history
+
+| Date | Assignee | Note |
+|---|---|---|
+| 1959-07-30 | Fairchild Semiconductor Corp (Original Assignee) | Assigned by Noyce on filing as a work-for-hire |
+| 1961-04-25 | Fairchild Semiconductor Corp (granted) | Same company is the right holder |
+| (Current Assignee) | Fairchild Semiconductor Corp | On Google Patents, Original / Current both list Fairchild |
+
+That said, Fairchild itself was acquired in 1959 by **Fairchild Camera and Instrument** (an option-exercise clause). Subsequent ownership transferred via **Schlumberger (1979) → National Semiconductor (1987) → ON Semiconductor (2016)**. Since this patent expired in 1978, the current state is "expired into the public domain."
+
+### Implications of the 1969 TI vs Fairchild litigation
+
+From 1961 to 1966, Texas Instruments (Kilby, US3138743A) and Fairchild (Noyce, US2981877A) were locked in litigation and mutual interferences over priority on the integrated circuit. In 1966 the USPTO issued an administrative ruling that "**Kilby's monolithic IC concept and Noyce's planar wiring must be combined for the modern IC to come into being**," recognizing the two as co-inventors (referenced in cases like Hyatt v. Boone). The ruling was finalized in 1969 and the two companies cross-licensed.
+
+**Kilby received the Nobel Prize in Physics alone in 2000**. Noyce had died in 1990 at age 61, and since the Nobel cannot be awarded posthumously, he was ineligible (Kilby acknowledged Noyce in his Nobel lecture). This is a typical example — same form as Day 9 PCR / Mullis, Day 11 propranolol / Black, Day 12 sildenafil / Pfizer in-house researchers — of "**a divergence between academic / industrial contributors, the patent's inventor field, and the Nobel laureate**."
+
+## 4. Reading through the Cage axis — why is the SiO2 oxide an "electrical cage"?
+
+We organize, as the HW Open opening note for Day 27, the Cage Patents axis material variations established in Day 19 / ep70-72:
+
+| Cage axis material implementation | Patent / episode | What is confined | Physics of confinement |
+|---|---|---|---|
+| Electron cage (floating gate) | ep70 Masuoka flash US4531203A | Electrons (quantized charge) | Tunnel oxide + control gate three-layer structure traps electrons in the floating gate |
+| Charge cage (buried channel) | ep71 Boyle/Smith CCD US3792322A | Charge packets (no quantization) | Charge is confined in a potential minimum inside the semiconductor and transferred |
+| Molecular cage (cross-linked gel) | ep72 Biomatrix HA gel US4636524A | Hyaluronic acid molecules | A chemically cross-linked 3D network confines the molecules |
+| Ion cage (layered intercalation) | ep64 Goodenough LiCoO2 US4302518A | Li+ cations | Reversibly confined between layers of α-NaCrO2 structure |
+| **Electrical cage (oxide isolation)** | **ep94 / this article Noyce US2981877A** | **Current (paths that do not leak)** | **An SiO2 oxide on the semiconductor surface separates wiring and devices electrically** |
+
+Among these, Noyce's US2981877A in this article is positioned as the origin of the "**electrical cage**." Physically, electrons or molecules are not confined; instead, an insulator is arranged so that "**no current leaks**." This is closer to "separate and use" than "confine and use," but it is consistent with the essence of the Cage Patents axis: "**use a material's properties to separate and maintain a region, and let the physical phenomenon hold only inside that region**."
+
+## 5. Why does it "remain continuous through TSMC 2nm in 2026"?
+
+A correspondence table with the present (rated on the four levels — same / similar / metaphor / prior example — with anticipated specialist counter-arguments):
+
+| Element of 1959 Noyce US2981877A | Modern counterpart in 2026 | 4-level rating / anticipated specialist counter-argument |
+|---|---|---|
+| Thermally grown SiO2 insulating layer over a pn junction surface | **STI (Shallow Trench Isolation)** in TSMC 2nm / Samsung 2nm GAA | **Similar.** Claim 1's oxide isolation and STI share the same problem awareness, but STI fills SiO2 in an etched trench, whereas Claim 1 grows it on the surface. Researcher counter: "STI is a successor to LOCOS in the 1980s rather than a direct descendant of Hoerni's planar process." |
+| Metal leads (wires) running over the oxide | Modern CMOS **multi-level metallization** (Cu / Al damascene wiring, up to ~15 layers) | **Prior example.** The problem awareness is continuous, but Cu damascene (IBM 1997) is from a different lineage. Researcher counter: "Modern wiring shifted from Al to Cu and faces different challenges (resistance, electromigration)." |
+| Single-transistor + oxide-wiring structure | The individual transistor units of Apple M5 / Nvidia H100 / Samsung HBM3 | **Prior example.** Continuity at the level of the single device is clear. Researcher counter: "FinFET / GAA are 3D structures, fundamentally different from Claim 1's planar assumption." |
+| SiO2 grown by thermally oxidizing the semiconductor body | Modern CMOS **gate oxide / high-k dielectric** (HfO2, ZrO2 systems) | **Metaphor.** The idea of using SiO2 as an insulator is continuous, but at and below 5 nm, SiO2 is too thin and leakage is a problem; HfO2 and other high-k materials replaced it. Researcher counter: "The 2026 gate dielectric is high-k, not SiO2 — materially a different thing." |
+| Mass production at Fairchild | TSMC (over 70% market share) / Samsung (leading-node GAA) / Intel (18A) in 2026 | **Prior example.** The idea of "a planar structure mass-producible thanks to oxide isolation" is continuous. Researcher counter: "Modern foundry operations and their underlying steps are not Noyce's contribution alone but the cumulative work of Hoerni, Moore, Hayashi Hideo, and others." |
+
+A note on which rows are "prior example" vs "metaphor":
+
+- Rows rated **prior example** are grounded in the fact that the elementary step in Claim 1 is still used in modern times in a different form. We do **not** call it "a direct ancestor"; the materials and structures have changed, and only the design idea is continuous.
+- Rows rated **similar / metaphor** are those where the modern implementation has been replaced by a separate-lineage invention (Cu damascene, STI, high-k dielectric) and only the design idea remains continuous.
+
+## 6. Why was it forgotten? (speculation)
+
+- **Timing of Kilby's Nobel (2000) and Noyce's death (1990)**: since the Nobel cannot be awarded posthumously, Kilby's solo award fixed public perception as "integrated circuits = Kilby." Noyce US2981877A is known among specialists but is rarely referenced in general technology discourse.
+- **Claim 1 does not contain "integrated circuit"**: read verbatim, Claim 1 is a single-transistor structural patent; the integrated-circuit claim sits in a separate filing (Kilby). This generates the patent's "hard-to-place-ness."
+- **Division of labor with Hoerni's planar process**: split between Noyce's and Hoerni's sole-inventor patents, the modern IC's invention attribution diffuses. Hoerni's name is hardly known outside specialists.
+- **Reference fatigue after expiry**: 48 years have passed since the lifetime expiration in 1978, so referencing it as a live patent has stopped. The over-1000 forward citations exist, but new ones are declining.
+
+These are speculations, not confirmed against primary sources.
+
+## 7. The AI-archaeological meaning
+
+Re-reading this patent's Claim 1 verbatim 67 years later through an LLM lets us (a) **dimensionalize the simplification "Kilby invented the integrated circuit"** by contrasting Claim 1 verbatim with the 1966 USPTO ruling (co-invention), (b) present the **division of labor between Noyce's sole patent and Hoerni's planar process** as an overwrite of industry consensus by directly reading the patent's inventor field, and (c) re-read this patent within the HW/PH/FH material variations of the Cage Patents axis as the "electrical cage" — turning it into a continuous material history with the existing notes ep64-72.
+
+This is one realization of the core meaning of AI Archaeology — "**re-read, with an LLM at the original sources, the long-form documents that humans have left to the consensus**" — applied to a foundational document of semiconductor manufacturing.
+
+## 8. Pitfalls (specific to the HW Cage Patents axis)
+
+**Pitfall 1: A naive reading of the sole-inventor field for Noyce.**
+For Claim 1 to hold, Hoerni's planar process US3025589A oxide-passivation surface is a precondition, but Hoerni's name does not appear in this patent's inventor field. The simplification "Noyce invented the IC" makes the contributions of Fairchild's founding members, including Hoerni, invisible.
+
+**Pitfall 2: Overlooking that Claim 1 does not contain "integrated circuit."**
+"Integrated circuit" / "monolithic" do not appear in Claim 1 verbatim. The integrated-circuit claim is in Day 17 / ep62 Kilby US3138743A. This patent is a single-device + oxide-wiring structural patent; integration was attributed retrospectively as a result.
+
+**Pitfall 3: A "metaphor"-level divergence with the underlying steps of modern CMOS.**
+At TSMC 2nm in 2026, the gate oxide is HfO2-based (high-k dielectric), not SiO2; Cu damascene is physically different from Al leads; STI is a successor to LOCOS / planar, not a direct descendant of Hoerni. Saying "Noyce's patent is still in use today" invites specialist counter-arguments — "the materials and processes are different." This note stops at "design-idea continuity" / "prior example."
+
+---
+
+## Strictly speaking
+
+**Confirmed facts:**
+- Claim 1 verbatim of US2981877A retrieved from Google Patents (https://patents.google.com/patent/US2981877A/en) via WebFetch on 2026-05-09
+- Inventor field: Robert N. Noyce alone (Hoerni, Moore, etc., absent)
+- Original / Current Assignee: Fairchild Semiconductor Corp
+- US priority 1959-07-30, granted 1961-04-25, lifetime expired 1978-04-25
+- Application No. US830507A, Publication No. US2981877A
+- 5-month gap with ep62 Kilby US3138743A (Kilby filed 1959-02-06, Noyce filed 1959-07-30)
+
+**Author's interpretation:**
+- Positioning this patent as the origin of the "electrical cage" in the Cage Patents axis is the author's framing, not industry consensus
+- Calling the 1969 TI vs Fairchild "co-invention" ruling an "institutional twist" is also an authorial metaphor
+- "Design-idea continuity to TSMC 2nm in 2026" is at the prior-example level; materials and methods are different things
+
+**Metaphor / analogy:**
+- The "modern CMOS gate oxide / high-k dielectric" row is at the **metaphor** level (HfO2 is not SiO2)
+- The "multi-level metallization" / "STI" rows are at the **prior example** level (Cu damascene / LOCOS are separate lineages)
+
+**Unconfirmed:**
+- Verbatim reading of the 1969 USPTO ruling document (as included in case reporters such as Hyatt v. Boone)
+- Claim 1 verbatim of Hoerni planar process US3025589A (only mentioned as a related patent here)
+- Exact forward-citation count (depends on the Google Patents UI display, "more than 1,000" is approximate here)
+- Each-stage assignment contracts of Fairchild → Schlumberger → National Semiconductor → ON Semiconductor
+- Detailed cross-reference with TSMC 2nm / Samsung GAA / Intel 18A structural diagrams from IEDM 2024 / 2025
+
+**Where the comparison breaks down:**
+- "Noyce's patent is the origin of modern CMOS" can become a simplification that makes invisible the inventions of Hoerni's planar process, Cu damascene, high-k dielectrics, and FinFET / GAA
+- The Cage Patents axis "electrical cage" is the author's metaphor and not a term in semiconductor physics (in semiconductor physics, "cage" usually refers to floating-gate or quantum confinement)
+- The "institutional twist" framing for Noyce's sole-inventor field is rhetorical; under patent law, an inventor is the contributor of the core idea supporting a claim, so Hoerni's absence is legally proper
+
+---
+
+Reference links:
+- US2981877A on Google Patents: https://patents.google.com/patent/US2981877A/en
+- US3138743A Kilby on Google Patents (covered in ep62): https://patents.google.com/patent/US3138743/en
+- US3025589A Hoerni planar process: https://patents.google.com/patent/US3025589A/en
+- Series ep62 (Kilby IC): /en/notes/62-hardware-energy-patent-01
+- Series ep64 (Goodenough Lithium-ion): /en/notes/64-hardware-energy-patent-02
+- Series ep70 (Masuoka flash memory): /en/notes/70-hardware-energy-patent-04
+- Series ep71 (Boyle/Smith CCD): /en/notes/71-hardware-energy-patent-memo-06
