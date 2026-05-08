@@ -1,0 +1,141 @@
+---
+title: "CS-005 アボベンゾン（Parsol 1789）起点特許の番号特定が USPTO Patent Public Search／Espacenet 対話検索の壁にぶつかる『情報壁』発掘譚 ── Wikipedia 英 Avobenzone・PubChem・Pharmacompass・Smartskincare・Sciencedirect・Univar・The Cosmetic Chemist いずれも 1973 年起点特許の番号を記載せず、譲受人 Roure Bertrand Dupont SA → Givaudan-Roure → DSM Nutritional Products の社名遍歴のみ確認できる化粧品 形態 3 情報壁第 3 弾"
+subtitle: "化粧品特許 発掘メモ #10 ── Day 22 引継ぎ (a) CS-005 USPTO 直接検索を実行した結果、avobenzone（butyl methoxydibenzoylmethane）の 1973 年起点特許の番号は Web 公開資料の主要 8 サイトいずれにも記載されず、AI 生成された候補番号（CH561168A5・CH570454A5 等）は patents.google.com Captcha・503 で実体検証不可、譲受人 Roure Bertrand Dupont SA（後の Givaudan-Roure → DSM Nutritional Products）の社名遍歴のみ確認、化粧品 形態 3 情報壁第 3 弾として確定"
+description: "Day 22 引継ぎ (a) CS-005 アボベンゾン起点特許の USPTO 直接検索を実行。Wikipedia 英 Avobenzone は『patented in 1973』の 1 行記述のみで番号未記載、PubChem CID 51040・Pharmacompass・Smartskincare（smartskincare.com）・Sciencedirect Avobenzone overview・Univar Solutions・The Cosmetic Chemist・MakingCosmetics・CosDNA・Wikidoc・EWG Skin Deep・Incidecoder・Specialchem いずれも 1973 年起点特許の番号を記載せず、Wikipedia の特許citation は『rft.cc=US&rft.number=0』の不完全 OpenURL で番号フィールド空欄。WebSearch で AI（Search AI Overview と思われる）が生成した候補番号 CH561168A5・CH570454A5・US3920734・DE2354187 は patents.google.com で個別検索しても Captcha「Sorry... your computer or network may be sending automated queries」で全件アクセス拒否、WebSearch でも単独ヒットなしで実体検証不能。譲受人遷移は Roure Bertrand Dupont SA（Société Anonyme、フランス・パリ、1971 年 12 月 16 日 CH 優先か）→ 1991 年 Givaudan と Roure 統合 → 1995 年頃 Givaudan-Roure → 2000 年 Roche から DSM Nutritional Products へスピンオフ → 2010 年代以降 DSM が Parsol® 1789 商標保有（現在は dsm-firmenich.com で BMI 管理）の社名遍歴のみ Web で確認可能。FDA OTC 承認は 1988 年（米国市場投入は EU 1978 年承認の 10 年遅れ）。USPTO Patent Public Search と Espacenet Worldwide Search は対話的 UI が必須で、curl/WebFetch ではブラウザレンダリング・Captcha・REST 403 で全件アクセス拒否。Day 22 ep80 CS-010 三省製薬コウジ酸（J-PlatPat 壁）、Day 23 ep83 CS-004 ニベア Lifschütz（DPMA 壁）に続く化粧品 形態 3 情報壁第 3 弾として確定。本メモは『起点特許番号が情報壁の向こうにある』という発見の 3 件目を記録し、USPTO Patent Public Search 対話検索（assignee=Roure Bertrand Dupont、1971-1974 priority）または DSM／Givaudan 社直接照会が次アクションであることを残す。"
+episode: 84
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "化粧品特許", "アボベンゾン", "Parsol 1789", "Givaudan", "Roure Bertrand Dupont", "USPTO壁", "情報壁", "発掘メモ"]
+series: "化粧品特許"
+seriesNumber: 10
+status: "published"
+---
+
+## 発掘メモについて
+
+譲受人の社名遷移（Roure Bertrand Dupont → Givaudan-Roure → DSM Nutritional Products）は Web 公開資料で確認できたが、**1973 年起点特許の番号自体は Web 公開資料からは特定できなかった**。Day 22 引継ぎ (a) として「USPTO 直接検索」を実行したが、USPTO Patent Public Search と Espacenet Worldwide Search はいずれも対話的 UI が必須で、curl/WebFetch ではアクセス拒否される。本メモは「**avobenzone 1973 起点特許の番号が情報壁の向こうにある**」という発見そのものを確定する化粧品 形態 3 情報壁第 3 弾。
+
+## 1. 特許基本情報（Web 公開資料から確認できた範囲）
+
+| 項目 | Web 公開資料からの確認内容 |
+|---|---|
+| 化合物名 | **butyl methoxydibenzoylmethane**（INCI 名）、CAS 70356-09-1、商標 Parsol® 1789 |
+| 分子式 | C20H22O3、CID 51040（PubChem） |
+| 譲受人 | **Roure Bertrand Dupont SA**（仏、1971 年 12 月 16 日 CH 優先と推定）→ 1991 年頃 Givaudan-Roure 統合 → 2000 年 DSM Nutritional Products → 2010 年代以降 DSM（現 dsm-firmenich.com） |
+| 発明者 | **未確定**（Wikipedia・PubChem・Pharmacompass いずれも記載なし） |
+| 出願年 | **1971 年 12 月 16 日 CH 優先**（推定、Wikipedia citation は不完全 OpenURL） |
+| 成立年 | **1973 年**（Wikipedia「Avobenzone was patented in 1973」のみ） |
+| EU 承認 | 1978 年 |
+| FDA OTC 承認 | 1988 年（米国市場投入は EU 承認の 10 年遅れ） |
+| 特許番号 | **未確定**（Web 公開資料にいずれも記載なし） |
+| 一次資料 URL | USPTO Patent Public Search 対話検索または Espacenet Worldwide Search 対話検索が必要 |
+
+## 2. 核心：USPTO／Espacenet 情報壁の構造
+
+Day 22 引継ぎ (a) で「**USPTO/Espacenet 直接検索で avobenzone 1973 起点特許の番号を特定する**」アクションを取った。実行手順は以下：
+
+```
+[STEP 1] Web 公開資料の網羅
+  - Wikipedia 英「Avobenzone」
+  - PubChem CID 51040 Avobenzone
+  - Pharmacompass「PARSOL 1789 (AVOBENZONE)」
+  - Smartskincare.com「Avobenzone (Parsol 1789, Eusolex 9020, Escalol 517)」
+  - Sciencedirect「Avobenzone — an overview」
+  - Univar Solutions「Parsol 1789 USP」
+  - The Cosmetic Chemist「Avobenzone」
+  - MakingCosmetics「Avobenzone 258」
+  - CosDNA Avobenzone
+  - Wikidoc「Avobenzone」
+  - EWG Skin Deep Avobenzone
+  - Incidecoder「Butyl Methoxydibenzoylmethane」
+  - Specialchem「Butyl Methoxydibenzoylmethane」
+  - Wikipedia 英「Dibenzoylmethane」（親化合物）
+  - PubChem CID 8433 Dibenzoylmethane
+  - Givaudan SA Wikipedia 派生ページ・GlobalData 企業情報
+
+[STEP 2] 1973 年起点特許番号の有無確認
+  → 結果：上記 16 件いずれにも 1973 年起点特許の番号記載なし
+  → Wikipedia 英 Avobenzone は本文に「Avobenzone was patented in 1973」の 1 行のみ
+  → 同 Wikipedia 記事の引用 [36][37] の OpenURL は「rft.cc=US&rft.number=0」と
+    番号フィールドが空欄の citation で、特定特許への直接リンクは含まれていない
+
+[STEP 3] WebSearch で AI 生成候補番号を試行
+  - 「Lerch Givaudan avobenzone Parsol 1789 patent 1973」検索
+  → 該当する人名 Lerch のヒットなし、Wikipedia の Avobenzone 一般情報のみ
+  - 「Lifschütz Eucerit DRP 132307 154959 Wollwachsalkohol」検索
+  → 番号情報なし、Wollwachsalkohol 専門サイトのみ
+  - 「DE2354187 CH562252 US3920734 avobenzone dibenzoylmethane sunscreen 1973」検索
+  → これらの候補番号の単独ヒットなし
+  → ある検索結果が「Swiss patent applications filed on December 16, 1971, referencing
+    CH1851571A and CH1592074A, which correspond to the Swiss patents CH561168A5 and CH570454A5」
+    と AI 生成された詳細を返したが、後続の WebSearch で CH561168A5 単独検索すると
+    関連ヒットなしで、AI（Search AI Overview と推定）の生成内容として実体検証不能
+
+[STEP 4] patents.google.com 個別アクセス試行
+  - patents.google.com/patent/CH561168A5 → WebFetch HTTP 503
+  - patents.google.com/xhr/query?url=q%3DCH561168A5 → curl Captcha「Sorry... your
+    computer or network may be sending automated queries」で全件拒否
+  - patents.google.com/?q=Lifschütz&country=DE&before=publication:19031231 → 結果 0 件
+
+[STEP 5] Espacenet REST API 試行
+  - worldwide.espacenet.com/3.2/rest-services/publication-data/...
+  → HTTP 403 Forbidden（API キー必須、認証なしアクセス拒否）
+
+[STEP 6] 情報壁確定
+  → USPTO Patent Public Search 対話検索（assignee=Roure Bertrand Dupont、
+    priority=1971-1974、CH/US/DE/EP/FR）で対話的に絞り込みが必要
+  → または DSM Nutritional Products／Givaudan SA への直接照会
+  → AI 生成候補番号は実体検証不能で採用しない（捏造リスク回避、
+    feedback_source_no_fabrication 適用）
+```
+
+## 3. 化粧品サブシリーズ DB 形態 3 情報壁の構造的特徴（3 件目）
+
+化粧品サブシリーズの DB 信頼性問題 4 形態のうち、**形態 3 情報壁** は本メモ CS-005 で **第 3 弾**として確定する。3 件並べると、情報壁の構造的特徴が明確になる。
+
+| 共通要素 | CS-010（コウジ酸、Day 22 ep80） | CS-004（Eucerit、Day 23 ep83） | CS-005（avobenzone、本メモ） |
+|---|---|---|---|
+| 起点国 | 日本 | ドイツ | スイス／フランス（仏 Roure Bertrand Dupont、1991 年スイス Givaudan 統合） |
+| 起点年代 | 1975-1988 | 1900-1902 | 1971-1973 |
+| データベース壁 | J-PlatPat（JS-heavy / authenticated） | DPMA DEPATISnet（対話 UI 必須）+ 1900 年代カバレッジ薄 | USPTO Patent Public Search・Espacenet Worldwide Search（いずれも対話 UI / API 認証必須） |
+| 旧公報体系 | 特公昭・特開昭 | DRP（Deutsches Reichspatent） | CH/FR/EP の 1970 年代旧公報 |
+| 一次資料の歴史的事実 | 三省製薬・コーセー・厚生労働省で確認 | Beiersdorf・Wikipedia・独化学百科で確認 | DSM・dsm-firmenich・Wikipedia で確認（社名遷移含む） |
+| 番号の不在 | J-PlatPat 公開公報番号 | DRP 番号 | CH/FR/EP/US の起点番号 |
+| AI 生成候補の検証不能 | JP S58-118507 = Lion Corp 透明歯磨（番号取り違え発覚） | DRP 132307/154959/171146 = ヒットなし | CH561168A5/CH570454A5 = 単独ヒットなし |
+| 次アクション | 三省製薬／J-PlatPat 対話検索 | DPMA 紙アーカイブ／Beiersdorf 社アーカイブ照会 | USPTO Patent Public Search／DSM 社直接照会 |
+
+3 件並べてみると、**情報壁は国・言語・年代を問わず構造的に再現する**。Phase 1 化粧品サブシリーズが扱う **19 世紀末 - 20 世紀初頭の DRP / 1970 年代の CH-FR / 1980 年代の特公昭** という古い公報体系は、現代の Web ベース特許データベース（patents.google.com・worldwide.espacenet.com・USPTO Patent Public Search）の **対話的検索 UI / API 認証 / Captcha 防御**の壁を共通して持つ。
+
+つまり、化粧品サブシリーズの DB 信頼性問題は **「歴史的事実は語られているのに、起点特許の番号だけが対話的検索 UI の向こうにある**」という構造的問題で、**個別の化粧品成分の問題ではなく、特許データベース体系の歴史的層構造の問題**として読む必要がある。
+
+## 4. 厳密にはこう（簡略 3 項目）
+
+**確認済みの事実：**
+- avobenzone は butyl methoxydibenzoylmethane（INCI 名）、CAS 70356-09-1、商標 Parsol® 1789（PubChem CID 51040）。
+- 1973 年に特許化（Wikipedia 英 Avobenzone「Avobenzone was patented in 1973」）。
+- 1978 年 EU 承認、1988 年 FDA OTC 承認。
+- 譲受人遷移は Roure Bertrand Dupont SA（仏）→ 1991 年頃 Givaudan-Roure 統合 → 2000 年 DSM Nutritional Products → 2010 年代以降 DSM（現 dsm-firmenich.com で Parsol® 1789 商標管理）。
+- USPTO Patent Public Search・Espacenet Worldwide Search はいずれも対話 UI / API 認証必須。
+- patents.google.com は 2026-05-09 時点で curl/WebFetch アクセスが Captcha「Sorry... your computer or network may be sending automated queries」で拒否される頻度が高い。
+
+**未確認：**
+- 1973 年起点特許の正確な番号（CH/FR/US/DE/EP のいずれか）。
+- 発明者名（Wikipedia・PubChem・Pharmacompass・Smartskincare いずれも未記載）。
+- AI 生成された候補番号（CH561168A5・CH570454A5・US3920734・DE2354187 等）は実体検証不能で採用しない。
+
+**この比較が破綻する点：**
+- 「Givaudan が 1973 年に発明」と書くと、**当時の社名は Roure Bertrand Dupont SA で、Givaudan と Roure の統合は 1991 年**という事実を見落とす。Givaudan SA（スイス、フランチンゲン）は 1796 年創業、Roure Bertrand Dupont SA（フランス、グラース）は別会社で、1991 年に Roche グループ内で統合され Givaudan-Roure になった。1973 年時点では別法人。
+- 「avobenzone は UVA 吸収剤」と書くと、**現代の avobenzone は単独製品ではなく Tinosorb S・Mexoryl SX・Uvinul A Plus 等の他 UVA 吸収剤と組み合わせて使われる**事実を見落とす。avobenzone 単独は光不安定（UV 照射で分解、80% 以上が 1 時間で減衰）で、現代の sunscreen 製剤は **avobenzone + 安定化剤（octocrylene 等）+ 他 UVA 吸収剤の三層構造**が標準。
+- 「FDA OTC 承認 1988 年」と書くと、avobenzone は 1988 年 FDA Final Monograph で sunscreen active ingredient として承認されたが、**2019 年 FDA 提案規則で GRASE（generally recognized as safe and effective）の再評価対象**に指定され、現在は安全性データ追加要請中。FDA 承認は静的な事実ではなく、規制再評価が継続している動的な状態。
+- 「USPTO 情報壁」と書くと、USPTO が意図的に隠蔽しているような印象を与えるが、実態は **USPTO Patent Public Search の対話的 UI が curl/WebFetch では使えない**だけで、ブラウザでアクセスすれば 1971-1974 priority の Roure Bertrand Dupont 特許群は閲覧可能。情報壁は構造的なものであって、敵対的なものではない。
+
+---
+
+参考リンク：
+- [Wikipedia 英「Avobenzone」](https://en.wikipedia.org/wiki/Avobenzone) — 「patented in 1973」のみ、番号未記載
+- [PubChem CID 51040 Avobenzone](https://pubchem.ncbi.nlm.nih.gov/compound/Avobenzone) — 化合物情報、番号未記載
+- [Pharmacompass「PARSOL 1789 (AVOBENZONE)」](https://www.pharmacompass.com/chemistry-chemical-name/parsol-1789-avobenzone) — 商業情報、番号未記載
+- [DSM Firmenich PARSOL® 1789 製品ページ](https://www.dsm-firmenich.com/en/businesses/perfumery-beauty/beauty-care/products/parsol-1789.html) — 現在の商標保有元、過去の特許番号は記載なし
+- [USPTO Patent Public Search（対話 UI）](https://www.uspto.gov/patents/search/patent-public-search) — 直接検索が次アクション
+- [Day 22 ep80（CS-010 三省製薬コウジ酸の情報壁）](/notes/80-cosmetic-patent-memo-07) — 形態 3 情報壁第 1 弾
+- [Day 23 ep82（SW-001 Engelbart マウス US3541541）](/notes/82-software-ui-patent-01) — SW サブシリーズ立ち上げ第 1 本
+- [Day 23 ep83（CS-004 ニベア Lifschütz 1902 DRP 情報壁）](/notes/83-cosmetic-patent-memo-09) — 形態 3 情報壁第 2 弾

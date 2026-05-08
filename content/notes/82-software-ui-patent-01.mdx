@@ -1,0 +1,185 @@
+---
+title: "1967 年 Engelbart マウス特許 US3541541『X-Y POSITION INDICATOR FOR A DISPLAY SYSTEM』── ソフトウェア・UI 特許サブシリーズ立ち上げ第 1 本として、SRI 在籍の Douglas C. Engelbart 単独発明者の Claim 1 verbatim を一次取得し、業界通説『Engelbart と Bill English の共同発明』が一次資料の発明者欄と乖離している事実を構造化する『AI 考古学的 SW 立ち上げ』発掘ノート"
+subtitle: "ソフトウェア・UI 特許 発掘ノート #1 ── 1968 年 Mother of All Demos で世に出た『マウス』の起点特許 US3541541 を Google Patents PDF で一次取得すると、Claim 1 verbatim は『housing + 第 1 / 第 2 position wheel（軸が直交）+ transducer means + flexible conductor means』の 4 要素で構成される機械式 X-Y 入力装置で、現代の光学式マウス・タッチパッド・spatial computing と検出原理は別物だが『手で空間位置を指す』設計思想は連続する。Day 23 で SW サブシリーズを Phase 1 化粧品 5 連発から気分転換させる立ち上げ第 1 本"
+description: "Day 23 で AI 考古学のサブシリーズ群に新たに『ソフトウェア・UI 特許』を立ち上げる第 1 本。題材は 1967 年 6 月 21 日出願・1970 年 11 月 17 日成立・1987 年 11 月 17 日寿命満了の Engelbart マウス特許 US3541541『X-Y POSITION INDICATOR FOR A DISPLAY SYSTEM』。Google Patents PDF（patentimages.storage.googleapis.com 経由）で一次取得すると、(1) 発明者は『Douglas C. Engelbart, Palo Alto, Calif.』単独で、Bill English の共同発明者記載は本特許前面にも Claim にも存在しない（English は SRI 在籍時の実装エンジニア・1968 Mother of All Demos デモ運営担当）、(2) Original Assignee は『Stanford Research Institute, Menlo Park, Calif., a corporation of California』で、1977 年に SRI International に改称、(3) Filed June 21, 1967, Ser. No. 647,872、Patented Nov. 17, 1970、8 Claims、出願から成立まで 3 年 5 ヶ月、(4) 1995 年 GATT 発効前出願のため『成立から 17 年』ルール適用で 1987-11-17 失効、(5) Claim 1 verbatim は『housing + 第 1 / 第 2 position wheel（軸が直交）+ transducer means + flexible conductor means』の 4 要素機械式 X-Y 入力装置を請求、(6) 現代のマウス・タッチパッド・タッチスクリーン・spatial computing は検出原理が根本的に異なる（光学・静電容量・LiDAR）が、『手で空間位置を指す』設計思想は連続する。SW サブシリーズ立ち上げ第 1 本として、化粧品 Phase 1 5 連発（Day 18-22）からの気分転換と、現代 UI の起点特許として広範囲な現代接続を持つ題材を選定。"
+episode: 82
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Engelbart", "マウス", "SRI", "Mother of All Demos", "発掘ノート"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 1
+status: "published"
+---
+
+## 結論を先に
+
+Day 23 で AI 考古学に新しいサブシリーズ「**ソフトウェア・UI 特許**」を立ち上げる。第 1 本の題材は **1967 年 6 月 21 日出願・1970 年 11 月 17 日成立** の Engelbart マウス特許 **US3541541『X-Y POSITION INDICATOR FOR A DISPLAY SYSTEM』** にした。
+
+Google Patents の PDF アーカイブ（`patentimages.storage.googleapis.com/7d/13/7e/3fd1de4c37ed12/US3541541.pdf`）から一次取得すると、特許前面（front matter）の発明者欄は **「Douglas C. Engelbart, Palo Alto, Calif., assignor to Stanford Research Institute, Menlo Park, Calif., a corporation of California」** の 1 行のみだった。一般に語られる「Engelbart と Bill English の共同発明」は、特許の発明者欄では成立していない。Bill English は SRI Augmentation Research Center の実装エンジニアであり、1968 年 12 月 9 日「Mother of All Demos」のデモ運営を担当したが、本特許の発明者として記載されていない。
+
+Claim 1 verbatim は「**housing + 第 1 position wheel + 第 2 position wheel（軸が第 1 と直交）+ transducer means + flexible conductor means**」の 4 要素から成る、純粋に機械式の X-Y 入力装置を請求している。現代のマウス・トラックパッド・タッチスクリーン・Vision Pro の hand tracking はいずれも検出原理が異なる（光学センサー、静電容量、LiDAR、視線追跡）が、「**手で空間位置を指す → 画面上のカーソルが従う**」という設計思想は 60 年経っても連続している。
+
+本ノートは、SW サブシリーズ立ち上げの旗印として「**現代 UI の起点特許の Claim 1 verbatim を一次資料で押さえる**」ことそのものを目的とする。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] Day 22 引継ぎから SW DB 拡張（SW-001〜005）の方針確定
+[STEP 2] 候補リスト：
+   - Engelbart マウス US3541541（最有力、知名度・現代接続・Claim 1 構造の明快さ）
+   - Backus FORTRAN コンパイラ関連（1957、特許化の有無が要verify）
+   - Cerf/Kahn TCP/IP 関連（1973-1981、IETF RFC 公開で特許化限定）
+   - Xerox PARC Smalltalk 関連（1970s、論文公開で特許化周辺）
+   - Apple HyperCard（1987、Atkinson 関連特許の有無が要verify）
+[STEP 3] 候補比較
+   - 「特許番号が確定」「Claim 1 取得可能」「現代との接続が広範囲」の 3 条件で SW-001 を最優先
+   - Backus/Cerf/Kahn/Smalltalk/HyperCard はソフトウェア特許適格性が当時不明確で、
+     一次取得失敗リスクが高い → 別ノートで個別 verify
+[STEP 4] 一次資料取得
+   - Google Patents の HTML は Captcha 経由で curl 拒否（"Sorry... your computer or network may
+     be sending automated queries"）
+   - PDF 直接 URL（patentimages.storage.googleapis.com/7d/13/7e/3fd1de4c37ed12/US3541541.pdf）
+     経由で 791 KB の TIFF/PDF 取得成功
+   - pdftotext で Claim 1 verbatim 抽出成功
+[STEP 5] 選定理由
+   - Day 22 推奨 (b) SW DB 拡張の旗印として最適
+   - Phase 1 化粧品 5 連発（Day 18-22）からの気分転換
+   - 現代 UI の起点として広範囲な現代接続（マウス・タッチパッド・タッチスクリーン・spatial computing）
+```
+
+## 2. 題材の正体（Claim 1 verbatim・発明者欄・譲受人欄）
+
+PDF から抽出した特許前面の事実情報を以下に記録する。
+
+### 特許前面（Front Matter）
+
+```
+United States Patent
+Patented Nov. 17, 1970
+3,541,541
+X-Y POSITION INDICATOR FOR A DISPLAY SYSTEM
+Douglas C. Engelbart, Palo Alto, Calif., assignor to Stanford Research Institute,
+  Menlo Park, Calif., a corporation of California
+Filed June 21, 1967, Ser. No. 647,872
+8 Claims
+```
+
+- **発明者**：Douglas C. Engelbart, Palo Alto, Calif.（**単独**、Bill English の共同発明者記載なし）
+- **Original Assignee**：Stanford Research Institute, Menlo Park, Calif., a corporation of California（1977 年に SRI International に改称）
+- **Filed**：June 21, 1967（出願日）
+- **Ser. No.**：647,872
+- **Patented**：Nov. 17, 1970（成立日、出願から 3 年 5 ヶ月）
+- **Total Claims**：8（Claim 1 が独立、Claims 2-8 が従属）
+- **寿命**：1995 年 GATT 発効前出願のため「成立から 17 年」ルール適用 → 1987-11-17 失効
+
+### Claim 1 verbatim（PDF L645-712 から抽出）
+
+> 1. In a display system controlled by a computer where by the display is alterable in accordance with signals delivered to said computer which indicate positions on said display and changes desired to be made therein, the improvement in a position indicating control apparatus which is movable over a surface to provide position indications corresponding to positions on said display comprising:
+>
+> a housing;
+>
+> a first position wheel rotatably mounted on said housing and having a rim portion extending past the boundaries defined by said housing for supporting said housing on said surface;
+>
+> a second position wheel rotatably mounted on said housing with its axis of rotation oriented perpendicular to the axis of said first wheel, said second position wheel having a rim portion extending past said housing for supporting said housing on said surface;
+>
+> transducer means connected to each of said first and second wheels, for generating digital position indicating signals indicating the degree of rotation of said wheels; and
+>
+> flexible conductor means for connecting said transducer means to said computer, for conducting said position indicating signals to said computer while enabling unrestrained movement of said housing relative to said computer.
+
+Claim 1 の 4 構成要素を整理する：
+
+1. **housing**：手で握れる筐体（写真からは木製ブロック）
+2. **第 1 / 第 2 position wheel（軸が直交）**：2 つのホイールが互いに直交する軸で回転、筐体底面から rim 部分が突き出して床面に接触、X 軸と Y 軸の動きを検出
+3. **transducer means**：ホイールの回転を「digital position indicating signals」に変換（Abstract によれば potentiometer または incremental encoder）
+4. **flexible conductor means**：信号をコンピュータに送る配線（unrestrained movement を許容）
+
+つまり Claim 1 は「2 つの直交ホイール + 信号変換器 + 自由配線」で構成される、純粋に機械式の 2 軸入力装置を請求している。
+
+## 3. なぜ「気持ち悪いほど近い」のか（現代 UI との対応表）
+
+| 過去の技術（US3541541、1967） | 現代の UI 入力デバイス | 対応の質 |
+|---|---|---|
+| housing（木製手持ち筐体） | マウス筐体、トラックパッド面、タッチスクリーン、Vision Pro 手元 | 同一（手で持つ／触る入力面という設計思想） |
+| 直交 2 軸ホイール（機械式） | 光学センサー、静電容量センサー、LiDAR、視線追跡 | **無理がある**（検出原理が根本的に異なる、ホイールは現代で消失） |
+| transducer means（potentiometer / encoder） | A/D コンバータ、IR センサー積分回路、SoC | 類似（アナログ→デジタル変換という機能で重なる） |
+| flexible conductor means（有線） | USB、Bluetooth、Wi-Fi、ハンドトラッキング | 比喩（信号伝送という機能で重なるが、「unrestrained movement」設計思想は無線で完全達成） |
+| 「手で空間位置を指す → カーソルが従う」設計思想 | マウスカーソル、タップ、スワイプ、ピンチ、視線、エアジェスチャー | 類似（設計思想は連続、実装は変化） |
+
+### 対応表の質的補足
+
+ホイール式の機械検出は 1980 年代に **ボール式マウス**（裏面に転がるボール、4 軸ローラーで X/Y 検出）に置き換わり、1999 年 Microsoft IntelliMouse Explorer 以降は **光学式**（LED と CMOS センサーで床面のテクスチャを差分検出）に進化した。さらに 2008 年 MacBook Air 以降のマルチタッチパッドは **静電容量式**（指先の電場変化を 2D 配列で検出）、2024 年 Apple Vision Pro は **LiDAR + カメラの hand tracking**（空間ジェスチャーを 3D で検出）に至る。
+
+これらは検出原理がまったく別物で、Claim 1 の「直交 2 軸ホイール」要素はもはや現代製品に存在しない。**「Engelbart マウスの直系の祖先が現代マウスである」と言うのは無理がある**。
+
+連続しているのは「**手で空間位置を指す → 画面上のカーソルが従う**」という上位の設計思想と、「**unrestrained movement（自由な動き）**」という人間工学的要件の方である。Claim 1 verbatim の最後の節「while enabling unrestrained movement of said housing relative to said computer」が、有線・無線・空間ジェスチャーいずれにも共通する 60 年来の要件として読める。
+
+## 4. なぜ忘れられなかったが、Claim 1 が忘れられたか（推測）
+
+Engelbart マウスは **1968 年 12 月 9 日「Mother of All Demos」**（San Francisco Convention Center、Fall Joint Computer Conference）で世界に公開され、その後 Xerox PARC Alto（1973）→ Apple Lisa（1983）→ Apple Macintosh（1984）→ Microsoft Windows（1985）の系譜で大衆化した。「マウス」という愛称は本特許のどこにも記載されていない（Engelbart 後年談で「コードがネズミの尻尾みたいだったから」と説明）。
+
+特許としては 1987 年 11 月 17 日に寿命満了し、Stanford Research Institute（→ SRI International）への特許料収入は **Apple や Microsoft からの実施料が一部支払われたとされる**が、金額は非公開・契約書未取得（業界の都市伝説で「$10,000 で SRI に売り渡した」「$40,000 で売った」など複数の異なる数字が流布する）。
+
+「Engelbart マウス」が忘れられたわけではない。むしろ **「Claim 1 verbatim を読まずに、デモ映像と発明者神話で語られている**」のが現代の状態である。Claim 1 の 4 構成要素を文字通り押さえると、(1) 発明者は Engelbart 単独で Bill English は実装エンジニア、(2) 構成要素は機械式ホイール 2 個で現代マウスとは別物、(3) 譲受人は Stanford Research Institute（=SRI International）で 1987 年寿命満了、という 3 点が浮かび上がる。これらは一次資料を読まずに語られにくい。
+
+## 5. AI 考古学的な意味
+
+本連載「忘れられた長文発掘ノート」の中核プロジェクトは、**LLM で過去の長文一次資料を読み直して、人類が一般に語っているキャッチコピーと一次資料の乖離を発掘する**ことである。Day 18-22 の化粧品サブシリーズ Phase 1 では、(1) **取り違え**（CS-004/005/007/008、特許番号自体が DB と無関係）、(2) **キャッチコピー誤読**（CS-009、Claim 1 主題と業界キャッチコピーが乖離）、(3) **情報壁**（CS-010、起点特許番号が Web 公開資料から特定不能）、(4) **特許の不在**（CS-002、論文先行開示で patentability 喪失）の **4 形態**が揃った。
+
+本ノート（SW-001 Engelbart マウス）は、化粧品 4 形態のいずれにも該当しない **「Claim 1 verbatim を取得して発明者の語り直しを行う」** 形態である。これは Day 8-11 の Patent Archaeology 系ノート（IBM 統計的機械翻訳・PageRank・Amazon item-to-item 推薦・1-Click）と同じ構造で、SW サブシリーズの立ち上げ第 1 本として **「化粧品サブシリーズの 4 形態 DB 訂正譚から、Claim 1 verbatim 中心の正攻法ノートへ気分転換する**」役割を持つ。
+
+## 6. 落とし穴（ソフトウェア・UI 特許 サブシリーズ固有のもの）
+
+**落とし穴 1：発明者神話の DB 化**
+業界記事・教科書・Wikipedia で「Engelbart と Bill English の共同発明」と書かれることがあるが、本特許の発明者欄は Engelbart 単独。Bill English は SRI Augmentation Research Center の実装エンジニアで、1968 Mother of All Demos のデモ運営を担当したが、特許上は「inventor」ではなく「engineer」。AI 考古学の DB は「**発明者欄（一次資料）**」と「**業界記事の語り（二次資料）**」を区別して記録する必要がある。
+
+**落とし穴 2：Claim 1 が技術系譜の終着点ではない**
+Claim 1 の 4 構成要素「直交 2 軸ホイール + transducer + 自由配線」は機械式入力装置の一実装であり、ボール式・光学式・静電容量式・LiDAR 式は別の Claim 1 を持つ別の特許群（PARC・Microsoft・Apple・Synaptics 等）で囲い込まれている。「Engelbart マウスの直系の祖先が現代マウス」と語ると、**Claim 1 verbatim と現代製品の検出原理の根本的な乖離を見逃す**。設計思想と Claim 1 構成要素は別レイヤーで読む必要がある。
+
+**落とし穴 3：ソフトウェア特許の適格性問題（時代背景）**
+1967 年は米国でソフトウェア特許適格性が確立しておらず（1981 Diamond v. Diehr 判決まで明確化されない）、Engelbart マウスは「**ハードウェア装置**」として特許化された（housing + wheels + transducer + conductor の機械要素）。ソフトウェア部分（座標計算、カーソル描画、ボタン入力処理）は特許の対象外で、Claim 1 にも記載されていない。SW サブシリーズの 1970 年代候補（Backus FORTRAN、Cerf/Kahn TCP/IP、Smalltalk、HyperCard）は **ソフトウェア特許適格性の不確定領域**にあり、特許化の有無自体が要 verify。SW-001 だけが Claim 1 verbatim を取得しやすい例外である。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- 特許番号 **US3541541**（United States Patent No. 3,541,541）。Title 「**X-Y POSITION INDICATOR FOR A DISPLAY SYSTEM**」。
+- 発明者「**Douglas C. Engelbart, Palo Alto, Calif.**」**単独**（PDF 前面・PDF L1 抽出で確認、Bill English の共同発明者記載なし）。
+- Original Assignee「**Stanford Research Institute, Menlo Park, Calif., a corporation of California**」（1977 年 SRI International に改称）。
+- **Filed June 21, 1967, Ser. No. 647,872**、**Patented Nov. 17, 1970**（出願から 3 年 5 ヶ月）。
+- **8 Claims**（Claim 1 独立、Claims 2-8 従属）。
+- 寿命：1995 GATT 発効前出願 → **成立から 17 年ルール → 1987-11-17 失効**。
+- Claim 1 verbatim は本ノート §2 に PDF L645-712 から抽出した全文を引用。
+- 取得 URL：`https://patentimages.storage.googleapis.com/7d/13/7e/3fd1de4c37ed12/US3541541.pdf`（791 KB、TIFF/PDF）。Google Patents HTML（`https://patents.google.com/patent/US3541541A/en`）は curl で Captcha ブロック、PDF 直接 URL 経由で迂回成功（2026-05-09 取得）。
+
+**著者の解釈：**
+- 「現代の光学マウス・タッチパッド・spatial computing は検出原理が根本的に異なる」と書いている部分は、現代製品の Claim 1 verbatim を本ノートで突合せていない（Microsoft IntelliMouse・Apple Multi-Touch・Vision Pro hand tracking の特許番号は本ノート未取得）。Claim 1 verbatim 突合せは別ノートの主題として保留。
+- 「Engelbart は単独発明者」は **特許の発明者欄に基づく事実**だが、**実装にどれだけ貢献したか**は別の問題で、Bill English の貢献度は SRI Augmentation Research Center 内部資料・1968 Mother of All Demos 映像・後年談などで語られる。本ノートは「**特許上の発明者欄**」と「**実装上の貢献者**」を区別する立場を取る。
+- 「設計思想は連続、Claim 1 構成要素は別物」の二層構造で読む方法は、Day 12 シルデナフィル・Day 13 アスパルテーム・Day 14 シスプラチンで AI 考古学が繰り返してきた読み方の SW 領域への適用。
+
+**比喩・アナロジー：**
+- 対応表 §3 の「flexible conductor means → Bluetooth/Wi-Fi/ハンドトラッキング」は **比喩**（有線→無線→空間という機能変化が連続するという意味で重なるが、技術的には別物）。
+- 対応表 §3 の「transducer means → A/D コンバータ・SoC」は **類似**（アナログ→デジタル変換という機能で重なるが、potentiometer と現代 SoC は実装層が違いすぎる）。
+- 対応表 §3 の「直交 2 軸ホイール → 光学・静電容量・LiDAR」は **無理がある**（検出原理が根本的に異なる）と本ノート §3 で明示。
+
+**未確認：**
+- SRI International の Engelbart 特許ライセンス収入の正確な金額（業界都市伝説で「$10,000」「$40,000」など複数の異なる数字、契約書は未取得）。
+- Apple Lisa/Mac の Apple-designed mouse が Engelbart 特許の Claim 1 構成要素のうちどれを実装し、どれを置き換えたかの Claim 比較（Apple の Lisa Mouse 特許 US4464652 等は本ノート未取得）。
+- Bill English の SRI 在籍時の正確な役職・1968 Mother of All Demos での具体的な担当範囲（Engelbart Institute アーカイブ・SRI 公式歴史ページに別ノートで照会予定）。
+- Forward citations 件数（Engelbart マウス特許を引用した後続特許の総数、Google Patents の Cited By セクション未取得）。
+
+**この比較が破綻する点：**
+- 「Engelbart マウスが現代 UI の起点」と書くと、**Sutherland Sketchpad（1963、MIT 博士論文）** が UI 史でより早い段階の起点として議論される。Sketchpad は light pen + CRT で図形を描く対話的システムで、Engelbart マウス特許の §背景説明（PDF L300-310）でも light pencil の限界が言及されている。**「Engelbart マウスは light pencil の改良発明として位置づけられている」**ことは、Sketchpad との関係を踏まえないと過大評価になる。
+- 「Claim 1 verbatim と現代マウスの乖離」を強調すると、**機械式ボール式マウス（1980-2000 年代の主流）** が Engelbart 特許の Claim 1 直接実装として 30 年使われた事実を見落とす。光学式以降の 20 年だけを基準に「現代マウスとは別物」と言うのは時代軸のスケールが偏る。
+- **発明者単独説**は特許上の事実だが、SRI Augmentation Research Center は Engelbart のリーダーシップ下で 17 名のチームが運営されており（1965-1969）、Bill English・Jeff Rulifson・William Paxton 等のメンバーが NLS（oN-Line System）を共同開発した。「マウスの発明」を「特許の発明者」で語るか「実装チームの貢献」で語るかで、答えが変わる。
+
+---
+
+参考リンク：
+- [US3541541 PDF（patentimages.storage.googleapis.com、Google Patents PDF アーカイブ）](https://patentimages.storage.googleapis.com/7d/13/7e/3fd1de4c37ed12/US3541541.pdf) — 一次資料、Claim 1 verbatim 取得元
+- [US3541541 on Google Patents](https://patents.google.com/patent/US3541541A/en) — メタデータ参照（HTML は Captcha でブロック、PDF 直接 URL を併用）
+- [Doug Engelbart Institute — Patents page](http://www.dougengelbart.org/about/patents.html) — Engelbart 関連特許リスト
+- [Day 22 ep79（CS-009 P&G ナイアシンアミドのキャッチコピー誤読）](/notes/79-cosmetic-patent-05) — 化粧品 4 形態の最終回
+- [Day 22 ep80（CS-010 三省製薬コウジ酸の情報壁）](/notes/80-cosmetic-patent-memo-07) — 化粧品 形態 3 情報壁第 1 弾
+- [Day 22 ep81（CS-002 Allergan ボトックスの特許の不在）](/notes/81-cosmetic-patent-memo-08) — 化粧品 形態 4 特許の不在
+- [Day 23 ep83（CS-004 ニベア Lifschütz 1902 DRP 情報壁）](/notes/83-cosmetic-patent-memo-09) — 化粧品 形態 3 情報壁第 2 弾（本日）
+- [Day 23 ep84（CS-005 アボベンゾン Givaudan 1973 情報壁）](/notes/84-cosmetic-patent-memo-10) — 化粧品 形態 3 情報壁第 3 弾（本日）
