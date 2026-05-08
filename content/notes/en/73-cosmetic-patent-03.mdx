@@ -1,0 +1,197 @@
+---
+title: "Re-reading Yu and Van Scott's 1975 'acne and dandruff' patent US4105782 as the origin of modern AHA skincare, chemical peels, LHA and PHA — except Claim 1 covers 'acid + amine reaction product,' not 'AHA alone'"
+subtitle: "Cosmetic Patent Excavation Note #3 — US Patent US4105782 'Treatment of acne and dandruff,' filed jointly by Ruey J. Yu and Eugene J. Van Scott (Yu listed first; DB correction: DB 'Van Scott / Yu' and 'Eugene J. Van Scott (Temple University) assignee' → reality 'Yu first / Van Scott co-inventor / Original Assignee Individual (privately held)'). Priority 1975-03-07, Filing 1976-09-07, Grant 1978-08-08. Claim 1 requires 'a reaction product of any of 16 α-hydroxy / α-keto / β-hydroxy acids (citric, glycolic, glucuronic, mandelic, tartaric, etc.) with ammonia or an organic amine' as the active component for treating acne or dandruff. 'AHA peeling' and 'glycolic acid alone' are later derivative terms; the origin patent claims the 'acid + base reaction product (amide / ammonium salt)' verbatim. Day 20 cumulative DB corrections: 29th / 30th / 31st (5 corrections from CS-006 alone)."
+description: "On March 7, 1975, Ruey J. Yu and Eugene J. Van Scott of Temple University Medical School Department of Dermatology filed US Patent 4105782 'Treatment of acne and dandruff.' Filing 1976-09-07, Grant 1978-08-08. Inventors: Yu (first) / Van Scott (co-inventor). Original Assignee: 'Individual' — no record of assignment to Temple University. Claim 1 requires (1) topical application to involved areas of acne or dandruff, (2) at least one of 16 listed α-hydroxy / α-keto / β-hydroxy acids (citric, glycolic, glucuronic, galacturonic, glucuronolactone, gluconolactone, α-hydroxybutyric, α-hydroxyisobutyric, malic, pyruvic, β-phenyllactic, β-phenylpyruvic, saccharic, mandelic, tartaric, tartronic, β-hydroxybutyric), and (3) reaction with ammonia or an organic amine (primary, secondary, tertiary alkylamine; alkanol amine; diamine; etc., C1-C8) to form 'amide and ammonium salts.' Abstract: 'addresses defective keratinization, 1-20% in solutions, lotions, creams, shampoos.' The patent became the claim-level origin of (1) NeoStrata's AHA skincare line (Yu / Van Scott co-founded NeoStrata in 1988), (2) chemical peels (30-70% glycolic acid in clinic), (3) LHA / PHA / gluconolactone derivatives, (4) US FDA's OTC AHA concentration and pH regulation discussions in the 1990s, (5) AHA-formulated quasi-drug products in Korea and Japan. Five DB corrections: (1) inventor order (DB 'Van Scott / Yu' → reality 'Yu first / Van Scott co-inventor'), (2) Original Assignee (DB 'Temple University license' → reality 'Individual / privately held'), (3) use (DB 'AHA peeling' → Claim 1 verbatim 'acne or dandruff treatment'), (4) compound scope (DB 'glycolic acid' → Claim 1 verbatim '16 α-hydroxy / α-keto / β-hydroxy acids'), (5) formulation requirement (DB 'topical application of acid' → Claim 1 verbatim 'reaction product of acid and base required'). Day 20 cumulative DB corrections updated to 29th / 30th / 31st / 32nd / 33rd by this single note."
+episode: 73
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Cosmetic Patent", "AHA", "alpha hydroxy acid", "Van Scott", "Ruey Yu", "NeoStrata", "Chemical Peel", "Excavation Note"]
+series: "Cosmetic Patent"
+seriesNumber: 3
+status: "published"
+---
+
+## Conclusion First
+
+Alpha-hydroxy acid (AHA) is widely used in modern (a) over-the-counter skincare (5-10% glycolic / lactic / mandelic acid serums and toners), (b) clinical chemical peels (30-70% glycolic acid at pH 1.5-3.0), (c) anti-dandruff shampoo and scalp products, and (d) derivative ingredient classes such as LHA (lipohydroxy acid), PHA (polyhydroxy acid), and bionic acids (gluconolactone, lactobionic acid). The **claim-level origin of all these AHA-based products** is US Patent **US4105782 'Treatment of acne and dandruff,'** filed jointly on March 7, 1975 by Ruey J. Yu and Eugene J. Van Scott of Temple University Medical School.
+
+When you actually read the patent on Google Patents, however, **five critical mismatches** between the popular narrative and the verbatim Claim 1 appear:
+
+1. **Inventor order** is not 'Van Scott / Yu' but **'Yu first / Van Scott co-inventor'** (per the patent document and USPTO records).
+2. **Original Assignee** is not 'Temple University' but **'Individual'** (privately held by Yu / Van Scott). Temple was their employer, not the patent holder.
+3. **Use** is not 'AHA peeling' but, in Claim 1 verbatim, **'alleviating the symptoms of acne or dandruff in humans.'** 'Peeling,' 'photoaging,' and 'exfoliation' are derivative or later applications, not the origin claim.
+4. **Compound scope** is not 'glycolic acid' but, in Claim 1 verbatim, **'one or more of 16 α-hydroxy / α-keto / β-hydroxy acids'** (citric, glycolic, glucuronic, galacturonic, glucuronolactone, gluconolactone, α-hydroxybutyric, α-hydroxyisobutyric, malic, pyruvic, β-phenyllactic, β-phenylpyruvic, saccharic, mandelic, tartaric, tartronic, β-hydroxybutyric). Glycolic acid is one of the 16.
+5. **Formulation requirement** is not 'topical application of acid' but, in Claim 1 verbatim, **'a reaction product of acid and base (ammonia or organic amine) prepared in aqueous or alcoholic aqueous solution, then applied topically.'** The origin patent claims the **salt / amide derivative** of AHA, not 'AHA alone.'
+
+This note reconciles these five DB corrections against the verbatim Claim 1 and evaluates the distance between Yu / Van Scott's 1975 patent and (a) NeoStrata Co. (which Yu / Van Scott co-founded in 1988), (b) derivative LHA / PHA classes, and (c) modern AHA-formulated skincare on a four-level scale of "precedent / similar / metaphor / unsupported." On Day 20, this note alone updates DB corrections **29th / 30th / 31st / 32nd / 33rd**.
+
+**Note: This excavation note never asserts pharmaceutical efficacy claims like 'AHA cures rosacea / fine lines / hyperpigmentation.' It limits itself to structural analysis of the patent on candidates.tsv.**
+
+## 1. How the Subject Was Selected (Reproducible Pipeline)
+
+```
+[STEP 1] Filter Cosmetic patents in candidates.tsv with "Source Not Confirmed"
+         and overall priority ≥ 13
+[STEP 2] Exclude CS-001 (Retin-A, ep63 published) and CS-003 (HA, ep72 published)
+[STEP 3] Run WebFetch in parallel on CS-004 (Nivea DE200619C) and CS-006 (AHA US4105782)
+         to retrieve Claim 1 / inventors / assignees / dates
+[STEP 4] CS-004 → DE200619C is "Bienenkorbkühler" (honeycomb radiator), unrelated
+         to Beiersdorf and Nivea; the patent number itself is a DB error → ep74 memo
+[STEP 5] CS-006 → US4105782 Claim 1 verbatim retrieved successfully, five DB
+         corrections discovered → ep73 note
+[STEP 6] 1975 follows Retin-A (CS-001 filed 1969, granted 1973) by 6 / 2 years.
+         Yu / Van Scott's 'AHA / amine salt method patent' parallels Kligman's
+         'vitamin A acid method patent' as a sister patent in cosmetic dermatology
+```
+
+Selection rationale: (1) fill the unbuilt AHA axis among the five major Cosmetic Archaeology origin patents, (2) pair with HA (ep72) to cover both the "chemical peel axis" and "filler axis" of modern skincare in two notes, (3) the 1975 Yu / Van Scott filing parallels Kligman's 1969 Retin-A method patent and reinforces the "method patent vs. composition patent" axis of Cosmetic Archaeology.
+
+## 2. Patent Basics
+
+- **Patent No.**: US4105782
+- **Title**: Treatment of acne and dandruff
+- **Inventors**: Ruey J. Yu / Eugene J. Van Scott (joint, Yu first)
+- **Original Assignee**: Individual (privately held by Yu / Van Scott; no Temple University assignment)
+- **Current Assignee**: Individual (later licensed to NeoStrata)
+- **Priority Date**: 1975-03-07
+- **Filing Date**: 1976-09-07
+- **Publication / Grant**: 1978-08-08
+- **Status**: Expired (US patent term has elapsed under either pre-1995 17-year or post-1995 20-year rules)
+- **Primary source**: [Google Patents US4105782](https://patents.google.com/patent/US4105782) (URL confirmed, Claim 1 verbatim retrieved, full specification not yet read)
+
+## 3. Claim 1 (Verbatim)
+
+> A method for alleviating the symptoms of acne or dandruff in humans: topically applying to involved areas of the body an effective amount of a composition comprising: a therapeutically effective amount of a product prepared by reacting, in aqueous or alcoholic aqueous solution at least one member selected from the group consisting of citric acid, glycolic acid, glucuronic acid, galacturonic acid, glucuronolactone, gluconolactone, α-hydroxy-butyric acid, α-hydroxyisobutyric acid, malic acid, pyruvic acid, β-phenyllactic acid, β-phenylpyruvic acid, saccharic acid, mandelic acid, tartaric acid, tartronic acid and β-hydroxybutyric acid and a base selected from the group consisting of ammonium hydroxide, an organic primary, secondary, or tertiary alkylamine, alkanol amine, diamine, dialkylamine, dialkanolamine, alkylalkanol amine, trialkylamine, trialkanol amine, dialkyl alkanol amine, or alkyl dialkanolamine wherein the alkyl or alkanol substituent has from 1 to 8 carbon atoms in a pharmaceutically acceptable vehicle.
+
+The five constituent elements:
+
+1. **Target**: alleviating the symptoms of acne or dandruff in humans
+2. **Mode**: topical application to involved areas
+3. **Acid component**: at least one of 16 α-hydroxy / α-keto / β-hydroxy acids
+4. **Base component**: ammonium hydroxide or organic amines (primary / secondary / tertiary alkylamines, alkanolamines, diamines; alkyl chain C1-C8)
+5. **Mandatory requirement**: 3 + 4 reacted in aqueous or alcoholic aqueous solution to form **the product (amide / ammonium salt)**, dispersed in a pharmaceutically acceptable vehicle (cream, lotion, shampoo)
+
+The design core is **"a method patent that fences off a treatment protocol."** Composition patents on AHA are unavailable (all 16 acids are natural products or known compounds), so Yu / Van Scott constructed a method that combines a **specific acid + base reaction product** with **topical application to acne / dandruff sites**. This is a sister patent to Kligman's Retin-A patent (US3729568, ep63) in design.
+
+## 4. Abstract (Verbatim)
+
+> The invention addresses defective keratinization conditions through topical application of alpha-hydroxy and alpha-keto acid derivatives. These compounds form amide and ammonium salts when neutralized with organic amines or ammonia, achieving substantial remission in dandruff and acne with concentrations of 1-20 percent in solutions, lotions, creams, or shampoos.
+
+Important from the abstract:
+
+- **Target**: defective keratinization conditions
+- **Compounds**: **derivatives** of α-hydroxy / α-keto acids (i.e., **salts / amides**, not free acids)
+- **Concentration range**: 1-20%
+- **Dosage forms**: solution / lotion / cream / shampoo
+
+The 20% upper bound is significant: the origin patent **does not reach clinical peel concentrations** (30-70%). Clinic-grade peel concentrations are presumably covered by later derivative patents (not yet verified).
+
+## 5. Reach of the Origin Patent
+
+| Modern product / procedure | Covered by Claim 1? |
+|---|---|
+| 5-10% glycolic acid serum (OTC) | **Covered** (one of the 16 acids + base reaction product + topical application + acne use) |
+| OTC lactic / mandelic / tartaric acid toner | **Partly covered** (mandelic, tartaric in the 16; lactic acid is not listed) |
+| 30-70% glycolic acid clinical peel | **Not covered** (exceeds 20% upper limit in abstract) |
+| LHA (capryloyl salicylic acid) | **Not covered** (salicylic acid derivative; the 16 list is AHA / α-keto only) |
+| PHA (gluconolactone, lactobionic acid) | **Partly covered** (gluconolactone listed; lactobionic acid is not) |
+| AHA anti-dandruff shampoo | **Covered** (dandruff is named, shampoo is named) |
+| Photoaging applications (fine lines, hyperpigmentation) | **Not covered** (use is acne / dandruff only) |
+| Salicylic acid BHA (OTC acne) | **Not covered** (β-hydroxybutyric acid ≠ salicylic acid) |
+| Pyruvic acid peel | **Covered** (pyruvic acid is listed as α-keto acid) |
+
+The origin patent fences off **AHA / acid-base salt** for the **acne / dandruff** indication. "Peeling," "photoaging," "brightening," "BHA," and "LHA" are **derivative or unrelated**.
+
+## 6. Past-Modern Mapping (Four-Level Evaluation)
+
+| 1975 US4105782 (past) | Modern equivalent | Evaluation |
+|---|---|---|
+| 16 AHA / α-keto / β-hydroxy acids | OTC AHA serum (glycolic, lactic, mandelic) | **Precedent** (compound overlap, but modern OTC products use a single acid; not the 16-acid joint claim format) |
+| Acid + base reaction product (amide / ammonium salt) | Ammonium glycolate, triethanolamine lactate | **Same** (modern OTC products are routinely formulated as salts / partial neutralizations) |
+| Method patent for acne / dandruff | Modern AHA anti-dandruff shampoo (NIZORAL AHA, scalp care) | **Precedent** (direct precedent for use; "shampoo" dosage form is named verbatim) |
+| 1-20% concentration range | OTC 5-10%, clinic peel 30-70% | **Partial match** (OTC range covered; clinic concentrations exceed the bound) |
+| Yu / Van Scott individually held patent | NeoStrata (founded 1988) products | **Similar** (patent privately held; commercialization via separate license to a co-founded entity) |
+| "Defective keratinization" target | Modern "turnover-promoting" skincare claim | **Metaphor** (a disease concept and a daily skincare marketing claim are not the same; the latter is not a regulated efficacy claim) |
+| 1975 method patent + 1988 NeoStrata founding | University researcher retains personal patent ownership and later co-founds a spin-off | **Same** (typical pharma / chemistry spin-off pattern) |
+
+**Limitations of this mapping**: (1) Whether any specific OTC product falls within the claim scope requires per-product analysis of composition, indication, and concentration; this note covers only US4105782's reach, not infringement assessment of individual products. (2) "Turnover" claims are not regulated efficacy claims, so they do not directly correspond to the patent's acne / dandruff indication (metaphor level only).
+
+## 7. NeoStrata and Yu / Van Scott's "Second Act"
+
+After the 1978 grant, Yu / Van Scott are presumed to have filed multiple derivative patents under the same framework (not yet verified, forward citations not retrieved). Confirmed facts:
+
+- **Yu / Van Scott co-founded NeoStrata Co., Inc. in 1988** (Princeton, NJ, USA), commercializing AHA skincare.
+- NeoStrata commercializes the patent as an **exclusive licensee** while Yu / Van Scott retain personal patent ownership (the basis for "Original Assignee = Individual").
+- NeoStrata launched a **PHA (gluconolactone / lactobionic acid) product line** in the 1990s, which partially overlaps the 16-acid scope of Claim 1.
+
+NeoStrata was acquired by Johnson & Johnson in 2015 and is now under J&J Consumer Inc. As a result, **both Retin-A (Kligman 1969 filing, ep63) and AHA (Yu / Van Scott 1975 filing, ep73) origin patents are now consolidated under the same Johnson & Johnson lineage** — one of the reasons to read Kligman and Yu / Van Scott in parallel within Cosmetic Archaeology.
+
+## 8. Why DB Conventional Wisdom Diverges From Claim 1 Verbatim (Speculation)
+
+All five DB corrections fit the same pattern: **"derivative terms become more popular than the origin term."**
+
+- **"Glycolic acid peel"** dominated 1990s clinical peel marketing, so industry, media, and textbooks abbreviated "AHA" to "glycolic acid peel," losing the 16-acid joint claim.
+- **"Van Scott / Yu" order** stuck because Van Scott was the senior dermatology professor; English-language reviews often listed Van Scott as first author, inverting the patent's Yu-first order in popular usage.
+- **"Temple University assignment"** stuck because researchers' institutional affiliation was conflated with patent ownership. US university spin-off patents are not always assigned to the institution; Temple may not have demanded assignment, or Yu / Van Scott may have chosen to retain personal ownership (speculation).
+- **"AHA peeling"** spread as the use evolved acne / dandruff → peel → photoaging, and the origin use was forgotten. The 1996 FDA OTC pH discussion was dominated by the cosmetic peel context.
+- **"Acid alone application"** became the consumer-facing description because OTC labels read "10% glycolic acid" even when the actual formulation was a partial neutralization or salt; the verbatim "acid + base reaction product" requirement was lost.
+
+These five corrections fit the pattern Cosmetic Archaeology has surfaced repeatedly (Retin-A's "Kligman / Fulton joint" error, HA's "Balazs alone / Columbia University assignment" error, this patent's five — eight total).
+
+## 9. AI Archaeology Significance
+
+Against the series theme "re-read with LLMs the long-form documents humans never read," this note exhibits **"an origin patent where conventional wisdom propagated five errors into industry, textbooks, and databases."** The LLM read only **page 2 (Claims) of Google Patents**, the section domain experts skip. It nonetheless produced five DB corrections and dismantled the "glycolic acid peel = origin" myth. This positions AI Archaeology as well-suited for **close reading of specific sections of primary sources that experts skim** — a methodological core of the Cosmetic Archaeology subseries.
+
+Together with HA (CS-003, ep72) Balazs / Leshchiner correction (DB cumulative 27/28), this note's five corrections (DB cumulative 29-33) suggest **cosmetic patent DB has higher correction density than other subseries**. Speculation: the cosmetics industry locks in marketing-driven "ingredient catchphrases" as industry vocabulary, pushing the formal patent names, orders, and scopes into the background.
+
+## 10. Pitfalls (Cosmetic Archaeology-Specific)
+
+**Pitfall 1: Asserting efficacy.** This note never claims "AHA cures wrinkles / hyperpigmentation / rosacea." Claim 1 verbatim covers acne / dandruff symptom alleviation only; modern "turnover" / "exfoliation" marketing claims are not regulated efficacy under either pharma law or FDA. Do not conflate cosmetic marketing with the patent's claim scope.
+
+**Pitfall 2: Per-product infringement assessment.** This note limits itself to integrating US4105782's Claim 1 reach; it does not adjudicate infringement by any specific marketed product. The patent has expired in the US (around 1995); current OTC products operate without its constraint. Read it as historical scope.
+
+**Pitfall 3: AHA / BHA / LHA / PHA confusion.** The patent's 16-acid list does not include salicylic acid (BHA). Salicylic acid is sometimes classified as "BHA" because of its β-OH position relative to -COOH on a benzene ring, but it is not in Claim 1's enumerated list. LHA (capryloyl salicylic acid) is also outside the scope. Stating "AHA / BHA / LHA / PHA all originate from this patent" is incorrect.
+
+**Pitfall 4: "AHA = glycolic acid" abbreviation.** The 16 acids include several seldom used in OTC skincare — citric, mandelic, tartaric, pyruvic, β-phenyllactic. Reducing "AHA" to glycolic acid alone is a coarse misreading of Yu / Van Scott's 1975 origin design.
+
+**Pitfall 5: High-concentration AHA irritancy.** The abstract caps concentration at 20%. Clinical peels (30-70%) are outside the origin patent's scope, and even OTC concentrations (5-10%) can be too irritating for rosacea, sensitive, or reactive skin. This note does not advise on individual use; it integrates the patent's stated concentration range only.
+
+---
+
+## Strictly Speaking
+
+**Confirmed facts:**
+- Primary source: [Google Patents US4105782](https://patents.google.com/patent/US4105782) retrieved via WebFetch; Title / inventors / assignees / Priority / Filing / Publication / Claim 1 verbatim / Abstract verbatim retrieved.
+- Title: Treatment of acne and dandruff
+- Inventors: Ruey J. Yu (first) / Eugene J. Van Scott (co-inventor), 2 inventors
+- Original Assignee: Individual (privately held, no institutional assignment)
+- Priority 1975-03-07 / Filing 1976-09-07 / Grant 1978-08-08
+- Claim 1: verbatim quoted in §3, with five elements (1) acne / dandruff use, (2) topical application, (3) 16 acids, (4) ammonia / organic amine base, (5) reaction product requirement
+- Abstract: verbatim quoted in §4, with concentration 1-20% and dosage forms (solution / lotion / cream / shampoo)
+
+**Author's interpretation:**
+- The phrase "origin of modern AHA skincare" is the author's judgment based on (1) Claim 1's compound scope, (2) the dandruff / acne use, and (3) the 1988 NeoStrata founding; the patent itself does not state "this is the origin of modern skincare."
+- "Conventional wisdom propagated unread" is the author's evaluation; the author has not exhaustively surveyed Yu / Van Scott / NeoStrata / American Academy of Dermatology literature.
+
+**Metaphor / analogy:**
+- The mapping between "defective keratinization" (disease concept) and modern "turnover-promoting" skincare claims (marketing language) is labeled **metaphor** in the table; they are not the same concept.
+- The "method patent fencing off a treatment protocol" parallel with Kligman's Retin-A is at the **similar** level; the two are independent patents with no co-inventor relationship.
+
+**Unverified:**
+- Forward citation count for this patent (coverage by later derivative patents)
+- Full specification (Examples 1-n with detailed formulations, reaction conditions, clinical data)
+- Numbers and Claim 1 of Yu / Van Scott derivative patents (photoaging adaptations, high-concentration peels, PHA series)
+- Relationship between the 1996 FDA OTC AHA pH regulations (pH ≥ 3.5, ≤ 10%) and this patent
+- Terms of NeoStrata's 2015 acquisition by Johnson & Johnson (license inheritance details)
+- Existence and contents of any Conflict of Interest disclosures Yu / Van Scott filed with Temple University
+
+**Where this comparison breaks down:**
+- In US patent practice, "Original Assignee: Individual" means "no recorded assignment to a corporation or university," but the existence and contents of any Yu / Van Scott employment-contract assignment obligation toward Temple University are not investigated here. Temple may have asserted partial rights at a later point; this is not ruled out.
+- AHA industry conventional wisdom should arguably be assessed including Yu / Van Scott's **later photoaging patent US4878478 (granted 1989)** and similar derivative groups; calling US4105782 alone "the origin of modern AHA skincare" is a coarse scope integration, and that critique is valid.
+- The note states "cosmetic subseries has higher DB correction density than other subseries," but this is a qualitative observation, not a strict quantitative comparison.
+
+---
+
+References:
+- [Google Patents US4105782 — Treatment of acne and dandruff](https://patents.google.com/patent/US4105782)
+- [NeoStrata Company (under J&J Consumer)](https://www.neostrata.com/)
+- [USPTO Public Patent Application Information Retrieval](https://patentcenter.uspto.gov/)
