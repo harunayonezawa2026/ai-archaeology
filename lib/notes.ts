@@ -51,7 +51,7 @@ export function getAllNotes(locale: Locale = "ja"): NoteMeta[] {
   if (!fs.existsSync(dir)) return [];
   const files = fs
     .readdirSync(dir)
-    .filter((f) => f.endsWith(".mdx") && !fs.statSync(path.join(dir, f)).isDirectory());
+    .filter((f) => f.endsWith(".mdx") && !f.startsWith("_") && !fs.statSync(path.join(dir, f)).isDirectory());
   const notes = files
     .map((f) => readNote(f.replace(/\.mdx$/, ""), locale))
     .filter((n): n is Note => n !== null && n.status !== "draft");
