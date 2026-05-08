@@ -1,0 +1,142 @@
+---
+title: "1973年 Intel Corporation の Federico Faggin / Marcian E. Hoff Jr. / Stanley Mazor が共同出願した『マルチチップ・デジタル計算機のメモリシステム』特許 US3821715A を、4004 ファミリーのバス・アーキテクチャ起点として読み返す"
+subtitle: "ハードウェア・エネルギー特許 発掘メモ #2 — 1973-01-22 出願・1974-06-28 成立、Intel Corp 譲受、Faggin / Hoff / Mazor 3名共同発明（DB一致確認・Day 8〜16 連続訂正系列で9件目の一致）。Title は『Memory system for a multi chip digital computer』で、Claim 1 は『CPU を第1半導体チップに配置し、複数の双方向データバス線と第1・第2半導体メモリチップ（各チップは予め定められた異なるコードを bus 上で認識する chip decoding circuit を含む）を接続したマルチチップ計算機』を請求する。本特許は **4004 単体の構造特許ではなく、4004 / 4001 ROM / 4002 RAM / 4003 シフトレジスタの MCS-4 ファミリーの bus アーキテクチャ特許**であり、『単一チップにCPUを集積』という通説的単純化は Claim 1 と整合しない"
+description: "1973年1月22日、Intel Corporation の Federico Faggin / Marcian E. 'Ted' Hoff Jr. / Stanley Mazor の3名は共同で『Memory system for a multi chip digital computer』を米国に出願し、1974年6月28日に US3821715A として成立した。Claim 1 は『CPU を第1半導体チップに配置し、複数の双方向データバス線と第1・第2半導体メモリチップ（各チップは予め定められた異なるコードを bus 上で認識する chip decoding circuit を含み、その code 受信時にメモリの一部を活性化する）を接続した汎用デジタル計算機』を請求する。Abstract は MOS チップ群（RAM・ROM）が双方向データバスを介して CPU と結合する構成を述べ、本文は『central processing unit』『MOS』『single MOS chip』を多用する一方、Busicom や 4004 という具体的製品名への言及は**ない**。本特許は Intel MCS-4 ファミリー（4004 CPU / 4001 ROM / 4002 RAM / 4003 シフトレジスタ）の bus アーキテクチャを覆う特許で、**4004 単体の構造特許ではない**。発明者3名は DB 一致確認（Day 8〜16 連続訂正系列で9件目の一致）。Federico Faggin の貢献は本特許に表れた bus 構成だけでなく、4004 製造を可能にしたシリコンゲート MOS プロセス（US3597469A、Fairchild 在籍時1968年出願）であり、Masatoshi Shima は Busicom 社からの設計協力者として4004 の論理設計に深く関与したが本特許の発明者欄には**不在**である。本メモは一次資料 URL 確認済み・Claim 1 取得済み・明細書全文未読、(1) Title の正確な解釈、(2) MCS-4 ファミリー特許 vs 4004 単体特許の区別、(3) Shima 不在の経緯、(4) 現代の AI チップ（Nvidia H100・Cerebras WSE-3・中国 Cambricon・Google TPU）の bus アーキテクチャとの距離を整理する起点として位置づける。"
+episode: 65
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ハードウェア・エネルギー特許", "マイクロプロセッサ", "Intel 4004", "Federico Faggin", "Ted Hoff", "Stanley Mazor", "Busicom", "MCS-4", "発掘メモ"]
+series: "ハードウェア・エネルギー特許"
+seriesNumber: 4
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料 URL を確認した段階で候補の概要を記録したものです。本メモは Google Patents から Claim 1・発明者3名・出願日・成立日・譲受人・Title を取得済みですが、明細書全文（MCS-4 ファミリー bus プロトコルの詳細・Busicom 142-PF 電卓設計仕様書との対応・Faggin シリコンゲート技術との関係文書）は未読。確認済み事実のみ記載し、推測は推測として明示します。
+
+---
+
+## なぜ掘るか
+
+マイクロプロセッサ（MPU）は現代の (a) Nvidia DGX H100 級 AI サーバの主制御 CPU、(b) AMD EPYC・Intel Xeon・ARM Neoverse のデータセンタ CPU、(c) Apple M3・Snapdragon 8 Gen 4 のモバイル SoC、(d) Cerebras WSE-3・Cambricon MLU・Google TPU の AI アクセラレータ、(e) Tesla FSD HW4・Hyundai E-GMP の車載 SoC まで全ての**論理演算の物理実体**を提供している。出発点は1971年11月15日、Intel Corporation が発売した4ビット・マイクロプロセッサ **Intel 4004** で、その bus アーキテクチャを覆う米国特許が本メモの対象 **US3821715A** である。
+
+発掘の意義は、**Title「Memory system for a multi chip digital computer」が示す通り、本特許は4004単体の構造特許ではなく MCS-4 ファミリー（4004 CPU / 4001 ROM / 4002 RAM / 4003 シフトレジスタ）の bus アーキテクチャ特許である**という事実を一次資料で確定し、現代の Nvidia HBM3-CPU bus、PCIe Gen5、CXL 3.0 等の AI チップ間 bus 設計に接続する起点を作ることにある。
+
+## 特許の基本情報
+
+- **特許番号**：US3821715A
+- **タイトル**：Memory system for a multi chip digital computer
+- **発明者**：Federico Faggin、Marcian E. Hoff Jr.（"Ted" Hoff）、Stanley Mazor の3名共同
+- **Original Assignee**：Intel Corp（Intel Corporation、当時カリフォルニア州 Santa Clara 本社）
+- **Filing Date / Priority Date**：1973-01-22
+- **Grant Date**：1974-06-28
+- **Expiration**：1991-06-28（Anticipated、寿命満了）
+- **Status**：Expired - Lifetime
+
+DB 突合せ：「Intel Corporation、Marcian E. Hoff Jr./Stanley Mazor/Federico Faggin。1973年出願・1974年成立」**全項目一致**。Day 8〜16 で発生した DB 誤り訂正19件＋一致確認8件の系列で**9件目の一致確認**。
+
+## Claim 1（一次資料 verbatim）
+
+Google Patents から取得した Claim 1（verbatim）：
+
+> A general purpose digital computer comprising; a central processor disposed on a first semiconductor chip; a plurality of bidirectional data bus lines; at least a separate first and second semiconductor memory chip each defining a memory and each including a chip decoding circuit for recognizing a different predetermined code on said bidirectional data bus lines and for activating a portion of said memory upon receipt of said predetermined code, said data bus lines interconnecting said processor and said first and second memory chips for communicating said different predetermined codes from said processor to at least one of said first and second memory chips and for communicating data signals for one of said first and second memory chips to said processor; whereby said processor may communicate signals to said first and second memory chips and said decoding circuits shall determine which memory is being addressed.
+
+訳：「汎用デジタル計算機であって、(a) 第1半導体チップ上に配置された中央処理装置（CPU）、(b) 複数の双方向データバス線、(c) 少なくとも分離した第1・第2半導体メモリチップ（それぞれメモリを定義し、双方向データバス線上の異なる予定コードを認識する chip decoding circuit を含み、当該予定コードの受信時にメモリの一部を活性化する）を備え、当該データバス線が CPU と第1・第2メモリチップを相互接続して、CPU から第1・第2メモリチップの少なくとも一方に異なる予定コードを通信し、第1・第2メモリチップの一方からのデータ信号を CPU に通信する計算機」
+
+**Claim 1 の核は2点**：
+
+1. **CPU と複数のメモリチップを「双方向データバス線」で繋ぐマルチチップ構成**：CPU を**単独のチップに分離**して、メモリチップ群と bus で接続するアーキテクチャ全体を請求している。
+2. **Chip decoding circuit による分散アドレッシング**：bus 上のコードを各メモリチップが**自己復号**して活性化する。これは現代の PCIe / CXL の Bus/Device/Function（BDF）スキーマや、HBM3 のチャネル選択論理の設計問題と問題意識が重なる。
+
+Abstract（要約）：「A general purpose digital computer which comprises a plurality of metal-oxide-semiconductor (MOS) chips. Random-access-memories (RAM) and read-only-memories (ROM) used as part of the computer are coupled to common bi-directional data buses to a central processing unit (CPU)」
+
+明細書本文での重要表現：「single MOS chip」を CPU について繰り返し言及。Busicom や 4004 という製品名は本文に**登場しない**。
+
+## 「単一チップ CPU 集積」という単純化との距離
+
+通説では Intel 4004 = 「世界初のマイクロプロセッサ＝単一チップに CPU 機能を集積した発明」と語られる。これは事実としては正しいが、**本特許 Claim 1 が直接覆う発明とは別**である。Claim 1 は CPU を第1半導体チップに「配置」と書いているが、Claim 1 の核心は「**CPU + 複数メモリチップ + 双方向 bus + chip decoding**」という**マルチチップ計算機システムの構成**にある。
+
+つまり本特許は：
+
+- **YES**：4004 / 4001 / 4002 / 4003 を bus で繋いだ MCS-4 ファミリー全体の構成特許
+- **NO**：4004 単体の内部回路図・命令デコーダ・ALU 設計の構造特許ではない
+
+4004 単体の構造特許としては、Faggin が手掛けた**シリコンゲート MOS プロセス特許 US3597469A**（Fairchild 在籍時の1968年出願）が4004 製造の物理基盤を覆い、**Faggin / Hoff の Intel 内部の技術文書群**（一次資料未取得）が4004 内部論理を文書化している。本特許 US3821715A は MCS-4 のシステム特許として位置づけるのが正確。
+
+## Masatoshi Shima 名義不在の経緯
+
+Intel 4004 の論理設計には **Busicom 株式会社（日本計算器販売）の Masatoshi Shima（嶋正利）** が深く関与した。1969–1970 年に Busicom 142-PF 電卓向け LSI 仕様を Intel に持ち込んだのが Shima で、当時 Intel 側で対応した Hoff が「12個のチップで実装する案ではなく、汎用4ビット CPU + ROM + RAM + シフトレジスタの4チップ構成にする」という対案を出した経緯が業界2次資料に残っている。Faggin が1970-04 に Intel 入社して4004 の物理実装を担当、Shima は Busicom 側設計者として論理設計に協力した。
+
+しかし**本特許の発明者欄に Shima は不在**である。これは：
+
+- Busicom 社員としての Shima の貢献は Intel 側の特許名義に含めにくい契約関係だった可能性（Busicom-Intel 間の知財取扱い契約）
+- 本特許が**4004 単体ではなく MCS-4 ファミリーの bus アーキテクチャ特許**で、Shima の貢献が4004 内部論理に集中していたため Claim 1 の発明範囲と直接重ならなかった可能性
+- Faggin が後年 Zilog 創業（1974）時に Z80 で Shima と再合流したことを踏まえると、Intel 在籍中の Shima 貢献は**業界文化的には認知**されていたが特許名義には反映されなかった
+
+これは Day 11 プロプラノロール（James Black 不在）、Day 12 シルデナフィル（複数名不在）、Day 9 PCR（Mullis 単独受賞 vs 6名共同特許）と同じ「**論文・教科書・受賞報道と特許名義のずれ**」現象である。
+
+## 1971年11月15日発売〜1991年特許失効までの20年
+
+- 1969–1970：Busicom 142-PF 電卓 LSI 仕様交渉、Hoff が4チップ構成提案
+- 1970-04：Faggin Intel 入社、4004 物理実装担当
+- 1970-12：4004 第1ロット完成、Busicom 向け出荷
+- 1971-11-15：Intel 4004 一般販売開始、Electronic News 広告（"Announcing a new era in integrated electronics"）
+- 1973-01-22：本特許 US3821715A 出願
+- 1974-04：Intel 8080 発売（4004 の8ビット後継、Faggin 主担当）
+- 1974-06-28：本特許成立
+- 1974-11：Faggin Intel 退社、Zilog 創業（Shima も合流）
+- 1976-07：Zilog Z80 発売
+- 1981-08：IBM PC 発売（Intel 8088 採用、x86 系列の事実上の起点）
+- 1991-06-28：本特許失効
+- 2009-10：Intel 4004 発明者群（Hoff・Faggin・Mazor・Shima）が国家技術メダル受賞
+
+20年の特許保護期間中、Intel は4004 → 8080 → 8086 → 80286 → 80386 → 80486 → Pentium と x86 系列を発展させ、本特許の MCS-4 系統そのものは1980 年代に商業的役割を終えた（マイコン市場は Z80 / Motorola 6800 系列との分化が進んだ）。本特許の歴史的意義は商業独占よりも**「マルチチップ計算機 bus アーキテクチャの最初の特許化」**にある。
+
+## 現代との接続仮説（推測）
+
+| US3821715A（1973–1974） | 現代対応物（2026） | 評価 |
+|---|---|---|
+| CPU を別チップにし bus でメモリチップ群と接続 | Nvidia H100 + HBM3 + NVLink 構成 | 類似（問題意識：CPU/演算チップとメモリを bus で繋ぐは共通、bus プロトコルは別世代） |
+| 双方向データバス線による信号伝送 | PCIe Gen5 / CXL 3.0 / NVLink 4.0 | 類似（双方向 bus 発想は共通、帯域・信号方式は4桁差） |
+| Chip decoding circuit による分散アドレッシング | PCIe BDF アドレッシング、HBM3 チャネル選択 | 類似（自己復号方式は共通） |
+| MCS-4 ファミリー（4004+4001+4002+4003） | Apple M3 SoC（CPU+GPU+NPU+メモリ統合） | 比喩（SoC は単一ダイ統合で本特許のマルチチップ構成と方向が逆） |
+| Faggin の単チップ CPU 集積 | Cerebras WSE-3（ウエハ全面1チップで47万コア） | 比喩（極限まで集積する発想は共通だが、規模・実装が4桁以上差） |
+| Busicom 委託発端の Intel 設計史 | TSMC が中国 EDA / 米国設計の AI チップを受託製造 | 無理がある（電卓委託と AI チップファウンドリは規模・関係性が違いすぎる） |
+
+判定の重心：本特許は**現代 AI チップ間 bus（PCIe / CXL / NVLink）の問題意識の先行例**として読むのが正確で、「Nvidia H100 の祖先」と単純化はできない。
+
+## 未確認
+
+- 明細書本文全文（Google Patents Abstract と Claim 1 のみ取得、図面と詳細実施例未読）
+- Intel-Busicom 間の知財契約書（Shima 名義不在の正確な契約根拠）
+- Faggin US3597469A シリコンゲート MOS プロセス特許の Claim 1 全文（別エピソード対象化候補）
+- 1971-11-15 Electronic News 広告の原本（業界2次資料経由）
+- 4004 内部論理ブロック図と本特許 Claim 1 の対応関係（Computer History Museum 所蔵 IFC 文書群を要追加調査）
+- Faggin と Hoff の発明貢献分割（"Hoff の4チップ構成提案" vs "Faggin の物理実装" のどこで Claim 1 の発明が成立したか、Intel 内部技術文書未取得）
+
+## 次アクション
+
+1. **Faggin US3597469A シリコンゲート MOS プロセス特許**を別エピソードとして対象化（HW シリーズ後続候補）
+2. **Intel 8080 / 8086 / x86 系列の特許群**を MCS-4 系統の発展形として整理する横断記事候補
+3. **Masatoshi Shima Zilog Z80 設計時期の特許群**（1976 年前後）を「Intel から Zilog への発明者移動」軸で対象化
+4. **MCS-4 ファミリーの他の3チップ**（4001 ROM / 4002 RAM / 4003 シフトレジスタ）の個別特許群を補完調査
+5. 本メモは Day 17 のノート ep64（Goodenough Li-ion）と ep66（Dennard DRAM）と並ぶ「電源・演算・記憶」三種の神器セットの**演算側**を担う構成
+
+---
+
+## 参考リンク
+
+- 米国特許 US3821715A（Google Patents 表紙）：https://patents.google.com/patent/US3821715A/en
+- 米国特許 US3597469A（Faggin シリコンゲート MOS プロセス、1968年出願）：https://patents.google.com/patent/US3597469A
+- Intel Corporation 公式 4004 アーカイブ：https://www.intel.com/content/www/us/en/history/museum-story-of-intel-4004.html
+- Computer History Museum Intel 4004 オーラルヒストリー：https://computerhistory.org/collections/catalog/102702361
+
+---
+
+## 連載で並ぶ姉妹記事
+
+- 第61回（HW #1）：[1948 年 Bell Labs Bardeen-Brattain 点接触型トランジスタ US2524035](/notes/61-hardware-energy-patent-01)
+- 第62回（HW メモ #1）：[1959 年 TI Kilby 集積回路 US3138743](/notes/62-hardware-energy-patent-memo-01)
+- 第64回（HW #2、本記事と同 Day 17）：[1979 年 Goodenough リチウムイオン US4302518A](/notes/64-hardware-energy-patent-02)
+- 第66回（HW メモ #3、本記事と同 Day 17）：[1967 年 IBM Dennard DRAM US3387286A](/notes/66-hardware-energy-patent-memo-03)
+
+Day 17 は **「電源（HW-004）・演算（HW-007、本記事）・記憶（HW-008）」の現代 AI インフラ三種の神器の前史3点セット**。

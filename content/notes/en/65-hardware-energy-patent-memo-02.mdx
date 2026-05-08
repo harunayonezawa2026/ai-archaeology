@@ -1,0 +1,140 @@
+---
+title: "1973 Intel Corporation's Federico Faggin / Marcian E. Hoff Jr. / Stanley Mazor jointly filed US3821715A 'Memory system for a multi chip digital computer'—reading it as the bus-architecture origin of the 4004 family"
+subtitle: "Hardware & Energy Patents — Excavation Memo #2 — Filed 1973-01-22, granted 1974-06-28, assignee Intel Corp, three co-inventors Faggin / Hoff / Mazor (DB match — the 9th match in the Day 8–16 streak of corrections). The title is 'Memory system for a multi chip digital computer.' Claim 1 covers a general-purpose digital computer with a CPU on a first semiconductor chip, multiple bidirectional data bus lines, and at least two separate semiconductor memory chips, each containing a chip decoding circuit that recognizes a different predetermined code on the bus. The patent is **a bus-architecture patent for the MCS-4 family (4004 CPU / 4001 ROM / 4002 RAM / 4003 shift register), not a structural patent for the 4004 alone**, and the popular shorthand 'a single-chip CPU integration patent' does not match Claim 1."
+description: "On January 22, 1973, Federico Faggin, Marcian E. 'Ted' Hoff Jr., and Stanley Mazor at Intel Corporation jointly filed 'Memory system for a multi chip digital computer' in the United States, granted on June 28, 1974 as US3821715A. Claim 1 covers a general-purpose digital computer comprising (a) a central processor on a first semiconductor chip, (b) a plurality of bidirectional data bus lines, and (c) at least separate first and second semiconductor memory chips, each defining a memory and including a chip decoding circuit that recognizes a different predetermined code on the bidirectional data bus lines and activates a portion of its memory upon receipt of the predetermined code. The Abstract describes a configuration in which a group of MOS chips (RAMs and ROMs) couple to a CPU via common bidirectional data buses; the body uses 'central processing unit,' 'MOS,' and 'single MOS chip' repeatedly, but **does not mention** Busicom or 4004 by name. This patent covers the **bus architecture of the Intel MCS-4 family (4004 CPU / 4001 ROM / 4002 RAM / 4003 shift register), not the structural patent of the 4004 alone**. The three inventors match the DB record (the 9th match in the Day 8–16 correction streak). Federico Faggin's contribution extends beyond the bus configuration in this patent to the silicon-gate MOS process (US3597469A, filed 1968 while at Fairchild) that made the 4004 manufacturable, while Masatoshi Shima, sent by Busicom as a design collaborator and deeply involved in the 4004's logic design, is **absent from this patent's inventor field**. This memo confirms the primary URL, has retrieved Claim 1, but has not read the full specification. It positions the patent as a starting point for clarifying (1) the precise interpretation of the title, (2) the distinction between 'MCS-4 family patent' and '4004-alone patent,' (3) the absence of Shima from the inventor field, and (4) the distance to modern AI-chip bus architectures (Nvidia H100, Cerebras WSE-3, China's Cambricon, Google TPU)."
+episode: 65
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Hardware & Energy Patents", "Microprocessor", "Intel 4004", "Federico Faggin", "Ted Hoff", "Stanley Mazor", "Busicom", "MCS-4", "Excavation Memo"]
+series: "Hardware & Energy Patents"
+seriesNumber: 4
+format: "memo"
+status: "published"
+---
+
+**About this excavation memo:** memos in this series record an outline of a candidate at the stage when its primary URL has been verified. This memo has retrieved Claim 1, the three inventors, the filing and grant dates, the assignee, and the title from Google Patents, but has not read the full specification (the detailed MCS-4 family bus protocol, correspondence with the Busicom 142-PF calculator design specifications, and documents linking Faggin's silicon-gate technology). Only verified facts are stated; inferences are flagged as such.
+
+---
+
+## Why dig here
+
+Microprocessors (MPUs) provide the **physical substrate of logic operation** for (a) the host CPU of Nvidia DGX H100-class AI servers, (b) data-center CPUs such as AMD EPYC, Intel Xeon, and ARM Neoverse, (c) mobile SoCs such as Apple M3 and Snapdragon 8 Gen 4, (d) AI accelerators such as Cerebras WSE-3, Cambricon MLU, and Google TPU, and (e) automotive SoCs such as Tesla FSD HW4 and Hyundai E-GMP. The starting point is the **Intel 4004** four-bit microprocessor released by Intel Corporation on November 15, 1971; the US patent that covers its bus architecture is the subject of this memo, **US3821715A**.
+
+The point of the dig is to confirm in the primary source that the **title, "Memory system for a multi chip digital computer," correctly indicates that this patent is not a structural patent for the 4004 alone, but a bus-architecture patent for the MCS-4 family (4004 CPU / 4001 ROM / 4002 RAM / 4003 shift register)**, and to use it as a connection point to the bus designs of modern AI chips (Nvidia HBM3-CPU buses, PCIe Gen5, CXL 3.0).
+
+## Patent basics
+
+- **Patent number:** US3821715A
+- **Title:** Memory system for a multi chip digital computer
+- **Inventors:** Federico Faggin, Marcian E. Hoff Jr. ("Ted" Hoff), and Stanley Mazor (three co-inventors)
+- **Original Assignee:** Intel Corp (Intel Corporation, then headquartered in Santa Clara, California)
+- **Filing/Priority Date:** 1973-01-22
+- **Grant Date:** 1974-06-28
+- **Expiration:** 1991-06-28 (anticipated, lifetime expired)
+- **Status:** Expired – Lifetime
+
+DB match: "Intel Corporation; Marcian E. Hoff Jr. / Stanley Mazor / Federico Faggin; filed 1973, granted 1974"—**all fields match**. This is the **9th match** in the Day 8–16 streak of 19 corrections + 8 matches.
+
+## Claim 1 (verbatim from primary source)
+
+Verbatim Claim 1 retrieved from Google Patents:
+
+> A general purpose digital computer comprising; a central processor disposed on a first semiconductor chip; a plurality of bidirectional data bus lines; at least a separate first and second semiconductor memory chip each defining a memory and each including a chip decoding circuit for recognizing a different predetermined code on said bidirectional data bus lines and for activating a portion of said memory upon receipt of said predetermined code, said data bus lines interconnecting said processor and said first and second memory chips for communicating said different predetermined codes from said processor to at least one of said first and second memory chips and for communicating data signals for one of said first and second memory chips to said processor; whereby said processor may communicate signals to said first and second memory chips and said decoding circuits shall determine which memory is being addressed.
+
+**Two cores of Claim 1:**
+
+1. **Multi-chip configuration interconnecting a CPU and multiple memory chips via "bidirectional data bus lines":** the CPU is **separated onto its own chip** and connected to a group of memory chips via a bus—an entire architecture is being claimed.
+2. **Distributed addressing via chip decoding circuits:** each memory chip **self-decodes** the code on the bus and activates itself. The problem here overlaps with the modern PCIe / CXL Bus/Device/Function (BDF) scheme and HBM3 channel-selection logic.
+
+Abstract: "A general purpose digital computer which comprises a plurality of metal-oxide-semiconductor (MOS) chips. Random-access-memories (RAM) and read-only-memories (ROM) used as part of the computer are coupled to common bi-directional data buses to a central processing unit (CPU)."
+
+Key wording in the body: "single MOS chip" appears repeatedly with respect to the CPU. The product names "Busicom" and "4004" do **not** appear in the body.
+
+## Distance from the popular "single-chip CPU integration" shorthand
+
+Conventional accounts treat Intel 4004 as "the world's first microprocessor = the invention that integrated CPU functionality on a single chip." The factual statement is correct, but **it is not the same as the invention that Claim 1 of this patent directly covers**. Claim 1 says the CPU is "disposed" on a first semiconductor chip, but the core of Claim 1 is the **configuration of the multi-chip computer system itself: CPU + multiple memory chips + bidirectional bus + chip decoding**.
+
+In other words, this patent is:
+
+- **YES:** a configuration patent on the MCS-4 family as a whole (4004 / 4001 / 4002 / 4003 connected by a bus)
+- **NO:** a structural patent on the internal circuit, instruction decoder, or ALU design of the 4004 alone
+
+For the structural patent of the 4004 alone, **Faggin's silicon-gate MOS process patent US3597469A** (filed 1968 while at Fairchild) covers the physical substrate that made 4004 manufacturing possible, while internal Intel technical documents authored by Faggin and Hoff (primary sources not retrieved) document the 4004's internal logic. US3821715A is most accurately positioned as the **system patent of the MCS-4 family**.
+
+## Why Masatoshi Shima is absent
+
+**Masatoshi Shima** of Busicom Co., Ltd. (Nippon Calculating Machine Sales) was deeply involved in the logic design of the 4004. In 1969–1970 he brought the LSI specifications for the Busicom 142-PF calculator to Intel; on the Intel side, Hoff proposed an alternative four-chip configuration (a general-purpose 4-bit CPU + ROM + RAM + shift register) instead of the original 12-chip plan. Faggin joined Intel in April 1970 and led the physical implementation of the 4004; Shima collaborated on the logic design from the Busicom side.
+
+But **Shima is absent from the inventor field of this patent**. Possible reasons:
+
+- The contractual relationship between Busicom and Intel may have made it difficult to include Shima, who was a Busicom employee, on Intel-side patents (Busicom-Intel IP arrangements)
+- Because this patent covers the **bus architecture of the MCS-4 family rather than the 4004 alone**, Shima's contribution—concentrated in the 4004's internal logic—may not have overlapped directly with Claim 1's invention scope
+- That Faggin reunited with Shima at Zilog (founded 1974) on the Z80 suggests that Shima's contribution while at Intel was **culturally recognized in the industry** without being reflected in patent inventorship
+
+This is the same "**divergence between papers / textbooks / award coverage and patent inventorship**" phenomenon as in Day 11 propranolol (James Black absent), Day 12 sildenafil (multiple absentees), and Day 9 PCR (Mullis solo Nobel vs. six-inventor patent).
+
+## From the November 15, 1971 launch to the 1991 patent expiration—20 years
+
+- 1969–1970: Busicom 142-PF calculator LSI specification negotiations; Hoff proposes the 4-chip configuration
+- 1970-04: Faggin joins Intel; 4004 physical implementation begins
+- 1970-12: First lot of 4004 completed; shipped to Busicom
+- 1971-11-15: Intel 4004 enters general sale; Electronic News advertisement ("Announcing a new era in integrated electronics")
+- 1973-01-22: This patent (US3821715A) is filed
+- 1974-04: Intel 8080 launched (8-bit successor to the 4004; Faggin lead)
+- 1974-06-28: This patent is granted
+- 1974-11: Faggin leaves Intel and co-founds Zilog (Shima joins later)
+- 1976-07: Zilog Z80 launched
+- 1981-08: IBM PC launched (using the Intel 8088, effectively the start of the x86 lineage)
+- 1991-06-28: This patent expires
+- 2009-10: Hoff, Faggin, Mazor, and Shima awarded the National Medal of Technology
+
+During the 20-year patent term, Intel evolved from 4004 → 8080 → 8086 → 80286 → 80386 → 80486 → Pentium, and the MCS-4 lineage itself ended its commercial role in the 1980s (the microcomputer market split with Z80 and Motorola 6800 lineages). The historical significance of this patent is less commercial monopoly than **"the first patenting of a multi-chip computer bus architecture."**
+
+## Connection hypothesis with the present (inferred)
+
+| US3821715A (1973–1974) | Modern counterpart (2026) | Evaluation |
+|---|---|---|
+| Separate the CPU onto its own chip and connect it to memory chips via a bus | Nvidia H100 + HBM3 + NVLink configuration | Similar (the problem of connecting compute and memory chips via a bus is shared; bus protocols are different generations) |
+| Bidirectional data bus signaling | PCIe Gen5 / CXL 3.0 / NVLink 4.0 | Similar (the bidirectional-bus idea is shared; bandwidth and signaling differ by 4 orders of magnitude) |
+| Distributed addressing via chip decoding circuits | PCIe BDF addressing, HBM3 channel selection | Similar (self-decoding scheme is shared) |
+| The MCS-4 family (4004+4001+4002+4003) | Apple M3 SoC (CPU+GPU+NPU+memory integrated) | Metaphor (SoC integrates onto a single die—the opposite direction from the multi-chip configuration of this patent) |
+| Faggin's single-chip CPU integration | Cerebras WSE-3 (470,000 cores on a wafer-scale single chip) | Metaphor (the impulse to push integration to its limit is shared, but the scale and implementation differ by 4+ orders) |
+| Intel design history initiated by Busicom outsourcing | TSMC contracting AI chip manufacturing for Chinese EDA / US designers | Strained (calculator outsourcing and AI-chip foundry differ too much in scale and relationship) |
+
+The center of gravity: this patent should be read as the **problem-aware precursor of modern AI-chip buses (PCIe / CXL / NVLink)**, not simplified to "the ancestor of the Nvidia H100."
+
+## Unverified
+
+- Full specification body (only the Google Patents Abstract and Claim 1 retrieved; figures and detailed embodiments not read)
+- Intel-Busicom IP contract (the precise contractual basis for Shima's absence from the inventor field)
+- Full Claim 1 of Faggin's silicon-gate MOS process patent US3597469A (candidate for a future episode)
+- Original 1971-11-15 Electronic News advertisement (only secondary industry sources verified)
+- Internal logic block diagram of the 4004 vs. Claim 1 of this patent (further investigation required of the IFC documents held by the Computer History Museum)
+- Division of inventive contribution between Faggin and Hoff (where in "Hoff's 4-chip proposal" vs. "Faggin's physical implementation" Claim 1's invention crystallized—internal Intel technical documents not retrieved)
+
+## Next actions
+
+1. Treat **Faggin's silicon-gate MOS process patent US3597469A** as the subject of a separate episode (a Hardware-series follow-up candidate)
+2. Plan a cross-cutting article on **Intel 8080 / 8086 / x86 patents** as evolutions from the MCS-4 lineage
+3. Treat **Masatoshi Shima's Zilog Z80 design-period patents** (around 1976) as the subject of an "Intel-to-Zilog inventor-migration" axis episode
+4. Supplementary investigation of patents on the **other three MCS-4 family chips** (4001 ROM / 4002 RAM / 4003 shift register)
+5. This memo, alongside Day 17's Note ep64 (Goodenough Li-ion) and Memo ep66 (Dennard DRAM), forms the **computation** part of the "power, computation, memory" triplet
+
+---
+
+## References
+
+- US Patent US3821715A (Google Patents cover): https://patents.google.com/patent/US3821715A/en
+- US Patent US3597469A (Faggin silicon-gate MOS process, filed 1968): https://patents.google.com/patent/US3597469A
+- Intel Corporation official 4004 archive: https://www.intel.com/content/www/us/en/history/museum-story-of-intel-4004.html
+- Computer History Museum Intel 4004 oral history: https://computerhistory.org/collections/catalog/102702361
+
+---
+
+## Companion articles in the series
+
+- Episode 61 (HW #1): [1948 Bell Labs Bardeen-Brattain Point-Contact Transistor US2524035](/en/notes/61-hardware-energy-patent-01)
+- Episode 62 (HW Memo #1): [1959 TI Kilby Integrated Circuit US3138743](/en/notes/62-hardware-energy-patent-memo-01)
+- Episode 64 (HW #2, same Day 17): [1979 Goodenough Lithium-ion US4302518A](/en/notes/64-hardware-energy-patent-02)
+- Episode 66 (HW Memo #3, same Day 17): [1967 IBM Dennard DRAM US3387286A](/en/notes/66-hardware-energy-patent-memo-03)
+
+Day 17 forms a triplet of "**power (HW-004), computation (HW-007, this article), memory (HW-008)**"—the prehistory of the three pillars of modern AI infrastructure.

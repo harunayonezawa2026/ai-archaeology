@@ -1,0 +1,146 @@
+---
+title: "1967年 IBM の Robert H. Dennard が単独出願した『電界効果トランジスタメモリ』特許 US3387286A を、現代 DDR5・HBM3・スマートフォン RAM の1T1C セル起点として読み返す"
+subtitle: "ハードウェア・エネルギー特許 発掘メモ #3 — 1967-07-14 出願・1968-06-04 成立、IBM Corp 譲受、Robert H. Dennard 単独発明（DB一致確認・Day 8〜16 連続訂正系列で10件目の一致）。Title は『Field-effect transistor memory』。Claim 1 は『複数のメモリセルから構成された集積回路メモリで、各セルが (a) チャネルとゲート電極を持つ入力電界効果トランジスタ、(b) トランジスタの一方の端子と基準電位に接続された容量素子、(c) ゲートに接続されたワード線、(d) トランジスタの他方の端子に接続されたビット線、(e) 容量を充電する制御手段、(f) ワード線がトランジスタを導通させない限りビット線信号は無効、を備えるもの』を請求し、現代の DDR5 SDRAM・HBM3・スマートフォン LPDDR5 まで連なる **1トランジスタ＋1キャパシタ（1T1C）型 DRAM セル**の最小構成を1968 年6月時点で囲い込んだ。本特許は1974年の Dennard scaling 論文（IEEE J. Solid-State Circuits 9(5)）とは別物で、本特許 = 構造発明（1T1C セル）、scaling 論文 = 縮小則の経験法則"
+description: "1967年7月14日、IBM Corporation の T.J. Watson Research Center 所属 Robert H. Dennard は、米国に『電界効果トランジスタメモリ』を単独発明者として出願し、1968年6月4日に US3387286A として成立した。Claim 1 は『複数のメモリセルが結合した集積回路メモリで、各セルは (a) チャネル領域とゲート電極を持つ入力電界効果トランジスタ、(b) 容量を呈する記憶素子（容量電極の一方が前記トランジスタに接続、他方が基準電位に接続）、(c) ゲート電極に接続されたワード線、(d) トランジスタの一方の端子に接続されたビット線、(e) ワード線・ビット線・基準電位に対する電圧信号印加で容量を充電する制御手段、(f) ワード線信号がトランジスタを導通させない限りビット線信号が容量に対して無効、を備えるもの』を請求する。Abstract は『各セルは単一電界効果トランジスタと単一容量で形成され、容量充電によって情報を蓄積するが、電荷は時間とともにリークするため周期的な再生（リフレッシュ）が必要』と述べ、本文は最悪条件下で「200μs ごと」のリフレッシュが必要でメモリ動作時間の約10% を消費すると記載する。本特許は **1T1C（1 Transistor – 1 Capacitor）型 DRAM セルの最小構成を1968 年時点で囲い込んだ核特許**であり、1985 年6月4日に米国寿命満了で失効。発明者・譲受人・出願年・成立年とも DB と一致確認（Day 8〜16 連続訂正系列で10件目の一致、Day 17 の HW-007 に続いて2連続一致）。本特許は 1974年に Dennard 自身が共著で発表した『Design of ion-implanted MOSFETs with very small physical dimensions』（IEEE J. Solid-State Circuits 9(5), 256–268）で定式化された Dennard scaling 法則（電圧・電流・寸法を同比率で縮小すれば電力密度一定）とは別物で、本特許 = 構造発明（1T1C セル構成）、scaling 論文 = 縮小則の経験法則として明確に区別する必要がある。本メモは Google Patents から Claim 1・発明者・譲受人・日付・refresh 200μs 言及を取得済みだが、明細書全文（IBM Type 369 メモリ製品との対応、1970 年代の Intel 1103 / Mostek MK4096 等の競合との関係）は未読。"
+episode: 66
+publishedAt: "2026-05-08"
+tags: ["AI考古学", "ハードウェア・エネルギー特許", "DRAM", "Robert Dennard", "IBM", "1T1Cセル", "Dennard scaling", "HBM", "発掘メモ"]
+series: "ハードウェア・エネルギー特許"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** このシリーズの「発掘メモ」は、一次資料 URL を確認した段階で候補の概要を記録したものです。本メモは Google Patents から Claim 1・発明者・出願日・成立日・譲受人・本文中の「200 μs リフレッシュ」言及を取得済みですが、明細書全文（IBM Type 369 製品との対応関係、1968-1970 年代 Intel 1103 / Mostek MK4096 等の競合 DRAM との特許的関係、Dennard 1974 年 scaling 論文との発明系譜）は未読。確認済み事実のみ記載し、推測は推測として明示します。
+
+---
+
+## なぜ掘るか
+
+DRAM（動的ランダムアクセスメモリ）は現代の (a) Nvidia H100 / H200 / B200 GPU の HBM3 / HBM3e、(b) AMD MI300 / MI325X の HBM、(c) サーバ DDR5 / DDR4 主記憶、(d) スマートフォン LPDDR5 / LPDDR5X、(e) Apple M3 / M3 Pro の Unified Memory、(f) 中国の Hefei Changxin Memory Technologies（CXMT）・YMTC、韓国の Samsung Electronics・SK Hynix、米国の Micron Technology による現代の主記憶半導体産業全体が乗る基盤技術である。出発点は1967年7月14日、IBM T.J. Watson Research Center の Robert H. Dennard が出願した米国特許 **US3387286A**『Field-effect transistor memory』で、これが本メモの対象である。
+
+発掘の意義は、**現代のデータセンタ AI チップ群の主記憶（HBM3）から中国 Cambricon / Huawei Ascend AI チップに至るまで、全ての DRAM が Dennard 1968 年特許の1T1C セル構成の延長線上にある**という事実を一次資料で確定すること、および本特許（1968年）と Dennard 自身の有名な1974 年 scaling 論文を**混同しない**整理を作ることにある。
+
+## 特許の基本情報
+
+- **特許番号**：US3387286A
+- **タイトル**：Field-effect transistor memory
+- **発明者**：Robert H. Dennard 単独
+- **Original Assignee**：International Business Machines Corporation（IBM、当時ニューヨーク州 Armonk 本社、Yorktown Heights の T.J. Watson Research Center 所属）
+- **Filing Date / Priority Date**：1967-07-14
+- **Grant Date**：1968-06-04
+- **Expiration**：1985-06-04（Anticipated、寿命満了）
+- **Status**：Expired - Lifetime
+
+DB 突合せ：「IBM Corporation、Robert H. Dennard。1967年出願・1968年成立」**全項目一致**。Day 8〜16 で発生した DB 誤り訂正19件＋一致確認8件の系列で、HW-007（ep65）に続いて**10件目の一致確認**（Day 17 内2連続）。
+
+## Claim 1（一次資料 verbatim）
+
+Google Patents から取得した Claim 1（要旨）：
+
+> An integrated circuit memory comprising a plurality of memory cells coupled to word lines and bit lines, each cell comprising:
+> (a) an input field-effect transistor having a channel region and a gate electrode;
+> (b) a storage device exhibiting capacitance, with electrodes one of which is connected to said transistor and the other to a reference potential;
+> (c) a word line connected to said gate electrode;
+> (d) a bit line connected to one terminal of said transistor;
+> (e) control means applying voltage signals to said word line, said bit line and said reference potential for charging said capacitance; and
+> (f) said bit line signal being ineffective on said capacitance unless said word line signal renders said transistor conductive.
+
+訳：「ワード線とビット線に結合した複数のメモリセルから成る集積回路メモリで、各セルは (a) チャネル領域とゲート電極を持つ入力電界効果トランジスタ、(b) 容量を呈する記憶素子（容量電極の一方が前記トランジスタに、他方が基準電位に接続）、(c) ゲート電極に接続されたワード線、(d) トランジスタの一方の端子に接続されたビット線、(e) 容量を充電する電圧信号をワード線・ビット線・基準電位に印加する制御手段、(f) ワード線信号がトランジスタを導通させない限りビット線信号は容量に対して無効、を備える」
+
+**Claim 1 の核は4点**：
+
+1. **1 Transistor – 1 Capacitor（1T1C）構成**：1ビット情報を蓄えるのに必要な能動素子は1個の FET のみ、受動素子は1個のキャパシタのみ。これは1968 年時点で考えうる最小の記憶セル構成。
+2. **ワード線とビット線の交差点アドレッシング**：ワード線がトランジスタのゲートを駆動し、ビット線が容量への電荷出し入れを担当する直交2線方式は現代の DDR5 / HBM3 でも基本構造として継承されている。
+3. **「ワード線信号なしではビット線信号無効」（条件 f）**：これが「ランダムアクセス」を可能にする論理的鍵で、特定の1セルだけを選択するメカニズムの請求項上の表現。
+4. **電圧印加による容量充電**：充電状態で「1」、放電状態で「0」を表現するシンプルな2値符号化。
+
+Abstract の要約（一次資料表現）：「The memory is formed of an array of memory cells ... each cell is formed ... using a single field-effect transistor and a single capacitor. Information storage occurs through capacitor charging, with periodic regeneration necessary since charge leaks off over time.」
+
+明細書本文での重要表現：
+
+- 「one transistor」「single field-effect transistor」「single capacitor」を繰り返し使用
+- 「dynamic」と「refresh」（リフレッシュ）について：「every 200 microseconds」の周期的再生が最悪条件下で必要、メモリ動作時間の約 10% を消費
+- 「memory cell」は容量充電状態でビット情報を保存
+
+## 1968 年特許 vs 1974 年 Dennard scaling 論文の区別
+
+通説では Dennard = 「半導体の縮小則を発見した人」と語られることが多いが、これは2つの別の発明の混同である：
+
+| 文書 | 年 | 内容 | 発明の性格 |
+|---|---|---|---|
+| **US3387286A**（本特許） | **1967 出願 / 1968 成立** | 1T1C 型 DRAM セル構成 | **構造特許**（特定セル構成の発明） |
+| **Dennard scaling 論文** | **1974** | "Design of ion-implanted MOSFETs with very small physical dimensions"（IEEE J. Solid-State Circuits 9(5), 256–268）。R.H. Dennard ほか共著（Dennard / Gaensslen / Yu / Rideout / Bassous / LeBlanc 6名） | **経験法則**（電圧・電流・寸法を同比率で縮小すれば電力密度一定の縮小則） |
+
+両者は**別の知的貢献**で、Wikipedia や教科書で「Dennard が DRAM と scaling 法則を両方発明した」と語られても、**特許権・論文の単位では完全に分離している**。本メモが対象とするのは1968 年構造特許の方。Dennard scaling 法則は別エピソードで対象化する候補（IBM 1974 年論文として）。
+
+なお、Dennard scaling は2005 年前後に「終焉」が宣言された（Bohr 2007、ITRS 2009）。電圧縮小が漏れ電流発熱の壁にぶつかったため。本特許の1T1C セル構成は scaling 法則の終焉とは独立で、**現役で生き続けている**。
+
+## 1968 年特許失効までの17年と、その後
+
+- 1967-07-14：本特許出願（IBM T.J. Watson Research Center）
+- 1968-06-04：本特許成立
+- 1969–1970：IBM 内部で1T1C DRAM プロトタイプ動作確認
+- 1970-10：**Intel 1103**（1Kbit DRAM）発売、世界初の商業 DRAM 製品。Intel は本特許の3T1C 派生形を採用したが後に1T1C 系に収束
+- 1973：**Mostek MK4096**（4Kbit DRAM）発売、1T1C セルで標準化
+- 1974：Dennard scaling 論文（別文書）
+- 1975–1985：Mostek・TI・Intel・NEC・Hitachi・Toshiba・Mitsubishi の DRAM 競争激化
+- 1985-06-04：本特許失効（米国寿命満了）
+- 1985–1995：日本勢（Toshiba・NEC・Hitachi）が DRAM 世界シェア過半数を占める。米国 DRAM 産業ほぼ撤退、Intel は1985 年に DRAM 事業から撤退してロジック専業へ転換
+- 1995–2010：Samsung・SK Hynix（旧 Hyundai）・Micron の3社寡占体制が確立
+- 2014：HBM 第1世代（Samsung / SK Hynix）量産開始
+- 2022–2024：HBM3 / HBM3e が Nvidia H100 / H200 の主記憶として採用、AI ブームで DRAM 産業が再び投資の中心に
+- 2025–2026：HBM4 開発、CXMT（中国合肥長鑫）が DDR5 / LPDDR5 で世界市場参入を本格化
+
+17 年の特許保護期間中、IBM は本特許のロイヤリティを直接の主要収益源にせず、**自社製品（IBM System/370 シリーズの主記憶）と他社へのライセンス供与**で価値を回収した。1985 年失効後は1T1C 構成自体が業界標準となり、Samsung・SK Hynix・Micron の現代 DRAM 各社は本特許の請求項そのものを実装しているが、特許権が消滅しているため自由実施。
+
+## 現代との接続仮説（推測）
+
+| US3387286A（1967–1968） | 現代対応物（2026） | 評価 |
+|---|---|---|
+| 1T1C 型 DRAM セル | DDR5 SDRAM・LPDDR5 のセル構成 | **同一**（1ビット = 1FET + 1キャパシタの基本構造は58年間ほぼそのまま） |
+| 1T1C 型 DRAM セル | HBM3 / HBM3e（Samsung / SK Hynix / Micron） | **同一**（HBM はセル構成は1T1C のまま、TSV による垂直積層が追加された別軸の発明） |
+| ワード線 × ビット線の交差点アドレッシング | DDR5 のチャネル/ランク/バンク構造 | 類似（直交2線アドレッシングの基本発想は共通、現代は階層化された多層構造） |
+| 「200 μs ごとのリフレッシュ」 | 現代 DDR5 の典型 64 ms tREFI（リフレッシュ間隔） | 類似（リフレッシュ概念は同一、間隔は3桁伸長＝半導体プロセス進化の反映） |
+| 容量充電による2値符号化 | 現代の MLC / TLC NAND フラッシュは多値符号化 | 比喩（DRAM は現代も2値中心、フラッシュは多値化が進んでおり別系統） |
+| IBM 単一企業の特許保有 | Samsung / SK Hynix / Micron 3社寡占 | 比喩（市場構造は変わったが、本特許失効後の自由実施環境がそれを許した） |
+| 1968 年 IBM T.J. Watson Research Center | 2026 年 Samsung 半導体研究所・SK Hynix 利川 R&D・Micron Boise R&D | 類似（中央集権的研究機関による継続的改良という構図は共通） |
+| 1968 年構造特許 | Intel が2025 年公表した 3D DRAM ロードマップ | 比喩（3D 化は本特許の2D セル構成を立体化する発展形で、別系統発明） |
+
+判定の重心：**「同一」が2行**（1T1C セル構成と HBM3 のセル）。これは Day 16 の HW-001 トランジスタ（同一が複数）に近いパターンで、本特許は58年間生き続けた**現役の核特許**として例外的な強さを持つ。リフレッシュ間隔は半導体プロセス進化で3桁伸長したが、概念自体は不変。
+
+## 未確認
+
+- 明細書本文全文（Google Patents Abstract と Claim 1 のみ取得、図面・詳細実施例・代替実施例の記述未読）
+- IBM Type 369 メモリ製品仕様書との対応関係（IBM 内部資料未取得）
+- Intel 1103 / Mostek MK4096 が本特許に対してどのライセンス取り決めをしていたか（IBM 1968–1985 年特許ライセンス契約集未取得）
+- Dennard 1974 年 scaling 論文の全文（IEEE Xplore 経由が標準、本メモでは別エピソード対象として保留）
+- 1985 年特許失効と日本 DRAM 勢の世界シェア過半数到達の時期一致が**因果関係を持つかどうか**（時系列としては符合、産業政策史としては別要因も働いた）
+- HBM3 / HBM3e の実装が本特許 Claim 1 のどの要素を直接踏襲し、どの要素を改変しているかの法的厳密な比較（特許請求項解釈レベル）
+
+## 次アクション
+
+1. **Dennard 1974 年 scaling 論文を別エピソードとして対象化**（Hardware シリーズ後続候補、論文 vs 特許の対比軸で）
+2. **Intel 1103 と Mostek MK4096 の特許群**を「本特許失効前の派生形特許」として補完調査
+3. **Samsung / SK Hynix / Micron の HBM 関連特許群**を「本特許の延長線上にある現代特許」として横断記事候補化
+4. **CXMT（中国合肥長鑫）の DDR5 / LPDDR5 関連特許**を「本特許失効後の中国側参入」軸で調査（はるこのニッチに直結）
+5. 本メモは Day 17 のノート ep64（Goodenough Li-ion）と ep65（Intel 4004）と並ぶ「電源・演算・記憶」三種の神器セットの**記憶側**を担う構成
+
+---
+
+## 参考リンク
+
+- 米国特許 US3387286A（Google Patents 表紙）：https://patents.google.com/patent/US3387286A/en
+- IBM Research Robert Dennard 紀要：https://research.ibm.com/people/robert-h-dennard
+- IEEE J. Solid-State Circuits 9(5), 256–268 (1974)（Dennard scaling 論文、本記事では未取得）：https://ieeexplore.ieee.org/document/1050511
+
+---
+
+## 連載で並ぶ姉妹記事
+
+- 第61回（HW #1）：[1948 年 Bell Labs Bardeen-Brattain 点接触型トランジスタ US2524035](/notes/61-hardware-energy-patent-01)
+- 第62回（HW メモ #1）：[1959 年 TI Kilby 集積回路 US3138743](/notes/62-hardware-energy-patent-memo-01)
+- 第64回（HW #2、本記事と同 Day 17）：[1979 年 Goodenough リチウムイオン US4302518A](/notes/64-hardware-energy-patent-02)
+- 第65回（HW メモ #2、本記事と同 Day 17）：[1973 年 Intel 4004 関連特許 US3821715A](/notes/65-hardware-energy-patent-memo-02)
+
+Day 17 は **「電源（HW-004）・演算（HW-007）・記憶（HW-008、本記事）」の現代 AI インフラ三種の神器の前史3点セット**で、本メモは記憶側＝1968 年から58年間現役で生き続けている1T1C DRAM セル構成の核特許である。

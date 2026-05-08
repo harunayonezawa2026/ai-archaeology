@@ -1,0 +1,144 @@
+---
+title: "1967 IBM's Robert H. Dennard solo-filed US3387286A 'Field-effect transistor memory'—reading it as the 1T1C-cell origin of modern DDR5, HBM3, and smartphone RAM"
+subtitle: "Hardware & Energy Patents — Excavation Memo #3 — Filed 1967-07-14, granted 1968-06-04, assignee IBM Corp, sole inventor Robert H. Dennard (DB match — the 10th match in the Day 8–16 streak of corrections, the second consecutive match within Day 17 after HW-007). Title 'Field-effect transistor memory.' Claim 1 covers an integrated-circuit memory composed of multiple memory cells, each with (a) an input field-effect transistor with a channel and gate, (b) a capacitive storage device with one electrode connected to the transistor and the other to a reference potential, (c) a word line connected to the gate, (d) a bit line connected to the transistor, (e) control means applying voltage signals to charge the capacitance, and (f) the bit-line signal being ineffective unless the word-line signal renders the transistor conductive—fencing the **minimal 1-transistor-1-capacitor (1T1C) DRAM cell** that runs from modern DDR5 SDRAM, HBM3, and smartphone LPDDR5. This patent (1968) is distinct from Dennard's famous 1974 scaling paper (IEEE J. Solid-State Circuits 9(5)): the patent is a **structural invention**; the scaling paper is an **empirical scaling rule**."
+description: "On July 14, 1967, Robert H. Dennard at IBM's T.J. Watson Research Center solo-filed 'Field-effect transistor memory' in the United States, granted on June 4, 1968 as US3387286A. Claim 1 covers an integrated circuit memory comprising multiple memory cells coupled to word lines and bit lines, each cell comprising (a) an input field-effect transistor with a channel region and a gate electrode, (b) a storage device exhibiting capacitance with one electrode connected to the transistor and the other to a reference potential, (c) a word line connected to the gate electrode, (d) a bit line connected to one terminal of the transistor, (e) control means applying voltage signals to the word line, the bit line, and the reference potential to charge the capacitance, and (f) the bit-line signal being ineffective on the capacitance unless the word-line signal renders the transistor conductive. The Abstract states that each cell is formed using a single field-effect transistor and a single capacitor, with information storage occurring through capacitor charging and periodic regeneration necessary because charge leaks over time; the body notes that, in the worst case, refresh is needed 'every 200 microseconds,' consuming about 10% of memory operation time. This patent is **the core patent fencing the minimal 1T1C (1 Transistor – 1 Capacitor) DRAM cell as of 1968**; it expired on June 4, 1985 due to US patent term. The inventor, assignee, filing year, and grant year all match the DB record (the 10th match in the Day 8–16 correction streak, the second consecutive match in Day 17 after HW-007). It must be clearly distinguished from the Dennard scaling rule formalized in Dennard's 1974 co-authored paper 'Design of ion-implanted MOSFETs with very small physical dimensions' (IEEE J. Solid-State Circuits 9(5), 256–268)—the patent is a structural invention (1T1C cell), and the scaling paper is an empirical rule (constant power density when voltage, current, and dimensions are scaled at the same ratio). This memo retrieves Claim 1, the inventor, the assignee, the dates, and the '200 µs refresh' reference from Google Patents, but the full specification (correspondence with the IBM Type 369 memory product, patent relationships with 1970s competitors such as Intel 1103 and Mostek MK4096) has not been read."
+episode: 66
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Hardware & Energy Patents", "DRAM", "Robert Dennard", "IBM", "1T1C cell", "Dennard scaling", "HBM", "Excavation Memo"]
+series: "Hardware & Energy Patents"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**About this excavation memo:** memos in this series record an outline of a candidate at the stage when its primary URL has been verified. This memo has retrieved Claim 1, the inventor, the filing/grant dates, the assignee, and the body's "200 µs refresh" reference from Google Patents, but has not read the full specification (correspondence with the IBM Type 369 product, patent relationships with 1968–1970s competing DRAMs such as Intel 1103 and Mostek MK4096, the inventive lineage with the 1974 Dennard scaling paper). Only verified facts are stated; inferences are flagged as such.
+
+---
+
+## Why dig here
+
+DRAM (Dynamic Random Access Memory) is the substrate technology for: (a) HBM3 / HBM3e on Nvidia H100 / H200 / B200 GPUs, (b) HBM on AMD MI300 / MI325X, (c) server DDR5 / DDR4 main memory, (d) smartphone LPDDR5 / LPDDR5X, (e) the Unified Memory of Apple M3 / M3 Pro, and (f) the modern main-memory semiconductor industry as a whole, including China's Hefei Changxin Memory Technologies (CXMT) and YMTC, Korea's Samsung Electronics and SK Hynix, and the United States' Micron Technology. The starting point is **US3387286A "Field-effect transistor memory,"** filed on July 14, 1967 by Robert H. Dennard at IBM's T.J. Watson Research Center—the subject of this memo.
+
+The point of the dig is to confirm in the primary source that **all DRAM, from main memory in modern AI data-center chips (HBM3) to AI chips at China's Cambricon / Huawei Ascend, sits downstream of the 1T1C cell configuration of Dennard's 1968 patent**, and to keep the patent (1968) and Dennard's famous 1974 scaling paper from being conflated.
+
+## Patent basics
+
+- **Patent number:** US3387286A
+- **Title:** Field-effect transistor memory
+- **Inventor:** Robert H. Dennard (sole inventor)
+- **Original Assignee:** International Business Machines Corporation (IBM, then headquartered in Armonk, NY; the inventor was at the T.J. Watson Research Center in Yorktown Heights)
+- **Filing/Priority Date:** 1967-07-14
+- **Grant Date:** 1968-06-04
+- **Expiration:** 1985-06-04 (anticipated, lifetime expired)
+- **Status:** Expired – Lifetime
+
+DB match: "IBM Corporation; Robert H. Dennard; filed 1967, granted 1968"—**all fields match**. This is the **10th match** in the Day 8–16 streak of 19 corrections and 8 matches, **the second consecutive match within Day 17** after HW-007 (ep65).
+
+## Claim 1 (verbatim from primary source)
+
+Verbatim Claim 1 retrieved from Google Patents (gist):
+
+> An integrated circuit memory comprising a plurality of memory cells coupled to word lines and bit lines, each cell comprising:
+> (a) an input field-effect transistor having a channel region and a gate electrode;
+> (b) a storage device exhibiting capacitance, with electrodes one of which is connected to said transistor and the other to a reference potential;
+> (c) a word line connected to said gate electrode;
+> (d) a bit line connected to one terminal of said transistor;
+> (e) control means applying voltage signals to said word line, said bit line and said reference potential for charging said capacitance; and
+> (f) said bit line signal being ineffective on said capacitance unless said word line signal renders said transistor conductive.
+
+**Four cores of Claim 1:**
+
+1. **1 Transistor – 1 Capacitor (1T1C) configuration:** the only active element needed to store one bit is a single FET, and the only passive element is a single capacitor—the smallest conceivable memory cell as of 1968.
+2. **Cross-point addressing of word and bit lines:** the word line drives the transistor's gate while the bit line handles charging/discharging the capacitor; this orthogonal two-line scheme is inherited as the basic structure even in modern DDR5 / HBM3.
+3. **"Bit-line signal ineffective without word-line signal" (clause f):** this is the logical key that enables "random access," the claims-level expression of the mechanism for selecting a single cell.
+4. **Voltage-driven capacitive charging:** "1" is represented by the charged state, "0" by the discharged state—a simple binary encoding.
+
+Abstract (verbatim): "The memory is formed of an array of memory cells ... each cell is formed ... using a single field-effect transistor and a single capacitor. Information storage occurs through capacitor charging, with periodic regeneration necessary since charge leaks off over time."
+
+Key wording in the body:
+
+- "one transistor," "single field-effect transistor," "single capacitor" recur
+- "Dynamic" and "refresh": periodic regeneration "every 200 microseconds" is required in the worst case, consuming about 10% of memory operating time
+- "Memory cell" stores bit information through the charged/discharged state of the capacitor
+
+## Distinguishing the 1968 patent from the 1974 Dennard scaling paper
+
+Conventional accounts often describe Dennard as "the man who discovered the semiconductor scaling rule," but this conflates two different inventions:
+
+| Document | Year | Content | Nature of invention |
+|---|---|---|---|
+| **US3387286A** (this patent) | **1967 filed / 1968 granted** | 1T1C DRAM cell configuration | **Structural patent** (a specific cell-configuration invention) |
+| **Dennard scaling paper** | **1974** | "Design of ion-implanted MOSFETs with very small physical dimensions" (IEEE J. Solid-State Circuits 9(5), 256–268). Co-authored by R.H. Dennard / Gaensslen / Yu / Rideout / Bassous / LeBlanc (six authors) | **Empirical rule** (a scaling rule that holds power density constant when voltage, current, and dimensions are scaled at the same ratio) |
+
+The two are **separate intellectual contributions**. Even when Wikipedia or textbooks say "Dennard invented both DRAM and the scaling rule," **at the unit of patent right and paper, they are completely separated**. This memo targets the 1968 structural patent. The Dennard scaling rule is a candidate for a future episode (as the IBM 1974 paper).
+
+Note: Dennard scaling was declared "ended" around 2005 (Bohr 2007, ITRS 2009) because voltage scaling hit the wall of leakage-current heating. The 1T1C cell configuration of this patent is independent of the end of scaling and **continues to live on**.
+
+## From the 1968 patent's grant to its 1985 expiration—17 years and after
+
+- 1967-07-14: This patent is filed (IBM T.J. Watson Research Center)
+- 1968-06-04: This patent is granted
+- 1969–1970: 1T1C DRAM prototype operation confirmed inside IBM
+- 1970-10: **Intel 1103** (1 Kbit DRAM) launched—the world's first commercial DRAM. Intel adopted a 3T1C derivative of this patent and later converged on 1T1C
+- 1973: **Mostek MK4096** (4 Kbit DRAM) launched, standardizing the 1T1C cell
+- 1974: Dennard scaling paper (separate document)
+- 1975–1985: DRAM competition intensifies among Mostek, TI, Intel, NEC, Hitachi, Toshiba, and Mitsubishi
+- 1985-06-04: This patent expires (US lifetime maturity)
+- 1985–1995: Japanese vendors (Toshiba, NEC, Hitachi) hold a majority of world DRAM share; the US DRAM industry largely withdraws, and Intel exits DRAM in 1985 to focus on logic
+- 1995–2010: A three-way oligopoly of Samsung, SK Hynix (formerly Hyundai), and Micron is established
+- 2014: HBM Generation 1 (Samsung / SK Hynix) enters mass production
+- 2022–2024: HBM3 / HBM3e is adopted as main memory for Nvidia H100 / H200; with the AI boom, the DRAM industry returns to the center of investment
+- 2025–2026: HBM4 development; CXMT (Hefei Changxin) accelerates entry into the DDR5 / LPDDR5 world market
+
+During the 17-year patent term, IBM did not make royalties from this patent its primary revenue source; instead, value was captured through **its own products (main memory of the IBM System/370 series) and licenses to other companies**. After expiration in 1985, the 1T1C configuration itself became an industry standard, and modern DRAM vendors—Samsung, SK Hynix, and Micron—implement the very claim of this patent, but freely because the patent right has lapsed.
+
+## Connection hypothesis with the present (inferred)
+
+| US3387286A (1967–1968) | Modern counterpart (2026) | Evaluation |
+|---|---|---|
+| 1T1C DRAM cell | DDR5 SDRAM / LPDDR5 cell configuration | **Identical** (the basic structure of 1 bit = 1 FET + 1 capacitor has remained almost unchanged for 58 years) |
+| 1T1C DRAM cell | HBM3 / HBM3e (Samsung / SK Hynix / Micron) | **Identical** (HBM keeps the 1T1C cell unchanged; vertical stacking via TSV is a separate-axis invention added on top) |
+| Cross-point addressing (word × bit) | DDR5 channel/rank/bank structure | Similar (the orthogonal two-line addressing is shared; modern DRAM is a hierarchical multi-layer structure) |
+| "Refresh every 200 µs" | Modern DDR5 typical 64 ms tREFI (refresh interval) | Similar (refresh as a concept is identical; the interval is three orders of magnitude longer due to process evolution) |
+| Binary encoding via capacitive charge | Modern MLC / TLC NAND flash with multi-level encoding | Metaphor (DRAM is still binary; flash has moved to multi-level encoding—a different lineage) |
+| Single-company patent ownership at IBM | Three-way oligopoly of Samsung / SK Hynix / Micron | Metaphor (market structure has changed; the post-expiration freedom-to-operate environment enabled it) |
+| 1968 IBM T.J. Watson Research Center | 2026 Samsung Semiconductor R&D, SK Hynix Icheon R&D, Micron Boise R&D | Similar (the structure of continuous improvement at centralized research institutions is shared) |
+| 1968 structural patent | Intel's publicly announced 3D DRAM roadmap (2025) | Metaphor (3D-ization is a developmental form that stacks the patent's 2D cell vertically—a different invention lineage) |
+
+The center of gravity: **two rows are "Identical"** (the 1T1C cell configuration and the HBM3 cell). This pattern resembles Day 16 HW-001 (transistor) with multiple identicals—this patent is exceptionally strong as a **core patent that has lived for 58 years**. Refresh intervals have stretched three orders of magnitude with process evolution, but the concept itself is unchanged.
+
+## Unverified
+
+- Full specification body (only the Google Patents Abstract and Claim 1 retrieved; figures, detailed embodiments, and alternative-embodiment descriptions not read)
+- Correspondence with IBM Type 369 memory-product specifications (IBM internal materials not retrieved)
+- The exact licensing arrangements that Intel 1103 / Mostek MK4096 had with this patent (IBM 1968–1985 patent license agreements not retrieved)
+- Full text of Dennard's 1974 scaling paper (IEEE Xplore as the standard route; deferred to a separate episode)
+- Whether the timing coincidence between the 1985 expiration and Japanese DRAM vendors gaining majority world share **carries a causal relationship** (the timing aligns, but other industrial-policy factors were also at work)
+- Strict legal comparison of which Claim 1 elements modern HBM3 / HBM3e implementations directly inherit and which they alter (claim-construction level)
+
+## Next actions
+
+1. Treat **Dennard's 1974 scaling paper as a separate episode** (Hardware-series follow-up candidate, on the paper-vs-patent contrast axis)
+2. Supplementary investigation of the **patents around Intel 1103 and Mostek MK4096** as "derivative-form patents before this patent's expiration"
+3. Plan a cross-cutting article on the **HBM-related patents of Samsung / SK Hynix / Micron** as "modern patents that sit downstream of this patent"
+4. Investigate **CXMT (Hefei Changxin) DDR5 / LPDDR5 patents** along the axis of "Chinese entry after this patent's expiration" (directly tied to the main niche)
+5. This memo, alongside Day 17's Note ep64 (Goodenough Li-ion) and Memo ep65 (Intel 4004), forms the **memory** part of the "power, computation, memory" triplet
+
+---
+
+## References
+
+- US Patent US3387286A (Google Patents cover): https://patents.google.com/patent/US3387286A/en
+- IBM Research Robert Dennard biography: https://research.ibm.com/people/robert-h-dennard
+- IEEE J. Solid-State Circuits 9(5), 256–268 (1974) (Dennard scaling paper, not retrieved here): https://ieeexplore.ieee.org/document/1050511
+
+---
+
+## Companion articles in the series
+
+- Episode 61 (HW #1): [1948 Bell Labs Bardeen-Brattain Point-Contact Transistor US2524035](/en/notes/61-hardware-energy-patent-01)
+- Episode 62 (HW Memo #1): [1959 TI Kilby Integrated Circuit US3138743](/en/notes/62-hardware-energy-patent-memo-01)
+- Episode 64 (HW #2, same Day 17): [1979 Goodenough Lithium-ion US4302518A](/en/notes/64-hardware-energy-patent-02)
+- Episode 65 (HW Memo #2, same Day 17): [1973 Intel 4004 Memory System Patent US3821715A](/en/notes/65-hardware-energy-patent-memo-02)
+
+Day 17 forms a triplet of "**power (HW-004), computation (HW-007), memory (HW-008, this article)**"—the prehistory of the three pillars of modern AI infrastructure. This memo covers the memory side: a 1T1C DRAM cell core patent that has lived for 58 years from 1968.

@@ -1,0 +1,224 @@
+---
+title: "1979 Oxford professor John B. Goodenough and Koichi Mizuchima filed US4302518 for an electrochemical cell with new fast ion conductors—the LiCoO2 layered structure was claimed in Claim 1 as the material patent that underpins modern mobile Li-ion batteries; the Original Assignee was Individual, transferred to UKAEA in 1984, and Sony commercialized it in 1991 by combining it with Yoshino's graphite anode"
+subtitle: "Hardware & Energy Patents — Excavation Note #2 — US4302518A 'Electrochemical cell with new fast ion conductors,' co-invented by John B. Goodenough and Koichi Mizuchima, Original Assignee: Individual (later assigned to UKAEA → AEA Technology PLC → Ricardo AEA Ltd), UK priority 1979-04-05, US filing 1980-03-31, granted 1981-11-24, lifetime expired. Claim 1 covers an ion conductor of the formula AxMyO2 with α-NaCrO2 layered structure (A = Li, Na, K; M = transition metal; x < 1, y ≈ 1) whose A+ cation vacancies have been created by A+ cation extraction—thereby fencing the LiCoO2 layered cathode as a material patent. The parallel Mater. Res. Bull. 15(6) 1980 paper had four co-authors (Mizushima/Jones/Wiseman/Goodenough), but Jones and Wiseman are absent from the patent's inventor field, exposing a divergence between paper and patent."
+description: "On April 5, 1979, John B. Goodenough, professor at Oxford's Inorganic Chemistry Laboratory, filed a UK priority application for an electrochemical cell with new fast ion conductors together with Koichi Mizuchima (a visiting researcher from the University of Tokyo). The US continuation was filed on March 31, 1980 and granted on November 24, 1981 as US4302518A. Claim 1 covers an ion conductor of the formula AxMyO2 with α-NaCrO2 layered structure (A is Li, Na, or K; M is a transition metal; x < 1, y ≈ 1) whose A+ cation vacancies have been created by A+ cation extraction. This fences the LiCoO2 (lithium cobalt oxide) layered cathode as a material patent in the United States. The Original Assignee is 'Individual,' which was transferred to the United Kingdom Atomic Energy Authority (UKAEA) in 1984, then to AEA Technology PLC in 1997, and the current assignee is Ricardo AEA Ltd. The inventor field lists only Goodenough and Mizuchima; P.C. Jones and Philip J. Wiseman, who appear as co-authors on the parallel Mater. Res. Bull. 15(6), 783–789 (1980) paper, are absent from the patent's inventor field. Sony commercialized the world's first Li-ion battery in 1991 by combining Yoshino Akira's lithium-ion intercalation graphite anode (US4668595A, 1985 filing, Asahi Kasei) with Goodenough's LiCoO2 cathode, providing the material foundation for smartphones, laptops, data center UPS systems, and electric vehicles. The 2019 Nobel Prize in Chemistry was awarded jointly to Goodenough (age 97 at the time of the award, the oldest Nobel laureate in history), M. Stanley Whittingham (TiS2 system, Exxon), and Yoshino Akira (graphite anode, Asahi Kasei). This note examines (1) the correction of DB entries claiming 'Mizushima/Jones/Wiseman co-inventors' and 'University of Oxford assignee,' (2) the divergence between paper authors and patent inventors, (3) the meaning of the 1984 UKAEA transfer, (4) the material substrate of modern AI data centers, smartphones, and EVs, and (5) design divergence with LFP/NMC/all-solid-state systems."
+episode: 64
+publishedAt: "2026-05-08"
+tags: ["AI Archaeology", "Hardware & Energy Patents", "Lithium-ion Battery", "Goodenough", "LiCoO2", "Oxford University", "UKAEA", "Sony", "Yoshino Akira", "Excavation Note"]
+series: "Hardware & Energy Patents"
+seriesNumber: 3
+status: "published"
+---
+
+## Bottom line first
+
+On April 5, 1979, **John B. Goodenough**, professor at Oxford University's Inorganic Chemistry Laboratory, filed a UK priority application for an electrochemical cell with new fast ion conductors together with **Koichi Mizuchima** (Mizushima Koichi, a visiting researcher from the University of Tokyo). The US continuation was filed on March 31, 1980 and granted as **US4302518A on November 24, 1981**. Claim 1 covers an ion conductor of the formula AxMyO2 with the α-NaCrO2 layered structure (A is Li, Na, or K; M is a transition metal; x < 1, y ≈ 1) whose A+ cation vacancies have been created by A+ cation extraction. This **fences the LiCoO2 (lithium cobalt oxide) layered cathode as a material patent in the United States**.
+
+The patent's **Original Assignee is Individual**. It was transferred to the **United Kingdom Atomic Energy Authority (UKAEA)** in 1984, to AEA Technology PLC in 1997, and the current assignee is Ricardo AEA Ltd. The inventor field lists only **Goodenough and Mizuchima (two names)**; **P.C. Jones and Philip J. Wiseman**, who appear as co-authors on the parallel four-author Mater. Res. Bull. 15(6), 783–789 (1980) paper, are **absent from the patent's inventor field**—a divergence between paper authors and patent inventors.
+
+Sony commercialized the world's first Li-ion battery in 1991 by combining Yoshino Akira's lithium-ion intercalation graphite anode (US4668595A, filed 1985, Asahi Kasei) with Goodenough's LiCoO2 cathode. This became the material foundation for the power systems of smartphones, laptops, data-center UPS units, and electric vehicles. The 2019 Nobel Prize in Chemistry was awarded jointly to **Goodenough (age 97 at the time of the award, the oldest Nobel laureate in history)**, M. Stanley Whittingham (TiS2 system, Exxon), and Yoshino Akira (graphite anode, Asahi Kasei).
+
+As Excavation Note #2 of the Week 4 "Hardware & Energy Patents" sub-series, this article re-reads this 46-year-old patent document as the **material substrate** of Nvidia DGX-class AI data center UPS batteries, smartphone Li-ion cells, and the power sources of Tesla / BYD / Chinese EV manufacturers.
+
+## 1. How the topic was selected (a reproducible pipeline)
+
+```
+[STEP 1] From the HW section of candidates.tsv, extract the highest-priority
+         (16) unimplemented candidates → HW-004 Lithium-ion battery patent
+         (Goodenough) is the most appropriate Hardware Note #2 for Week 4.
+[STEP 2] Verify the DB-registered URL
+         (https://patents.google.com/patent/US4302518).
+[STEP 3] Use WebFetch on Google Patents to retrieve Claim 1, inventors,
+         assignee, dates, and references to LiCoO2 / layered structure /
+         intercalation in the specification.
+[STEP 4] Reconcile the DB entry "Mizushima, P.C. Jones, Philip J. Wiseman
+         co-inventors / University of Oxford assignee" with the primary
+         source → two inventors only (Goodenough + Mizuchima; Jones and
+         Wiseman absent), Original Assignee Individual (not Oxford) =
+         two DB corrections (continuation of the Day 8–16 streak).
+[STEP 5] Trace the assignment history: Individual → UKAEA (1984)
+         → AEA Technology PLC (1997) → Ricardo AEA Ltd (current).
+[STEP 6] Verify peripheral facts: the four-author 1980 Mater. Res. Bull.
+         paper, Sony's 1991 commercialization, integration with Yoshino's
+         US4668595A graphite-anode patent, and the 2019 three-way Nobel
+         Chemistry Prize.
+[STEP 7] Connect to the modern niche: confirm that data-center UPS,
+         smartphone, and EV power systems all sit downstream of this
+         patent by cross-referencing the cathode materials currently
+         used by Tesla (NCA/LFP), BYD (LFP), and Samsung SDI (NMC).
+```
+
+Reasons for selection: (a) symbolic value as Hardware Note #2 for Week 4, (b) the 2019 Nobel Chemistry Prize "oldest laureate" event, (c) the paper-vs-patent inventor divergence (same pattern as Days 11/12), (d) the "Original Assignee Individual → UKAEA transfer" history that captures the privatization-era British research apparatus, (e) we can read the modern foundation of the main niche (Chinese AI × Korean/Taiwanese semiconductor × robotics) in one session, and (f) Day 16 ep61 covered "computation" (transistor), this article covers "power" (battery), and the upcoming ep66 covers "memory" (DRAM)—forming a **Week 4 hardware prehistory triplet**.
+
+## 2. Claim 1 and the core of the specification
+
+Claim 1 retrieved from Google Patents (verbatim):
+
+> An ion conductor, of the formula AxMyO2 and having the layers of the α-NaCrO2 structure, in which formula A is Li, Na or K; M is a transition metal; x is less than 1 and y is approximately equal to 1, the A+ cation vacancies in the ion conductor having been created by A+ cation extraction.
+
+Five points stand out:
+
+1. **The material definition is the general formula AxMyO2**, with LiCoO2 as the most important embodiment. Claim 1 itself opens up A to all three alkali metals (Li / Na / K) and M to all transition metals, attempting to claim the parent set of the later LiNiO2, LiMnO2, and LiFePO4 (which Goodenough himself patented in 1996 as US5910382A) families.
+2. **The layered structure is restricted to the α-NaCrO2 type.** This crystallographic structure was already known in 1957; Goodenough's invention lies in transferring it to Li-based cathode materials.
+3. **The phrasing "A+ cation vacancies … created by A+ cation extraction"** is original because it writes a process into the claim—**electrochemically extracting Li from a finished crystal**. Conventional cathodes (such as MnO2) are synthesized in the reduced state and cycled, but this patent contemplates synthesizing LiCoO2 in an oxidized state that is not fully charged and creating cation vacancies electrochemically.
+4. **Abstract:** "open-circuit voltages of compounds of the formula LixCoyO2 ... have been measured with respect to a Li counter electrode and found to be **nearly twice as large as those found for the known ion conductor LiaTiS2**"—stating an energy-density factor of two over Whittingham's (Exxon, 1976) TiS2 system.
+5. **Layered structure + intercalation mechanism:** the body of the specification uses both `α-NaCrO2 structure` and `intercalation`, presenting the prototype of the modern textbook account in which Li reversibly enters and leaves octahedral sites between oxygen and Co layers to produce the cell potential.
+
+A pitfall (anti-Codex): this patent **does not invent LiCoO2 as a single compound**. LiCoO2 itself was already known around 1956. Goodenough's contribution lies in (i) the idea of using it as a 4 V-class cathode, (ii) the use of the partially-occupied phase obtained by electrochemical Li extraction, and (iii) the rationalization of ion conductivity via the α-NaCrO2 layered structure. Rather than a pure material patent, it is more accurate to read it as **an electrochemical-cell patent that encompasses use and process**.
+
+## 3. Inventors and the assignment history—paper-vs-patent divergence and the meaning of the UKAEA transfer
+
+### Paper-vs-patent inventor divergence
+
+The number of inventors differs between the parallel 1980 paper and the patent:
+
+| Document | Inventors / Authors | Number |
+|---|---|---|
+| Mater. Res. Bull. 15(6), 783–789 (June 1980) | K. Mizushima, P.C. Jones, P.J. Wiseman, J.B. Goodenough | **4 co-authors** |
+| US4302518A (US patent) | John B. Goodenough, Koichi Mizuchima | **2 co-inventors** |
+
+P.C. Jones and Philip J. Wiseman were doctoral students or postdocs at the Oxford Inorganic Chemistry Laboratory at the time and contributed to the paper through experimental work and X-ray diffraction measurements, but **they are absent from the patent's inventor field**. This is the same "**paper-vs-patent name divergence**" phenomenon as in Day 11 propranolol (where James Black is the central figure in papers and textbooks but is absent from the patent's inventor field), Day 12 sildenafil (only Bell/Brown/Terrett, with other Pfizer researchers absent), and Day 9 PCR (Mullis won the Nobel solo while the patent has six co-inventors).
+
+Plausible reasons for the divergence: (a) a time lag between the patent priority date (1979-04-05) and the paper acceptance date (1980), with attribution judgments on the core idea that supports the claims being stricter than for academic contribution; (b) Oxford-side researcher contracts may have limited the range of those who could become co-inventors at the doctoral stage; and (c) Goodenough may have conceived the core idea ("use LiCoO2 as a 4 V-class cathode") on his own, with Mizuchima taking charge of implementation and Jones/Wiseman in supporting roles—a division of labor reflected in the patent.
+
+### The meaning of "Original Assignee = Individual"
+
+The DB entry "University of Oxford assignee" is incorrect; the actual **Original Assignee is Individual**. This reflects the intellectual-property regulations of British universities in 1979–1980. Before the US Bayh-Dole Act (December 12, 1980), British universities often did **not automatically transfer faculty inventions to the university**, leaving them attached to the inventors. Oxford had not established a university technology-transfer office such as Isis Innovation (now Oxford University Innovation) until the late 1980s, so for a prominent professor like Goodenough, filing in his own name was standard practice.
+
+### The 1984 UKAEA transfer
+
+| Year | Assignee | Background |
+|---|---|---|
+| 1981–1984 | Individual (Goodenough + Mizuchima) | Personal ownership |
+| 1984 | **United Kingdom Atomic Energy Authority (UKAEA)** | UK Atomic Energy Authority, operator of Harwell Laboratory; led British battery research in the 1980s |
+| 1997 | AEA Technology PLC | Privatization of UKAEA's commercial division (1996 Atomic Energy Authority Act) and IPO |
+| Current | Ricardo AEA Ltd | Ricardo plc (a British engineering consultancy) acquired AEA Technology's environmental division in 2012, and the patent was transferred along with it |
+
+Goodenough was a professor at Oxford from 1976 and **moved to the University of Texas at Austin in 1984**. The UKAEA transfer (1984) coincides with this move, and the inferred intent was to consolidate British research legacy at a national research institution (primary source not verified). Goodenough later recalled in some reports, "Oxford told me they couldn't make a penny from my invention" (source: Daily Telegraph 2017 interview, not retrieved for this article), which also hints at the background of the UKAEA transfer.
+
+The royalty flow at commercialization (inference): when Sony commercialized Li-ion cells in 1991, royalties on the LiCoO2 cathode patent likely flowed to the UKAEA / AEA Technology side. From the British state's perspective this was easier to monetize than retaining Goodenough's personal ownership, but it is also the basis for the anecdote that almost no royalties reached Goodenough himself.
+
+## 4. The 12 years to Sony's 1991 commercialization—the link with Yoshino's anode
+
+| Year | Event | Primary source |
+|---|---|---|
+| 1976 | M. Stanley Whittingham (Exxon) publishes TiS2 as a Li-intercalation cathode | Science 192, 1126 (1976) |
+| 1979-04-05 | Goodenough/Mizuchima file UK priority (later US4302518A) | UK priority |
+| 1980-06 | Mizushima/Jones/Wiseman/Goodenough publish the LiCoO2 paper | Mater. Res. Bull. 15(6) |
+| 1981-11-24 | US4302518A granted | US Patent Office |
+| 1985-05-10 | Yoshino Akira (Asahi Kasei) files for a lithium-ion intercalation graphite anode | US4668595A (granted 1987) |
+| 1991-06 | **Sony releases the world's first commercial Li-ion battery (for CCD camcorders)** | Sony official IR |
+| 1995–2000 | Toshiba, Sanyo, LG, and Samsung SDI enter Li-ion cell manufacturing | Each company's IR |
+| 1996 | Goodenough files the LiFePO4 (LFP system) patent US5910382A | UT Austin |
+| 2008–2010 | Tesla Roadster adopts Panasonic 18650 cells; EV adoption begins | Tesla official |
+| 2019-10-09 | Nobel Chemistry Prize jointly awarded to Goodenough, Whittingham, and Yoshino | Royal Swedish Academy of Sciences |
+
+**Why the 12-year delay:** the 12-year gap between the Goodenough LiCoO2 cathode patent (granted 1981) and Sony's commercialization (1991) is because **a breakthrough in the anode material was needed**. Whittingham-style Li-metal anodes had safety issues (dendritic short-circuits) that made commercialization difficult. Goodenough solved only the cathode side. In 1985, Yoshino Akira at Asahi Kasei invented a **polyacene (later graphite) lithium-ion intercalation anode** (US4668595A), which Sony licensed and combined with the Goodenough cathode to finally arrive at a 4 V-class full cell.
+
+## 5. Why the resemblance feels uncanny (correspondence with the present)
+
+Each row carries a four-level evaluation (identical / similar / metaphor / strained), as required by `episode-writing.md`:
+
+| US4302518A (1979–1981) | Modern counterpart (2026) | Evaluation | Anticipated specialist objection |
+|---|---|---|---|
+| LiCoO2 layered cathode | Modern smartphone / laptop Li-ion cell cathode | **Identical** | "Modern mobile-device LiCoO2 has evolved in cobalt purity, particle size, and coatings; it is not literally the LiCoO2 of this patent." |
+| LiCoO2 layered cathode | Modern EV NMC (Li(Ni,Mn,Co)O2) cathode | Similar | "NMC partially substitutes Co with Ni/Mn—a different lineage that inherits the α-NaCrO2 framework but has a different composition." |
+| LiCoO2 layered cathode | LFP (LiFePO4) cathode | Similar | "LFP has the olivine structure, not α-NaCrO2; it belongs to Goodenough's separate 1996 patent US5910382A." |
+| Electrochemical Li extraction → partial occupancy | All-solid-state batteries (Toyota / Samsung SDI / China CATL) cathode behavior | Similar | "All-solid-state inventions center on the solid electrolyte; the cathode often follows LiCoO2 / NCA. This patent presupposes a liquid system." |
+| Goodenough's "nearly twice as large" (vs TiS2) | Modern EV energy-density race (NCA 250 Wh/kg vs LFP 160 Wh/kg) | Similar | "Modern EV competition is multidimensional (safety, lifetime, cost, critical-mineral dependence); a simple energy-density doubling does not capture it." |
+| 1984 UKAEA transfer | Modern centralized university tech-transfer offices (e.g., Oxford University Innovation) | Metaphor | "UKAEA is a government agency, different from a university TLO. The analogy holds only as a metaphor of transfer pathways." |
+| Sony 1991 CCD camcorder commercialization | Tesla / BYD / Apple Watch / iPhone Li-ion cells | Metaphor | "Cell form factors (cylindrical, prismatic, pouch) and use-case-specific optimizations differ; 1991 cells are not the same product." |
+| Goodenough's solo conception (Mizuchima's implementation) | Modern AI chip lead researchers (e.g., Nvidia Jensen Huang's architecture decisions) | Strained | "Electrochemists and AI chip designers occupy completely different problem domains; this is too forced." |
+
+Reading the table: **only one row is "Identical."** The crystal structure of LiCoO2 itself is used almost as-is in modern smartphones and laptops. Cathode materials for EVs and all-solid-state cells inherit the layered-oxide lineage but diverge in composition and structure, hence "Similar." Keeping the number of "metaphor" and "strained" rows low avoids the Codex-pattern critique that overusing "direct ancestor" or "completely identical" raises the evidentiary bar to the breaking point.
+
+## 6. Why it was forgotten (inferred)
+
+Goodenough US4302518A became widely known with the 2019 Nobel Chemistry Prize coverage, but for nearly 40 years before that it was a "foundational patent known only to battery researchers." Reasons:
+
+1. **Yoshino's anode patent US4668595A is more directly tied to commercialization.** Once the anode side was completed in 1985, industry attention shifted to "complete cells deliverable to Sony," and the Goodenough cathode patent became an implicit precondition.
+2. **It is closer to a process/configuration patent than a pure material patent.** Claim 1 is "a layered Li-bearing transition-metal oxide with the α-NaCrO2 structure from which Li has been electrochemically extracted"—a structure + process combination, **not a material patent on LiCoO2 alone**. This makes it harder to cite as "the patent that invented LiCoO2," and textbooks more often cite the paper (Mater. Res. Bull. 1980).
+3. **Goodenough's move to UT Austin and the UKAEA transfer scattered visibility.** With the inventor moving to the US in 1984 and patent rights remaining with a British institution, the **geographical separation** made it harder for media to organize "which country's invention this is" (a US-citizen inventor with a UK priority filing, a US patent, and a UK-institution assignee).
+4. **By the time of Sony's 1991 commercialization, the patent had been public for 11 years and was not at the center of patent disputes.** Sony's Li-ion business mainly clashed over the anode side (Yoshino) and electrolytes, leaving the Goodenough cathode patent off the front pages.
+
+## 7. The AI archaeology meaning
+
+- **Material substrate of AI data center power.** The UPS batteries of Nvidia DGX H100-class AI servers are Li-ion based; the combination of this patent and Yoshino's patent **prepared commoditization 46 years ago**. The generative-AI electricity boom (IEA 2024 report; world AI electricity demand on track for 1,000 TWh by 2030) cannot exist without this patent's material substrate.
+- **Material substrate of mobile devices.** iPhone, Galaxy, Xiaomi, and Huawei smartphone Li-ion cells still use LiCoO2 cathodes. The very claims of this patent support the power side of the 2026 Chinese / Korean / Taiwanese semiconductor packaging on Apple Watch, Galaxy Watch, and Xiaomi bands.
+- **Power source for EVs and robotics.** Tesla (NCA/LFP), BYD (LFP-led), and humanoids/cars from Unitree / 1X / Figure / Tesla Optimus / Xiaomi SU7 are all in the Li-ion lineage. LFP is from Goodenough's separate 1996 patent line, but the very idea of "electrochemical reversibility via the α-NaCrO2 framework" sits downstream of this patent.
+- **A research method built on paper-vs-patent name divergence.** As in Days 11/12/9, by excavating the discrepancy between names in textbooks/award reports and names on patents, we can reconstruct the history of intellectual-property attribution. This is especially important in the AI era, since LLM-generated technology-history summaries tend to settle on paper-side names; patent-side correction is the counterweight.
+- **National research institutions vs individual inventors.** The UKAEA transfer reflects pre-Bayh-Dole British IP practice. As national research-IP policies are being redesigned in the AI era (China's 2015 Law on Promoting the Transformation of Scientific and Technological Achievements, EU Horizon Europe 2021–2027, etc.), it is a useful test case for asking **whether a path like Goodenough's individual-inventor pathway is reproducible today**.
+
+## 8. Pitfalls (specific to Hardware Archaeology)
+
+1. **Do not simplify this as "the patent that invented LiCoO2."** LiCoO2 itself was known before this patent. The invention here is (a) its use as a 4 V-class cathode, (b) the use of the partially-occupied phase via electrochemical Li extraction, and (c) the rationalization of ion conductivity via the α-NaCrO2 layered structure—**use + process + structural identification**, not material discovery.
+2. **Do not substitute the patent's inventor field with the paper's author list.** The 1980 Mater. Res. Bull. paper has four co-authors; the patent has only two. Reports and Wikipedia often conflate them, so when citing by patent number, treat the Google Patents inventor field as the primary source.
+3. **Do not conflate Original and Current Assignee.** Original = Individual; Current = Ricardo AEA Ltd, with UKAEA / AEA Technology PLC in between. Textbooks sometimes write "Oxford University patent," which is **incorrect**.
+4. **Sony's commercialization did not stand on the LiCoO2 cathode alone.** Goodenough's cathode alone did not produce a commercial cell; Yoshino's graphite anode (US4668595A) and Sony's electrolyte design were both required. The sentence "Goodenough invented the lithium-ion battery" should be qualified as "one of three components of the 1991 commercialization."
+5. **Mind the gap between the 2019 Nobel award and the patent's expiration.** The patent was granted in 1981, and under US patent term rules (the longer of 17 years from grant or 20 years from filing) it expired around 2000. By the time of the 2019 Nobel award, **the patent had been expired for 19 years**, and royalty flows to Goodenough or AEA Technology were already closed.
+6. **Modern mainstream EV LFP/NMC are downstream of this patent but not its direct commercial implementation.** Tesla/BYD/CATL LFP belongs to Goodenough's 1996 patent line; Samsung SDI/LG Energy Solution NMC belongs to improvement lineages from the 1990s onward. Claim 1 of this patent directly covers **layered-oxide cathodes** like LiCoO2/LiNiO2/LiMnO2; olivine LFP is a different structure.
+
+## Strictly speaking
+
+The five items required by `episode-writing.md`:
+
+**1. Confirmed facts (retrieved from primary sources)**
+
+- Patent number US4302518A, title "Electrochemical cell with new fast ion conductors" (Google Patents, retrieved 2026-05-08)
+- Inventors: John B. Goodenough, Koichi Mizuchima (cover page of Google Patents; "Mizuchima" is the OCR-style spelling, with the standard romanization being "Mizushima" = 水島公一)
+- Original Assignee: Individual
+- Assignment history: Individual → United Kingdom Atomic Energy Authority (1984) → AEA Technology PLC (1997) → Ricardo AEA Ltd (current)
+- Priority Date: 1979-04-05 (UK priority); Filing Date: 1980-03-31 (US); Grant Date: 1981-11-24; Status: Expired – Lifetime
+- Claim 1 (verbatim, in §2)
+- Abstract claims roughly twice the open-circuit voltage compared with TiS2 systems
+
+**2. Author's interpretation**
+
+- The statement that "Goodenough's core contribution is the idea of using LiCoO2 as a 4 V-class cathode" combines the TiS2-comparison language in the Abstract with the 1980 paper; Claim 1 itself does not state a voltage level
+- The statement that "the paper-vs-patent inventor divergence reflects internal division of labor" is inferred; primary sources for Oxford researcher contracts have not been retrieved
+- The chronological observation that "the UKAEA transfer coincides with Goodenough's move to UT Austin" is fact, but the **causal connection is inferred**
+
+**3. Metaphor / analogy**
+
+- Comparing "Goodenough's solo conception (Mizuchima's implementation)" with "Nvidia lead researchers' architecture decisions" (judged "strained" in §5 last row)
+- Comparing "1984 UKAEA transfer" with "modern university tech-transfer offices" (judged "metaphor" in §5)
+- Comparing "1991 Sony cells" with "modern Apple Watch / Tesla cells" (judged "metaphor" in §5)
+
+**4. Unverified**
+
+- Body of Mater. Res. Bull. 15(6), 783–789 (1980) (only the title and author list verified; main text not retrieved)
+- 1984 UKAEA transfer agreement (primary source not retrieved)
+- Goodenough's "Oxford couldn't make a penny" remark in the 2017 Daily Telegraph interview (only secondary industry coverage verified)
+- Royalty payee on Sony's 1991 commercial sales (inference only)
+- Full Claim 1 of Yoshino's US4668595A graphite anode patent (deferred to a future episode)
+- Pre-existing literature reports of LiCoO2 before this patent (the "known compound around 1956" statement is via secondary sources; the primary Goodenough review has not been traced)
+
+**5. Where this comparison breaks**
+
+- Claim 1 of this patent claims AxMyO2 as a general formula; modern EV LFP (LiFePO4) is **not within this formula** (Fe is a transition metal, but LiFePO4 has the olivine structure, not α-NaCrO2)
+- NMC (Li(Ni,Mn,Co)O2) treats M as a solid solution of transition metals; how broadly to read "M is a transition metal" in Claim 1 is a litigation-level question, and one cannot simply assert that "this patent covers" NMC
+- The statement that royalties from Sony's 1991 commercial cells barely flowed to Goodenough is an interpretation based on secondary industry coverage (e.g., a 2017 New Yorker article), not on AEA Technology's annual report
+- The statement that CATL/BYD's LFP cells belong to Goodenough's separate 1996 patent US5910382A reflects industry common knowledge rather than an exhaustive review of CATL's patent portfolio
+- The statement that "modern smartphone Li-ion cells still use LiCoO2 cathodes" reflects 2024 mainstream practice; Apple has announced a roadmap toward stepping, cobalt reduction, and alternative cathode systems from 2025 onward, so the duration of this "still in service" judgment is short
+
+---
+
+## References
+
+- US Patent US4302518A (Google Patents cover): https://patents.google.com/patent/US4302518
+- US Patent US5910382A (Goodenough LFP patent, 1996): https://patents.google.com/patent/US5910382
+- US Patent US4668595A (Yoshino graphite anode patent, 1985): https://patents.google.com/patent/US4668595
+- 2019 Nobel Prize in Chemistry official announcement: https://www.nobelprize.org/prizes/chemistry/2019/summary/
+- Mater. Res. Bull. 15(6), 783–789 (1980) (main text not retrieved; cited only)
+
+---
+
+## Companion articles in the series
+
+- Episode 61 (HW #1): [1948 Bell Labs Bardeen-Brattain Point-Contact Transistor US2524035](/en/notes/61-hardware-energy-patent-01)
+- Episode 62 (HW Memo #1): [1959 TI Kilby Integrated Circuit US3138743](/en/notes/62-hardware-energy-patent-memo-01)
+- Episode 63 (CS Memo #1): [1969 J&J Kligman Tretinoin US3729568](/en/notes/63-cosmetic-patent-memo-01)
+- Episode 65 (HW Memo #2, same Day 17): [1973 Intel 4004 Memory System Patent US3821715A](/en/notes/65-hardware-energy-patent-memo-02)
+- Episode 66 (HW Memo #3, same Day 17): [1967 IBM Dennard DRAM US3387286A](/en/notes/66-hardware-energy-patent-memo-03)
+
+Day 17 forms a triplet of "**power (HW-004 Li-ion), computation (HW-007 Intel 4004), memory (HW-008 Dennard DRAM)**"—the prehistory of the three pillars of modern AI infrastructure.
