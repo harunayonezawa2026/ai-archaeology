@@ -27,6 +27,7 @@ export type NoteMeta = {
 export type Note = NoteMeta & { content: string };
 
 function readNote(slug: string, locale: Locale): Note | null {
+  if (slug.startsWith("_")) return null;
   const filePath = path.join(dirFor(locale), `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf-8");
