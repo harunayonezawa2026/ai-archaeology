@@ -1,0 +1,140 @@
+---
+title: "1973 November David E. Bell and Leonard J. LaPadula at MITRE Corporation co-authored 'Secure Computer Systems: Mathematical Foundations' MITRE Technical Report 2547 / ESD-TR-73-278 (DTIC AD-770768) — government-mandated publication under USAF Electronic Systems Division contract, no patent record. SW subseries DB form: eligibility wall (c) government-contract publication mandate, second instance (following Day 25 ep89 SW-003 BBN IMP, the same form's second instance, Cage Patents axis SW 'policy-model cage absence' form)"
+subtitle: "Software & UI Patents — Excavation Memo #7 — Development began in summer 1972 under USAF Electronic Systems Division contract by David E. Bell and Leonard J. LaPadula at MITRE; published as MITRE Technical Report 2547 Volume I in November 1973; DTIC Accession Number AD-770768; Air Force Report Number ESD-TR-73-278 (**government release**). The Bell-LaPadula model (BLP) is **the first mathematical formalization of multi-level security**, with two core axioms — no read up (Simple Security Property) and no write down (Star Property) — combining Mandatory Access Control (MAC) and Discretionary Access Control (DAC). Origin of SELinux Type Enforcement, MILS MLS, Solaris Trusted Extensions, MITRE / SCC (Secure Computing Corporation) LOCK/ix, and Honeywell SCOMP. The second instance of 'eligibility wall (c) government-contract publication form' alongside Day 25 ep89 SW-003 BBN IMP (ARPA contract → Internet STD 39)"
+description: "Day 28 / Cage Patents axis SW Open memo. In summer 1972, under contract from the United States Air Force Electronic Systems Division (USAF ESD, located at Hanscom Air Force Base), David Elliott Bell (then 27) and Leonard J. LaPadula at MITRE Corporation began the mathematical formalization of multi-level security for military use. In November 1973, it was released as MITRE Technical Report 2547 Volume I 'Secure Computer Systems: Mathematical Foundations,' with DTIC Accession Number AD-770768 and Air Force Report Number ESD-TR-73-278 for permanent archival. The Bell-LaPadula model (BLP) centers on three axioms: (1) Simple Security Property 'no read up' (a high-confidentiality object cannot be read by a low-clearance subject), (2) Star Property 'no write down' (a high-clearance subject cannot write to a low-confidentiality object), and (3) Discretionary Security Property (per-pair access-control matrix). This memo verifies, against five secondary sources — Wikipedia EN Bell-LaPadula model article / DTIC AD-770768 official PDF / Internet Archive file text / Bell's own 2005 ACSAC retrospective paper 'Looking Back at the Bell-La Padula Model' / Springer Encyclopedia of Cryptography and Security article — that the BLP model was published as a MITRE TR and a CACM 1976 paper without any reference to related patent numbers. Alongside Day 25 ep89 SW-003 BBN IMP's 'ARPA contract → 57-year continuous publication as Internet STD 39' form, this is the second instance of the 'eligibility wall (c) government-contract publication-mandate form.' On the Cage Patents axis SW, it is positioned as 'an information-theoretic policy model that was not patented (absence pattern),' placed at the center of ep97 Yellin/Gosling type-system cage success (US5740441A) and ep99 Hardy KeyKOS capability cage success (US4584639). The central memo of the SW Cage three forms (type cage success / policy cage absence / capability cage success)."
+episode: 98
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Software & UI Patents", "Cage Patents", "Bell-LaPadula", "MITRE", "USAF", "Eligibility Wall", "Government-contract Publication", "Excavation Memo"]
+series: "Software & UI Patents"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**About this excavation memo:** Day 28 / Cage Patents axis SW Open central memo. The DTIC AD-770768 official PDF URL of MITRE Technical Report 2547 Volume I is confirmed; the body is unread (text presence verified via Internet Archive djvu.txt; this memo only references at the table-of-contents level). Verification of the patent-absence state of the BLP model rests on five secondary sources: Wikipedia EN Bell-LaPadula model article, Bell's 2005 ACSAC retrospective paper 'Looking Back at the Bell-La Padula Model' PDF, Springer Encyclopedia of Cryptography and Security 'Bell-LaPadula Confidentiality Model' article, Purdue CS Spring 2018 BLP lecture notes, and the SRI CSL 1986 Rushby Draft Technical Note. This memo is written as a '**structural record of an excavation tale of patent absence = the second instance of eligibility wall (c) government-contract publication-mandate form**.'
+
+---
+
+## Basic information of MITRE Technical Report 2547
+
+| Item | Content |
+|---|---|
+| Report number | **MITRE Technical Report MTR-2547 Volume I** |
+| Air Force report number | **ESD-TR-73-278 Volume I** (USAF Electronic Systems Division Technical Report) |
+| DTIC Accession Number | **AD-770768** (Defense Technical Information Center permanent archive) |
+| Title | **Secure Computer Systems: Mathematical Foundations** |
+| Authors | **Co-authored by David Elliott Bell and Leonard J. LaPadula** |
+| Publication month | **November 1973** |
+| Development start | **Summer 1972** |
+| Contracting agency | **USAF Electronic Systems Division (ESD)**, Hanscom Air Force Base, Massachusetts |
+| Performing organization | **MITRE Corporation** (Bedford, Massachusetts) |
+| Primary publication source | DTIC (Defense Technical Information Center, US DoD), distributed via NTIS (National Technical Information Service) |
+| Follow-on paper | **CACM 1976 — D. E. Bell and L. J. LaPadula 'Secure Computer System: Unified Exposition and Multics Interpretation' ESD-TR-75-306 / MTR-2997** (Multics application); Bell 2005 ACSAC 'Looking Back at the Bell-La Padula Model' ACSAC 21st Conference Proceedings |
+| Patent number | **Not found within the scope verified here** (no mention in Wikipedia EN, in Bell's 2005 ACSAC self-retrospective, or in Springer Encyclopedia) |
+
+## Core: the Cage Patents axis SW 'policy-model cage absence' form
+
+### (a) The 'policy-model cage' fenced by the three BLP-model axioms
+
+The BLP model is the first to **mathematically formalize** the military secrecy preservation that "high-confidentiality information cannot be read by low-clearance users," and constitutes a "cage that allows information to flow only upward" with three axioms:
+
+1. **Simple Security Property (no read up)**: subject s can read object o only when s's clearance level ≥ o's confidentiality level
+2. **Star Property (no write down)**: subject s can write to object o only when s's current level ≤ o's confidentiality level (a high-clearance subject is forbidden to **leak** information to a low-confidentiality object)
+3. **Discretionary Security Property**: only those operations explicitly permitted in the access-control matrix for individual subject-object pairs are allowed
+
+The combination of the three axioms constitutes a "**unidirectional cage in which information flows only from low to high**." On the material variation of the Cage Patents axis, while ep70 floating gate (electron) / ep71 buried channel (charge) / ep72 cross-linked gel (molecular) **physically confine molecules, charge, and electrons**, the BLP model is an abstract cage that **confines the very direction of information flow**, a different form of logical Cage alongside the type-system cage (ep97) of Yellin/Gosling that uses type information as the wall.
+
+### (b) Patent-impossibility under government contract and publication mandate
+
+The USAF ESD contract, under the federal procurement regulations of 1972 (the predecessor of FAR / DFARS), in principle treated the technical reports MITRE produced as deliverables as **government-owned**. MITRE is a non-profit organization operated as a Federally Funded Research and Development Center (FFRDC), and it is a research institution that does not aim at commercial patenting. The mathematical formalization of the BLP model was published as MITRE TR 2547 by the government and permanently archived as DTIC AD-770768, with the result that **the very motivation to patent did not exist institutionally**.
+
+This is exactly the same '**eligibility wall (c) government-contract publication-mandate form**' as Day 25 ep89 SW-003 BBN IMP (ARPA contract → BBN Report 1822 → DDC → RFC → 1992 Internet STD 39):
+
+| Axis | Day 25 ep89 BBN IMP | This memo Bell-LaPadula |
+|---|---|---|
+| Contracting agency | ARPA (Advanced Research Projects Agency) | USAF Electronic Systems Division |
+| Performing organization | BBN (Bolt Beranek and Newman) | MITRE Corporation (FFRDC) |
+| Publication date | 1969-04 (BBN Report 1822 drafted), 1969-05 RFC 1 published | 1973-11 (MITRE TR 2547 published), 1976 CACM paper |
+| Permanent archive | rfc-editor.org (57 years continuous), 1992 Internet STD 39 | DTIC AD-770768, Internet Archive |
+| Patenting | Absent (under ARPA contract clauses) | Absent (under USAF ESD contract) |
+| Follow-on implementation | TCP/IP (1981 RFC 793), the entire modern Internet | SELinux (NSA, released 2000), SCOMP (Honeywell, 1985), LOCK/ix (SCC, 1990s), MILS / Solaris Trusted Extensions, MITRE Type Enforcement |
+| Form | (c) government-contract publication, first instance | **(c) government-contract publication, second instance** |
+
+### (c) The strategy Bell himself reflected on at ACSAC 2005
+
+David E. Bell, the first author of the Bell-LaPadula model (later moved to Reston, VA, as an independent consultant), gave an invited talk titled '**Looking Back at the Bell-La Padula Model**' at the 21st Annual Computer Security Applications Conference (ACSAC) in December 2005, retrospectively discussing MITRE TR 2547 and its 32 years of impact from his own perspective. The PDF of the talk (acsac.org/2005/papers/Bell.pdf) remains publicly available in the ACSAC official archive. Bell himself does not explicitly state in the talk that he **did not attempt to patent** the BLP model, but the talk centers on publication only as papers / technical reports / textbooks, with no reference to any patenting strategy.
+
+## Modern connection — seven branches 53 years after BLP
+
+| Modern system | Distance from BLP | Same / similar / metaphor |
+|---|---|---|
+| **NSA SELinux Type Enforcement** (released 2000) | Direct descendant of BLP, the MAC layer of Flask architecture (Loscocco / Smalley) | **Similar** (different implementation, but inheriting the two-layer MAC + DAC structure) |
+| **MILS (Multiple Independent Levels of Security)** | Implements BLP multi-level control in OSes for military aircraft | **Similar** |
+| **Solaris Trusted Extensions** | MLS implementation of Sun → Oracle, BLP-style label management | **Similar** |
+| **Honeywell SCOMP** (1985) | The first commercial OS to attain DoD Orange Book A1 evaluation, direct descendant of BLP | Close to **same** (formal verification at Class A1) |
+| **MITRE LOCK/ix** (1990s) / **Secure Computing Corporation products** | MLS OS of MITRE itself and MITRE-affiliated Secure Computing Corp (later acquired by McAfee) | **Similar** |
+| **Apple iOS Sandbox / Android SELinux** (modern 2026) | Mobile OS sandboxes; not direct descendants of BLP, but inheriting the MAC idea | **Metaphor** (different design but sharing the problem awareness of information-flow control) |
+| **Kubernetes Pod Security Standards / OPA Gatekeeper / AWS IAM** | Cloud-era access control, inheriting the abstraction of BLP's mathematical model | **Metaphor** (different implementation lineage, conceptual inheritance) |
+
+Four-stage evaluation: 1 row rated "same" (SCOMP), 4 rows rated "similar" (SELinux / MILS / Solaris / LOCK), 2 rows rated "metaphor" (mobile OS sandbox / cloud IAM), 0 rows rated "strained."
+
+## SW Cage three-form parallel with ep97 / ep99
+
+The Day 28 note 1 (ep97) + memos 2 (ep98 / ep99) structure parallelizes the SW Cage three forms as follows:
+
+| Episode | Patent / document | Cage form | Patenting outcome |
+|---|---|---|---|
+| **ep97** | US5740441A Yellin/Gosling Java VM bytecode verifier | **Type-system cage** (confines via information consistency) | **Success** (granted 1998, expired 2014) |
+| **ep98 (this memo)** | MITRE TR 2547 Bell/LaPadula | **Policy-model cage** (confines the direction of information flow) | **Absence** (government release under USAF ESD contract, patenting impossible) |
+| **ep99** | US4584639 Hardy KeyKOS computer security system | **Capability cage** (confines via physical distribution of authority) | **Success** (granted 1986, Tymshare → McDonnell Douglas → Key Logic transfer) |
+
+As SW forms of the logical Cage on the Cage Patents axis, three lineages run in parallel in the same era — (1) type-system cage (pre-execution verification), (2) policy-model cage (mathematics of information flow), (3) capability cage (authority distribution) — and in SW, two out of three were patented, while the research based on government contracts was not patented. Day 28 shows this structure in a single session. This corresponds to the three logical Cage origin forms against the six physical Cage forms accumulated in Day 19-27.
+
+## Why it is worth excavating
+
+(a) Confirms the second instance of 'eligibility wall (c) government-contract publication form' following Day 25 ep89 SW-003 BBN IMP, showing that form (c) is not a single case but a **structural problem**; (b) by placing 'policy-model cage absence' at the center of the Cage Patents axis SW, completes a three-form parallel that contrasts with the two patent successes of ep97 / ep99; (c) records the scope of influence in which the BLP model has been used continuously for 53 years across SELinux / SCOMP / MILS / Solaris Trusted Extensions, as a typical case of research achievements that succeeded without patent protection; (d) prepares a comparison line with the 1970s research-publication strategy of MITRE / FFRDC, contrasting it with the modern AI-safety-research publication strategies of Anthropic / OpenAI / Google DeepMind — these four points.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts:**
+- Confirmed the DTIC AD-770768 official PDF URL of MITRE Technical Report 2547 Volume I (https://apps.dtic.mil/sti/tr/pdf/AD0770768.pdf)
+- Confirmed text presence via Internet Archive djvu.txt (https://archive.org/stream/DTIC_AD0770768/DTIC_AD0770768_djvu.txt)
+- Air Force report number ESD-TR-73-278, MITRE internal number MTR-2547, DTIC Accession Number AD-770768, published November 1973
+- Co-authored by David Elliott Bell (later in Reston, VA, independent consultant) and Leonard J. LaPadula
+- Development started in summer 1972 under USAF Electronic Systems Division (Hanscom AFB) contract
+- Bell's own 2005 ACSAC retrospective paper 'Looking Back at the Bell-La Padula Model' PDF (acsac.org/2005/papers/Bell.pdf) publicly available
+- Follow-on paper CACM 1976 'Secure Computer System: Unified Exposition and Multics Interpretation' ESD-TR-75-306 / MTR-2997
+- Wikipedia EN Bell-LaPadula model article / Springer Encyclopedia of Cryptography and Security article / Purdue CS BLP lecture notes / SRI CSL Rushby 1986 Draft Technical Note all show no reference to patent numbers
+
+**Author's interpretation:**
+- The Cage-axis reading of "policy-model cage" / "confining the direction of information flow" is the author's interpretation. There is no confirmed record that Bell / LaPadula themselves positioned the BLP model as a "cage."
+- The classification "eligibility wall (c) government-contract publication-mandate form, second instance" is positioning within the author's own classification system established on Day 25.
+- The statement that patenting was institutionally impossible under USAF ESD contract clauses is inferred from the general MITRE FFRDC discourse, not confirmed in the specific clauses of this contract (speculation).
+
+**Metaphors / analogies:**
+- "Policy-model cage" / "confines the direction of information flow" are at the metaphor level. BLP is a mathematical model, not a physical confinement.
+- Among the seven-branch correspondences with modern systems, the two rated "metaphor" (mobile OS sandbox / cloud IAM) inherit the concept differently and stop at conceptual inheritance.
+
+**Unconfirmed:**
+- Body of MITRE TR 2547 Volume I (only confirmed PDF retrieval URL; the mathematical descriptions are unread)
+- Existence and content of Volumes II / III (only references in CACM 1976 paper confirmed)
+- USAF ESD contract number and specific clauses
+- BLP model implementation cases outside the United States (NATO / UK GCHQ, etc.)
+- Correspondence between Bell's and LaPadula's individual contributions
+
+**Where the comparison breaks:**
+- The statement "BLP is a direct descendant of SELinux" refers to the inheritance of MAC + DAC structure, but the implementation algorithm has changed greatly with the development into Type Enforcement and Domain-Type Enforcement. Writing "same" / "direct descendant" risks correction by SELinux implementation researchers as "FLASK architecture (Loscocco / Smalley) is more directly the origin."
+- Applying the general MITRE FFRDC patent-policy discourse to this contract is speculative beyond what is confirmed in the specific clauses of 1972-1973.
+- The BLP model itself has been criticized since the 1980s as "biased toward confidentiality and not handling integrity," and the Biba model (integrity, dual to Bell-LaPadula) / Clark-Wilson model (commercial integrity) / Brewer-Nash Chinese Wall model (conflict of interest) etc. were proposed as complements. Writing about BLP as "the origin of modern security" is overestimation.
+
+---
+
+References:
+- [DTIC AD-770768 official PDF — Secure Computer Systems: Mathematical Foundations](https://apps.dtic.mil/sti/tr/pdf/AD0770768.pdf)
+- [Internet Archive djvu.txt full text](https://archive.org/stream/DTIC_AD0770768/DTIC_AD0770768_djvu.txt)
+- [Bell 2005 ACSAC retrospective paper PDF — Looking Back at the Bell-La Padula Model](https://www.acsac.org/2005/papers/Bell.pdf)
+- [Wikipedia EN — Bell-LaPadula model](https://en.wikipedia.org/wiki/Bell%E2%80%93LaPadula_model)
+- [SRI CSL 1986 Rushby — Draft Technical Note: The Bell and La Padula Security Model](https://www.csl.sri.com/users/rushby/papers/blp86.pdf)
+- [Purdue CS — Topic 5: The Bell LaPadula Model](https://www.cs.purdue.edu/homes/ninghui/courses/Spring18/handouts/05_blp.pdf)

@@ -1,0 +1,119 @@
+---
+title: "1984 February 6, Norman Hardy assigned 'Computer security system' US4584639A as inventor to Tymshare Inc — the core patent of KeyKOS that fences the three concepts of capability-based system (domain / factory / non-sensory key) in Claim 1, with the three-stage transfer 1985-08-01 to McDonnell Douglas Corp → 1985-12-02 to Key Logic Inc, the Day 28 Cage Patents axis SW Open closing memo"
+subtitle: "Software & UI Patents — Excavation Memo #8 — US4584639A 'Computer security system,' under the name of Norman Hardy (architect of KeyKOS / GNOSIS), Original Assignee Tymshare Inc (Cupertino, California), assigned to McDonnell Douglas Corp on 1985-08-01, then to Key Logic Inc on 1985-12-02; US priority 1983-12-23, granted 1986-04-22, anticipated lifetime expiry 2003-04-22. Claim 1 'fences the combination of domains / keys / kernel functions / factories / non-sensory keys in a capability-based data processing system' — (a) each domain holds keys, (b) the kernel exclusively creates keys and resolves authority, (c) factory domains generate new domains, (d) requestor domains can determine the presence of non-sensory keys in factories — these four elements constitute a 'capability cage.' Day 28 Cage Patents axis SW Open memo, the third SW Cage form (capability cage success) following ep97 Yellin/Gosling type-system cage success and ep98 Bell-LaPadula policy-model cage absence"
+description: "On December 23, 1983, Norman Hardy (architect of KeyKOS / GNOSIS) at Tymshare Inc in Cupertino, California filed 'Computer security system' in the United States as the assignor. It was granted as US4584639A on April 22, 1986. This patent fences in Claim 1 'the combination of domains (units of processing) / keys (units of authority) / kernel (the sole institution to resolve authority) / factories (mechanism to generate new domains) / non-sensory keys (authority that can extract information) in a capability-based data processing system,' historically important as a successful patenting example of a capability cage. The three-stage transfer history — 1984-02-06 assigned to Tymshare, 1985-08-01 to McDonnell Douglas Corporation, 1985-12-02 to Key Logic Inc — was traversed. This memo verifies the positioning of the patent as the origin of KeyKOS against six secondary sources: Wikipedia EN KeyKOS / Norman Hardy / Capability-based security articles, Mark S. Miller's Medium tribute 'Norm Hardy's Place in History,' Semantic Scholar's 'Security in KeyKOS' Rajunas/Hardy paper, Justia Patents Search Norman Hardy results, the Confused Deputy paper (Hardy 1988), and Google Patents US4584639A. As the Day 28 / Cage Patents axis SW Open closing memo, it completes the SW Cage three forms together with ep97 Yellin/Gosling type-system cage (confines via information consistency, patenting success) / ep98 Bell-LaPadula policy-model cage (confines the direction of information flow, patenting absence) / this memo Hardy capability cage (confines via physical distribution of authority, patenting success)."
+episode: 99
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Software & UI Patents", "Cage Patents", "KeyKOS", "Norman Hardy", "Tymshare", "Key Logic", "Capability-based Security", "Excavation Memo"]
+series: "Software & UI Patents"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**About this excavation memo:** Day 28 / Cage Patents axis SW Open closing memo. Retrieved Claim 1 verbatim, inventor, three-stage transfer history, filing date, grant date, and Title of US4584639A from Google Patents. Specification body (KeyKOS / GNOSIS internal OS implementation details, later development into EROS / CapROS / Coyotos) is unread. Records confirmed facts only and clearly marks speculation as speculation.
+
+---
+
+## Basic information of the patent
+
+| Item | Content |
+|---|---|
+| Patent number | **US4584639A** |
+| Title | **Computer security system** |
+| Inventor | **Norman Hardy alone** (architect of KeyKOS / GNOSIS, later co-founder of Key Logic Inc) |
+| Original Assignee (transfer 1) | **Tymshare Inc** (Cupertino, California), assigned 1984-02-06 |
+| Intermediate assignee (transfer 2) | **McDonnell Douglas Corporation**, assigned 1985-08-01 (assigned as part of McDonnell Douglas's full-company acquisition of Tymshare) |
+| Current Assignee (transfer 3) | **Key Logic Inc** (California, Hardy / Hewitt-affiliated), assigned 1985-12-02 |
+| Filing Date / Priority Date | **1983-12-23** |
+| Grant Date | **1986-04-22** |
+| Lifetime expiry | **Anticipated 2003-04-22** (17-year term, before US 1995 GATT amendment, hence grant date + 17 years) |
+| Number of Claims | **39** (Claim 1 covers the capability-based system core; Claims 2-39 are dependent claims that subdivide factory verification function / builder's functions / KID means / requestor key series) |
+
+The three-stage transfer history reflects the organizational changes through which capability-based OS commercialization was attempted: (1) **Tymshare** (an established time-sharing series company founded in 1968, the parent of the Tymnet network and KeyKOS development), (2) **McDonnell Douglas** (a major aerospace company that acquired the KeyKOS-related patents as part of its full acquisition of Tymshare in 1984), (3) **Key Logic** (Hardy / Charles R. Landau and others spun off from McDonnell Douglas in December 1985 to continue commercializing the capability-based OS).
+
+## Claim 1 (primary-source verbatim, retrieved via curl + Python regex)
+
+> In a capability based data processing system having at least one central processing unit, memory means and a multiplicity of keys, each key providing authority to its holder to use a specified portion of said system's resources, an arrangement comprising: a plurality of domains for performing predefined processes, each including means for holding a plurality of keys; and kernel means coupled to said domains for providing said domains with a predefined set of kernel functions, said kernel means having the exclusive means for creating keys and the exclusive means for resolving the authority conveyed by each said key; wherein a plurality of said domains comprise factories for creating factory products comprising new domains for performing specified tasks; a multiplicity of said keys are non-sensory keys, which convey the authority to directly or indirectly cause data to be transmitted to, or changed within, a domain other than the domain invoking said key; and predefined ones of said kernel functions allow a requestor domain with a key to a specified one of said factories to determine whether said specified factory has any non-sensory keys not included in a first predefined set of keys; whereby a requestor domain can determine if use of a specified factory could compromise the confidentiality of data provided by said requestor domain to said factory.
+
+**The core of Claim 1 has 4 points:**
+
+1. **Fencing the three concepts of a capability-based system (domain / key / kernel).** This patent did not invent the concept of capability-based OS itself (the capability concept has prior art in Dennis-Van Horn 1966 / Plessey System 250 / IBM System/38, etc.). On top of that, it Claims the combination of three functions — "**exclusivity of authority resolution**" / "**safe new-domain generation by factories**" / "**non-sensory key detection**."
+2. **The exclusivity assertion 'kernel means having the exclusive means for creating keys.'** By writing into Claim 1 verbatim the exclusive privilege that only the kernel can create keys, the patent forbade unauthorized key creation from user-land at the specification level. This is, like the BLP model's three axioms (ep98), **a rare example of writing the mathematical property of information-flow control into the Claim verbatim**.
+3. **Confidentiality verification by the factory pattern.** Claim 1 fences the **before-the-fact verification** function whereby a requestor domain can determine, before using a factory, whether that factory possesses non-sensory keys. This is the conceptual ancestor of "OAuth scope verification" or "service mesh policy check" in modern web development.
+4. **The unique concept of 'non-sensory keys.'** Hardy introduced in KeyKOS the distinction '**a key that conveys authority to extract information** (vs. a sensory key that simply does not return information)' and wrote it into the Claim verbatim, controlling information-leak paths through the subdivision of capability.
+
+## Cage-axis reading
+
+| SW form on the Cage axis | Corresponding episode | What is confined | Confinement mechanism |
+|---|---|---|---|
+| **Type-system cage** | **ep97 Yellin/Gosling US5740441A** (1994-1998) patenting success | **Data type integrity** (bytecode sequences with illegal type operations) | **Iterative pre-execution emulation analysis of operand-stack and register data type snapshots** |
+| **Policy-model cage** | **ep98 Bell-LaPadula MITRE TR 2547** (1973) patenting absence | **Direction of information flow** (leakage from high confidentiality to low clearance) | **Mathematical formalization of three axioms (no read up / no write down / DAC)** |
+| **Capability cage** | **This memo ep99 Hardy US4584639A** (1983-1986) patenting success | **Unauthorized spread of authority** (non-sensory key leakage via factories) | **Kernel-exclusive key creation and before-the-fact confirmation by factory verification function** |
+
+While the six physical Cage forms (ep70-72 / ep94-96) **physically confine matter** with metal oxide / semipermeable membrane / cross-linked hydrogel / polyethylene / SiO2, the SW Cage three forms express **abstract confinement** in three lineages: (1) the symbol of type information, (2) mathematical information-flow axioms, (3) physical possession through authority distribution. This memo fills the last of the three forms and completes the Day 28 SW Cage three-form parallel.
+
+## Modern connection — 40 years of capability-based-security inheritance
+
+| Modern system | Distance from KeyKOS | Same / similar / metaphor |
+|---|---|---|
+| **EROS (Extremely Reliable OS, Shapiro 1999-2005)** | Direct descendant of KeyKOS, the lineage Hardy → Shapiro | Close to **same** (Hardy advised the development of EROS) |
+| **CapROS (Capability-based Reliable OS, 2005-)** | A fork of EROS, the successor of the Hardy lineage | Close to **same** |
+| **Coyotos (Shapiro 2006-)** | Successor to EROS based on the BitC language | **Similar** |
+| **seL4 (NICTA / Data61, formal verification completed 2009)** | Capability-based microkernel that has BLP-like guarantees through formal verification | **Similar** (different implementation in the L4 series, but inheriting the capability concept) |
+| **Fuchsia / Zircon (Google, 2017-)** | Capability-based microkernel, candidate successor OS to Android / iOS | **Similar** |
+| **WebAssembly Component Model** (2024-) | wasm component's interface-typed capability | **Metaphor** (capability concept inherited, different implementation lineage) |
+| **Capabilities Linux (Linux 2.2-, 1999-)** | Applies the capability concept to Linux's root subdivision | **Metaphor** (POSIX capabilities are ambient authority, not object capabilities) |
+| **Cap'n Proto (Sandstorm.io, Kenton Varda)** | Capability-based RPC, influenced by the Mark Miller series | **Similar** |
+
+Four-stage evaluation: 2 rows rated "same" (EROS / CapROS, Hardy-series successors), 4 rows rated "similar" (Coyotos / seL4 / Fuchsia / Cap'n Proto), 2 rows rated "metaphor" (WebAssembly Component Model / Linux capabilities), 0 rows rated "strained."
+
+## Why it is worth excavating
+
+(a) Fills the last of the Day 28 SW Cage three forms (type cage success / policy cage absence / capability cage success), completing the three logical Cage origin forms against the six physical Cage forms accumulated in Day 19-27; (b) records that the three-stage transfer history (Tymshare → McDonnell Douglas → Key Logic) reflects the failure of capability-based OS commercialization (a sequence of organizational changes — Tymshare acquisition, McDonnell Douglas withdrawal, Key Logic spin-off), as a structure where KeyKOS was technically advanced but did not become commercially mainstream; (c) shows that the 40-year inheritance of the Mark S. Miller series (E language, Cap'n Proto, Web Capability, Spritely Goblins) began from the four core concepts (domain / key / kernel exclusivity / factory) of Claim 1 of this patent; (d) historicizes Hardy's origin patent as having influenced the capability-based design of modern Fuchsia / Zircon / seL4 / WebAssembly Component Model — these four points.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts:**
+- Retrieved Claim 1 verbatim of US4584639A from Google Patents (https://patents.google.com/patent/US4584639A/en) via WebFetch (2026-05-09)
+- Retrieved full HTML (987KB) via curl and extracted the `<section itemprop="claims">` section (25,726 characters) with Python re.search; confirmed Claims 1-6 in the head
+- Inventor field: Norman Hardy alone
+- Three-stage transfer history: 1984-02-06 to Tymshare Inc → 1985-08-01 to McDonnell Douglas Corporation → 1985-12-02 to Key Logic Inc
+- Priority date / Filing date: 1983-12-23, Grant date: 1986-04-22, lifetime expiry: anticipated 2003-04-22
+- Number of Claims: 39
+- Title verbatim: 'Computer security system'
+- Wikipedia EN KeyKOS article / Mark S. Miller's Medium tribute 'Norm Hardy's Place in History' / Semantic Scholar 'Security in KeyKOS' Rajunas/Hardy paper / Justia Patents Search Norman Hardy results / Confused Deputy paper (Hardy 1988) corroborate the lineage of KeyKOS and Hardy's contribution
+
+**Author's interpretation:**
+- The Cage-axis reading of "capability cage" / "confines via physical distribution of authority" is the author's interpretation. There is no confirmed record that Hardy himself positioned KeyKOS as a "cage."
+- The positioning as "the closing memo of the Day 28 SW Cage three forms" is the author's own structuring parallel with ep97 / ep98.
+- The interpretation that the three-stage transfer history reflects "capability-based OS commercialization failure" is inferred from the surface facts of organizational change, not confirmed in internal documents of Tymshare / McDonnell Douglas / Key Logic (speculation).
+
+**Metaphors / analogies:**
+- "Capability cage" / "physical distribution of authority" are at the metaphor level. Capability is a symbolic authority, not a physical distribution.
+- "The conceptual ancestor of modern OAuth scope verification" is metaphorical. OAuth and capability are different implementation lineages.
+
+**Unconfirmed:**
+- Verbatim of Claims 2-39 (only Claims 1-6 retrieved; the remaining 33 are summarized only)
+- KeyKOS commercial operation track record (specific numbers of applications on Tymnet during 1983-1990s)
+- License contracts and litigation history of McDonnell Douglas / Key Logic regarding this patent
+- Specific titles and years of Hardy's tenure at Tymshare / Key Logic
+- Relationship between GNOSIS (KeyKOS predecessor, 1979-1983 development) and this patent
+- Patentability relationship of this patent with prior capability research (Dennis-Van Horn 1966 / Plessey System 250 / IBM System/38)
+
+**Where the comparison breaks:**
+- Writing Hardy's contribution as "the invention of capability cage" risks correction by capability researchers as "Plessey System 250 (1972) and IBM System/38 (1978) are earlier as the origins of capability OS," because the capability concept itself exists in prior research. This article uses the limited framing '**the origin patent that successfully fenced capability cage in Claims**.'
+- The interpretation of the transfer history as "commercialization failure" is a reading inferred from the surface facts of organizational change, not confirmed in Tymshare's strategic intent of acquisition or Key Logic's business plan.
+- Attributing the influence on the capability-based design of modern systems (Fuchsia / seL4) to the Claims of this patent is dangerously overstated. The L4 series / seL4 formal verification / Fuchsia's Zircon design implement the inheritance of the capability concept in different lineages — not the Claims of this patent itself.
+
+---
+
+References:
+- [Google Patents US4584639A](https://patents.google.com/patent/US4584639A/en)
+- [Wikipedia EN — KeyKOS](https://en.wikipedia.org/wiki/KeyKOS)
+- [Mark S. Miller Medium — Norm Hardy's Place in History](https://erights.medium.com/norm-hardys-place-in-history-cecf191df641)
+- [Security in KeyKOS (Rajunas / Hardy paper) — Semantic Scholar](https://www.semanticscholar.org/paper/Security-In-Keykos%E2%84%A2-Rajunas-Hardy/45028a50600edcd6a2cb356f2e4ac83b309f36a6)
+- [Hardy 1988 — The Confused Deputy (or why capabilities might have been invented) PDF](http://web.cs.wpi.edu/~cs557/f14/papers/confused_deputy-hardy.pdf)
+- [Justia Patents Search — Norman Hardy results](https://patents.justia.com/inventor/norman-hardy)

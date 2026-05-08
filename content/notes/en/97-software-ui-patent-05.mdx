@@ -1,0 +1,199 @@
+---
+title: "1994 Frank Yellin and James Gosling at Sun Microsystems co-filed US5740441A 'Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization' — they fenced a 'type-system cage' that verifies type integrity and stack overflow by emulation analysis before bytecode execution, walling off Java sandbox safety with type information itself rather than hardware. Day 28 Cage Patents axis SW Open opening note"
+subtitle: "Software & UI Patents — Excavation Note #5 — US5740441A, co-invented by Frank Yellin and James A. Gosling, Original Assignee Sun Microsystems Inc, Current Assignee Oracle America Inc, US priority 1994-12-20, granted 1998-04-14, lifetime expired 2014-12-20. Claim 1 covers 'a method of operating a computer system that stores a program in memory, where each instruction has data type restrictions, and preprocessing detects violations and generates a program fault signal before execution' — a virtual emulation that maintains data type snapshots of operand stack and registers to verify the type consistency of each instruction. The first SW expansion of the logical Cage that complements the six physical Cage forms (electron / charge / molecular / container / electrical / ion) consolidated by Day 27"
+description: "On December 20, 1994, Frank Yellin and James A. Gosling at Sun Microsystems filed 'Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization' in the United States. It was granted as US5740441A on April 14, 1998. This patent fenced the core of the Java Virtual Machine bytecode verifier, the origin of the 'sandbox by pre-execution type checking' design idea that runs continuously through modern JVM, Android Runtime, WebAssembly validators, and the .NET CLR. Against the six physical Cage forms consolidated by Day 27 (ep70 electron / ep71 charge / ep72 static molecular / ep94 electrical / ep95 dynamic molecular / ep96 container), this patent is positioned as the SW opening note for the logical Cage that 'uses type information itself as the wall of the cage.' Claim 1 verbatim leads 18 dependent claims and fences a four-step formal preprocessing procedure: (B1) maintaining data type snapshots for operand stack and registers, (B2A-D) propagating type information to successor instructions through virtual emulation, and (B3) iterating processing of marked instructions. Original Assignee Sun Microsystems Inc was acquired by Oracle Corporation on January 27, 2010, and the Current Assignee is Oracle America Inc. As the Day 28 Cage Patents axis SW Open opening note, this article excavates (1) reading Claim 1 verbatim as a type cage, (2) the contrast with the 'eligibility wall' forms of Day 25 ep88 SW-002 FORTRAN 1957 / ep89 BBN IMP 1969 / ep90 Smalltalk 1972 / ep91 LISP 1958, (3) Sun's two-tier patent strategy contemporaneous with the Java sandbox (the language itself was free, while only the verifier was patented), and (4) the three-form parallel with ep98 Bell-LaPadula policy-model cage absence and ep99 Hardy KeyKOS capability cage success."
+episode: 97
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Software & UI Patents", "Cage Patents", "Java", "Sun Microsystems", "Frank Yellin", "James Gosling", "Bytecode Verifier", "Excavation Note"]
+series: "Software & UI Patents"
+seriesNumber: 5
+status: "published"
+---
+
+## Bottom line first
+
+On December 20, 1994, **Frank Yellin** and **James Arthur Gosling** (then 39, a leader of Java language design), both at **Sun Microsystems Inc** in Mountain View, California, filed 'Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization' as co-inventors. It was granted as **US5740441A** on April 14, 1998 and expired by lifetime on December 20, 2014. Claim 1 fences '**a method of operating a computer system: storing a program in memory whose instructions have data type restrictions, and preprocessing the program before execution to detect type violations and generate a program fault signal**.' It defines a four-step procedure that maintains data type snapshots of operand stack and registers and **emulates** each instruction iteratively to confirm that no type violation or stack overflow occurs, with 18 dependent claims layered on top.
+
+This note is positioned as the Day 28 / **Cage Patents axis SW Open opening note**. Against the six physical Cage forms accumulated from Day 19 through Day 27 — ep70 Masuoka flash (electron cage), ep71 Boyle-Smith CCD (charge cage), ep72 Biomatrix HA gel (static molecular cage), ep94 Noyce US2981877A (electrical cage), ep95 Theeuwes-Higuchi OROS (dynamic molecular cage), ep96 Tupper polyethylene (container cage), and ep64 Goodenough LiCoO2 (ion cage) — this patent fences '**the SW form of a logical Cage that uses type information itself as the wall**,' becoming the first SW note that handles **abstract rather than material confinement**.
+
+In 2026, this design idea continues in seven branches: (a) the Java Virtual Machine (OpenJDK / GraalVM / Eclipse Temurin) bytecode verifier, (b) the dex2oat verification pipeline of the Android Runtime (ART), (c) the IL Verifier of the .NET Common Language Runtime, (d) WebAssembly's wasm-validate / Reference Interpreter, (e) the Apple LLVM bitcode verifier, (f) the in-kernel eBPF verifier, and (g) the WebAssembly Component Model type-checker. From OS kernels to web browsers, the design idea of '**performing pre-execution type checking to skip expensive runtime dynamic checks later**' has been used continuously for 32 years and is shared across Cloudflare Workers V8 isolates, Fastly Compute@Edge Wasmtime, and WasmCloud's wRPC. Positioned as the **opposite of the 'eligibility wall' four forms** consolidated on Day 25 ((a) pre-judicial era / (b) unsettled / (c) government contract / (d) corporate strategy), this is a 'patent-secured SW invention,' set at the center of the Day 28 note 1 + memo 2 structure.
+
+## 1. How the topic was selected (a reproducible pipeline)
+
+```
+[STEP 1] From the four Day 28 recommendations established at Day 27 completion,
+         select (b) Cage Patents axis SW Open (origin patents for "confining-and-
+         using" design in pure software, e.g. Java sandbox / SELinux / capability-
+         based security). Haruko's call: "go with the recommendation"
+         (2026-05-09 morning band).
+
+[STEP 2] Narrow Java sandbox origin patent candidates:
+         - Candidate A: US5740441A Yellin/Gosling bytecode verifier (filed 1994)
+         - Candidate B: US6044467A Yellin Secure class resolution loading
+                       and definition (filed 1997, follow-on class loader series)
+         - Candidate C: US5915025A Process scheduling for capability-based
+                       scheduling, gateway interfaces (follow-on)
+         - Candidate D: US6151618A Wahbe/Lucco/Anderson/Graham SFI
+                       (Software-based Fault Isolation, Berkeley series)
+         → Select A. Reasons: (a) the bytecode verifier is the most foundational
+           layer among the five Java sandbox layers (ClassLoader isolation /
+           bytecode verifier / SecurityManager / access controller / signed code),
+           (b) Yellin and Gosling co-inventorship maps directly onto the Java
+           inventor field, (c) the 1994-12-20 priority is a strategic priority
+           that precedes the 1995-05-23 public Java announcement by 5 months,
+           (d) it is the cleanest Claim of the logical Cage axis that "uses
+           type information as the wall."
+
+[STEP 3] Primary fetch from Google Patents:
+         URL: https://patents.google.com/patent/US5740441A/en
+         → Confirmed co-inventors Frank Yellin and James A. Gosling
+           Original Assignee Sun Microsystems Inc / Current Assignee
+           Oracle America Inc (Oracle's Sun acquisition completed 2010-01-27),
+           Priority date 1994-12-20 / Filed 1995-12-20 / Granted
+           1998-04-14 / Expired 2014-12-20, 18 Claims, Abstract
+           verbatim retrieved.
+
+[STEP 4] Retrieved full HTML (708KB) via curl →
+         extracted <section itemprop="claims"> with Python re.search
+         → Successfully retrieved Claim 1 verbatim of 18,138 characters
+           (following the curl + Python regex method established on Day 23).
+
+[STEP 5] DB consistency check: grep yellin / 5740441 in the candidates.tsv
+         SW section
+         → No matching entry (SW-001 to SW-010 established on Day 23-26 are
+           the Engelbart / Atkinson / FORTRAN / BBN / Smalltalk / HyperCard /
+           Lapson / ALGOL / LISP / COBOL series; the bytecode verifier is
+           not yet registered).
+         → Add SW-011 / SW-012 / SW-013 in parallel as new Day 28 candidates
+           (ep97 SW-011 / ep98 SW-012 Bell-LaPadula / ep99 SW-013 Hardy KeyKOS).
+
+[STEP 6] Positioning within Cage axis material variations:
+         All six physical Cage forms (ep70-72 / 94-96) confine molecules,
+         charge, or electrons physically with some material (metal oxide,
+         semiconductor dopant, semipermeable membrane, polyethylene,
+         crosslinked hydrogel), whereas this patent maintains the abstract
+         information called "data type restriction" as data type snapshots
+         of operand stack and registers, and confirms instruction sequence
+         consistency through iterative emulation analysis — an "information-
+         based cage." This difference is evaluated in the four-stage table
+         on six rows.
+
+[STEP 7] Confirm Sun's contemporaneous two-tier strategy:
+         Sun partially opened the Java language itself (language spec /
+         standard library API) from 1995-05 onward through Java Community
+         Process and OpenJDK, while patenting only the verifier algorithm
+         inside the JVM under US5740441A for 17 years. This is the
+         "language is free, the implementation core is patented" two-tier
+         strategy — distinct from both the Day 25 ep90 Smalltalk Xerox's
+         "fully unrestricted redistribution" and the Day 26 ep91 LISP
+         McCarthy's "fully open academic publication."
+```
+
+Selection rationale: (a) as the origin of the logical Cage that complements the six physical Cage forms completed on Day 27, the Java bytecode verifier is the cleanest Claim for "confinement by type information"; (b) the two-name co-inventor field of Yellin / Gosling maps onto the Day 11 series correction pattern of "single inventor convention vs. actually multiple names" and produces a structural finding; (c) as the **opposite of the four eligibility-wall forms (FORTRAN / BBN / Smalltalk / HyperCard) of Day 25**, the "patent-secured SW invention" thickens the SW subseries DB with a third success case (the third after existing ep82 Engelbart / ep85 Atkinson); (d) the modern significance is that all of Java / Kotlin / Android / Chrome V8 / WebAssembly running atop the material substrate of Haruko's main niche (China AI × Korea-Taiwan semiconductors × robotics translation) lies on the extension line of this patent; (e) it is the origin that expands the Cage Patents axis into 6 physical forms + 1 logical form = 7 forms.
+
+## 2. The core of Claim 1 and the 18 dependent claims
+
+Claim 1 verbatim (retrieved via curl + Python regex from Google Patents):
+
+> A method of operating a computer system, the steps of the method comprising: (A) storing a program in a memory, the program including a sequence of instructions, where each of a multiplicity of said instructions each represents an operation on data of a specific data type; said each instruction having associated data type restrictions on the data type of data to be manipulated by said each instruction; (B) prior to execution of said program, preprocessing said program by determining whether execution of any instruction in said program would violate said data type restrictions for that instruction and generating a program fault signal when execution of any instruction in said program would violate the data type restrictions for that instruction; said preprocessing step including: (B1) storing, for each instruction in said program, a data type snapshot, said data type snapshot including data type information concerning data types associated with data stored in an operand stack and registers by said program immediately prior to execution of the corresponding instruction; (B2) emulating operation of a selected instruction in the program by: (B2A) analyzing stack and register usage by said selected instruction so as to generate a current data type usage map for said operand stack and registers, (B2B) determining all successor instructions to said selected instruction, (B2C) merging the current data type usage map with the data type snapshot of said determined successor instructions, and (B2D) marking for further analysis each of said determined successor instructions whose data type snapshot is modified by said merging; (B3) emulating operation of each of said instructions marked for further analysis by performing step B2 on each of those marked instructions and unmarking each said emulated instruction; and (B4) repeating step B3 until there are no marked instructions.
+
+In the Cage-axis reading, four points matter:
+
+1. **The abstract information called "data type snapshot" becomes the wall of the cage.** Whereas the six physical Cage forms (ep70-72 / 94-96) use materials such as metal oxides, semipermeable membranes, crosslinked gels, and polyethylene as walls, this patent maintains **symbols** in each operand-stack and register slot — "an integer is here / a reference type is here / this is uninitialized" — and iteratively merges those symbols to implement the property that "bytecode sequences with type violations are never executed." **Confining with symbols instead of matter** is the core of a logical Cage.
+
+2. **"Emulating operation" is virtual execution that pre-checks ahead of time.** Rather than runtime dynamic type checking, **as preprocessing before execution**, the instruction sequence is virtually run to verify type consistency along every path including loops and branches. This is a different lineage from the dynamic type checks of FORTRAN / Smalltalk / LISP read on Day 25 — it is one of the earliest examples of fencing **abstract interpretation** in a Claim. Sun took the Claim 17 years after Cousot and Cousot published the theory of abstract interpretation in 1977.
+
+3. **Fixed-point computation by iteration in (B3) and (B4).** "Repeating step B3 until there are no marked instructions" writes the **fixed-point iteration** of dataflow analysis into the Claim verbatim. This is a standard algorithm taught in undergraduate compiler classes, but combining it with "generating a program fault signal" and **patenting it** is unusual. Sun's patent strategy succeeded because the framing is a concrete computational procedure — "**a method to preprocess a program stored in memory**" — rather than a pure mathematical algorithm (subject to the eligibility wall).
+
+4. **The structure of 18 dependent claims.** Claim 2 adds detection of operand stack underflow / overflow, Claim 3 adds the omission of runtime type checks after preprocessing, Claim 4 tracks object creation and initialization instructions (the "object initialization" part of the Title), and Claim 5 onward handles Java-specific language features such as exception handlers, finally clauses, and JSR (Jump to Subroutine) instructions. Claim 1 is written broadly as a "method," and the subsequent 17 claims add Java-specific language features one by one — a **layered structure** that later functioned as a defense layer.
+
+Pitfall in the specification (anti-Codex): this patent is **not "the patent that invented the Java language itself."** The Java language specification ("public static void main", try/catch, class/interface syntax) does not appear in the Claims of this patent and was published separately through the Sun-led Java Community Process and OpenJDK. The contribution of this patent is limited to "**a method to perform emulation analysis of a bytecode sequence before execution**," which results in supporting the safety of the Java sandbox, but the Java language itself is outside this patent's scope. The Java language inventor field is often cited as Gosling alone, but the inventor field of this patent lists **Yellin and Gosling as co-inventors**, with Yellin as the main implementer of the bytecode verifier.
+
+## 3. Why "the patent-secured opposite of the Day 25 eligibility walls"
+
+Day 25 ep88 SW-002 FORTRAN 1957 / ep89 SW-003 BBN IMP 1969 / ep90 SW-004 Smalltalk 1972 / Day 24 ep87 SW-005 HyperCard 1987 were not patented under the **eligibility wall four forms** (pre-judicial era / government contract / corporate strategy / unsettled), whereas this patent US5740441A succeeded in patenting in 1998 as the same "pure software invention." The difference can be explained on two axes: **case-law environment** and **Claim framing**.
+
+| Axis | Eligibility-wall forms (Day 25 series) | This patent US5740441A |
+|---|---|---|
+| **Period** | 1957-1987 (around Gottschalk v. Benson 1972) | 1994-1998 (after Diamond v. Diehr 1981, just before State Street Bank 1998) |
+| **Case-law environment** | Patent eligibility of pure-algorithm inventions not yet settled | "Useful, concrete, tangible result" criterion forming (just before State Street Bank) |
+| **Claim framing** | Published as language specs / compiler theory papers (FORTRAN), as RFC for government release (BBN), as fully unrestricted (Smalltalk), as ambiguously eligible pure software (HyperCard) | Framed as a concrete computational procedure: "**a method** of operating a computer system," "preprocessing a program stored in memory" (rated **same** on the four-stage scale of same / similar / metaphor / strained) |
+| **Inventor's affiliation** | IBM corporate lab (FORTRAN) / BBN-ARPA government contract (IMP) / Xerox PARC corporate strategy (Smalltalk) / Apple pure SW (HyperCard) | Sun Microsystems corporate lab — the same "single corporate-lab" form as FORTRAN, but patented because the case-law environment differs (**similar**) |
+| **Publication strategy** | Academic paper / RFC / fully open / free bundling | The two-tier strategy of "**language is free, implementation core is patented**" — the origin of the new form **(e) two-tier strategy**, distinct from any of the Day 25 four forms |
+| **Claim verbatim core** | "Language syntax and semantics," "network protocol," "VM," "set of cards" (eligibility ambiguous) | "Combination of memory, instruction, type restriction, program fault signal" (rated **similar** rather than **same**: Sun made it one step more concrete than the Day 25 cases) |
+
+Anticipated rebuttals from compiler researchers, Java internal-implementation engineers, and patent attorneys, one or two sentences each:
+
+- **Compiler researcher**: "Since 17 years passed since Cousot's abstract interpretation 1977, the **novelty** of the bytecode verifier should be thin. The core procedure of Claim 1 is the **standard fixed-point iteration algorithm**, and to the academic community it feels strange that it was patented at all." (A reasonable objection. However, Sun anticipated this and wrote into the Claim verbatim its application to the concrete computational structure of "the operand stack and registers of the Java VM," framing it as a concrete method rather than an abstract algorithm.)
+- **Java implementation engineer**: "The verifier in actual HotSpot JVM does not literally implement the Claim 1 procedure; it has been replaced by **type-checked verification** based on StackMapTable (JSR-202, Java 6 onward). This patent is a **transitional algorithm**, and the verifier algorithm of modern JVM is a different lineage." (A reasonable technical objection. This article limits itself to positioning as 'origin patent' and stops at 'inheritance of design idea' for continuity with modern JVM implementations.)
+- **Patent attorney**: "Since this patent expired in 2014, attributing the modern inheritance of Java sandbox to its Claims overestimates it. The OpenJDK verifier implementation has continued to be improved after the patent's expiry, and modern Java developers develop without being aware of this patent's existence." (A reasonable objection. This article discusses it within the framework of 'origin patent' and 'historical significance,' not the active scope of protection.)
+
+Four-stage evaluation (mandatory item in episode-writing.md): no rows rated "same"; four rows rated "similar" (Sun and the four other forms in inventor affiliation, publication strategy, Claim framing); one row rated "metaphor" (the "two-tier strategy" of publication strategy); no rows rated "strained."
+
+## 4. Why it was forgotten (speculation)
+
+This patent itself **is rarely cited explicitly by patent number** even in historical commentary on the Java sandbox (Wikipedia EN's Java security / Java bytecode / Bytecode verifier articles, etc.). This is speculation, but three reasons can be considered:
+
+1. **Sun's strategic low exposure.** While Sun loudly marketed the Java language itself in the 1995-05 public announcement, **it did not list its JVM-internal patents in press releases**. The existence of this patent is not widely known in the Java developer community, and patent-number citations are limited to legal documents and a portion of academic papers.
+2. **Diluted awareness through OpenJDK migration.** Since the OpenJDK project launched in 2007 (released under GPLv2+CE), the image of "free / open source" has been reinforced for the Java sandbox, and the fact that internal implementation was protected by patent has faded from general developer awareness.
+3. **Natural expiry in 2014.** This patent expired by lifetime on 2014-12-20, and at the present time (2026-05-09), the practical motivation to cite it is low from the perspective of legal staff.
+
+## 5. The AI-archaeological meaning
+
+In light of the central thesis of this series — "**re-read with LLMs the long writings humanity has not read**" — the Claim 1 verbatim of this patent (about 1,400 words) symbolizes the strange situation where 99% of Java developers have **never read** it, yet every Java program they write is verified daily by the procedure of this Claim 1. This patent is a typical example of "long writing that is unread but running," and an excavation target most suited to having LLMs raise the resolution by re-reading.
+
+## 6. Pitfalls (specific to the SW subseries)
+
+**Pitfall 1: Do not confuse "Java language patent" with "Java VM patent"**
+This patent is a patent on the bytecode verifier of the Java VM, not a patent on the Java language specification (class, interface, try/catch syntax). The Java language itself is **not patented** (it is published as the Java Specification Request documents through the Java Community Process). Erroneously writing "the patent that invented the Java language" risks correction requests from Sun / Oracle attorneys.
+
+**Pitfall 2: Do not equate the modern HotSpot JVM verifier implementation with Claim 1 of this patent**
+The verifier of the modern HotSpot JVM mainly uses type-checked verification based on StackMapTable (Java 6 onward, JSR-202), and the fixed-point iteration algorithm of Claim 1 of this patent corresponds to the older verifier of Java 5 and earlier. This article limits itself to "the historical meaning as origin patent" and does not "explain the operation of the modern JVM verifier with the Claim verbatim."
+
+**Pitfall 3: Do not assert role division between Yellin and Gosling**
+The inventor field of this patent is two co-inventors, but who invented which part cannot be determined from patent documents alone. In Java's official history, Gosling is often described as the leader of the entire Java language and JVM, and Yellin is known as the main implementer of the bytecode verifier, but the correspondence between the Claim 1 of this patent and each person's contribution **is not speculated in this article**.
+
+---
+
+## Strictly speaking
+
+**Confirmed facts:**
+- Retrieved Claim 1 verbatim of US5740441A from Google Patents (https://patents.google.com/patent/US5740441A/en) via WebFetch (2026-05-09)
+- Retrieved full HTML (708KB) via curl and extracted the `<section itemprop="claims">` section (18,138 characters) with Python re.search
+- Inventor field: **Co-inventors Frank Yellin and James A. Gosling**
+- Original Assignee: Sun Microsystems Inc
+- Current Assignee: Oracle America Inc (Sun acquisition by Oracle Corporation completed 2010-01-27)
+- Priority date: 1994-12-20, Filed: 1995-12-20, Granted: 1998-04-14, Expired: 2014-12-20
+- Number of Claims: 18 (Claim 1 is the method, Claims 2-18 are dependent)
+- Title verbatim: 'Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization'
+- Abstract verbatim: 'A program interpreter for computer programs written in a bytecode language...verifies the integrity of a specified program by identifying any bytecode instruction that would process data of the wrong type...and any bytecode instruction sequences that would cause underflow or overflow of the operand stack. After pre-processing by the verifier, if no faults are found, the interpreter executes the program without performing operand stack overflow/underflow checks or data type checks, greatly improving execution speed.'
+
+**Author's interpretation:**
+- The positioning as "the SW origin of a logical Cage that complements the six physical Cage forms" is the author's interpretation. It is a way of reading that places the six notes ep70-72 / 94-96 from Day 19 to Day 27 along the Cage axis, not a positioning Sun / Oracle themselves give to this patent on this axis.
+- The contrast "patent-secured opposite of the four eligibility-wall forms" is the author's interpretation built on top of the four-form arrangement of Day 25.
+- The interpretation of "Sun's two-tier strategy (language is free, implementation core is patented)" is inferred from the coexistence of this patent and the Java Community Process, not confirmed in Sun's internal documents.
+
+**Metaphors / analogies:**
+- "Type information becomes the wall of the cage" / "confining with symbols instead of matter" are at the metaphor level. They are expressions to show the correspondence with the physical Cage, not a design-level match.
+- "Pre-execution preprocessing checks ahead of time" is implementationally accurate, but "ahead of time" is metaphorical.
+
+**Unconfirmed:**
+- The verbatim of Claims 2-18 (only Claim 1 retrieved; dependent claims are summarized only)
+- Forward citation count (depends on Google Patents UI display; not retrieved in this article)
+- License contracts and litigation history of Sun / Oracle related to this patent
+- Sun internal documents corroborating the role division of Yellin and Gosling
+- Sun internal-decision materials regarding the strategic intent of the 1994-12-20 priority date (5 months before the 1995-05 public Java announcement)
+
+**Where the comparison breaks:**
+- Claim 1 of this patent is a **standard fixed-point iteration algorithm**, and from the perspective of Cousot's abstract-interpretation theory (1977), novelty is thin. Reactions of "the very fact that it was patented is surprising" are anticipated from the academic community.
+- The verifier of the modern HotSpot JVM has been replaced by the StackMapTable approach and does not directly execute the algorithm of Claim 1 of this patent. Writing that "the safety of modern Java depends on this patent" overestimates it.
+- This patent has expired in 2014 and has no practical scope of protection at the present time. Oracle's active patent strategy is a different lineage (OpenJDK license, Java SE Subscription contract).
+
+---
+
+References:
+- [Google Patents US5740441A](https://patents.google.com/patent/US5740441A/en)
+- [Wikipedia EN — Bytecode verifier](https://en.wikipedia.org/wiki/Bytecode_Verifier)
+- [Wikipedia EN — Java bytecode](https://en.wikipedia.org/wiki/Java_bytecode)
+- [JSR-202 — Java Class File Specification Update](https://jcp.org/en/jsr/detail?id=202)
+- [Cousot & Cousot 1977 — Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs](https://dl.acm.org/doi/10.1145/512950.512973)

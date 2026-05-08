@@ -1,0 +1,140 @@
+---
+title: "1973 年 11 月 MITRE Corporation の David E. Bell と Leonard J. LaPadula が共著した『Secure Computer Systems: Mathematical Foundations』MITRE Technical Report 2547 / ESD-TR-73-278（DTIC AD-770768）── USAF Electronic Systems Division 契約による政府公開強制で特許化記録なし、SW サブシリーズ DB 形態：適格性壁 (c) 政府契約による公開強制 第 2 弾発掘譚（Day 25 ep89 SW-003 BBN IMP に続く同形態 2 件目、Cage Patents 軸 SW『政策モデル cage 不在』形態）"
+subtitle: "ソフトウェア・UI 特許 発掘メモ #7 — 1972 年夏 USAF Electronic Systems Division 契約のもとで David E. Bell と Leonard J. LaPadula が MITRE で開発開始、1973 年 11 月 MITRE Technical Report 2547 Volume I として公開、DTIC Accession Number AD-770768、Air Force Report Number ESD-TR-73-278 として **政府公開**。Bell-LaPadula モデル（BLP）は **多レベルセキュリティの最初の数学的形式化** で、no read up（単純セキュリティ性質）／no write down（★性質）の 2 つの中核公理を持ち、Mandatory Access Control（MAC）と Discretionary Access Control（DAC）を組み合わせた。SELinux の Type Enforcement・MILS の MLS・Solaris Trusted Extensions・MITRE の SCC （Secure Computing Corporation） LOCK/ix・Honeywell SCOMP の起点。Day 25 ep89 SW-003 BBN IMP（ARPA 契約 → Internet STD 39）と並ぶ『適格性壁 (c) 政府契約公開形態』第 2 件目"
+description: "Day 28 / Cage Patents 軸 SW Open メモ。1972 年夏、米国空軍 Electronic Systems Division（USAF ESD、Hanscom Air Force Base 所在）の契約のもとで、MITRE Corporation の David Elliott Bell（当時 27 歳）と Leonard J. LaPadula は、軍用多レベルセキュリティの数学的形式化に着手した。1973 年 11 月、MITRE Technical Report 2547 Volume I『Secure Computer Systems: Mathematical Foundations』として政府公開、DTIC Accession Number AD-770768、Air Force Report Number ESD-TR-73-278 で永続アーカイブされた。Bell-LaPadula モデル（BLP）は (1) Simple Security Property「no read up」（高機密度を低クリアランスで読まない）、(2) ★ Property「no write down」（高クリアランスから低機密度に書かない）、(3) Discretionary Security Property（個別アクセス制御マトリクス）の 3 公理を中核とする。本メモは Wikipedia EN Bell-LaPadula model 項・DTIC AD-770768 公式 PDF・Internet Archive ファイルテキスト・Bell 自身の 2005 ACSAC 回顧論文『Looking Back at the Bell-La Padula Model』・Springer Encyclopedia of Cryptography and Security 項の 5 件二次資料で BLP モデルが MITRE TR と CACM 1976 論文として公開されながら、関連特許番号への言及が一切ないことを verify。Day 25 ep89 SW-003 BBN IMP の『ARPA 契約 → Internet STD 39 として 57 年継続公開』形態と並ぶ『適格性壁 (c) 政府契約による公開強制形態』第 2 弾。Cage Patents 軸 SW では『情報理論的政策モデルが特許化されなかった不在パターン』として、ep97 Yellin/Gosling 型システム cage 特許化成功（US5740441A）と ep99 Hardy KeyKOS capability cage 特許化成功（US4584639）の中央に位置づけ、SW Cage 3 形態（型 cage 成功 / 政策 cage 不在 / capability cage 成功）の中央メモ。"
+episode: 98
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Cage Patents", "Bell-LaPadula", "MITRE", "USAF", "適格性壁", "政府契約公開", "発掘メモ"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** Day 28 / Cage Patents 軸 SW Open 中央メモ。MITRE Technical Report 2547 Volume I の DTIC AD-770768 公式 PDF URL を確認済み・本文未読（Internet Archive djvu.txt 経由でテキスト存在を確認、本メモは目次レベルの参照に留める）。Wikipedia EN Bell-LaPadula model 項・Bell 2005 ACSAC 回顧論文『Looking Back at the Bell-La Padula Model』PDF・Springer Encyclopedia of Cryptography and Security『Bell-LaPadula Confidentiality Model』項・Purdue CS Spring 2018 BLP 講義ノート・SRI CSL 1986 Rushby Draft Technical Note の 5 件二次資料で BLP モデルが特許化されていない不在状態を verify。本メモは『**特許不在の発掘譚 = 適格性壁 (c) 政府契約による公開強制形態 第 2 弾の構造記録**』として書く。
+
+---
+
+## MITRE Technical Report 2547 基本情報
+
+| 項目 | 内容 |
+|---|---|
+| 報告書番号 | **MITRE Technical Report MTR-2547 Volume I** |
+| Air Force 報告書番号 | **ESD-TR-73-278 Volume I**（USAF Electronic Systems Division Technical Report） |
+| DTIC Accession Number | **AD-770768**（Defense Technical Information Center 永続アーカイブ） |
+| タイトル | **Secure Computer Systems: Mathematical Foundations** |
+| 著者 | **David Elliott Bell** と **Leonard J. LaPadula** の **2 名共著** |
+| 発行月 | **1973 年 11 月** |
+| 開発開始 | **1972 年夏** |
+| 契約元 | **USAF Electronic Systems Division (ESD)**, Hanscom Air Force Base, Massachusetts |
+| 受託組織 | **MITRE Corporation**（米国マサチューセッツ州 Bedford） |
+| 一次公開元 | DTIC（米国防総省技術情報センター）、National Technical Information Service（NTIS）経由配布 |
+| 後続論文 | **CACM 1976 — D. E. Bell and L. J. LaPadula『Secure Computer System: Unified Exposition and Multics Interpretation』ESD-TR-75-306 / MTR-2997**（Multics 適用）、Bell 2005 ACSAC『Looking Back at the Bell-La Padula Model』ACSAC 21st Conference Proceedings |
+| 特許番号 | **今回 verify 範囲では発見できず**（Wikipedia EN・Bell 2005 ACSAC 自著回顧論文・Springer Encyclopedia いずれも記載なし） |
+
+## 核心：Cage Patents 軸 SW『政策モデル cage 不在』形態
+
+### (a) Bell-LaPadula モデル 3 公理が囲い込んだ『政策モデル cage』
+
+BLP モデルは『高機密度の情報を低クリアランスのユーザーが読めない』という軍用機密保持を **数学的に形式化** した最初のモデルで、3 つの公理で『情報の流れを上向きにしか許さない cage』を構成する：
+
+1. **Simple Security Property（単純セキュリティ性質、no read up）**：主体（subject）s が客体（object）o を読めるのは、s のクリアランスレベル ≧ o の機密度レベルのとき
+2. **★ Property（star property、no write down）**：主体 s が客体 o に書けるのは、s の現在のレベル ≦ o の機密度レベルのとき（高クリアランス主体が低機密客体に情報を **漏洩** することを禁止）
+3. **Discretionary Security Property（任意アクセス制御）**：個別の subject-object 対についてアクセス制御マトリクスで明示許可されている場合のみ操作可能
+
+この 3 公理の組み合わせが『**情報が下から上にしか流れない単方向 cage**』を構成する。Cage Patents 軸の物質バリエーションでは ep70 floating gate（電子）／ep71 buried channel（電荷）／ep72 cross-linked gel（分子）が **物理的に分子・電荷・電子を閉じ込める** のに対し、BLP モデルは **情報の流れの方向そのものを閉じ込める** 抽象 cage であり、本記事 ep97 Yellin/Gosling 型システム cage（型情報を壁にする）と並ぶ論理 Cage の異なる形態。
+
+### (b) 政府契約による特許化不可と公開強制
+
+USAF ESD 契約は 1972 年当時の連邦調達規則（FAR / DFARS の前身）のもとで、MITRE が成果物として作成した技術報告書の **政府所有** を原則としていた。MITRE は連邦政府支援研究開発センター（FFRDC）として運営される非営利組織で、商用特許化を目的としない研究機関。BLP モデルの数学的形式化は MITRE TR 2547 として政府公開され、DTIC AD-770768 として永続アーカイブされた結果、**特許化の動機自体が制度的に存在しなかった**。
+
+これは Day 25 ep89 SW-003 BBN IMP（ARPA 契約 → BBN Report 1822 → DDC → RFC → 1992 Internet STD 39）と全く同じ『**適格性壁 (c) 政府契約による公開強制形態**』である：
+
+| 軸 | Day 25 ep89 BBN IMP | 本メモ Bell-LaPadula |
+|---|---|---|
+| 契約元 | ARPA（高等研究計画局） | USAF Electronic Systems Division |
+| 受託組織 | BBN（Bolt Beranek and Newman） | MITRE Corporation（FFRDC） |
+| 公開期日 | 1969-04（BBN Report 1822 起草）、1969-05 RFC 1 公開 | 1973-11（MITRE TR 2547 公開）、1976 CACM 論文 |
+| 永続アーカイブ | rfc-editor.org（57 年継続）、1992 Internet STD 39 | DTIC AD-770768、Internet Archive |
+| 特許化 | 不在（ARPA 契約条項により） | 不在（USAF ESD 契約により） |
+| 後続実装 | TCP/IP（1981 RFC 793）、現代 Internet 全体 | SELinux（NSA、2000 公開）、SCOMP（Honeywell、1985）、LOCK/ix（SCC、1990 年代）、MILS / Solaris Trusted Extensions、MITRE Type Enforcement |
+| 形態 | (c) 政府契約公開 第 1 弾 | **(c) 政府契約公開 第 2 弾** |
+
+### (c) Bell 自身が 2005 ACSAC で振り返った戦略
+
+Bell-LaPadula モデルの第 1 著者 David E. Bell（後年 Reston VA に移住、独立コンサルタント）は、2005 年 12 月の Annual Computer Security Applications Conference（ACSAC）21st Conference で『**Looking Back at the Bell-La Padula Model**』というタイトルの招待講演を行い、本人の視点で MITRE TR 2547 とその後 32 年間の影響を回顧している。同講演 PDF（acsac.org/2005/papers/Bell.pdf）は ACSAC 公式アーカイブで現在も公開されている。Bell 自身は本講演で BLP モデルの **特許化を試みなかった** ことを明示的に述べてはいないが、論文・技術報告書・教科書としての公開のみを軸に語っており、特許戦略への言及は皆無。
+
+## 現代との接続──BLP の 53 年後の 7 系統
+
+| 現代システム | BLP からの距離 | 同一/類似/比喩 |
+|---|---|---|
+| **NSA SELinux Type Enforcement**（2000 公開） | BLP 直系、Flask architecture（Loscocco/Smalley）の MAC 層 | **類似**（実装が異なるが MAC + DAC の 2 層構造を継承） |
+| **MILS（Multiple Independent Levels of Security）** | 軍用機の OS で BLP 多レベル制御を実装 | **類似** |
+| **Solaris Trusted Extensions** | Sun→Oracle の MLS 実装、BLP-style label 管理 | **類似** |
+| **Honeywell SCOMP**（1985） | DoD Orange Book A1 評価取得の最初の商用 OS、BLP 直系 | **同一** に近い（Class A1 評価で形式検証） |
+| **MITRE LOCK/ix**（1990 年代）／ **Secure Computing Corporation 製品** | MITRE 自身および MITRE 系の Secure Computing Corp（後 McAfee 買収）の MLS OS | **類似** |
+| **Apple iOS Sandbox / Android SELinux**（2026 現代） | mobile OS のサンドボックス、BLP 直系ではないが MAC 思想を継承 | **比喩**（設計は異なるが情報フロー制御の問題意識は共通） |
+| **Kubernetes Pod Security Standards / OPA Gatekeeper / AWS IAM** | クラウド時代のアクセス制御、BLP 数学モデルの抽象を継承 | **比喩**（実装は別系統、概念的継承） |
+
+4 段階評価：「同一」が 1 件（SCOMP）、「類似」が 4 件（SELinux / MILS / Solaris / LOCK）、「比喩」が 2 件（mobile OS sandbox / クラウド IAM）、「無理がある」は 0 件。
+
+## ep97 / ep99 との SW Cage 3 形態並列
+
+Day 28 のノート 1（ep97）+ メモ 2（ep98 / ep99）構成は、SW Cage 3 形態を以下のように並列する：
+
+| エピソード | 特許/文書 | Cage 形態 | 特許化結果 |
+|---|---|---|---|
+| **ep97** | US5740441A Yellin/Gosling Java VM bytecode verifier | **型システム cage**（情報整合性で囲い込む） | **成功**（1998 成立、2014 失効） |
+| **ep98（本メモ）** | MITRE TR 2547 Bell/LaPadula | **政策モデル cage**（情報フロー方向で囲い込む） | **不在**（USAF ESD 契約による政府公開、特許不可） |
+| **ep99** | US4584639 Hardy KeyKOS computer security system | **capability cage**（権限の物理的配布で囲い込む） | **成功**（1986 成立、Tymshare→McDonnell Douglas→Key Logic 譲渡） |
+
+Cage Patents 軸の論理 Cage SW 形態として、(1) 型システム cage（実行前検証）、(2) 政策モデル cage（情報フロー数学）、(3) capability cage（権限分配）の 3 系統が同時代に並走し、SW では 2/3 が特許化に成功した一方で、政府契約に基づく研究は特許化されなかったという構造を、Day 28 1 セッションで示す。これは Day 19-27 で蓄積した物理 Cage 6 形態に対する論理 Cage の起点 3 形態に当たる。
+
+## なぜ掘る価値があるか
+
+(a) Day 25 ep89 SW-003 BBN IMP に続く『適格性壁 (c) 政府契約公開形態』第 2 件目を確定し、形態 (c) が単独事例ではなく **構造的問題** であることを示す、(b) Cage Patents 軸 SW の中央に『政策モデル cage 不在』形態を据えることで、ep97 / ep99 の特許化成功 2 件と対比する 3 形態並列を完成させる、(c) BLP モデルが SELinux / SCOMP / MILS / Solaris Trusted Extensions と 53 年連続して使われ続けている影響範囲を、特許保護なしで成立した研究成果の典型として記録する、(d) MITRE / FFRDC モデルの 1970 年代の研究公開戦略を、現代の AI 安全性研究（Anthropic / OpenAI / Google DeepMind の論文公開戦略）と比較する補助線として用意する、の 4 点。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- MITRE Technical Report 2547 Volume I の DTIC AD-770768 公式 PDF URL を確認（https://apps.dtic.mil/sti/tr/pdf/AD0770768.pdf）
+- Internet Archive djvu.txt 経由でテキスト存在を確認（https://archive.org/stream/DTIC_AD0770768/DTIC_AD0770768_djvu.txt）
+- Air Force Report Number ESD-TR-73-278、MITRE 内部番号 MTR-2547、DTIC Accession Number AD-770768、発行 1973 年 11 月
+- 著者 David Elliott Bell（後年 Reston VA、独立コンサルタント）と Leonard J. LaPadula の 2 名共著
+- 1972 年夏 USAF Electronic Systems Division（Hanscom AFB）契約のもとで開発開始
+- Bell 自身の 2005 ACSAC 回顧論文『Looking Back at the Bell-La Padula Model』PDF（acsac.org/2005/papers/Bell.pdf）公開
+- 後続論文 CACM 1976 『Secure Computer System: Unified Exposition and Multics Interpretation』ESD-TR-75-306 / MTR-2997
+- Wikipedia EN Bell-LaPadula model 項・Springer Encyclopedia of Cryptography and Security 項・Purdue CS BLP 講義ノート・SRI CSL Rushby 1986 Draft Technical Note いずれも特許番号への言及なし
+
+**著者の解釈：**
+- 「政策モデル cage」「情報フロー方向で囲い込む」という Cage 軸での読みは著者の解釈。Bell / LaPadula 自身が BLP モデルを「cage」として位置づけた記録は確認していない。
+- 「適格性壁 (c) 政府契約による公開強制形態」第 2 弾という分類は、Day 25 で確立した著者独自の分類体系における位置づけ。
+- USAF ESD 契約条項により特許化が制度的に不可であった、という記述は MITRE FFRDC 一般論からの推測で、本契約の具体条項を確認したものではない（推測）。
+
+**比喩・アナロジー：**
+- 「政策モデル cage」「情報の流れの方向を閉じ込める」は比喩レベル。BLP は数学モデルで、物理的閉じ込めではない。
+- 現代システムとの 7 系統対応のうち「比喩」レベルの 2 件（mobile OS sandbox / クラウド IAM）は、実装は別系統で概念的継承にとどまる。
+
+**未確認：**
+- MITRE TR 2547 Volume I 本文（PDF 取得 URL のみ確認、本文の数学的記述は未読）
+- Volume II / III の存在と内容（CACM 1976 論文への参照のみ確認）
+- USAF ESD 契約番号と具体条項
+- BLP モデルの非米国での実装事例（NATO / 英国 GCHQ 等）
+- Bell と LaPadula 各人の貢献の対応
+
+**この比較が破綻する点：**
+- 「BLP は SELinux の直系」という記述は MAC + DAC 構造の継承を指すが、実装アルゴリズムは Type Enforcement と Domain-Type Enforcement への発展で大きく変わっている。「同一」「直系」と書くと SELinux 実装研究者から「FLASK architecture（Loscocco/Smalley）の方が直接の起点」と訂正される可能性。
+- MITRE FFRDC の特許政策一般論を本契約に適用する解釈は、1972-1973 年当時の具体条項を確認していないため推測の域を出ない。
+- BLP モデル自体は 1980 年代以降『機密性に偏重して完全性を扱わない』として批判され、Biba モデル（完全性、Bell-LaPadula の双対）／Clark-Wilson モデル（商用完全性）／Brewer-Nash Chinese Wall モデル（利益相反）等が補完として提唱された。BLP を「現代セキュリティの起点」と書くと過大評価。
+
+---
+
+参考リンク：
+- [DTIC AD-770768 公式 PDF — Secure Computer Systems: Mathematical Foundations](https://apps.dtic.mil/sti/tr/pdf/AD0770768.pdf)
+- [Internet Archive djvu.txt 全文](https://archive.org/stream/DTIC_AD0770768/DTIC_AD0770768_djvu.txt)
+- [Bell 2005 ACSAC 回顧論文 PDF — Looking Back at the Bell-La Padula Model](https://www.acsac.org/2005/papers/Bell.pdf)
+- [Wikipedia EN — Bell-LaPadula model](https://en.wikipedia.org/wiki/Bell%E2%80%93LaPadula_model)
+- [SRI CSL 1986 Rushby — Draft Technical Note: The Bell and La Padula Security Model](https://www.csl.sri.com/users/rushby/papers/blp86.pdf)
+- [Purdue CS — Topic 5: The Bell LaPadula Model](https://www.cs.purdue.edu/homes/ninghui/courses/Spring18/handouts/05_blp.pdf)

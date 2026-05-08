@@ -1,0 +1,194 @@
+---
+title: "1994 年 Sun Microsystems の Frank Yellin と James Gosling が共同出願した『Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization』特許 US5740441A——バイトコードを実行する前に型の整合性とスタックの溢れをエミュレーション解析で検証する『型システム cage』を Claim 化し、Java の sandbox 安全性をハードウェアではなく型情報そのもので囲い込んだ Day 28 Cage Patents 軸 SW Open 起点ノート"
+subtitle: "ソフトウェア・UI 特許 発掘ノート #5 — 米国特許 US5740441A、Frank Yellin と James A. Gosling の 2 名共同発明、Original Assignee Sun Microsystems Inc、Current Assignee Oracle America Inc、米国優先 1994-12-20・成立 1998-04-14・寿命満了 2014-12-20。Claim 1 は『プログラムを memory に格納し、各命令が処理するデータの型に制限を持つ場合、実行前に preprocessing としてその制限違反を検出して program fault signal を生成する方法』を請求し、operand stack と registers の data type snapshot を持つ仮想実行（emulation）で各命令の型整合性を確認する。Day 27 で揃えた物理 Cage 6 形態（電子・電荷・分子・容器・電気・イオン）に対する論理 Cage の SW 拡張第 1 件目"
+description: "1994 年 12 月 20 日、Sun Microsystems の Frank Yellin と James A. Gosling は『Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization』を米国に出願し、1998 年 4 月 14 日に米国特許 US5740441A として成立した。これは Java Virtual Machine の bytecode verifier の核を Claim 化した特許で、現代の JVM・Android Runtime・WebAssembly 検証器・.NET CLR にまで連続する『実行前の型検査による sandbox』設計思想の起点である。Day 27 で揃えた物理 Cage 6 形態（ep70 電子 / ep71 電荷 / ep72 分子静的 / ep94 電気 / ep95 分子動的 / ep96 容器）に対し、本特許は『型情報そのものを cage の壁にする』論理 Cage の SW 起点ノートとして位置づける。Claim 1 verbatim は 18 個の従属請求項を率い、(B1) operand stack と registers の data type snapshot 保持、(B2A-D) 仮想 emulation による successor 命令への型情報伝播、(B3) marked instruction の反復処理を 4 ステップの formal な preprocessing 手続きとして囲い込む。Original Assignee Sun Microsystems Inc は 2010 年 1 月 27 日に Oracle Corporation に買収され、Current Assignee は Oracle America Inc。Day 28 Cage Patents 軸 SW Open 起点ノートとして、(1) Claim 1 verbatim の型 cage としての読み、(2) Day 25 ep88 SW-002 FORTRAN 1957 / ep89 BBN IMP 1969 / ep90 Smalltalk 1972 / ep91 LISP 1958 の『適格性壁』形態との対比、(3) Java sandbox の同時代の特許戦略（Sun が言語自体は無料公開しながら verifier だけ特許化した二段戦略）、(4) ep98 Bell-LaPadula 政策モデル cage 特許不在 / ep99 Hardy KeyKOS capability cage 特許化との 3 形態並列、を読み解く。"
+episode: 97
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Cage Patents", "Java", "Sun Microsystems", "Frank Yellin", "James Gosling", "Bytecode Verifier", "発掘ノート"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 5
+status: "published"
+---
+
+## 結論を先に
+
+1994 年 12 月 20 日、米国カリフォルニア州 Mountain View の **Sun Microsystems Inc** に所属していた **Frank Yellin** と **James Arthur Gosling**（当時 39 歳、Java 言語設計の主導者）は、共同発明者として米国に『Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization』を出願した。1998 年 4 月 14 日に米国特許 **US5740441A** として成立、2014 年 12 月 20 日に寿命満了で失効。Claim 1 は『**プログラムを memory に格納し、各命令が処理するデータの型に制限を持つ場合、実行前に preprocessing としてその制限違反を検出して program fault signal を生成する方法**』を請求し、operand stack と registers の data type snapshot を保持しながら **emulation（仮想実行）** によって各命令が型違反やスタック溢れを起こさないかを反復確認する 4 ステップの手続きを 18 個の従属請求項で囲い込んだ。
+
+本ノートは Day 28 / **Cage Patents 軸 SW Open 起点ノート**として位置づける。Day 19 から Day 27 まで蓄積してきた **物理 Cage 6 形態**（ep70 舛岡フラッシュ＝電子 cage / ep71 Boyle-Smith CCD ＝電荷 cage / ep72 Biomatrix HA ゲル＝分子静的 cage / ep94 Noyce US2981877A ＝電気 cage / ep95 Theeuwes-Higuchi OROS ＝分子動的 cage / ep96 Tupper polyethylene ＝容器 cage / ep64 Goodenough LiCoO2 ＝イオン cage）に対し、本特許は『**型情報そのものを cage の壁として使う論理 Cage の SW 形態**』を Claim 化した点で、**物質ではなく抽象による閉じ込め**を扱う最初の SW ノートになる。
+
+2026 年現在、この設計思想は (a) Java Virtual Machine（OpenJDK / GraalVM / Eclipse Temurin）の bytecode verifier、(b) Android Runtime（ART）の dex2oat 検証パイプライン、(c) .NET Common Language Runtime の IL Verifier、(d) WebAssembly の wasm-validate / Reference Interpreter、(e) Apple LLVM bitcode の verifier、(f) eBPF の in-kernel verifier、(g) WebAssembly Component Model の type-checker と、**OS カーネルから Web ブラウザまで 7 系統に分岐**して使われ続けている。本特許そのものは 2014 年に失効しているが、その『**実行前の型検査によって、後で実行時に高コストな動的検査を省く**』という設計思想は、Cloudflare Workers の V8 isolate / Fastly Compute@Edge の Wasmtime / WasmCloud の wRPC 全てに共通する 32 年連続の発明である。Day 25 で揃えた **適格性壁 4 形態**（(a) pre-judicial era / (b) unsettled / (c) 政府契約 / (d) 企業戦略）の **対極にある『特許化に成功した SW 発明』** として、Day 28 ノート 1 + メモ 2 構成の中心に据える。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] Day 27 完走時に確定した Day 28 推奨 4 案のうち、(b) Cage Patents
+         軸 SW Open（純ソフトウェアでの「閉じ込めて使う」設計、Java sandbox
+         / SELinux / capability-based security 等の起点特許群）を選択
+         はるこ判断「推奨通り」（2026-05-09 朝帯）
+
+[STEP 2] Java sandbox 起点特許の絞り込み：
+         - 候補 A: US5740441A Yellin/Gosling bytecode verifier（1994 出願）
+         - 候補 B: US6044467A Yellin Secure class resolution loading
+                  and definition（1997 出願、後続の class loader 系）
+         - 候補 C: US5915025A Process scheduling for capability-based
+                  scheduling, gateway interfaces（後続）
+         - 候補 D: US6151618A Wahbe/Lucco/Anderson/Graham SFI
+                  (Software-based Fault Isolation, Berkeley 系)
+         → A を選定。理由：(a) bytecode verifier は Java sandbox 5 層
+           （ClassLoader 隔離・bytecode verifier・SecurityManager・
+           access controller・signed code）の中で最も基底層、
+           (b) Yellin と Gosling 2 名共同で Java の発明者欄に直結、
+           (c) 1994-12-20 priority は Java 言語の 1995-05-23 公開発表
+           より 5 ヶ月先行する戦略的 priority、(d) Cage 軸の論理版起点
+           として「型情報を壁に使う」最も clean な Claim
+
+[STEP 3] Google Patents から 1 次取得：
+         URL: https://patents.google.com/patent/US5740441A/en
+         → 発明者 Frank Yellin と James A. Gosling の 2 名共同を確認
+           Original Assignee Sun Microsystems Inc / Current Assignee
+           Oracle America Inc（2010-01-27 Oracle 買収完了）、
+           Priority date 1994-12-20 / Filed 1995-12-20 / Granted
+           1998-04-14 / Expired 2014-12-20、Claims 18 件、Abstract
+           verbatim を取得
+
+[STEP 4] curl 経由で HTML 全文取得（708KB）→
+         Python re.search で <section itemprop="claims"> 抽出
+         → Claim 1 verbatim 18,138 文字を取得成功
+           （Day 23 で確立した curl + Python regex 手法を踏襲）
+
+[STEP 5] DB 整合：candidates.tsv の SW セクションを grep yellin / 5740441
+         → 該当エントリなし（SW-001 〜 SW-010 は Day 23-26 で確立した
+           Engelbart / Atkinson / FORTRAN / BBN / Smalltalk / HyperCard /
+           Lapson / ALGOL / LISP / COBOL 系で、bytecode verifier は未収録）
+         → Day 28 新規追加候補として SW-011 / SW-012 / SW-013 を 3 件
+           並列追加する方針確定（ep97 SW-011 / ep98 SW-012 Bell-LaPadula /
+           ep99 SW-013 Hardy KeyKOS）
+
+[STEP 6] Cage 軸物質バリエーション内での位置づけ：
+         物理 Cage 6 形態（ep70-72・94-96）すべてが何らかの物質（金属酸化物・
+         半導体ドーパント・半透膜・ポリエチレン・架橋ハイドロゲル）で
+         分子・電荷・電子を物理的に囲い込むのに対し、本特許は data type
+         restriction という抽象情報を operand stack と registers の
+         data type snapshot として保持し、emulation による反復解析で
+         instruction sequence の整合性を確認する『情報による cage』
+         この差を 6 行対応表で 4 段階評価する
+
+[STEP 7] 同時代の Sun の二段戦略確認：
+         Sun は Java 言語自体（言語仕様・標準ライブラリ API）を 1995-05
+         以降 Java Community Process と OpenJDK で部分公開しながら、
+         JVM 内部の verifier アルゴリズムだけ US5740441A で 17 年特許化
+         した。これは Day 25 ep90 Smalltalk Xerox の「全面 unrestricted
+         redistribution」とも、Day 26 ep91 LISP McCarthy の「学術論文
+         全面公開」とも違う『言語は無料・実装の核は特許』戦略
+```
+
+選定理由：(a) Day 27 で完成した物理 Cage 6 形態に対する論理 Cage の起点として、Java bytecode verifier は最も clean な「型情報による閉じ込め」の Claim、(b) Yellin / Gosling 2 名共同の発明者欄は Day 11 系列の「単独通説 vs 実際は複数名」訂正パターンと同型で構造的発見になる、(c) Day 25 の適格性壁 4 形態（FORTRAN / BBN / Smalltalk / HyperCard）の **対極にある『特許化成功の SW 発明』** として、SW サブシリーズ DB に「成功事例」を厚く積む第 2 件目（既存 ep82 Engelbart / ep85 Atkinson に続く 3 件目の特許化成功）、(d) はるこの主軸ニッチ（中国 AI × 韓台半導体 × ロボット翻訳）の物質基盤の上で動く Java / Kotlin / Android / Chrome V8 / WebAssembly のすべてが本特許の延長線上にある現代的意義、(e) Cage Patents 軸を物理 6 形態 + 論理 1 形態 = 7 形態に拡張する起点、の 5 点。
+
+## 2. Claim 1 と 18 件の従属請求項の核
+
+Google Patents から取得した Claim 1（verbatim、curl + Python regex 経由）：
+
+> A method of operating a computer system, the steps of the method comprising: (A) storing a program in a memory, the program including a sequence of instructions, where each of a multiplicity of said instructions each represents an operation on data of a specific data type; said each instruction having associated data type restrictions on the data type of data to be manipulated by said each instruction; (B) prior to execution of said program, preprocessing said program by determining whether execution of any instruction in said program would violate said data type restrictions for that instruction and generating a program fault signal when execution of any instruction in said program would violate the data type restrictions for that instruction; said preprocessing step including: (B1) storing, for each instruction in said program, a data type snapshot, said data type snapshot including data type information concerning data types associated with data stored in an operand stack and registers by said program immediately prior to execution of the corresponding instruction; (B2) emulating operation of a selected instruction in the program by: (B2A) analyzing stack and register usage by said selected instruction so as to generate a current data type usage map for said operand stack and registers, (B2B) determining all successor instructions to said selected instruction, (B2C) merging the current data type usage map with the data type snapshot of said determined successor instructions, and (B2D) marking for further analysis each of said determined successor instructions whose data type snapshot is modified by said merging; (B3) emulating operation of each of said instructions marked for further analysis by performing step B2 on each of those marked instructions and unmarking each said emulated instruction; and (B4) repeating step B3 until there are no marked instructions.
+
+訳：「コンピュータシステムを動作させる方法であって、(A) メモリに、複数の命令の各々が特定のデータ型のデータに対する操作を表しかつ各命令が当該操作対象データの型に対する制限を持つような命令列を含むプログラムを格納するステップ；(B) 当該プログラムの実行前に、各命令の実行が当該命令の型制限に違反するかを判定し、違反する場合に program fault signal を生成する preprocessing を行うステップ──ここで preprocessing は (B1) 各命令について data type snapshot（当該命令の実行直前に operand stack と registers に格納されているデータの型情報）を保持し、(B2) 選択された命令の動作を emulation する──(B2A) 当該命令による stack と register の使用を解析して現在の data type usage map を生成、(B2B) 当該命令の successor 命令をすべて決定、(B2C) 現在の usage map と successor 命令の data type snapshot をマージ、(B2D) マージにより data type snapshot が変更される successor 命令を further analysis 用にマーク、(B3) マークされた各命令について B2 を実行しマークを外す、(B4) マークされた命令がなくなるまで B3 を反復する──を含む方法。」
+
+ここで Cage 軸の読みとして重要なのは 4 点：
+
+1. **「data type snapshot」という抽象情報が cage の壁になる**：物理 Cage 6 形態（ep70-72・94-96）では金属酸化物・半透膜・架橋ゲル・ポリエチレンといった物質が壁の役割を担うのに対し、本特許では operand stack と registers の各位置に「ここに整数が入っている / ここに参照型が入っている / ここは未初期化」という型情報の **記号** を保持し、その記号同士の整合性を反復的にマージすることで「型違反のあるバイトコード列は実行されない」という性質を実装する。**物質の代わりに記号で囲い込む** のが論理 Cage の核。
+
+2. **「emulating operation」という仮想実行で先回り検査する**：実行時の動的型検査ではなく、**実行前の preprocessing として** 命令列を仮想的に走らせることで、ループや分岐を含むあらゆる経路の型整合性を確認する。これは Day 25 で読んだ FORTRAN / Smalltalk / LISP の動的型検査とは別の系譜で、**抽象解釈（abstract interpretation）** を Claim 化した最初期の例。Cousot 夫妻が抽象解釈の理論を 1977 年に発表してから 17 年後に Sun が実装の Claim を取った構造になっている。
+
+3. **(B3) と (B4) の反復による fixed point 計算**：「マークされた命令がなくなるまで B3 を反復する」は、データフロー解析の **不動点計算（fixed-point iteration）** を Claim verbatim に書き込んだことになる。これは大学の学部コンパイラ授業で扱う標準アルゴリズムだが、それを「program fault signal の生成」と組み合わせて **特許化** した点が珍しい。Sun の特許戦略の成功は、純粋な数学的アルゴリズム（適格性壁の対象）ではなく「メモリに格納されたプログラムを preprocessing する **方法**」という具体的な計算手続きとしてフレーミングしたことに依る。
+
+4. **18 件の従属請求項の構造**：Claim 2 は operand stack underflow / overflow の検出を追加、Claim 3 は preprocessing 通過後の実行時型検査の省略、Claim 4 はオブジェクト生成と初期化命令の追跡（Title の "object initialization" 部分）、Claim 5 以降は Java の例外ハンドラ・finally 節・JSR（Jump to Subroutine）命令への対応を扱う。Claim 1 が広い「方法」として書かれ、後続 17 件で Java 固有の言語機能を 1 個ずつ追加する **層構造** が、後年の defense layer として機能した。
+
+明細書の落とし穴（Codex 対策）：本特許は **「Java 言語そのものを発明した特許」ではない**。Java 言語仕様（"public static void main"・try/catch・class/interface 構文）は本特許の Claim に登場せず、別系統の Sun の Java Community Process と OpenJDK で公開された。本特許の貢献は **「バイトコード列を実行前にエミュレーション解析する方法」** に限定され、それが結果として Java sandbox の安全性を支えるが、Java 言語自体は本特許の保護範囲外である。Java 言語の発明者欄は Gosling 単独で言及されることが多いが、本特許の発明者欄は **Yellin と Gosling の 2 名共同** で、Yellin は bytecode verifier 実装の主担当だった。
+
+## 3. なぜ「Day 25 適格性壁の対極にある特許化成功」なのか
+
+Day 25 ep88 SW-002 FORTRAN 1957 / ep89 SW-003 BBN IMP 1969 / ep90 SW-004 Smalltalk 1972 / Day 24 ep87 SW-005 HyperCard 1987 が **適格性壁 4 形態**（pre-judicial era / 政府契約 / 企業戦略 / unsettled）で特許化されなかったのに対し、本特許 US5740441A は同じ「純ソフトウェア発明」でありながら 1998 年に特許化に成功している。この差は **判例環境** と **Claim フレーミング** の 2 軸で説明できる。
+
+| 軸 | 適格性壁形態（Day 25 系列） | 本特許 US5740441A |
+|---|---|---|
+| **時期** | 1957-1987（Gottschalk v. Benson 1972 前後） | 1994-1998（Diamond v. Diehr 1981 後・State Street Bank 1998 直前） |
+| **判例環境** | 純アルゴリズム発明の特許適格性が確立していない | "useful, concrete, tangible result" 基準が形成されつつある（State Street Bank 直前期） |
+| **Claim フレーミング** | 言語仕様・コンパイラ理論として論文公開（FORTRAN）／RFC として政府公開（BBN）／全面 unrestricted（Smalltalk）／純粋ソフトウェアで適格性曖昧（HyperCard） | 「コンピュータシステムを動作させる **方法**」「メモリに格納されたプログラムを preprocessing する」と具体的計算手続きとしてフレーミング（同一/類似/比喩/無理がある の 4 段階で「同一」） |
+| **発明者の所属** | IBM 企業ラボ（FORTRAN）／BBN-ARPA 政府契約（IMP）／Xerox PARC 企業戦略（Smalltalk）／Apple 純 SW（HyperCard） | Sun Microsystems 企業ラボ（FORTRAN と同じ「企業ラボ単独」形態でありながら、判例環境が異なるため特許化成功）（**類似**） |
+| **公開戦略** | 学術論文 / RFC / 全面公開 / 無料同梱 | **言語は無料・実装の核は特許** の二段戦略（Day 25 4 形態のいずれとも別、新形態の **(e) 二段戦略形** の起点） |
+| **Claim verbatim の中核** | 「言語の構文と意味論」「ネットワークプロトコル」「VM」「カードの集合」（適格性曖昧） | 「メモリ・命令・型制限・program fault signal の組み合わせ」（**同一** ではなく **類似**：Sun は Day 25 の各事例より一歩具体化した） |
+
+この対応表に対して、コンパイラ研究者・Java 内部実装エンジニア・特許弁護士から想定される反論を 1〜2 文ずつ挙げる：
+
+- **コンパイラ研究者**：「Cousot の抽象解釈 1977 から 17 年経っているのだから、bytecode verifier は **新規性** が薄いはず。Claim 1 の core 手続きは **fixed-point iteration の標準アルゴリズム** で、特許化されていることが学術コミュニティから見ると違和感がある。」（妥当な反論。ただし Sun はこの反論を予期して "Java VM の operand stack と registers" という具体的計算機構造への適用を Claim verbatim に書き込み、抽象アルゴリズムではなく具体的方法としてフレーミングした）
+- **Java 実装エンジニア**：「実際の HotSpot JVM の verifier は本特許 Claim 1 の手続きをそのまま実装しているわけではなく、StackMapTable（JSR-202、Java 6 以降）による **type-checked verification** に置き換えられている。本特許は **過渡的なアルゴリズム**で、現代 JVM の verifier アルゴリズムは別系統。」（妥当な技術的反論。本記事は『起点特許』としての位置づけにとどめ、現代 JVM 実装との連続性は『設計思想の継承』レベルで止める）
+- **特許弁護士**：「本特許は 2014 年に失効しているため、Java sandbox の現代的継承を本特許の Claim に帰属させるのは過大評価。OpenJDK の verifier 実装は本特許失効後も継続して改良されており、現代 Java 開発者は本特許の存在を意識せず開発している。」（妥当な反論。本記事は『起点特許』『歴史的意味』の枠組みで論じ、現役の保護範囲については扱わない）
+
+4 段階評価（episode-writing.md 必須項目）：「同一」レベルは無し、「類似」が 4 行（Sun と他 4 形態の発明者所属・公開戦略・Claim フレーミング）、「比喩」が 1 行（公開戦略の "二段戦略"）、「無理がある」は無し。
+
+## 4. なぜ忘れられたか（推測）
+
+本特許そのものは、Java sandbox の歴史的解説（Wikipedia EN Java security / Java bytecode / Bytecode verifier 各項）でも **特許番号として明示的に引用されることが少ない**。これは推測だが、3 つの理由が考えられる：
+
+1. **Sun の戦略的低露出**：Sun は Java 言語自体を 1995-05 のオープン発表で大々的にマーケティングしながら、JVM 内部の特許を **ニュースリリースに載せなかった**。本特許の存在は Java 開発者コミュニティに広く知られておらず、特許番号として参照されるのは法務文書と一部の学術論文に限られる。
+2. **OpenJDK 移行による意識の薄れ**：2007 年の OpenJDK プロジェクト発足（GPLv2+CE で公開）以降、Java sandbox は「無料・オープンソース」というイメージが強化され、内部実装が特許で保護されていた事実が一般開発者の意識から消えた。
+3. **2014 年の自然失効**：本特許は 2014-12-20 に寿命満了で失効しており、現時点（2026-05-09）で参照する実用的動機が法務担当者から見ると低い。
+
+## 5. AI 考古学的な意味
+
+本連載の中心命題「**人類が読まなかった長文を、LLM で再読する**」に照らすと、本特許の Claim 1 verbatim（約 1,400 単語）は、Java 開発者の 99% が **読んだことがない** にもかかわらず、彼らの書く全 Java プログラムが毎日この Claim 1 の手続きで検証されている、という奇妙な状況を象徴している。本特許は「読まれていないが動いている長文」の典型例で、LLM による再読が解像度を上げるのに最も向いた発掘対象である。
+
+## 6. 落とし穴（SW サブシリーズ固有のもの）
+
+**落とし穴 1：『Java 言語の特許』と『Java VM の特許』を混同しない**
+本特許は Java VM の bytecode verifier の特許で、Java 言語仕様（クラス・インターフェース・try/catch 構文）の特許ではない。Java 言語自体は **特許化されていない**（Java Community Process と Java Specification Request の文書群で公開されている）。誤って「Java 言語の発明特許」と書くと、Sun / Oracle の弁護士から訂正要求を受ける危険性がある。
+
+**落とし穴 2：HotSpot JVM の現代 verifier 実装と本特許 Claim 1 を完全一致させない**
+現代 HotSpot JVM の verifier は StackMapTable（Java 6 以降、JSR-202）による type-checked verification を主力とし、本特許 Claim 1 の fixed-point iteration アルゴリズムは Java 5 以前の旧式 verifier に対応する。本記事は『起点特許としての歴史的意味』に限定し、『現代 JVM の verifier の動作を Claim verbatim で説明』しない。
+
+**落とし穴 3：Yellin と Gosling の役割分担を断定しない**
+本特許の発明者欄は 2 名共同だが、誰がどの部分を発明したかは特許書類からは確定できない。Java 公式ヒストリーでは Gosling が Java 言語と JVM 全体の主導者として記述されることが多く、Yellin は bytecode verifier 実装の主担当として知られているが、本特許の Claim 1 と Yellin / Gosling 各人の貢献の対応は **本記事では推測しない**。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- US5740441A の Claim 1 verbatim を Google Patents（https://patents.google.com/patent/US5740441A/en）から WebFetch で取得（2026-05-09）
+- HTML 全文 708KB を curl 経由で取得し Python re.search で `<section itemprop="claims">` セクション（18,138 文字）を抽出
+- 発明者欄：Frank Yellin と James A. Gosling の **2 名共同**
+- Original Assignee：Sun Microsystems Inc
+- Current Assignee：Oracle America Inc（2010-01-27 Oracle Corporation の Sun 買収完了）
+- Priority date：1994-12-20、Filed：1995-12-20、Granted：1998-04-14、Expired：2014-12-20
+- Claims 件数：18 件（Claim 1 が方法、Claim 2-18 が従属請求項）
+- Title verbatim：『Bytecode program interpreter apparatus and method with pre-verification of data type restrictions and object initialization』
+- Abstract verbatim：『A program interpreter for computer programs written in a bytecode language...verifies the integrity of a specified program by identifying any bytecode instruction that would process data of the wrong type...and any bytecode instruction sequences that would cause underflow or overflow of the operand stack. After pre-processing by the verifier, if no faults are found, the interpreter executes the program without performing operand stack overflow/underflow checks or data type checks, greatly improving execution speed.』
+
+**著者の解釈：**
+- 「物理 Cage 6 形態に対する論理 Cage の SW 起点」という位置づけは著者の解釈。Day 19 から Day 27 までの ep70-72・94-96 の 6 ノートを Cage 軸として並べた上での読み方であり、Sun / Oracle 自身が本特許をこの軸で位置づけているわけではない。
+- 「適格性壁 4 形態の対極にある特許化成功」という対比は Day 25 の 4 形態を整理した上での著者の解釈。
+- 「Sun の二段戦略（言語は無料・実装の核は特許）」の解釈は、本特許の存在と Java Community Process の併存から推測したものであり、Sun の社内文書で確認したものではない。
+
+**比喩・アナロジー：**
+- 「型情報を cage の壁にする」「物質ではなく記号で囲い込む」は比喩レベル。物理 Cage との対応を示す表現で、設計レベルの一致ではない。
+- 「実行前の preprocessing で先回り検査」は実装上正確だが、「先回り」という表現は比喩的。
+
+**未確認：**
+- Claim 2-18 の verbatim（Claim 1 のみ取得済み、従属請求項は概要のみ）
+- Forward citations 件数（Google Patents の表示に依存、本記事では未取得）
+- Sun / Oracle の本特許に関するライセンス契約や訴訟履歴
+- Yellin と Gosling の役割分担を裏付ける Sun 内部文書
+- 1994-12-20 priority date の戦略的意図（Java 公開発表 1995-05 の 5 ヶ月前）に関する Sun 内部判断資料
+
+**この比較が破綻する点：**
+- 本特許 Claim 1 は **fixed-point iteration の標準的アルゴリズム** で、Cousot の抽象解釈理論（1977）から見ると新規性が薄い。学術コミュニティから見ると「特許化できたこと自体が驚き」という反応が想定される。
+- 現代 HotSpot JVM の verifier は StackMapTable 方式に置き換わっており、本特許 Claim 1 のアルゴリズムをそのまま実行していない。「現代 Java の安全性が本特許に依存している」と書くと過大評価になる。
+- 本特許は 2014 年失効済みで、現時点で実用的な保護範囲を持たない。Oracle の現役特許戦略は別系統（OpenJDK ライセンス・Java SE Subscription 契約）。
+
+---
+
+参考リンク：
+- [Google Patents US5740441A](https://patents.google.com/patent/US5740441A/en)
+- [Wikipedia EN — Bytecode verifier](https://en.wikipedia.org/wiki/Bytecode_Verifier)
+- [Wikipedia EN — Java bytecode](https://en.wikipedia.org/wiki/Java_bytecode)
+- [JSR-202 — Java Class File Specification Update](https://jcp.org/en/jsr/detail?id=202)
+- [Cousot & Cousot 1977 — Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs](https://dl.acm.org/doi/10.1145/512950.512973)

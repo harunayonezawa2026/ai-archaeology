@@ -1,0 +1,121 @@
+---
+title: "1984 年 2 月 6 日 Tymshare Inc に Norman Hardy が発明者として譲渡した『Computer security system』特許 US4584639A — capability-based system のドメイン・ファクトリ・非感覚キーの 3 概念を Claim 1 で囲い込んだ KeyKOS の核特許、1985 年 8 月 1 日 McDonnell Douglas Corp 譲渡 → 同年 12 月 2 日 Key Logic Inc 譲渡の 3 段階遷移、Day 28 Cage Patents 軸 SW Open 終端メモ"
+subtitle: "ソフトウェア・UI 特許 発掘メモ #8 — 米国特許 US4584639A『Computer security system』、Norman Hardy（KeyKOS / GNOSIS アーキテクト）名義、Original Assignee Tymshare Inc（米国カリフォルニア州 Cupertino）、1985-08-01 McDonnell Douglas Corp 譲渡、1985-12-02 Key Logic Inc 譲渡、米国優先 1983-12-23・成立 1986-04-22、寿命満了 2003-04-22 Anticipated。Claim 1 は『capability-based data processing system におけるドメイン・キー・カーネル機能・ファクトリ・非感覚キーの組合せを請求』、(a) 各ドメインがキーを保持、(b) カーネルがキー作成・権限解決を排他的に担当、(c) ファクトリ・ドメインが新ドメインを生成、(d) requestor ドメインがファクトリの非感覚キー有無を判定可能、という 4 要素で『capability cage』を構成。Day 28 Cage Patents 軸 SW Open メモ、ep97 Yellin/Gosling 型システム cage 特許化成功・ep98 Bell-LaPadula 政策モデル cage 不在に続く SW Cage 第 3 形態（capability cage 特許化成功）"
+description: "1983 年 12 月 23 日、米国カリフォルニア州 Cupertino の Tymshare Inc に所属していた Norman Hardy（KeyKOS / GNOSIS のアーキテクト）は、譲渡人として米国に『Computer security system』を出願し、1986 年 4 月 22 日に米国特許 US4584639A として成立した。本特許は『**capability-based data processing system において、ドメイン（処理単位）・キー（権限単位）・カーネル（権限解決の唯一の機関）・ファクトリ（新ドメイン生成機構）・非感覚キー（情報を引き出せる権限）の組合せ**』を Claim 1 で囲い込み、capability cage の特許化成功例として歴史的に重要。1984-02-06 Tymshare に譲渡、1985-08-01 McDonnell Douglas Corporation に譲渡、1985-12-02 Key Logic Inc に譲渡、という 3 段階の譲渡履歴を経た。本メモは Wikipedia EN KeyKOS / Norman Hardy / Capability-based security 各項・Mark S. Miller の Medium 追悼記事『Norm Hardy's Place in History』・Semantic Scholar『Security in KeyKOS』Rajunas/Hardy 論文・Justia Patents Search Norman Hardy 検索結果・Confused Deputy 論文（Hardy 1988）・Google Patents US4584639A の 6 件二次資料で、KeyKOS の起点特許としての位置づけを verify。Day 28 / Cage Patents 軸 SW Open 終端メモとして、ep97 Yellin/Gosling 型システム cage（情報整合性で囲い込む、特許化成功）／ep98 Bell-LaPadula 政策モデル cage（情報フロー方向で囲い込む、特許化不在）／本メモ Hardy capability cage（権限の物理的配布で囲い込む、特許化成功）の SW Cage 3 形態を完成させる。"
+episode: 99
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Cage Patents", "KeyKOS", "Norman Hardy", "Tymshare", "Key Logic", "Capability-based Security", "発掘メモ"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 5
+format: "memo"
+status: "published"
+---
+
+**発掘メモについて：** Day 28 / Cage Patents 軸 SW Open 終端メモ。Google Patents から US4584639A の Claim 1 verbatim・発明者・3 段階譲渡履歴・出願日・成立日・Title を取得済み。明細書全文（KeyKOS / GNOSIS の OS 内部実装詳細・後年 EROS / CapROS / Coyotos への発展経緯）は未読。確認済み事実のみ記載し、推測は推測として明示する。
+
+---
+
+## 特許の基本情報
+
+| 項目 | 内容 |
+|---|---|
+| 特許番号 | **US4584639A** |
+| タイトル | **Computer security system** |
+| 発明者 | **Norman Hardy 単独**（KeyKOS / GNOSIS のアーキテクト、後年 Key Logic Inc 創業メンバー） |
+| Original Assignee（譲渡 1） | **Tymshare Inc**（米国カリフォルニア州 Cupertino）、譲渡日 1984-02-06 |
+| 中間譲受人（譲渡 2） | **McDonnell Douglas Corporation**、譲渡日 1985-08-01（Tymshare → McDonnell Douglas に Tymshare 全社買収の一環として譲渡） |
+| Current Assignee（譲渡 3） | **Key Logic Inc**（米国カリフォルニア州、Hardy / Hewitt 系）、譲渡日 1985-12-02 |
+| Filing Date / Priority Date | **1983-12-23** |
+| Grant Date | **1986-04-22** |
+| 寿命満了 | **2003-04-22 Anticipated**（17 年期限、米国 1995 年 GATT 改定前なので grant date + 17 年） |
+| Claims 件数 | **39 件**（Claim 1 が capability-based system core、Claim 2-39 が従属請求項で factory verification function / builder's functions / KID means / requestor key 系を細分化） |
+
+譲渡履歴の 3 段階遷移は capability-based OS の商用化を試みた組織変遷を反映している：(1) **Tymshare**（タイムシェアリング系列の老舗、1968 設立、Tymnet ネットワークと KeyKOS 開発の母体）、(2) **McDonnell Douglas**（航空宇宙大手、1984 年 Tymshare 全社買収の一環として KeyKOS 関連特許を取得）、(3) **Key Logic**（Hardy / Charles R. Landau 等が 1985 年 12 月に McDonnell Douglas からスピンアウトして capability-based OS の商用化を継続）。
+
+## Claim 1（一次資料 verbatim、curl + Python regex 経由取得）
+
+> In a capability based data processing system having at least one central processing unit, memory means and a multiplicity of keys, each key providing authority to its holder to use a specified portion of said system's resources, an arrangement comprising: a plurality of domains for performing predefined processes, each including means for holding a plurality of keys; and kernel means coupled to said domains for providing said domains with a predefined set of kernel functions, said kernel means having the exclusive means for creating keys and the exclusive means for resolving the authority conveyed by each said key; wherein a plurality of said domains comprise factories for creating factory products comprising new domains for performing specified tasks; a multiplicity of said keys are non-sensory keys, which convey the authority to directly or indirectly cause data to be transmitted to, or changed within, a domain other than the domain invoking said key; and predefined ones of said kernel functions allow a requestor domain with a key to a specified one of said factories to determine whether said specified factory has any non-sensory keys not included in a first predefined set of keys; whereby a requestor domain can determine if use of a specified factory could compromise the confidentiality of data provided by said requestor domain to said factory.
+
+訳：「少なくとも 1 つの中央処理装置・メモリ手段・複数のキー（各キーが保持者に対しシステム資源の特定部分を使用する権限を与える）を持つ capability based data processing system における構成であって、(a) 各々が複数のキーを保持する手段を含む、所定の処理を行う複数のドメイン；(b) 当該ドメインに結合され、所定のカーネル機能の組をドメインに提供するカーネル手段（カーネル手段は **キー作成の排他的手段** と **各キーが伝える権限を解決する排他的手段** を持つ）；ここで (c) **複数のドメインがファクトリ** を構成し、特定タスクを行う新ドメインから成る factory products を作成し、(d) 複数のキーが **非感覚キー** で、それらは当該キーを呼び出すドメイン以外のドメインに対しデータの送信または変更を直接的・間接的に引き起こす権限を伝え、(e) 所定のカーネル機能により、特定のファクトリへのキーを持つ requestor ドメインが、当該ファクトリが第 1 の所定のキーの組に含まれない非感覚キーを持つかを判定可能であり、(f) これにより requestor ドメインが、特定ファクトリの使用が requestor ドメインから提供されたデータの機密性を損なう可能性があるかを判定可能である構成。」
+
+**Claim 1 の核は 4 点：**
+
+1. **capability-based system の 3 概念（ドメイン・キー・カーネル）の囲い込み**：本特許は capability-based OS の概念を発明したわけではなく（capability の概念は Dennis-Van Horn 1966 / Plessey System 250 / IBM System/38 等の先行研究あり）、その上で **「権限解決の排他性」「factory による安全な新ドメイン生成」「非感覚キー検出」** の 3 機能の組合せを Claim 化した。
+2. **「kernel means having the exclusive means for creating keys」という排他性の主張**：カーネルだけがキーを作成できるという排他的権限を Claim 1 verbatim に書き込むことで、ユーザーランドからの不正なキー作成を仕様レベルで禁止した。これは BLP モデル（ep98）の「3 公理」と同じく、**情報フロー制御の数学的性質を Claim verbatim に書き込んだ稀な例**。
+3. **factory pattern による confidentiality 検証**：requestor ドメインがファクトリを使う前にファクトリの非感覚キー有無を判定できる、という **before-the-fact verification** 機能を Claim 1 で囲い込んだ。これは現代の Web 開発で言う "OAuth scope verification" や "service mesh policy check" の概念的祖先。
+4. **non-sensory keys（非感覚キー）という独自概念**：Hardy が KeyKOS で導入した『**情報を引き出せる権限を持つキー**（vs 単に情報を返さない sensory key）』という区別を Claim verbatim に書き込み、capability の細分化により情報漏洩経路を制御する。
+
+## Cage 軸での読み
+
+| Cage 軸の SW 形態 | 該当エピソード | 何を閉じ込めるか | 閉じ込めの仕組み |
+|---|---|---|---|
+| **型システム cage** | **ep97 Yellin/Gosling US5740441A**（1994-1998）特許化成功 | **データ型整合性**（不正な型操作のバイトコード列） | **実行前 emulation で operand stack と registers の data type snapshot を反復解析** |
+| **政策モデル cage** | **ep98 Bell-LaPadula MITRE TR 2547**（1973）特許化不在 | **情報フローの方向**（高機密度から低クリアランスへの漏洩） | **3 公理の数学的形式化（no read up / no write down / DAC）** |
+| **capability cage** | **本メモ ep99 Hardy US4584639A**（1983-1986）特許化成功 | **権限の不正な拡散**（ファクトリ経由の非感覚キー漏洩） | **カーネル排他のキー作成と factory verification function による before-the-fact 確認** |
+
+物理 Cage 6 形態（ep70-72・ep94-96）が金属酸化物・半透膜・架橋ハイドロゲル・ポリエチレン・SiO2 で **物質を物理的に閉じ込める** のに対し、SW Cage 3 形態は (1) 型情報という記号、(2) 数学的情報フロー公理、(3) 権限分配の物理的所有、という 3 系統の **抽象的閉じ込め** を表現する。本メモは 3 形態の最後を埋め、Day 28 SW Cage 3 形態並列を完成させる。
+
+## 現代との接続──capability-based security の 40 年継承
+
+| 現代システム | KeyKOS からの距離 | 同一/類似/比喩 |
+|---|---|---|
+| **EROS（Extremely Reliable OS、Shapiro 1999-2005）** | KeyKOS 直系、Hardy → Shapiro の系譜 | **同一** に近い（Hardy が EROS 開発に助言） |
+| **CapROS（Capability-based Reliable OS、2005-）** | EROS のフォーク、Hardy 系の後継 | **同一** に近い |
+| **Coyotos（Shapiro 2006-）** | EROS の後継言語 BitC ベース | **類似** |
+| **seL4（NICTA / Data61、2009 形式検証完了）** | capability-based microkernel、形式検証で BLP に近い保証を持つ | **類似**（実装は L4 系列だが capability 概念を継承） |
+| **Fuchsia / Zircon（Google、2017-）** | capability-based microkernel、Android / iOS の後継 OS 候補 | **類似** |
+| **WebAssembly Component Model**（2024-） | wasm component の interface-typed capability | **比喩**（capability 概念は継承、実装は別系統） |
+| **Capabilities Linux（Linux 2.2-、1999-）** | capability 概念を Linux の root 細分化に適用 | **比喩**（POSIX capabilities は object capability ではなく ambient authority） |
+| **Cap'n Proto（Sandstorm.io、Kenton Varda）** | capability-based RPC、Mark Miller 系の影響 | **類似** |
+
+4 段階評価：「同一」が 2 件（EROS / CapROS、Hardy 系後継）、「類似」が 4 件（Coyotos / seL4 / Fuchsia / Cap'n Proto）、「比喩」が 2 件（WebAssembly Component Model / Linux capabilities）、「無理がある」は 0 件。
+
+## なぜ掘る価値があるか
+
+(a) Day 28 SW Cage 3 形態（型 cage 成功 / 政策 cage 不在 / capability cage 成功）の最終形態を埋め、Day 19-27 で蓄積した物理 Cage 6 形態に対する論理 Cage 3 形態の起点を完成させる、(b) 譲渡履歴 3 段階（Tymshare → McDonnell Douglas → Key Logic）が capability-based OS の商用化失敗（Tymshare 買収・McDonnell Douglas 撤退・Key Logic スピンアウトの一連の組織変動）を反映している点を、KeyKOS が技術的には先進的だったが商業的には主流にならなかった構造として記録する、(c) Mark S. Miller 系列（E 言語、Cap'n Proto、Web Capability、Spritely Goblins）の 40 年継承が本特許 Claim 1 の核 4 概念（ドメイン・キー・カーネル排他・ファクトリ）から始まったことを示す、(d) 現代の Fuchsia / Zircon / seL4 / WebAssembly Component Model の capability-based design への影響を、Hardy 起点特許として歴史化する、の 4 点。
+
+---
+
+## 厳密にはこう
+
+**確認済みの事実：**
+- US4584639A の Claim 1 verbatim を Google Patents（https://patents.google.com/patent/US4584639A/en）から WebFetch で取得（2026-05-09）
+- HTML 全文 987KB を curl 経由で取得し Python re.search で `<section itemprop="claims">` セクション（25,726 文字）を抽出、Claim 1-6 までを冒頭で確認
+- 発明者欄：Norman Hardy 単独
+- 3 段階譲渡履歴：1984-02-06 Tymshare Inc 譲渡 → 1985-08-01 McDonnell Douglas Corporation 譲渡 → 1985-12-02 Key Logic Inc 譲渡
+- Priority date / Filing date：1983-12-23、Grant date：1986-04-22、寿命満了：2003-04-22 Anticipated
+- Claims 件数：39 件
+- Title verbatim：『Computer security system』
+- Wikipedia EN KeyKOS 項・Mark S. Miller の Medium 追悼記事『Norm Hardy's Place in History』・Semantic Scholar『Security in KeyKOS』Rajunas/Hardy 論文・Justia Patents Search Norman Hardy 検索結果・Confused Deputy 論文（Hardy 1988）が KeyKOS の系譜と Hardy の貢献を裏付け
+
+**著者の解釈：**
+- 「capability cage」「権限の物理的配布で囲い込む」という Cage 軸での読みは著者の解釈。Hardy 自身が KeyKOS を「cage」として位置づけた記録は確認していない。
+- 「Day 28 SW Cage 3 形態の終端メモ」という位置づけは、ep97 / ep98 と並列する著者独自の構成。
+- 譲渡履歴 3 段階が「capability-based OS の商用化失敗」を反映している、という解釈は組織変動の事実から推測したもので、Tymshare / McDonnell Douglas / Key Logic の各社内部文書を確認したものではない（推測）。
+
+**比喩・アナロジー：**
+- 「capability cage」「権限の物理的配布」は比喩レベル。capability は記号的権限であり、物理的な配布ではない。
+- 「現代の OAuth scope verification の概念的祖先」は比喩。OAuth と capability は実装系統が異なる。
+
+**未確認：**
+- Claim 2-39 の verbatim（Claim 1-6 のみ取得済み、残 33 件は概要のみ）
+- KeyKOS の商用稼働実績（1983-1990 年代の Tymnet 上での具体的応用件数）
+- McDonnell Douglas / Key Logic の本特許に関するライセンス契約や訴訟履歴
+- Hardy の Tymshare / Key Logic 在職期間の具体的役職と年代
+- GNOSIS（KeyKOS の前身、1979-1983 開発）と本特許の関係
+- 本特許と先行 capability 研究（Dennis-Van Horn 1966 / Plessey System 250 / IBM System/38）との特許性の関係
+
+**この比較が破綻する点：**
+- Hardy の貢献を「capability cage の発明」と書くと、capability の概念自体は先行研究に存在するため、capability 研究者から「Plessey System 250（1972）と IBM System/38（1978）の方が capability OS の起点として早い」と訂正される可能性。本記事は『**capability cage の Claim 化に成功した起点特許**』という限定的フレーミングで論じる。
+- 譲渡履歴の解釈「商用化失敗」は組織変動の表面的事実から推測した解釈で、Tymshare 買収の戦略的意図や Key Logic の事業計画を確認していない。
+- 現代システム（Fuchsia / seL4）の capability-based design への影響を本特許の Claim に帰属させるのは過大評価の危険。L4 系列・seL4 形式検証・Fuchsia の Zircon 設計は、本特許の Claim そのものではなく capability 概念の継承を別系統で実装している。
+
+---
+
+参考リンク：
+- [Google Patents US4584639A](https://patents.google.com/patent/US4584639A/en)
+- [Wikipedia EN — KeyKOS](https://en.wikipedia.org/wiki/KeyKOS)
+- [Mark S. Miller Medium — Norm Hardy's Place in History](https://erights.medium.com/norm-hardys-place-in-history-cecf191df641)
+- [Security in KeyKOS（Rajunas / Hardy 論文）— Semantic Scholar](https://www.semanticscholar.org/paper/Security-In-Keykos%E2%84%A2-Rajunas-Hardy/45028a50600edcd6a2cb356f2e4ac83b309f36a6)
+- [Hardy 1988 — The Confused Deputy（or why capabilities might have been invented）PDF](http://web.cs.wpi.edu/~cs557/f14/papers/confused_deputy-hardy.pdf)
+- [Justia Patents Search — Norman Hardy 検索結果](https://patents.justia.com/inventor/norman-hardy)
