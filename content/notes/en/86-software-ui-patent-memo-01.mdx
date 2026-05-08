@@ -1,0 +1,124 @@
+---
+title: "1982 Apple Ball-Type Mouse Patent US4464652 'CURSOR CONTROL DEVICE FOR USE WITH DISPLAY SYSTEMS' — Sole-First-Inventor William F. Lapson, Apple-Assigned, With a Detection Mechanism Fundamentally Different From Engelbart Mouse US3541541's Wheel Type. Claim 1 Verbatim Pulled From PDF, but the Second-Inventor Field Is Blocked by OCR Garble: an Excavation Log of the SW Subseries' First 'Information Wall — OCR Form'"
+description: "Day 24 SW subseries' second memo. The Apple ball-type mouse patent US4464652, filed 1982-07-19, granted 1984-08-07, expired, pulled from patentimages.storage.googleapis.com PDF (14 pages, 1.08 MB). The first inventor field reads 'William F. Lapson, Cupertino,' but the second-inventor field is OCR-garbled in pdftotext -raw output as 'g-lfykihsm L°S Gatos' — the actual name not identifiable from the PDF. WebSearch returns 'William D. Atkinson' as co-inventor, but Wikipedia EN's Bill Atkinson page makes no reference to US4464652, and secondary sources (uspto.report, etc.) are blocked by Cloudflare so cross-check is unreachable. Claim 1 verbatim is ball-type (rotatable ball + domed portion + cut-outs + X-Y position indicating means + biasing means + lock cap/lock tabs/lock ridges removability mechanism), fundamentally different in detection principle from Engelbart Mouse US3541541's wheel type (position wheels + transducer + flexible conductor). Recorded as the SW subseries' first 'Information Wall — OCR Form.'"
+seriesNumber: 1
+episode: 86
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Software/UI Patent", "Apple", "Mouse", "Information Wall", "Excavation Memo"]
+series: "Software/UI Patent"
+status: "published"
+format: "memo"
+---
+
+## About This Excavation Memo
+
+Primary-source URL confirmed and full text retrieved (patentimages.storage.googleapis.com/pdfs/US4464652.pdf, 14 pages, 1.08 MB, retrieved with curl + pdftotext). However, due to OCR garble in the co-inventor field, the second inventor's name cannot be identified from the patent front matter. Claim 1 verbatim and all other front-matter information are confirmed.
+
+## 1. Patent Basics (Confirmed Range From PDF Front Matter)
+
+| Field | Value |
+|---|---|
+| Patent Number | US 4,464,652 |
+| Title | CURSOR CONTROL DEVICE FOR USE WITH DISPLAY SYSTEMS |
+| Inventors (PDF L7) | William F. Lapson, Cupertino (first inventor) + [OCR garble: 'g-lfykihsm L°S Gatos'] (second inventor, unidentifiable) |
+| Assignee | Apple Computer, Inc., Cupertino, Calif. |
+| Appl. No. | 399,704 |
+| Filed | Jul. 19, 1982 |
+| Granted | Aug. 7, 1984 |
+| Total Claims | 13 Claims, 15 Drawing Figures |
+| Primary Examiner | Gerald L. Brigance |
+| Attorney/Agent | Blakely, Sokoloff, Taylor & Zafman |
+| Filing → Grant | 2 years 0 months (very fast) |
+| Expiration | 2001-08-07 (GATT-pre filing, 17 years from grant) |
+
+## 2. Core: Claim 1 Verbatim (Extracted From PDF L319-355)
+
+```
+1. A device for providing signals indicative of X-Y locations on a display system,
+   comprising:
+   a housing including a base, having an opening for the passage of a rotatable ball;
+   a unitary frame disposed on said base including:
+     a domed portion integrally formed with said frame substantially surrounding
+     and retaining said rotatable ball;
+     said domed portion having first and second cut-outs through said dome disposed
+     substantially at 90 degrees with respect to one another, and a third cut-out
+     disposed at an angle with respect to said first and second cut-outs;
+     X-Y position indicating means passing through said first and second cut-outs,
+     for converting the rotation of said ball into signals indicative of X-Y
+     positions on said display system;
+     biasing means passing through said third cut-out, for biasing said ball
+     against said X-Y position indicating means;
+   means for removing said ball from said domed portion through said opening
+   in said base, such that said ball and the interior of said dome may be serviced,
+   said means for removing comprising:
+     outwardly extending lock ridges integrally formed with said opening in said base;
+     a lock cap having a second opening of smaller diameter than said base opening
+     to permit only a portion of said ball to pass therethrough and contact said surface;
+     said lock cap further including outwardly extending lock tabs to interleaf
+     with said lock ridges, such that rotation of said cap interleafs with said
+     lock ridges, thereby locking said cap onto said base;
+   whereby movement of said device over a surface such that a portion of said ball
+   is maintained in contact with said surface results in X-Y positions defined
+   on said display system.
+```
+
+The ball-type mouse structure plus the **'turn the back lock cap to remove and clean the ball'** mechanism (lock cap + lock tabs + lock ridges) is the heart of Claim 1. The Apple Lisa (1983) and Macintosh (1984) factory mice — and that classic mechanism where 'when the ball stops moving from dust, you turn the back cap to remove it' — are this Claim verbatim.
+
+## 3. Contrast With Engelbart Mouse US3541541
+
+| Field | SW-001 Engelbart 1967 filing | SW-007 Lapson + Co-Inventor 1982 filing |
+|---|---|---|
+| Lead Inventor | Douglas C. Engelbart, Palo Alto (sole) | William F. Lapson, Cupertino (first) + second inventor (OCR wall) |
+| Assignee | Stanford Research Institute (later SRI International) | Apple Computer, Inc. |
+| Detection Mechanism | First/second position wheels (axes orthogonal) + transducer | Rotatable ball + orthogonal cut-outs + X-Y position indicating means |
+| User Contact Surface | Two wheels in direct contact with the surface | Ball in contact with the surface; internal mechanism reads ball rotation |
+| Serviceability | Not addressed in Claim | Lock cap removal mechanism claimed (maintainability included in scope) |
+| Total Claims | 8 Claims | 13 Claims |
+| Expiration | 1987-11-17 | 2001-08-07 |
+
+Both are 'mechanical X-Y input devices,' but their detection principles — **wheel type vs. ball type** — are fundamentally different. Apple is said to have obtained a license to the Engelbart patent (SRI-assigned) by contract, but the volume Lisa/Mac mouse was Lapson-led and **independently designed with a ball mechanism, secured by Apple-sole-assigned patent**. It is not a derivative of the SRI patent but an independent parallel invention.
+
+## 4. Information-Wall Structure: Second Inventor Unidentifiable Due to OCR Garble
+
+When the PDF (patentimages.storage.googleapis.com/pdfs/US4464652.pdf) is extracted with pdftotext -raw, the inventor field's second line is output as:
+
+```
+[75] Inventors: William F. Lapson, Cupertino; FQREIGN PATENT DOCUMENTS
+g-lfykihsm L°S Gatos 1526428 9/1978 United Kingdom .............. 340/710
+0 o a 1 .
+```
+
+(a) The second inventor's name — `g-lfykihsm L°S Gatos` — is OCR-garbled and unreadable. `L°S Gatos` can be inferred as 'Los Gatos' (California, near Apple HQ), but the surname `g-lfykihsm` cannot be reconstructed as a human name.
+
+(b) WebSearch ""William D. Atkinson" patent Apple Computer USPTO list" returns 'invention credited to William D. Atkinson and William F. Lapson,' but the secondary source is unspecified.
+
+(c) The Wikipedia EN Bill Atkinson page lists US4622545A (image compression, 1986; treated in today's ep85) as the only 'Apple-assigned US patent' associated with him — no reference to US4464652. If Atkinson were a co-inventor, Wikipedia's omission of this major mouse patent would be unnatural.
+
+(d) Cross-check candidates uspto.report, Justia patents, and Google Patents HTML are all blocked by Cloudflare challenges at the curl level, so the inventor field cannot be retrieved mechanically without going through interactive UI.
+
+→ **Information-wall structure**: ① PDF retrieval succeeded, ② Claim 1 verbatim retrieval succeeded, ③ first-inventor (Lapson) identification succeeded, ④ **second-inventor identification blocked by OCR garble and secondary-source walls**. The first 'Information Wall — OCR Form' instance for the SW subseries. Day 22-23 cosmetic 'information walls' (DPMA, USPTO, J-PlatPat) were all about 'interactive UI required'; this is a new form — about **OCR quality**.
+
+## 5. Strictly Speaking (Concise 3 Items)
+
+### Confirmed Facts
+
+- Patent Number, Title, first inventor (William F. Lapson, Cupertino), Assignee, Appl. No., Filed, Granted, and Claim 1 verbatim are all confirmed from patentimages.storage.googleapis.com/pdfs/US4464652.pdf (14 pages, 1.08 MB).
+- Second-inventor field's OCR garble is reproducibly confirmed in both pdftotext -raw and pdftotext -layout outputs.
+- WebSearch returning 'William D. Atkinson' as co-inventor and Wikipedia EN Bill Atkinson page lacking US4464652 reference are both confirmed as facts.
+
+### Author's Interpretation
+
+- 'Apple did not derive from the Engelbart patent but pursued an independent parallel ball-type design under Lapson, claimed at the Claim 1 level' is inferred from differences in detection mechanism (wheel vs. ball) and assignee (SRI vs. Apple). Not corroborated against Apple internal documents.
+- 'The lock cap removal mechanism is the Lisa/Mac factory-mouse mechanism people remember' rests on common recollection of period mouse design and Claim 1 wording — author's reading.
+
+### Where This Comparison Breaks
+
+- Asserting 'Apple Mouse is Lapson + Atkinson co-invention' without confirming the second inventor would exceed the wall and become speculation. This memo stops at 'first inventor is Lapson; second inventor is OCR-blocked.'
+- Ball-vs-wheel distinction holds at the detection-mechanism level, but from modern optical-mouse standpoint, both are 'mechanical' relatives — overstating the modern lineage will draw expert pushback.
+- 'Apple did not derive from the Engelbart patent' requires careful examination of Apple ↔ SRI contracts to fully support. This memo only addresses Claim 1 verbatim differences.
+
+## References
+
+- US4464652 PDF: [patentimages.storage.googleapis.com/pdfs/US4464652.pdf](https://patentimages.storage.googleapis.com/pdfs/US4464652.pdf)
+- Related episode: [#82 SW-001 Engelbart Mouse US3541541](/en/notes/82-software-ui-patent-01)
+- Related episode: [#85 SW-006 Atkinson US4622545 (same-day note)](/en/notes/85-software-ui-patent-02)

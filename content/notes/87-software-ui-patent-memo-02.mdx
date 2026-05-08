@@ -1,0 +1,89 @@
+---
+title: "1985-1987 年 Apple HyperCard / Bill Atkinson 単独開発・Dan Winkler HyperTalk 作者・MacWorld 1987-08 で『無料同梱』条件付き Apple 譲渡 ── World Wide Web（1989-91）以前の決定的ハイパーメディア環境でありながら、Wikipedia 英語版・WebSearch・USPTO Patent Center 検索で HyperCard 自体の特許番号が見つからない『適格性壁』発掘譚（SW サブシリーズ DB 形態：適格性壁 第 1 弾）"
+description: "Day 24 SW サブシリーズ 第 3 メモ。1985 年 Atkinson 単独開発開始（コードネーム WildCard）、1986-87 年 Dan Winkler が HyperTalk スクリプト言語追加、1987-08-11 MacWorld Boston で発表、Apple に『無料同梱』条件で譲渡された HyperCard の特許化状況を verify。WebSearch・Wikipedia EN HyperCard 項・Wikipedia EN Bill Atkinson 項・Apple Wiki Fandom・History of Information・OSnews・Science Museum Group いずれにも HyperCard 自体の特許番号は記載なし。Atkinson 単独 Apple-assigned 特許として確認できるのは US4622545（画像圧縮、1986、本日 ep85 で扱った）のみで、HyperCard の核心要素（カード・スタック・HyperTalk・ボタン・スクリプト・リンク）はいずれも Claim 化された記録がない。Day 24 の SW-001/SW-006/SW-007（Engelbart マウス／Atkinson region／Lapson + 共同発明者の cursor control）が **ハードウェア要素を含む** Claim で特許化に成功した一方で、HyperCard は **純ソフトウェア・OS 上のアプリケーション** だったため、1980 年代後半の米国ソフトウェア特許適格性 unsettled 期の壁で特許化されなかった可能性が高い。SW サブシリーズで初めて『適格性壁』形態として記録。"
+seriesNumber: 2
+episode: 87
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "HyperCard", "Atkinson", "適格性壁", "発掘メモ"]
+series: "ソフトウェア・UI特許"
+status: "published"
+format: "memo"
+---
+
+## 発掘メモについて
+
+一次資料 URL 確認済み・本文未読（Wikipedia EN HyperCard 項、Wikipedia EN Bill Atkinson 項、Apple Wiki Fandom HyperCard、Science Museum Group HyperCard 1987 オブジェクト、History of Information、OSnews HyperCard アーカイブ、Taskade HyperCard 記事の 7 件二次資料を参照範囲とする）。**HyperCard 自体の特許番号は今回 verify 範囲では見つからなかった**ため、本メモは『**特許不在の発掘譚 = 適格性壁の構造記録**』として書く。
+
+## 1. HyperCard 基本情報（二次資料から確認できた範囲）
+
+| 項目 | 内容 |
+|---|---|
+| 開発開始 | 1985 年（コードネーム WildCard） |
+| 主開発者 | William D. Atkinson（Apple 社員、本日 ep85 で扱った US4622545 と同人物） |
+| HyperTalk スクリプト言語 | Dan Winkler が 1986-87 に追加開発（英語ライク構文） |
+| 公開 | 1987-08-11 MacWorld Conference & Expo Boston |
+| Apple への譲渡条件 | Atkinson 提示『**全 Macintosh に無料で同梱すること**』を Apple が受諾 |
+| 製品出荷期間 | 1987-08 〜 2004（System 6 〜 Mac OS 9 まで対応） |
+| 後年への影響 | World Wide Web（1989-91）、JavaScript、Wiki、Notion、Roam Research、LLM チャット履歴 UI の『カード・リンク』設計思想の先行例 |
+| 特許番号 | **今回 verify 範囲では発見できず**（Wikipedia EN・WebSearch ともに記載なし） |
+
+## 2. 核心：『適格性壁』の構造
+
+### (a) 確認した一次資料・二次資料の verify 状況
+
+- WebSearch ""HyperCard" patent Apple Atkinson 1987 USPTO software eligibility" → 7 件二次資料いずれも HyperCard 自体の特許番号への言及なし
+- Wikipedia EN『HyperCard』項 → 特許番号記載なし、ライセンス・歴史・後継ソフトウェアの章はあるが知財に触れていない
+- Wikipedia EN『Bill Atkinson』項 → Atkinson 単独 Apple-assigned 特許として明示されるのは US4622545A（画像圧縮、1986、本日 ep85）**1 件のみ**で、HyperCard 関連特許への言及はない
+- Apple Wiki Fandom『HyperCard』→ 特許情報の章なし
+- Science Museum Group の HyperCard 1987 オブジェクト記録 → ソフトウェアとしての保存記録、特許番号なし
+- USPTO Patent Center 直接検索（patentcenter.uspto.gov/401）→ 対話 UI 必須で curl レベルでの自動検証は不可（情報壁の OCR 形態と同様、対話 UI 必須形態）
+
+### (b) 1980 年代後半の米国ソフトウェア特許適格性
+
+1981 年 Diamond v. Diehr 最高裁判決でソフトウェアを含む発明の特許適格性が部分的に認められた一方、**純ソフトウェア・OS 上のアプリケーション** の特許化はそれ以後も unsettled 期が続いた。決定的な State Street Bank v. Signature Financial 判決（1998 連邦巡回区控訴裁判所）でビジネスメソッド特許が広く認められるようになるまでの 1980-1998 の 18 年間は、純ソフトウェア発明は Claim を組むのが難しい時代だった。
+
+Apple は同じ 1982-1986 年期に US4622545（Atkinson 画像圧縮、1986、ep85）・US4464652（Lapson + 共同発明者ボール式マウス、1984、ep86）など **ハードウェア要素を含む display system / cursor control device の Claim** で特許化に成功している。これらに対し、HyperCard は『Macintosh OS 上のアプリケーション』『カード・スタック・HyperTalk スクリプト』という **純ソフトウェア構造** で、1985-1987 年当時の米国適格性基準では Claim を組むのが難しかった可能性が高い。
+
+### (c) Atkinson 自身の発明戦略との対比
+
+Atkinson は MacPaint（1984）・QuickDraw region 演算（1986、US4622545 で Claim 化）など、**ハードウェア要素を含む display system 寄り**の発明では特許化に成功している。一方、HyperCard は『Apple に無料で譲渡する』条件で Apple に持ち込まれており、**Atkinson 個人としても特許化を意図しなかった**可能性がある。MacWorld 1987-08-11 Boston での発表時の『**全 Macintosh に無料で同梱**』条件は、商業特許戦略よりも『普及させる』ことを優先する開発者の意思表明として読める。
+
+## 3. SW サブシリーズ DB 形態：『適格性壁』第 1 弾
+
+Day 22-23 化粧品サブシリーズで揃い踏みした『情報壁 3 形態』（DPMA / USPTO / J-PlatPat の **対話 UI 必須**）に対し、本メモが扱う SW サブシリーズの壁は **形態が異なる**：
+
+| サブシリーズ | 壁の形態 | 性質 |
+|---|---|---|
+| 化粧品（CS-004 / CS-005 / CS-010） | 情報壁・対話 UI 必須形態 | DB 体系の歴史的層構造（旧 DRP・1970 年代旧公報・特公昭/特開昭旧体系） |
+| SW（SW-007 ep86） | 情報壁・OCR 形態 | PDF 取得は成功したが OCR 文字化けで第 2 発明者特定不能 |
+| **SW（SW-005 本メモ）** | **適格性壁** | **そもそも特許化されていない可能性が高い**（1980 年代後半米国ソフトウェア特許適格性 unsettled 期） |
+
+『情報壁』が **DB に存在するが届かない** のに対し、『適格性壁』は **そもそも DB に存在しない** という構造の違い。SW サブシリーズは今後 SW-002（FORTRAN 1957）・SW-003（TCP/IP 1969-1981）・SW-004（Smalltalk 1970s）でも同型の『適格性壁』に当たる可能性が高い。**SW サブシリーズ全体に横たわる構造的問題**として、適格性壁 4 件を順次書き起こすのが Phase 2 の方針候補になる。
+
+## 4. 厳密にはこう（簡略 3 項目）
+
+### 確認済みの事実
+
+- HyperCard の開発年表（1985 年開発開始 / Dan Winkler の HyperTalk 追加 / 1987-08-11 MacWorld 発表 / 『無料同梱』条件で Apple 譲渡）は Wikipedia EN HyperCard 項と複数二次資料で一致確認済
+- Atkinson 単独 Apple-assigned 特許として Wikipedia EN Bill Atkinson 項に明示されるのは US4622545A の 1 件のみで、HyperCard 関連特許への言及がないことは確認済
+- 1980 年代後半の米国ソフトウェア特許適格性が unsettled 期だったことは、Diamond v. Diehr（1981）から State Street Bank（1998）までの判例史で確認済の事実
+
+### 著者の解釈
+
+- 『HyperCard が特許化されなかった理由は適格性壁である』は本メモ著者の推論で、Atkinson 内部資料・Apple 法務部門資料との突合は行っていない。**特許化を試みて拒絶された記録は今回見つかっていない**ため、『そもそも出願されなかった』『出願されたが公開されなかった』『出願されたが本メモの verify 範囲では見つからない』の 3 通りが残っている
+- 『HyperCard が WWW・Wiki・Notion・LLM チャット UI の先行例である』は問題意識・設計思想レベルでの連続性の主張で、実装レベルの系譜ではない
+- 『情報壁 vs 適格性壁』の対比は Day 22-23 化粧品サブシリーズの『情報壁 3 形態』に対応する SW サブシリーズの構造化試案で、専門家から『そもそも分類が違う』と突っ込まれる余地がある
+
+### この比較が破綻する点
+
+- USPTO Patent Center 直接検索は今回行っていない。Atkinson 名義 + Apple-assigned + 1985-1990 年期の網羅的特許リストを取得すれば、HyperCard 関連特許が発見される可能性は残る
+- 『純ソフトウェア・OS 上のアプリケーションは特許化が難しかった』は一般論で、HyperCard 個別の出願拒絶記録があれば話は別になる
+- 本メモは **特許不在を確定** していない。今回 verify 範囲（WebSearch + Wikipedia + 主要二次資料 7 件）で見つからなかった、という発掘ログである。今後 USPTO Patent Center や General Magic 系特許群の追跡で HyperCard 関連特許が出てきた場合、本メモは更新される
+
+## 参考リンク
+
+- Wikipedia EN HyperCard: [en.wikipedia.org/wiki/HyperCard](https://en.wikipedia.org/wiki/HyperCard)
+- Wikipedia EN Bill Atkinson: [en.wikipedia.org/wiki/Bill_Atkinson](https://en.wikipedia.org/wiki/Bill_Atkinson)
+- USPTO Patent Subject Matter Eligibility: [uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility](https://www.uspto.gov/ip-policy/patent-policy/patent-subject-matter-eligibility)
+- 関連エピソード: [#85 SW-006 Atkinson 画像圧縮 US4622545（同日のノート）](/notes/85-software-ui-patent-02)
+- 関連エピソード: [#86 SW-007 Lapson + 共同発明者 cursor control US4464652（同日のメモ）](/notes/86-software-ui-patent-memo-01)

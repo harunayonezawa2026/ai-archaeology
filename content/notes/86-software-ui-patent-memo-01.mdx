@@ -1,0 +1,124 @@
+---
+title: "1982 年 Apple ボール式マウス特許 US4464652『CURSOR CONTROL DEVICE FOR USE WITH DISPLAY SYSTEMS』── William F. Lapson 主発明者・Apple 譲受で Engelbart マウス US3541541 のホイール式とは検出原理が根本的に異なるボール式 X-Y 入力装置の Claim 1 verbatim を一次取得し、共同発明者欄の OCR 文字化けに阻まれた発掘譚（情報壁 SW 形態）"
+description: "Day 24 SW サブシリーズ 第 2 メモ。1982-07-19 出願・1984-08-07 成立・寿命満了済の Apple ボール式マウス特許 US4464652 を patentimages.storage.googleapis.com PDF（14 ページ・1.08 MB）で一次取得。発明者欄第 1 行は『William F. Lapson, Cupertino』だが第 2 行が pdftotext -raw 出力で『g-lfykihsm L°S Gatos』と OCR 文字化けし、共同発明者の正確な氏名が PDF からは特定不能。WebSearch では『William D. Atkinson』が共同発明者として報告されるが、Wikipedia EN Bill Atkinson 項には US4464652 への言及がなく、二次情報（uspto.report 等）も Cloudflare ブロックで cross check 不能。Claim 1 verbatim はボール式（rotatable ball + domed portion + cut-outs + X-Y position indicating means + biasing means + lock cap/lock tabs/lock ridges による着脱機構）で、Engelbart マウス US3541541 のホイール式（position wheels + transducer + flexible conductor）と検出原理が根本的に異なる。SW サブシリーズ初の『情報壁・OCR 形態』として発掘記録。"
+seriesNumber: 1
+episode: 86
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Apple", "マウス", "情報壁", "発掘メモ"]
+series: "ソフトウェア・UI特許"
+status: "published"
+format: "memo"
+---
+
+## 発掘メモについて
+
+一次資料 URL 確認済み・本文取得済（patentimages.storage.googleapis.com/pdfs/US4464652.pdf、14 ページ、1.08 MB、curl + pdftotext で取得）。ただし共同発明者欄の OCR 文字化けにより、特許前面で第 2 発明者の氏名特定が不能。Claim 1 verbatim とそれ以外の前面情報は確定済。
+
+## 1. 特許基本情報（PDF 前面欄から確認できた範囲）
+
+| 項目 | 内容 |
+|---|---|
+| Patent Number | US 4,464,652 |
+| Title | CURSOR CONTROL DEVICE FOR USE WITH DISPLAY SYSTEMS |
+| Inventors（PDF L7） | William F. Lapson, Cupertino;（第 1 発明者） + ［OCR 文字化け：g-lfykihsm L°S Gatos］（第 2 発明者、特定不能） |
+| Assignee | Apple Computer, Inc., Cupertino, Calif. |
+| Appl. No. | 399,704 |
+| Filed | Jul. 19, 1982 |
+| Granted | Aug. 7, 1984 |
+| Total Claims | 13 Claims, 15 Drawing Figures |
+| Primary Examiner | Gerald L. Brigance |
+| Attorney/Agent | Blakely, Sokoloff, Taylor & Zafman |
+| 出願→成立 | 2 年 0 ヶ月（最速） |
+| 寿命満了 | 2001-08-07（GATT 前出願、成立から 17 年） |
+
+## 2. 核心：Claim 1 verbatim（PDF L319-355 から抽出）
+
+```
+1. A device for providing signals indicative of X-Y locations on a display system,
+   comprising:
+   a housing including a base, having an opening for the passage of a rotatable ball;
+   a unitary frame disposed on said base including:
+     a domed portion integrally formed with said frame substantially surrounding
+     and retaining said rotatable ball;
+     said domed portion having first and second cut-outs through said dome disposed
+     substantially at 90 degrees with respect to one another, and a third cut-out
+     disposed at an angle with respect to said first and second cut-outs;
+     X-Y position indicating means passing through said first and second cut-outs,
+     for converting the rotation of said ball into signals indicative of X-Y
+     positions on said display system;
+     biasing means passing through said third cut-out, for biasing said ball
+     against said X-Y position indicating means;
+   means for removing said ball from said domed portion through said opening
+   in said base, such that said ball and the interior of said dome may be serviced,
+   said means for removing comprising:
+     outwardly extending lock ridges integrally formed with said opening in said base;
+     a lock cap having a second opening of smaller diameter than said base opening
+     to permit only a portion of said ball to pass therethrough and contact said surface;
+     said lock cap further including outwardly extending lock tabs to interleaf
+     with said lock ridges, such that rotation of said cap interleafs with said
+     lock ridges, thereby locking said cap onto said base;
+   whereby movement of said device over a surface such that a portion of said ball
+   is maintained in contact with said surface results in X-Y positions defined
+   on said display system.
+```
+
+ボール式マウスの構造と「**裏蓋（lock cap）を回してボールを取り出して掃除できる**」機構（lock cap + lock tabs + lock ridges）が Claim 1 の核心。Apple Lisa（1983）・Macintosh（1984）の純正マウス、特に「ボールがゴミで動かなくなったら裏蓋を回して取り外す」あの構造はこの特許の Claim そのもの。
+
+## 3. Engelbart マウス US3541541 との対比
+
+| 項目 | SW-001 Engelbart 1967 出願 | SW-007 Lapson + 共同発明者 1982 出願 |
+|---|---|---|
+| 主発明者 | Douglas C. Engelbart, Palo Alto（単独） | William F. Lapson, Cupertino（第 1）+ 第 2 発明者（OCR 壁） |
+| 譲受人 | Stanford Research Institute（後 SRI International） | Apple Computer, Inc. |
+| 検出機構 | 第 1/第 2 position wheel（軸直交）+ transducer | rotatable ball + 直交 cut-outs + X-Y position indicating means |
+| ユーザー接触面 | 2 つの wheel が直接 surface に接触 | ball が surface に接触、内部機構が球回転を検出 |
+| 整備性 | Claim 言及なし | lock cap 着脱機構を Claim 化（保守容易性を権利範囲に含めた） |
+| Claim 数 | 8 Claims | 13 Claims |
+| 寿命満了 | 1987-11-17 | 2001-08-07 |
+
+両者とも『機械式 X-Y 入力装置』だが、検出原理は **ホイール式 vs ボール式** で根本的に異なる。Apple は Engelbart 特許（SRI 譲受）の使用権を契約で得たと言われるが、Lisa/Mac の量産マウスは Lapson 中心で **独自のボール式機構を設計し、Apple 単独譲受の特許で押さえに行った**。SRI 特許の派生ではなく、独立並行発明である。
+
+## 4. 情報壁の構造：OCR 文字化けによる第 2 発明者特定不能
+
+PDF（patentimages.storage.googleapis.com/pdfs/US4464652.pdf）を pdftotext -raw で抽出すると、発明者欄第 2 行は次のように出力される：
+
+```
+[75] Inventors: William F. Lapson, Cupertino; FQREIGN PATENT DOCUMENTS
+g-lfykihsm L°S Gatos 1526428 9/1978 United Kingdom .............. 340/710
+0 o a 1 .
+```
+
+(a) 第 2 発明者の氏名が `g-lfykihsm L°S Gatos` という OCR 文字化けで読めない。`L°S Gatos` は『Los Gatos』（カリフォルニア州、Apple 本社近郊）と推測できるが、氏名 `g-lfykihsm` は人間の名前として復元困難。
+
+(b) WebSearch ""William D. Atkinson" patent Apple Computer USPTO list" は『invention credited to William D. Atkinson and William F. Lapson』と返したが、二次情報源は明示されていない。
+
+(c) Wikipedia EN Bill Atkinson 項は Apple-assigned US patent として US4622545A（画像圧縮、1986、本日 ep85 で扱った）のみを挙げ、US4464652 への言及はない。Atkinson が共同発明者であれば Wikipedia がこれだけの主要マウス特許を載せないのは不自然である。
+
+(d) cross check 候補だった uspto.report・Justia patents・Google Patents HTML はいずれも Cloudflare チャレンジで curl レベルでブロックされ、対話 UI を経由せずに発明者欄を機械的に取得することができなかった。
+
+→ **情報壁の構造**：① PDF 取得は成功、② Claim 1 verbatim 取得は成功、③ 第 1 発明者（Lapson）の特定は成功、④ **第 2 発明者の特定は OCR 文字化けと二次情報源の壁で不能**。SW サブシリーズで初めて『情報壁・OCR 形態』が出現した。Day 22-23 化粧品の『情報壁』3 件が DPMA・USPTO・J-PlatPat の **対話 UI 必須** による壁だったのに対し、本件は **OCR 品質** による壁という新形態。
+
+## 5. 厳密にはこう（簡略 3 項目）
+
+### 確認済みの事実
+
+- Patent Number / Title / 第 1 発明者（William F. Lapson, Cupertino）/ Assignee / Appl. No. / Filed / Granted / Claim 1 verbatim は patentimages.storage.googleapis.com/pdfs/US4464652.pdf（14 ページ、1.08 MB）から確認済
+- 第 2 発明者欄が OCR 文字化けで特定不能であることは、pdftotext -raw / pdftotext -layout の両出力で再現確認済
+- WebSearch で『William D. Atkinson』が共同発明者と報告されることと、Wikipedia EN Bill Atkinson 項に US4464652 言及がないことは事実として確認済
+
+### 著者の解釈
+
+- 『Apple は Engelbart 特許の派生ではなく独立並行発明として Lapson 中心の独自ボール式マウスを Claim 1 で押さえた』は、両特許の検出機構の違い（ホイール式 vs ボール式）と譲受人の違い（SRI vs Apple）から推論したもの。Apple 内部資料での裏付けは取っていない
+- 『lock cap 着脱機構が Lisa/Mac 純正マウスのあの仕組みである』は、当時のマウス設計を知る一般的な記憶と Claim 1 の文言の照合による著者の解釈
+
+### この比較が破綻する点
+
+- 第 2 発明者の特定なしに『Apple マウスは Lapson + Atkinson 共同発明』と断定することは情報壁を超える憶測になる。本メモは『第 1 発明者は Lapson、第 2 発明者は OCR 壁で特定不能』までで止める
+- ボール式 vs ホイール式の対比は検出機構レベルで成立するが、現代の光学式マウスから見ると両方とも『機械式』の同類で、現代との連続性を強調しすぎると専門家から突っ込まれる
+- 『Apple は Engelbart 特許の派生ではなく独自設計』と書くと、当時の Apple ↔ SRI 契約関係の精査が必要になる。本メモはあくまで Claim 1 verbatim レベルでの差異を扱う
+
+## 参考リンク
+
+- US4464652 PDF: [patentimages.storage.googleapis.com/pdfs/US4464652.pdf](https://patentimages.storage.googleapis.com/pdfs/US4464652.pdf)
+- 関連エピソード: [#82 SW-001 Engelbart Mouse US3541541](/notes/82-software-ui-patent-01)
+- 関連エピソード: [#85 SW-006 Atkinson US4622545（同日のノート）](/notes/85-software-ui-patent-02)

@@ -1,0 +1,212 @@
+---
+title: "1982 年 Atkinson 画像圧縮・操作特許 US4622545『METHOD AND APPARATUS FOR IMAGE COMPRESSION AND MANIPULATION』── Apple Lisa/Mac の MacPaint・QuickDraw region 演算の母体特許 Claim 1 verbatim を一次取得し、SW-001 Engelbart マウス（手で空間位置を指す）から SW-006 Atkinson region（画面内の任意領域を inversion point で表現する）への 16 年の系譜を構造化する発掘ノート"
+subtitle: "ソフトウェア・UI 特許 発掘ノート #2 ── 1982 年 9 月 30 日出願・1986 年 11 月 11 日成立の MacPaint コア特許 US4622545 を Google Patents PDF で一次取得すると、Claim 1 verbatim は『display means + memory means（複数の inversion point を保存）+ processing means（inversion point から contrasting area を生成）』の 3 要素で構成される scanline-based region 表現システムで、現代の SVG clip-path / HTML5 Canvas Path2D / iOS UIBezierPath bool ops / ゲーム hit detection の問題意識先行例として読める。Engelbart マウス US3541541 と並んで Apple Lisa/Mac GUI 革命の特許化マップを構成する 1 本"
+description: "Day 24 で SW サブシリーズ第 2 本として、1982 年 9 月 30 日出願・1986 年 11 月 11 日成立の Atkinson 画像圧縮・操作特許 US4622545『METHOD AND APPARATUS FOR IMAGE COMPRESSION AND MANIPULATION』を一次取得した。(1) 発明者は『William D. Atkinson, Los Gatos, Calif.』単独で、Apple 1984 Mac 発表前の 1982 年 9 月 30 日に Apple Computer, Inc. に譲受、(2) Appl. No. 428,635、Filed Sep. 30, 1982、Granted Nov. 11, 1986、出願から成立まで 4 年 1 ヶ月、(3) 1995 年 GATT 発効前出願のため『成立から 17 年』ルール適用で 2003-11-11 に寿命満了済み、(4) Claim 1 verbatim は『display means（複数の display element を選択的に enable）+ memory means（複数の inversion point を保存、各 inversion point は座標を持ち、直交線で contrasting area の境界を形成）+ processing means（inversion point から contrasting area を生成、contrast は以前の inversion point の座標の関数）』の 3 要素で、scanline ごとに『色が変わる点』を順序付きリストで保持して任意形状の閉領域（region）を表現する技法、(5) 後の Spec では『AND / OR / NOT / XOR の 4 つの logic operation を inversion point ordered list 間で実行する』『source bitmap と destination bitmap の間で region を移動する』など QuickDraw RgnHandle データ構造の核心が記述される、(6) 現代の SVG clip-path / HTML5 Canvas Path2D + clip() / iOS UIBezierPath の bool 演算 / ゲームエンジンの polygon collider hit detection / 画像処理の flood fill はいずれも『画面内の任意閉領域を効率的に表現・演算する』という同じ問題意識の派生で、scanline-based / path-based の実装差はあれど 40 年連続している。SW-001 Engelbart マウス（1967 出願 / 手で空間位置を指す）と並んで Apple Lisa/Mac GUI 革命の特許化マップを構成する 1 本として、SW サブシリーズ第 2 本に据えた。"
+episode: 85
+publishedAt: "2026-05-09"
+tags: ["AI考古学", "ソフトウェア・UI特許", "Atkinson", "MacPaint", "QuickDraw", "Apple", "発掘ノート"]
+series: "ソフトウェア・UI特許"
+seriesNumber: 2
+status: "published"
+---
+
+## 結論を先に
+
+Day 24 で AI 考古学の SW サブシリーズ第 2 本目を立てた。題材は **1982 年 9 月 30 日出願・1986 年 11 月 11 日成立** の Atkinson 画像圧縮・操作特許 **US4622545『METHOD AND APPARATUS FOR IMAGE COMPRESSION AND MANIPULATION』** にした。
+
+Google Patents の PDF アーカイブ（`patentimages.storage.googleapis.com/pdfs/US4622545.pdf`、16 ページ・1.42 MB）から一次取得すると、特許前面の発明者欄は **「William D. Atkinson, Los Gatos, Calif.」単独**、譲受人欄は **「Apple Computer, Inc., Cupertino, Calif.」**。Appl. No. 428,635、Filed Sep. 30, 1982、Granted Nov. 11, 1986、Wikipedia 英語版 Bill Atkinson 項が「Apple-assigned US patent」として明示的に挙げる唯一の特許番号と一致した。
+
+Claim 1 verbatim は「**display means + memory means（複数の inversion point を保存）+ processing means（inversion point から contrasting area を生成）**」の 3 要素から成り、scanline ごとに「色が変わる点（inversion point）」を順序付きリストで持つことで任意形状の閉領域（region）を表現する。これは MacPaint の塗りつぶしツール・選択ツールの内部表現であり、QuickDraw の RgnHandle データ構造の母体、後年のあらゆる region 演算 API の問題意識先行例である。
+
+SW-001 Engelbart マウス US3541541 が「**手で空間位置を指す → 画面上のカーソルが従う**」という入力側の起点だとすれば、本特許 SW-006 は「**画面内の任意領域を inversion point の集合で表現する → 領域同士で論理演算ができる**」という表示・編集側の起点になる。1967 → 1982 の 15 年で、Apple は入力と表示の両方を Claim 1 レベルで押さえに行った。
+
+## 1. 題材をどう選んだか（再現できるパイプライン）
+
+```
+[STEP 1] Day 23 SW-001 ノート公開済を踏まえ、SW-002〜005 のうち優先度高 1 本を選定する方針
+[STEP 2] 候補4本の Web 検証
+   - SW-002 IBM FORTRAN コンパイラ（Backus 1957）
+       → 1957 年は米国でソフトウェア特許適格性が確立しておらず、特許化された記録なし
+   - SW-003 Cerf/Kahn TCP/IP 関連（BBN 1969-1981）
+       → IETF RFC 793 として標準化、特許化された記録なし
+   - SW-004 Xerox PARC Smalltalk（Alan Kay 1970s）
+       → ACM Communications 1981 特集で論文公開、Smalltalk 言語自体の特許化記録なし
+   - SW-005 Apple HyperCard（Bill Atkinson 1987）
+       → MacWorld 1987-08 発表時に「無料同梱」、HyperCard 自体の特許化記録なし
+[STEP 3] 「特許化されていない可能性が高い 4 本」と判明
+   → 戦略変更：Atkinson の確実な特許を再探索
+[STEP 4] WebSearch ""William D. Atkinson" patent Apple Computer USPTO list"
+   → US4464652（cursor control device, 1984）と US4622545（image compression, 1986）が候補
+[STEP 5] Wikipedia 英語版 Bill Atkinson 項目で cross check
+   → US4464652 への言及なし、US4622545 のみ「Apple-assigned US patent」として明示
+   → US4622545 を主軸ノート確定（一次資料の verify 強度が圧倒的）
+[STEP 6] 一次資料取得
+   - patentimages.storage.googleapis.com/pdfs/US4622545.pdf（直接URL、curl で 1.42 MB 取得成功）
+   - pdftotext -raw で 1122 行抽出、Claim 1 を L874-895 で特定
+[STEP 7] Claim 1 verbatim を本ノートに転記、対応表作成
+```
+
+選定基準は (a) 発明者が単独・前面欄で確定、(b) Wikipedia 一次資料との cross check 通過、(c) Claim 1 verbatim が PDF で取得可能、(d) MacPaint・QuickDraw・現代 region API への系譜が広範囲、の 4 点。SW-002〜005 は「特許化されていない可能性が高い」ため、別途メモ枠で「ソフトウェア適格性壁」発掘譚として扱う方針に切り替えた（Day 24 ep86, ep87）。
+
+## 2. 題材の正体（Claim 1 verbatim・発明者欄・譲受人欄）
+
+### 特許前面（Front Matter）
+
+| 項目 | 内容 |
+|---|---|
+| Patent Number | US 4,622,545 |
+| Title | METHOD AND APPARATUS FOR IMAGE COMPRESSION AND MANIPULATION |
+| Inventor | William D. Atkinson, Los Gatos, Calif.（単独） |
+| Assignee | Apple Computer, Inc., Cupertino, Calif. |
+| Appl. No. | 428,635 |
+| Filed | Sep. 30, 1982 |
+| Granted | Nov. 11, 1986 |
+| Total Claims | 21 Claims（独立 Claim：Claim 1 / Claim 9 / Claim 19 等） |
+| Drawing Figures | 30 図（PDF 16 ページ） |
+| Int. Cl.4 | G09G 1/02; G06F 15/62（コンピュータグラフィックス系） |
+| Primary Examiner | Marshall M. Curtis |
+| Attorney/Agent | Blakely, Sokoloff, Taylor & Zafman |
+| 出願→成立 | 4 年 1 ヶ月（1982-09-30 → 1986-11-11） |
+| 寿命満了 | 2003-11-11（GATT 前出願、成立から 17 年） |
+
+Apple Macintosh の発表は 1984-01-24、Lisa の発表は 1983-01-19。本特許の出願は **Mac 発表の 16 ヶ月前、Lisa 発表の 4 ヶ月前** にあたる。Atkinson が Lisa/Mac の設計過程で書いた QuickDraw・MacPaint の region 表現アルゴリズムを、製品発表前に確実に押さえに行った形になる。
+
+### Claim 1 verbatim（PDF L874-895 から抽出）
+
+```
+1. A computer display system, comprising:
+
+  display means for providing a display including a plurality of display elements,
+  each of said display elements being selectively enabled;
+
+  memory means for storing a plurality of inversion points,
+  each of said inversion points having a coordinate corresponding to an element on said display,
+  wherein the coordinates of each inversion point specify orthogonal lines extending in the direction
+  of subsequently enabled display elements from said inversion point
+  and forming two boundaries of a contrasting area;
+
+  processing means coupled to said memory means for enabling elements on said display
+  which correspond to said stored inversion points,
+  and generating said contrasting areas on said display,
+  the contrast of an area being a function of the coordinates of previously displayed inversion points;
+
+  whereby a region which comprises a plurality of inversion points may be displayed
+  by enabling said corresponding elements and generating said associated contrasting areas
+  on said display means.
+```
+
+3 つの means（display / memory / processing）と 1 つの whereby 句で構成される。中核概念は **inversion point**：画面上の特定座標に置かれた「色が変わる点」で、その点から延びる直交線が contrasting area（コントラストの違う領域、たとえば白背景上の黒塗り領域）の境界を定義する。inversion point の集合とその座標順序があれば、任意形状の閉領域（region）を表現できる。
+
+### Claim 7-8 が示す「region 演算」の核心
+
+Claim 7・8 で「**inversion points の ordered list 同士で logic operation を実行する**」「logic operations include AND, OR, NOT, exclusive-OR」という記載がある。これは region 同士の **集合演算**（A かつ B / A または B / A でない / A xor B）の Claim 化で、現代の UIBezierPath の bool 演算・SVG clip-path の合成・Canvas Path2D の compositing と同じ問題設定。
+
+### Claim 9-10 が示す「source / destination bitmap 間移動」
+
+Claim 9-10 で「**source bitmap と destination bitmap の間で region を移動する**」という記載がある。これは MacPaint の選択範囲コピー・ペースト、QuickDraw の `CopyBits` の中核操作で、後年の Photoshop のレイヤー演算・SwiftUI の `.mask` 修飾子の問題意識先行例。
+
+## 3. SW-001 Engelbart → SW-006 Atkinson の 16 年の系譜
+
+| 年 | 特許 | 発明者 | Claim 1 の核 | カバー領域 |
+|---|---|---|---|---|
+| 1967（出願） | US 3,541,541（SW-001） | Engelbart 単独 | housing + 第1/第2 position wheel + transducer + flexible conductor | **入力**：手で空間位置を指す |
+| 1982（出願） | US 4,622,545（SW-006） | Atkinson 単独 | display means + memory means（inversion points） + processing means | **表示**：画面内任意領域を表現する |
+
+15 年の間に、Engelbart の「機械式 X-Y 入力装置」から Atkinson の「scanline-based region 演算」まで、GUI のハードウェア・ソフトウェア両側面が Claim 1 verbatim レベルで押さえられた。中間にある Xerox PARC（1973 Alto）は論文公開で特許化されず、Apple が SRI からマウス特許の使用権を得て（1980 年代前半、契約金額非公開）、Lisa/Mac で商用化、Atkinson が region 演算を独自実装して特許化、という流れになる。
+
+「**入力**」と「**表示**」の両方を、それぞれ独立した発明者の単独 Claim 1 で押さえに行った点が興味深い。Engelbart は SRI の研究者として政府資金で発明し SRI が assignee、Atkinson は Apple 社員として企業資金で発明し Apple が assignee。同じ「**ユーザーが画面内で何かを指す・選ぶ**」という問題意識を、研究機関と商用企業がそれぞれ Claim 化した。
+
+## 4. なぜ「気持ち悪いほど近い」のか（現代 UI との対応表）
+
+| 現代の API・概念 | US4622545 Claim 1 との関係 | 4 段階評価 |
+|---|---|---|
+| iOS UIBezierPath の bool 演算（AND/OR/NOT/XOR） | Claim 7-8 と問題意識・実装枠組みがそのまま継承 | **同一**（後継 API） |
+| QuickDraw RgnHandle（System 1.0 - macOS 9） | Claim 1 + 7-10 の直接実装、構造体内部に scanline-based inversion points を保持 | **同一**（同一発明者の実装版） |
+| HTML5 Canvas Path2D + clip() / globalCompositeOperation | 任意 region のクリッピングと合成、scanline 方式と path 方式の実装差はあれど問題設定は共通 | **類似**（問題意識共通） |
+| SVG clip-path / mask | 同上、SVG は Bezier path ベースで scanline ベースとは実装が別 | **類似** |
+| PostScript path operators（1985 Adobe） | Atkinson 出願（1982）と同時代の独立並行発明、問題意識は共通 | **類似** |
+| ゲームエンジンの polygon collider hit detection（Unity Polygon Collider 2D 等） | inversion point ordered list の point membership 判定が hit test と同じ | **類似** |
+| 画像処理の flood fill アルゴリズム | scanline-based inversion point 走査と密接に関連 | **類似** |
+| Photoshop のレイヤーマスク / クリッピングマスク | source/destination bitmap 間の region 移動の問題意識先行例 | **比喩**（問題意識共通だが実装は別系統） |
+| SwiftUI `.mask` / `.clipShape` 修飾子 | UIBezierPath bool ops の上位ラッパー、Atkinson の発明系譜の現代 API 化 | **類似** |
+| WebGPU の compute shader による region 演算 | scanline 方式の代わりに GPU 並列で行うが、Claim 1 の問題設定は再現される | **比喩**（実装は完全に別） |
+
+### 対応表の 4 段階評価（episode-writing.md ルール準拠）
+
+各行について「同一 / 類似 / 比喩 / 無理がある」を割り振ると、
+
+- **同一**（設計・実装レベルで実際に一致）：UIBezierPath bool ops、QuickDraw RgnHandle
+- **類似**（問題意識共通・実装は異なる）：Canvas Path2D、SVG clip-path、PostScript path、Polygon collider、flood fill、SwiftUI clipShape
+- **比喩**（概念は似るが技術的には別物）：Photoshop レイヤーマスク、WebGPU compute shader region 演算
+- **無理がある**：今回は該当なし
+
+### 想定される反論（episode-writing.md「対応表プロンプト」の出力）
+
+- 「scanline-based region と path-based region は内部表現が完全に違うので、SVG clip-path や Canvas Path2D を **類似** と書くのは強引では？」 → 表現としては別物だが、「画面内の任意閉領域を効率的に表現・演算する」という Claim 1 の問題設定は連続している点を「類似」とした
+- 「region 演算は Atkinson 以前から数学的には知られていた（集合演算）」 → 数学的概念ではなく「**コンピュータディスプレイシステム** での scanline-based 実装」が Claim 1 の請求範囲。問題意識の系譜を辿るための補助線として現代 API を並べた
+
+## 5. なぜ忘れられなかったが、Claim 1 が忘れられたか（推測）
+
+MacPaint・QuickDraw・HyperCard の名前は今でも語られる。Bill Atkinson 自身も Mac 黎明期の英雄の一人として広く認識されており、2025-06-05 の死去時には Apple Insider など主要メディアが大きく取り上げた。
+
+しかし「**US4622545 の Claim 1 が QuickDraw RgnHandle の母体である**」という言い方は、技術史の文献ではほぼ見ない。Wikipedia 英語版 Bill Atkinson 項に「Apple-assigned US patent 4622545A」という記載こそあれど、Claim 1 の内容には触れていない。一次資料の Claim 1 verbatim まで辿ると、現代の region API との連続性が「気持ち悪いほど近い」のに、技術解説書はもっぱら MacPaint や QuickDraw の機能を語って特許番号は出さない。
+
+これは Day 23 の Engelbart マウス US3541541 でも同じ構造で、SW サブシリーズに共通する「**特許番号と Claim 1 が忘れられている**」現象として読める。製品名・人名は記憶されるが、Claim 1 verbatim は読まれない。
+
+## 6. AI 考古学的な意味
+
+(a) Apple Lisa/Mac の GUI は、ハードウェア（マウス・モニタ）とソフトウェア（region・bitmap 演算）の両側面で、それぞれ独立した発明者の Claim 1 verbatim によって構造化されていた。SW-001 Engelbart（1967 / 入力）と SW-006 Atkinson（1982 / 表示）の 2 本だけで、現代 GUI の **入力面と表示面の起点特許**が揃う。
+
+(b) Atkinson 単独発明者・Apple 単独譲受人で、企業内発明者の典型的なパターンを踏む。Engelbart は SRI 研究者 + 政府資金、Atkinson は企業社員 + 企業資金で、同じ「ユーザーが画面内で何かを指す・選ぶ」問題意識でも知財の構造が異なる。
+
+(c) Claim 7-8 の logic operation（AND/OR/NOT/XOR）は、現代の UIBezierPath bool 演算と用語レベルで **同じ**。これは 40 年経っても変わらない設計語彙が確立した瞬間として読める。
+
+(d) SW-002〜005（FORTRAN / TCP/IP / Smalltalk / HyperCard）は特許化記録なしで、SW サブシリーズ全体に「**ソフトウェア特許適格性の歴史的揺らぎ**」というテーマが横たわる。SW-001 Engelbart（ハードウェア寄り）と SW-006 Atkinson（ハードウェア要素を含む display system）は特許化に成功し、純ソフトウェア寄り（コンパイラ・プロトコル・言語・ハイパーメディア）は特許化されなかった。これは Day 22-23 化粧品の「情報壁 3 件揃い踏み」と並ぶ、**サブシリーズ固有の構造的問題**として SW でも揃いつつある（Day 24 ep86, ep87 で個別事例として扱う）。
+
+## 7. 落とし穴（ソフトウェア・UI 特許 サブシリーズ固有のもの）
+
+- **「region 演算は Atkinson の発明」と言い切らない**：scanline-based region 表現はそれ以前にも数学・グラフィックス分野で議論されており、Claim 1 が請求するのは「コンピュータディスプレイシステムでの実装」。集合演算そのものの発明ではない
+- **「QuickDraw RgnHandle = US4622545 の実装」と短絡しない**：QuickDraw のソースコード（Apple 内部資料・1980年代）は今も非公開部分があり、特許の Claim と実装の対応は完全に verify できない。Wikipedia・業界誌経由の二次情報に依拠している
+- **「MacPaint = US4622545」と書かない**：MacPaint は Atkinson が単独で書いたアプリケーションで、本特許の Claim は MacPaint 全体ではなく region 表現サブシステムを請求している
+- **特許の寿命満了済み（2003-11-11）に注意**：本特許は GATT 前出願のため成立から 17 年で寿命満了済みで、現代の region API 実装に法的な禁止力はない
+- **Bill Atkinson の他の Apple 特許との混同に注意**：US4464652（cursor control device, 1984、Lapson + 共同発明者の OCR 壁発掘譚は ep86 で扱う）など Atkinson 名義・Apple 譲受の特許は他にもあり、本特許の Claim と混同しない
+
+## 厳密にはこう（5 項目）
+
+### 1. 確認済みの事実
+
+- Patent Number / Title / Inventor / Assignee / Appl. No. / Filed / Granted は patentimages.storage.googleapis.com/pdfs/US4622545.pdf（16 ページ・1.42 MB、curl + pdftotext -raw で取得）の特許前面（PDF L1-25）から抽出済
+- Claim 1 verbatim は同 PDF の L874-895 から抽出済（pdftotext -raw 出力で機械可読、抜けなく転記）
+- Claim 7-8 の logic operation 記載と Claim 9-10 の source/destination bitmap 記載は同 PDF L920-960 から抽出済
+- 「Apple-assigned US patent 4622545A」という表現は Wikipedia 英語版 Bill Atkinson 項目に明示的記載あり（cross check 済）
+- US4464652 への Wikipedia 言及はなし（cross check 済、ep86 メモで別途扱う根拠）
+
+### 2. 著者の解釈
+
+- 「Engelbart 1967 入力 → Atkinson 1982 表示」の 16 年系譜は、本ノート著者の補助線。両特許に直接の引用関係はない（本特許の References Cited 欄には US3541541 は含まれていない）
+- 「Apple は Lisa/Mac 発表前に Atkinson の region 演算を Claim 1 レベルで押さえた」という戦略的解釈は、出願日（1982-09-30）と Lisa/Mac 発表日（1983/1984）の前後関係から推論したもので、Apple 内部資料での裏付けは取っていない
+- 「Claim 7-8 の logic operation = UIBezierPath bool ops の母体」は問題意識・用語レベルでの連続性を主張するもので、内部実装の追跡は今回行っていない
+
+### 3. 比喩・アナロジー
+
+- 「Engelbart 入力面・Atkinson 表示面」という対比はノートの読みやすさのための補助線で、現代 GUI の起点が 2 本の特許で完全にカバーされる、という主張ではない
+- 「Photoshop レイヤーマスク」「WebGPU compute shader region 演算」は **比喩** として配置（実装は完全に別系統）
+
+### 4. 未確認
+
+- Forward citations（US4622545 を引用した後続特許の一覧）：今回 USPTO Patent Public Search を経由しておらず未取得
+- QuickDraw のソースコード（Apple 内部資料、現在も部分的に非公開）と Claim 1 の実装対応：未取得
+- Atkinson が後年 Apple 退社後に General Magic で取得した特許群との関係：今回追跡せず
+- Forward citations を含めると、HTML5 Canvas / SVG / WebGPU 系仕様書の起草者が本特許を引用したか確認できる可能性がある（次回宿題）
+
+### 5. この比較が破綻する点
+
+- scanline-based region と path-based region は内部表現が異なるため、「Canvas Path2D は US4622545 の派生」と書くと現代 Web 仕様の起草者から反論される可能性が高い。本ノートは「問題意識の系譜」レベルで類似と書いているが、実装系譜を主張するものではない
+- 「region 演算は Atkinson 1982 が起点」は、純粋数学・ベクター画像（PostScript 1982-1985）・タイル画像処理など他分野の先行を考慮すると言い切れない。本ノートはあくまで「コンピュータディスプレイシステムでの Claim 1 verbatim としての起点」を扱う
+- US4622545 の正式な英文 Claim 1 と、本ノートの「3 要素 + whereby」要約には情報の取捨選択が入っているため、研究目的で引用する際は PDF 原文を直接参照する必要がある
+
+## 参考リンク
+
+- US4622545 PDF：[patentimages.storage.googleapis.com/pdfs/US4622545.pdf](https://patentimages.storage.googleapis.com/pdfs/US4622545.pdf)
+- Wikipedia 英語版 Bill Atkinson：[en.wikipedia.org/wiki/Bill_Atkinson](https://en.wikipedia.org/wiki/Bill_Atkinson)
+- 関連エピソード：[#82 SW-001 Engelbart マウス US3541541](/notes/82-software-ui-patent-01)（SW サブシリーズ第 1 本、入力面の起点）
