@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@haruko_ai_jp",
   },
+  verification: {
+    google: "afXlbRcyoPWsvBgTiGZX9QvShJAvSNakzguJ4halMCo",
+  },
 };
 
 export default function RootLayout({
