@@ -1,0 +1,316 @@
+---
+title: "Phase 1 100 Episodes Complete ── Mapping the Four Structural Excavation Axes That Emerged in 30 Days: DB Reliability 6 Forms, Eligibility Wall 4 Forms, Cage Patents 9 Forms, 12 Sub-series"
+subtitle: "AI Archaeology Synthesis #1 ── A retrospective note marking the closure of a 30-day, 100-episode run from Day 1 (ep01 Gipp case, 2026-04-14) through Day 29 (ep100, 2026-05-09). The series can be re-read not as a sequence of individual episodes but as four structural excavation axes: a typology of mismatches between primary patent records and conventional accounts; a judicial-history account of why software inventions were not patented; a design-philosophy genealogy of inventions that 'confine in order to use'; and the 12-sub-series map of what the series ended up covering."
+description: "Between 2026-04-14 and 2026-05-09, the AI Archaeology series produced 100 episodes across 30 consecutive days of daily production: 31 long-form excavation notes and 69 shorter excavation memos. This synthesis note does not introduce individual episodes; it stocktakes what the 100 episodes excavated, organized along four axes. Axis 1 is 'DB reliability 6 forms', summarizing 57 cumulative DB corrections and 13 confirmations from Day 8 onward into six recurrent forms: (1) wrong-number swaps where the listed patent points to a completely different invention (cosmetics 5+ cases, food-health 1 case), (2) marketing-phrase misreadings where the patent number is real but the conventional 'Claim 1 subject' diverges from the verbatim claim (CS-009 P&G niacinamide, conventionally 'whitening' vs verbatim 'regulating mammalian skin pore size'), (3) information-wall via interactive search UI (CS-004 DPMA, CS-005 USPTO 1970s, CS-010 J-PlatPat as a three-form set), (4) absence (PH-004 Köhler-Milstein, CS-002 botulinum toxin, multiple SW absences), (5) eligibility wall (7 SW cases), and (6) information-wall via OCR failure (SW-007 Lapson, second inventor field garbled). Axis 2 is 'Eligibility Wall 4 forms', established Days 24-26 as a structural classification of why 1957-1990s US software inventions were not patented: (a) pre-judicial era with 4 sub-forms (FORTRAN/LISP/ALGOL/COBOL), (b) unsettled era (HyperCard), (c) government-contract forced disclosure (BBN IMP, Bell-LaPadula), (d) corporate-strategy voluntary disclosure (Smalltalk). Axis 3 is 'Cage Patents 9 forms', accumulated Days 19-28: a 'confine in order to use' design genealogy that spans 6 physical cage forms (electron / charge / static molecular / electrical / dynamic molecular / container / ion) and 3 logical cage forms (type / policy / capability). Axis 4 is the '12 sub-series excavation map' that grew from the original 4 sub-series (Patent / IR / Standard / Declassified) by adding Kitchen Health / Pharma / Cosmetic / Hardware-Energy / Internet-Crypto / Software-UI / AI-ML / Food-Health."
+episode: 100
+publishedAt: "2026-05-09"
+tags: ["AI Archaeology", "Synthesis", "Phase 1", "100 Episodes", "DB Reliability", "Eligibility Wall", "Cage Patents", "Excavation Note"]
+series: "AI Archaeology Synthesis"
+seriesNumber: 1
+status: "published"
+---
+
+## Up Front
+
+From Day 1 on 2026-04-14 (ep01 Gipp case) through Day 29 on 2026-05-09 (this note), the AI Archaeology series produced **100 episodes across 30 consecutive days of daily production** (31 excavation notes + 69 excavation memos). This note is not a tour of individual episodes; it is a synthesis that stocktakes **what the 100 episodes excavated**, organized along four axes that emerged across the run.
+
+Re-read at the 100-episode mark, the series is not a sequence of individual patents, standards, declassified documents, and IR records, but four structural axes: **(1) the DB Reliability 6 Forms typology** (57 cumulative DB corrections vs 13 confirmations), **(2) the Eligibility Wall 4 Forms structure** (a judicial-history classification of 7 SW absences), **(3) the Cage Patents 9 Forms axis** (6 physical + 3 logical 'confine to use' design forms), and **(4) the 12 sub-series excavation map** (Patent / IR / Standard / Declassified plus 8 added sub-series).
+
+These axes were not designed in advance. At Day 1-7 only the original 4 sub-series existed, DB reliability was treated as 'occasional DB error', the eligibility wall was 'an SW patent talking point', and Cage Patents did not exist as a concept. **All four axes emerged retroactively as cross-episode patterns across daily production from Day 8 onward.** This note records, on the final day of Phase 1 (Day 29 = episode 100), how those axes came to stand up, as a primary-source record.
+
+## 1. The Numbers Behind 100 Episodes
+
+### 1-1. Period and Volume
+
+| Item | Value |
+|---|---|
+| Series start | 2026-04-14 (Day 1, ep01 Gipp case) |
+| 100th episode | 2026-05-09 (Day 29, ep100, this note) |
+| Period | 30 consecutive days of daily production |
+| Excavation notes | 31 (4,000-10,000 character class) |
+| Excavation memos | 69 (1,000-3,000 character class) |
+| Total | 100 |
+| Daily average | 3.3 episodes (max 5 / min 1) |
+| Language editions | 100 Japanese + 100 English = 200 |
+
+### 1-2. DB Meta-Statistics (cumulative Day 8 through Day 28)
+
+| Item | Count |
+|---|---|
+| DB corrections | 57 |
+| DB confirmations | 13 |
+| Correction-to-confirmation ratio | 4.4 : 1 |
+| Confirmation rate | ~19% (13 of ~70 verified rows) |
+| Cases where the DB number itself was a different patent entirely | 9+ (CS-004, CS-005, CS-007, CS-008, FH-007, FH-008, FH-010, FH-012, PH-010, plus FH-Tupper) |
+
+**A 4.4 : 1 correction-to-confirmation ratio** means that the conventional accounts repeated in introductory texts, Wikipedia, and trade press **diverge from the inventor / assignee / filing-grant / Claim 1 fields on the Google Patents front page more often than they match**. From Day 22 onward, the working hypothesis became that this is not individual editor error but a **structural problem in how conventional accounts propagate without going through primary sources**.
+
+### 1-3. Stratification of Primary-Source Access Methods
+
+The 100 episodes accumulated four strata of primary-source access methods:
+
+1. **WebFetch direct success**: Google Patents `/patent/<number>/en` HTML returns full text after JS rendering. Lightest case.
+2. **curl + regex extraction**: When Google Patents claims sections are dropped by WebFetch, fetch raw HTML via `curl -sL <url>` and extract with Python `re.search(r'<section[^>]*itemprop="claims"[\s\S]*?</section>', html)`. Standard from Day 19 onward.
+3. **Direct PDF retrieval from patentimages.storage.googleapis.com**: When Google Patents HTML is blocked by 503 / Captcha, fetch the PDF URL (`https://patentimages.storage.googleapis.com/<hash>/US<number>.pdf`) directly and extract via pdftotext. Established Day 23 (ep82 Engelbart) and Day 24 (ep85 Atkinson).
+4. **Interactive UI required = information wall**: DPMA DEPATISnet (German legacy DRP) / J-PlatPat (Japanese Tokukoshou and Tokukaishou) / USPTO Patent Public Search (US 1970s legacy gazettes) / Espacenet Worldwide Search (CH/FR 1970s) all require interactive search UIs and cannot be reached via straightforward API scraping. Documented as 'information wall' form (Days 22-23 three-form set).
+
+These four strata reflect not difficulty of excavation but **the historical layered structure of patent DB systems themselves**. **DRPs from the 1900s, CH/FR gazettes from the 1970s, and Japanese Tokukoshou and Tokukaishou are interactive-UI-required strata** that fall structurally outside modern API-based scraping. This is not user capability shortfall but a **structural fact about the patent DB system being layered by era**, and AI Archaeology repeatedly hits the wall of the system itself as it digs deeper.
+
+## 2. The DB Reliability 6 Forms Typology
+
+The DB correction patterns accumulated from Day 8 through Day 22 were articulated as a **4-form set** in the Day 22 cosmetics sub-series. A 5th form (eligibility wall) was added in Day 24 SW sub-series, and a 6th form (information wall via OCR) was added by Day 24 ep86 SW-007 Lapson, completing the 6-form system.
+
+### Form 1: Wrong-Number Swap
+
+**The patent number listed in the DB points to a completely different patent unrelated to the topic.** Confirmed in 9+ cases across Days 14-23. Number → Title verify must come first or all episodes would collapse. The most severe form.
+
+| Case | DB number | Actual content (swap target) | Day |
+|---|---|---|---|
+| FH-007 first wave | US119428 | Taylor 1871 steam boiler feedwater heater | Day 14 |
+| FH-008 | US284081 | Snyder 1883 sour-mill machinery | Day 15 |
+| FH-010 | US1986039 | Donnelley 1932 adhesive applicator | Day 15 |
+| FH-012 | US3379608 | USGypsum 1964 mineral-wool building material | Day 15 |
+| PH-010 | US4169726 | GE casting alloy patent | Day 14 |
+| CS-004 first wave | DE200619C | Schnewindt 1907 Bienenkorbkühler (beehive radiator) | Day 20 |
+| CS-005 | US3839566 | P&G MacMillan/Lyness 1974 transdermal penetration enhancer | Day 20 |
+| CS-007 | – | APS Microsponge mismatch | Day 21 |
+| CS-008 | – | ICI Zoladex mismatch | Day 21 |
+| FH-Tupper | US2613000A | Dudley E. Moore 1950 towel holder (actual is US2487400A) | Day 27 |
+
+**Concentration in the cosmetics sub-series** is the structural feature established at Day 22: marketing-derived catchphrase ingredient names became industry vocabulary, while the formal patent-document terminology, ordering, and scope receded, and that pattern propagated to introductory texts and Wikipedia editing — the working hypothesis of this series.
+
+### Form 2: Marketing-Phrase Misreading
+
+**The patent number is real, but the conventionally-cited Claim 1 subject diverges from the verbatim Claim 1 subject.** First identified Day 22 ep79 CS-009 P&G niacinamide US5939082.
+
+The conventional account is 'a whitening patent', but the Claim 1 verbatim is 'regulating mammalian skin pore size'. The specification merely lists kojic acid / arbutin / ascorbic acid as optional skin-lightening agents. **Claim 1 does not claim whitening at all**, yet niacinamide-as-whitening-agent catchphrasing amplified for a quarter century in industry talk, with US5939082 cited as the Claim 1 origin in a marketing-phrase misreading.
+
+### Form 3: Information Wall via Interactive UI
+
+**The patent number itself sits outside web-published material and requires interactive DB search UI to retrieve.** Days 22-23 confirmed a **three-form set** spanning country, language, and era.
+
+| Case | Country | Era | DB system | Wall | Day |
+|---|---|---|---|---|---|
+| CS-010 Sansho-Seiyaku kojic acid | Japan | 1975-1988 | J-PlatPat | Tokukoshou / Tokukaishou legacy interactive search required | Day 22 |
+| CS-004 Lifschütz Eucerit | Germany | 1900-1902 | DPMA DEPATISnet | DRP legacy with incomplete digitization | Day 23 |
+| CS-005 avobenzone | CH/FR | 1971-1973 | USPTO/Espacenet | CH/FR/EP 1970s legacy gazette interactive search required | Day 23 |
+
+The Day 23 articulation: this is **not a difficulty about specific cosmetic ingredients but the historical layered structure of patent DB systems**. AI Archaeology took on the role of making DB-system layering itself visible.
+
+### Form 4: Absence (Patent Absence)
+
+**The origin patent itself does not exist.** Either through publication-first invalidation (Day 10 ep42 PH-004 Köhler-Milstein monoclonal antibodies; Day 22 ep81 CS-002 Allergan botulinum toxin) or through corporate / government-driven voluntary disclosure (eligibility-wall forms c/d, see §3).
+
+**Treating 'patent absence' as a primary source** is an AI Archaeology original method, first attempted at ep42, second-wave at ep81, then systematized in the SW sub-series. This excavation pattern, where the conventional account asserts 'this invention's patent number is X' but the actual record is absent, demands a reading where patent DBs are not a source of truth.
+
+### Form 5: Eligibility Wall (detailed in §3)
+
+Pure software inventions not patented for reasons rooted in patent-eligibility judicial history. 7 cases in the SW sub-series. §3 details the 4 sub-forms.
+
+### Form 6: Information Wall via OCR
+
+**The PDF is retrieved successfully but OCR garbling makes specific fields like the second inventor unreadable.** First identified Day 24 ep86 SW-007 Lapson cursor control US4464652. The second inventor field appears as `g-lfykihsm L°S Gatos`, garbled.
+
+This occurs when the patent PDF is an **image-scan PDF without a text layer**, and even modern Google Patents high-quality OCR can fail depending on 1980s front-page layout. Documented as the SW sub-series version of the information-wall form.
+
+### 6-Form Summary
+
+| Form | Nature | Cases | Representative |
+|---|---|---|---|
+| 1. Wrong-Number Swap | DB number is a completely different patent | 9+ | Days 14-23 |
+| 2. Marketing-Phrase Misreading | Number real but Claim 1 subject diverges from industry talk | 1 confirmed | Day 22 ep79 |
+| 3. Information Wall via Interactive UI | Number sits outside web material; layered DB historical strata | 3-form set | Days 22-23 ep80/83/84 |
+| 4. Absence | Origin patent itself does not exist | Multiple (PH-004 / CS-002 / 7 SW) | Days 10/22/24-26 |
+| 5. Eligibility Wall | Pure SW inventions absent for judicial-history reasons | 7 (4 sub-forms) | Days 24-26 |
+| 6. Information Wall via OCR | PDF retrieved but OCR garbling | 1 | Day 24 ep86 |
+
+## 3. Eligibility Wall 4 Forms (the 7 SW Sub-Series Cases)
+
+The 'eligibility wall' first appeared as terminology at Day 24 ep87 (SW-005 HyperCard), was systematized as 4 forms (a)(b)(c)(d) at Day 25, and was sub-divided as 4 sub-forms (a-1)(a-2)(a-3)(a-4) of (a) at Day 26 — a structural finding of the SW sub-series.
+
+### 4-Form Definition
+
+| Form | Name | Judicial-history position | Representative cases |
+|---|---|---|---|
+| (a) | pre-judicial era | Pre-1972 Gottschalk v. Benson, no precedent | FORTRAN 1957, LISP 1958, ALGOL 60 1960, COBOL 1959 |
+| (b) | unsettled era | 1981 Diamond v. Diehr → 1998 State Street Bank, SW eligibility unsettled | HyperCard 1987 |
+| (c) | government-contract forced disclosure | ARPA / USAF / DoD contract clauses prevent patenting and force publication | BBN IMP 1969, Bell-LaPadula 1973 |
+| (d) | corporate-strategy voluntary disclosure | Company unilaterally disclosed language spec for unrestricted redistribution | Smalltalk 1972 (Xerox) |
+
+### 4 Sub-Forms of (a)
+
+Form (a) applied to all four major US programming languages in the 1957-1960 window. **Not individual corporate or researcher strategic choice, but a structural feature of US patent system as a whole during the pre-judicial era.**
+
+| Sub-form | Name | Representative | Strategy |
+|---|---|---|---|
+| (a-1) | Corporate-lab solo type | FORTRAN (IBM, 1957) | Manual-first publication + free distribution + Trade Secret three-pillar |
+| (a-2) | Pure academic publication | LISP (MIT AI Lab, 1958) | AI Memo numbering + ACM CACM paper + students delegated implementation |
+| (a-3) | International committee co-development | ALGOL 60 (IFIP+ACM+GAMM, 1960) | 13-member international committee, simultaneous publication across multiple organizations |
+| (a-4) | Government-contract hybrid | COBOL (DoD+CODASYL, 1959-1960) | $200M government investment, (a)+(c) hybrid |
+
+### Patent Absence in 7 SW Cases Has a Structural Explanation
+
+One of the largest findings of the 100-episode run is the fact that **'1957-1990s US SW major-invention patent absences in 7 cases can be explained by patent system structure rather than individual researcher philosophy'**. Not because Backus (FORTRAN) was publication-oriented, McCarthy (LISP) was an academic, Hopper (COBOL) was a government figure, or Alan Kay (Smalltalk) was a thinker. **All seven fall within one of the 4 forms (pre-judicial era / unsettled era / government contract / corporate strategy)** at and after 1972 Gottschalk v. Benson, confirmed across Days 24-26 in serial excavation.
+
+This also serves as a **counterargument to the conventional view that 'SW culture evolved independently of US patent system as a transcendent matter'**. The US patent system did not, on judicial precedent, recognize claim-form for SW invention (or it was unsettled), and the only structurally available strategy in those windows was 'publish + standardize spec'. Cultural choice was secondary — the working hypothesis of this series.
+
+## 4. Cage Patents Axis 9 Forms
+
+The 'confine to use' design-philosophy patents accumulated from Day 19 through Day 28 were synthesized at Day 28 as **6 physical cage forms + 3 logical cage forms = 9 forms**, the AI Archaeology series's first matter-and-scale crossing excavation axis.
+
+### 6 Physical Cage Forms (+1)
+
+| Form | Material scale | Representative | Assignee | Day |
+|---|---|---|---|---|
+| 1. Electron cage | Semiconductor memory | US4531203A Masuoka flash floating gate | Toshiba | Day 19 ep70 |
+| 2. Charge cage | Photodetection | US3792322A Boyle/Smith buried-channel CCD | Bell Labs | Day 19 ep71 |
+| 3. Static molecular cage | Biomaterials | US4636524A Biomatrix cross-linked HA gel | Biomatrix → Sanofi | Day 19 ep72 |
+| 4. Electrical cage | Integrated circuits | US2981877A Noyce oxide isolation | Fairchild | Day 27 ep94 |
+| 5. Dynamic molecular cage | Drug delivery | US3845770A Theeuwes/Higuchi OROS semipermeable membrane | Alza → J&J | Day 27 ep95 |
+| 6. Container cage | Food preservation | US2487400A Tupper polyethylene burping seal | Individual | Day 27 ep96 |
+| (+ Ion cage) | Secondary battery | US4302518A Goodenough LiCoO2 layered | UKAEA → AEA | Day 9 ep64 |
+
+The '+1' is Goodenough lithium-ion (Day 9 ep64), preceding Cage axis articulation. When the axis was systematized at Day 19, the focus was 'electron / charge / molecular three areas', and ep64 retroactively overlaps as ion cage — a post-hoc integration.
+
+### 3 Logical Cage Forms
+
+| Form | Abstract scale | Representative | Assignee | Day |
+|---|---|---|---|---|
+| 7. Type cage | Type system | US5740441A Yellin/Gosling JVM bytecode verifier | Sun → Oracle | Day 28 ep97 |
+| 8. Policy cage | Information flow | MITRE TR 2547 Bell-LaPadula (no patent) | USAF / MITRE | Day 28 ep98 |
+| 9. Capability cage | Authority distribution | US4584639A Hardy KeyKOS | Tymshare → Key Logic | Day 28 ep99 |
+
+Logical Cage breaks into **2 patenting successes + 1 patenting absence**, intersecting with the SW sub-series 'success vs eligibility wall' contrast.
+
+### What the 9 Forms Show
+
+Lined up as physical 6 + logical 3 = 9 forms, the result is that **'physical confinement of matter' and 'logical confinement of information' are written with the same verb structures** (`trap`, `confine`, `contain`, `restrict`, `verify before execution`) at the Claim 1 verbatim level. This makes visible the **gap between patent system history (treating physical and logical inventions as separate categories — see §3 eligibility wall) and the fact that Claim 1 grammar treats them as homologous**.
+
+The Cage Patents axis is the most successful matter-crossing axis of the 100 episodes, and is a candidate to be elevated to an independent sub-series for book-form publication (Phase 2 / Volume 2).
+
+## 5. The 12 Sub-Series Excavation Map
+
+The original 4 sub-series (Patent / IR / Standard / Declassified Archaeology) established Days 1-7 expanded into **12 axes** through daily production from Day 8 onward. This section records the coverage at the 100-episode mark as a map.
+
+| Sub-series | Count | Major eps | Domain |
+|---|---|---|---|
+| Introduction | 1 | ep01 | Series intro (Gipp case) |
+| Pitfalls | 1 | ep06 | Series pitfalls overview |
+| Templates | 1 | ep07 | Series pipeline overview |
+| Patent Archaeology | 4 | ep02 ZISC, ep08 Tesla 1888 | Expired US patents |
+| IR Archaeology | 1 | ep03 Samsung 1Gb DRAM | Legacy IR materials |
+| Standard Archaeology | 1 | ep04 IEEE 802.5 Token Ring | Deprecated standards |
+| Declassified Archaeology | 2 | ep05 ALPAC, ep09 NSA Lightning | US military declassification |
+| Kitchen Health | 2 | ep10 Ajinomoto, ep12 saccharin | Food additives |
+| Pharma | 4 | ep11 Loxonin, ep42 Köhler, ep43 Banting, ep95 OROS | Pharmaceutical patents |
+| Cosmetic | 13 | ep13 L'Oréal, ep63 Kligman, ep72 Biomatrix, ep79 P&G, ep80 Sansho, ep81 botulinum, ep83 Lifschütz, ep84 avobenzone, etc. | Cosmetic ingredients and regulation |
+| Hardware-Energy | 11 | ep61 Bardeen, ep62 Kilby, ep64 LiCoO2, ep65 4004, ep66 DRAM, ep70 flash, ep71 CCD, ep94 Noyce | Semiconductors, batteries |
+| Internet-Crypto | 3 | ep32 QR, ep33 JPEG, ep34 SSL | Communication, cryptography |
+| Software-UI | 13 | ep82 Engelbart mouse, ep85 Atkinson, ep86 Lapson, ep87 HyperCard, ep88 FORTRAN, ep89 BBN, ep90 Smalltalk, ep91 LISP, ep92 ALGOL, ep93 COBOL, ep97 JVM, ep98 Bell-LaPadula, ep99 KeyKOS | OS, GUI, languages |
+| AI-ML | 6 | ep17 LeCun CNN, ep18 Simard tangent, ep19 Wu pyramid, ep20 Sirat, ep21 Villarreal, ep22 NL2SQL | Machine-learning patents |
+| Food-Health | 3 | ep44 microwave, ep96 Tupper | Food preparation, preservation |
+| AI Archaeology Synthesis | 1 | ep100 (this note) | Series structural excavation |
+
+**Thickest sub-series: Cosmetic 13, Software-UI 13, Hardware-Energy 11.** Cosmetic was the stage on which DB Reliability 4 forms unfolded. Software-UI was the stage of Eligibility Wall 4 forms. Hardware-Energy supplied the material substrate of Cage Patents axis. Each became the host for a structural finding.
+
+**Thinnest sub-series: IR / Standard / Internet-Crypto / Food-Health (1-3 each).** These hold the largest deepening room for Phase 2 / Phase 3.
+
+## 6. Meta-Findings of 100 Episodes ── Not an Aggregation of Episodes but Structural Patterns
+
+The largest meta-finding of the 100 completed episodes is **the very fact that 30 days of daily production produces structural patterns that do not show in single-episode views, retroactively**. Three points specifically.
+
+### Meta-Finding 1: Conventional Accounts Do Not Propagate Through Primary Sources
+
+The DB correction count of 57 versus 13 confirmations (4.4 : 1) means **the conventional accounts in introductory texts, Wikipedia, and trade press are not written by going through Google Patents front-page Inventor / Assignee / Filing-Grant / Claim 1 fields**. This is not an individual editor problem but a **structural problem in conventional-account generation closing off before reaching primary sources**, and AI Archaeology positions itself as a method that inserts LLM × Claim 1 verbatim retrieval into that path to update conventional accounts.
+
+### Meta-Finding 2: Structural Problems Stratify by Industrial Era
+
+The 5+ wrong-number swaps in the cosmetic sub-series concentrate in industrial-era DB-system layered strata (DRP / 1970s CH-FR / J-PlatPat legacy), and the 7 SW eligibility-wall cases concentrate in the 1957-1990s judicial-history window. These are **not aggregations of individual cases but structures of era strata themselves**. The serial excavations of Days 22-26 established this 'era stratum' viewpoint.
+
+### Meta-Finding 3: 'Confine to Use' Is a Universal Design Spanning Matter and Logic
+
+The Cage Patents axis 9 forms showed that **Claim 1 verbatim of 9 entirely different industrial domains** (semiconductor memory, photodetection, biomaterials, integrated circuits, drug delivery, food preservation, secondary batteries, type systems, information flow, authority distribution) **are written with the same verb structures**. This grounds the view that 'invention's core is design philosophy rather than matter' in linguistic evidence at the Claim 1 verbatim level — the AI Archaeology series's distinctive excavation axis.
+
+## 7. AI Archaeology Implication ── From Phase 1 Completion to Phase 2/3
+
+At series-LP launch (2026-04-14), the design was '4 sub-series (Patent / IR / Standard / Declassified) at 4-per-month pace, 200+ over 3 years'. At Phase 1 completion, the actual numbers are **30 days × 100 episodes**, **15× faster than the original plan**. This is unanticipated production speed; the trigger was the daily-production agreement from Day 8 (Haruko's call).
+
+Three points to record at this synthesis after Phase 1 completion (planning details retained in plan.md):
+
+1. **Phase 2 candidate: Genomic Archaeology** (positioning ancient DNA work / David Reich and others as primary sources, taking the role-model role of overturning 70 years of postwar archaeology consensus, as an independent sub-series).
+2. **Phase 3 candidates: Court Archaeology / Bankruptcy Archaeology** (excavation axes from bankruptcy filings and court documents via US PACER, etc.).
+3. **Volume 2 of the book**: Independent book extracting the three axes (Cage Patents / DB Reliability 6 Forms / Eligibility Wall 4 Forms) from Phase 1's 100 episodes (Phase 1 Volume 1 published 2026-05-03 at Booth = 9 episodes included).
+
+Phase 1's 100 episodes form **the substrate for Volume 2** and **a 10×+ extension of Volume 1's 9 episodes**, the volumetric base for AI Archaeology genre dominance.
+
+## 8. Pitfalls (cumulative across 100 episodes)
+
+**Pitfall 1: Do not treat the DB as a source of truth.**
+
+From the cumulative 57 DB corrections: **do not take memo / inventor / assignee / patent number fields in candidates.tsv at face value first.** From Day 8 onward, the standard procedure became 'verify the DB row against the Google Patents front page first'.
+
+**Pitfall 2: Always check Claim 1 verbatim against industry catchphrases first.**
+
+Cases like CS-009 niacinamide ('whitening' vs Claim 1 'pore size regulation') show that industry talk amplifies without reading Claim 1 verbatim. **Retrieving and citing Claim 1 verbatim first is the core of the series.**
+
+**Pitfall 3: Treat 'patent absence' as a primary source.**
+
+ep42 Köhler-Milstein monoclonal antibodies, ep81 Allergan botulinum toxin, and 7 SW sub-series cases form a pattern: the conventional account asserts 'this invention's patent is X' but the actual record is absent. **Treating absence as primary source** is an excavation method established in Phase 1.
+
+**Pitfall 4: Information-wall form is a DB-system structural problem, not user capability shortfall.**
+
+The CS-004 DPMA / CS-005 USPTO / CS-010 J-PlatPat triple-form set falls into the interactive-UI-required DB-system stratum. Articulating it as **a wall of the historical layered structure of the DB system itself**, rather than individual user search ability, is the lifeline of series credibility.
+
+**Pitfall 5: Strict 1 session = 1 note + 2 memos (feedback_archaeology_session_balance).**
+
+From the Day 11/12 consecutive violations (memos written at 8,000-9,000 characters making them note-leaning), the operating discipline solidified that memos go out lightly at 1,000-1,500 characters. **The 100-episode pace is operationally designed to allow volume; inflating memos drops quality.** This note (ep100) operates as the **single-note** memorial closing.
+
+---
+
+## To Be Strict
+
+**Confirmed facts:**
+
+- The series period 2026-04-14 (Day 1) to 2026-05-09 (Day 29), 30 days of daily production, is verifiable in the Day 1-28 production records of `project_ai_archaeology_100_plan.md`. Each Day section lists ep number, title, URL, and DB correction counts.
+- The cumulative 57 DB corrections and 13 confirmations are accumulated counts from Day 8 (the first DB verify start day) through Day 28 (the day before completion). The delta is recorded in each Day section.
+- The DB Reliability 6 Forms typology: Form 1 (wrong-number swap) confirmed Days 14-23 sequence; Form 2 (marketing-phrase misreading) first identified Day 22 ep79; Form 3 (information wall via interactive UI) three-form set Days 22-23; Form 4 (absence) first attempted Day 10 ep42, second-wave Day 22 ep81; Form 5 (eligibility wall) confirmed in 7 cases Days 24-26; Form 6 (information wall via OCR) first identified Day 24 ep86. All recorded in chronological order.
+- The Eligibility Wall 4 Forms typology was systematized as 4 forms (a)(b)(c)(d) at Day 25 and the (a) was sub-divided into 4 sub-forms (a-1)(a-2)(a-3)(a-4) at Day 26, articulated in plan.md Day 25/26 sections.
+- The Cage Patents axis 9 forms: 6 physical forms accumulated Days 19-27, 3 logical forms completed Day 28 — recorded in plan.md Day 28 section.
+
+**Author's interpretation:**
+
+- 'Conventional accounts do not propagate through primary sources' is the working hypothesis of the series. The 4.4 : 1 correction-to-confirmation ratio is consistent with not going through primary sources, but other explanations (DB editor capability shortfall / propagation of primary-source OCR failures, etc.) are possible in parallel. Empirical observation level from 100 episodes.
+- 'The 7 SW patent absences have a structural explanation' is an interpretation based on cross-checking judicial history (Gottschalk v. Benson 1972 / Diamond v. Diehr 1981 / State Street Bank 1998) against each case's era. The possibility that individual researchers' philosophical choices were primary is not refuted; Days 24-26 serial excavation only showed that the structural explanation has wide range.
+- The Cage Patents interpretation ('confine to use' as a matter-and-logic universal design) is a framing based on isomorphism of verb structure in Claim 1 verbatim, and does not assert design-philosophy identity. It is also consistent with the fact that physical and logical cages were treated as separate categories for patent eligibility.
+
+**Analogies:**
+
+- 'Historical layered structure of DB systems' is a geological-stratum metaphor, comparing the era-by-era division of patent DBs to geological layers. The actual content is the version-management history and OCR-completion era distribution of DBs; it lacks geological continuity.
+- 'Confine to use' / 'cage' is a metaphor for design philosophy, leaning on the convention of English patent documents using the same verbs for physical confinement and logical confinement. This may diverge from the connotations of Japanese 'tojikomeru' / 'kakoikomi'.
+
+**Unconfirmed:**
+
+- Forward citations counts for individual episodes (not retrieved).
+- Commercial reception of the 100 episodes (Volume 1 Booth sales, Substack subscriptions, Substack open rate, X impressions, follower growth) — uncompiled at Day 29.
+- Body-grep verification completion rate of the English editions (content/notes/en/*.mdx) of the 100 episodes (each Day section confirmed production 200 OK, but cumulative body-grep count across 100 episodes is uncompiled).
+- Detailed candidate / naming / target audience designs for Phase 2 transition destinations of each sub-series (Genomic / Court / Bankruptcy etc.) as independent LPs.
+- Region and era distribution of the 100 patent numbers vs the 13 confirmations (reconstructable from per-Day records but uncompiled at Day 29).
+
+**Where this comparison breaks:**
+
+- The '57 corrections vs 13 confirmations' ratio carries sampling bias: the verification targets from Day 8 onward were drawn from the DB top-down by priority, so the true ratio across the entire DB including low-priority and pre-existing rows could be different.
+- 'The 7 SW patent absences have a structural explanation' would not become an explanation of 'SW culture as a whole' without including SW patents that became eligible from 1998 State Street Bank onward. Phase 1 leans toward the SW-patent-absence side of the 1957-1990s window.
+- The 'Cage Patents axis 9 forms' is the series's framing; the patent system has treated physical and logical cages in separate categories. Treating them as homologous is a design-philosophy metaphor; in the practice of patent eligibility, claim scope, and infringement determination, they receive different treatment.
+- The 100-episode production speed (30 days × 100 episodes) is presented as a reproducible pace for the AI Archaeology genre, but the daily-production agreement from Day 8 onward and the 3-5-per-day pace depend on Haruko's call. Third-party reproducibility is not guaranteed.
+
+---
+
+References:
+
+- Series LP: https://ai-archaeology.vercel.app
+- Episode 1 Gipp case (series intro): https://ai-archaeology.vercel.app/en/notes/01-gipp-case
+- Day 19 Cage Patents axis origin: https://ai-archaeology.vercel.app/en/notes/70-hardware-energy-patent-04
+- Day 22 DB Reliability 4-form set: https://ai-archaeology.vercel.app/en/notes/79-cosmetic-patent-05
+- Day 25 Eligibility Wall 4-form systematization: https://ai-archaeology.vercel.app/en/notes/88-software-ui-patent-03
+- Day 28 Cage Patents 3 logical forms completion: https://ai-archaeology.vercel.app/en/notes/97-software-ui-patent-05
+- Volume 1 at Booth: https://haruko-ai.booth.pm/items/8302397
