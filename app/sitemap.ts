@@ -11,9 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/`, changeFrequency: "daily", priority: 1.0 },
     { url: `${SITE}/about`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/apps`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE}/book/cage-patents-preview`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE}/en`, changeFrequency: "daily", priority: 1.0 },
     { url: `${SITE}/en/about`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/en/apps`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE}/en/book/cage-patents-preview`, changeFrequency: "weekly", priority: 0.9 },
   ];
 
   const jaNotes: MetadataRoute.Sitemap = ja.map((n) => ({
