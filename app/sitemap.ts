@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/en/about`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/en/apps`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/en/book/cage-patents-preview`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE}/en/essays/checking-100-ai-patent-claims`, changeFrequency: "monthly", priority: 0.9 },
   ];
 
   const jaNotes: MetadataRoute.Sitemap = ja.map((n) => ({
